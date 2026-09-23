@@ -1,0 +1,4924 @@
+{
+ "Setup:0": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1101
+ },
+ "Setup:1": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1102
+ },
+ "Setup:2": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1103
+ },
+ "Setup:3": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1104
+ },
+ "Setup:4": {
+  "status": "match",
+  "desc": "Patch Bank Select MSB (CC# 0) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1105
+ },
+ "Setup:5": {
+  "status": "match",
+  "desc": "Patch Bank Select LSB (CC# 32) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1107
+ },
+ "Setup:6": {
+  "status": "match",
+  "desc": "Patch Program Number (PC) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1109
+ },
+ "Setup:7": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1110
+ },
+ "Setup:8": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1111
+ },
+ "Setup:9": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1112
+ },
+ "Setup:10": {
+  "status": "match",
+  "desc": "MFX1 Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1113
+ },
+ "Setup:11": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1115
+ },
+ "Setup:12": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1116
+ },
+ "Setup:13": {
+  "status": "match",
+  "desc": "Chorus Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1117
+ },
+ "Setup:14": {
+  "status": "match",
+  "desc": "Reverb Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1119
+ },
+ "Setup:15": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1121
+ },
+ "Setup:16": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1122
+ },
+ "Setup:17": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1123
+ },
+ "Setup:18": {
+  "status": "match",
+  "desc": "Transpose Value (59 ~70)",
+  "doc_range": [
+   59,
+   70
+  ],
+  "nibbled": false,
+  "doc_line": 1124
+ },
+ "Setup:19": {
+  "status": "match",
+  "desc": "Octave Shift (61~67)",
+  "doc_range": [
+   61,
+   67
+  ],
+  "nibbled": false,
+  "doc_line": 1126
+ },
+ "Setup:20": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 1128
+ },
+ "Setup:21": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1129
+ },
+ "Setup:22": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1130
+ },
+ "Setup:23": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~8)",
+  "doc_range": [
+   0,
+   8
+  ],
+  "nibbled": false,
+  "doc_line": 1131
+ },
+ "Setup:24": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~9)",
+  "doc_range": [
+   0,
+   9
+  ],
+  "nibbled": false,
+  "doc_line": 1132
+ },
+ "Setup:25": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1133
+ },
+ "Setup:26": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1134
+ },
+ "Setup:27": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1135
+ },
+ "Setup:28": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~11)",
+  "doc_range": [
+   0,
+   11
+  ],
+  "nibbled": false,
+  "doc_line": 1136
+ },
+ "Setup:29": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (61~67)",
+  "doc_range": [
+   61,
+   67
+  ],
+  "nibbled": false,
+  "doc_line": 1137
+ },
+ "Setup:30": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1138
+ },
+ "Setup:31": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~100)",
+  "doc_range": [
+   0,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 1139
+ },
+ "Setup:32": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1140
+ },
+ "Setup:33": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1141
+ },
+ "Setup:34": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1142
+ },
+ "Setup:35": {
+  "status": "doc-only",
+  "desc": "",
+  "doc_range": [
+   0,
+   255
+  ],
+  "nibbled": true,
+  "doc_line": 1143
+ },
+ "Setup:37": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1145
+ },
+ "Setup:38": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~31)",
+  "doc_range": [
+   0,
+   31
+  ],
+  "nibbled": false,
+  "doc_line": 1146
+ },
+ "Setup:39": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~100)",
+  "doc_range": [
+   0,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 1147
+ },
+ "Setup:40": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1148
+ },
+ "Setup:41": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1149
+ },
+ "Setup:42": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1150
+ },
+ "Setup:43": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~63)",
+  "doc_range": [
+   0,
+   63
+  ],
+  "nibbled": false,
+  "doc_line": 1151
+ },
+ "Setup:44": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1152
+ },
+ "Setup:45": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1153
+ },
+ "Setup:46": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1154
+ },
+ "Setup:47": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1155
+ },
+ "Setup:48": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1156
+ },
+ "Setup:49": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1157
+ },
+ "Setup:50": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 1158
+ },
+ "Setup:51": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~32)",
+  "doc_range": [
+   0,
+   32
+  ],
+  "nibbled": false,
+  "doc_line": 1159
+ },
+ "SystemCommon:0": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   24,
+   2024
+  ],
+  "nibbled": true,
+  "doc_line": 1169
+ },
+ "SystemCommon:4": {
+  "status": "match",
+  "desc": "Master Key Shift (40~88)",
+  "doc_range": [
+   40,
+   88
+  ],
+  "nibbled": false,
+  "doc_line": 1174
+ },
+ "SystemCommon:5": {
+  "status": "match",
+  "desc": "Master Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1176
+ },
+ "SystemCommon:6": {
+  "status": "match",
+  "desc": "Scale Tune Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1177
+ },
+ "SystemCommon:7": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1179
+ },
+ "SystemCommon:8": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1180
+ },
+ "SystemCommon:9": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~16)",
+  "doc_range": [
+   0,
+   16
+  ],
+  "nibbled": false,
+  "doc_line": 1181
+ },
+ "SystemCommon:10": {
+  "status": "match",
+  "desc": "Kbd Patch Rx/Tx Channel (0~15)",
+  "doc_range": [
+   0,
+   15
+  ],
+  "nibbled": false,
+  "doc_line": 1182
+ },
+ "SystemCommon:11": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1184
+ },
+ "SystemCommon:12": {
+  "status": "match",
+  "desc": "Patch Scale Tune for C (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1185
+ },
+ "SystemCommon:13": {
+  "status": "match",
+  "desc": "Patch Scale Tune for C# (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1187
+ },
+ "SystemCommon:14": {
+  "status": "match",
+  "desc": "Patch Scale Tune for D (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1189
+ },
+ "SystemCommon:15": {
+  "status": "match",
+  "desc": "Patch Scale Tune for D# (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1191
+ },
+ "SystemCommon:16": {
+  "status": "match",
+  "desc": "Patch Scale Tune for E (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1193
+ },
+ "SystemCommon:17": {
+  "status": "match",
+  "desc": "Patch Scale Tune for F (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1195
+ },
+ "SystemCommon:18": {
+  "status": "match",
+  "desc": "Patch Scale Tune for F# (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1197
+ },
+ "SystemCommon:19": {
+  "status": "match",
+  "desc": "Patch Scale Tune for G (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1199
+ },
+ "SystemCommon:20": {
+  "status": "match",
+  "desc": "Patch Scale Tune for G# (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1201
+ },
+ "SystemCommon:21": {
+  "status": "match",
+  "desc": "Patch Scale Tune for A (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1203
+ },
+ "SystemCommon:22": {
+  "status": "match",
+  "desc": "Patch Scale Tune for A# (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1205
+ },
+ "SystemCommon:23": {
+  "status": "match",
+  "desc": "Patch Scale Tune for B (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1207
+ },
+ "SystemCommon:24": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~97)",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1209
+ },
+ "SystemCommon:25": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> ) (0~97",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1210
+ },
+ "SystemCommon:26": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~97)",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1211
+ },
+ "SystemCommon:27": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> ) (0~97",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1212
+ },
+ "SystemCommon:28": {
+  "status": "match",
+  "desc": "Receive Program Change (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1213
+ },
+ "SystemCommon:29": {
+  "status": "match",
+  "desc": "Receive Bank Select (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1215
+ },
+ "SystemController:0": {
+  "status": "match",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1233
+ },
+ "SystemController:1": {
+  "status": "match",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1234
+ },
+ "SystemController:2": {
+  "status": "match",
+  "desc": "Keyboard Velocity (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1235
+ },
+ "SystemController:3": {
+  "status": "match",
+  "desc": "(reserve) <*> (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 1237
+ },
+ "SystemController:4": {
+  "status": "match",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1238
+ },
+ "SystemController:5": {
+  "status": "match",
+  "desc": "Hold Pedal Polarity (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1239
+ },
+ "SystemController:6": {
+  "status": "match",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1241
+ },
+ "SystemController:7": {
+  "status": "match",
+  "desc": "(reserve) <*> (0~96)",
+  "doc_range": [
+   0,
+   96
+  ],
+  "nibbled": false,
+  "doc_line": 1242
+ },
+ "SystemController:8": {
+  "status": "match",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1243
+ },
+ "SystemController:9": {
+  "status": "match",
+  "desc": "(reserve) <*> (1~10)",
+  "doc_range": [
+   1,
+   10
+  ],
+  "nibbled": false,
+  "doc_line": 1244
+ },
+ "SystemController:10": {
+  "status": "match",
+  "desc": "D Beam Assign (0~93)",
+  "doc_range": [
+   0,
+   93
+  ],
+  "nibbled": false,
+  "doc_line": 1245
+ },
+ "SystemController:11": {
+  "status": "match",
+  "desc": "Beam Range Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1247
+ },
+ "SystemController:12": {
+  "status": "match",
+  "desc": "Beam Range Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1248
+ },
+ "SystemController:13": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~15)",
+  "doc_range": [
+   0,
+   15
+  ],
+  "nibbled": false,
+  "doc_line": 1249
+ },
+ "SystemController:14": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1250
+ },
+ "SystemController:15": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1251
+ },
+ "SystemController:16": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1252
+ },
+ "SystemController:17": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1253
+ },
+ "SystemController:18": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1254
+ },
+ "SystemController:19": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1255
+ },
+ "SystemController:20": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~15)",
+  "doc_range": [
+   0,
+   15
+  ],
+  "nibbled": false,
+  "doc_line": 1256
+ },
+ "SystemController:21": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~15)",
+  "doc_range": [
+   0,
+   15
+  ],
+  "nibbled": false,
+  "doc_line": 1257
+ },
+ "SystemController:22": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~94)",
+  "doc_range": [
+   0,
+   94
+  ],
+  "nibbled": false,
+  "doc_line": 1258
+ },
+ "SystemController:23": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1259
+ },
+ "SystemController:24": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1260
+ },
+ "SystemController:25": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1261
+ },
+ "SystemController:26": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1262
+ },
+ "SystemController:27": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1263
+ },
+ "SystemController:28": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1264
+ },
+ "SystemController:29": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1265
+ },
+ "SystemController:30": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1266
+ },
+ "SystemController:31": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1267
+ },
+ "SystemController:32": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1268
+ },
+ "SystemController:33": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1269
+ },
+ "SystemController:34": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1270
+ },
+ "SystemController:35": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1271
+ },
+ "SystemController:36": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1272
+ },
+ "SystemController:37": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1273
+ },
+ "SystemController:38": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1274
+ },
+ "SystemController:39": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1275
+ },
+ "SystemController:40": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1276
+ },
+ "SystemController:41": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1277
+ },
+ "SystemController:42": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1278
+ },
+ "SystemController:43": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1279
+ },
+ "SystemController:44": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1280
+ },
+ "SystemController:45": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1281
+ },
+ "SystemController:46": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1282
+ },
+ "SystemController:47": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1283
+ },
+ "SystemController:48": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1284
+ },
+ "SystemController:49": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1285
+ },
+ "SystemController:50": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1286
+ },
+ "SystemController:51": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1287
+ },
+ "SystemController:52": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1288
+ },
+ "SystemController:53": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1289
+ },
+ "SystemController:54": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1290
+ },
+ "SystemController:55": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1291
+ },
+ "SystemController:56": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1292
+ },
+ "SystemController:57": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1293
+ },
+ "SystemController:58": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1294
+ },
+ "SystemController:59": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1295
+ },
+ "SystemController:60": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1296
+ },
+ "SystemController:61": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1297
+ },
+ "SystemController:62": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1298
+ },
+ "SystemController:63": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1299
+ },
+ "SystemController:64": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1300
+ },
+ "SystemController:65": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1301
+ },
+ "SystemController:66": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1302
+ },
+ "SystemController:67": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1303
+ },
+ "SystemController:68": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1304
+ },
+ "SystemController:69": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1305
+ },
+ "SystemController:70": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1306
+ },
+ "SystemController:71": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1307
+ },
+ "SystemController:72": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1308
+ },
+ "SystemController:73": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1309
+ },
+ "SystemController:74": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1310
+ },
+ "SystemController:75": {
+  "status": "doc-only",
+  "desc": "(reserve) <*>",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1311
+ },
+ "SystemController:76": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1312
+ },
+ "SystemController:77": {
+  "status": "doc-only",
+  "desc": "(reserve) <*> (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1313
+ },
+ "SystemController:78": {
+  "status": "match",
+  "desc": "Octave/Variation Buttons Assign (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 1314
+ },
+ "SystemController:79": {
+  "status": "doc-only",
+  "desc": "Portament Mode (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1316
+ },
+ "PatchCommon:0": {
+  "status": "match",
+  "desc": "Patch Name 1 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1327
+ },
+ "PatchCommon:1": {
+  "status": "doc-only",
+  "desc": "Patch Name 2 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1329
+ },
+ "PatchCommon:2": {
+  "status": "doc-only",
+  "desc": "Patch Name 3 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1331
+ },
+ "PatchCommon:3": {
+  "status": "doc-only",
+  "desc": "Patch Name 4 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1333
+ },
+ "PatchCommon:4": {
+  "status": "doc-only",
+  "desc": "Patch Name 5 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1335
+ },
+ "PatchCommon:5": {
+  "status": "doc-only",
+  "desc": "Patch Name 6 ) (32~127",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1337
+ },
+ "PatchCommon:6": {
+  "status": "doc-only",
+  "desc": "Patch Name 7 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1339
+ },
+ "PatchCommon:7": {
+  "status": "doc-only",
+  "desc": "Patch Name 8 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1341
+ },
+ "PatchCommon:8": {
+  "status": "doc-only",
+  "desc": "Patch Name 9 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1343
+ },
+ "PatchCommon:9": {
+  "status": "doc-only",
+  "desc": "Patch Name 10 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1345
+ },
+ "PatchCommon:10": {
+  "status": "doc-only",
+  "desc": "Patch Name 11 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1347
+ },
+ "PatchCommon:11": {
+  "status": "doc-only",
+  "desc": "Patch Name 12 (32~127)",
+  "doc_range": [
+   32,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1349
+ },
+ "PatchCommon:12": {
+  "status": "match",
+  "desc": "Patch Category (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1351
+ },
+ "PatchCommon:13": {
+  "status": "match",
+  "desc": "(reserve)",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1352
+ },
+ "PatchCommon:14": {
+  "status": "match",
+  "desc": "Patch Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1353
+ },
+ "PatchCommon:15": {
+  "status": "match",
+  "desc": "Patch Pan (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1354
+ },
+ "PatchCommon:16": {
+  "status": "match",
+  "desc": "Patch Priority (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1356
+ },
+ "PatchCommon:17": {
+  "status": "match",
+  "desc": "Patch Coarse Tune (16 - 112)",
+  "doc_range": [
+   16,
+   112
+  ],
+  "nibbled": false,
+  "doc_line": 1358
+ },
+ "PatchCommon:18": {
+  "status": "match",
+  "desc": "Patch Fine Tune (14 ~114)",
+  "doc_range": [
+   14,
+   114
+  ],
+  "nibbled": false,
+  "doc_line": 1360
+ },
+ "PatchCommon:19": {
+  "status": "match",
+  "desc": "Octave Shift (61~67)",
+  "doc_range": [
+   61,
+   67
+  ],
+  "nibbled": false,
+  "doc_line": 1362
+ },
+ "PatchCommon:20": {
+  "status": "match",
+  "desc": "Stretch Tune Depth (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 1364
+ },
+ "PatchCommon:21": {
+  "status": "match",
+  "desc": "Analog Feel (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1366
+ },
+ "PatchCommon:22": {
+  "status": "match",
+  "desc": "Mono/Poly (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1367
+ },
+ "PatchCommon:23": {
+  "status": "match",
+  "desc": "Legato Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1369
+ },
+ "PatchCommon:24": {
+  "status": "match",
+  "desc": "Legato Retrigger (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1371
+ },
+ "PatchCommon:25": {
+  "status": "match",
+  "desc": "Portamento Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1373
+ },
+ "PatchCommon:26": {
+  "status": "match",
+  "desc": "Portamento Mode (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1375
+ },
+ "PatchCommon:27": {
+  "status": "match",
+  "desc": "Portamento Type (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1377
+ },
+ "PatchCommon:28": {
+  "status": "match",
+  "desc": "Portamento Start (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1379
+ },
+ "PatchCommon:29": {
+  "status": "match",
+  "desc": "Portamento Time (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1381
+ },
+ "PatchCommon:30": {
+  "status": "match",
+  "desc": "(reserve)",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1382
+ },
+ "PatchCommon:31": {
+  "status": "match",
+  "desc": "",
+  "doc_range": null,
+  "nibbled": true,
+  "doc_line": 1383
+ },
+ "PatchCommon:33": {
+  "status": "match",
+  "desc": "(reserve)",
+  "doc_range": null,
+  "nibbled": false,
+  "doc_line": 1387
+ },
+ "PatchCommon:34": {
+  "status": "match",
+  "desc": "Cutoff Offset (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1388
+ },
+ "PatchCommon:35": {
+  "status": "match",
+  "desc": "Resonance Offset (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1397
+ },
+ "PatchCommon:36": {
+  "status": "match",
+  "desc": "Attack Time Offset (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1399
+ },
+ "PatchCommon:37": {
+  "status": "match",
+  "desc": "Release Time Offset (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1401
+ },
+ "PatchCommon:38": {
+  "status": "match",
+  "desc": "Velocity Sens Offset (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1403
+ },
+ "PatchCommon:39": {
+  "status": "match",
+  "desc": "Patch Output Assign (0~13)",
+  "doc_range": [
+   0,
+   13
+  ],
+  "nibbled": false,
+  "doc_line": 1405
+ },
+ "PatchCommon:40": {
+  "status": "match",
+  "desc": "TMT Control Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 1408
+ },
+ "PatchCommon:41": {
+  "status": "match",
+  "desc": "Pitch Bend Range Up (0~48)",
+  "doc_range": [
+   0,
+   48
+  ],
+  "nibbled": false,
+  "doc_line": 1410
+ },
+ "PatchCommon:42": {
+  "status": "match",
+  "desc": "Pitch Bend Range Down (0~48) (0~48)",
+  "doc_range": [
+   0,
+   48
+  ],
+  "nibbled": false,
+  "doc_line": 1411
+ },
+ "PatchCommon:43": {
+  "status": "match",
+  "desc": "Matrix Control 1 Source (0~109)",
+  "doc_range": [
+   0,
+   109
+  ],
+  "nibbled": false,
+  "doc_line": 1412
+ },
+ "PatchCommon:44": {
+  "status": "match",
+  "desc": "Matrix Control 1 Destination 1 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1416
+ },
+ "PatchCommon:45": {
+  "status": "match",
+  "desc": "Matrix Control 1 Sens 1 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1423
+ },
+ "PatchCommon:46": {
+  "status": "match",
+  "desc": "Matrix Control 1 Destination 2 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1425
+ },
+ "PatchCommon:47": {
+  "status": "match",
+  "desc": "Matrix Control 1 Sens 2 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1432
+ },
+ "PatchCommon:48": {
+  "status": "match",
+  "desc": "Matrix Control 1 Destination 3 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1434
+ },
+ "PatchCommon:49": {
+  "status": "match",
+  "desc": "Matrix Control 1 Sens 3 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1441
+ },
+ "PatchCommon:50": {
+  "status": "match",
+  "desc": "Matrix Control 1 Destination 4 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1443
+ },
+ "PatchCommon:51": {
+  "status": "match",
+  "desc": "Matrix Control 1 Sens 4 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1450
+ },
+ "PatchCommon:52": {
+  "status": "match",
+  "desc": "Matrix Control 2 Source (0~109)",
+  "doc_range": [
+   0,
+   109
+  ],
+  "nibbled": false,
+  "doc_line": 1452
+ },
+ "PatchCommon:53": {
+  "status": "match",
+  "desc": "Matrix Control 2 Destination 1 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1456
+ },
+ "PatchCommon:54": {
+  "status": "match",
+  "desc": "Matrix Control 2 Sens 1 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1464
+ },
+ "PatchCommon:55": {
+  "status": "match",
+  "desc": "Matrix Control 2 Destination 2 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1466
+ },
+ "PatchCommon:56": {
+  "status": "match",
+  "desc": "Matrix Control 2 Sens 2 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1472
+ },
+ "PatchCommon:57": {
+  "status": "match",
+  "desc": "Matrix Control 2 Destination 3 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1474
+ },
+ "PatchCommon:58": {
+  "status": "match",
+  "desc": "Matrix Control 2 Sens 3 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1481
+ },
+ "PatchCommon:59": {
+  "status": "match",
+  "desc": "Matrix Control 2 Destination 4 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1483
+ },
+ "PatchCommon:60": {
+  "status": "match",
+  "desc": "Matrix Control 2 Sens 4 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1490
+ },
+ "PatchCommon:61": {
+  "status": "match",
+  "desc": "Matrix Control 3 Source (0~109)",
+  "doc_range": [
+   0,
+   109
+  ],
+  "nibbled": false,
+  "doc_line": 1492
+ },
+ "PatchCommon:62": {
+  "status": "match",
+  "desc": "Matrix Control 3 Destination 1 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1496
+ },
+ "PatchCommon:63": {
+  "status": "match",
+  "desc": "Matrix Control 3 Sens 1 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1502
+ },
+ "PatchCommon:64": {
+  "status": "match",
+  "desc": "Matrix Control 3 Destination 2 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1504
+ },
+ "PatchCommon:65": {
+  "status": "match",
+  "desc": "Matrix Control 3 Sens 2 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1511
+ },
+ "PatchCommon:66": {
+  "status": "match",
+  "desc": "Matrix Control 3 Destination 3 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1513
+ },
+ "PatchCommon:67": {
+  "status": "match",
+  "desc": "Matrix Control 3 Sens 3 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1520
+ },
+ "PatchCommon:68": {
+  "status": "match",
+  "desc": "Matrix Control 3 Destination 4 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1522
+ },
+ "PatchCommon:69": {
+  "status": "match",
+  "desc": "Matrix Control 3 Sens 4 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1529
+ },
+ "PatchCommon:70": {
+  "status": "match",
+  "desc": "Matrix Control 4 Source (0~109)",
+  "doc_range": [
+   0,
+   109
+  ],
+  "nibbled": false,
+  "doc_line": 1531
+ },
+ "PatchCommon:71": {
+  "status": "match",
+  "desc": "Matrix Control 4 Destination 1 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1535
+ },
+ "PatchCommon:72": {
+  "status": "match",
+  "desc": "Matrix Control 4 Sens 1 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1542
+ },
+ "PatchCommon:73": {
+  "status": "match",
+  "desc": "Matrix Control 4 Destination 2 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1544
+ },
+ "PatchCommon:74": {
+  "status": "match",
+  "desc": "Matrix Control 4 Sens 2 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1551
+ },
+ "PatchCommon:75": {
+  "status": "match",
+  "desc": "Matrix Control 4 Destination 3 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1553
+ },
+ "PatchCommon:76": {
+  "status": "match",
+  "desc": "Matrix Control 4 Sens 3 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1559
+ },
+ "PatchCommon:77": {
+  "status": "match",
+  "desc": "Matrix Control 4 Destination 4 (0~33)",
+  "doc_range": [
+   0,
+   33
+  ],
+  "nibbled": false,
+  "doc_line": 1561
+ },
+ "PatchCommon:78": {
+  "status": "match",
+  "desc": "Matrix Control 4 Sens 4 ) (1~127",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1575
+ },
+ "PatchCommonMFX:0": {
+  "status": "match",
+  "desc": "MFX Type (0~78)",
+  "doc_range": [
+   0,
+   78
+  ],
+  "nibbled": false,
+  "doc_line": 1586
+ },
+ "PatchCommonMFX:1": {
+  "status": "match",
+  "desc": "MFX Dry Send Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1587
+ },
+ "PatchCommonMFX:2": {
+  "status": "match",
+  "desc": "MFX Chorus Send Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1588
+ },
+ "PatchCommonMFX:3": {
+  "status": "match",
+  "desc": "MFX Reverb Send Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1589
+ },
+ "PatchCommonMFX:4": {
+  "status": "range differs (doc [0, 3])",
+  "desc": "MFX Output Assign <*> (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 1590
+ },
+ "PatchCommonMFX:5": {
+  "status": "match",
+  "desc": "MFX Control 1 Source (0~97)",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1592
+ },
+ "PatchCommonMFX:6": {
+  "status": "match",
+  "desc": "MFX Control 1 Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1594
+ },
+ "PatchCommonMFX:7": {
+  "status": "match",
+  "desc": "MFX Control 2 Source (0~97)",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1596
+ },
+ "PatchCommonMFX:8": {
+  "status": "match",
+  "desc": "MFX Control 2 Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1598
+ },
+ "PatchCommonMFX:9": {
+  "status": "match",
+  "desc": "MFX Control 3 Source (0~97)",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1600
+ },
+ "PatchCommonMFX:10": {
+  "status": "match",
+  "desc": "MFX Control 3 Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1602
+ },
+ "PatchCommonMFX:11": {
+  "status": "match",
+  "desc": "MFX Control 4 Source (0~97)",
+  "doc_range": [
+   0,
+   97
+  ],
+  "nibbled": false,
+  "doc_line": 1604
+ },
+ "PatchCommonMFX:12": {
+  "status": "match",
+  "desc": "MFX Control 4 Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1606
+ },
+ "PatchCommonMFX:13": {
+  "status": "match",
+  "desc": "MFX Control Assign 1 (0~16)",
+  "doc_range": [
+   0,
+   16
+  ],
+  "nibbled": false,
+  "doc_line": 1608
+ },
+ "PatchCommonMFX:14": {
+  "status": "match",
+  "desc": "MFX Control Assign 2 (0~16)",
+  "doc_range": [
+   0,
+   16
+  ],
+  "nibbled": false,
+  "doc_line": 1610
+ },
+ "PatchCommonMFX:15": {
+  "status": "match",
+  "desc": "MFX Control Assign 3 (0~16)",
+  "doc_range": [
+   0,
+   16
+  ],
+  "nibbled": false,
+  "doc_line": 1612
+ },
+ "PatchCommonMFX:16": {
+  "status": "match",
+  "desc": "MFX Control Assign 4 (0~16)",
+  "doc_range": [
+   0,
+   16
+  ],
+  "nibbled": false,
+  "doc_line": 1614
+ },
+ "PatchCommonMFX:17": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1616
+ },
+ "PatchCommonMFX:21": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1627
+ },
+ "PatchCommonMFX:25": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1638
+ },
+ "PatchCommonMFX:29": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1649
+ },
+ "PatchCommonMFX:33": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1656
+ },
+ "PatchCommonMFX:37": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1663
+ },
+ "PatchCommonMFX:41": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1670
+ },
+ "PatchCommonMFX:45": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1677
+ },
+ "PatchCommonMFX:49": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1688
+ },
+ "PatchCommonMFX:53": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1699
+ },
+ "PatchCommonMFX:57": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1710
+ },
+ "PatchCommonMFX:61": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1721
+ },
+ "PatchCommonMFX:65": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1732
+ },
+ "PatchCommonMFX:69": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1743
+ },
+ "PatchCommonMFX:73": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1754
+ },
+ "PatchCommonMFX:77": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1765
+ },
+ "PatchCommonMFX:81": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1776
+ },
+ "PatchCommonMFX:85": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1787
+ },
+ "PatchCommonMFX:89": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1798
+ },
+ "PatchCommonMFX:93": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1809
+ },
+ "PatchCommonMFX:97": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1820
+ },
+ "PatchCommonMFX:101": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1831
+ },
+ "PatchCommonMFX:105": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1842
+ },
+ "PatchCommonMFX:109": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1853
+ },
+ "PatchCommonMFX:113": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1864
+ },
+ "PatchCommonMFX:117": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1875
+ },
+ "PatchCommonMFX:121": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1886
+ },
+ "PatchCommonMFX:125": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1904
+ },
+ "PatchCommonMFX:129": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1915
+ },
+ "PatchCommonMFX:133": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1926
+ },
+ "PatchCommonMFX:137": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1937
+ },
+ "PatchCommonMFX:141": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1948
+ },
+ "PatchCommonChorus:0": {
+  "status": "match",
+  "desc": "Chorus Type (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 1968
+ },
+ "PatchCommonChorus:1": {
+  "status": "match",
+  "desc": "Chorus Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 1969
+ },
+ "PatchCommonChorus:2": {
+  "status": "match",
+  "desc": "Chorus Output Assign <*> (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 1970
+ },
+ "PatchCommonChorus:3": {
+  "status": "match",
+  "desc": "Chorus Output Select (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 1972
+ },
+ "PatchCommonChorus:4": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1974
+ },
+ "PatchCommonChorus:8": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1985
+ },
+ "PatchCommonChorus:12": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 1996
+ },
+ "PatchCommonChorus:16": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2007
+ },
+ "PatchCommonChorus:20": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2018
+ },
+ "PatchCommonChorus:24": {
+  "status": "match",
+  "desc": "",
+  "doc_range": null,
+  "nibbled": true,
+  "doc_line": 2029
+ },
+ "PatchCommonChorus:28": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2038
+ },
+ "PatchCommonChorus:32": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2049
+ },
+ "PatchCommonChorus:36": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2060
+ },
+ "PatchCommonChorus:40": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2071
+ },
+ "PatchCommonChorus:44": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2082
+ },
+ "PatchCommonChorus:48": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2093
+ },
+ "PatchCommonChorus:52": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2104
+ },
+ "PatchCommonChorus:56": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2115
+ },
+ "PatchCommonChorus:60": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2126
+ },
+ "PatchCommonChorus:64": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2137
+ },
+ "PatchCommonChorus:68": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2148
+ },
+ "PatchCommonChorus:72": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2159
+ },
+ "PatchCommonChorus:76": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2170
+ },
+ "PatchCommonChorus:80": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2181
+ },
+ "PatchCommonReverb:0": {
+  "status": "match",
+  "desc": "Reverb Type (0~4)",
+  "doc_range": [
+   0,
+   4
+  ],
+  "nibbled": false,
+  "doc_line": 2201
+ },
+ "PatchCommonReverb:1": {
+  "status": "match",
+  "desc": "Reverb Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2202
+ },
+ "PatchCommonReverb:2": {
+  "status": "match",
+  "desc": "Reverb Output Assign <*> ) (0~3",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2203
+ },
+ "PatchCommonReverb:3": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2205
+ },
+ "PatchCommonReverb:7": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2216
+ },
+ "PatchCommonReverb:11": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2227
+ },
+ "PatchCommonReverb:15": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2238
+ },
+ "PatchCommonReverb:19": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2249
+ },
+ "PatchCommonReverb:23": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2260
+ },
+ "PatchCommonReverb:27": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2275
+ },
+ "PatchCommonReverb:31": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2286
+ },
+ "PatchCommonReverb:35": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2297
+ },
+ "PatchCommonReverb:39": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2307
+ },
+ "PatchCommonReverb:43": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2318
+ },
+ "PatchCommonReverb:47": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2329
+ },
+ "PatchCommonReverb:51": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2340
+ },
+ "PatchCommonReverb:55": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2351
+ },
+ "PatchCommonReverb:59": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2362
+ },
+ "PatchCommonReverb:63": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2373
+ },
+ "PatchCommonReverb:67": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2384
+ },
+ "PatchCommonReverb:71": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2395
+ },
+ "PatchCommonReverb:75": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2406
+ },
+ "PatchCommonReverb:79": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   12768,
+   52768
+  ],
+  "nibbled": true,
+  "doc_line": 2417
+ },
+ "PatchTMT:0": {
+  "status": "match",
+  "desc": "Structure Type 1 & 2 (0~9)",
+  "doc_range": [
+   0,
+   9
+  ],
+  "nibbled": false,
+  "doc_line": 2433
+ },
+ "PatchTMT:1": {
+  "status": "match",
+  "desc": "Booster 1 & 2 (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2435
+ },
+ "PatchTMT:2": {
+  "status": "match",
+  "desc": "Structure Type 3 & 4 (0~9)",
+  "doc_range": [
+   0,
+   9
+  ],
+  "nibbled": false,
+  "doc_line": 2437
+ },
+ "PatchTMT:3": {
+  "status": "match",
+  "desc": "Booster 3 & 4 (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2439
+ },
+ "PatchTMT:4": {
+  "status": "match",
+  "desc": "TMT Velocity Control (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2441
+ },
+ "PatchTMT:5": {
+  "status": "match",
+  "desc": "TMT1 Tone Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2443
+ },
+ "PatchTMT:6": {
+  "status": "match",
+  "desc": "TMT1 Keyboard Range Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2445
+ },
+ "PatchTMT:7": {
+  "status": "match",
+  "desc": "TMT1 Keyboard Range Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2447
+ },
+ "PatchTMT:8": {
+  "status": "match",
+  "desc": "TMT1 Keyboard Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2449
+ },
+ "PatchTMT:9": {
+  "status": "match",
+  "desc": "TMT1 Keyboard Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2450
+ },
+ "PatchTMT:10": {
+  "status": "match",
+  "desc": "TMT1 Velocity Range Lower (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2451
+ },
+ "PatchTMT:11": {
+  "status": "match",
+  "desc": "TMT1 Velocity Range Upper (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2453
+ },
+ "PatchTMT:12": {
+  "status": "match",
+  "desc": "TMT1 Velocity Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2455
+ },
+ "PatchTMT:13": {
+  "status": "match",
+  "desc": "TMT1 Velocity Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2456
+ },
+ "PatchTMT:14": {
+  "status": "match",
+  "desc": "TMT2 Tone Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2457
+ },
+ "PatchTMT:15": {
+  "status": "match",
+  "desc": "TMT2 Keyboard Range Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2459
+ },
+ "PatchTMT:16": {
+  "status": "match",
+  "desc": "TMT2 Keyboard Range Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2461
+ },
+ "PatchTMT:17": {
+  "status": "match",
+  "desc": "TMT2 Keyboard Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2463
+ },
+ "PatchTMT:18": {
+  "status": "match",
+  "desc": "TMT2 Keyboard Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2464
+ },
+ "PatchTMT:19": {
+  "status": "range differs (doc [0, 127])",
+  "desc": "TMT2 Velocity Range Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2465
+ },
+ "PatchTMT:20": {
+  "status": "match",
+  "desc": "TMT2 Velocity Range Upper (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2467
+ },
+ "PatchTMT:21": {
+  "status": "match",
+  "desc": "TMT2 Velocity Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2469
+ },
+ "PatchTMT:22": {
+  "status": "match",
+  "desc": "TMT2 Velocity Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2470
+ },
+ "PatchTMT:23": {
+  "status": "match",
+  "desc": "TMT3 Tone Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2471
+ },
+ "PatchTMT:24": {
+  "status": "match",
+  "desc": "TMT3 Keyboard Range Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2473
+ },
+ "PatchTMT:25": {
+  "status": "match",
+  "desc": "TMT3 Keyboard Range Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2475
+ },
+ "PatchTMT:26": {
+  "status": "match",
+  "desc": "TMT3 Keyboard Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2477
+ },
+ "PatchTMT:27": {
+  "status": "match",
+  "desc": "TMT3 Keyboard Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2478
+ },
+ "PatchTMT:28": {
+  "status": "match",
+  "desc": "TMT3 Velocity Range Lower (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2479
+ },
+ "PatchTMT:29": {
+  "status": "match",
+  "desc": "TMT3 Velocity Range Upper (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2481
+ },
+ "PatchTMT:30": {
+  "status": "match",
+  "desc": "TMT3 Velocity Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2483
+ },
+ "PatchTMT:31": {
+  "status": "match",
+  "desc": "TMT3 Velocity Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2484
+ },
+ "PatchTMT:32": {
+  "status": "match",
+  "desc": "TMT4 Tone Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2485
+ },
+ "PatchTMT:33": {
+  "status": "match",
+  "desc": "TMT4 Keyboard Range Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2487
+ },
+ "PatchTMT:34": {
+  "status": "match",
+  "desc": "TMT4 Keyboard Range Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2489
+ },
+ "PatchTMT:35": {
+  "status": "match",
+  "desc": "TMT4 Keyboard Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2491
+ },
+ "PatchTMT:36": {
+  "status": "match",
+  "desc": "TMT4 Keyboard Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2492
+ },
+ "PatchTMT:37": {
+  "status": "match",
+  "desc": "TMT4 Velocity Range Lower (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2493
+ },
+ "PatchTMT:38": {
+  "status": "match",
+  "desc": "TMT4 Velocity Range Upper (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2495
+ },
+ "PatchTMT:39": {
+  "status": "match",
+  "desc": "TMT4 Velocity Fade Width Lower (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2497
+ },
+ "PatchTMT:40": {
+  "status": "match",
+  "desc": "TMT4 Velocity Fade Width Upper (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2498
+ },
+ "PatchTone:0": {
+  "status": "match",
+  "desc": "Tone Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2504
+ },
+ "PatchTone:1": {
+  "status": "match",
+  "desc": "Tone Coarse Tune (16 - 112)",
+  "doc_range": [
+   16,
+   112
+  ],
+  "nibbled": false,
+  "doc_line": 2505
+ },
+ "PatchTone:2": {
+  "status": "match",
+  "desc": "Tone Fine Tune (14 - 114)",
+  "doc_range": [
+   14,
+   114
+  ],
+  "nibbled": false,
+  "doc_line": 2507
+ },
+ "PatchTone:3": {
+  "status": "match",
+  "desc": "Tone Random Pitch Depth (0~30)",
+  "doc_range": [
+   0,
+   30
+  ],
+  "nibbled": false,
+  "doc_line": 2509
+ },
+ "PatchTone:4": {
+  "status": "match",
+  "desc": "Tone Pan (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2513
+ },
+ "PatchTone:5": {
+  "status": "match",
+  "desc": "Tone Pan Keyfollow (54~74)",
+  "doc_range": [
+   54,
+   74
+  ],
+  "nibbled": false,
+  "doc_line": 2515
+ },
+ "PatchTone:6": {
+  "status": "match",
+  "desc": "Tone Random Pan Depth (0~63)",
+  "doc_range": [
+   0,
+   63
+  ],
+  "nibbled": false,
+  "doc_line": 2517
+ },
+ "PatchTone:7": {
+  "status": "match",
+  "desc": "Tone Alternate Pan Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2518
+ },
+ "PatchTone:8": {
+  "status": "match",
+  "desc": "Tone Env Mode (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2520
+ },
+ "PatchTone:9": {
+  "status": "match",
+  "desc": "Tone Delay Mode (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2522
+ },
+ "PatchTone:10": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": true,
+  "doc_line": 2528
+ },
+ "PatchTone:12": {
+  "status": "match",
+  "desc": "Tone Dry Send Level (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2532
+ },
+ "PatchTone:13": {
+  "status": "match",
+  "desc": "Tone Chorus Send Level (MFX) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2533
+ },
+ "PatchTone:14": {
+  "status": "match",
+  "desc": "Tone Reverb Send Level (MFX) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2534
+ },
+ "PatchTone:15": {
+  "status": "match",
+  "desc": "Tone Chorus Send Level (non MFX) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2535
+ },
+ "PatchTone:16": {
+  "status": "match",
+  "desc": "Tone Reverb Send Level (non MFX) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2536
+ },
+ "PatchTone:17": {
+  "status": "match",
+  "desc": "Tone Output Assign ) (0~12",
+  "doc_range": [
+   0,
+   12
+  ],
+  "nibbled": false,
+  "doc_line": 2537
+ },
+ "PatchTone:18": {
+  "status": "match",
+  "desc": "Tone Receive Bender (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2540
+ },
+ "PatchTone:19": {
+  "status": "match",
+  "desc": "Tone Receive Expression (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2542
+ },
+ "PatchTone:20": {
+  "status": "match",
+  "desc": "Tone Receive Hold-1 (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2544
+ },
+ "PatchTone:21": {
+  "status": "match",
+  "desc": "Tone Receive Pan Mode (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2546
+ },
+ "PatchTone:22": {
+  "status": "match",
+  "desc": "Tone Redamper Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2548
+ },
+ "PatchTone:23": {
+  "status": "match",
+  "desc": "Tone Control 1 Switch 1 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2550
+ },
+ "PatchTone:24": {
+  "status": "match",
+  "desc": "Tone Control 1 Switch 2 (0~2) (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2552
+ },
+ "PatchTone:25": {
+  "status": "match",
+  "desc": "Tone Control 1 Switch 3 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2554
+ },
+ "PatchTone:26": {
+  "status": "match",
+  "desc": "Tone Control 1 Switch 4 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2556
+ },
+ "PatchTone:27": {
+  "status": "match",
+  "desc": "Tone Control 2 Switch 1 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2558
+ },
+ "PatchTone:28": {
+  "status": "match",
+  "desc": "Tone Control 2 Switch 2 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2560
+ },
+ "PatchTone:29": {
+  "status": "match",
+  "desc": "Tone Control 2 Switch 3 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2562
+ },
+ "PatchTone:30": {
+  "status": "match",
+  "desc": "Tone Control 2 Switch 4 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2564
+ },
+ "PatchTone:31": {
+  "status": "match",
+  "desc": "Tone Control 3 Switch 1 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2566
+ },
+ "PatchTone:32": {
+  "status": "match",
+  "desc": "Tone Control 3 Switch 2 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2568
+ },
+ "PatchTone:33": {
+  "status": "match",
+  "desc": "Tone Control 3 Switch 3 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2570
+ },
+ "PatchTone:34": {
+  "status": "match",
+  "desc": "Tone Control 3 Switch 4 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2572
+ },
+ "PatchTone:35": {
+  "status": "match",
+  "desc": "Tone Control 4 Switch 1 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2574
+ },
+ "PatchTone:36": {
+  "status": "match",
+  "desc": "Tone Control 4 Switch 2 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2576
+ },
+ "PatchTone:37": {
+  "status": "match",
+  "desc": "Tone Control 4 Switch 3 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2578
+ },
+ "PatchTone:38": {
+  "status": "match",
+  "desc": "Tone Control 4 Switch 4 (0~2)",
+  "doc_range": [
+   0,
+   2
+  ],
+  "nibbled": false,
+  "doc_line": 2580
+ },
+ "PatchTone:39": {
+  "status": "match",
+  "desc": "Wave Group Type (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2582
+ },
+ "PatchTone:40": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   0,
+   16384
+  ],
+  "nibbled": true,
+  "doc_line": 2584
+ },
+ "PatchTone:44": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   0,
+   16384
+  ],
+  "nibbled": true,
+  "doc_line": 2593
+ },
+ "PatchTone:48": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   0,
+   16384
+  ],
+  "nibbled": true,
+  "doc_line": 2602
+ },
+ "PatchTone:52": {
+  "status": "match",
+  "desc": "Wave Gain (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2611
+ },
+ "PatchTone:53": {
+  "status": "match",
+  "desc": "Wave FXM Switch (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2613
+ },
+ "PatchTone:54": {
+  "status": "match",
+  "desc": "Wave FXM Color (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2615
+ },
+ "PatchTone:55": {
+  "status": "match",
+  "desc": "Wave FXM Depth (0~16)",
+  "doc_range": [
+   0,
+   16
+  ],
+  "nibbled": false,
+  "doc_line": 2617
+ },
+ "PatchTone:56": {
+  "status": "match",
+  "desc": "(reserve) (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2618
+ },
+ "PatchTone:57": {
+  "status": "match",
+  "desc": "Wave Pitch Keyfollow (44 ~84)",
+  "doc_range": [
+   44,
+   84
+  ],
+  "nibbled": false,
+  "doc_line": 2619
+ },
+ "PatchTone:58": {
+  "status": "match",
+  "desc": "Pitch Env Depth (52 - 76)",
+  "doc_range": [
+   52,
+   76
+  ],
+  "nibbled": false,
+  "doc_line": 2621
+ },
+ "PatchTone:59": {
+  "status": "match",
+  "desc": "Pitch Env Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2623
+ },
+ "PatchTone:60": {
+  "status": "match",
+  "desc": "Pitch Env Time 1 Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2625
+ },
+ "PatchTone:61": {
+  "status": "match",
+  "desc": "Pitch Env Time 4 Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2627
+ },
+ "PatchTone:62": {
+  "status": "match",
+  "desc": "Pitch Env Time Keyfollow (54~ 74)",
+  "doc_range": [
+   54,
+   74
+  ],
+  "nibbled": false,
+  "doc_line": 2629
+ },
+ "PatchTone:63": {
+  "status": "match",
+  "desc": "Pitch Env Time 1 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2631
+ },
+ "PatchTone:64": {
+  "status": "match",
+  "desc": "Pitch Env Time 2 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2632
+ },
+ "PatchTone:65": {
+  "status": "match",
+  "desc": "Pitch Env Time 3 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2633
+ },
+ "PatchTone:66": {
+  "status": "match",
+  "desc": "Pitch Env Time 4 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2634
+ },
+ "PatchTone:67": {
+  "status": "match",
+  "desc": "Pitch Env Level 0 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2635
+ },
+ "PatchTone:68": {
+  "status": "match",
+  "desc": "Pitch Env Level 1 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2637
+ },
+ "PatchTone:69": {
+  "status": "match",
+  "desc": "Pitch Env Level 2 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2639
+ },
+ "PatchTone:70": {
+  "status": "match",
+  "desc": "Pitch Env Level 3 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2641
+ },
+ "PatchTone:71": {
+  "status": "match",
+  "desc": "Pitch Env Level 4 (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2643
+ },
+ "PatchTone:72": {
+  "status": "match",
+  "desc": "TVF Filter Type (0~6)",
+  "doc_range": [
+   0,
+   6
+  ],
+  "nibbled": false,
+  "doc_line": 2645
+ },
+ "PatchTone:73": {
+  "status": "match",
+  "desc": "TVF Cutoff Frequency (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2647
+ },
+ "PatchTone:74": {
+  "status": "match",
+  "desc": "TVF Cutoff Keyfollow (44~ 84)",
+  "doc_range": [
+   44,
+   84
+  ],
+  "nibbled": false,
+  "doc_line": 2648
+ },
+ "PatchTone:75": {
+  "status": "match",
+  "desc": "TVF Cutoff Velocity Curve (0~7)",
+  "doc_range": [
+   0,
+   7
+  ],
+  "nibbled": false,
+  "doc_line": 2650
+ },
+ "PatchTone:76": {
+  "status": "match",
+  "desc": "TVF Cutoff Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2652
+ },
+ "PatchTone:77": {
+  "status": "match",
+  "desc": "TVF Resonance (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2654
+ },
+ "PatchTone:78": {
+  "status": "match",
+  "desc": "TVF Resonance Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2655
+ },
+ "PatchTone:79": {
+  "status": "match",
+  "desc": "TVF Env Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2657
+ },
+ "PatchTone:80": {
+  "status": "match",
+  "desc": "TVF Env Velocity Curve (0~7)",
+  "doc_range": [
+   0,
+   7
+  ],
+  "nibbled": false,
+  "doc_line": 2659
+ },
+ "PatchTone:81": {
+  "status": "match",
+  "desc": "TVF Env Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2661
+ },
+ "PatchTone:82": {
+  "status": "match",
+  "desc": "TVF Env Time 1 Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2663
+ },
+ "PatchTone:83": {
+  "status": "match",
+  "desc": "TVF Env Time 4 Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2665
+ },
+ "PatchTone:84": {
+  "status": "match",
+  "desc": "TVF Env Time Keyfollow (54~74)",
+  "doc_range": [
+   54,
+   74
+  ],
+  "nibbled": false,
+  "doc_line": 2667
+ },
+ "PatchTone:85": {
+  "status": "match",
+  "desc": "TVF Env Time 1 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2669
+ },
+ "PatchTone:86": {
+  "status": "match",
+  "desc": "TVF Env Time 2 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2670
+ },
+ "PatchTone:87": {
+  "status": "match",
+  "desc": "TVF Env Time 3 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2671
+ },
+ "PatchTone:88": {
+  "status": "match",
+  "desc": "TVF Env Time 4 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2672
+ },
+ "PatchTone:89": {
+  "status": "match",
+  "desc": "TVF Env Level 0 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2673
+ },
+ "PatchTone:90": {
+  "status": "match",
+  "desc": "TVF Env Level 1 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2674
+ },
+ "PatchTone:91": {
+  "status": "match",
+  "desc": "TVF Env Level 2 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2675
+ },
+ "PatchTone:92": {
+  "status": "match",
+  "desc": "TVF Env Level 3 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2676
+ },
+ "PatchTone:93": {
+  "status": "match",
+  "desc": "TVF Env Level 4 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2677
+ },
+ "PatchTone:94": {
+  "status": "match",
+  "desc": "Bias Level (54~74)",
+  "doc_range": [
+   54,
+   74
+  ],
+  "nibbled": false,
+  "doc_line": 2678
+ },
+ "PatchTone:95": {
+  "status": "match",
+  "desc": "Bias Position (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2680
+ },
+ "PatchTone:96": {
+  "status": "match",
+  "desc": "Bias Direction (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2682
+ },
+ "PatchTone:97": {
+  "status": "match",
+  "desc": "TVA Level Velocity Curve (0~7)",
+  "doc_range": [
+   0,
+   7
+  ],
+  "nibbled": false,
+  "doc_line": 2684
+ },
+ "PatchTone:98": {
+  "status": "match",
+  "desc": "TVA Level Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2686
+ },
+ "PatchTone:99": {
+  "status": "match",
+  "desc": "TVA Env Time 1 Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2688
+ },
+ "PatchTone:100": {
+  "status": "match",
+  "desc": "TVA Env Time 4 Velocity Sens (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2690
+ },
+ "PatchTone:101": {
+  "status": "match",
+  "desc": "TVA Env Time Keyfollow (54~74)",
+  "doc_range": [
+   54,
+   74
+  ],
+  "nibbled": false,
+  "doc_line": 2692
+ },
+ "PatchTone:102": {
+  "status": "match",
+  "desc": "TVA Env Time 1 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2694
+ },
+ "PatchTone:103": {
+  "status": "match",
+  "desc": "TVA Env Time 2 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2695
+ },
+ "PatchTone:104": {
+  "status": "match",
+  "desc": "TVA Env Time 3 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2696
+ },
+ "PatchTone:105": {
+  "status": "match",
+  "desc": "TVA Env Time 4 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2697
+ },
+ "PatchTone:106": {
+  "status": "match",
+  "desc": "TVA Env Level 1 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2698
+ },
+ "PatchTone:107": {
+  "status": "match",
+  "desc": "TVA Env Level 2 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2699
+ },
+ "PatchTone:108": {
+  "status": "match",
+  "desc": "TVA Env Level 3 (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2700
+ },
+ "PatchTone:109": {
+  "status": "match",
+  "desc": "LFO1 Waveform (0~12)",
+  "doc_range": [
+   0,
+   12
+  ],
+  "nibbled": false,
+  "doc_line": 2705
+ },
+ "PatchTone:110": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": true,
+  "doc_line": 2708
+ },
+ "PatchTone:112": {
+  "status": "match",
+  "desc": "LFO1 Offset (0~4)",
+  "doc_range": [
+   0,
+   4
+  ],
+  "nibbled": false,
+  "doc_line": 2712
+ },
+ "PatchTone:113": {
+  "status": "match",
+  "desc": "LFO1 Rate Detune (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2714
+ },
+ "PatchTone:114": {
+  "status": "match",
+  "desc": "LFO1 Delay Time (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2715
+ },
+ "PatchTone:115": {
+  "status": "match",
+  "desc": "LFO1 Delay Time Keyfollow (54~74)",
+  "doc_range": [
+   54,
+   74
+  ],
+  "nibbled": false,
+  "doc_line": 2716
+ },
+ "PatchTone:116": {
+  "status": "match",
+  "desc": "LFO1 Fade Mode (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2718
+ },
+ "PatchTone:117": {
+  "status": "match",
+  "desc": "LFO1 Fade Time (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2720
+ },
+ "PatchTone:118": {
+  "status": "range differs (doc [0, 127])",
+  "desc": "LFO1 Key Trigger (0~127) (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2721
+ },
+ "PatchTone:119": {
+  "status": "match",
+  "desc": "LFO1 Pitch Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2723
+ },
+ "PatchTone:120": {
+  "status": "match",
+  "desc": "LFO1 TVF Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2725
+ },
+ "PatchTone:121": {
+  "status": "match",
+  "desc": "LFO1 TVA Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2727
+ },
+ "PatchTone:122": {
+  "status": "match",
+  "desc": "LFO1 Pan Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2729
+ },
+ "PatchTone:123": {
+  "status": "match",
+  "desc": "LFO2 Waveform (0~12)",
+  "doc_range": [
+   0,
+   12
+  ],
+  "nibbled": false,
+  "doc_line": 2731
+ },
+ "PatchTone:124": {
+  "status": "match",
+  "desc": "",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": true,
+  "doc_line": 2734
+ },
+ "PatchTone:126": {
+  "status": "match",
+  "desc": "LFO2 Offset (0~4)",
+  "doc_range": [
+   0,
+   4
+  ],
+  "nibbled": false,
+  "doc_line": 2736
+ },
+ "PatchTone:127": {
+  "status": "match",
+  "desc": "LFO2 Rate Detune (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2738
+ },
+ "PatchTone:128": {
+  "status": "match",
+  "desc": "LFO2 Delay Time (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2739
+ },
+ "PatchTone:129": {
+  "status": "match",
+  "desc": "LFO2 Delay Time Keyfollow (54~74)",
+  "doc_range": [
+   54,
+   74
+  ],
+  "nibbled": false,
+  "doc_line": 2740
+ },
+ "PatchTone:130": {
+  "status": "match",
+  "desc": "LFO2 Fade Mode (0~3)",
+  "doc_range": [
+   0,
+   3
+  ],
+  "nibbled": false,
+  "doc_line": 2742
+ },
+ "PatchTone:131": {
+  "status": "match",
+  "desc": "LFO2 Fade Time (0~127)",
+  "doc_range": [
+   0,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2744
+ },
+ "PatchTone:132": {
+  "status": "match",
+  "desc": "LFO2 Key Trigger (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2745
+ },
+ "PatchTone:133": {
+  "status": "match",
+  "desc": "LFO2 Pitch Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2747
+ },
+ "PatchTone:134": {
+  "status": "match",
+  "desc": "LFO2 TVF Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2749
+ },
+ "PatchTone:135": {
+  "status": "match",
+  "desc": "LFO2 TVA Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2751
+ },
+ "PatchTone:136": {
+  "status": "match",
+  "desc": "LFO2 Pan Depth (1~127)",
+  "doc_range": [
+   1,
+   127
+  ],
+  "nibbled": false,
+  "doc_line": 2753
+ },
+ "PatchTone:137": {
+  "status": "match",
+  "desc": "LFO Step Type (0~1)",
+  "doc_range": [
+   0,
+   1
+  ],
+  "nibbled": false,
+  "doc_line": 2755
+ },
+ "PatchTone:138": {
+  "status": "match",
+  "desc": "LFO Step1 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2756
+ },
+ "PatchTone:139": {
+  "status": "match",
+  "desc": "LFO Step2 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2758
+ },
+ "PatchTone:140": {
+  "status": "match",
+  "desc": "LFO Step3 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2760
+ },
+ "PatchTone:141": {
+  "status": "match",
+  "desc": "LFO Step4 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2762
+ },
+ "PatchTone:142": {
+  "status": "match",
+  "desc": "LFO Step5 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2764
+ },
+ "PatchTone:143": {
+  "status": "match",
+  "desc": "LFO Step6 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2766
+ },
+ "PatchTone:144": {
+  "status": "match",
+  "desc": "LFO Step7 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2768
+ },
+ "PatchTone:145": {
+  "status": "match",
+  "desc": "LFO Step8 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2770
+ },
+ "PatchTone:146": {
+  "status": "match",
+  "desc": "LFO Step9 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2772
+ },
+ "PatchTone:147": {
+  "status": "match",
+  "desc": "LFO Step10 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2774
+ },
+ "PatchTone:148": {
+  "status": "match",
+  "desc": "LFO Step11 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2776
+ },
+ "PatchTone:149": {
+  "status": "match",
+  "desc": "LFO Step12 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2778
+ },
+ "PatchTone:150": {
+  "status": "match",
+  "desc": "LFO Step13 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2780
+ },
+ "PatchTone:151": {
+  "status": "match",
+  "desc": "LFO Step14 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2782
+ },
+ "PatchTone:152": {
+  "status": "match",
+  "desc": "LFO Step15 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2784
+ },
+ "PatchTone:153": {
+  "status": "match",
+  "desc": "LFO Step16 (28~100)",
+  "doc_range": [
+   28,
+   100
+  ],
+  "nibbled": false,
+  "doc_line": 2786
+ }
+}

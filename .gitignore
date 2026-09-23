@@ -1,0 +1,55 @@
+# --- Roland original installation --------------------------------------------
+# Tracked: Script.xml, InitialData.a8e/.a8l, manuals (PDF).
+# Local only: program binaries and UI artwork (~77 MB).
+original-roland-files/**/*.exe
+original-roland-files/**/*.bmp
+
+# --- Reference PDFs (local only) ----------------------------------------------
+# Text extracts are tracked in research/generated/*.pdf.txt
+docs/
+
+# --- Python ------------------------------------------------------------------
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.ipynb_checkpoints/
+
+# --- IDE / editor ------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# --- Claude Code: personal settings only (shared .claude/settings.json is kept)
+.claude/settings.local.json
+
+# --- OS metadata -------------------------------------------------------------
+.DS_Store
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Scratch output from ad-hoc runs
+*.log
+tmp/
+scratch/
+
+# Intentionally tracked in full: src/, research/ (incl. research/generated/),
+# tests/, *.syx / *.mid captures. Only the Python caches listed above
+# are ignored inside them. The EXE strings dumps in research/generated/ are kept
+# because A8EE.exe/A8EL.exe themselves are not tracked.

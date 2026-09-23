@@ -1,0 +1,6198 @@
+
+
+===== PAGE 1 =====
+AX‐Synth Editor
+on-line manual
+©2009 Roland Corporation
+*   All rights reserved. No part of this publication may be reproduced in any form without the written permission of Roland 
+Corporation.
+*   Microsoft and Windows are registered trademarks of Microsoft Corporation.
+*   The screen shots in this document are used in compliance with the guidelines of the Microsoft Corporation.
+*   Windows® is known officially as: “Microsoft® Windows® operating system.”
+*   Apple and Macintosh are registered trademarks of Apple Inc.
+*   Mac OS is a trademark of Apple Inc.
+*   All product names mentioned in this document are trademarks or registered trademarks of their respective owners.
+
+===== PAGE 2 =====
+2
+Using the AX-Synth Editor
+AX-Synth Editor is an application that lets you use your computer to make settings for the AX-Synth parameters.
+"SuperNATURALTM" and "Special" Tones cannot be edited by AX-Synth Editor.
+When using AX-Synth Editor, select a "regular" tone on the AX-Synth beforehand.
+The "Tones" of the AX-Synth are equivalent to the "Patches" in the AX-Synth Editor.
+The AX-Synth features a sound generating engine that is derived from the Fantom-X (However, it is not multitimbral).
+This means that the parameters that can be edited on this editor are a subset of those on the Fantom-X.
+When using AX-Synth Editor, substitute the terms as shown below.
+The illustration below shows the correspondence between the AX-Synth and AX-Synth Editor.
+1. Introduction
+AX-Synth AX-Synth Editor
+(Fantom-X)
+Tone group Tone Family Bank
+Tone color Tone Patch
+Tone elements - Tone
+AX-Synth
+Tone Family 1
+Tone Family 8
+Tone 1
+Tone 32
+Bank 1
+Bank 8
+Tone
+1
+Tone
+2
+Tone
+3
+Tone
+4
+Patch 1
+Patch 32
+AX-Synth Editor
+(Fantom-X)
+
+===== PAGE 3 =====
+3
+Using the AX‐Synth Editor
+Connect the AX-Synth and your computer as described in the AX-Synth owner’s manual. AX-Synth Editor may not 
+operate correctly if these connections are not made correctly.
+If the AX-Synth is connected to your computer by a USB cable, you must power up the AX-Synth before you start up 
+AX-Synth Editor.
+Do not disconnect the USB cable connected to the AX-Synth while AX-Synth Editor is running.
+Specify the input/output devices :
+Make settings for the MIDI device you’ll be using.
+1.    From the menu, choose [Setup] - “Set Up MIDI Devices” to open the “Set Up MIDI Devices” dialog box.
+2.    Set AX-Synth Input/Output to the following settings.
+Windows Vista Users :
+Windows XP Users :
+Macintosh Users :
+3.    Click [OK].
+    
+A separate MIDI interface is required in order to connect the AX-Synth with your computer using MIDI cables. Con-
+nect both the MIDI IN and MIDI OUT connectors on the MIDI interface connected to your computer to the MIDI con-
+nectors on the AX-Synth.
+When using the software for the first time, you must choose the menu command [SETUP] - ”Set Up MIDI Devices” to
+open the dialog box, and for AX-Synth Input/Output, choose the port to which AX-Synth is connected.
+2. Connections and Settings
+2-1.Connecting via USB cable
+Input Roland AX-Synth
+Output Roland AX-Synth
+Input USB Audio Device
+(or USB Speakers)
+Output USB Audio Device
+(or USB Speakers)
+Input Roland AX-Synth
+Output Roland AX-Synth
+2-2.Connecting via MIDI cables
+
+===== PAGE 4 =====
+4
+Using the AX‐Synth Editor
+“Open” loads a file saved by AX-Synth Editor containing the state of AX-Synth Editor.
+*  The “Open” command of the toolbar does the same thing in Windows.
+The “Save” and “Save As” commands will save a file that preserves the current state of AX-Synth Editor.
+*  The “Save” command of the toolbar does the same thing in Windows.
+"Export SMF" will save the settings of the currently selected Patch in the form of SMF data.
+Use “Import SMF” to load the Patch settings.
+The “Initialize Patch” command initializes the settings of the currently selected Patch.
+This command is useful when you want to create data from scratch.
+The “Copy” command copies the settings to the clipboard.
+The “Paste” command pastes the settings from the clipboard to the copy destination you select.
+The “Copy MIDI Message to Clipboard ” command copies the MIDI message (c haracter string) displayed at “MIDI
+MESSAGE” to the clipboard.
+Set the AX-Synth Input/Output to the port to which the AX-Synth is connected in “Set Up MIDI Devices.”
+Through provides a thru-connection from the MIDI OUT of any desired MIDI device to the MIDI IN of any 
+other MIDI device.
+3. About the Menus
+3-1.FILE
+3-2.EDIT
+3-3.SETUP
+
+===== PAGE 5 =====
+5
+Using the AX‐Synth Editor
+•   By clicking the buttons in the Navigation block you can select the parameters that will be shown in the Main 
+block.
+•   The Main block is the editing area for the parameters you selected in the Navigation block.
+4. Using the AX-Synth Editor
+      Navigation block                                                             Main block
+How to edit patch names
+In the upper part of the main window, click  located at the lower left of "PATCH NAME" 
+to edit the patch name.
+Patch names of up to twelve characters can be entered.
+You can use the following characters,
+space ! “ # $ % & ‘ ( ) * + , - . / 0-9 : ; < = > ? @ A-Z [ \ ] ^ _ ` a-z { | } ~
+
+===== PAGE 6 =====
+6
+Using the AX‐Synth Editor
+In the Navigation block, click the buttons located at the right of [PATCH] to switch the Edit Mode.
+Pro Edit Mode
+The Pro Edit screen allows you to edit all parameters.
+Zoom Edit Mode
+The Zoom Edit screen allows you to edit the most important parameters, listed below.
+•   PITCH ENVELOPE
+•   TVF ENVELOPE
+•   TVA ENVELOPE
+•   LFO
+For details on each parameter, refer to "Detailed Editing for a Patch (PATCH Parameters)" (p. 18).
+4-1.Switching the Edit Mode
+
+
+===== PAGE 7 =====
+7
+Using the AX‐Synth Editor
+The [READ]/[WRITE]/[SYNC] buttons are located in the top line of the main window.
+Loading the settings
+To load the AX-Synth’s settings into AX-Synth Editor, click the [READ] button.
+The settings of the patch currently selected on the AX-Synth will be loaded. 
+Writing the settings
+To write the edited data to the AX-Synth, click the [WRITE] button.
+The data that will be written (patch or system) will depend on the parameter that is currently selected.
+Synchronizing the settings
+To synchronize the AX-Synth with the Editor, click the [SYNC] button. 
+This is a command that you will need to use only if using AX-Synth Editor together with AX-Synth Librarian.
+For details, refer to "5. Notes Concerning Use of AX-Synth Editor Together with AX-Synth Librarian" (p. 8).
+You can edit values by clicking (and dragging) the buttons, sliders, or knobs.
+•    If you feel that the sliders and knobs in the panel are too small, and find it difficult to make detailed settings, try 
+clicking (and holding) a knob or slider and then dragging the mouse farther away. This lets you set the value at 
+any position as long as you continue holding down the mouse button. When doing so, you will be able to make 
+precise adjustments to the value whenever the mouse cursor is away from the center of the knob or slider. 
+•    When a value is displayed, you can also press the cursor keys (up/down) to modify it.
+Windows XP/Vista Users
+You can initialize the value of a parameter by holding down the Ctrl key of your computer and clicking the slider or 
+knob of that parameter.
+Macintosh Users
+You can initialize the value of a parameter by holding down the command key of your computer and clicking the 
+slider or knob of that parameter.
+If you selected [SUMMARY] in Pro Edit mode, the ENV A/D/S/R for WG (PITCH)/TVF/TVA in the main block will change 
+the following values.
+*  If you selected either [PITCH ENVELOPE], [TVF ENVELOPE], or [TVA ENVELOPE] in Zoom Edit mode, they also will change these values.
+•   A (Attack)  = ENV T1
+•   D (Decay)  = ENV T3
+•   S (Sustain) = ENV L3
+•   R (Release) = ENV T4
+4-2.Reading/Writing/Synchronize settings
+4-3.How to edit values
+4-4.Initializing a value
+4-5.ADSR for ENV (Envelope)
+
+===== PAGE 8 =====
+8
+Using the AX‐Synth Editor
+When you click the [KEYBOARD] button located in the top line of the main window, the Keyboard window will appear, 
+allowing you to transmit note messages by clicking your mouse.
+Use the sliders to set the transmit channel and velocity. Clicking the [OCT] button will shift the octave. The note num-
+ber transmitted when you press the third “C” from the left, which is indicated by the  symbol, is shown below the
+[OCT] button.
+If the AX-Synth is connected to your computer using a USB cable, you may not be able to use AX-Synth Editor 
+together with AX-Synth Librarian. In such cases, try installing the Roland original driver.
+For details, refer to the AX-Synth owner's manual.
+You may experience some of the problems below if AX-Synth Librarian and AX-Synth Editor are used at the same time.
+•   When you click the Audition button in AX-Synth Librarian, the correspondence between the values in AX-Synth 
+Editor and the data in the AX-Synth’s Temporary Area may be lost.
+•   After you’ve issued the “Write All Data” or “Write Selected Data” commands in AX-Synth Librarian, the names of 
+items and their sequence in AX-Synth Editor may no longer match the data in the AX-Synth’s Patch Area.
+If you have performed one of the above operations in AX-Synth Librarian and then move to AX-Synth Editor, you
+must be sure to click the [ SYNC] button located in the top line of AX-Synth Editor’s main window before you begin
+editing.
+This executes the following actions, allowing the AX-Synth Editor and AX-Synth settings to be synchronized.
+•   The values of settings in AX-Synth Editor are written to the AX-Synth’s Temporary Area.
+•   The name lists of Patch in the AX-Synth’s Patch Area are read into AX-Synth Editor.
+In cases such as the following, the display may indicate “Unable to read/write data.”
+•   When the AX-Synth and the computer are not connected properly
+•   When a large number of notes are being sounded
+•   When AX-Synth Editor and AX-Synth Librarian simultaneously attempt to read (or write) data
+•   When the driver you’re using is the generic MIDI driver included with the OS, and you’ve attempted to use both 
+AX-Synth Editor and AX-Synth Librarian at the same time.
+4-6.About the KEYBOARD button
+5. Notes Concerning Use of AX-Synth Editor Together with
+AX-Synth Librarian
+6. If the Display Indicates “Unable to read/write data.”
+
+===== PAGE 9 =====
+9
+Overview
+Broadly speaking, the AX-Synth consists of a controller sec-
+tion and a sound generator section.
+Controller Section
+This section consists of a keyboard, touch controller, modula-
+tion bar, the panel buttons and knobs, D Beam controller, and 
+pedals connected to the rear panel. The performance infor-
+mation generated when you press/release a key or press a 
+hold button are transmitted as MIDI messages to the sound 
+generator section and/or an external MIDI device.
+Sound Generator Section
+This section produces the sound. It receives MIDI messages 
+from the controller section, or an external MIDI device, gener-
+ates musical sound according to the MIDI messages that were 
+received, and outputs the sound from the output jacks and 
+headphone jack.
+You can use a connected keyboard or other device to play a 
+single Patch on the AX-Synth. Since you can use a variety of 
+effects on a single patch, you can play very rich textures.
+How a Patch is Structured
+Patches are the basic sound configurations that you play dur-
+ing a performance. Each patch can be configured by combin-
+ing up to four tones. Each tone can be turned on/off 
+individually, allowing you to select the tones that will produce 
+sound.
+Tones
+On the AX-Synth, the tones are the smallest unit of sound. 
+However, it is not possible to play a tone by itself. The patch is 
+the unit of sound which can be played, and the tones are the 
+basic building blocks which make up the patch.
+WG (Wave Generator)
+Specifies the PCM waveform (wave) that is the basis of the 
+sound, and determines how the pitch of the sound will 
+change.
+TVF (Time Variant Filter)
+Specifies how the frequency components of the sound will 
+change.
+How the AX-Synth is
+Organized
+Basic Structure
+Patch
+Sound Generator
+Section
+Play
+Controller Section 
+(controllers such as keyboard, touch controller, modulation bar, etc.)
+Tone
+1
+Tone
+2
+Tone
+3
+Tone
+4
+Patch
+Tone
+1
+Tone
+2
+Tone
+3
+Tone
+4
+Patch
+Example 2: A Patch consisting of four Tones.
+WG
+Pitch
+Envelope
+TVF
+TVF 
+Envelope
+TVA 
+Envelope
+TVA
+LFO 1 LFO 2Tone
+control signalaudio signal
+
+===== PAGE 10 =====
+10
+Overview
+TVA (Time Variant Amplifier)
+Specifies the volume changes and the sound’s position in a 
+stereo soundfield.
+Envelope
+You use Envelope to initiate changes to occur to a sound over 
+time. There are separate envelopes for Pitch, TVF (filter), and 
+TVA (volume).
+LFO (Low Frequency Oscillator)
+Use the LFO to create cyclic changes (modulation) in a sound. 
+The AX-Synth has two LFOs. Either one or both can be applied 
+to effect the WG (pitch), TVF (filter) and/or TVA (volume). 
+When an LFO is applied to the WG pitch, a vibrato effect is 
+produced. When an LFO is applied to the TVF cutoff fre-
+quency, a wah effect is produced. When an LFO is applied to 
+the TVA volume, a tremolo effect is produced.
+Calculating the Number of Voices Being Used
+The AX-Synth is able to play up to 128 notes simultaneously.
+The polyphony, or the number of voices (sounds) does not 
+refer only to the number of patches actually being played, but 
+changes according to the number of tones used in the 
+patches, and the number of waves used in the tones. The fol-
+lowing method is used to calculate the number of sounds 
+used for one patch being played.
+(Number of patches being played) x (Number of tones used 
+by patches being played) x (Number of waves used in the 
+tones)
+For example, a patch that combines four tones, each of which 
+use two waves, will use eight notes of polyphony at once.
+How a Patch Sounds
+When the AX-Synth is requested to play more than 128 voices 
+simultaneously, currently sounding notes will be turned off to 
+make room for newly requested notes. The note with the low-
+est priority will be turned off first. The order of priority is 
+determined by the Patch Priority setting (PRIORITY; p. 25).
+Patch Priority can be set either to “LAST” or “LOUDEST.”
+When “LAST” is selected, a newly requested note that exceeds 
+the 128 voice limit will cause the first-played of the currently 
+sounding notes to be turned off.
+When “LOUDEST” is selected, the quietest of the currently 
+sounding notes will be turned off. Usually, “LAST” is selected.
+The AX-Synth has built-in effect units, and you can indepen-
+dently edit each unit’s settings.
+Multi-Effects
+The multi-effects are multi-purpose effects that completely 
+change the sound type by changing the sound itself.
+Contained are 78 different effects types; select and use the 
+type that suits your aims.
+In addition to effects types composed of simple effects such 
+as Distortion, Flanger, and other such effects, you can also set 
+up a wide variety of other effects, even connecting effects in 
+series or in parallel. Furthermore, while chorus and reverb can 
+be found among the multi-effects types, the following chorus 
+and reverb are handled with a different system.
+Chorus
+Chorus adds depth and spaciousness to the sound.
+You can select whether to use this as a chorus effect or a delay 
+effect.
+Reverb
+Reverb adds the reverberation characteristics of halls or audi-
+toriums. Four different types are offered, so you can select 
+and use the type that suits your purpose.
+Effects in Patch Mode
+The multi-effects, chorus and reverb effects can be set up 
+individually for each patch.
+Adjusting the signal level to be sent to each effects unit (Send 
+Level) provides control over the effect intensity that’s applied 
+to each tone.
+About the Effects
+Tone
+Patch
+Chorus
+Reverb
+
+===== PAGE 11 =====
+11
+Overview
+Patch settings are stored in what is referred to as memory.
+There are two kinds of memories: temporary and rewritable.
+a
+Temporary Memory
+This is the area that holds the data for the patch that you’ve 
+selected using the panel buttons.
+When you play the AX-Synth, sound is produced based on 
+data in the temporary area. When you edit a patch, you do not 
+directly modify the data in memory; rather, you call up the 
+data into the temporary area, and edit it there.
+Settings in the temporary area will be lost when the power is 
+turned off or when you select another patch.
+To keep the settings you have modified, you must write them 
+into Patch memory.
+Rewritable Memory
+Patch Memory
+Patch memory is where you normally store the data you need.
+You can store 256 patches in the Patch memory of the AX-
+Synth.
+To store a patch, execute Patch Write (p. 19).
+System Memory
+System memory stores system parameter settings that deter-
+mine how the AX-Synth functions.
+To store system parameters, execute System Write (p. 7).
+About Memory
+System Patch
+Select Select WriteWrite
+Temporary Area
+AX-Synth
+
+===== PAGE 12 =====
+12
+SYSTEM Parameters
+COMMON
+Parameter Value Explanation
+MASTER LEVEL 0–127 Volume of the entire AX-Synth
+MASTER TUNE 415.3–466.2 Hz Overall tuning of the AX-Synth
+The display shows the frequency of the A4 note (center A).
+MASTER KEY SHIFT -24–+24 Shifts the overall pitch of the AX-Synth in semitone steps.
+PATCH RX/TX CH
+(Patch Rx/Tx Channel) 1–16 Channel used to transmit and receive MIDI messages for the Keyboard part
+RCV PC
+(Receive Program 
+Channel)
+OFF, ON Specifies whether Program Change messages will be received (ON) or not (OFF).
+RCV BS
+(Receive Bank Select) OFF, ON Specifies whether Bank Select messages will be received (ON) or not (OFF).
+SCALE TUNE
+Parameter Value Explanation
+PATCH SCALE TUNE
+The AX-Synth allows you to play the keyboard using temperaments other than equal temperament. The pitch is specified in one-cent units rela-
+tive to the equal tempered pitch. One-cent is 1/100th of a semitone.
+One set of Scale Tune settings can be created.
+*   The selected scale applies to MIDI messages received from an external MIDI device.
+SCALE TUNE SWITCH OFF, ON Turn this on when you wish to use a tuning scale other than equal temperament.
+C–B -64–+63 Make scale tune settings.
+Equal Temperament
+This tuning divides the octave into 12 equal parts, and is the 
+most widely used method of temperament used in Western 
+music. The AX-Synth employs equal temperament when 
+the Scale Tune Switch is set to “OFF.”
+Just Intonation (Tonic of C)
+Compared with equal temperament, the principle triads 
+sound pure in this tuning. However, this effect is achieved 
+only in one key, and the triads will become ambiguous if 
+you transpose.
+Arabian Scale
+In this scale, E and B are a quarter note lower and C#, F# and 
+G# are a quarter-note higher compared to equal tempera-
+ment. The intervals between G and B, C and E, F and G#, Bb 
+and C#, and Eb and F# have a natural third-the interval 
+between a major third and a minor third. On the AX-Synth, 
+you can use Arabian temperament in the three keys of G, C 
+and F.
+<Example>
+Note name Equal 
+temperament
+Just 
+intonation
+Arabian 
+scale
+C 0 0 -6
+C 0 -8 +45
+D 0 +4 -2
+E 0 +16 -12
+E 0 -14 -51
+F 0 -2 -8
+F 0 -10 +43
+G 0 +2 -4
+G 0 +14 +47
+A 0 -16 0
+B 0 +14 -10
+B 0 -12 -49
+
+===== PAGE 13 =====
+13
+SYSTEM Parameters
+SYSTEM CONTROLLER
+Parameter Value Explanation
+KEYBOARD VELOCITY REAL, 1-127
+Velocity value that will be transmitted when you play the keyboard
+REAL : Actual keyboard velocity will be transmitted.
+1-127 : A fixed velocity value will be transmitted regardless of how you play.
+HOLD PEDAL 
+POLARITY
+STANDARD,
+REVERSE
+The polarity of the hold pedal
+On some pedals, the electrical signal output by the pedal when it is pressed or released is the 
+opposite of other pedals. If your pedal has an effect opposite of what you expect, set this 
+parameter to “REVERSE.” If you are using a Roland pedal (that has no polarity switch), set this 
+parameter to “STANDARD.”
+D BEAM ASSIGN CC01-CC31,
+CC33-CC95
+Function controlled by the D Beam controller
+CC01-31, 33-95 : Controller numbers 1-31, 33-95
+D BEAM RANGE MIN 0-127
+Lower limit of the range of the D Beam controller
+The effect will be applied when the position of your hand above the D Beam controller is 
+lower than this value.
+D BEAM RANGE MAX 0-127
+Upper limit of the range of the D Beam controller
+The effect will be applied when the position of your hand above the D Beam controller is 
+above this value.
+*   By setting D BEAM RANGE MAX below D BEAM RANGE MIN you can invert the range of change.
+OCTAVE/VARIATION
+BUTTONS ASSIGN
+OCTAVE SWITCH,
+OCTAVE HOLD,
+VARIATION
+Determines the function of the OCTAVE/VARIATION button
+OCTAVE SWITCH : Each press of the button shifts the range by one octave 
+(within a range of ±3 octaves) .
+OCTAVE HOLD : Range is raised/lowered by one octave only while the button is pressed.
+VARIATION : Select the patch.
+
+===== PAGE 14 =====
+14
+EFFECTS Parameters
+a
+You can apply multi-effects (MFX), chorus, and reverb to each 
+patch; the same effect will be applied to each tone.
+By adjusting the amount of signal that is sent from each tone 
+to each effect, you can control the depth of the effect for each 
+tone.
+Any changes you’ve made in the effect settings for a patch 
+will be lost when you select a different patch. If you want to 
+keep the changes you’ve made in the settings, press [WRITE] 
+to save the patch settings in the AX-Synth.
+"About the Effects" (p. 10) in “Overview.”
+When you click the following buttons in the Navigation block, 
+the content shown in the Main block will change, allowing 
+you to edit the effect settings. 
+The buttons shown below [PATCH EFFECTS]
+•   ROUTING
+•   MFX
+•   CHORUS+REVERB
+Applying Effects
+How Effects are Handled
+Effect Settings
+
+===== PAGE 15 =====
+15
+EFFECTS Parameters
+You can use one multi-effect (MFX), one chorus, and one reverb.
+Here you can make overall settings for effects, such as the output destination and level of the various signals.
+PATCH EFFECTS
+Signal Flow and Parameters (ROUTING)
+Parameter Value Explanation
+TONE SELECT 1–4 The tone to edit
+PATCH OUTPUT ASSIGN
+MFX, 
+L+R, 
+L, 
+R, 
+TONE
+Specifies how the unprocessed sound of the patch will be output
+MFX: Output in stereo via the multi-effect. Chorus and reverb can also be applied after 
+the multi-effect.   
+L+R: Output in stereo from the OUTPUT jacks without passing through the multi-effect   
+L: Output in mono from the OUTPUT L jack without passing through the multi-effect   
+R: Output in mono from the OUTPUT R jack without passing through the multi-effect   
+TONE: Output according to the settings of each tone
+TONE OUTPUT ASSIGN
+MFX, 
+L+R, 
+L, 
+R
+Specifies how the unprocessed sound of each tone will be output 
+MFX: Output in stereo via the multi-effect. Chorus and reverb can also be applied after 
+the multi-effect.   
+L+R: Output in stereo from the OUTPUT jacks without passing through the multi-effect   
+L: Output in mono from the OUTPUT L jack without passing through the multi-effect   
+R: Output in mono from the OUTPUT R jack without passing through the multi-effect
+*  The setting you specify here is valid only if PATCH OUTPUT ASSIGN is set to “TONE.”
+*   If STRUCTURE () is set to TYPE 02–10, the settings for tone 1 (3) will follow the settings of tone 2 
+(4). (This is because the outputs of tones 1 and 2 are combined into tone 2, and the outputs of 
+tones 3 and 4 are combined into tone 4.)
+TONE OUTPUT LEVEL 0–127 Level of signal sent from each tone to the destination specified by OUTPUT ASSIGN
+TONE CHORUS SEND LEVEL 0–127 Level of signal sent from each tone to the chorus
+TONE REVERB SEND LEVEL 0–127 Level of signal sent from each tone to the reverb
+MFX (Type) 0–78 Type of multi-effect to use (choose one of 78 types)   
+For details on each multi-effect, refer to "Multi-Effects Parameters (MFX)" (p. 44).
+MFX OUTPUT LEVEL 0–127 Volume of the sound that has been processed by the multi-effect
+MFX CHORUS SEND LEVEL 0–127 Amount of chorus applied to the sound that has been processed by the multi-effect
+MFX REVERB SEND LEVEL 0–127 Amount of reverb applied to the sound that has been processed by the multi-effect
+CHORUS (Type)
+OFF, 
+CHORUS, 
+DELAY
+Type of chorus   
+OFF: Chorus/delay will not be used   
+CHORUS: Chorus   
+DELAY: Delay   
+CHORUS LEVEL 0–127 Volume of the sound that has been processed by the chorus
+CHORUS OUTPUT SELECT MAIN, 
+MAIN+REV, REV
+Output destination of the sound that has been processed by the chorus   
+MAIN: Output in stereo to the OUTPUT jacks   
+MAIN+REV: Output in stereo to the OUTPUT jacks and in mono to the reverb
+REV: Output in mono to reverb   
+REVERB (Type)
+OFF, 
+REVERB, 
+SRV ROOM, 
+SRV HALL, 
+SRV PLATE
+Type of reverb   
+OFF: Reverb will not be used   
+REVERB: Basic reverb   
+SRV ROOM: Reverb that simulates the reverberation of a room in greater detail   
+SRV HALL: Reverb that simulates the reverberation of a hall in greater detail   
+SRV PLATE: Simulation of a plate echo (a reverb device that uses a metal plate)   
+REVERB LEVEL 0–127 Volume of the sound that has been processed by the reverb
+
+===== PAGE 16 =====
+16
+EFFECTS Parameters
+Multi-Effect Control
+In order to control the multi-effect’s volume or delay time from an external MIDI device, you would normally need to transmit system 
+exclusive messages (MIDI messages that are specific to the AX-Synth). However, system exclusive messages are more complex to set 
+up, and require a larger amount of data to be transmitted.
+For this reason, the AX-Synth allows you to use control changes and other common MIDI messages to control the most important 
+multi-effect parameters.
+For example, you might use the touch controller to control the degree of distortion, or use keyboard touch to change the delay time. 
+The parameters that can be controlled in this way are predetermined for each type of multi-effect; such parameters are indicated by a 
+“#” in the parameter lists in.
+“Multi-effect control” is the capability of using MIDI messages in this way to control multi-effect parameters in real time. You can spec-
+ify up to four multi-effect control assignments.
+In order to use multi-effect control, you’ll need to specify which MIDI message (SOURCE) will control which parameter (DESTINATION) 
+by what amount (SENS).
+As a substitute for multi-effect control, you can also use matrix control (p. 41) to control important multi-effect 
+parameters in real time.
+Multi-Effect Settings (MFX)
+Parameter Value Explanation
+ON/OFF OFF, ON Turns the multi-effect on/off
+*  The effect on/off settings cannot be saved.
+TYPE
+00: THROUGH–
+78: SYMPATHETIC 
+RESONANCE
+Selects the type of multi-effect used by MFX. 
+Choose “00: THROUGH” if you don’t want to apply a multi-effect.
+SEND LEVEL
+OUT 0–127 Volume of the sound that has been processed by the multi-effect
+CHO 0–127 Amount of chorus applied to the sound that has been processed by the multi-effect
+REV 0–127 Amount of reverb applied to the sound that has been processed by the multi-effect
+Parameters for each MFX 
+type Edit the parameters of the MFX type you’ve selected. Refer to "Multi-Effects Parameters (MFX)" (p. 44).
+Controlling a Multi-Effect via MIDI (CONTROL SOURCE/DESTINATION/SENS)
+Parameter Value Explanation
+CONTROL SOURCE (1–4)
+OFF, 
+CC01–31, 
+CC33–95, 
+PITCH BEND, 
+AFTERTOUCH
+Specifies the MIDI message that will control the corresponding MFX control parameter.   
+OFF: MFX will not be used.   
+CC01-31: Controller number 1–31   
+CC33-95: Controller number 33–95   
+PITCH BEND: Pitch bend   
+AFTERTOUCH: Aftertouch 
+DESTINATION (1–4)
+Refer to "Multi-
+Effects Parameters 
+(MFX)" (p. 44)
+Selects the multi-effect parameter that will be controlled by CONTROL SOURCE. 
+The type of parameters that can be selected will depend on the type of multi-effect you’ve 
+selected in MFX Type.
+SENS (1–4) -63–+63
+Specifies the depth of multi-effect control. 
+Specify a positive (+) value if you want to change the value of the assigned destination in a 
+positive direction (larger, toward the right, faster, etc.), or specify a negative value ( - ) if 
+you want to change the value in a negative direction (smaller, toward the left, slower, etc.). 
+Larger values will allow a greater amount of control.
+
+===== PAGE 17 =====
+17
+EFFECTS Parameters
+A patch contains parameters that specify whether pitch bend, controller number 11 (expression), and controller number 64 (hold 1) 
+will be received for each tone (p. 43). If these settings are “ON,” receiving that MIDI message will not only change the setting of the 
+assigned destination parameter, but will also apply the corresponding pitch bend, expression, or hold 1 effect. Leave them “OFF” if 
+you only want to control the multi-effect parameter.
+Chorus Settings (CHORUS)
+Parameter Value Explanation
+ON/OFF OFF, ON Turns the chorus on/off
+*  The chorus on/off setting cannot be saved.
+TYPE
+OFF, 
+CHORUS, 
+DELAY
+Type of chorus   
+OFF: Chorus/delay will not be used   
+CHORUS: Chorus   
+DELAY: Delay 
+LEVEL 0–127 Volume of the sound that has been processed by the chorus
+OUTPUT SELECT
+MAIN, 
+MAIN+REV, 
+REV
+Output destination of the sound that has been processed by the chorus   
+MAIN: Output in stereo to the OUTPUT jacks   
+MAIN+REV: Output in stereo to the OUTPUT jacks and in mono to the reverb
+REV: Output in mono to reverb   
+Parameters for 
+each chorus type
+Set the parameters of the selected chorus type. 
+Refer to "Chorus Parameters" (p. 77).
+Reverb Settings (REVERB)
+Parameter Value Explanation
+ON/OFF OFF, ON Turns the reverb on/off
+*  The reverb on/off setting cannot be saved.
+TYPE
+OFF, 
+REVERB, 
+SRV ROOM, 
+SRV HALL, 
+SRV PLATE
+Type of reverb   
+OFF: Reverb will not be used   
+REVERB: Basic reverb   
+SRV ROOM: Reverb that simulates the reverberation of a room in greater detail   
+SRV HALL: Reverb that simulates the reverberation of a hall in greater detail   
+SRV PLATE: Simulation of a plate echo (a reverb device that uses a metal plate)   
+LEVEL 0–127 Volume of the sound that has been processed by the reverb
+Parameters for 
+each reverb type
+Set the parameters of the selected reverb type. 
+Refer to "Reverb Parameters" (p. 78).
+
+===== PAGE 18 =====
+18
+Detailed Editing for a Patch (PATCH Parameters)
+a
+“Editing” is the process of modifying the values of the AX-
+Synth’s various settings (parameters). This chapter explains 
+the procedure for patch editing, and how the patch parame-
+ters work.
+How to Edit a Patch
+You can create a new patch by editing an existing patch.
+A patch consists of up to four “tones.” Before editing a patch, 
+you should listen to each tone individually to familiarize your-
+self with the role it plays in creating the overall sound of the 
+patch.
+Select from the “EDIT” menu.
+The “Initialize Patch” command initializes the settings of the 
+currently selected patch.
+The Initialize command will initialize only the currently 
+selected patch. If you want to return all settings to their 
+factory-set values, execute a Factory Reset on the AX-Synth 
+itself.
+The “Copy” command copies the settings to the clipboard.
+The “Paste” command pastes the settings from the clipboard 
+to the copy destination you select.
+Use TONE SWITCH (SW) 1--4 to turn each of the four tones on/
+off.
+Use TONE SELECT 1--4 to select the tone that you want to edit.
+[SUMMARY] and [LFO] editing screens
+•   The main window will show the settings of the first selected 
+of the currently selected tones (its button will be lit more 
+brightly than the others).
+•   You can select multiple tones by clicking a TONE SELECT 
+button while holding down your computer’s Shift key.
+•   When you edit the settings of a tone, the settings of the 
+currently selected tones will change simultaneously.
+[WG], [TVF], [TVA], and [CONTROL SW] editing screen
+•   You can select multiple tones by clicking a TONE SELECT 
+button while holding down your computer’s Shift key.
+•   When you edit the settings of a tone, the settings of the 
+currently selected tones will change simultaneously.
+•   Unselected tones can be edited independently.
+Four tips when creating patches
+Choose a patch that’s close to what you have in mind
+If you’re trying to create a new patch, it will be difficult to 
+make progress if you simply select any old patch and 
+start making changes blindly. It’s important to start by 
+selecting a patch that’s close to what you have in mind.
+Decide which tones you’ll use
+When creating a patch, it’s very important to decide 
+which tones you’re going to use. In the edit screen, use 
+the TONE SWITCH 1–4 settings to specify whether each 
+tone will be heard (on) or silent (off). Turning off 
+unneeded tones is also an important way to conserve 
+polyphony.
+Check the structure setting (p. 27)
+The STRUCTURE parameter is a very important one; it 
+specifies how the four tones will be combined. Before 
+you begin actually editing the tones, you must under-
+stand the relationship between the tones.
+Turn the effects off (p. 14)
+The AX-Synth contains a diverse array of effects, allowing 
+you to process the sound in sophisticated ways. Effects 
+have a major impact on the sound, and simply turning off 
+the effects may produce an entirely different impression. 
+Turning off the effects will allow you to hear the sound of 
+the patch itself, which makes it easier to hear the result of 
+the changes you make. In some cases, editing the effect 
+settings may be enough to create the sound you want.
+Editing a Patch
+Initializing a Patch
+Copying/Pasting Patch Settings
+TONE SWITCH/SELECT
+
+===== PAGE 19 =====
+19
+Detailed Editing for a Patch (PATCH Parameters)
+Some of the waves that make up a tone key are stereo.
+With stereo waves, the name of a left-channel wave ends in 
+“L”, while the name of a right-channel wave ends in “R.”
+The left and right waves are numbered consecutively; the 
+right-channel wave number is one greater than the left-chan-
+nel wave number.
+You can use the following procedure to first select either the 
+left or right wave, and then select the other wave.
+1.    Select a patch.
+2.    Make sure that [SUMMARY] or [WG] is selected in the 
+Navigation block.
+3.    Use WAVE NUMBER L to select the left-channel wave of the 
+stereo wave.
+4.    Double-click WAVE NUMBER R.
+The corresponding right-channel wave will be selected.
+You can also use WAVE NUMBER R to select the right-channel 
+wave and then double-click WAVE NUMBER L to select the 
+left-channel wave.
+Changes you make are temporary, and will be discarded 
+when you turn off the power or select another patch. If you 
+want to keep a patch you've modified, you can store it in the 
+Patch Area of the AX-Synth, which holds up to 256 patches.
+When you click the [WRITE] button located in the top line of 
+the main window, the data will be written to the AX-Synth.
+When you save, the data that previously occupied the save 
+destination will be overwritten.
+Never turn off the power while data is being saved.
+Stereo Wave Settings
+Saving a Patch
+Note when selecting a waveform
+The AX-Synth uses complex PCM waveforms as the basis for its sounds. For 
+this reason, you should be aware that if you specify a waveform that is very 
+different than the original waveform, the result may not be what you expect.
+The AX-Synth’s internal waveforms can be categorized into the following two 
+types.
+One-shot:
+These are sounds with a short decay time. One-shot waveforms contain 
+the entire duration of the sound from the attack until it decays to 
+silence. Some of these waveforms capture a complete sound such as a 
+percussion instrument, but there are also many attack component 
+sounds such as the hammer strike of a piano or the fret noise of a guitar.
+Loop:
+These are sounds with a long decay, or sustaining sounds. Looped wave-
+forms will repeatedly play a portion of a sound once it has reached a rel-
+atively stable state. These sounds also include numerous component 
+sounds, such as a vibrating piano string or a resonating pipe.
+The following illustration shows an example of a sound created by combin-
+ing a one-shot waveform with a loop waveform. (This example is of an elec-
+tric organ.)
+Note when selecting a one-shot waveform:
+It’s not possible to use the envelope settings to give a one-shot wave-
+form a longer decay than the original waveform contains, or to make it a 
+sustaining sound. Even if you made this type of envelope setting, you 
+would be trying to bring out something that doesn’t exist in the original 
+waveform.
+Note when selecting a looped waveform:
+Many acoustic instruments such as piano or sax are marked by a sudden 
+change in timbre at the very beginning of the sound, and this rapid 
+change is what gives the instrument its distinctive character. When 
+using these waveforms, it’s best to use the complex tonal changes in the 
+attack portion of the sound without attempting to modify them; use the 
+envelope only to modify the decay portion of the sound as desired. If 
+you use the envelope to modify the attack as well, the envelope settings 
+will be affected by the attack of the waveform itself, and you may not 
+get the result you intend.
+TVA ENV for looped Organ
+waveform (sustain portion)
+Time
+Level
+Resulting TVA ENV
+change
+TVA ENV for one-shot Key
+-click waveform (attack portion)
++=
+Tone change stored
+with the wave
+Resulting
+ tone change
+Looped portion
+Time
+Level
+
+===== PAGE 20 =====
+20
+Detailed Editing for a Patch (PATCH Parameters)
+SYSTEM COMMON
+PATCH COMMON
+LFO1
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+PATCH Parameters
+SUMMARY
+Parameter Value Explanation
+MASTER LEVEL 0–127 Volume of the entire AX-Synth
+PATCH RX/TX CH
+(Patch Rx/Tx Channel) 1–16 Channel used to transmit and receive MIDI messages for the Keyboard part
+Parameter Value Explanation
+LEVEL 0–127 Volume of the patch
+MONO/POLY MONO, POLY
+MONO: Only the last-played note will sound. This setting is effective when playing a 
+solo instrument patch such as sax or flute.
+POLY: Two or more notes can be played simultaneously.
+PORTAMENTO ON OFF, ON Specifies whether the portamento effect will be applied (ON) or not (OFF).
+PORTAMENTO TIME 0–127 Specifies the time over which the pitch will change.
+Parameter Value Explanation
+WAVEFORM
+SIN, TRI, 
+SAW-UP, 
+SAW-DW,
+SQR,
+RND,
+BEND-UP, 
+BEND-DW, 
+TRP,
+S&H,
+CHS,
+VSIN,
+STEP
+Waveform of the LFO
+SIN: Sine wave
+TRI: Triangle wave
+SAW-UP: Sawtooth wave
+SAW-DW: Sawtooth wave (negative polarity)
+SQR: Square wave
+RND: Random wave
+BEND-UP: Once the attack of the waveform output by the LFO is allowed to develop in 
+standard fashion, the waveform then continues without further change.
+BEND-DW: Once the decay of the waveform output by the LFO is allowed to develop in 
+standard fashion, the waveform then continues without further change.
+TRP: Trapezoidal wave
+S&H: Sample & Hold wave (one time per cycle, LFO value is changed)
+CHS: Chaos wave
+VSIN: Modified sine wave. The amplitude of a sine wave is randomly varied once each 
+cycle.
+STEP: A waveform generated by the data specified by LFO Step 1–16. This produces 
+stepped change with a fixed pattern similar to a step modulator.
+*   If you set this to “BEND-UP” or “BEND-DW,” you must turn the KEY TRIGGER parameter (p. 38) 
+to “ON.” If this is “OFF,” it will have no effect.
+RATE  0–127 Modulation speed of the LFO
+*  This setting will be ignored if the WAVEFORM parameter is set to “CHS.”
+
+===== PAGE 21 =====
+21
+Detailed Editing for a Patch (PATCH Parameters)
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+WG
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+Parameter Value Explanation
+DELAY 0–127
+Time elapsed before the LFO effect is applied (the effect continues) after the key is 
+pressed (or released)
+When using violin, wind, or certain other instrument sounds in a performance, rather 
+than having vibrato added immediately after the sounds are played, it can be effective to 
+add the vibrato after the note is drawn out somewhat.
+*  Set this according to your purpose as described in "How to Apply the LFO" (p. 39).
+DEPTH PITCH  -63–+63 How deeply the LFO will affect pitch
+DEPTH TVF  -63–+63 How deeply the LFO will affect the cutoff frequency
+DEPTH TVA  -63–+63 How deeply the LFO will affect the volume
+DEPTH PAN  -63–+63 How deeply the LFO will affect the pan
+Parameter Value Explanation
+WAVE NUMBER
+L (Mono)/R Off, 1–
+Basic waveform for a tone
+When in monaural mode, only the left side (L) is specified. When in stereo, the right side 
+(R) is also specified.
+To select a left/right pair of waveforms, first select the left (L) wave number, then double-
+click the wave number of the right (R) wave to select it.
+GAIN -6, 0, +6, +12
+Gain (amplification) of the waveform
+The value changes in 6 dB (decibel) steps—an increase of 6 dB doubles the waveform’s 
+gain.
+*   If you intend to use the Booster to distort the waveform’s sound, set this parameter to its max-
+imum value (p. 28).
+FXM ON OFF, ON This sets whether FXM will be used (ON) or not (OFF).
+FXM COLOR 1–4
+How FXM will perform frequency modulation
+Higher settings result in a grainier sound, while lower settings result in a more metallic 
+sound.
+FXM DEPTH  0–16 Depth of the modulation produced by FXM
+TUNE COARSE  -48–+48 Pitch of the tone’s sound (in semitones, +/-4 octaves)
+TUNE FINE  -50–+50 Pitch of the tone’s sound (in 1-cent steps; one cent is 1/100th of a semitone
+PITCH ENV DEPTH
+(Pitch Envelope Depth) -12–+12
+Depth of the Pitch envelope
+Higher settings will cause the pitch envelope to produce greater change. Negative (-) 
+settings will invert the shape of the envelope.
+PITCH ENV A
+(Pitch Envelope Attack) 0–127
+Pitch envelope times
+Higher settings will result in a longer time until the next pitch is reached.
+This will modify ENV T1 (p. 31).
+PITCH ENV D
+(Pitch Envelope Decay) 0–127 Pitch envelope times
+This will modify ENV T3 (p. 31).
+PITCH ENV S
+(Pitch Envelope Sustain) -63–+63
+Pitch envelope levels
+Specify how the pitch will change at each point, relative to the pitch set with COARSE 
+TUNE or FINE TUNE.
+This will modify ENV L3 (p. 31).
+PITCH ENV R
+(Pitch Envelope Release) 0–127 Pitch envelope times
+This will modify ENV T4 (p. 31).
+
+===== PAGE 22 =====
+22
+Detailed Editing for a Patch (PATCH Parameters)
+TVF
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+Parameter Value Explanation
+TYPE
+OFF,
+LPF,
+BPF,
+HPF,
+PKG,
+LPF2,
+LPF3
+Type of filter
+OFF: No filter is used.
+LPF: Low Pass Filter. This reduces the volume of all frequencies above the Cutoff Fre-
+quency in order to round off, or un-brighten the sound.
+BPF: Band Pass Filter. This leaves only the frequencies in the region of the Cutoff Fre-
+quency, and cuts the rest. This can be useful when creating distinctive sounds.
+HPF: High Pass Filter. This cuts the frequencies in the region below the Cutoff Frequency. 
+This is suitable for creating percussive sounds emphasizing their higher tones.
+PKG: Peaking Filter. This emphasizes the frequencies in the region of the Cutoff Fre-
+quency. You can use this to create wah-wah effects by employing an LFO to change the 
+Cutoff Frequency cyclically.
+LPF2: Low Pass Filter 2. Although frequency components above the Cutoff Frequency 
+are cut, the sensitivity of this filter is half that of the LPF. This filter is good for use with 
+simulated instrument sounds such as the acoustic piano.
+LPF3: Low Pass Filter 3. Although frequency components above the Cutoff Frequency 
+are cut, the sensitivity of this filter changes according to the Cutoff Frequency. While this 
+filter is also good for use with simulated acoustic instrument sounds, the nuance it 
+exhibits differs from that of the LPF2, even with the same TVF Envelope settings.
+*   If you set “LPF2” or “LPF3,” the setting for the Resonance parameter will be ignored.
+CUTOFF 
+(Cutoff Frequency) 0–127 Frequency at which the filter begins to have an effect on the waveform’s frequency 
+components
+RES 
+(Resonance) 0–127
+Emphasizes the portion of the sound in the region of the cutoff frequency, adding char-
+acter to the sound
+*  Excessively high settings can produce oscillation, causing the sound to distort.
+FILTER ENV DEPTH
+(Filter Envelope Depth) -63–+63
+Depth of the TVF envelope
+Higher settings will cause the TVF envelope to produce greater change. Negative (-) set-
+tings will invert the shape of the envelope.
+FILTER ENV A
+(Filter Envelope Attack) 0–127
+TVF envelope times
+Higher settings will lengthen the time until the next cutoff frequency level is reached.
+This will modify ENV T1 (p. 33).
+FILTER ENV D
+(Filter Envelope Decay) 0–127 TVF envelope times
+This will modify ENV T3 (p. 33).
+FILTER ENV S
+(Filter Envelope Sustain) 0–127
+TVF envelope levels
+Specify how the cutoff frequency will change at each point, relative to the Cutoff Fre-
+quency value. This will modify ENV L3 (p. 33).
+FILTER ENV R
+(Filter Envelope Release) 0–127 TVF envelope times
+This will modify ENV T4 (p. 33).
+
+===== PAGE 23 =====
+23
+Detailed Editing for a Patch (PATCH Parameters)
+TVA
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+Parameter Value Explanation
+LEVEL  0–127 Volume of the tone
+This setting is useful primarily for adjusting the volume balance between tones.
+PAN  L64–0–63R Left/right position of the tone
+AMP ENV A
+(Amp Envelope Attack) 0–127
+TVA envelope times
+Higher settings will lengthen the time until the next volume level is reached.
+This will modify ENV T1 (p. 36).
+AMP ENV D
+(Amp Envelope Decay) 0–127 TVA envelope times
+This will modify ENV T3 (p. 36).
+AMP ENV S
+(Amp Envelope Sustain) 0–127
+TVA envelope levels
+Specify how the volume will change at each point, relative to the LEVEL value.
+This will modify ENV L3 (p. 36).
+AMP ENV R
+(Amp Envelope Release) 0–127 TVA envelope times
+This will modify ENV T4 (p. 36).
+SEND LEVEL OUT 
+(Output Level) 0–127 Level of the signal that is sent to the output destination specified by 
+SEND LEVEL (OUTPUT ASSIGN = MFX)
+CHO (Chorus Send) 0–127 Level of the signal sent to chorus for each tone if the tone is sent through MFX
+REV (Reverb Send) 0–127 Level of the signal sent to reverb for each tone if the tone is sent through MFX
+SEND LEVEL (OUTPUT ASSIGN = non MFX)
+CHO (Chorus Send) 0–127 Level of the signal sent to chorus for each tone if the tone is not sent through MFX
+REV (Reverb Send) 0–127 Level of the signal sent to reverb for each tone if the tone is not sent through MFX
+
+===== PAGE 24 =====
+24
+Detailed Editing for a Patch (PATCH Parameters)
+Parameter marked with a “” can be controlled using specified MIDI messages ("MATRIX CONTROL" (p. 41)).
+Stretched Tuning
+COMMON
+Parameter Value Explanation
+PATCH NAME — Patch name
+LEVEL 0–127 Volume of the patch
+PAN L64–0–63R Left/right position of the patch
+OUTPUT ASSIGN
+MFX, 
+L+R, 
+L, 
+R, 
+TONE
+Specifies how the direct sound of each patch will be output
+MFX: Output in stereo through multi-effects. You can also apply chorus or reverb to the 
+sound that passes through multi-effects.
+L+R: Output in stereo to the OUTPUT jacks without passing through the multi-effect
+L: Output in mono to the OUTPUT L jack without passing through the multi-effect
+R: Output in mono to the OUTPUT R jack without passing through the multi-effect
+TONE: Outputs according to the settings for each tone.
+OCTAVE SHIFT -3–+3 Pitch of the patch’s sound (in units of an octave)
+TUNE COARSE  -48–+48 Pitch of the patch’s sound (in semitones, +/- 4 octaves)
+TUNE FINE -50–+50 Pitch of the patch’s sound (in 1-cent steps; one cent is 1/100th of a semitone)
+STRETCH TUNE DEPTH OFF, 1–3
+Stretched tuning (a system by which acoustic pianos are normally tuned, causing the 
+lower range to be lower and the higher range to be higher than the mathematical tun-
+ing ratios would otherwise dictate)
+OFF: Equal temperament
+1-3: Higher settings will produce the greater difference in the pitch of the low and high 
+ranges.
+PITCH BEND RANGE UP 0–+48 Degree of pitch change in semitones when the touch controller is all the way right (in 
+semitones)
+PITCH BEND RANGE 
+DOWN -48–0 Degree of pitch change in semitones when the touch controller is all the way left (in 
+semitones)
+1
+2
+3
+OFF
+2
+1
+OFF
+3
+High note range
+Parameter value
+Low note range
+
+===== PAGE 25 =====
+25
+Detailed Editing for a Patch (PATCH Parameters)
+Parameter Value Explanation
+OFFSET 
+(Modify)
+CUTOFF -63–+63 CUTOFF(p. 25)
+RES (Resonance) -63–+63 RES(Resonance)(p. 25)
+ATTACK TIME -63–+63 TVF Envelope Time 1(p. 33), TVA Envelope Time 1 (p. 36)
+RELEASE TIME -63–+63 TVF Envelope Time 4(p. 33), TVA Envelope Time 4 (p. 36)
+VELOCITY SENS -63–+63 Cutoff Velocity Sens(p. 33),VEL SENS(Velocity Sens)(p. 33) 
+PRIORITY LAST, 
+LOUDEST
+How notes will be managed when the maximum polyphony is exceeded (128 voices)
+LAST: The last-played voices will be given priority (Notes will be turned off in order, beginning 
+with the first-played note.)
+LOUDEST: The loudest voices will be given priority (Notes will be turned off, beginning with the 
+lowest-volume voice.)
+MONO/POLY MONO, 
+POLY
+MONO: Only the last-played note will sound. This setting is effective when playing a solo instru-
+ment patch such as sax or flute.
+POLY: Two or more notes can be played simultaneously.
+LEGATO
+SW (Switch) OFF, ON
+This setting specifies whether the Legato Switch will be 
+used (ON) or not (OFF).
+LEGATO SW is valid when the Mono/Poly parameter is 
+set to “MONO.”
+With the LEGATO SW “ON,” pressing a key while 
+continuing to press a previous key causes the note to 
+change pitch to the pitch of the most recently pressed 
+key, sounding all the while.
+This creates a smooth transition between notes, which 
+is effective when you wish to simulate the hammering-
+on and pulling-off techniques used by a guitarist.
+Let’s say you have the LEGATO 
+SW set to “ON,” and the LEGATO 
+RETRIGGER set to “OFF.”
+When you try to sound a legato 
+(by pressing a higher key while a 
+lower key is held down), the pitch 
+may sometimes not be able to 
+rise all the way to the intended 
+pitch (stopping instead at an 
+intermediate pitch). This can 
+occur because the limit of pitch 
+rise, as determined at the wave 
+level, has been exceeded.
+Additionally, if differing upper 
+pitch limits are used for the waves 
+of a Patch that uses multiple 
+tones, it may stop being heard in 
+MONO.
+When making large pitch 
+changes, set the LEGATO RETRIG-
+GER to “ON.”
+RETRIGGER OFF, ON
+The setting determines whether sounds are replayed 
+(ON) or not (OFF) when performing legato.
+The LEGATO RETRIGGER is valid when the Mono/Poly is 
+set to “MONO” and the LEGATO SW is set to “ON.” 
+Normally you will leave this parameter “ON.” 
+When “OFF,” when one key is held down and another 
+key is then pressed, only the pitch changes, without the 
+attack of the latter key being played.
+Set this to “OFF” when performing wind and string 
+phrases or when using modulation with the mono 
+synth keyboard sound.
+ANALOG FEEL 0–127
+Depth of 1/f modulation (a pleasant and naturally-occurring ratio of modulation that occurs in 
+a babbling brook or rustling wind)
+*   You can simulate the natural instability characteristic of an analog synthesizer by adding this “1/f 
+modulation.”
+
+===== PAGE 26 =====
+26
+Detailed Editing for a Patch (PATCH Parameters)
+Portamento is an effect which smoothly changes the pitch from the first-played key to the next-played key.
+Parameter Value Explanation
+PORTA-
+MENTO
+SW OFF, ON Specifies whether the portamento effect will be applied (ON) or not (OFF).
+MODE NORMAL, 
+LEGATO
+NORMAL: Portamento will always be applied.
+LEGATO: Portamento will be applied only when you play legato.
+TYPE RATE, 
+TIME
+RATE: Speed of pitch change is uniform (the time required for the pitch change will correspond 
+to the distance of the pitch change)
+TIME: The time it takes will be constant, regardless of how far apart in pitch the notes are.
+START PITCH, 
+NOTE
+PITCH: Starts a new portamento when another key is pressed while the pitch is changing.
+NOTE: Portamento will begin anew from the pitch where the current change would end.
+TIME 0–127 Specifies the time over which the pitch will change.
+C5
+D4
+C4
+press D4 key
+Pitch
+Portamento Start: NOTEPortamento Start: PITCH
+Time
+press C4 key
+press C5 key
+C5
+D4
+C4
+press D4 key
+Pitch
+Time
+press C4 key
+press C5 key
+
+===== PAGE 27 =====
+27
+Detailed Editing for a Patch (PATCH Parameters)
+Structure changes how a tone is sounded.
+STRUCTURE
+Parameter Value Explanation
+TONE 1 & 2, 3 & 4 TYPE 1–10 Determines how tone 1 and 2, or tone 3 and 4 are connected.
+The following 10 different Types of combination are available.
+With this type, tones 1 and 2 (or 3 and 4) are independent. Use this 
+type when you want to preserve PCM sounds or create and combine 
+sounds for each tone.
+This type stacks the two filters together to intensify the characteristics 
+of the filters. The TVA for tone 1 (or 3) controls the volume balance 
+between the two tones.
+This type mixes the sound of tone 1 (3) and tone 2 (4), applies a filter, 
+and then applies a booster to distort the waveform.
+This type applies a booster to distort the waveform, and then com-
+bines the two filters. The TVA for tone 1 (or 3) controls the volume bal-
+ance between the two tones and adjusts booster level.
+This type uses a ring modulator to create new overtones, and com-
+bines the two filters. The tone 1 (3) TVA will control the volume bal-
+ance of the two tones, adjusting the depth of ring modulator.
+This type uses a ring modulator to create new overtones, and in addi-
+tion mixes in the sound of tone 2 (4) and stacks the two filters. Since 
+the ring-modulated sound can be mixed with tone 2 (4), tone 1 (3) TVA 
+can adjust the amount of the ring-modulated sound.
+This type applies a filter to tone 1 (3) and ring-modulates it with tone 2 
+(4) to create new overtones.
+This type sends the filtered tone 1 (3) and tone 2 (4) through a ring 
+modulator, and then mixes in the sound of tone 2 (4) and applies a fil-
+ter to the result.
+This type passes the filtered sound of each tone through a ring modu-
+lator to create new overtones. The tone 1 (3) TVA will control the vol-
+ume balance of the two tones, adjusting the depth of ring modulator.
+This type passes the filtered sound of each tone through a ring modu-
+lator to create new overtones, and also mixes in the sound of tone 2 
+(4). Since the ring-modulated sound can be mixed with tone 2 (4), 
+tone 1 (3) TVA can adjust the amount of the ring-modulated sound.
+TONE 1 (3)
+TONE 2 (4)
+TVATVFWG
+WG TVF TVA
+Type 01
+TONE 1 (3)
+TONE 2 (4)
+TVA TVFWG
+WG TVF TVA
+Type 02
+TONE 1 (3)
+TONE 2 (4)
+TVA TVFWG
+WG TVF TVA
+B
+Type 03
+TONE 1 (3)
+TONE 2 (4)
+TVA TVFWG
+WG TVF TVA
+B
+Type 04
+TONE 1 (3)
+TONE 2 (4)
+R
+Type 05
+TVA TVFWG
+WG TVF TVA
+TONE 1 (3)
+TONE 2 (4)
+R
+Type 06
+TVA TVFWG
+WG TVF TVA
+TONE 1 (3)
+TONE 2 (4)
+TVATVFWG
+WG TVF TVA
+R
+Type 07
+TONE 1 (3)
+TONE 2 (4)
+R
+Type 08
+TVATVFWG
+WG TVF TVA
+TONE 1 (3)
+TONE 2 (4)
+TVATVFWG
+WG TVF TVA
+R
+Type 09
+TONE 1 (3)
+TONE 2 (4)
+TVATVFWG
+WG TVF TVA
+R
+Type 10
+
+===== PAGE 28 =====
+28
+Detailed Editing for a Patch (PATCH Parameters)
+*  When TYPE 02–10 is selected and one tone of a pair is turned off, the other tone will be sounded as TYPE 01 regardless of the displayed setting.
+*  If you limit the keyboard area in which a tone will sound ("KEY RANGE" (p. 41)) or limit the range of velocities for which it will sound ("VELOCITY 
+RANGE" (p. 40)), the result in areas or ranges where the tone does not sound is just as if the tone had been turned off. This means that if TYPE 02–
+10 is selected and you create a keyboard area or velocity range in which one tone of a pair does not sound, notes played in that area or range will 
+be sounded by the other tone as TYPE 01 regardless of the displayed setting.
+Parameter Value Explanation
+TONE 1 & 2, 3 & 4 
+BOOSTER
+0, +6, 
++12, +18
+Specifies the amount of boost that is applied 
+(when the Structure Type is 03 or 04)
+The booster distorts the sound by boosting the input signal, producing the distortion 
+effect that is often used with an electric guitar. Increasing this value will produce stron-
+ger distortion.
+Booster
+The Booster is used to distort the incoming signal.
+In addition to using this to create distortion, you can use 
+the waveform (WG1) of one of the tones as an LFO which 
+shifts the other waveform (WG2) upward or downward to 
+create modulation similar to PWM (pulse width modula-
+tion). This parameter works best when you use it in con-
+junction with the WAVE GAIN parameter (p. 29).
+Booster level TVAWG1
+WG2
+Booster
+Adds to WG1
+Shift in waveform by WG1
+Distorted area of the
+Waveform changes
+WG2
+Uses WG1 as LFO Adjusts WG1 output
+Ring Modulator
+A ring modulator multiplies the waveforms of two tones with 
+each other, generating many new overtones (in harmonic 
+partials) which were not present in either waveform (Unless 
+one of the waveforms is a sine wave, evenly-spaced frequency 
+components will not usually be generated.).
+As the pitch difference between the two waveforms changes 
+the harmonic structure, the result will be an unpitched metal-
+lic sound.
+This function is suitable for creating metallic sounds such as 
+bells.
+
+===== PAGE 29 =====
+29
+Detailed Editing for a Patch (PATCH Parameters)
+This modifies Waveforms/Pitch/Pitch Envelope.
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+WG
+Parameter Value Explanation
+WAVE NUMBER L/R Off, 1–
+Basic waveform for a tone
+When in monaural mode, only the left side (L) is specified. When in stereo, the right side 
+(R) is also specified.
+To select a left/right pair of waveforms, first select the left (L) wave number, then double-
+click the wave number of the right (R) wave to select it.
+GAIN -6, 0, +6, +12
+Gain (amplification) of the waveform
+The value changes in 6 dB (decibel) steps—an increase of 6 dB doubles the waveform’s 
+gain.
+*   If you intend to use the Booster to distort the waveform’s sound, set this parameter to its max-
+imum value (p. 28).
+FXM ON OFF, ON This sets whether FXM will be used (ON) or not (OFF).
+FXM COLOR 1–4
+How FXM will perform frequency modulation
+Higher settings result in a grainier sound, while lower settings result in a more metallic 
+sound.
+FXM DEPTH  0–16 Depth of the modulation produced by FXM
+FXM
+FXM (Frequency Cross Modulation) uses a specified waveform to apply frequency modulation to the currently selected wave-
+form, creating complex overtones. This is useful for creating dramatic sounds or sound effects.
+Parameter Value Explanation
+TUNE COARSE  -48–+48 Pitch of the tone’s sound (in semitones, +/-4 octaves)
+TUNE FINE  -50–+50 Pitch of the tone’s sound (in 1-cent steps; one cent is 1/100th of a semitone)
+RANDOM PITCH 0–1200
+Width of random pitch deviation that will occur each time a key is pressed 
+(in 1-cent steps)
+If you do not want the pitch to change randomly, set this to “0.”
+PITCH KF 
+(Pitch Keyfollow) -200–+200
+Amount of pitch change that will occur when you play a key one octave higher
+If you want the pitch to rise one octave as on a conventional keyboard, set this to “+100.” 
+If you want the pitch to rise two octaves, set this to “+200.”
+
+===== PAGE 30 =====
+30
+Detailed Editing for a Patch (PATCH Parameters)
+TONE DELAY
+This produces a time delay between the moment a key is pressed (or released), and the moment the tone actually begins to sound. 
+You can also make settings that shift the timing at which each tone is sounded. This differs from the Delay in the internal effects, in 
+that by changing the sound qualities of the delayed tones and changing the pitch for each tone, you can also perform arpeggio-like 
+passages just by pressing one key.
+*  If you are not going to use Tone Delay, set the TONE DELAY MODE parameter to “NORMAL” and DELAY TIME parameter to “0.”
+*  If "STRUCTURE" (p. 27) is set to TYPE 02–10, the settings for tone 1 (3) will follow the settings of tone 2 (4). (This is because the outputs of tones 1 
+and 2 are combined into tone 2, and the outputs of tones 3 and 4 are combined into tone 4.)
+Parameter Value Explanation
+TONE DELAY MODE
+NORMAL, 
+HOLD, 
+KEY-OFF-NOR, 
+KEY-OFF-DCY
+Type of tone delay
+NORMAL: The tone begins to play after the time specified in the TONE DELAY TIME 
+parameter has elapsed.
+HOLD: Although the tone begins to play after the time specified in the TONE DELAY 
+TIME parameter has elapsed, if the key is released before the time specified in the TONE 
+DELAY TIME parameter has elapsed, the tone is not played.
+KEY-OFF-NOR: Rather than being played while the key is pressed, the tone begins to 
+play once the period of time specified in the TONE DELAY TIME parameter has elapsed 
+after release of the key. This is effective in situations such as when simulating noises from 
+guitars and other instruments.
+KEY-OFF-DCY: Rather than being played while the key is pressed, the tone begins to 
+play once the period of time specified in the TONE DELAY TIME parameter has elapsed 
+after release of the key. Here, however, changes in the TVA Envelope begin while the key 
+is pressed, which in many cases means that only the sound from the release portion of 
+the envelope is heard.
+*   If you have selected a waveform that is a decay-type sound (i.e., a sound that fades away nat-
+urally even if the key is not released), selecting “KEY-OFF-NOR” or “KEY-OFF-DCY” may result 
+in no sound being heard.
+TONE DELAY TIME 0–127
+Time from when the key is pressed (or if the Tone Delay Mode parameter is set to “KEY-
+OFF-NOR” or “KEY-OFF-DCY,” the time from when the key is released) until when the 
+tone will sound
+Delay time
+Note on
+Tone Delay Mode: NORMAL
+No Tone Delay
+Delay time
+Note on
+Tone Delay Mode: HOLD
+No sound
+played
+Delay time
+Note on
+Tone Delay Mode: KEY-OFF-NOR
+Delay time
+Note on
+Tone Delay Mode: KEY-OFF-DCY
+
+===== PAGE 31 =====
+31
+Detailed Editing for a Patch (PATCH Parameters)
+PITCH ENV (WAVE PITCH ENVELOPE)
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+Parameter Value Explanation
+DEPTH -12–+12
+Depth of the Pitch envelope
+Higher settings will cause the pitch envelope to produce greater change. Negative (-) 
+settings will invert the shape of the envelope.
+TIME KF
+(Time Keyfollow) -100–+100
+Use this setting if you want the pitch envelope times (T2–T4) to be affected by the key-
+board location.
+Based on the pitch envelope times for the C4 key, positive (+) settings will cause notes 
+higher than C4 to have increasingly shorter times.
+VEL SENS
+(Velocity Sens) -63–+63
+Keyboard playing dynamics can be used to control the depth of the pitch envelope.
+If you want the pitch envelope to have more effect for strongly played notes, set this 
+parameter to a positive (+) value.
+T1 SENS
+(T1 Velocity Sens) -63–+63
+This allows keyboard dynamics to affect the T1 of the Pitch envelope.
+If you want T1 to be speeded up for strongly played notes, set this parameter to a posi-
+tive (+) value.
+T4 SENS
+(T4 Velocity Sens) -63–+63
+Use this parameter when you want key release speed to affect the T4 value of the Pitch 
+envelope.
+If you want T4 to be speeded up for quickly released notes, set this parameter to a posi-
+tive (+) value.
+T1–4 
+(Time 1–4) 0–127 Pitch envelope times (T1–T4)
+Higher settings will result in a longer time until the next pitch is reached.
+L0–4
+(Level 0–4) -63–+63
+Pitch envelope levels (L0–L4)
+Specify how the pitch will change at each point, relative to the pitch set with COARSE 
+TUNE or FINE TUNE.
+C4C3C2C1 C5 C6 C7
+0
++50
++100+200
+-50
+-100-200 Key
+Pitch Pitch Keyfollow
+C4C3C2C1 C5 C6 C7
+0
++50
++100
+-50
+-100
+Key
+Time Time Keyfollow
+T1 T2 T3 T4
+L3
+L4L2
+L1
+L0Pitch
+Pitch Envelope
+Time
+Note on
+
+===== PAGE 32 =====
+32
+Detailed Editing for a Patch (PATCH Parameters)
+A filter cuts or boosts a specific frequency region to change a sound’s brightness, thickness, or other qualities.
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+TVF
+Parameter Value Explanation
+FILTER TYPE
+OFF,
+LPF,
+BPF,
+HPF,
+PKG,
+LPF2,
+LPF3
+Type of filter
+OFF: No filter is used.
+LPF: Low Pass Filter. This reduces the volume of all frequencies above the Cutoff Fre-
+quency in order to round off, or un-brighten the sound.
+BPF: Band Pass Filter. This leaves only the frequencies in the region of the Cutoff Fre-
+quency, and cuts the rest. This can be useful when creating distinctive sounds.
+HPF: High Pass Filter. This cuts the frequencies in the region below the Cutoff Frequency. 
+This is suitable for creating percussive sounds emphasizing their higher tones.
+PKG: Peaking Filter. This emphasizes the frequencies in the region of the Cutoff Fre-
+quency. You can use this to create wah-wah effects by employing an LFO to change the 
+Cutoff Frequency cyclically.
+LPF2: Low Pass Filter 2. Although frequency components above the Cutoff Frequency 
+are cut, the sensitivity of this filter is half that of the LPF. This filter is good for use with 
+simulated instrument sounds such as the acoustic piano.
+LPF3: Low Pass Filter 3. Although frequency components above the Cutoff Frequency 
+are cut, the sensitivity of this filter changes according to the Cutoff Frequency. While this 
+filter is also good for use with simulated acoustic instrument sounds, the nuance it 
+exhibits differs from that of the LPF2, even with the same TVF Envelope settings.
+*   If you set “LPF2” or “LPF3,” the setting for the RES parameter will be ignored.
+CUTOFF 
+(Cutoff Frequency) 0–127 Frequency at which the filter begins to have an effect on the waveform’s frequency 
+components
+RES 
+(Resonance) 0–127
+Emphasizes the portion of the sound in the region of the cutoff frequency, adding char-
+acter to the sound
+*  Excessively high settings can produce oscillation, causing the sound to distort.
+RES VEL SENS
+(Resonance Velocity Sens) -63–+63
+This allows keyboard velocity to modify the amount of Resonance.
+If you want strongly played notes to have a greater Resonance effect, set this parameter 
+to positive (+) settings.
+CUTOFF KF
+(Cutoff Keyfollow) -200–+200
+Use this parameter if you want the cutoff frequency to change according to the key 
+that is pressed
+Relative to the cutoff frequency at the C4 key (center C), positive (+) settings will cause 
+the cutoff frequency to rise for notes higher than C4, and negative (-) settings will cause 
+the cutoff frequency to fall for notes higher than C4. Larger settings will produce greater 
+change.
+LPF BPF
+Resonance
+HPF PKG
+Parameter Value
+Level
+Frequency
+High
+Low
+C4C3C2C1 C5 C6 C7
+0
++50
++100+200
+-50
+-100-200
+o
+-1
+-2
++1
++2
+Key
+
+===== PAGE 33 =====
+33
+Detailed Editing for a Patch (PATCH Parameters)
+FILTER ENV (TVF ENVELOPE)
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+Parameter Value Explanation
+VEL CURVE
+(Cutoff Velocity Curve) FIX, 1–7
+Curve that determines how keyboard playing dynamics (velocity) will affect the cutoff 
+frequency
+Set this to “FIX” if you don’t want the Cutoff frequency to be affected by the keyboard 
+velocity.
+VEL SENS
+(Cutoff Velocity Sens) -63–+63
+Use this parameter when changing the cutoff frequency to be applied as a result of 
+changes in playing velocity. 
+If you want strongly played notes to raise the cutoff frequency, set this parameter to pos-
+itive (+) settings.
+1234567
+Parameter Value Explanation
+DEPTH -63–+63
+Depth of the TVF envelope
+Higher settings will cause the TVF envelope to produce greater change. Negative (-) set-
+tings will invert the shape of the envelope.
+TIME KF
+(Time Keyfollow) -100–+100
+Use this setting if you want the TVF envelope times (T2–T4) to be affected by the key-
+board location.
+Based on the TVF envelope times for the C4 key (center C), positive (+) settings will cause 
+notes higher than C4 to have increasingly shorter times.
+VEL CURVE
+(Velocity Curve) FIX, 1–7
+Curve that determines how keyboard playing dynamics (velocity) will affect the TVF 
+envelope
+Set this to “FIX” if you don’t want the TVF Envelope to be affected by the keyboard veloc-
+ity.
+VEL SENS
+(Velocity Sens) -63–+63
+Specifies how keyboard playing dynamics will affect the depth of the TVF envelope.
+Positive (+) settings will cause the TVF envelope to have a greater effect for strongly 
+played notes, and negative (-) settings will cause the effect to be less.
+T1 SENS -63–+63
+This allows keyboard dynamics to affect the T1 of the TVF envelope.
+If you want T1 to be speeded up for strongly played notes, set this parameter to a posi-
+tive (+) value.
+T4 SENS -63–+63
+Use this parameter when you want key release speed to affect the T4 value of the TVF 
+envelope.
+If you want T4 to be speeded up for quickly released notes, set this parameter to a posi-
+tive (+) value.
+T1–4 
+(Time 1–4) 0–127 TVF envelope times (T1–T4)
+Higher settings will lengthen the time until the next cutoff frequency level is reached.
+L0–4
+(Level 0–4) 0–127
+TVF envelope levels (L0–L4)
+Specify how the cutoff frequency will change at each point, relative to the Cutoff Fre-
+quency value.
+1234567
+
+===== PAGE 34 =====
+34
+Detailed Editing for a Patch (PATCH Parameters)
+TVA adjusts the volume.
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+T1 T2 T3 T4
+L3L1
+L0
+L2 L4
+TVF Envelope
+Time
+Note on
+C4C3C2C1 C5 C6 C7
+0
++50
++100
+-50
+-100
+Key
+Time Time Keyfollow
+TVA
+Parameter Value Explanation
+LEVEL  0–127 Volume of the tone
+This setting is useful primarily for adjusting the volume balance between tones.
+VEL CURVE
+(Velocity Curve) FIX, 1–7
+Curve that determines how keyboard playing dynamics (velocity) will affect the volume
+Set this to “FIX” if you don’t want the volume of the tone to be affected by the keyboard 
+velocity.
+VEL SENS
+(Velocity Sens) -63–+63
+Set this when you want the volume of the tone to change depending on keyboard 
+playing dynamics
+Set this to a positive (+) value to have the changes in tone volume increase the more 
+forcefully the keys are played; to make the tone play more softly as you play harder, set 
+this to a negative (-) value.
+BIAS
+Bias causes the volume to be affected by the keyboard position. This is useful for changing volume through keyboard position (pitch) when 
+playing acoustic instruments.
+BIAS LEVEL -100–+100
+Angle of the volume change that will occur in the selected Bias Direction
+Larger settings will produce greater change. Negative (-) values will invert the change 
+direction.
+BIAS POSITION C-1 –G9 Key relative to which the volume will be modified
+BIAS DIRECTION
+LOWER,
+UPPER,
+LO&UP,
+ALL
+Direction in which change will occur starting from the Bias Position
+LOWER: The volume will be modified for the keyboard area below the Bias Position.
+UPPER: The volume will be modified for the keyboard area above the Bias Position.
+LO&UP: The volume will be modified symmetrically toward the left and right of the Bias 
+Position.
+ALL: The volume changes linearly with the Bias Position at the center.
+1234567
+C-1 G9
++
+0
+–
+C-1 G9
++
+0
+–
+C-1 G9
++
+0
+–
+C-1 G9
++
+0
+–
++
+0
+– +
+0
+–
+LOWER LO&UPUPPER ALL
+Bias Position
+LevelLevel LevelLevel
+Key KeyKey Key
+Bias PositionBias Position Bias Position
+
+===== PAGE 35 =====
+35
+Detailed Editing for a Patch (PATCH Parameters)
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+ 
+Parameter Value Explanation
+PAN  L64–0–63R Left/right position of the tone
+PAN KF
+(Pan Keyfollow) -100–+100
+Use this parameter if you want key position to affect panning.
+Positive (+) settings will cause notes higher than C4 key (center C) to be panned increas-
+ingly further toward the right, and negative (-) settings will cause notes higher than C4 
+key (center C) to be panned toward the left. Larger settings will produce greater change.
+RANDOM PAN DEPTH 0–63
+Use this parameter when you want the stereo location to change randomly each time 
+you press a key.
+Higher settings will produce a greater amount of change.
+ALT. PAN DEPTH
+(Alternate Pan Depth) L63–0–63R
+This setting causes panning to be alternated between left and right each time a key is 
+pressed.
+Higher settings will produce a greater amount of change. “L” or “R” settings will reverse 
+the order in which the pan will alternate between left and right. For example if two tones 
+are set to “L” and “R” respectively, the panning of the two tones will alternate each time 
+they are played.
+C4C3C2C1 C5 C6 C7
+0
++50
++100
+-50
+-100
+o
+L
+R
+Pan Pan Keyfollow
+Key
+*  When a TYPE 02–10 has been selected for "STRUCTURE" (p. 27), the set-
+tings for PAN KF, RANDOM PAN DEPTH, and ALT. PAN DEPTH for tone 1 (3) 
+will be in concord with the settings for tone 2 (4). (This is because the outputs 
+of tones 1 and 2 are consolidated in tone 2, and the outputs of tones 3 and 4 
+are consolidated in tone 4.)
+
+===== PAGE 36 =====
+36
+Detailed Editing for a Patch (PATCH Parameters)
+AMP ENV (TVA ENVELOPE)
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+Parameter Value Explanation
+TIME KF
+(TIME Keyfollow) -100–+100
+Use this setting if you want the TVA envelope times (T2–T4) to be affected by the key-
+board location. 
+Based on the TVA envelope times for the C4 key (center C), positive (+) settings will cause 
+notes higher than C4 to have increasingly shorter times, and negative (-) settings will 
+cause them to have increasingly longer times. Larger settings will produce greater 
+change.
+T1 SENS -63–+63
+This allows keyboard dynamics to affect the T1 of the TVA envelope.
+If you want Time 1 to be speeded up for strongly played notes, set this parameter to a 
+positive (+) value. If you want it to be slowed down, set this to a negative (-) value.
+T4 SENS -63–+63
+Use this parameter when you want key release speed to affect the T4 value of the TVA 
+envelope.
+If you want T4 to be speeded up for quickly released notes, set this parameter to a posi-
+tive (+) value. If you want it to be slowed down, set this to a negative (-) value.
+T1–4 
+(Time 1–4) 0–127 TVA envelope times (T1–T4)
+Higher settings will lengthen the time until the next volume level is reached.
+L1–3
+(Level 1–3) 0–127 TVA envelope levels (L1–L3)
+Specify how the volume will change at each point, relative to the LEVEL value.
+T1 T2 T3 T4
+L3L1 L2
+Level
+TVA Envelope
+Time
+Note on
+C4C3C2C1 C5 C6 C7
+0
++50
++100
+-50
+-100
+Key
+Time Time Keyfollow
+
+===== PAGE 37 =====
+37
+Detailed Editing for a Patch (PATCH Parameters)
+OUTPUT
+An LFO (Low Frequency Oscillator) causes change over a cycle in a sound. Each tone has two LFOs (LFO1/LFO2), and these can be used 
+to cyclically change the pitch, cutoff frequency and volume to create modulation-type effects such as vibrato, wah and tremolo. Both 
+LFOs have the same parameters so only one explanation is needed.
+Parameter Value Explanation
+SEND LEVEL OUT 
+(Output Level) 0–127 Level of the signal that is sent to the output destination specified by OUTPUT ASSIGN
+SEND LEVEL (OUTPUT ASSIGN = MFX)
+CHO (Chorus Send) 0–127 Level of the signal sent to chorus for each tone if the tone is sent through MFX
+REV (Reverb Send) 0–127 Level of the signal sent to reverb for each tone if the tone is sent through MFX
+SEND LEVEL (OUTPUT ASSIGN = non MFX)
+CHO (Chorus Send) 0–127 Level of the signal sent to chorus for each tone if the tone is not sent through MFX
+REV (Reverb Send) 0–127 Level of the signal sent to reverb for each tone if the tone is not sent through MFX
+OUTPUT ASSIGN
+MFX, 
+L+R, 
+L,
+R
+Specifies how the direct sound of each tone will be output.
+MFX: Output in stereo through multi-effects. You can also apply chorus or reverb to the 
+sound that passes through multi-effects.
+L+R: Output in stereo to the OUTPUT jacks without passing through the multi-effect
+L: Output in mono to the OUTPUT L jack without passing through the multi-effect
+R: Output in mono to the OUTPUT R jack without passing through the multi-effect
+*   If the PATCH OUTPUT ASSIGN is set to anything other than “TONE,” these settings will be 
+ignored.
+*   If "STRUCTURE" (p. 27) is set to TYPE 02–10, the settings for tone 1 (3) will follow the set-
+tings of tone 2 (4). (This is because the outputs of tones 1 and 2 are combined into tone 2, and 
+the outputs of tones 3 and 4 are combined into tone 4.)
+*  Sounds are output to chorus and reverb in mono at all times.
+*  The output destination of the signal after passing through the chorus is set with the
+"CHORUS OUTPUT SELECT" (p. 15).
+LFO
+Parameter Value Explanation
+WAVEFORM
+SIN, TRI, 
+SAW-UP, 
+SAW-DW,
+SQR,
+RND,
+BEND-UP, 
+BEND-DW, 
+TRP,
+S&H,
+CHS,
+VSIN,
+STEP
+Waveform of the LFO
+SIN: Sine wave
+TRI: Triangle wave
+SAW-UP: Sawtooth wave
+SAW-DW: Sawtooth wave (negative polarity)
+SQR: Square wave
+RND: Random wave
+BEND-UP: Once the attack of the waveform output by the LFO is allowed to develop in 
+standard fashion, the waveform then continues without further change.
+BEND-DW: Once the decay of the waveform output by the LFO is allowed to develop in 
+standard fashion, the waveform then continues without further change.
+TRP: Trapezoidal wave
+S&H: Sample & Hold wave (one time per cycle, LFO value is changed)
+CHS: Chaos wave
+VSIN: Modified sine wave. The amplitude of a sine wave is randomly varied once each 
+cycle.
+STEP: A waveform generated by the data specified by LFO Step 1–16. This produces 
+stepped change with a fixed pattern similar to a step modulator.
+*   If you set this to “BEND-UP” or “BEND-DW,” you must turn the KEY TRIGGER parameter (p. 38) 
+to “ON.” If this is “OFF,” it will have no effect.
+
+===== PAGE 38 =====
+38
+Detailed Editing for a Patch (PATCH Parameters)
+Parameter marked with a “” can be controlled using specified MIDI messages("MATRIX CONTROL" (p. 41)).
+)
+Parameter Value Explanation
+OFFSET -100, -50, 0, 
++50, +100
+Raises or lowers the LFO waveform relative to the central value (pitch or cutoff fre-
+quency).
+Positive (+) settings will move the waveform so that modulation will occur from the cen-
+tral value upward. Negative (-) settings will move the waveform so that modulation will 
+occur from the central value downward.
+RATE VALUE  0–127 Modulation speed of the LFO
+*  This setting will be ignored if the Waveform parameter is set to “CHS.”
+RATE DETUNE 0–127
+Makes subtle changes in the LFO cycle rate (Rate parameter) each time a key is pressed.
+Higher settings will cause greater change. 
+*  This parameter is invalid when RATE VALUE is set to “note.”
+DELAY TIME 0–127
+Time elapsed before the LFO effect is applied (the effect continues) after the key is 
+pressed (or released)
+When using violin, wind, or certain other instrument sounds in a performance, rather 
+than having vibrato added immediately after the sounds are played, it can be effective to 
+add the vibrato after the note is drawn out somewhat.
+*  Set this according to your purpose as described in "How to Apply the LFO" (p. 39).
+DELAY KEYFOLLOW
+(Delay Time Keyfollow) -100–+100
+Adjusts the value for the DELAY TIME parameter depending on the key position, rela-
+tive to the C4 key (center C).
+If this is set to a positive “+” value, the DELAY TIME will become shorter as you play notes 
+higher than the C4 key (middle C).
+C4C3C2C1 C5 C6 C7
+0
++50
++100
+-50
+-100
+Key
+Time Time Keyfollow
+Parameter Value Explanation
+FADE MODE
+ON-IN,
+ON-OUT,
+OFF-IN,
+OFF-OUT
+How the LFO will be applied
+*  Set this according to your purpose as described in “How to Apply the LFO” (below).
+FADE TIME 0–127 Time over which the LFO amplitude will reach the maximum (minimum)
+*  Set this according to your purpose as described in “How to Apply the LFO” (below).
+KEY TRIGGER OFF, ON Specifies whether the LFO cycle will be synchronized to begin when the key is pressed 
+(ON) or not (OFF).
+DEPTH PITCH  -63–+63 How deeply the LFO will affect pitch
+DEPTH TVF  -63–+63 How deeply the LFO will affect the cutoff frequency
+DEPTH TVA  -63–+63 How deeply the LFO will affect the volume
+DEPTH PAN  -63–+63 How deeply the LFO will affect the pan
+
+===== PAGE 39 =====
+39
+Detailed Editing for a Patch (PATCH Parameters)
+Positive (+) and negative (-) settings for the DEPTH parameters result in differing kinds of change in pitch and volume. For example, if 
+you set the DEPTH parameter to a positive (+) value for one tone, and set another tone to the same numerical value, but make it neg-
+ative (-), the modulation phase for the two tones will be the reverse of each other. This allows you to shift back and forth between two 
+different tones, or combine it with the Pan setting to cyclically change the location of the sound image.
+*  If "STRUCTURE" (p. 27) is set to TYPE 02–10, the settings for tone 1 (3) will follow the settings of tone 2 (4). (This is because the outputs of tones 1 
+and 2 are combined into tone 2, and the outputs of tones 3 and 4 are combined into tone 4.)
+How to Apply the LFO
+STEP LFO
+ Apply the LFO gradually after the key is pressed
+FADE MODE: ON-IN
+DELAY TIME: Time from when the keyboard is played until the LFO begins to 
+be applied
+FADE TIME: Time over which the LFO amplitude will reach the maximum after 
+the DELAY TIME has elapsed
+ Apply the LFO immediately when the key is pressed, and then gradually begin to decrease the effect
+FADE MODE: ON-OUT
+DELAY TIME: Time that the LFO will continue after the keyboard is played
+FADE TIME: Time over which the LFO amplitude will reach the minimum after 
+the DELAY TIME has elapsed
+ Apply the LFO gradually after the key is released
+FADE MODE: OFF-IN
+DELAY TIME: Time from when the keyboard is released until the LFO begins to 
+be applied
+FADE TIME: Time over which the LFO amplitude will reach the maximum after 
+the DELAY TIME has elapsed
+ Apply the LFO from when the key is pressed until it is released, and gradually begin to decrease the effect 
+when the key is released
+FADE MODE: OFF-OUT
+DELAY TIME: Time that the LFO will continue after the keyboard is released
+FADE TIME: Time over which the LFO amplitude will reach the minimum after 
+the DELAY TIME has elapsed
+Note on
+high (more)
+low (less)
+Delay
+Time Fade Time
+Depth
+Note
+on
+high (more)
+low (less)
+Delay Time Fade Time
+Depth
+high (more)
+low (less)
+Delay
+Time Fade Time
+Depth
+Note
+on
+Note on
+high (more)
+low (less)
+Delay
+Time Fade Time
+Depth
+Parameter Value Explanation
+STEP TYPE TYPE1, TYPE2
+When generating an LFO waveform from the data specified in LFO Step 1–16, specify 
+whether the level will change abruptly at each step or will be connected linearly.
+TYPE1: stair-step change
+TYPE2: linear change
+STEP 1–16 -36–+36
+Specifies the data for the Step LFO.
+If the LFO PITCH DEPTH is +63, each +1 unit of the step data corresponds to a pitch of 
++50 cents.
+
+===== PAGE 40 =====
+40
+Detailed Editing for a Patch (PATCH Parameters)
+You can use the force with which keys are played to control the way each Tone is played.
+When using the Matrix Control to have different tones played, set the lowest value (LOWER) and highest value (UPPER) of the value of 
+the MIDI message used.
+Instead of using Velocity, you can also have tones substituted using the Matrix Control. However, the keyboard velocity and the 
+Matrix Control cannot be used simultaneously to make different tones to sound. When using the Matrix Control to switch tones, 
+set the VELOCITY CONTROL parameter to “OFF.”
+VELOCITY RANGE
+Velo Range Lower Velo Range Upper
+Velo Fade Lower Velo Fade Upper
+Level The tone sounded 
+when you play softly
+The tone sounded 
+when you play strongly
+Velocity
+Parameter Value Explanation
+VELOCITY CONTROL
+OFF,
+ON, 
+RANDOM, 
+CYCLE
+Determines whether a different tone is played (ON) or not (OFF) depending on the 
+force with which the key is played (velocity).
+RANDOM: The patch’s constituent tones will sound randomly, regardless of any Velocity 
+messages.
+CYCLE: The patch’s constituent tones will sound consecutively, regardless of any Veloc-
+ity messages.
+TMT CONTROL SW OFF, ON Use the Matrix Control (p. 41) to enable (ON), or disable (OFF) sounding of different 
+tones.
+FADE LOWER 0–127
+Determines what will happen to the tone’s level when the tone is played at a velocity 
+lower than Velocity Range Lower.
+If you don’t want the tone to sound at all, set this parameter to “0.”
+LOWER 1–(UPPER) Specifies the lowest velocity at which the tone will sound.
+UPPER (LOWER)–127 Specifies the highest velocity at which the tone will sound.
+FADE UPPER 0–127
+Determines what will happen to the tone’s level when the tone is played at a velocity 
+greater than Velocity Range Upper.
+If you don’t want the tone to sound at all, set this parameter to “0.”
+
+===== PAGE 41 =====
+41
+Detailed Editing for a Patch (PATCH Parameters)
+You can use the note number to control the way each Tone is played.
+The function which allows you use MIDI messages to make changes in realtime to the tone parameters is called the Matrix Control. 
+Up to four Matrix Controls can be used in a single patch.
+To use the Matrix Control, specify which MIDI message (SOURCE) will be used to control which parameter (DESTINATION), and how 
+greatly (SENS), and the tone to which the effect is applied (TONE).
+VELOCITY and KEYFOLLOW correspond to Note messages.
+Although there are no MIDI messages for LFO 1 through TVA Envelope, they can be used as Matrix Control. In this case, you can 
+change the tone settings in realtime by playing patches.
+If RCV BENDER, RCV EXP, or RCV HOLD-1 (p. 43) are “ON,” incoming MIDI messages of these types will affect the Pitch Bend, 
+Expression, or Hold 1 settings at the same time that they affect the target parameter (DESTINATION). If you want these incom-
+ing messages to affect only the target parameter, turn these settings “OFF.”
+KEY RANGE
+Key Range Lower Key Range Upper
+Key Fade Lower Key Fade Upper
+Level The tone sounded 
+in the lower range
+The tone sounded 
+in the upper range
+Pitch
+Parameter Value Explanation
+FADE LOWER 0–127
+Determines what will happen to the tone’s level when a note that’s lower than Key 
+Range Lower is played.
+If you don’t want the tone to sound at all, set this parameter to “0.”
+LOWER C-1 –(UPPER) Specifies the lowest note that the tone will sound for each tone.
+UPPER (LOWER)–G9 Specifies the highest note that the tone will sound for each tone.
+FADE UPPER 0–127
+Determines what will happen to the tone’s level when a note that’s higher than Key 
+Range Upper is played.
+If you don’t want the tone to sound at all, set this parameter to “0.”
+MATRIX CONTROL
+Parameter Value Explanation
+SOURCE 1–4
+OFF, 
+CC01–31,
+CC33–95, 
+PITCH BEND, 
+AFTERTOUCH, 
+VELOCITY, 
+KEYFOLLOW, 
+LFO1,
+LFO2,
+PITCH ENV,
+TVF ENV,
+TVA ENV
+MIDI message used to change the tone parameter with the Matrix Control
+OFF: Matrix control will not be used.
+CC01-31,33-95: Controller numbers 1–31, 33–95
+PITCH BEND: Pitch Bend    
+AFTERTOUCH: Aftertouch
+VELOCITY: Pressure you press a key with    
+KEYFOLLOW: Keyboard position with C4 as 0
+LFO1: LFO 1    
+LFO2: LFO 2
+PITCH ENV: Pitch envelope    
+TVF ENV: TVF envelope    
+TVA ENV: TVA envelope
+
+===== PAGE 42 =====
+42
+Detailed Editing for a Patch (PATCH Parameters)
+Parameter Value Explanation
+DESTINATION 1–4
+OFF, 
+PITCH, 
+CUTOFF, 
+RESONANCE, 
+LEVEL, 
+PAN, 
+OUTPUT LEVEL, 
+CHORUS SEND, 
+REVERB SEND, 
+LFO1/2 PCH DEPTH, 
+LFO1/2 TVF DEPTH, 
+LFO1/2 TVA DEPTH, 
+LFO1/2 PAN DEPTH, 
+LFO1/2 RATE, 
+PCH ENV A-TIME, 
+PCH ENV D-TIME, 
+PCH ENV R-TIME, 
+TVF ENV A-TIME, 
+TVF ENV D-TIME, 
+TVF ENV R-TIME, 
+TVA ENV A-TIME, 
+TVA ENV D-TIME, 
+TVA ENV R-TIME, 
+TMT, FXM DEPTH, 
+MFX-CTRL1–4
+Tone parameters that are to be controlled when using the Matrix Control
+Up to four parameters can be specified for each Matrix Control, and controlled simulta-
+neously.
+*  In this manual, parameters that can be controlled using the Matrix Control are marked with a 
+“”
+SENS 1–4 -63–+63
+Amount of the Matrix Control’s effect that is applied
+If you wish to modify the selected parameter in a positive (+) direction—i.e., a higher 
+value, toward the right, or faster etc.—from its current setting, select a positive (+) value. 
+If you wish to modify the selected parameter in a negative (-) direction—i.e., a lower 
+value, toward the left, or slower etc.—from its current setting, select a negative (-) value. 
+For either positive or negative settings, greater absolute values will allow greater 
+amounts of change. Set this to “0” if you don’t want to apply the effect.
+TONE 1–4
+(Tone Switch 1–4)
+OFF, 
+ON, 
+REV
+Tone to which the effect is applied when using the Matrix Control
+OFF: The effect will not be applied.
+ON: The effect will be applied.
+REV: The effect will be applied in reverse.
+
+===== PAGE 43 =====
+43
+Detailed Editing for a Patch (PATCH Parameters)
+CONTROL SW
+Parameter Value Explanation
+RCV BENDER
+(Receive Bender) OFF, ON For each tone, specify whether MIDI Pitch Bend messages will be received (ON), or not 
+(OFF).
+RCV EXP
+(Receive Expression) OFF, ON For each tone, specify whether MIDI Expression messages will be received (ON), or not 
+(OFF).
+RCV HOLD-1
+(Receive Hold-1) OFF, ON
+For each tone, specify whether MIDI Hold-1 messages will be received (ON), or not 
+(OFF).
+*   If “NO-SUS” is selected for ENV MODE parameter, this setting will have no effect.
+REDAMPER OFF, ON
+You can specify, on an individual tone basis, whether or not the sound will be held 
+when a Hold 1 message is received after a key is released, but before the sound has 
+decayed to silence.
+If you want to sustain the sound, set this “ON.” This function is effective for piano sounds.
+*   In order to use this function, you must also set RCV HOLD-1 to “ON.”
+RCV PAN MODE
+(Receive Pan Mode)
+CONTINUOUS,
+KEY-ON
+For each tone, specify how pan messages will be received.
+CONTINUOUS: Whenever Pan messages are received, the stereo position of the tone 
+will be changed.
+KEY-ON: The pan of the tone will be changed only when the next note is played. If a pan 
+message is received while a note is sounding, the panning will not change until the next 
+key is pressed.
+*  The channels cannot be set so as not to receive Pan messages.
+ENV MODE
+(Envelope Mode)
+NO-SUS, 
+SUSTAIN
+When a loop waveform (p. 19) is selected, the sound will normally continue as long as 
+the key is pressed. If you want the sound to decay naturally even if the key remains 
+pressed, set this to “NO-SUS.”
+*   If a one-shot type wave (p. 19) is selected, it will not sustain even if this parameter is set to 
+“SUSTAIN.”
+
+===== PAGE 44 =====
+44
+Effects List
+The multi-effects feature 78 different kinds of effects. Some of the effects consist of two or more different effects connected in series.
+Parameters marked with a sharp “#” can be controlled using a Multi-Effects Control (p. 16) or Matrix Control (p. 41). 
+(Two setting items will change simultaneously for “#1” and “#2.”)
+Multi-Effects Parameters (MFX)
+FILTER (10 types)
+01 EQUALIZER p. 46
+02 SPECTRUM p. 46
+03 ISOLATOR p. 46
+04 LOW BOOST p. 47
+05 SUPER FILTER p. 47
+06 STEP FILTER p. 47
+07 ENHANCER p. 48
+08 AUTO WAH p. 48
+09 HUMANIZER p. 48
+10 SPEAKER SIMULATOR p. 49
+MODULATION (12 types)
+11 PHASER p. 49
+12 STEP PHASER p. 50
+13 MULTI STAGE PHASER p. 50
+14 INFINITE PHASER p. 50
+15 RING MODULATOR p. 51
+16 STEP RING MODULATOR p. 51
+17 TREMOLO p. 51
+18 AUTO PAN p. 52
+19 STEP PAN p. 52
+20 SLICER p. 52
+21 ROTARY p. 53
+22 VK ROTARY p. 53
+CHORUS (12 types)
+23 CHORUS p. 54
+24 FLANGER p. 54
+25 STEP FLANGER p. 55
+26 HEXA-CHORUS p. 55
+27 TREMOLO CHORUS p. 56
+28 SPACE-D p. 56
+29 3D CHORUS p. 56
+30 3D FLANGER p. 57
+31 3D STEP FLANGER p. 57
+32 2BAND CHORUS p. 58
+33 2BAND FLANGER p. 58
+34 2BAND STEP FLANGER p. 59
+DYNAMICS (8 types)
+35 OVERDRIVE p. 59
+36 DISTORTION p. 59
+37 VS OVERDRIVE p. 60
+38 VS DISTORTION p. 60
+39 GUITAR AMP SIMULATOR p. 60
+40 COMPRESSOR p. 61
+41 LIMITER p. 61
+42 GATE p. 61
+DELAY (13 types)
+43 DELAY p. 62
+44 LONG DELAY p. 62
+45 SERIAL DELAY p. 63
+46 MODULATION DELAY p. 63
+47 3TAP PAN DELAY p. 64
+48 4TAP PAN DELAY p. 64
+49 MULTI TAP DELAY p. 65
+50 REVERSE DELAY p. 65
+51 SHUFFLE DELAY p. 66
+52 3D DELAY p. 66
+53 ANALOG DELAY p. 67
+54 ANALOG LONG DELAY p. 67
+55 TAPE ECHO p. 68
+LO-FI (5 types)
+56 LOFI NOISE p. 68
+57 LOFI COMPRESS p. 69
+58 LOFI RADIO p. 69
+59 TELEPHONE p. 69
+60 PHONOGRAPH p. 70
+PITCH (3 types)
+61 PITCH SHIFTER p. 70
+62 2VOICE PITCH SHIFTER p. 71
+63 STEP PITCH SHIFTER p. 71
+REVERB (2 types)
+64 REVERB p. 72
+65 GATED REVERB p. 72
+COMBINATION (12 types)
+66 OVERDRIVE  CHORUS p. 72
+67 OVERDRIVE  FLANGER p. 73
+68 OVERDRIVE  DELAY p. 73
+69 DISTORTION  CHORUS p. 73
+70 DISTORTION  FLANGER p. 74
+71 DISTORTION  DELAY p. 74
+72 ENHANCER  CHORUS p. 74
+73 ENHANCER  FLANGER p. 74
+74 ENHANCER  DELAY p. 75
+75 CHORUS  DELAY p. 75
+76 FLANGER  DELAY p. 75
+77 CHORUS  FLANGER p. 76
+PIANO (1 type)
+78 SYMPATHETIC RESONANCE p. 76
+
+===== PAGE 45 =====
+45
+Effects List
+The following 3D effects utilize RSS (Roland Sound Space) 
+technology to create a spaciousness that cannot be produced 
+by delay, reverb, chorus, etc.
+52: 3D DELAY
+29: 3D CHORUS
+30: 3D FLANGER
+31: 3D STEP FLANGER
+When using these effects, we recommend that you place your 
+speakers as follows. Also, make sure that the speakers are at a 
+sufficient distance from the walls on either side.
+If the left and right speakers are too far apart, or if there is too 
+much reverberation, the full 3D effect may not appear.
+Each of these effects has an “OUTPUT MODE” parameter. If the 
+sound from the OUTPUT jacks is to be heard through speak-
+ers, set this parameter to “SPEAKER.” If the sound is to be 
+heard through headphones, set it to “PHONES.” This will 
+ensure that the optimal 3D effect will be heard. If this parame-
+ter is not set correctly, the full 3D effect may not appear.
+06: STEP FILTER
+16: STEP RING MODULATOR
+19: STEP PAN
+20: SLICER
+63: STEP PITCH SHIFTER
+The above five types contain a sixteen-step sequencer.
+For these types, you can use a "Multi-Effect Control" (p. 16) to 
+reset the sequence to play from the first step.
+To do this, set the multi-effect control DESTINATION to “STEP 
+RESET.”
+For example if you are using the modulation bar to control 
+the effect, you would make the following settings.
+SOURCE:  CC01: MODULATION
+DESTINATION:  STEP RESET
+SENS:  +63
+With these settings, the sequence will play back from the first 
+step whenever you operate the modulation bar.
+When Using 3D Effects About the STEP RESET function
+
+===== PAGE 46 =====
+46
+Effects List
+This is a four-band stereo equalizer (low, mid x 2, high).
+This is a stereo spectrum. Spectrum is a type of filter which 
+modifies the timbre by boosting or cutting the level at spe-
+cific frequencies.
+This is an equalizer which cuts the volume greatly, allowing 
+you to add a special effect to the sound by cutting the volume 
+in varying ranges.
+01: EQUALIZER
+Parameter Value Explanation
+Low Freq 200, 400 Hz Frequency of the low range
+Low Gain # -15–+15 dB Gain of the low range
+Mid1 Freq 200–8000 Hz Frequency of the middle range 1
+Mid1 Gain -15–+15 dB Gain of the middle range 1
+Mid1 Q 0.5, 1.0, 2.0,
+4.0, 8.0
+Width of the middle range 1
+Set a higher value for Q to narrow 
+the range to be affected.
+Mid2 Freq 200–8000 Hz Frequency of the middle range 2
+Mid2 Gain -15–+15 dB Gain of the middle range 2
+Mid2 Q 0.5, 1.0, 2.0,
+4.0, 8.0
+Width of the middle range 2
+Set a higher value for Q to narrow 
+the range to be affected.
+High Freq 2000, 4000,
+8000 Hz Frequency of the high range
+High Gain # -15–+15 dB Gain of the high range
+Level # 0–127 Output Level
+02: SPECTRUM
+Parameter Value Explanation
+Band1 (250Hz)
+-15–+15 dB Gain of each frequency band
+Band2 (500Hz)
+Band3 (1000Hz)
+Band4 (1250Hz)
+Band5 (2000Hz)
+Band6 (3150Hz)
+Band7 (4000Hz)
+Band8 (8000Hz)
+Q 0.5, 1.0, 2.0,
+4.0, 8.0
+Simultaneously adjusts the width 
+of the adjusted ranges for all the 
+frequency bands.
+Level # 0–127 Output Level
+L in
+R in
+L out
+R out
+4-Band EQ
+4-Band EQ
+L in
+R in
+L out
+R out
+Spectrum
+Spectrum
+03: ISOLATOR
+Parameter Value Explanation
+Boost/Cut 
+Low #
+-60–+4 dB
+These boost and cut each of the 
+High, Middle, and Low frequency 
+ranges.
+At -60 dB, the sound becomes 
+inaudible. 0 dB is equivalent to the 
+input level of the sound.
+Boost/Cut 
+Mid #
+Boost/Cut 
+High #
+Anti Phase 
+Low Sw OFF, ON
+Turns the Anti-Phase function on 
+and off for the Low frequency 
+ranges.
+When turned on, the counter-
+channel of stereo sound is 
+inverted and added to the signal.
+Anti Phase 
+Low Level 0–127
+Adjusts the level settings for the 
+Low frequency ranges.
+Adjusting this level for certain fre-
+quencies allows you to lend 
+emphasis to specific parts. (This is 
+effective only for stereo source.)
+Anti Phase 
+Mid Sw OFF, ON Settings of the Anti-Phase function 
+for the Middle frequency ranges
+The parameters are the same as for 
+the Low frequency ranges.
+Anti Phase 
+Mid Level 0–127
+Low Boost Sw OFF, ON
+Turns Low Booster on/off.
+This emphasizes the bottom to 
+create a heavy bass sound.
+Low Boost 
+Level 0–127
+Increasing this value gives you a 
+heavier low end.
+*    Depending on the Isolator and filter 
+settings this effect may be hard to 
+distinguish.
+Level 0–127 Output Level
+L in
+R in
+L out
+R out
+Isolator
+Low Boost
+Low Boost
+Isolator
+
+===== PAGE 47 =====
+47
+Effects List
+Boosts the volume of the lower range, creating powerful lows.
+This is a filter with an extremely sharp slope. The cutoff fre-
+quency can be varied cyclically.
+This is a filter whose cutoff frequency can be modulated in 
+steps. You can specify the pattern by which the cutoff fre-
+quency will change.
+You can use multi-effect control to make the step sequence play 
+again from the beginning ("About the STEP RESET function" (p. 45)).
+04: LOW BOOST
+Parameter Value Explanation
+Boost 
+Frequency # 50–125 Hz Center frequency at which the 
+lower range will be boosted
+Boost Gain # 0–+12 dB Amount by which the lower range 
+will be boosted
+Boost Width
+WIDE, 
+MID, 
+NARROW
+Width of the lower range that will 
+be boosted
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Level 0–127 Output level
+05: SUPER FILTER
+Parameter Value Explanation
+Filter Type
+LPF, 
+BPF, 
+HPF, 
+NOTCH
+Filter type
+Frequency range that will pass 
+through each filter
+LPF: frequencies below the cutoff
+BPF: frequencies in the region of 
+the cutoff
+HPF: frequencies above the cutoff
+NOTCH: frequencies other than 
+the region of the cutoff
+Filter Slope -12, -24, -36 dB
+Amount of attenuation per octave
+-12dB: gentle
+-24dB: steep
+-36dB: extremely steep
+Filter Cutoff # 0–127
+Cutoff frequency of the filter
+Increasing this value will raise the 
+cutoff frequency.
+Filter 
+Resonance # 0–127
+Filter resonance level
+Increasing this value will empha-
+size the region near the cutoff fre-
+quency.
+Filter Gain 0–+12 dB Amount of boost for the filter out-
+put
+Modulation 
+Sw OFF,ON On/off switch for cyclic change
+L in
+R in
+L out
+R out
+Low Boost
+2-Band EQ
+2-Band EQ
+Low Boost
+L in
+R in
+L out
+R out
+Super Filter
+Super Filter
+Parameter Value Explanation
+Modulation 
+Wave
+TRI, 
+SQR, 
+SIN, 
+SAW1, 
+SAW2
+How the cutoff frequency will be 
+modulated
+TRI: triangle wave
+SQR: square wave
+SIN: sine wave
+SAW1: sawtooth wave (upward)
+SAW2: sawtooth wave (down-
+ward)
+Rate # 0.05–10.00 Hz Rate of modulation
+Depth 0–127 Depth of modulation
+Attack # 0–127
+Speed at which the cutoff fre-
+quency will change
+This is effective if Modulation 
+Wave is SQR, SAW1, or SAW2.
+Level 0–127 Output level
+06: STEP FILTER
+Parameter Value Explanation
+Step 01–16 0–127 Cutoff frequency at each step
+Rate # 0.05–10.00 Hz Rate of modulation
+Attack # 0–127 Speed at which the cutoff fre-
+quency changes between steps
+Filter Type
+LPF, 
+BPF, 
+HPF, 
+NOTCH
+Filter type
+Frequency range that will pass 
+through each filter
+LPF: frequencies below the cutoff
+BPF: frequencies in the region of 
+the cutoff
+HPF: frequencies above the cutoff
+NOTCH: frequencies other than 
+the region of the cutoff
+Filter Slope -12, -24, -36 dB
+Amount of attenuation per octave
+-12dB: gentle
+-24dB: steep
+-36dB: extremely steep
+Filter 
+Resonance # 0–127
+Filter resonance level
+Increasing this value will empha-
+size the region near the cutoff fre-
+quency.
+Filter Gain 0–+12 dB Amount of boost for the filter out-
+put
+Level 0–127 Output level
+SAW1 SAW2
+L in
+R in
+L out
+R out
+Step Filter
+Step Filter
+
+===== PAGE 48 =====
+48
+Effects List
+Controls the overtone structure of the high frequencies, add-
+ing sparkle and tightness to the sound.
+Cyclically controls a filter to create cyclic change in timbre.
+Adds a vowel character to the sound, making it similar to a 
+human voice.
+07: ENHANCER
+Parameter Value Explanation
+Sens # 0–127 Sensitivity of the enhancer
+Mix # 0–127 Level of the overtones generated by 
+the enhancer
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level 0–127 Output Level
+08: AUTO WAH
+Parameter Value Explanation
+Filter Type LPF, BPF
+Type of filter
+LPF: The wah effect will be applied 
+over a wide frequency range.
+BPF: The wah effect will be applied 
+over a narrow frequency range.
+Manual # 0–127 Adjusts the center frequency at 
+which the effect is applied.
+Peak 0–127
+Adjusts the amount of the wah effect 
+that will occur in the range of the 
+center frequency.
+Set a higher value for Q to narrow 
+the range to be affected.
+Sens # 0–127 Adjusts the sensitivity with which the 
+filter is controlled.
+Polarity UP, DOWN
+Sets the direction in which the fre-
+quency will change when the auto-
+wah filter is modulated.
+UP: The filter will change toward a 
+higher frequency.
+DOWN: The filter will change 
+toward a lower frequency.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth # 0–127 Depth of modulation
+Phase # 0–180 deg
+Adjusts the degree of phase shift of 
+the left and right sounds when the 
+wah effect is applied.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level 0–127 Output Level
+L in
+R in
+L out
+R out
+Mix
+Mix
+Enhancer
+Enhancer 2-Band
+EQ
+2-Band
+EQ
+L in
+R in
+L out
+R out
+Auto Wah
+2-Band EQ
+2-Band EQ
+Auto Wah
+09: HUMANIZER
+Parameter Value Explanation
+Drive Sw OFF, ON Turns Drive on/off.
+Drive # 0–127 Degree of distortion
+Also changes the volume.
+Vowel1 a, e, i, o, u Selects the vowel.Vowel2 a, e, i, o, u
+Rate # 0.05–10.00 Hz Frequency at which the two vowels 
+switch
+Depth # 0–127 Effect depth
+Input Sync 
+Sw OFF, ON
+LFO reset on/off
+Determines whether the LFO for 
+switching the vowels is reset by the 
+input signal (ON) or not (OFF).
+Input Sync 
+Threshold 0–127 Volume level at which reset is 
+applied
+Manual # 0–100
+Point at which Vowel 1/2 switch
+49 or less: Vowel 1 will have a lon-
+ger duration.
+50: Vowel 1 and 2 will be of equal 
+duration.
+51 or more: Vowel 2 will have a lon-
+ger duration.
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Pan # L64–63R Stereo location of the output
+Level 0–127 Output level
+Formant 2-Band
+EQ
+L in
+R in
+Overdrive
+L out
+R out
+Pan R
+Pan L
+
+===== PAGE 49 =====
+49
+Effects List
+Simulates the speaker type and mic settings used to record 
+the speaker sound.
+Specifications of each Speaker Type
+The speaker column indicates the diameter of each speaker 
+unit (in inches) and the number of units.
+A phase-shifted sound is added to the original sound and 
+modulated.
+10: SPEAKER SIMULATOR
+Parameter Value Explanation
+Speaker Type (See the table 
+below.) Type of speaker
+Mic Setting 1, 2, 3
+Adjusts the location of the mic that 
+is recording the sound of the 
+speaker.
+This can be adjusted in three steps, 
+with the mic becoming more dis-
+tant in the order of 1, 2, and 3.
+Mic Level # 0–127 Volume of the microphone
+Direct Level # 0–127 Volume of the direct sound
+Level # 0–127 Output Level
+Type Cabinet Speaker Mic
+SMALL 1 small open-back 
+enclosure 10 dynamic
+SMALL 2 small open-back 
+enclosure 10 dynamic
+MIDDLE open back enclosure 12 x 1 dynamic
+JC-120 open back enclosure 12 x 2 dynamic
+BUILT-IN 1 open back enclosure 12 x 2 dynamic
+BUILT-IN 2 open back enclosure 12 x 2 condenser
+BUILT-IN 3 open back enclosure 12 x 2 condenser
+BUILT-IN 4 open back enclosure 12 x 2 condenser
+BUILT-IN 5 open back enclosure 12 x 2 condenser
+BG STACK 1 sealed enclosure 12 x 2 condenser
+BG STACK 2 large sealed enclosure 12 x 2 condenser
+MS STACK 1 large sealed enclosure 12 x 4 condenser
+MS STACK 2 large sealed enclosure 12 x 4 condenser
+METAL STACK large double stack 12 x 4 condenser
+2-STACK large double stack 12 x 4 condenser
+3-STACK large triple stack 12 x 4 condenser
+L in
+R in
+L out
+R out
+Speaker
+Speaker
+11: PHASER
+Parameter Value Explanation
+Mode
+4-STAGE,
+8-STAGE, 
+12-STAGE
+Number of stages in the phaser
+Manual # 0–127
+Adjusts the basic frequency from 
+which the sound will be modu-
+lated.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Polarity INVERSE, 
+SYNCHRO
+Selects whether the left and right 
+phase of the modulation will be the 
+same or the opposite.
+INVERSE: The left and right phase 
+will be opposite. When using a 
+mono source, this spreads the 
+sound.
+SYNCHRO: The left and right 
+phase will be the same. Select this 
+when inputting a stereo source.
+Resonance # 0–127 Amount of feedback
+Cross 
+Feedback -98–+98%
+Adjusts the proportion of the 
+phaser sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Mix # 0–127 Level of the phase-shifted sound
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level 0–127 Output Level
+R in R out
+L in L outPhaser
+Mix
+2-Band
+EQ
+Phaser 2-Band
+EQ
+Mix
+
+===== PAGE 50 =====
+50
+Effects List
+The phaser effect will be varied gradually. Extreme ly high settings of the phase difference produce a 
+deep phaser effect.
+A phaser that continues raising/lowering the frequency at 
+which the sound is modulated.
+12: STEP PHASER
+Parameter Value Explanation
+Mode
+4-STAGE,
+8-STAGE, 
+12-STAGE
+Number of stages in the phaser
+Manual # 0–127
+Adjusts the basic frequency from 
+which the sound will be modu-
+lated.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Polarity INVERSE, 
+SYNCHRO
+Selects whether the left and right 
+phase of the modulation will be the 
+same or the opposite.
+INVERSE: The left and right phase 
+will be opposite. When using a 
+mono source, this spreads the 
+sound.
+SYNCHRO: The left and right 
+phase will be the same. Select this 
+when inputting a stereo source.
+Resonance # 0–127 Amount of feedback
+Cross 
+Feedback -98–+98%
+Adjusts the proportion of the 
+phaser sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Step Rate # 0.10–20.00 Hz Rate of the step-wise change in the 
+phaser effect
+Mix # 0–127 Level of the phase-shifted sound
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level 0–127 Output Level
+R in R out
+L in L outStep Phaser
+Mix
+2-Band
+EQ
+Step Phaser 2-Band
+EQ
+Mix
+13: MULTI STAGE PHASER
+Parameter Value Explanation
+Mode
+4-STAGE, 
+8-STAGE, 
+12-STAGE, 
+16-STAGE, 
+20-STAGE, 
+24-STAGE
+Number of phaser stages
+Manual # 0–127
+Adjusts the basic frequency from 
+which the sound will be modu-
+lated.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Resonance # 0–127 Amount of feedback
+Mix # 0–127 Level of the phase-shifted sound
+Pan # L64–63R Stereo location of the output 
+sound
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level 0–127 Output Level
+14: INFINITE PHASER
+Parameter Value Explanation
+Mode 1, 2, 3, 4 Higher values will produce a 
+deeper phaser effect.
+Speed # -100–+100
+Speed at which to raise or lower 
+the frequency at which the sound 
+is modulated
+ (+: upward / -: downward)
+Resonance # 0–127 Amount of feedback
+Mix # 0–127 Level of the phase-shifted sound
+Pan # L64–63R Panning of the output sound
+Low Gain -15–+15 dB Amount of boost/cut for the 
+low-frequency range
+High Gain -15–+15 dB Amount of boost/cut for the 
+high-frequency range
+Level 0–127 Output volume
+Resonance
+Mix
+L in
+R in
+L out
+R out
+Pan R
+Pan L2-Band
+EQ
+Multi Stage
+Phaser
+2-Band EQ
+L in
+R in
+L out
+R out
+Pan R
+Pan L
+
+===== PAGE 51 =====
+51
+Effects List
+This is an effect that applies amplitude modulation (AM) to 
+the input signal, producing bell-like sounds. You can also 
+change the modulation frequency in response to changes in 
+the volume of the sound sent into the effect.
+This is a ring modulator that uses a 16-step sequence to vary 
+the frequency at which modulation is applied.
+You can use multi-effect control to make the step sequence play 
+again from the beginning ("About the STEP RESET function" (p. 45)).
+Cyclically modulates the volume to add tremolo effect to the 
+sound.
+15: RING MODULATOR
+Parameter Value Explanation
+Frequency # 0–127 Adjusts the frequency at which 
+modulation is applied.
+Sens # 0–127 Adjusts the amount of frequency 
+modulation applied.
+Polarity UP, DOWN
+Determines whether the fre-
+quency modulation moves 
+towards higher frequencies (UP) or 
+lower frequencies (DOWN).
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output level
+L in
+R in
+L out
+R out
+Ring Mod
+2-Band EQ
+2-Band EQ
+Ring Mod
+16: STEP RING MODULATOR
+Parameter Value Explanation
+Step 01–16 0–127 Frequency of ring modulation at 
+each step
+Rate # 0.05–10.00 Hz Rate at which the 16-step sequence 
+will cycle
+Attack # 0–127 Speed at which the modulation fre-
+quency changes between steps
+Low Gain -15–+15 dB Amount of boost/cut for the 
+low-frequency range
+High Gain -15–+15 dB Amount of boost/cut for the 
+high-frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and effect sound (W)
+Level 0–127 Output volume
+17: TREMOLO
+Parameter Value Explanation
+Mod Wave
+TRI, 
+SQR, 
+SIN, 
+SAW1, 
+SAW2
+Modulation Wave
+TRI: triangle wave
+SQR: square wave
+SIN: sine wave
+SAW1/2: sawtooth wave
+Rate # 0.05–10.00 Hz Frequency of the change
+Depth # 0–127 Depth to which the effect is 
+applied
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level 0–127 Output Level
+L in
+R in
+L out
+R out
+Step Ring Mod
+2-Band EQ
+2-Band EQ
+Step Ring Mod
+L in
+R in
+L out
+R out
+Tremolo
+2-Band EQ
+2-Band EQ
+Tremolo
+SAW1 SAW2
+
+===== PAGE 52 =====
+52
+Effects List
+Cyclically modulates the stereo location of the sound.
+This uses a 16-step sequence to vary the panning of the 
+sound.
+You can use multi-effect control to make the step sequence play 
+again from the beginning ("About the STEP RESET function" (p. 45)).
+By applying successive cuts to the sound, this effect turns a 
+conventional sound into a sound that appears to be played as 
+a backing phrase. This is especially effective when applied to 
+sustain-type sounds.
+You can use multi-effect control to make the step sequence play 
+again from the beginning ("About the STEP RESET function" (p. 45)).
+18: AUTO PAN
+Parameter Value Explanation
+Mod Wave
+TRI, 
+SQR, 
+SIN, 
+SAW1, 
+SAW2
+Modulation Wave
+TRI: triangle wave
+SQR: square wave
+SIN: sine wave
+SAW1/2: sawtooth wave
+Rate # 0.05–10.00 Hz Frequency of the change
+Depth # 0–127 Depth to which the effect is 
+applied
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level 0–127 Output Level
+19: STEP PAN
+Parameter Value Explanation
+Step 01–16 L64–63R Pan at each step
+Rate # 0.05–10.00 Hz Rate at which the 16-step sequence 
+will cycle
+Attack # 0–127 Speed at which the pan changes 
+between steps
+Input Sync
+Sw OFF, ON
+Specifies whether an input note 
+will cause the sequence to resume 
+from the first step of the sequence 
+(ON) or not (OFF)
+Input Sync
+Threshold 0–127 Volume at which an input note will 
+be detected
+Level 0–127 Output volume
+L in
+R in
+L out
+R out
+Auto Pan
+2-Band EQ
+2-Band EQ
+Auto Pan
+SAW1 SAW2
+L
+R
+L
+R
+L in
+R in
+L out
+R out
+Step Pan
+Step Pan
+20: SLICER
+Parameter Value Explanation
+Step 01–16 0–127 Level at each step
+Rate # 0.05–10.00 Hz Rate at which the 16-step sequence 
+will cycle
+Attack # 0–127 Speed at which the level changes 
+between steps
+Input Sync Sw OFF, ON
+Specifies whether an input note 
+will cause the sequence to resume 
+from the first step of the sequence 
+(ON) or not (OFF)
+Input Sync
+Threshold 0–127 Volume at which an input note will 
+be detected
+Mode LEGATO, 
+SLASH
+Sets the manner in which the vol-
+ume changes as one step pro-
+gresses to the next.
+LEGATO: The change in volume 
+from one step’s level to the next 
+remains unaltered. If the level of a 
+following step is the same as the 
+one preceding it, there is no 
+change in volume.
+SLASH: The level is momentarily 
+set to 0 before progressing to the 
+level of the next step. This change 
+in volume occurs even if the level 
+of the following step is the same as 
+the preceding step.
+Shuffle # 0–127
+Timing of volume changes in levels 
+for even-numbered steps (step 2, 
+step 4, step 6...).
+The higher the value, the later the 
+beat progresses.
+Level 0–127 Output level
+L in
+R in
+L out
+R out
+Slicer
+Slicer
+
+===== PAGE 53 =====
+53
+Effects List
+The Rotary effect simulates the sound of the rotary speakers 
+often used with the electric organs of the past. Since the 
+movement of the high range and low range rotors can be set 
+independently, the unique type of modulation characteristic 
+of these speakers can be simulated quite closely. This effect is 
+most suitable for electric organ Patches.
+This type provides modified response for the rotary speaker, 
+with the low end boosted further.
+This effect features the same specifications as the VK-7’s built-
+in rotary speaker.
+21: ROTARY
+Parameter Value Explanation
+Speed # SLOW, FAST
+Simultaneously switch the rota-
+tional speed of the low frequency 
+rotor and high frequency rotor.
+SLOW: Slows down the rotation to 
+the Slow Rate. 
+FAST: Speeds up the rotation to 
+the Fast Rate.
+Woofer 
+Slow Speed 0.05–10.00 Hz Slow speed (SLOW) of the low fre-
+quency rotor
+Woofer 
+Fast Speed 0.05–10.00 Hz Fast speed (FAST) of the low fre-
+quency rotor
+Woofer 
+Acceleration 0–15
+Adjusts the time it takes the low 
+frequency rotor to reach the newly 
+selected speed when switching 
+from fast to slow (or slow to fast) 
+speed. Lower values will require 
+longer times.
+Woofer Level 0–127 Volume of the low frequency rotor
+Tweeter 
+Slow Speed 0.05–10.00 Hz
+Settings of the high frequency 
+rotor
+The parameters are the same as for 
+the low frequency rotor
+Tweeter 
+Fast Speed 0.05–10.00 Hz
+Tweeter 
+Acceleration 0–15
+Tweeter Level 0–127
+Separation 0–127 Spatial dispersion of the sound
+Level # 0–127 Output Level
+Rotary
+L out
+R out
+L in
+R in
+22: VK ROTARY
+Parameter Value Explanation
+Speed # SLOW, FAST Rotational speed of the rotating 
+speaker
+Brake # OFF, ON
+Switches the rotation of the rotary 
+speaker.
+When this is turned on, the rota-
+tion will gradually stop. 
+When it is turned off, the rotation 
+will gradually resume.
+Woofer 
+Slow Speed 0.05–10.00 Hz Low-speed rotation speed of the 
+woofer
+Woofer 
+Fast Speed 0.05–10.00 Hz High-speed rotation speed of the 
+woofer
+Woofer 
+Trans Up 0–127
+Adjusts the rate at which the 
+woofer rotation speeds up when 
+the rotation is switched from Slow 
+to Fast.
+Woofer 
+Trans Down 0–127
+Adjusts the rate at which the 
+woofer rotation speeds up when 
+the rotation is switched from Fast 
+to Slow.
+Woofer Level 0–127 Volume of the woofer
+Tweeter 
+Slow Speed 0.05–10.00 Hz
+Settings of the tweeter
+The parameters are the same as for 
+the woofer.
+Tweeter 
+Fast Speed 0.05–10.00 Hz
+Tweeter 
+Trans Up 0–127
+Tweeter 
+Trans Down 0–127
+Tweeter Level 0–127
+Spread 0–10
+Sets the rotary speaker stereo 
+image. The higher the value set, 
+the wider the sound is spread out.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Level # 0–127 Output Level
+Type
+STANDARD,
+STACK, 
+CLEAN
+Type of rotary speaker
+L out
+R out
+L in
+R in
+Rotary
+2-Band EQ
+2-Band EQ
+
+===== PAGE 54 =====
+54
+Effects List
+This is a stereo chorus. A filter is provided so that you can 
+adjust the timbre of the chorus sound.
+This is a stereo flanger. (The LFO has the same phase for left 
+and right.) It produces a metallic resonance that rises and falls 
+like a jet airplane taking off or landing. A filter is provided so 
+that you can adjust the timbre of the flanged sound.
+23: CHORUS
+Parameter Value Explanation
+Filter Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff Freq
+HPF: cuts the frequency range 
+below the Cutoff Freq
+Cutoff Freq 200–8000 Hz
+Center frequency when using the 
+filter to cut a specific frequency 
+range
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0–180 deg Spatial spread of the sound
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the chorus 
+sound (W)
+Level 0–127 Output Level
+L in
+R in
+Chorus
+Chorus
+L out
+R out
+2-Band
+EQ
+2-Band
+EQ
+Balance W
+Balance W
+Balance D
+Balance D
+24: FLANGER
+Parameter Value Explanation
+Filter Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff Freq
+HPF: cuts the frequency range 
+below the Cutoff Freq
+Cutoff Freq 200–8000 Hz
+Center frequency when using the 
+filter to cut a specific frequency 
+range
+Pre Delay 0.0–100 msec
+Adjusts the delay time from 
+when the direct sound begins 
+until the flanger sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0–180 deg Spatial spread of the sound
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the flanger 
+sound (W)
+Level 0–127 Output Level
+R in R out
+L in L out
+Flanger
+Feedback
+Feedback
+Flanger
+Balance W
+Balance D
+Balance W
+Balance D
+2-Band
+EQ
+2-Band
+EQ
+
+===== PAGE 55 =====
+55
+Effects List
+This is a flanger in which the flanger pitch changes in steps. 
+The speed at which the pitch changes can also be specified in 
+terms of a note-value of a specified tempo.
+Uses a six-phase chorus (six layers of chorused sound) to give 
+richness and spatial spread to the sound.
+25: STEP FLANGER
+Parameter Value Explanation
+Filter Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff Freq
+HPF: cuts the frequency range 
+below the Cutoff Freq
+Cutoff Freq 200–8000 Hz
+Center frequency when using the 
+filter to cut a specific frequency 
+range
+Pre Delay 0.0–100 msec
+Adjusts the delay time from when 
+the direct sound begins until the 
+flanger sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0–180 deg Spatial spread of the sound
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Step Rate # 0.10–20.00 Hz Rate (period) of pitch change
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the flanger 
+sound (W)
+Level 0–127 Output Level
+R in R out
+L in L out
+Feedback
+Feedback
+Balance W
+Balance D
+Balance W
+Balance D
+2-Band
+EQ
+2-Band
+EQ
+Step Flanger
+Step Flanger
+26: HEXA-CHORUS
+Parameter Value Explanation
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Pre Delay 
+Deviation 0–20 Adjusts the differences in Pre Delay 
+between each chorus sound.
+Depth 
+Deviation -20–+20
+Adjusts the difference in modula-
+tion depth between each chorus 
+sound.
+Pan Deviation 0–20
+Adjusts the difference in stereo 
+location between each chorus 
+sound.
+0: All chorus sounds will be in the 
+center.
+20: Each chorus sound will be 
+spaced at 60 degree intervals rela-
+tive to the center.
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the chorus 
+sound (W)
+Level 0–127 Output Level
+Balance W
+Balance W
+L in
+R in
+L out
+R out
+Hexa Chorus
+Balance D
+Balance D
+
+===== PAGE 56 =====
+56
+Effects List
+This is a chorus effect with added Tremolo (cyclic modulation 
+of volume).
+This is a multiple chorus that applies two-phase modulation 
+in stereo. It gives no impression of modulation, but produces 
+a transparent chorus effect.
+This applies a 3D effect to the chorus sound. The chorus 
+sound will be positioned 90 degrees left and 90 degrees right.
+27: TREMOLO CHORUS
+Parameter Value Explanation
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Chorus Rate # 0.05–10.00 Hz Modulation frequency of the cho-
+rus effect
+Chorus Depth 0–127 Modulation depth of the chorus 
+effect
+Tremolo 
+Rate # 0.05–10.00 Hz Modulation frequency of the trem-
+olo effect
+Tremolo 
+Separation 0–127 Spread of the tremolo effect
+Tremolo 
+Phase 0–180 deg Spread of the tremolo effect
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the tremolo 
+chorus sound (W)
+Level 0–127 Output Level
+28: SPACE-D
+Parameter Value Explanation
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0–180 deg Spatial spread of the sound
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the chorus 
+sound (W)
+Level 0–127 Output Level
+Tremolo Chorus
+L in
+R in
+L out
+R out
+Balance D
+Balance D
+Balance W
+Balance W
+L in
+R in
+Space D
+Space D
+L out
+R out
+2-Band
+EQ
+2-Band
+EQ
+Balance W
+Balance W
+Balance D
+Balance D
+29: 3D CHORUS
+Parameter Value Explanation
+Filter Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff Freq
+HPF: cuts the frequency range 
+below the Cutoff Freq
+Cutoff Freq 200–8000 Hz
+Center frequency when using the 
+filter to cut a specific frequency 
+range
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Modulation depth of the chorus 
+effect
+Phase 0–180 deg Spatial spread of the sound
+Output Mode SPEAKER, 
+PHONES
+Adjusts the method that will be 
+used to hear the sound that is out-
+put to the OUTPUT jacks. The opti-
+mal 3D effect will be achieved if 
+you select SPEAKER when using 
+speakers, or PHONES when using 
+headphones.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the chorus 
+sound (W)
+Level 0–127 Output Level
+L
+R
+3D Chorus
+2-Band
+EQ
+2-Band
+EQ R out
+L out
+
+===== PAGE 57 =====
+57
+Effects List
+This applies a 3D effect to the flanger sound. The flanger 
+sound will be positioned 90 degrees left and 90 degrees right.
+This applies a 3D effect to the step flanger sound. The flanger 
+sound will be positioned 90 degrees left and 90 degrees right.
+30: 3D FLANGER
+Parameter Value Explanation
+Filter Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff Freq
+HPF: cuts the frequency range 
+below the Cutoff Freq
+Cutoff Freq 200–8000 Hz
+Center frequency when using the 
+filter to cut a specific frequency 
+range
+Pre Delay 0.0–100 msec
+Adjusts the delay time from when 
+the direct sound begins until the 
+flanger sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0–180 deg Spatial spread of the sound
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Output Mode SPEAKER, 
+PHONES
+Adjusts the method that will be 
+used to hear the sound that is out-
+put to the OUTPUT jacks. The opti-
+mal 3D effect will be achieved if 
+you select SPEAKER when using 
+speakers, or PHONES when using 
+headphones.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the flanger 
+sound (W)
+Level 0–127 Output Level
+L
+R
+3D Flanger
+2-Band
+EQ
+2-Band
+EQ R out
+L out
+31: 3D STEP FLANGER
+Parameter Value Explanation
+Filter Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff Freq
+HPF: cuts the frequency range 
+below the Cutoff Freq
+Cutoff Freq 200–8000 Hz
+Center frequency when using the 
+filter to cut a specific frequency 
+range
+Pre Delay 0.0–100 msec
+Adjusts the delay time from when 
+the direct sound begins until the 
+flanger sound is heard.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0–180 deg Spatial spread of the sound
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Step Rate # 0.10–20.00 Hz Rate (period) of pitch change
+Output Mode SPEAKER, 
+PHONES
+Adjusts the method that will be 
+used to hear the sound that is out-
+put to the OUTPUT jacks. The opti-
+mal 3D effect will be achieved if 
+you select SPEAKER when using 
+speakers, or PHONES when using 
+headphones.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the flanger 
+sound (W)
+Level 0–127 Output Level
+L
+R
+3D Step Flanger
+2-Band
+EQ
+2-Band
+EQ R out
+L out
+
+===== PAGE 58 =====
+58
+Effects List
+A chorus effect that lets you apply an effect independently to 
+the low-frequency and high-frequency ranges.
+A flanger that lets you apply an effect independently to the 
+low-frequency and high-frequency ranges.
+32: 2 BAND CHORUS
+Parameter Value Explanation
+Split Freq 200–8000 Hz Frequency at which the low and 
+high ranges will be divided
+Low Pre Delay 0.0–100 msec
+Delay time from when the original 
+sound is heard to when the low-
+range chorus sound is heard
+Low Rate # 0.05–10.00 Hz Rate at which the low-range chorus 
+sound is modulated
+Low Depth 0–127 Modulation depth for the 
+low-range chorus sound
+Low Phase 0–180 deg Spaciousness of the low-range cho-
+rus sound
+High 
+Pre Delay 0.0–100 msec
+Delay time from when the original 
+sound is heard to when the high-
+range chorus sound is heard
+High Rate # 0.05–10.00 Hz Rate at which the low-range chorus 
+sound is modulated
+High Depth 0–127 Modulation depth for the 
+high-range chorus sound
+High Phase 0–180 deg Spaciousness of the high-range 
+chorus sound
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and chorus sound (W)
+Level 0–127 Output volume
+R in R out
+L in L out
+Split
+High Band Chorus
+Low Band Chorus
+High Band Chorus
+Low Band Chorus
+Split
+33: 2 BAND FLANGER
+Parameter Value Explanation
+Split Freq 200–8000 Hz Frequency at which the low and 
+high ranges will be divided
+Low Pre Delay 0.0–100 msec
+Delay time from when the original 
+sound is heard to when the low-
+range flanger sound is heard
+Low Rate # 0.05–10.00 Hz Rate at which the low-range 
+flanger sound is modulated
+Low Depth 0–127 Modulation depth for the 
+low-range flanger sound
+Low Phase 0–180 deg Spaciousness of the low-range 
+flanger sound
+Low 
+Feedback # -98–+98%
+Proportion of the low-range 
+flanger sound that is to be returned 
+to the input (negative values invert 
+the phase)
+High 
+Pre Delay 0.0–100 msec
+Delay time from when the original 
+sound is heard to when the high-
+range flanger sound is heard
+High Rate # 0.05–10.00 Hz Rate at which the high-range 
+flanger sound is modulated
+High Depth 0–127 Modulation depth for the 
+high-range flanger sound
+High Phase 0–180 deg Spaciousness of the high-range 
+flanger sound
+High 
+Feedback # -98–+98%
+Proportion of the high-range 
+flanger sound that is to be returned 
+to the input (negative values invert 
+the phase)
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and flanger sound (W)
+Level 0–127 Output volume
+R in R out
+L in L out
+Split
+High Band Flanger
+Low Band Flanger
+High Band Flanger
+Low Band Flanger
+Split
+Low Band Feedback
+High Band Feedback
+High Band Feedback
+Low Band Feedback
+
+===== PAGE 59 =====
+59
+Effects List
+A step flanger that lets you apply an effect independently to 
+the low-frequency and high-frequency ranges.
+Creates a soft distortion similar to that produced by vacuum 
+tube amplifiers.
+Produces a more intense distortion than Overdrive. The 
+parameters are the same as for “35: OVERDRIVE.”
+34: 2 BAND STEP FLANGER
+Parameter Value Explanation
+Split Freq 200–8000 Hz Frequency at which the low and 
+high ranges will be divided
+Low Pre Delay 0.0–100 msec
+Delay time from when the original 
+sound is heard to when the low-
+range flanger sound is heard
+Low Rate # 0.05–10.00 Hz Rate at which the low-range 
+flanger sound is modulated
+Low Depth 0–127 Modulation depth for the 
+low-range flanger sound
+Low Phase 0–180 deg Spaciousness of the low-range 
+flanger sound
+Low 
+Feedback # -98–+98%
+Proportion of the low-range 
+flanger sound that is to be returned 
+to the input (negative values invert 
+the phase)
+Low Step 
+Rate # 0.10–20.00 Hz Rate at which the steps will cycle 
+for the low-range flanger sound
+High 
+Pre Delay 0.0–100 msec
+Delay time from when the original 
+sound is heard to when the high-
+range flanger sound is heard
+High Rate # 0.05–10.00 Hz Rate at which the high-range 
+flanger sound is modulated
+High Depth 0–127 Modulation depth for the 
+high-range flanger sound
+High Phase 0–180 deg Spaciousness of the high-range 
+flanger sound
+High 
+Feedback # -98–+98%
+Proportion of the high-range 
+flanger sound that is to be returned 
+to the input (negative values invert 
+the phase)
+High Step 
+Rate # 0.10–20.00 Hz Rate at which the steps will cycle 
+for the high-range flanger sound
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and flanger sound (W)
+Level 0–127 Output volume
+R in R out
+L in L out
+Split
+High Band Step Flanger
+Split
+Low Band Feedback
+High Band Feedback
+High Band Feedback
+Low Band Feedback
+Low Band Step Flanger
+High Band Step Flanger
+Low Band Step Flanger
+35: OVERDRIVE
+Parameter Value Explanation
+Drive # 0–127 Degree of distortion
+Also changes the volume.
+Amp Type
+SMALL,
+BUILT-IN, 
+2-STACK,
+3-STACK
+Type of guitar amp
+SMALL: small amp
+BUILT-IN: single-unit type amp
+2-STACK: large double stack amp
+3-STACK: large triple stack amp
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Pan # L64–63R Stereo location of the output 
+sound
+Level 0–127 Output Level
+36: DISTORTION
+Amp
+Simulator
+2-Band
+EQ
+L in
+R in
+Over
+drive
+L out
+R out
+Pan R
+Pan L
+L in
+R in
+L out
+R out
+Pan R
+Pan LAmp
+Simulator
+2-Band
+EQDistortion
+
+===== PAGE 60 =====
+60
+Effects List
+This is an overdrive that provides heavy distortion.
+This is a distortion effect that provides heavy distortion. The 
+parameters are the same as for “37: VS OVERDRIVE.”
+This is an effect that simulates the sound of a guitar amplifier.
+37: VS OVERDRIVE
+Parameter Value Explanation
+Drive # 0–127 Degree of distortion
+Also changes the volume.
+Tone # 0–127 Sound quality of the Overdrive 
+effect
+Amp Sw OFF, ON Turns the Amp Simulator on/off.
+Amp Type
+SMALL,
+BUILT-IN, 
+2-STACK,
+3-STACK
+Type of guitar amp
+SMALL: small amp
+BUILT-IN: single-unit type amp
+2-STACK: large double stack amp
+3-STACK: large triple stack amp
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Pan # L64–63R Stereo location of the output 
+sound
+Level 0–127 Output Level
+38: VS DISTORTION
+L in
+R in
+L out
+R out
+Pan R
+Pan LAmp
+Simulator
+2-Band
+EQOverdrive
+L in
+R in
+L out
+R out
+Pan R
+Pan LAmp
+Simulator
+2-Band
+EQDistortion
+39: GUITAR AMP SIMULATOR
+Parameter Value Explanation
+Pre Amp Sw OFF, ON Turns the amp switch on/off.
+Pre Amp Type
+JC-120, 
+CLEAN TWIN, 
+MATCH DRIVE, 
+BG LEAD, 
+MS1959I, 
+MS1959II, 
+MS1959I+II, 
+SLDN LEAD, 
+METAL 5150, 
+METAL LEAD, 
+OD-1, 
+OD-2 TURBO, 
+DISTORTION, 
+FUZZ
+Type of guitar amp
+Pre Amp 
+Volume # 0–127 Volume and amount of distortion 
+of the amp
+Pre Amp 
+Master # 0–127 Volume of the entire pre-amp
+Pre Amp Gain LOW, MIDDLE, 
+HIGH Amount of pre-amp distortion
+Pre Amp Bass
+0–127
+Tone of the bass/mid/treble fre-
+quency range
+*   Middle cannot be set if “MATCH 
+DRIVE” is selected as the Pre Amp 
+Type.
+Pre Amp 
+Middle
+Pre Amp 
+Treble
+Pre Amp 
+Presence 0–127 Tone for the ultra-high frequency 
+range
+Pre Amp 
+Bright OFF, ON
+Turning this “On” produces a 
+sharper and brighter sound.
+*   This parameter applies to the “JC-
+120,” “CLEAN TWIN,” and “BG LEAD” 
+Pre Amp Types.
+Speaker Sw OFF, ON
+Determines whether the signal 
+passes through the speaker (ON), 
+or not (OFF).
+Speaker Type (See the table 
+next page.) Type of speaker
+Mic Setting 1, 2, 3
+Adjusts the location of the mic 
+that’s capturing the sound of the 
+speaker.
+This can be adjusted in three steps, 
+from 1 to 3, with the mic becom-
+ing more distant as the value 
+increases.
+Mic Level 0–127 Volume of the mic
+Direct Level 0–127 Volume of the direct sound
+Pan # L64–63R Stereo location of the output
+Level # 0–127 Output level
+L in
+R in
+L out
+R out
+Pan R
+Pan L
+Pre Amp Speaker
+
+===== PAGE 61 =====
+61
+Effects List
+Specifications for each Speaker Type
+The speaker column indicates the diameter of each speaker 
+unit (in inches) and the number of units.
+Flattens out high levels and boosts low levels, smoothing out 
+fluctuations in volume.
+Compresses signals that exceed a specified volume level, pre-
+venting distortion from occurring.
+Cuts the reverb’s delay according to the volume of the sound 
+sent into the effect. Use this when you want to create an artifi-
+cial-sounding decrease in the reverb’s decay.
+Type Cabinet Speaker  Mic
+SMALL 1 small open-back 
+enclosure 10 dynamic
+SMALL 2 small open-back 
+enclosure 10 dynamic
+MIDDLE open back enclosure 12 x 1 dynamic
+JC-120 open back enclosure 12 x 2 dynamic
+BUILT-IN 1 open back enclosure 12 x 2 dynamic
+BUILT-IN 2 open back enclosure 12 x 2 condenser
+BUILT-IN 3 open back enclosure 12 x 2 condenser
+BUILT-IN 4 open back enclosure 12 x 2 condenser
+BUILT-IN 5 open back enclosure 12 x 2 condenser
+BG STACK 1 sealed enclosure 12 x 2 condenser
+BG STACK 2 large sealed enclosure 12 x 2 condenser
+MS STACK 1 large sealed enclosure 12 x 4 condenser
+MS STACK 2 large sealed enclosure 12 x 4 condenser
+METAL STACK large double stack 12 x 4 condenser
+2-STACK large double stack 12 x 4 condenser
+3-STACK large triple stack 12 x 4 condenser
+40: COMPRESSOR
+Parameter Value Explanation
+Attack # 0–127
+Sets the time from when the input 
+exceeds the Threshold until the 
+volume starts being compressed
+Threshold # 0–127 Adjusts the volume at which com-
+pression begins
+Post Gain 0–+18 dB Adjusts the output gain.
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Level # 0–127 Output level
+L in
+R in
+L out
+R out
+Compressor
+2-Band EQ
+2-Band EQ
+Compressor
+41: LIMITER
+Parameter Value Explanation
+Release # 0–127
+Adjusts the time after the signal vol-
+ume falls below the Threshold Level 
+until compression is no longer 
+applied.
+Threshold # 0–127 Adjusts the volume at which com-
+pression begins
+Ratio 1.5:1, 2:1, 4:1, 
+100:1 Compression ratio
+Post Gain 0–+18 dB Adjusts the output gain.
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Level # 0–127 Output level
+42: GATE
+Parameter Value Explanation
+Threshold # 0–127 Volume level at which the gate 
+begins to close
+Mode GATE, 
+DUCK
+Type of gate
+GATE: The gate will close when the 
+volume of the original sound 
+decreases, cutting the original 
+sound.
+DUCK(Ducking): The gate will 
+close when the volume of the origi-
+nal sound increases, cutting the 
+original sound.
+Attack 0–127 Adjusts the time it takes for the gate 
+to fully open after being triggered.
+Hold 0–127
+Adjusts the time it takes for the gate 
+to start closing after the source 
+sound falls beneath the Threshold.
+Release 0–127 Adjusts the time it takes the gate to 
+fully close after the hold time.
+Balance # D100:0W–
+D0:100W
+Volume balance between the direct 
+sound (D) and the effect sound (W)
+Level 0–127 Output level
+L in
+R in
+L out
+R out
+Limiter
+2-Band EQ
+2-Band EQ
+Limiter
+L in
+R in
+L out
+R out
+Gate
+Gate
+
+===== PAGE 62 =====
+62
+Effects List
+This is a stereo delay.
+When Feedback Mode is NORMAL:
+When Feedback Mode is CROSS:
+A delay that provides a long delay time.
+43: DELAY
+Parameter Value Explanation
+Delay Left 0–1300 msec Adjusts the time until the delay 
+sound is heard.Delay Right
+Phase Left NORMAL, 
+INVERSE Phase of the delay soundPhase Right
+Feedback 
+Mode
+NORMAL, 
+CROSS
+Selects the way in which delay 
+sound is fed back into the effect. 
+(See the figures above.)
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+sound that’s fed back into the 
+effect. Negative (-) settings invert 
+the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above 
+which sound fed back to the 
+effect is filtered out. If you don’t 
+want to filter out any high fre-
+quencies, set this parameter to 
+BYPASS.
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the delay 
+sound (W)
+Level 0–127 Output level
+R in R out
+L in L out
+Feedback
+Feedback
+Balance W
+Balance D
+Balance W
+Balance D
+2-Band
+EQ
+2-Band
+EQ
+Delay
+Delay
+R in R out
+L in L out
+Feedback
+Feedback
+Balance W
+Balance D
+Balance W
+Balance D
+2-Band
+EQ
+2-Band
+EQ
+Delay
+Delay
+44: LONG DELAY
+Parameter Value Explanation
+Delay Time 0–2600 msec
+Delay time from when the original 
+sound is heard to when the delay 
+sound is heard
+Phase NORMAL, 
+INVERSE
+Phase of the delay (NORMAL: non-
+inverted, INVERT: inverted)
+Feedback # -98–+98%
+Proportion of the delay sound that 
+is to be returned to the input (neg-
+ative values invert the phase)
+HF Damp 200–8000 Hz, 
+BYPASS
+Frequency at which the 
+high-frequency content of the 
+delayed sound will be cut (BYPASS: 
+no cut)
+Pan # L64–63R Panning of the delay sound
+Low Gain -15–+15 dB Amount of boost/cut for the 
+high-frequency range
+High Gain -15–+15 dB Amount of boost/cut for the 
+high-frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and delay sound (W)
+Level 0–127 Output volume
+L in
+R in
+L out
+R out2-Band
+EQ
+Pan R
+Pan L
+2-Band
+EQ
+Feedback
+Long Delay
+
+===== PAGE 63 =====
+63
+Effects List
+This delay connects two delay units in series. Feedback can be 
+applied independently to each delay unit, allowing you to 
+produce complex delay sounds.
+Adds modulation to the delayed sound.
+When Feedback Mode is NORMAL:
+When Feedback Mode is CROSS:
+45: SERIAL DELAY
+Parameter Value Explanation
+Delay 1 Time 0–1300 msec
+Delay time from when sound is 
+input to delay 1 until the delay 
+sound is heard
+Delay 1 
+Feedback # -98–+98%
+Proportion of the delay sound that 
+is to be returned to the input of 
+delay 1 (negative values invert the 
+phase)
+Delay 1 
+HF Damp
+200–8000 Hz, 
+BYPASS
+Frequency at which the 
+high-frequency content of the 
+delayed sound of delay 1 will be 
+cut (BYPASS: no cut)
+Delay 2 Time 0–1300 msec
+Delay time from when sound is 
+input to delay 2 until the delay 
+sound is heard
+Delay 2 
+Feedback # -98–+98%
+Proportion of the delay sound that 
+is to be returned to the input of 
+delay 2 (negative values invert the 
+phase)
+Delay 2 
+HF Damp
+200–8000 Hz, 
+BYPASS
+Frequency at which the 
+high-frequency content of the 
+delayed sound of delay 2 will be 
+cut (BYPASS: no cut)
+Pan # L64–63R Panning of the delay sound
+Low Gain -15–+15 dB Amount of boost/cut for the 
+low-frequency range
+High Gain -15–+15 dB Amount of boost/cut for the 
+high-frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and delay sound (W)
+Level 0–127 Output volume
+R in R out
+L in L out
+Feedback 1
+Pan L
+Pan R
+Delay 1
+Feedback 2
+Delay 2
+46: MODULATION DELAY
+Parameter Value Explanation
+Delay Left 0–1300 msec Adjusts the time until the delay 
+sound is heard.Delay Right
+Feedback 
+Mode
+NORMAL, 
+CROSS
+Selects the way in which delay 
+sound is fed back into the effect 
+(See the figures above.)
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+sound that’s fed back into the 
+effect. Negative (-) settings invert 
+the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect is fil-
+tered out. If you don’t want to filter 
+out any high frequencies, set this 
+parameter to BYPASS.
+Rate # 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0-180 deg Spatial spread of the sound
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the delay 
+sound (W)
+Level 0–127 Output level
+R in R out
+L in L out
+Feedback
+Feedback
+Balance W
+Balance D
+Balance W
+Balance D
+2-Band
+EQ
+2-Band
+EQ
+Delay
+Delay
+Modulation
+Modulation
+R in R out
+L in L out
+Feedback
+Feedback
+Balance W
+Balance D
+Balance W
+Balance D
+2-Band
+EQ
+2-Band
+EQ
+Delay
+Delay
+Modulation
+Modulation
+
+===== PAGE 64 =====
+64
+Effects List
+Produces three delay sounds; center, left and right. This effect has four delays.
+47: 3TAP PAN DELAY
+Parameter Value Explanation
+Delay Left/
+Right/Center 0–2600 msec
+Adjusts the time from the original 
+sound until the left, right, and cen-
+ter delayed sounds are heard
+Center 
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+sound that’s fed back into the 
+effect. Negative (-) settings invert 
+the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect is fil-
+tered out. If you do not want to fil-
+ter out any high frequencies, set 
+this parameter to BYPASS.
+Left/Right/
+Center Level 0–127 Volume of each delay
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the delay 
+sound (W)
+Level 0–127 Output level
+L in
+R in
+L out
+R out
+Left Tap
+Right Tap
+Triple Tap Delay
+2-Band
+EQ
+2-Band
+EQ
+Balance W
+Balance D
+Balance W
+Balance D
+Feedback
+Center Tap
+48: 4TAP PAN DELAY
+Parameter Value Explanation
+Delay 1–4 
+Time 0–2600 msec
+Adjusts the time from the original 
+sound until delay sounds 1--4 are 
+heard
+Delay 1 
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+sound that’s fed back into the 
+effect. Negative (-) settings invert 
+the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect is fil-
+tered out. If you do not want to fil-
+ter out any high frequencies, set 
+this parameter to BYPASS.
+Delay 1–4 
+Level 0–127 Volume of each delay
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the delay 
+sound (W)
+Level 0–127 Output level
+L in
+R in
+L out
+R out
+Quadruple Tap Delay
+Balance W
+Balance D
+Balance W
+Balance D
+Delay 1
+Delay 2
+Delay 3
+Delay 4
+Feedback
+1
+23
+4
+L R
+Stereo location of each delay
+
+===== PAGE 65 =====
+65
+Effects List
+This effect provides four delays. 
+You can also set the panning and level of each delay sound.
+This is a reverse delay that adds a reversed and delayed sound 
+to the input sound. A tap delay is connected immediately 
+after the reverse delay.
+49: MULTI TAP DELAY
+Parameter Value Explanation
+Delay 1–4 
+Time 0–2600 msec Adjusts the time until Delays 1–4 
+are heard.
+Delay 1 
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+sound that’s fed back into the 
+effect. Negative (-) settings invert 
+the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect is fil-
+tered out. If you don’t want to filter 
+out any the high frequencies, set 
+this parameter to BYPASS.
+Delay 1–4 Pan L64–63R Stereo location of Delays 1–4
+Delay 1–4 
+Level 0–127 Output level of Delays 1–4
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output level
+L in
+R in
+L out
+R out
+Multi Tap Delay
+Balance W
+Balance D
+Balance W
+Balance D
+Delay 1
+Delay 3
+Delay 4
+Delay 2
+Feed
+back
+2-Band
+EQ
+2-Band
+EQ
+50: REVERSE DELAY
+Parameter Value Explanation
+Threshold 0–127 Volume at which the reverse delay 
+will begin to be applied
+Rev Delay 
+Time 0–1300 msec
+Delay time from when sound is 
+input into the reverse delay until 
+the delay sound is heard
+Rev Delay 
+Feedback # -98–+98%
+Proportion of the delay sound that 
+is to be returned to the input of the 
+reverse delay (negative values 
+invert the phase)
+Rev Delay 
+HF Damp
+200–8000 Hz, 
+BYPASS
+Frequency at which the 
+high-frequency content of the 
+reverse-delayed sound will be cut 
+(BYPASS: no cut)
+Rev Delay Pan L64–63R Panning of the reverse delay sound
+Rev Delay 
+Level 0–127 Volume of the reverse delay sound
+Delay 1 – 3 
+Time 0–1300 msec
+Delay time from when sound is 
+input into the tap delay until the 
+delay sound is heard
+Delay 3 
+Feedback # -98–+98%
+Proportion of the delay sound that 
+is to be returned to the input of the 
+tap delay (negative values invert 
+the phase)
+Delay 
+HF Damp
+200–8000 Hz, 
+BYPASS
+Frequency at which the low-fre-
+quency content of the tap delay 
+sound will be cut (BYPASS: no cut) 
+Delay 1 Pan, 
+Delay 2 Pan L64–63R Panning of the tap delay sounds
+Delay 1 Level, 
+Delay 2 Level 0–127 Volume of the tap delay sounds
+Low Gain -15–+15 dB Amount of boost/cut for the 
+low-frequency range
+High Gain -15–+15 dB Amount of boost/cut for the 
+high-frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and delay sound (W)
+Level 0–127 Output volume
+Feedback
+L in
+R in
+Rev. Delay
+L out
+R out2-Band
+EQ
+2-Band
+EQRev
+Delay
+D2
+D1
+D3
+
+===== PAGE 66 =====
+66
+Effects List
+Adds a shuffle to the delay sound, giving the sound a bouncy 
+delay effect with a swing feel.
+This applies a 3D effect to the delay sound. The delay sound 
+will be positioned 90 degrees left and 90 degrees right.
+51: SHUFFLE DELAY
+Parameter Value Explanation
+Delay Time # 0–2600 msec Adjusts the time until the delay 
+sound is heard.
+Shuffle Rate # 0–100
+Adjusts the ratio (as a percentage) 
+of the time that elapses before 
+Delay B sounds relative to the time 
+that elapses before the Delay A 
+sounds.
+When set to 100, the delay times 
+are the same.
+Acceleration 0–15
+Adjusts the speed which the Delay 
+Time changes from the current set-
+ting to its specified new setting.
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+that’s feedback into the effect. 
+Negative (-) settings invert the 
+phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect is fil-
+tered out. If you don’t want to filter 
+out any high frequencies, set this 
+parameter to BYPASS.
+Pan A/B L64–63R Stereo location of Delay A/B
+Level A/B 0–127 Volume of delay A/B
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output level
+Feedback
+L in
+R in
+Delay
+L out
+R out2-Band
+EQ
+2-Band
+EQ
+A
+B
+Delay A
+Delay B
+52: 3D DELAY
+Parameter Value Explanation
+Delay Left
+0–2600 msec
+Adjusts the delay time from the 
+direct sound until the delay sound 
+is heard.
+Delay Right
+Delay Center
+Center 
+Feedback # -98–+98%
+Adjusts the proportion of the delay 
+sound that is fed back into the 
+effect. Negative (-) settings will 
+invert the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect will be 
+cut. If you do not want to cut the 
+high frequencies, set this parame-
+ter to BYPASS.
+Left Level
+0–127 Output level of the delay soundRight Level
+Center Level
+Output Mode SPEAKER, 
+PHONES
+Adjusts the method that will be 
+used to hear the sound that is 
+output to the OUTPUT jacks. The 
+optimal 3D effect will be 
+achieved if you select SPEAKER 
+when using speakers, or 
+PHONES when using head-
+phones.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output Level
+L
+R
+3D Delay L
+3D Delay R
+3D Delay C
+Level
+Feedback
+2-Band
+EQ
+2-Band
+EQ
+L out
+R out
+
+===== PAGE 67 =====
+67
+Effects List
+A stereo delay in which the delay time can be varied 
+smoothly.
+A delay in which the delay time can be varied smoothly, and 
+allowing an extended delay to be produced.
+53: ANALOG DELAY
+Parameter Value Explanation
+Delay Time # 0–1300 msec Adjusts the time until the delay is 
+heard.
+Acceleration 0–15
+Adjusts the speed which the Delay 
+Time changes from the current set-
+ting to a specified new setting.
+The rate of change for the Delay 
+Time directly affects the rate of 
+pitch change.
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+that’s fed back into the effect. Neg-
+ative (-) settings invert the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect is fil-
+tered out. If you do not want to fil-
+ter out any high frequencies, set 
+this parameter to BYPASS.
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the delay 
+sound (W)
+Level 0–127 Output level
+R in R out
+L in L out
+Feedback
+Feedback
+Pan L
+Pan R
+Time Ctrl Delay
+Time Ctrl Delay
+2-Band EQ
+2-Band EQ
+54: ANALOG LONG DELAY
+Parameter Value Explanation
+Delay Time # 0–2600 msec Adjusts the time until the delay is 
+heard.
+Acceleration 0–15
+Adjusts the speed which the Delay 
+Time changes from the current set-
+ting to a specified new setting.
+The rate of change for the Delay 
+Time directly affects the rate of 
+pitch change.
+Feedback # -98–+98%
+Adjusts the amount of the delay 
+that’s fed back into the effect. Neg-
+ative (-) settings invert the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect is fil-
+tered out. If you do not want to fil-
+ter out any high frequencies, set 
+this parameter to BYPASS.
+Pan # L64–63R Stereo location of the delay
+Low Gain -15–+15 dB Gain of the low frequency range
+High Gain -15–+15 dB Gain of the high frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the delay 
+sound (W)
+Level 0–127 Output level
+L in
+R in
+L out
+R out2-Band
+EQ
+Balance W
+Balance W
+Balance D
+Balance D
+2-Band
+EQ
+Feedback
+Time Control Delay
+
+===== PAGE 68 =====
+68
+Effects List
+A virtual tape echo that produces a realistic tape delay sound. 
+This simulates the tape echo section of a Roland RE-201 Space 
+Echo.
+In addition to a lo-fi effect, this adds various types of noise 
+such as white noise and disc noise.
+55: TAPE ECHO
+Parameter Value Explanation
+Mode
+S, M, L, 
+S+M, 
+S+L, 
+M+L, 
+S+M+L
+Combination of playback heads to 
+use
+Select from three different heads 
+with different delay times.
+S: short, M: middle, L: long
+Repeat Rate # 0–127
+Tape speed
+Increasing this value will shorten 
+the spacing of the delayed sounds.
+Intensity # 0–127 Amount of delay repeats
+Bass -15–+15 dB Boost/cut for the lower range of 
+the echo sound
+Treble -15–+15 dB Boost/cut for the upper range of 
+the echo sound
+Head S Pan
+L64–63R Independent panning for the short, 
+middle, and long playback headsHead M Pan
+Head L Pan
+Tape 
+Distortion 0–5
+Amount of tape-dependent distor-
+tion to be added
+This simulates the slight tonal 
+changes that can be detected by 
+signal-analysis equipment. 
+Increasing this value will increase 
+the distortion.
+Wow/Flutter
+Rate 0–127
+Speed of wow/flutter (complex 
+variation in pitch caused by tape 
+wear and rotational irregularity)
+Wow/Flutter
+Depth 0–127 Depth of wow/flutter
+Echo Level # 0–127 Volume of the echo sound
+Direct Level # 0–127 Volume of the original sound
+Level 0–127 Output level
+Echo Level
+Echo Level
+L in
+R in
+L out
+R out
+Tape Echo
+Direct Level
+Direct Level
+56: LOFI NOISE
+Parameter Value Explanation
+LoFi Type 1–9
+Degrades the sound quality. The 
+sound quality grows poorer as 
+this value is increased.
+Post Filter 
+Type
+OFF, 
+LPF, 
+HPF
+Type of filter that follows the LoFi 
+effect
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff
+HPF: cuts the frequency range 
+below the Cutoff
+Post Filter 
+Cutoff 200–8000 Hz Center frequency of the filter
+W/P Noise 
+Type WHITE, PINK Switch between white noise and 
+pink noise.
+W/P Noise LPF 200–8000 Hz, 
+BYPASS
+Center frequency of the low pass 
+filter applied to the white/pink 
+noise (BYPASS: no cut)
+W/P Noise 
+Level # 0–127 Volume of the white/pink noise
+Disc Noise 
+Type
+LP, EP, SP, 
+RND
+Type of record noise
+The frequency at which the noise 
+is heard depends on the selected 
+type.
+Disc Noise LPF 200–8000 Hz, 
+BYPASS
+Adjusts the cutoff frequency of the 
+low pass filter applied to the record 
+noise. If you don’t want to filter out 
+any high frequencies, set this 
+parameter to BYPASS.
+Disc Noise 
+Level # 0–127 Volume of the record noise
+Hum Noise 
+Type 50 Hz, 60 Hz Frequency of the hum noise
+Hum Noise 
+LPF
+200–8000 Hz, 
+BYPASS
+Center frequency of the low pass 
+filter applied to the hum noise 
+(BYPASS: no cut)
+Hum Noise 
+Level # 0–127 Volume of the hum noise
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output level
+R in R out
+L in L out
+Lo-Fi
+Lo-Fi
+Noise Gen.
+2-Band
+EQ
+2-Band
+EQ
+
+===== PAGE 69 =====
+69
+Effects List
+This is an effect that intentionally degrades the sound quality 
+for creative purposes.
+In addition to a Lo-Fi effect, this effect also generates radio 
+noise.
+This effect produces a muffled sound, like that heard through 
+a telephone.
+57: LOFI COMPRESS
+Parameter Value Explanation
+Pre Filter Type 1–6
+Selects the type of filter applied to 
+the sound before it passes through 
+the Lo-Fi effect.
+1: Compressor off
+2-6: Compressor on
+LoFi Type 1–9
+Degrades the sound quality. The 
+sound quality grows poorer as this 
+value is increased.
+Post Filter 
+Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff
+HPF: cuts the frequency range 
+below the Cutoff
+Post Filter 
+Cutoff 200–8000 Hz Basic frequency of the Post Filter
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level # 0–127 Output level
+L in
+R in
+L out
+R out
+Compressor
+Lo-Fi
+Lo-Fi
+Compressor
+2-Band
+EQ
+2-Band
+EQ
+58: LOFI RADIO
+Parameter Value Explanation
+LoFi Type 1–9
+Degrades the sound quality. The 
+sound quality grows poorer as this 
+value is increased.
+Post Filter 
+Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff
+HPF: cuts the frequency range 
+below the Cutoff
+Post Filter 
+Cutoff 200–8000 Hz Basic frequency of the Post Filter
+Radio 
+Detune # 0–127
+Simulates the tuning noise of a 
+radio. As this value is raised, the 
+tuning drifts further.
+Radio Noise 
+Level # 0–127 Volume of the radio noise
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output level
+59: TELEPHONE
+Parameter Value Explanation
+Voice 
+Quality # 0–15 Audio quality of the telephone 
+voice
+Treble -15–+15 dB Bandwidth of the telephone voice
+Balance # D100:0–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output level
+R in R out
+L in L out
+Lo-Fi
+Lo-Fi
+Radio
+2-Band
+EQ
+2-Band
+EQ
+L in
+R in
+L out
+R out
+Telephone
+Telephone
+
+===== PAGE 70 =====
+70
+Effects List
+Simulates a sound recorded on an analog record and played 
+back on a record player. This effect also simulates the various 
+types of noise that are typical of a record, and even the rota-
+tional irregularities of an old turntable.
+A stereo pitch shifter.
+60: PHONOGRAPH
+Parameter Value Explanation
+Signal 
+Distortion 0–127 Depth of distortion
+Frequency 
+Range 0–127
+Frequency response of the play-
+back system
+Decreasing this value will produce 
+the impression of an old system 
+with a poor frequency response.
+Disc Type LP, EP, SP
+Rotational speed of the turntable
+This will affect the frequency of 
+the scratch noise.
+Scratch Noise 
+Level 0–127 Amount of noise due to scratches 
+on the record
+Dust Noise 
+Level 0–127 Volume of noise due to dust on the 
+record
+Hiss Noise 
+Level 0–127 Volume of continuous “hiss”
+Total Noise 
+Level # 0–127 Volume of overall noise
+Wow 0–127 Depth of long-cycle rotational 
+irregularity
+Flutter 0–127 Depth of short-cycle rotational 
+irregularity
+Random 0–127 Depth of indefinite-cycle rota-
+tional irregularity
+Total Wow/
+Flutter # 0–127 Depth of overall rotational irregu-
+larity
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the effect 
+sound (W)
+Level 0–127 Output level
+L in
+R in
+Phonograph
+Phonograph
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+61: PITCH SHIFTER
+Parameter Value Explanation
+Coarse #1 -24–+12 semi Adjusts the pitch of the pitch 
+shifted sound in semitone steps.
+Fine #1 -100–+100 
+cent
+Adjusts the pitch of the pitch 
+shifted sound in 2-cent steps.
+Delay Time 0–1300 msec
+Adjusts the delay time from the 
+direct sound until the pitch shifted 
+sound is heard.
+Feedback # -98–+98%
+Adjusts the proportion of the pitch 
+shifted sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the pitch 
+shifted sound (W)
+Level 0–127 Output Level
+L in
+R in
+Pitch Shifter
+Pitch Shifter
+L out
+R out
+2-Band EQ
+2-Band EQ
+
+===== PAGE 71 =====
+71
+Effects List
+Shifts the pitch of the original sound. This 2-voice pitch shifter 
+has two pitch shifters, and can add two pitch shifted sounds 
+to the original sound.
+A pitch shifter in which the amount of pitch shift is varied by a 
+16-step sequence.
+You can use multi-effect control to make the step sequence play 
+again from the beginning ("About the STEP RESET function" (p. 45)).
+62: 2VOICE PITCH SHIFTER
+Parameter Value Explanation
+Pitch1 
+Coarse #1 -24-+12 semi Adjusts the pitch of Pitch Shift 1 in 
+semitone steps.
+Pitch1 Fine #1 -100-+100 
+cent
+Adjusts the pitch of Pitch Shift 
+Pitch 1 in 2-cent steps.
+Pitch1 Delay 0–1300 msec
+Adjusts the delay time from the 
+direct sound until the Pitch Shift 1 
+sound is heard.
+Pitch1 
+Feedback # -98–+98%
+Adjusts the proportion of the pitch 
+shifted sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Pitch1 Pan # L64-63R Stereo location of the Pitch Shift 1 
+sound
+Pitch1 Level 0–127 Volume of the Pitch Shift1 sound
+Pitch2 
+Coarse #2 -24-+12 semi
+Settings of the Pitch Shift 2 sound. 
+The parameters are the same as for 
+the Pitch Shift 1 sound.
+Pitch2 Fine #2 -100-+100 
+cent
+Pitch2 Delay 0–1300 msec
+Pitch2 
+Feedback # -98–+98%
+Pitch2 Pan # L64-63R
+Pitch2 Level 0–127
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance D100:0W-
+D0:100W
+Volume balance between the 
+direct sound (D) and the pitch 
+shifted sound (W)
+Level 0–127 Output Level
+L in
+R in
+L out
+R out
+2Voice Pitch Shifter
+Level 1
+Balance W
+Balance D
+Balance W
+Balance D
+Level 1 Pan 2 R
+Pan 1 L
+Pan 1 R
+Pan 2 L
+63: STEP PITCH SHIFTER
+Parameter Value Explanation
+Step 01–16 -24–+12 semi Amount of pitch shift at each step 
+(semitone units)
+Rate # 0.05–10.00 Hz Rate at which the 16-step sequence 
+will cycle
+Attack # 0–127
+Speed at which the amount of 
+pitch shift changes between 
+steps
+Gate Time # 0–127 Duration of the pitch shifted sound 
+at each step
+Fine -100–+100 
+cent
+Pitch shift adjustment for all steps 
+(2-cent units)
+Delay Time 0–1300 msec
+Delay time from the original sound 
+until the pitch-shifted sound is 
+heard
+Feedback # -98–+98%
+Proportion of the pitch-shifted 
+sound that is to be returned to the 
+input (negative values invert the 
+phase)
+Low Gain -15–+15 dB Amount of boost/cut for the 
+low-frequency range
+High Gain -15–+15 dB Amount of boost/cut for the 
+high-frequency range
+Balance # D100:0W–
+D0:100W
+Volume balance of the original 
+sound (D) and pitch-shifted sound 
+(W)
+Level 0–127 Output volume
+L in
+R in
+Step Pitch Shifter
+Step Pitch Shifter
+L out
+R out
+2-Band
+EQ
+2-Band
+EQ
+
+===== PAGE 72 =====
+72
+Effects List
+Adds reverberation to the sound, simulating an acoustic 
+space.
+This is a special type of reverb in which the reverberant sound 
+is cut off before its natural length.
+64: REVERB
+Parameter Value Explanation
+Type
+ROOM1, 
+ROOM2, 
+STAGE1, 
+STAGE2, 
+HALL1,
+HALL2
+Type of reverb
+ROOM1: dense reverb with short 
+decay
+ROOM2: sparse reverb with short 
+decay
+STAGE1: reverb with greater late 
+reverberation
+STAGE2: reverb with strong early 
+reflections
+HALL1: reverb with clear reverber-
+ance
+HALL2: reverb with rich reverber-
+ance
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the reverb sound 
+is heard.
+Time # 0–127 Time length of reverberation
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+the reverberant sound will be cut. 
+As the frequency is set lower, more 
+of the high frequencies will be cut, 
+resulting in a softer and more 
+muted reverberance. If you do not 
+want to cut the high frequencies, 
+set this parameter to BYPASS.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the reverb 
+sound (W)
+Level 0–127 Output Level
+65: GATED REVERB
+L in
+R in
+L out
+R out
+Reverb
+2-Band
+EQ
+Balance W
+Balance W
+Balance D
+Balance D
+2-Band
+EQ
+L in
+R in
+L out
+R out
+Gated Reverb
+2-Band
+EQ
+Balance W
+Balance W
+Balance D
+Balance D
+2-Band
+EQ
+Parameter Value Explanation
+Type
+NORMAL, 
+REVERSE, 
+SWEEP1, 
+SWEEP2
+Type of reverb
+NORMAL: conventional gated 
+reverb
+REVERSE: backwards reverb
+SWEEP1: the reverberant sound 
+moves from right to left
+SWEEP2: the reverberant sound 
+moves from left to right
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the reverb sound 
+is heard.
+Gate Time 5–500 msec Adjusts the time from when the 
+reverb is heard until it disappears.
+Low Gain -15–+15 dB Gain of the low range
+High Gain -15–+15 dB Gain of the high range
+Balance # D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the reverb 
+sound (W)
+Level # 0–127 Output Level
+66: OVERDRIVE  CHORUS
+Parameter Value Explanation
+Overdrive 
+Drive # 0–127 Degree of distortion
+Also changes the volume.
+Overdrive 
+Pan # L64–63R Stereo location of the overdrive 
+sound
+Chorus 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Chorus Rate # 0.05–10.00 Hz Frequency of modulation
+Chorus Depth 0–127 Depth of modulation
+Chorus 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the chorus (W) and the 
+sound that is not sent through the 
+chorus (D).
+Level 0–127 Output Level
+L in
+R in
+ChorusOverdrive
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+
+===== PAGE 73 =====
+73
+Effects List
+The parameters are essentially the same as in 
+“66: OVERDRIVE  CHORUS,” with the exception of the follow-
+ing two.
+Overdrive Drive  Distortion Drive, 
+Overdrive Pan  Distortion Pan
+67: OVERDRIVE  FLANGER
+Parameter Value Explanation
+Overdrive 
+Drive # 0–127 Degree of distortion
+Also changes the volume.
+Overdrive
+Pan # L64–63R Stereo location of the overdrive 
+sound
+Flanger 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from when 
+the direct sound begins until the 
+flanger sound is heard.
+Flanger Rate # 0.05–10.00 Hz Frequency of modulation
+Flanger Depth 0–127 Depth of modulation
+Flanger 
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Flanger 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the flanger (W) and the 
+sound that is not sent through the 
+flanger (D).
+Level 0–127 Output Level
+L in
+R in
+FlangerOverdrive
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+Feedback
+68: OVERDRIVE  DELAY
+Parameter Value Explanation
+Overdrive
+Drive # 0–127 Degree of distortion
+Also changes the volume.
+Overdrive 
+Pan # L64–63R Stereo location of the overdrive 
+sound
+Delay Time 0–2600 msec
+Adjusts the delay time from the 
+direct sound until the delay sound 
+is heard.
+Delay 
+Feedback # -98–+98%
+Adjusts the proportion of the delay 
+sound that is fed back into the 
+effect. Negative (-) settings will 
+invert the phase.
+Delay HF 
+Damp
+200–8000 Hz, 
+BYPASS
+Adjusts the frequency above 
+which sound fed back to the 
+effect will be cut. If you do not 
+want to cut the high frequen-
+cies, set this parameter to 
+BYPASS.
+Delay 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the delay (W) and the 
+sound that is not sent through the 
+delay (D).
+Level 0–127 Output Level
+69: DISTORTION  CHORUS
+L in
+R in
+DelayOverdrive
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+Feedback
+L in
+R in
+ChorusDistortion
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+
+===== PAGE 74 =====
+74
+Effects List
+The parameters are essentially the same as in 
+“67: OVERDRIVE  FLANGER,” with the exception of the fol-
+lowing two.
+Overdrive Drive  Distortion Drive, 
+Overdrive Pan  Distortion Pan
+The parameters are essentially the same as in 
+“68: OVERDRIVE  DELAY,” with the exception of the follow-
+ing two.
+Overdrive Drive  Distortion Drive, 
+Overdrive Pan  Distortion Pan
+70: DISTORTION  FLANGER
+71: DISTORTION  DELAY
+L in
+R in
+FlangerDistortion
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+Feedback
+L in
+R in
+DelayDistortion
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+Feedback
+72: ENHANCER  CHORUS
+Parameter Value Explanation
+Enhancer 
+Sens # 0–127 Sensitivity of the enhancer
+Enhancer 
+Mix # 0–127 Level of the overtones generated 
+by the enhancer
+Chorus 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Chorus Rate # 0.05–10.00 Hz Frequency of modulation
+Chorus Depth 0–127 Depth of modulation
+Chorus 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the chorus (W) and the 
+sound that is not sent through the 
+chorus (D).
+Level 0–127 Output Level
+73: ENHANCER  FLANGER
+Parameter Value Explanation
+Enhancer 
+Sens # 0–127 Sensitivity of the enhancer
+Enhancer 
+Mix # 0–127 Level of the overtones generated 
+by the enhancer
+Flanger 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from when 
+the direct sound begins until the 
+flanger sound is heard.
+Flanger Rate # 0.05–10.00 Hz Frequency of modulation
+Flanger Depth 0–127 Depth of modulation
+Flanger 
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Flanger 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the flanger (W) and the 
+sound that is not sent through the 
+flanger (D).
+Level 0–127 Output Level
+Chorus
+L in
+R in
+L out
+R out
+Mix
+Mix
+Enhancer
+Enhancer
+Balance W
+Balance W
+Balance D
+Balance D
+Feedback
+Flanger
+L in
+R in
+L out
+R out
+Mix
+Mix
+Enhancer
+Enhancer
+Balance W
+Balance W
+Balance D
+Balance D
+
+===== PAGE 75 =====
+75
+Effects List
+74: ENHANCER  DELAY
+Parameter Value Explanation
+Enhancer 
+Sens # 0–127 Sensitivity of the enhancer
+Enhancer 
+Mix # 0–127 Level of the overtones generated 
+by the enhancer
+Delay Time 0–2600 msec
+Adjusts the delay time from the 
+direct sound until the delay sound 
+is heard.
+Delay 
+Feedback # -98–+98%
+Adjusts the proportion of the delay 
+sound that is fed back into the 
+effect. Negative (-) settings will 
+invert the phase.
+Delay 
+HF Damp
+200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect will be 
+cut. If you do not want to cut the 
+high frequencies, set this parame-
+ter to BYPASS.
+Delay 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the delay (W) and the 
+sound that is not sent through the 
+delay (D).
+Level 0–127 Output Level
+75: CHORUS  DELAY
+Parameter Value Explanation
+Chorus 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Chorus Rate # 0.05–10.00 Hz Frequency of modulation
+Chorus Depth 0–127 Depth of modulation
+Chorus 
+Balance #
+D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the chorus 
+sound (W)
+Delay Time 0–2600 msec
+Adjusts the delay time from the 
+direct sound until the delay sound 
+is heard.
+Feedback
+Delay
+L in
+R in
+L out
+R out
+Mix
+Mix
+Enhancer
+Enhancer
+Balance W
+Balance W
+Balance D
+Balance D
+Feedback
+Delay
+L in
+R in
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+Chorus
+Balance W
+Balance W
+Balance D
+Balance D
+Parameter Value Explanation
+Delay 
+Feedback # -98–+98%
+Adjusts the proportion of the delay 
+sound that is fed back into the 
+effect. Negative (-) settings will 
+invert the phase.
+Delay 
+HF Damp
+200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect will be 
+cut. If you do not want to cut the 
+high frequencies, set this parame-
+ter to BYPASS.
+Delay 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the delay (W) and the 
+sound that is not sent through the 
+delay (D).
+Level 0–127 Output Level
+76: FLANGER  DELAY
+Parameter Value Explanation
+Flanger 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from when 
+the direct sound begins until the 
+flanger sound is heard.
+Flanger Rate # 0.05–10.00 Hz Frequency of modulation
+Flanger Depth 0–127 Depth of modulation
+Flanger 
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Flanger 
+Balance #
+D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the flanger 
+sound (W)
+Delay Time 0–2600 msec
+Adjusts the delay time from the 
+direct sound until the delay sound 
+is heard.
+Delay 
+Feedback # -98–+98%
+Adjusts the proportion of the delay 
+sound that is fed back into the 
+effect. Negative (-) settings will 
+invert the phase.
+Delay 
+HF Damp
+200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect will be 
+cut. If you do not want to cut the 
+high frequencies, set this parame-
+ter to BYPASS.
+Delay 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the delay (W) and the 
+sound that is not sent through the 
+delay (D).
+Level 0–127 Output Level
+Feedback
+Delay
+L in
+R in
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+Flanger
+Balance W
+Balance W
+Balance D
+Balance D
+Feedback
+
+===== PAGE 76 =====
+76
+Effects List
+On an acoustic piano, holding down the damper pedal allows 
+other strings to resonate in sympathy with the notes you play, 
+creating rich and spacious resonances. This effect simulates 
+these sympathetic resonances.
+77: CHORUS  FLANGER
+Parameter Value Explanation
+Chorus 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Chorus Rate # 0.05–10.00 Hz Modulation frequency of the cho-
+rus effect
+Chorus Depth 0–127 Modulation depth of the chorus 
+effect
+Chorus 
+Balance #
+D100:0W–
+D0:100W
+Volume balance between the 
+direct sound (D) and the chorus 
+sound (W)
+Flanger 
+Pre Delay 0.0–100 msec
+Adjusts the delay time from when 
+the direct sound begins until the 
+flanger sound is heard.
+Flanger Rate # 0.05–10.00 Hz Modulation frequency of the 
+flanger effect
+Flanger Depth 0–127 Modulation depth of the flanger 
+effect
+Flanger 
+Feedback # -98–+98%
+Adjusts the proportion of the 
+flanger sound that is fed back into 
+the effect. Negative (-) settings will 
+invert the phase.
+Flanger 
+Balance #
+D100:0W–
+D0:100W
+Adjusts the volume balance 
+between the sound that is sent 
+through the flanger (W) and the 
+sound that is not sent through 
+the flanger (D).
+Level 0–127 Output Level
+Feedback
+Flanger
+L in
+R in
+L out
+R out
+Balance W
+Balance W
+Balance D
+Balance D
+Chorus
+Balance W
+Balance W
+Balance D
+Balance D
+78: SYMPATHETIC RESONANCE
+Parameter Value Explanation
+Depth # 0–127 Depth of the effect
+Damper # 0–127
+Depth to which the damper pedal 
+is pressed (controls the resonant 
+sound)
+Pre LPF 16–15000 Hz, 
+BYPASS
+Frequency of the filter that cuts the 
+high-frequency content of the 
+input sound (BYPASS: no cut)
+Pre HPF BYPASS, 
+16–15000 Hz
+Frequency of the filter that cuts the 
+low-frequency content of the input 
+sound (BYPASS: no cut)
+Peaking Freq 200–8000 Hz
+Frequency of the filter that boosts/
+cuts a specific frequency region of 
+the input sound
+Peaking Gain -15–+15 dB
+Amount of boost/cut produced by 
+the filter at the specified frequency 
+region of the input sound
+Peaking Q 0.5, 1.0, 2.0, 
+4.0, 8.0
+Width of the frequency region 
+boosted/cut by the ‘Peaking Gain’ 
+parameter (larger values make the 
+region narrower)
+HF Damp 16–15000 Hz, 
+BYPASS
+Frequency at which the high-fre-
+quency content of the resonant 
+sound will be cut (BYPASS: no cut)
+LF Damp BYPASS, 
+16–15000 Hz
+Frequency at which the low-fre-
+quency content of the resonant 
+sound will be cut (BYPASS: no cut)
+Lid 1–6
+This simulates the actual changes 
+in sound that occur when the lid of 
+a grand piano is set at different 
+heights.
+EQ Low Freq 200, 400 Hz Frequency of the low-range EQ
+EQ Low Gain -15–+15 dB Amount of low-range boost/cut
+EQ Mid Freq 200–8000 Hz Frequency of the midrange EQ
+EQ Mid Gain -15–+15 dB Amount of midrange boost/cut
+EQ Mid Q 0.5, 1.0, 2.0, 
+4.0, 8.0
+Width of midrange (larger values 
+make the region narrower)
+EQ High Freq 2000, 4000, 
+8000 Hz Frequency of the high-range EQ
+EQ High Gain -15–+15 dB Amount of high-range boost/cut
+Level 0–127 Output Level
+L in
+R in
+L out
+R out
+Sym. Resonance
+3-Band
+EQ
+3-Band
+EQ
+
+===== PAGE 77 =====
+77
+Effects List
+The AX-Synth’s Chorus effect unit can also be used as a stereo delay unit.
+These settings allow you to select chorus or delay, and the characteristics of the selected effect type.
+Chorus Parameters
+Parameter Value Explanation
+Chorus Type
+OFF, 
+CHORUS, 
+DELAY
+Selects either Chorus or Delay.
+OFF: Neither Chorus or Delay is 
+used.
+CHORUS: Chorus is used.
+DELAY: Delay is used.
+Chorus Level 0–127 Volume of the chorus sound
+CHORUS
+Filter Type
+OFF, 
+LPF, 
+HPF
+Type of filter
+OFF: no filter is used
+LPF: cuts the frequency range 
+above the Cutoff Freq
+HPF: cuts the frequency range 
+below the Cutoff Freq
+Cutoff Freq 200–8000 Hz Basic frequency of the filter
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the chorus 
+sound is heard.
+Rate 0.05–10.00 Hz Frequency of modulation
+Depth 0–127 Depth of modulation
+Phase 0–180 deg Spatial spread of the sound
+Feedback 0–127
+Adjusts the amount of the cho-
+rus sound that is fed back into 
+the effect.
+DELAY
+Delay Left
+0–1000 msec
+Adjusts the delay time from the 
+direct sound until the delay sound 
+is heard.
+Delay Right
+Delay Center
+Center 
+Feedback -98–+98%
+Adjusts the proportion of the delay 
+sound that is fed back into the 
+effect. Negative (-) settings will 
+invert the phase.
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above which 
+sound fed back to the effect will be 
+cut. If you do not want to cut the 
+high frequencies, set this parame-
+ter to BYPASS.
+Left Level
+0–127 Volume of each delay soundRight Level 
+Center Level
+
+===== PAGE 78 =====
+78
+Effects List
+These settings allow you to select the desired type of reverb, and its characteristics.
+Reverb Parameters
+Parameter Value Explanation
+Reverb Type
+OFF, 
+REVERB, 
+SRV ROOM, 
+SRV HALL, 
+SRV PLATE
+Type of reverb
+OFF: Reverb is not used.
+REVERB: Normal reverb
+SRV ROOM: This simulates typical 
+room acoustic reflections.
+SRV HALL: This simulates typical 
+concert hall acoustic reflections.
+SRV PLATE: This simulates a 
+reverb plate, a popular type of arti-
+ficial reverb unit that derives its 
+sound from the vibration of a 
+metallic plate.
+Reverb Level 0–127 Volume of the reverb sound
+REVERB
+Type
+ROOM1, 
+ROOM2, 
+STAGE1, 
+STAGE2, 
+HALL1, 
+HALL2, 
+DELAY, 
+PAN-DELAY
+Type of reverb/delay
+ROOM1: short reverb with high 
+density
+ROOM2: short reverb with low 
+density
+STAGE1: reverb with greater late 
+reverberation
+STAGE2: reverb with strong early 
+reflections
+HALL1: very clear-sounding 
+reverb
+HALL2: rich reverb
+DELAY: conventional delay effect
+PAN-DELAY: delay effect with 
+echoes that pan left and right
+Time 0–127
+Time length of reverberation 
+(Type: ROOM1–HALL2)
+Delay time 
+(Type: DELAY, PAN-DELAY) 
+HF Damp 200–8000 Hz, 
+BYPASS
+Adjusts the frequency above 
+which the high-frequency con-
+tent of the reverb sound will be 
+cut, or “damped.” If you do not 
+want to cut the high frequencies, 
+set this parameter to BYPASS.
+Delay 
+Feedback 0–127
+Adjusts the amount of delay 
+feedback when the Type setting is 
+DELAY or PAN-DELAY.
+Amount of delay sound returned to 
+the input (this setting is valid only if 
+Type is DELAY or PAN-DELAY)
+Parameter Value Explanation
+SRV ROOM
+SRV HALL
+SRV PLATE
+Pre Delay 0.0–100 msec
+Adjusts the delay time from the 
+direct sound until the reverb 
+sound is heard.
+Time 0–127 Time length of reverberation
+Size 1–8 Size of the simulated room or hall
+High Cut 160–12500 Hz, 
+BYPASS
+Adjusts the frequency above which 
+the high-frequency content of the 
+reverb will be reduced. If you do 
+not want to reduce the high fre-
+quencies, set this parameter to 
+BYPASS.
+Density 0–127 Density of reverb
+Diffusion 0–127
+Adjusts the change in the density 
+of the reverb over time. The higher 
+the value, the more the density 
+increases with time. (The effect of 
+this setting is most pronounced 
+with long reverb times.)
+LF Damp Freq 50–4000 Hz
+Adjusts the frequency below which 
+the low-frequency content of the 
+reverb sound will be reduced, or 
+“damped.”
+LF Damp Gain -36–0 dB
+Adjusts the amount of damping 
+applied to the frequency range 
+selected with LF Damp. With a set-
+ting of “0,” there will be no reduc-
+tion of the reverb’s low-frequency 
+content.
+HF Damp Freq 4000–12500 
+Hz
+Adjusts the frequency above which 
+the high-frequency content of the 
+reverb sound will be reduced, or 
+“damped.”
+HF Damp Gain -36–0 dB
+Adjusts the amount of damping 
+applied to the frequency range 
+selected with HF Damp. With a set-
+ting of “0,” there will be no reduc-
+tion of the reverb’s high-frequency 
+content.

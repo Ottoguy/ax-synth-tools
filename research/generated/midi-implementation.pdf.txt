@@ -1,0 +1,2961 @@
+
+
+===== PAGE 1 =====
+1
+ 
+Model: AX-Synth
+Date: January 2010
+Version: 1.00
+ 
+Copyright © 2010  ROLAND EUROPE S.p.a.
+All rights reserved. No part of this publication may be reproduced in any form without the written permission of ROLAND EUROPE S.p.a.
+ 
+MIDI Implementation
+ 
+1. Data reception
+ 
+Parameters marked with a “*” can be viewed using “AX-Synth Editor”. 
+ 
+■ 
+ 
+Channel Voice Messages
+ 
+●
+ 
+Note off
+ 
+Status 2nd byte 3rd byte
+8nH kkH vvH
+9nH kkH 00H
+n = MIDI channel number: 0H~FH (ch.1~16)
+kk = note number: 00H~7FH (0~127)
+vv = note off velocity: 00H~7FH (0~127)
+ 
+●
+ 
+Note on
+ 
+Status 2nd byte 3rd byte
+9nH kkH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+kk = note number: 00H~7FH (0~127)
+vv = note on velocity: 01H-7FH (1~127)
+ 
+●
+ 
+Polyphonic Key Pressure
+ 
+Status 2nd byte 3rd byte
+AnH kkH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+kk = note number: 00H~7FH (0~127)
+vv = key pressure: 00H~7FH (0~127) 
+ 
+●
+ 
+Control Change
+ 
+* If the corresponding Controller number is selected for the PATCH MATRIX CONTROL SOURCE
+1, 2, 3 or 4 parameter (PATCH/MATRIX CONTROL), the corresponding effect will occur.
+* If a Controller number that corresponds to the SYSTEM CTRL SRC 1, 2, 3 or 4 parameter
+(SYSTEM/COMMON) is selected, the specified effect will apply if PATCH MATRIX CONTROL
+SOURCE 1, 2, 3 or 4 parameter (PATCH/MATRIX CONTROL) is set to SYS-CTRL1, SYS-CTRL2,
+SYSCTRL3 or SYS-CTRL4.
+ 
+❍ 
+ 
+Bank Select (Controller number 0, 32)
+ 
+Status 2nd byte 3rd byte
+BnH 00H mmH
+BnH 20H llH
+n = MIDI channel number: 0H~FH (ch.1~ch.16)
+mm, ll = Bank number: 00H, 00H~7FH, 7FH (bank.1~16384)
+ 
+❍ 
+ 
+Modulation (Controller number 1)
+ 
+Status 2nd byte 3rd byte
+BnH 01H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Modulation depth: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Breath type (Controller number 2)
+ 
+Status 2nd byte 3rd byte
+BnH 02H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Foot type (Controller number 4)
+ 
+Status 2nd byte 3rd byte
+BnH 04H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Portamento Time (Controller number 5)
+ 
+Status 2nd byte 3rd byte
+BnH 05H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Portamento Time: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Data Entry (Controller number 6, 38)
+ 
+Status 2nd byte 3rd byte
+BnH 06H mmH
+BnH 26H llH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm, ll = the value of the parameter specified by RPN/NRPN
+mm = MSB, ll = LSB
+ 
+❍ 
+ 
+Volume (Controller number 7)
+ 
+Status 2nd byte 3rd byte
+BnH 07H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Volume: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Panpot (Controller number 10)
+ 
+Status 2nd byte 3rd byte
+BnH 0AH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = pan: 00H~40H~7FH (Left-Center-Right)
+ 
+❍ 
+ 
+Expression (Controller number 11)
+ 
+Status 2nd byte 3rd byte
+BnH 0BH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Expression: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Hold 1 (Controller number 64)
+ 
+Status 2nd byte 3rd byte
+BnH 40H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127) 
+ 
+❍ 
+ 
+Portamento (Controller number 65)
+ 
+Status 2nd byte 3rd byte
+BnH 41H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)  0~63= Off, 64~127 = On
+ 
+❍ 
+ 
+Sostenuto (Controller number 66)
+ 
+Status 2nd byte 3rd byte
+BnH 42H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)  0~63=  Off, 64~127= On
+ 
+❍ 
+ 
+Soft (Controller number 67)
+ 
+Status 2nd byte 3rd byte
+BnH 43H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)  0~63 = Off, 64~127 = On
+ 
+❍ 
+ 
+Legato Foot Switch (Controller number 68)
+ 
+Status 2nd byte 3rd byte
+BnH 44H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127) 0~63= Off, 64~127= On
+ 
+❍ 
+ 
+Hold-2 (Controller number 69)
+ 
+Status 2nd byte 3rd byte
+BnH 45H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+* A hold movement isn’t done.
+ 
+Bank Select Program 
+number Tones Group Number
+MSB LSB
+ 
+066 000 001~004 Super NATURAL 004
+087
+064 001~004 SPECIAL 004
+000 001~128 Regular 128
+001 001~128 Regular 128
+
+===== PAGE 2 =====
+ 
+2
+ 
+AX-Synth MIDI Implementation
+ 
+❍ 
+ 
+Resonance (Controller number 71)
+ 
+Status 2nd byte 3rd byte
+BnH 47H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv= Resonance value (relative change): 00H~40H~7FH (-64~ 0 ~+63)
+ 
+❍ 
+ 
+Release Time (Controller number 72)
+ 
+Status 2nd byte 3rd byte
+BnH 48H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Release Time value (relative change): 00H ~40H~7FH (-64~0 ~+63)
+ 
+❍ 
+ 
+Attack time (Controller number 73)
+ 
+Status 2nd byte 3rd byte
+BnH 49H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Attack time value (relative change): 00H~40H~7FH (-64~0~+63)
+ 
+❍ 
+ 
+Cutoff (Controller number 74)
+ 
+Status 2nd byte 3rd byte
+BnH 4AH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Cutoff value (relative change): 00H~40H~7FH (-64~ 0~+63)
+ 
+❍ 
+ 
+Decay Time (Controller number 75)
+ 
+Status 2nd byte 3rd byte
+BnH 4BH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Decay Time value (relative change): 00H~7FH(-64 - 0 - +63)
+ 
+❍ 
+ 
+Vibrato Rate (Controller number 76)
+ 
+Status 2nd byte 3rd byte
+BnH 4CH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Vibrato Rate value (relative change): 00H~7FH(-64 - 0 - +63)
+ 
+❍ 
+ 
+Vibrato Depth (Controller number 77)
+ 
+Status 2nd byte 3rd byte
+BnH 4DH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Vibrato Depth Value (relative change): 00H~7FH(-64~0~+63)
+ 
+❍ 
+ 
+Vibrato Delay (Controller number 78)
+ 
+Status 2nd byte 3rd byte
+BnH 4EH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Vibrato Delay value (relative change): 00H~7FH(-64 - 0 - +63)
+ 
+❍ 
+ 
+General Purpose Controller 5 (Controller number 80)
+ 
+Status 2nd byte 3rd byte
+BnH 50H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+* The LEVEL parameter (PATCH/TVA) of Tone 1 will change.
+ 
+❍ 
+ 
+General Purpose Controller 6 (Controller number 81)
+ 
+Status 2nd byte 3rd byte
+BnH 51H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+* The LEVEL parameter (PATCH/TVA) of Tone 2 will change.
+ 
+❍ 
+ 
+General Purpose Controller 7 (Controller number 82)
+ 
+Status 2nd byte 3rd byte
+BnH 52H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+* The LEVEL parameter (PATCH/TVA) of Tone 3 will change.
+ 
+❍ 
+ 
+General Purpose Controller 8 (Controller number 83)
+ 
+Status 2nd byte 3rd byte
+BnH 53H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+* The LEVEL parameter (PATCH/TVA) of Tone 4 will change.
+ 
+❍ 
+ 
+Portamento control (Controller number 84)
+ 
+Status 2nd byte 3rd byte
+BnH 54H kkH
+n = MIDI channel number: 0H~FH (ch.1~16)
+kk = source note number: 00H~7FH (0~127)
+*A  Note-on received immediately after a Portamento Control message will change continuously
+in pitch, starting from the pitch of the Source Note Number.
+* If a voice is already sounding for a note number identical to the Source Note Number, this
+voice will continue sounding (i.e., legato) and will, when the next Note-on is received,
+smoothly change to the pitch of that Note-on.
+* The rate of the pitch change caused by Portamento Control is determined by the Portamento
+Time value.
+ 
+❍ 
+ 
+Effect 1 (Reverb Send Level) (Controller number 91)
+ 
+Status 2nd byte 3rd byte
+BnH 5BH vvH
+n = MIDI channel number:  0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Effect 3 (Chorus Send Level) (Controller number 93)
+ 
+Status 2nd byte 3rd byte
+BnH 5DH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127), Initial Value = 00H (0)
+ 
+❍ 
+ 
+RPN MSB/LSB (Controller number 100, 101)
+ 
+Status 2nd byte 3rd byte
+BnH 65H mmH
+BnH 64H llH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm = upper byte (MSB) of parameter number specified by RPN
+ll = lower byte (LSB) of parameter number specified by RPN
+ 
+**RPN**
+ 
+The RPN (Registered Parameter Number) messages are expanded control changes, and each 
+function of an RPN is described by the MIDI Standard.
+To use these messages, you must first use RPN MSB and RPN LSB messages to specify the 
+parameter to be controlled, and then use Data Entry messages to specify the value of the specified 
+parameter. Once an RPN parameter has been specified, all Data Entry messages received on that 
+channel will modify the value of that parameter. To prevent accidents, it is recommended that you 
+set RPN Null (RPN Number = 7FH/7FH) when you have finished setting the value of the desired 
+parameter.
+On this instrument, RPN can be used to modify the following parameters.
+RPN Data entry
+MSB LSB MSB LSB Explanation
+00H 00H mmH --- Pitch Bend Sensitivity
+mm: 00H-18H (0-24 semitones)
+ll: ignored (processed as 00H)
+Up to 2 octaves can be specified in semitone steps
+00H 01H mmH llH Channel Fine Tuning
+mm, ll: 00 00H~40 00H~60 00H
+(–4096 x 100/8192~0~+4096 x 100/8192 cent)
+00H 02H mmH --- Channel Coarse Tuning
+mm: 10H~ 40H~70H  (-48~0+48 semitones)
+ll: ignored (processed as 00H)
+00H 05H mmH llH Modulation Depth Range
+mm llH: 00 00H~00 06H
+(0~16384 x 600/16384 cent)
+* Not received in Patch mode
+
+===== PAGE 3 =====
+ 
+3
+ 
+AX-Synth MIDI Implementation
+ 
+7FH 7FH ---  --- RPN null
+RPN and NRPN will be set as “unspecified.” Once this 
+setting has been made, subsequent Parameter 
+values that were previously set will not change.
+mm, ll: ignored
+ 
+●
+ 
+Program Change
+ 
+Status 2nd byte
+CnH ppH
+n = MIDI channel number: 0H~FH (ch.1~16)
+pp = Program number: 00H~7FH (prog.1~128)
+ 
+●
+ 
+Channel Pressure
+ 
+Status 2nd byte
+DnH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Channel Pressure : 00H~7FH (0~127) 
+ 
+●
+ 
+Pitch Bend Change
+ 
+Status 2nd byte 3rd bytes
+EnH llH mmH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm, ll = Pitch Bend value: 00 00H~40 00H~7F 7FH (-8192~0~+8191)
+ 
+■ 
+ 
+Channel Mode Messages
+ 
+●
+ 
+All Sounds Off (Controller number 120)
+ 
+Status 2nd byte 3rd bytes
+BnH 78H 00H
+n = MIDI channel number:  0H~FH (ch.1~16)
+*W hen this message is received, all currently-sounding notes on the corresponding channel will
+be turned off immediately.
+ 
+●
+ 
+Reset All Controllers (Controller number 121)
+ 
+Status 2nd byte 3rd bytes
+BnH 79H 00H
+n = MIDI channel number:  0H~FH (ch.1~16)
+*W hen this message is received, the following controllers will be set to their reset values.
+Controller Reset value
+Pitch Bend Change ±0 (Center)
+Polyphonic Key Pressure 0 (off)
+Channel Pressure 0 (off)
+Modulation 0 (off)
+Breath Type 0 (min)
+Expression 127 (max)
+However, the controller will be at minimum
+Hold 1 0 (off)
+Portamento 0 (off)
+Sostenuto 0 (off)
+Soft 0 (off)
+RPN unset; previously set data will not change
+NRPN unset; previously set data will not change
+ 
+●
+ 
+All Notes Off (Controller number 123)
+ 
+Status 2nd byte 3rd bytes
+BnH 7BH 00H
+n = MIDI channel number: 0H~FH (ch.1~16)
+*W hen All Notes Off is received, all notes on the corresponding channel will be turned off.
+However, if Hold 1 or Sostenuto is ON, the sound will be continued until these are turned off.
+ 
+●
+ 
+OMNI OFF (Controller number 124)
+ 
+Status 2nd byte 3rd bytes
+BnH 7CH 00H
+n = MIDI channel number: 0H~FH (ch.1~16)
+* The same processing will be carried out as when All Notes Off is received.
+ 
+●
+ 
+OMNI ON (Controller number 125)
+ 
+Status 2nd byte 3rd bytes
+BnH 7DH 00H
+n = MIDI channel number: 0H~FH (ch.1~16)
+* OMNI ON is only recognized as “All notes off”; the Mode doesn’t change (OMNI OFF remains).
+ 
+●
+ 
+MONO (Controller number 126)
+ 
+Status 2nd byte 3rd bytes
+BnH 7EH mmH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm = mono number: 00H~10H (0~16)
+* The same processing will be carried out as when  All Notes Off is received.
+ 
+●
+ 
+POLY (Controller number 127)
+ 
+Status 2nd byte 3rd bytes
+BnH 7FH 00H
+n = MIDI channel number: 0H~FH (ch.1~16)
+* The same processing will be carried out as when  All Notes Off is received.
+ 
+■ 
+ 
+System Realtime Message
+ 
+●
+ 
+Active Sensing
+ 
+Status
+FEH
+*W hen Active Sensing is received, the unit will begin monitoring the intervals of all further
+messages. While monitoring, if the interval between messages exceeds 420ms, the same
+processing will be carried out as when All Sounds Off, All Notes Off and Reset All Controllers
+are received, and message interval monitoring will be halted.
+ 
+■ 
+ 
+System Exclusive Messages
+ 
+Status Data byte Status
+F0H iiH, ddH, ......, eeH F7H
+F0H: System Exclusive Message status
+ii = ID number: an ID number (manufacturer ID) to indicate the manufacturer whose 
+Exclusive message this is. Roland’s manufacturer ID is 41H.
+ID numbers 7EH and 7FH are extensions of the MIDI standard; Universal 
+Non-realtime Messages (7EH) and Universal Realtime Messages (7FH).
+dd,...,ee = data: 00H~7FH (0~127)
+F7H: EOX (End Of Exclusive)
+Of the System Exclusive messages received by this device, the Universal Non-realtime messages 
+and the Universal Realtime messages and the Data Request (RQ1) messages and the Data Set 
+(DT1) messages will be set automatically.
+ 
+●
+ 
+Universal Non-realtime System Exclusive Messages
+ 
+❍ 
+ 
+Identity Request Message
+ 
+Status Data byte Status
+F0H 7EH, dev, 06H, 01H F7H
+Byte Explanation
+F0H Exclusive status
+7EH ID number (Universal Non-realtime Message)
+dev Device ID (dev: 10H, 7FH)
+06H Sub ID#1 (General Information)
+01H Sub ID#2 (Identity Request)
+F7H EOX (End Of Exclusive)
+*W hen this message is received, Identity Reply message (p. 6) will be transmitted
+
+===== PAGE 4 =====
+ 
+4
+ 
+AX-Synth MIDI Implementation
+ 
+●
+ 
+Data transmission
+ 
+This instrument can use exclusive messages to exchange many varieties of internal settings with 
+other devices. The model ID of the exclusive messages used by this instrument is 00H 00H 3CH.
+ 
+❍ 
+ 
+Data Request 1 (RQ1)
+ 
+This message requests the other device to transmit data. The address and size indicate the type
+and amount of data that is requested.
+When a Data Request message is received, if the device is in a state in which it is able to transmit 
+data, and if the address and size are appropriate, the requested data is transmitted as a Data Set 1 
+(DT1) message. If the conditions are not met, nothing is transmitted.
+Status Data byte Status
+F0H 41H, dev, 00H, 00H, 3CH, 11H, aaH, bbH, ccH, F7H
+ddH, ssH, ttH, uuH, vvH, sum
+Byte Explanation
+F0H Exclusive status
+41H ID number (Roland)
+dev Device ID (dev: 10H, 7FH)
+00H model ID #1 (AX-Synth)
+00H model ID #2 (AX-Synth)
+3CH model ID #3 (AX-Synth)
+11H command ID (RQ1)
+aaH address MSB
+bbH address
+ccH address
+ddH address LSB
+ssH size MSB
+ttH size
+uuH size
+vvH size LSB
+sum checksum
+F7H EOX (End Of Exclusive)
+* The amount of data that can be transmitted at one time depends on the type of data, and data
+can be received only from the specified starting address and size. Refer to “Parameter Address
+Map” (p. 7).
+* Regarding the checksum please refer to p. 16.
+ 
+❍ 
+ 
+Data set 1 (DT1)
+ 
+Status Data byte Status
+F0H 41H, dev, 00H, 00H, 3CH, 12H, aaH, bbH, F7H
+ccH, ddH, eeH, ... ffH, sum
+Byte Explanation
+F0H Exclusive status
+41H ID number (Roland)
+dev Device ID (dev: 10H, 7FH)
+00H Model ID #1 (AX-Synth)
+00H Model ID #2 (AX-Synth)
+3CH Model ID #3 (AX-Synth)
+12H Command ID (DT1)
+aaH Address MSB: upper byte of the starting address of the data to be sent
+bbH Address: upper middle byte of the starting address of the data to be sent
+ccH Address: lower middle byte of the starting address of the data to be sent
+ddH Address LSB: lower byte of the starting address of the data to be sent.
+eeH Data: the actual data to be sent. Multiple bytes of data are 
+transmitted in order starting from the address.
+: :
+ffH Data
+sum Checksum
+F7H EOX (End Of Exclusive)
+* The amount of data that can be transmitted at one time depends on the type of data, and data
+will be transmitted from the specified starting address and size. Refer to the address and size
+given in “Parameter Address Map” (p. 7).
+*D ata larger than 256 bytes will be divided into packets of 256 bytes or less, and each packet
+will be sent at an interval of about 20 ms.
+* Regarding the checksum, please refer to p. 16.
+Status Data byte Status
+F0H 41H, dev, 42H, 12H, aaH, bbH, ccH, F7H
+ddH, ... eeH, sum
+Byte Explanation
+F0H Exclusive status
+41H ID number (Roland)
+dev Device ID (dev: 10H, 7FH)
+42H Model ID (GS)
+12H Command ID (DT1)
+aaH Address MSB: upper byte of the starting address of the transmitted data
+bbH Address: middle byte of the starting address of the transmitted data
+ccH Address LSB: lower byte of the starting address of the transmitted data
+ddH Data: the actual data to be transmitted. Multiple bytes of data are 
+transmitted starting from the address.
+: :
+eeH Data
+sum Checksum
+F7H EOX (End Of Exclusive)
+* The amount of data that can be transmitted at one time depends on the type of data, and data
+will be transmitted from the specified starting address and size. Refer to the address and size
+given in “Parameter Address Map” (p. 7).
+*D ata larger than 256 bytes will be divided into packets of 256 bytes or less, and each packet
+will be sent at an interval of about 20 ms.
+* Regarding the checksum, please refer to p. 16.
+
+===== PAGE 5 =====
+ 
+5
+ 
+AX-Synth MIDI Implementation
+2. Data transmission
+ 
+■ 
+ 
+Channel Voice Messages
+ 
+●
+ 
+Note off
+ 
+Status 2nd byte 3rd byte
+8nH kkH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+kk = note number: 00H~7FH (0~127)
+vv = note off velocity: 00H~7FH (0~127)
+ 
+●
+ 
+Note on
+ 
+Status 2nd byte 3rd byte
+9nH kkH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+kk = note number: 00H~7FH (0~127)
+vv = note on velocity: 01H-7FH (1-127)
+ 
+●
+ 
+Control Change
+ 
+* By selecting a controller number that corresponds to the setting of parameters of controllers,
+the AX-Synth can transmit any control change message.
+ 
+❍ 
+ 
+Bank Select (Controller number 0, 32)
+ 
+Status 2nd byte 3rd byte
+BnH 00H mmH
+BnH 20H llH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm, ll = Bank number: 00H, 00H~7FH, 7FH (bank.1~16384)
+* These messages are transmitted when a Tone is selected.
+ 
+❍ 
+ 
+Modulation (Controller number 1)
+ 
+Status 2nd byte 3rd byte
+BnH 01H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Modulation depth: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Breath type (Controller number 2)
+ 
+Status 2nd byte 3rd byte
+BnH 02H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Portamento Time (Controller number 5)
+ 
+Status 2nd byte 3rd byte
+BnH 05H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Portamento Time: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Data Entry (Controller number 6, 38)
+ 
+Status 2nd byte 3rd byte
+BnH 06H mmH
+BnH 26H llH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm, ll = the value of the parameter specified by RPN/NRPN
+mm = MSB, ll = LSB
+ 
+❍ 
+ 
+Volume (Controller number 7)
+ 
+Status 2nd byte 3rd byte
+BnH 07H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Volume: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Panpot (Controller number 10)
+ 
+Status 2nd byte 3rd byte
+BnH 0AH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = pan: 00H~40H~7FH (Left-Center-Right)
+ 
+❍ 
+ 
+Expression (Controller number 11)
+ 
+Status 2nd byte 3rd byte
+BnH 0BH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Expression: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Hold 1 (Controller number 64)
+ 
+Status 2nd byte 3rd byte
+BnH 40H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+* If the HOLD PEDAL Assign parameter is set to HOLD and the Continuous Hold parameter
+(SYSTEM/HOLD PEDAL) is set to OFF on the AX-Synth, only 00H (OFF) or 7FH (ON) can be
+transmitted as the value of the control.
+ 
+❍ 
+ 
+Portamento (Controller number 65)
+ 
+Status 2nd byte 3rd byte
+BnH 41H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)  0~63= Off, 64~127 = On
+ 
+❍ 
+ 
+Resonance (Controller number 71)
+ 
+Status 2nd byte 3rd byte
+BnH 47H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv= Resonance value (relative change): 00H~40H~7FH (-64~ 0 ~+63)
+ 
+❍ 
+ 
+Release Time (Controller number 72)
+ 
+Status 2nd byte 3rd byte
+BnH 48H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Release Time value (relative change): 00H ~40H~7FH (-64~0 ~+63)
+ 
+❍ 
+ 
+Attack time (Controller number 73)
+ 
+Status 2nd byte 3rd byte
+BnH 49H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Attack time value (relative change): 00H~40H~7FH (-64~0~+63)
+ 
+❍ 
+ 
+Cutoff (Controller number 74)
+ 
+Status 2nd byte 3rd byte
+BnH 4AH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Cutoff value (relative change): 00H~40H~7FH (-64~ 0~+63)
+ 
+❍ 
+ 
+General Purpose Controller 5 (Controller number 80)
+ 
+Status 2nd byte 3rd byte
+BnH 50H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+ 
+❍ 
+ 
+General Purpose Controller 6 (Controller number 81)
+ 
+Status 2nd byte 3rd byte
+BnH 51H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+ 
+❍ 
+ 
+General Purpose Controller 7 (Controller number 82)
+ 
+Status 2nd byte 3rd byte
+BnH 52H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+
+===== PAGE 6 =====
+ 
+6
+ 
+AX-Synth MIDI Implementation
+ 
+❍ 
+ 
+General Purpose Controller 8 (Controller number 83)
+ 
+Status 2nd byte 3rd byte
+BnH 53H vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Control value: 00H~7FH (0~127)
+ 
+❍ 
+ 
+Portamento control (Controller number 84)
+ 
+Status 2nd byte 3rd byte
+BnH 54H kkH
+n = MIDI channel number: 0H~FH (ch.1~16)
+kk = source note number: 00H~7FH (0~127)
+ 
+●
+ 
+Program Change
+ 
+Status 2nd byte
+CnH ppH
+n = MIDI channel number: 0H~FH (ch.1~16)
+pp = Program number 00H~7FH (prog.1-prog.128)
+* These messages are transmitted when a Tone is selected.
+ 
+●
+ 
+Channel Pressure
+ 
+Status 2nd byte
+DnH vvH
+n = MIDI channel number: 0H~FH (ch.1~16)
+vv = Channel Pressure : 00H~7FH (0~127) 
+ 
+●
+ 
+Pitch Bend Change
+ 
+Status 2nd byte 3rd bytes
+EnH llH mmH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm, ll = Pitch Bend value: 00 00H~40 00H~7F 7FH (-8192~0~+8191)
+ 
+■ 
+ 
+Channel Mode Messages
+ 
+●
+ 
+MONO (Controller number 126)
+ 
+Status 2nd byte 3rd bytes
+BnH 7EH mmH
+n = MIDI channel number: 0H~FH (ch.1~16)
+mm = mono number: 00H~10H (0~16)
+ 
+●
+ 
+POLY (Controller number 127)
+ 
+Status 2nd byte 3rd bytes
+BnH 7FH 00H
+n = MIDI channel number: 0H~FH (ch.1~16)
+ 
+■ 
+ 
+System Realtime Message
+ 
+●
+ 
+Active sensing
+ 
+Status
+FEH
+* This message is  transmitted constantly at intervals of approximately 250 ms.
+ 
+■
+ 
+System exclusive messages
+ 
+Universal Non-realtime System Exclusive Message” and Data Set 1 (DT1) are the only
+System Exclusive messages transmitted by the AX-Synth.
+ 
+●
+ 
+Universal Non-realtime System Exclusive Messages
+ 
+❍ 
+ 
+Identity Reply (AX-Synth)
+ 
+Upon receiving an Identity Request message (p. 3), the AX-Synth sends this
+message.
+ 
+Status Data byte Status
+F0H 7EH, dev, 06H, 02H, 41H, 3CH, 02H, F7H
+00H, 00H, 00H, 01H, 00H, 00H
+Byte Explanation
+F0H Exclusive status
+7EH ID number (Universal Non-realtime Message)
+10H Device ID (dev: 10H)
+06H Sub ID#1 (General Information)
+02H Sub ID#2 (Identity Reply)
+41H ID number (Roland)
+3C 02H Device family code
+00 00H Device family number code
+00 01 00 00H Software revision level
+F7H EOX (End of Exclusive)
+ 
+●
+ 
+Data Transmission
+ 
+❍ 
+ 
+Data set 1 (DT1)
+ 
+Status Data byte Status
+F0H 41H, dev, 00H, 00H, 3CH, 12H, aaH, bbH, F7H
+ccH, ddH, eeH, ... ffH, sum
+Byte Explanation
+F0H Exclusive status
+41H ID number (Roland)
+dev Device ID (dev: 10H, 7FH)
+00H Model ID #1 (AX-Synth)
+00H Model ID #2 (AX-Synth)
+3CH Model ID #3 (AX-Synth)
+12H Command ID (DT1)
+aaH Address MSB: upper byte of the starting address of the data to be sent
+bbH Address: upper middle byte of the starting address of the data to be sent
+ccH Address: lower middle byte of the starting address of the data to be sent
+ddH Address LSB: lower byte of the starting address of the data to be sent.
+eeH Data: the actual data to be sent. Multiple bytes of data are transmit-
+ted in order starting from the address.
+: :
+ffH Data
+sum Checksum
+F7H EOX (End Of Exclusive)
+* The amount of data that can be transmitted at one time depends on the type of data, and data
+will be transmitted from the specified starting address and size. Refer to the address and size
+given in “Parameter Address Map” (p. 7).
+*D ata larger than 256 bytes will be divided into packets of 256 bytes or less, and each packet
+will be sent at an interval of about 20 ms.
+
+===== PAGE 7 =====
+ 
+7
+ 
+AX-Synth MIDI Implementation
+3. Parameter Address Map
+ 
+* Transmission of “#” marked address is divided to some packets. For example, ABH in
+hexadecimal notation will be divided to 0AH and 0BH, and is sent/received in this order.
+* “<*>” marked address or parameters are ignored when the AX-Synth received them.
+ 
+■ 
+ 
+AX-Synth (ModelID = 00H 00H 3CH)
+ 
+Start Address Description
+01 00 00 00 Setup
+02 00 00 00 System
+1F 00 00 00 Temporary Patch 
+30 00 00 00 User Patch (001) 
+30 01 00 00 User Patch (002) 
+: 
+31 7F 00 00 User Patch (256) 
+ 
+❍ 
+ 
+System
+ 
+Offset
+Address
+Description
+00 00 00 System Common
+00 40 00 System Controller
+ 
+❍ 
+ 
+Temporary Patch
+ 
+Offset
+Address
+Description
+00 00 00 Temporary Patch
+ 
+❍ 
+ 
+Patch
+ 
+Offset
+Address
+Description
+00 00 00 Patch Common 
+00 02 00 Patch Common MFX
+00 04 00 Patch Common Chorus
+00 06 00 Patch Common Reverb
+00 10 00 Patch TMT (Tone Mix Table) 
+00 20 00 Patch Tone (Tone 1) 
+00 22 00 Patch Tone (Tone 2) 
+00 24 00 Patch Tone (Tone 3) 
+00 26 00 Patch Tone (Tone 4)
+ 
+❍ 
+ 
+Setup
+ 
+Offset
+Address
+Description
+00 00 0000 0aaa (reserve) <*>  
+00 01 0aaa aaaa (reserve) <*> (0~127)
+00 02 0aaa aaaa (reserve) <*> (0~127)
+00 03 0aaa aaaa (reserve) <*> (0~127)
+00 04 0aaa aaaa Patch Bank Select MSB (CC# 0) (0~127)
+66:SuperNATURAL, 87:Regular/Special Patch
+00 05 0aaa aaaa Patch Bank Select LSB (CC# 32) (0~127)
+0:SuperNATURAL, 0-1:Regular Patch, 64:Special Patch
+00 06 0aaa aaaa Patch Program Number (PC) (0~127)
+00 07 0aaa aaaa (reserve) <*> (0~127)
+00 08 0aaa aaaa (reserve) <*> (0~127)
+00 09 0aaa aaaa (reserve) <*> (0~127)
+00 0A 0000 000a MFX1 Switch (0~1)
+ BYPASS, ON
+00 0B 0000 000a (reserve) <*> (0~1)
+00 0C 0000 000a (reserve) <*> (0~1)
+00 0D 0000 000a Chorus Switch (0~1)
+ OFF , ON
+00 0E 0000 000a Reverb Switch (0~1)
+ OFF , ON
+00 0F 0000 000a (reserve) <*> (0~1)
+00 10 0000 000a (reserve) <*>  
+00 11 0000 000a (reserve) <*>  
+00 12 0000 aaaa Transpose Value (59 ~70)
+–5~+6
+00 13 0000 0aaa Octave Shift (61~67)
+–3~+3
+00 14 0000 0aaa (reserve) <*> (0~3) 
+00 15 0000 00aa (reserve) <*>  
+00 16 0000 000a (reserve) <*>  
+00 17 0aaa aaaa (reserve) <*> (0~8)
+00 18 0aaa aaaa (reserve) <*> (0~9)
+00 19 0000 000a (reserve) <*> (0~1)
+00 1A 0aaa aaaa (reserve) <*> (0~1)
+00 1B 0aaa aaaa (reserve) <*> (0~127)
+00 1C 0aaa aaaa (reserve) <*> (0~11)
+00 1D 0000 0aaa (reserve) <*> (61~67)
+00 1E 0000 000a (reserve) <*> (0~1)
+00 1F 0aaa aaaa (reserve) <*> (0~100)
+00 20 0aaa aaaa (reserve) <*> (0~127)
+00 21 0000 000a (reserve) <*>  
+00 22 0aaa aaaa (reserve) <*> (0~1)
+# 00 23 0000 aaaa 
+0000 bbbb (reserve) <*> (0~255)
+00 25 0000 000a (reserve) <*> (0~1)
+00 26 0aaa aaaa (reserve) <*> (0~31)
+00 27 0aaa aaaa (reserve) <*> (0~100)
+00 28 0aaa aaaa (reserve) <*> (1~127)
+00 29 0000 000a (reserve) <*> (0~1)
+00 2A 0aaa aaaa (reserve) <*> (0~1)
+00 2B 00aa aaaa (reserve) <*> (0~63)
+00 2C 0000 000a (reserve) <*>  
+00 2D 0000 000a (reserve) <*>  
+00 2E 0000 000a (reserve) <*>  
+00 2F 0000 000a (reserve) <*>  
+00 30 0aaa aaaa (reserve) <*>  
+00 31 0000 000a (reserve) <*> (0~1)
+00 32 0000 00aa (reserve) <*> (0~2)
+00 33 00aa aaaa (reserve) <*> (0~32)
+00 00 00 34 Total Size 
+ 
+❍ 
+ 
+System Common
+ 
+Offset
+Address
+Description  
+# 00 00 0000 aaaa 
+0000 bbbb 
+0000 cccc
+0000 dddd Master Tune (24~2024)
+-100.0~100.0 [cent]
+00 04 00aa aaaa Master Key Shift (40~88)
+ -24~+24
+00 05 0aaa aaaa Master Level (0~127)
+00 06 0000 000a Scale Tune Switch (0~1)
+ OFF , ON
+00 07 0000 000a (reserve) <*> (0~1)
+00 08 0000 000a (reserve) <*>  
+00 09 000a aaaa (reserve) <*> (0~16)
+00 0A 0000 aaaa Kbd Patch Rx/Tx Channel (0~15)
+ 1~16
+00 0B 0000 aaaa (reserve) <*>  
+00 0C 0aaa aaaa Patch Scale Tune for C (0~127)
+ –64~+63
+00 0D Patch Scale Tune for C# (0~127)
+ –64~+63
+00 0E 0aaa aaaa Patch Scale Tune for D (0~127)
+ –64~+63
+00 0F 0aaa aaaa Patch Scale Tune for D# (0~127)
+ –64~+63
+00 10 0aaa aaaa Patch Scale Tune for E (0~127)
+ –64~+63
+00 11 0aaa aaaa Patch Scale Tune for F (0~127)
+ –64~+63
+00 12 0aaa aaaa Patch Scale Tune for F# (0~127)
+ –64~+63
+00 13 0aaa aaaa Patch Scale Tune for G (0~127)
+ –64~+63
+00 14 0aaa aaaa Patch Scale Tune for G# (0~127)
+ –64~+63
+00 15 0aaa aaaa Patch Scale Tune for A (0~127)
+ –64~+63
+00 16 0aaa aaaa Patch Scale Tune for A# (0~127)
+ –64~+63
+00 17 0aaa aaaa Patch Scale Tune for B (0~127)
+ –64~+63
+00 18 0aaa aaaa (reserve) <*> (0~97)
+00 19 0aaa aaaa (reserve) <*> ) (0~97
+00 1A 0aaa aaaa (reserve) <*> (0~97)
+00 1B 0aaa aaaa (reserve) <*> ) (0~97
+00 1C 0000 000a Receive Program Change (0~1)
+ OFF , ON
+00 1D 0000 000a Receive Bank Select (0~1)
+ OFF , ON
+
+===== PAGE 8 =====
+ 
+8
+ 
+AX-Synth MIDI Implementation
+ 
+00 00 00 1E Total Size 
+ 
+❍ 
+ 
+System Controller
+ 
+Offset
+Address
+Description  
+00 00 0000 000a (reserve) <*> (0~1)
+00 01 0000 000a (reserve) <*> (0~1)
+00 02 0aaa aaaa Keyboard Velocity (0~127)
+REAL, 1~127
+00 03 0000 00aa (reserve) <*> (0~2) 
+00 04 0aaa aaaa (reserve) <*>  
+00 05 0000 0aaa Hold Pedal Polarity (0~1)
+STANDARD, REVERSE
+00 06 0000 000a (reserve) <*> (0~1)
+00 07 0aaa aaaa (reserve) <*> (0~96)
+00 08 0000 0aaa (reserve) <*> (0~1)
+00 09 0000 aaaa (reserve) <*> (1~10)
+00 0A 0aaa aaaa D Beam Assign (0~93)
+CC01~CC31, CC33~CC95
+00 0B 0aaa aaaa Beam Range Lower (0~127)
+00 0C 0aaa aaaa Beam Range Upper (0~127)
+00 0D 0000 aaaa (reserve) <*> (0~15)
+00 0E 0aaa aaaa (reserve) <*> (1~127)
+00 0F 0aaa aaaa (reserve) <*> (0~1)
+00 10 0aaa aaaa (reserve) <*>  
+00 11 0aaa aaaa (reserve) <*>  
+00 12 0aaa aaaa (reserve) <*>  
+00 13 0aaa aaaa (reserve) <*>  
+00 14 0aaa aaaa (reserve) <*> (0~15)
+00 15 0aaa aaaa (reserve) <*> (0~15)
+00 16 0aaa aaaa (reserve) <*> (0~94)
+00 17 0000 00aa (reserve) <*>  
+00 18 0aaa aaaa (reserve) <*>  
+00 19 0000 aaaa (reserve) <*>  
+00 1A 0aaa aaaa (reserve) <*>  
+00 1B 0aaa aaaa (reserve) <*>  
+00 1C 0aaa aaaa (reserve) <*>  
+00 1D 0aaa aaaa (reserve) <*>  
+00 1E 0aaa aaaa (reserve) <*>  
+00 1F 0aaa aaaa (reserve) <*>  
+00 20 0aaa aaaa (reserve) <*>  
+00 21 0aaa aaaa (reserve) <*>  
+00 22 0aaa aaaa (reserve) <*>  
+00 23 0aaa aaaa (reserve) <*>  
+00 24 0aaa aaaa (reserve) <*>  
+00 25 0aaa aaaa (reserve) <*>  
+00 26 0aaa aaaa (reserve) <*>  
+00 27 0aaa aaaa (reserve) <*>  
+00 28 0aaa aaaa (reserve) <*>  
+00 29 0aaa aaaa (reserve) <*>  
+00 2A 0aaa aaaa (reserve) <*>  
+00 2B 0aaa aaaa (reserve) <*>  
+00 2C 0aaa aaaa (reserve) <*>  
+00 2D 0aaa aaaa (reserve) <*>  
+00 2E 0aaa aaaa (reserve) <*>  
+00 2F 0aaa aaaa (reserve) <*>  
+00 30 0aaa aaaa (reserve) <*>  
+00 31 0aaa aaaa (reserve) <*>  
+00 32 0aaa aaaa (reserve) <*>  
+00 33 0aaa aaaa (reserve) <*>  
+00 34 0aaa aaaa (reserve) <*>  
+00 35 0aaa aaaa (reserve) <*>  
+00 36 0aaa aaaa (reserve) <*>  
+00 37 0aaa aaaa (reserve) <*>  
+00 38 0aaa aaaa (reserve) <*>  
+00 39 0aaa aaaa (reserve) <*>  
+00 3A 0aaa aaaa (reserve) <*>  
+00 3B 0aaa aaaa (reserve) <*>  
+00 3C 0aaa aaaa (reserve) <*>  
+00 3D 0aaa aaaa (reserve) <*>  
+00 3E 0aaa aaaa (reserve) <*>  
+00 3F 0aaa aaaa (reserve) <*>  
+00 40 0aaa aaaa (reserve) <*>  
+00 41 0aaa aaaa (reserve) <*>  
+00 42 0aaa aaaa (reserve) <*>  
+00 43 0aaa aaaa (reserve) <*>  
+00 44 0aaa aaaa (reserve) <*>  
+00 45 0aaa aaaa (reserve) <*>  
+00 46 0aaa aaaa (reserve) <*>  
+00 47 0aaa aaaa (reserve) <*>  
+00 48 0aaa aaaa (reserve) <*>  
+00 49 0aaa aaaa (reserve) <*>  
+00 4A 0aaa aaaa (reserve) <*>  
+00 4B 0aaa aaaa (reserve) <*>  
+00 4C 0000 000a (reserve) <*> (0~1)
+00 4D 0000 000a (reserve) <*> (0~1)
+00 4E 0aaa aaaa Octave/Variation Buttons Assign (0~2)
+OCTAVE SWITCH, OCTAVE HOLD, VARIATION
+00 4F 0000 000a Portament Mode (0~1)
+SWITCH, HOLD
+00 00 00 50 Total Size 
+ 
+❍ 
+ 
+Patch Common
+ 
+Offset
+Address
+Description 
+00 00 0aaa aaaa Patch Name 1 (32~127)
+ 32~127 [ASCII]
+00 01 0aaa aaaa Patch Name 2 (32~127)
+ 32~127 [ASCII]
+00 02 0aaa aaaa Patch Name 3 (32~127)
+ 32~127 [ASCII]
+00 03 0aaa aaaa Patch Name 4 (32~127)
+ 32~127 [ASCII]
+00 04 0aaa aaaa Patch Name 5 (32~127)
+ 32~127 [ASCII]
+00 05 0aaa aaaa Patch Name 6 ) (32~127
+ 32~127 [ASCII]
+00 06 0aaa aaaa Patch Name 7 (32~127)
+ 32~127 [ASCII]
+00 07 0aaa aaaa Patch Name 8 (32~127)
+ 32~127 [ASCII]
+00 08 0aaa aaaa Patch Name 9 (32~127)
+ 32~127 [ASCII]
+00 09 0aaa aaaa Patch Name 10 (32~127)
+ 32~127 [ASCII]
+00 0A 0aaa aaaa Patch Name 11 (32~127)
+ 32~127 [ASCII]
+00 0B 0aaa aaaa Patch Name 12 (32~127)
+ 32~127 [ASCII]
+00 0C 0aaa aaaa Patch Category (0~127)
+00 0D 0000 000a (reserve)  
+00 0E 0aaa aaaa Patch Level (0~127)
+00 0F 0aaa aaaa Patch Pan (0~127)
+L64~63R
+00 10 0000 000a Patch Priority (0~1)
+LAST, LOUDEST
+00 11 0aaa aaaa Patch Coarse Tune (16 - 112)
+ –48~+48
+00 12 0aaa aaaa Patch Fine Tune (14 ~114)
+–50~+50
+00 13 0000 0aaa Octave Shift (61~67)
+–3~+3
+00 14 0000 00aa Stretch Tune Depth (0~3)
+OFF , 1~3
+00 15 0aaa aaaa Analog Feel (0~127)
+00 16 0000 000a Mono/Poly (0~1)
+MONO, POLY
+00 17 0000 000a Legato Switch (0~1)
+OFF , ON
+00 18 0000 000a Legato Retrigger (0~1)
+OFF , ON
+00 19 0000 000a Portamento Switch (0~1)
+OFF , ON
+00 1A 0000 000a Portamento Mode (0~1)
+NORMAL, LEGATO
+00 1B 0000 000a Portamento Type (0~1)
+RATE, TIME
+00 1C 0000 000a Portamento Start (0~1)
+PITCH, NOTE
+00 1D 0aaa aaaa Portamento Time (0~127)
+00 1E 0000 000a (reserve)  
+# 00 1F 0000 aaaa 
+0000 bbbb 
+ 
+(reserve)  
+00 21 0000 000a (reserve)  
+00 22 0aaa aaaa Cutoff Offset (1~127)
+–63~+63
+
+===== PAGE 9 =====
+ 
+9
+ 
+AX-Synth MIDI Implementation
+ 
+00 23 0aaa aaaa Resonance Offset (1~127)
+ –63~+63
+00 24 0aaa aaaa Attack Time Offset (1~127)
+ –63~+63
+00 25 0aaa aaaa Release Time Offset (1~127)
+ –63~+63
+00 26 0aaa aaaa Velocity Sens Offset (1~127)
+ –63~+63
+00 27 0000 aaaa Patch Output Assign (0~13)
+MFX, A, ---, ---, ---, 1, 2, ---, ---, ---,
+---, ---, ---, TONE
+00 28 0000 000a TMT Control Switch (0~1)
+OFF , ON
+00 29 00aa aaaa Pitch Bend Range Up (0~48)
+00 2A 00aa aaaa Pitch Bend Range Down (0~48) (0~48)
+00 2B 0aaa aaaa Matrix Control 1 Source (0~109)
+OFF , CC01~CC31, CC33~CC95, BEND, AFT, ---, ---, ---, ---,
+VELOCITY, KEYFOLLOW, ---, LFO1, LFO2, PIT-ENV, TVF-
+ENV, TVA-ENV
+00 2C 00aa aaaa Matrix Control 1 Destination 1 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1, 
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2, 
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK, 
+PIT-DCY, PIT-REL, 
+TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK, TVA-DCY, TVA-
+REL,TMT, FXM, MFX1, MFX2, MFX3, MFX4
+00 2D 0aaa aaaa Matrix Control 1 Sens 1 (1~127)
+–63~+63
+00 2E 00aa aaaa Matrix Control 1 Destination 2 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-
+LFO1,PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-
+LFO2, PAN-LFO1,PAN-LFO2, LFO1-RATE, LFO2-RATE,
+PIT-ATK, PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL,
+TVA-ATK, TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2,
+MFX3, MFX4
+00 2F 0aaa aaaa Matrix Control 1 Sens 2 (1~127)
+–63~+63
+00 30 00aa aaaa Matrix Control 1 Destination 3 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1,PAN-LFO2, LFO1-RATE, LFO2-RATE, PAN-
+LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK, PIT-DCY, PIT-
+REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK, TVA-DCY,
+TVA-REL, TMT, FXM, MFX1, MFX2, MFX3, MFX4
+00 31 0aaa aaaa Matrix Control 1 Sens 3 (1~127)
+–63~+63
+00 32 00aa aaaa Matrix Control 1 Destination 4 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 33 0aaa aaaa Matrix Control 1 Sens 4 (1~127)
+–63~+63
+00 34 0aaa aaaa Matrix Control 2 Source (0~109)
+OFF , CC01~CC31, CC33~CC95, BEND, AFT, ---, ---, ---, ---,
+VELOCITY, KEYFOLLOW, ---, LFO1, LFO2, PIT-ENV, TVF-
+ENV, TVA-ENV
+00 35 00aa aaaa Matrix Control 2 Destination 1 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, PIT-
+LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1,
+TVA-LFO2, PAN-LFO1, PAN-LFO2,
+LFO1-RATE, LFO2-RATE, PIT-ATK, PIT-
+DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-
+REL, TVA-ATK, TVA-DCY, TVA-REL, TMT,
+FXM, MFX1, MFX2, MFX3, MFX4
+00 36 0aaa aaaa Matrix Control 2 Sens 1 (1~127)
+–63~+63
+00 37 00aa aaaa Matrix Control 2 Destination 2 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+TVA-LFO1, TVA-LFO2, PAN-LFO1, PAN-LFO2, LFO1-
+RATE, LFO2-RATE, PIT-ATK, PIT-DCY, PIT-REL, TVF-ATK,
+TVF-DCY, TVF-REL, TVA-ATK, TVA-DCY, TVA-REL, TMT,
+FXM, MFX1, MFX2, MFX3, MFX4
+00 38 0aaa aaaa Matrix Control 2 Sens 2 (1~127)
+–63~+63
+00 39 00aa aaaa Matrix Control 2 Destination 3 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 3A 0aaa aaaa Matrix Control 2 Sens 3 (1~127)
+–63~+63
+00 3B 00aa aaaa Matrix Control 2 Destination 4 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 3C 0aaa aaaa Matrix Control 2 Sens 4 (1~127)
+–63~+63
+00 3D 0aaa aaaa Matrix Control 3 Source (0~109) 
+OFF , CC01~CC31, CC33~CC95, BEND, AFT, ---, ---, ---, ---,
+VELOCITY, KEYFOLLOW, ---, LFO1, LFO2, PIT-ENV, TVF-
+ENV, TVA-ENV
+00 3E 00aa aaaa Matrix Control 3 Destination 1 (0~33)
+DRY, CHO, REV, PIT-LFO1, PIT-LFO2, TVF-LFO1, TVF-
+LFO2, TVA-LFO1, TVA-LFO2, PAN-LFO1, PAN-LFO2,
+LFO1-RATE, LFO2-RATE, PIT-ATK, PIT-DCY, PIT-REL, TVF-
+ATK, TVF-DCY, TVF-REL, TVA-ATK, TVA-DCY, TVA-REL,
+TMT, FXM, MFX1, MFX2, MFX3, MFX4
+00 3F 0aaa aaaa Matrix Control 3 Sens 1 (1~127)
+ –63~+63
+00 40 00aa aaaa Matrix Control 3 Destination 2 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 41 0aaa aaaa Matrix Control 3 Sens 2 (1~127)
+–63~+63
+00 42 00aa aaaa Matrix Control 3 Destination 3 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 43 0aaa aaaa Matrix Control 3 Sens 3 (1~127)
+–63~+63
+00 44 00aa aaaa Matrix Control 3 Destination 4 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 45 0aaa aaaa Matrix Control 3 Sens 4 (1~127)
+ –63~+63
+00 46 0aaa aaaa Matrix Control 4 Source (0~109)
+OFF , CC01~CC31, CC33~CC95, BEND, AFT, ---, ---, ---, ---,
+VELOCITY, KEYFOLLOW, ---, LFO1, LFO2, PIT-ENV, TVF-
+ENV, TVA-ENV
+00 47 00aa aaaa Matrix Control 4 Destination 1 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 48 0aaa aaaa Matrix Control 4 Sens 1 (1~127)
+ –63~+63
+00 49 00aa aaaa Matrix Control 4 Destination 2 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+00 4A 0aaa aaaa Matrix Control 4 Sens 2 (1~127)
+ –63~+63
+00 4B 00aa aaaa Matrix Control 4 Destination 3 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO2,
+TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2, PAN-LFO1,
+PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK, PIT-DCY,
+PIT-REL, TVA-ATK, TVA-DCY, TVA-REL, TMT, FXM, MFX1,
+MFX2, MFX3, MFX4
+00 4C 0aaa aaaa Matrix Control 4 Sens 3 (1~127)
+ –63~+63
+00 4D 00aa aaaa Matrix Control 4 Destination 4 (0~33)
+OFF , PCH, CUT, RES, LEV, PAN, DRY, CHO, REV, PIT-LFO1,
+PIT-LFO2, TVF-LFO1, TVF-LFO2, TVA-LFO1, TVA-LFO2,
+PAN-LFO1, PAN-LFO2, LFO1-RATE, LFO2-RATE, PIT-ATK,
+PIT-DCY, PIT-REL, TVF-ATK, TVF-DCY, TVF-REL, TVA-ATK,
+TVA-DCY, TVA-REL, TMT, FXM, MFX1, MFX2, MFX3,
+MFX4
+
+===== PAGE 10 =====
+ 
+10
+ 
+AX-Synth MIDI Implementation
+ 
+00 4E 0aaa aaaa Matrix Control 4 Sens 4 ) (1~127
+ –63~+63
+00 00 00 4F Total Size 
+ 
+❍ 
+ 
+Patch Common MFX
+ 
+Offset
+Address
+Description
+00 00 0aaa aaaa MFX Type (0~78)
+00 01 0aaa aaaa MFX Dry Send Level (0~127)
+00 02 0aaa aaaa MFX Chorus Send Level (0~127)
+00 03 0aaa aaaa MFX Reverb Send Level (0~127)
+00 04 0000 00aa MFX Output Assign <*> (0~3)
+A, ---, ---, ---
+00 05 0aaa aaaa MFX Control 1 Source (0~97)
+OFF , CC01~CC31, CC33~CC95, BEND, AFT
+00 06 0aaa aaaa MFX Control 1 Sens (1~127)
+–63~+63
+00 07 0aaa aaaa MFX Control 2 Source (0~97)
+OFF , CC01~CC31, CC33~CC95, BEND, AFT
+00 08 0aaa aaaa MFX Control 2 Sens (1~127)
+–63~+63
+00 09 0aaa aaaa MFX Control 3 Source (0~97)
+OFF , CC01~CC31, CC33~CC95, BEND, AFT
+00 0A 0aaa aaaa MFX Control 3 Sens (1~127)
+–63~+63
+00 0B 0aaa aaaa MFX Control 4 Source (0~97)
+OFF , CC01~CC31, CC33~CC95, BEND, AFT
+00 0C 0aaa aaaa MFX Control 4 Sens (1~127)
+–63~+63
+00 0D 000a aaaa MFX Control Assign 1 (0~16)
+OFF , 1~16
+00 0E 000a aaaa MFX Control Assign 2 (0~16)
+OFF , 1~16
+00 0F 000a aaaa MFX Control Assign 3 (0~16)
+OFF , 1~16
+00 10 000a aaaa MFX Control Assign 4 (0~16)
+OFF , 1~16
+# 00 11 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 1 
+(12768~
+52768)
+–20000~+20000
+# 00 15 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd
+ 
+ 
+ 
+MFX Parameter 2
+(12768~
+52768)
+–20000~+20000
+# 00 19 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 3 
+(12768~
+52768)
+–20000~+20000
+# 00 1D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd MFX Parameter 4
+(12768~
+52768)
+–20000~+20000
+# 00 21 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd MFX Parameter 5
+(12768~
+52768)
+–20000~+20000
+# 00 25 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd MFX Parameter 6
+(12768~
+52768)
+–20000~+20000
+# 00 29 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd MFX Parameter 7
+(12768~
+52768)
+–20000~+20000
+# 00 2D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 8
+(12768~
+52768)
+–20000~+20000
+# 00 31 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 9 
+(12768~
+52768)
+–20000~+20000
+# 00 35 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 10
+(12768~
+52768)
+–20000~+20000
+# 00 39 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 11
+(12768~
+52768)
+–20000~+20000
+# 00 3D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 12
+(12768~
+52768)
+–20000~+20000
+# 00 41 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 13
+(12768~
+52768)
+–20000~+20000
+# 00 45 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 14
+(12768~
+52768)
+–20000~+20000
+# 00 49 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 15
+(12768~
+52768)
+–20000~+20000
+# 00 4D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 16
+(12768~
+52768)
+–20000~+20000
+# 00 51 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 17
+(12768~
+52768)
+–20000~+20000
+# 00 55 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 18
+(12768~
+52768)
+–20000~+20000
+# 00 59 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 19
+(12768~
+52768)
+–20000~+20000
+# 00 5D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 20
+(12768~
+52768)
+–20000~+20000
+# 00 61 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 21
+(12768~
+52768)
+–20000~+20000
+# 00 65 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 22
+(12768~
+52768)
+–20000~+20000
+# 00 69 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 23
+(12768~
+52768)
+–20000~+20000
+# 00 6D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 24
+(12768~
+52768)
+–20000~+20000
+# 00 71 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 25
+(12768~
+52768)
+–20000~+20000
+# 00 75 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 26
+(12768~
+52768)
+–20000~+20000
+# 00 79 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 27
+(12768~
+52768)
+–20000~+20000
+
+===== PAGE 11 =====
+ 
+11
+ 
+AX-Synth MIDI Implementation
+ 
+# 00 7D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 28
+(12768~
+52768)
+–20000~+20000
+# 01 01 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 29
+(12768~
+52768)
+–20000~+20000
+# 01 05 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 30
+(12768~
+52768)
+–20000~+20000
+# 01 09 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 31
+(12768~
+52768)
+–20000~+20000
+# 01 0D 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+MFX Parameter 32
+(12768~
+52768)
+–20000~+20000
+00 00 01 11 Total Size 
+ 
+❍ 
+ 
+Patch Common Chorus
+ 
+Offset
+Address
+Description
+00 00 0000 aaaa Chorus Type (0~2)
+00 01 0aaa aaaa Chorus Level (0~127)
+00 02 0000 00aa Chorus Output Assign <*> (0~3)
+A, ---, ---, ---
+00 03 0000 00aa Chorus Output Select (0~2)
+MAIN, REV, MAIN+REV
+# 00 04 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 1 
+(12768~
+52768)
+–20000~+20000
+# 00 08 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 2 
+(12768~
+52768)
+–20000~+20000
+# 00 0C 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 3
+(12768~
+52768)
+–20000~+20000
+# 00 10 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 4 
+(12768~
+52768)
+–20000~+20000
+# 00 14 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 5
+(12768~
+52768)
+–20000~+20000
+# 00 18 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 6
+–20000~+20000
+# 00 1C 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 7 
+(12768~
+52768)
+–20000~+20000
+# 00 20 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 8
+(12768~
+52768)
+–20000~+20000
+# 00 24 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 9 
+(12768~
+52768)
+–20000~+20000
+# 00 28 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 10 
+(12768~
+52768)
+–20000~+20000
+# 00 2C 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 11
+(12768~
+52768)
+–20000~+20000
+# 00 30 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 12
+(12768~
+52768)
+–20000~+20000
+# 00 34 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 13
+(12768~
+52768)
+–20000~+20000
+# 00 38 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 14
+(12768~
+52768)
+–20000~+20000
+# 00 3C 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 15
+(12768~
+52768)
+–20000~+20000
+# 00 40 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 16
+(12768~
+52768)
+–20000~+20000
+# 00 44 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 17
+(12768~
+52768)
+–20000~+20000
+# 00 48 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 18
+(12768~
+52768)
+–20000~+20000
+# 00 4C 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 19
+(12768~
+52768)
+–20000~+20000
+# 00 50 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Chorus Parameter 20
+(12768~
+52768)
+–20000~+20000
+00 00 00 54 Total Size
+ 
+❍ 
+ 
+Patch Common Reverb
+ 
+Offset
+Address
+Description  
+00 00 0000 aaaa Reverb Type (0~4)
+00 01 0aaa aaaa Reverb Level (0~127)
+00 02 0000 00aa Reverb Output Assign <*> ) (0~3
+A, ---, ---, ---
+# 00 03 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 1 
+(12768~
+52768)
+–20000~+20000
+# 00 07 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 2
+(12768~
+52768)
+–20000~+20000
+# 00 0B 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 3
+(12768~
+52768)
+–20000~+20000
+# 00 0F 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 4 
+(12768~
+52768)
+–20000~+20000
+# 00 13 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 5
+(12768~
+52768)
+–20000~+20000
+# 00 17 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 6
+(12768~
+52768)
+–20000~+20000
+
+===== PAGE 12 =====
+12
+AX-Synth MIDI Implementation
+# 00 1B 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 7
+(12768~
+52768)
+–20000~+20000
+# 00 1F 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 8
+(12768~
+52768)
+–20000~+20000
+# 00 23 0000 aaaa  
+ 
+ 
+Reverb Parameter 9
+(12768~
+52768)
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+–20000~+20000
+# 00 27 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 10
+(12768~
+52768)
+–20000~+20000
+# 00 2B 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 11
+(12768~
+52768)
+–20000~+20000
+# 00 2F 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 12
+(12768~
+52768)
+–20000~+20000
+# 00 33 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 13
+(12768~
+52768)
+–20000~+20000
+# 00 37 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 14
+(12768~
+52768)
+–20000~+20000
+# 00 3B 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 15
+(12768~
+52768)
+–20000~+20000
+# 00 3F 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 16
+(12768~
+52768)
+–20000~+20000
+# 00 43 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 17
+(12768~
+52768)
+–20000~+20000
+# 00 47 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 18 (12768 - 52768) 
+(12768~
+52768)
+–20000~+20000
+# 00 4B 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 19
+(12768~
+52768)
+–20000~+20000
+# 00 4F 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Reverb Parameter 20
+(12768~
+52768)
+–20000~+20000
+00 00 00 53 Total Size 
+❍ Patch TMT (Tone Mix Table)
+Offset
+Address
+Description  
+00 00 0000 aaaa Structure Type 1 & 2 (0~9)
+ 1~10
+00 01 0000 00aa Booster 1 & 2 (0~3)
+0, +6, +12, +18 [dB]
+00 02 0000 aaaa Structure Type 3 & 4 (0~9)
+ 1~10
+00 03 0000 00aa Booster 3 & 4 (0~3)
+0, +6, +12, +18 [dB]
+00 04 0000 00aa TMT Velocity Control (0~3)
+OFF , ON, RANDOM, CYCLE
+00 05 0000 000a TMT1 Tone Switch (0~1)
+ OFF , ON
+00 06 0aaa aaaa TMT1 Keyboard Range Lower (0~127)
+ C-1 - UPPER
+00 07 0aaa aaaa TMT1 Keyboard Range Upper (0~127)
+ LOWER - G9
+00 08 0aaa aaaa TMT1 Keyboard Fade Width Lower (0~127)
+00 09 0aaa aaaa TMT1 Keyboard Fade Width Upper (0~127)
+00 0A 0aaa aaaa TMT1 Velocity Range Lower (1~127)
+ 1 - UPPER
+00 0B 0aaa aaaa TMT1 Velocity Range Upper (1~127)
+ LOWER - 127
+00 0C 0aaa aaaa TMT1 Velocity Fade Width Lower (0~127)
+00 0D 0aaa aaaa TMT1 Velocity Fade Width Upper (0~127)
+00 0E 0000 000a TMT2 Tone Switch (0~1)
+ OFF , ON
+00 0F 0aaa aaaa TMT2 Keyboard Range Lower (0~127)
+ C-1 - UPPER
+00 10 0aaa aaaa TMT2 Keyboard Range Upper (0~127)
+LOWER - G9
+00 11 0aaa aaaa TMT2 Keyboard Fade Width Lower (0~127)
+00 12 0aaa aaaa TMT2 Keyboard Fade Width Upper (0~127)
+00 13 0aaa aaaa TMT2 Velocity Range Lower (0~127)
+ 1 - UPPER
+00 14 0aaa aaaa TMT2 Velocity Range Upper (1~127)
+ LOWER - 127
+00 15 0aaa aaaa TMT2 Velocity Fade Width Lower (0~127)
+00 16 0aaa aaaa TMT2 Velocity Fade Width Upper (0~127)
+00 17 0000 000a TMT3 Tone Switch (0~1)
+ OFF , ON
+00 18 0aaa aaaa TMT3 Keyboard Range Lower (0~127)
+ C-1 - UPPER
+00 19 0aaa aaaa TMT3 Keyboard Range Upper (0~127)
+ LOWER - G9
+00 1A 0aaa aaaa TMT3 Keyboard Fade Width Lower (0~127)
+00 1B 0aaa aaaa TMT3 Keyboard Fade Width Upper (0~127)
+00 1C 0aaa aaaa TMT3 Velocity Range Lower (1~127)
+ 1 - UPPER
+00 1D 0aaa aaaa TMT3 Velocity Range Upper (1~127)
+ LOWER - 127
+00 1E 0aaa aaaa TMT3 Velocity Fade Width Lower (0~127)
+00 1F 0aaa aaaa TMT3 Velocity Fade Width Upper (0~127)
+00 20 0000 000a TMT4 Tone Switch (0~1)
+ OFF , ON
+00 21 0aaa aaaa TMT4 Keyboard Range Lower (0~127)
+ C-1 - UPPER
+00 22 0aaa aaaa TMT4 Keyboard Range Upper (0~127)
+ LOWER - G9
+00 23 0aaa aaaa TMT4 Keyboard Fade Width Lower (0~127)
+00 24 0aaa aaaa TMT4 Keyboard Fade Width Upper (0~127)
+00 25 0aaa aaaa TMT4 Velocity Range Lower (1~127)
+ 1 - UPPER
+00 26 0aaa aaaa TMT4 Velocity Range Upper (1~127)
+ LOWER - 127
+00 27 0aaa aaaa TMT4 Velocity Fade Width Lower (0~127)
+00 28 0aaa aaaa TMT4 Velocity Fade Width Upper (0~127)
+00 00 00 29 Total Size 
+❍ Patch Tone
+Offset
+Address
+Description  
+00 00 0aaa aaaa Tone Level (0~127)
+00 01 0aaa aaaa Tone Coarse Tune (16 - 112)
+ –48~+48
+00 02 0aaa aaaa Tone Fine Tune (14 - 114)
+ –50~+50
+00 03 000a aaaa Tone Random Pitch Depth (0~30)
+0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 20, 30, 40, 50, 60, 70, 80, 90,
+100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100,
+1200
+00 04 0aaa aaaa Tone Pan (0~127)
+ L64~63R
+00 05 000a aaaa Tone Pan Keyfollow (54~74)
+–100~+100
+00 06 00aa aaaa Tone Random Pan Depth (0~63)
+00 07 0aaa aaaa Tone Alternate Pan Depth (1~127)
+ L63~63R
+00 08 0000 000a Tone Env Mode (0~1)
+ NO-SUS, SUSTAIN
+00 09 0000 00aa Tone Delay Mode (0~3)
+NORMAL, HOLD, KEY-OFF-NORMAL, KEY-OFF-DECAY
+
+===== PAGE 13 =====
+13
+AX-Synth MIDI Implementation
+# 00 0A 0000 aaaa 
+0000 bbbb 
+ 
+Tone Delay Time (0~127)
+00 0C 0aaa aaaa Tone Dry Send Level (0~127)
+00 0D 0aaa aaaa Tone Chorus Send Level (MFX) (0~127)
+00 0E 0aaa aaaa Tone Reverb Send Level (MFX) (0~127)
+00 0F 0aaa aaaa Tone Chorus Send Level (non MFX) (0~127)
+00 10 0aaa aaaa Tone Reverb Send Level (non MFX) (0~127)
+00 11 0000 aaaa Tone Output Assign ) (0~12
+MFX, A, ---, ---, ---, 1, 2, ---, ---, ---, ---, ---,
+---
+00 12 0000 000a Tone Receive Bender (0~1)
+ OFF , ON
+00 13 0000 000a Tone Receive Expression (0~1)
+ OFF , ON
+00 14 0000 000a Tone Receive Hold-1 (0~1)
+ OFF , ON
+00 15 0000 000a Tone Receive Pan Mode (0~1)
+CONTINUOUS, KEY-ON
+00 16 0000 000a Tone Redamper Switch (0~1)
+OFF, ON
+00 17 0000 00aa Tone Control 1 Switch 1 (0~2)
+ OFF , ON, REVERSE
+00 18 0000 00aa Tone Control 1 Switch 2 (0~2) (0~2)
+ OFF , ON, REVERSE
+00 19 0000 00aa Tone Control 1 Switch 3 (0~2)
+ OFF , ON, REVERSE
+00 1A 0000 00aa Tone Control 1 Switch 4 (0~2)
+ OFF , ON, REVERSE
+00 1B 0000 00aa Tone Control 2 Switch 1 (0~2)
+ OFF , ON, REVERSE
+00 1C 0000 00aa Tone Control 2 Switch 2 (0~2)
+ OFF , ON, REVERSE
+00 1D 0000 00aa Tone Control 2 Switch 3 (0~2)
+ OFF , ON, REVERSE
+00 1E 0000 00aa Tone Control 2 Switch 4 (0~2)
+ OFF , ON, REVERSE
+00 1F 0000 00aa Tone Control 3 Switch 1 (0~2)
+ OFF , ON, REVERSE
+00 20 0000 00aa Tone Control 3 Switch 2 (0~2)
+ OFF , ON, REVERSE
+00 21 0000 00aa Tone Control 3 Switch 3 (0~2)
+ OFF , ON, REVERSE
+00 22 0000 00aa Tone Control 3 Switch 4 (0~2)
+ OFF , ON, REVERSE
+00 23 0000 00aa Tone Control 4 Switch 1 (0~2)
+ OFF , ON, REVERSE
+00 24 0000 00aa Tone Control 4 Switch 2 (0~2)
+ OFF , ON, REVERSE
+00 25 0000 00aa Tone Control 4 Switch 3 (0~2)
+ OFF , ON, REVERSE
+00 26 0000 00aa Tone Control 4 Switch 4 (0~2)
+ OFF , ON, REVERSE
+00 27 0000 00aa Wave Group Type (0~3)
+---, INT, ---, ---
+# 00 28 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Wave Group ID (0~16384)
+ OFF , 1~16384
+# 00 2C 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Wave Number L (Mono) (0~16384)
+ OFF , 1~16384
+# 00 30 0000 aaaa 
+0000 bbbb 
+0000 cccc 
+0000 dddd 
+ 
+ 
+ 
+Wave Number R (0~16384)
+ OFF , 1~16384
+00 34 0000 00aa Wave Gain (0~3)
+-6, 0, +6, +12 [dB]
+00 35 0000 000a Wave FXM Switch (0~1)
+ OFF , ON
+00 36 0000 00aa Wave FXM Color (0~3)
+ 1~4
+00 37 000a aaaa Wave FXM Depth (0~16)
+00 38 0000 000a (reserve) (0~1)
+00 39 00aa aaaa Wave Pitch Keyfollow (44 ~84)
+ –200~+200
+00 3A 000a aaaa Pitch Env Depth (52 - 76)
+–12~+12
+00 3B 0aaa aaaa Pitch Env Velocity Sens (1~127)
+ –63~+63
+00 3C 0aaa aaaa Pitch Env Time 1 Velocity Sens (1~127)
+ –63~+63
+00 3D 0aaa aaaa Pitch Env Time 4 Velocity Sens (1~127)
+ –63~+63
+00 3E 000a aaaa Pitch Env Time Keyfollow (54~ 74)
+–100~+100
+00 3F 0aaa aaaa Pitch Env Time 1 (0~127)
+00 40 0aaa aaaa Pitch Env Time 2 (0~127)
+00 41 0aaa aaaa Pitch Env Time 3 (0~127)
+00 42 0aaa aaaa Pitch Env Time 4 (0~127)
+00 43 0aaa aaaa Pitch Env Level 0 (1~127)
+ –63~+63
+00 44 0aaa aaaa Pitch Env Level 1 (1~127)
+ –63~+63
+00 45 0aaa aaaa Pitch Env Level 2 (1~127)
+ –63~+63
+00 46 0aaa aaaa Pitch Env Level 3 (1~127)
+ –63~+63
+00 47 0aaa aaaa Pitch Env Level 4 (1~127)
+ –63~+63
+00 48 0000 0aaa TVF Filter Type (0~6)
+OFF , LPF , BPF , HPF , PKG, LPF2, LPF3
+00 49 0aaa aaaa TVF Cutoff Frequency (0~127)
+00 4A 00aa aaaa TVF Cutoff Keyfollow (44~ 84)
+ –200~+200
+00 4B 0000 0aaa TVF Cutoff Velocity Curve (0~7)
+ FIXED, 1~7
+00 4C 0aaa aaaa TVF Cutoff Velocity Sens (1~127)
+ –63~+63
+00 4D 0aaa aaaa TVF Resonance (0~127)
+00 4E 0aaa aaaa TVF Resonance Velocity Sens (1~127)
+ –63~+63
+00 4F 0aaa aaaa TVF Env Depth (1~127)
+ –63~+63
+00 50 0000 0aaa TVF Env Velocity Curve (0~7)
+ FIXED, 1~7
+00 51 0aaa aaaa TVF Env Velocity Sens (1~127)
+ –63~+63
+00 52 0aaa aaaa TVF Env Time 1 Velocity Sens (1~127)
+ –63~+63
+00 53 0aaa aaaa TVF Env Time 4 Velocity Sens (1~127)
+ –63~+63
+00 54 000a aaaa TVF Env Time Keyfollow (54~74)
+–100~+100
+00 55 0aaa aaaa TVF Env Time 1 (0~127)
+00 56 0aaa aaaa TVF Env Time 2 (0~127)
+00 57 0aaa aaaa TVF Env Time 3 (0~127)
+00 58 0aaa aaaa TVF Env Time 4 (0~127)
+00 59 0aaa aaaa TVF Env Level 0 (0~127)
+00 5A 0aaa aaaa TVF Env Level 1 (0~127)
+00 5B 0aaa aaaa TVF Env Level 2 (0~127)
+00 5C 0aaa aaaa TVF Env Level 3 (0~127)
+00 5D 0aaa aaaa TVF Env Level 4 (0~127)
+00 5E 000a aaaa Bias Level (54~74)
+ –100~+100
+00 5F 0aaa aaaa Bias Position (0~127)
+ C-1~ G9
+00 60 0000 00aa Bias Direction (0~3)
+LOWER, UPPER, LOWER&UPPER, ALL
+00 61 0000 0aaa TVA Level Velocity Curve (0~7)
+ FIXED, 1~7
+00 62 0aaa aaaa TVA Level Velocity Sens (1~127)
+ –63~+63
+00 63 0aaa aaaa TVA Env Time 1 Velocity Sens (1~127)
+ –63~+63
+00 64 0aaa aaaa TVA Env Time 4 Velocity Sens (1~127)
+ –63~+63
+00 65 000a aaaa TVA Env Time Keyfollow (54~74)
+ –100~+100
+00 66 0aaa aaaa TVA Env Time 1 (0~127)
+00 67 0aaa aaaa TVA Env Time 2 (0~127)
+00 68 0aaa aaaa TVA Env Time 3 (0~127)
+00 69 0aaa aaaa TVA Env Time 4 (0~127)
+00 6A 0aaa aaaa TVA Env Level 1 (0~127)
+00 6B 0aaa aaaa TVA Env Level 2 (0~127)
+00 6C 0aaa aaaa TVA Env Level 3 (0~127)
+
+===== PAGE 14 =====
+14
+AX-Synth MIDI Implementation
+00 6D 0000 aaaa LFO1 Waveform (0~12)
+SIN, TRI, SAW-UP , SAW-DW, SQR, RND, BEND-UP , BEND-
+DW, TRP , S&H, CHS, VSIN, STEP
+# 00 6E 0000 aaaa 
+0000 bbbb 
+ 
+LFO1 Rate (0~127)
+00 70 0000 0aaa LFO1 Offset (0~4)
+-100, -50, 0, +50, +100
+00 71 0aaa aaaa LFO1 Rate Detune (0~127)
+00 72 0aaa aaaa LFO1 Delay Time (0~127)
+00 73 000a aaaa LFO1 Delay Time Keyfollow (54~74)
+ –100~+100
+00 74 0000 00aa LFO1 Fade Mode (0~3)
+ON-IN, ON-OUT, OFF-IN, OFF-OUT
+00 75 0aaa aaaa LFO1 Fade Time (0~127)
+00 76 0000 000a LFO1 Key Trigger (0~127) (0~127)
+ OFF , ON
+00 77 0aaa aaaa LFO1 Pitch Depth (1~127)
+ –63~+63
+00 78 0aaa aaaa LFO1 TVF Depth (1~127)
+ –63~+63
+00 79 0aaa aaaa LFO1 TVA Depth (1~127)
+ –63~+63
+00 7A 0aaa aaaa LFO1 Pan Depth (1~127)
+ –63~+63
+00 7B 0000 aaaa LFO2 Waveform (0~12)
+SIN, TRI, SAW-UP , SAW-DW, SQR, RND, BEND-UP , BEND-
+DW, TRP , S&H, CHS, VSIN, STEP
+# 00 7C 0000 aaaa 
+0000 bbbb LFO2 Rate (0~127)
+00 7E 0000 0aaa LFO2 Offset (0~4)
+-100, -50, 0, +50, +100
+00 7F 0aaa aaaa LFO2 Rate Detune (0~127)
+01 00 0aaa aaaa LFO2 Delay Time (0~127)
+01 01 000a aaaa LFO2 Delay Time Keyfollow (54~74)
+ –100~+100
+01 02 0000 00aa LFO2 Fade Mode (0~3)
+ON-IN, ON-OUT, OFF-IN, OFF-OUT
+01 03 0aaa aaaa LFO2 Fade Time (0~127)
+01 04 0000 000a LFO2 Key Trigger (0~1)
+ OFF , ON
+01 05 0aaa aaaa LFO2 Pitch Depth (1~127)
+ –63~+63
+01 06 0aaa aaaa LFO2 TVF Depth (1~127)
+ –63~+63
+01 07 0aaa aaaa LFO2 TVA Depth (1~127)
+ –63~+63
+01 08 0aaa aaaa LFO2 Pan Depth (1~127)
+ –63~+63
+01 09 0000 aaaa LFO Step Type (0~1)
+01 0A 0aaa aaaa LFO Step1 (28~100)
+ –36~+36
+01 0B 0aaa aaaa LFO Step2 (28~100)
+ –36~+36
+01 0C 0aaa aaaa LFO Step3 (28~100)
+ –36~+36
+01 0D 0aaa aaaa LFO Step4 (28~100)
+ –36~+36
+01 0E 0aaa aaaa LFO Step5 (28~100)
+ –36~+36
+01 0F 0aaa aaaa LFO Step6 (28~100)
+ –36~+36
+01 10 0aaa aaaa LFO Step7 (28~100)
+ –36~+36
+01 11 0aaa aaaa LFO Step8 (28~100)
+ –36~+36
+01 12 0aaa aaaa LFO Step9 (28~100)
+ –36~+36
+01 13 0aaa aaaa LFO Step10 (28~100)
+ –36~+36
+01 14 0aaa aaaa LFO Step11 (28~100)
+ –36~+36
+01 15 0aaa aaaa LFO Step12 (28~100)
+ –36~+36
+01 16 0aaa aaaa LFO Step13 (28~100)
+ –36~+36
+01 17 0aaa aaaa LFO Step14 (28~100)
+ –36~+36
+01 18 0aaa aaaa LFO Step15 (28~100)
+ –36~+36
+01 19 0aaa aaaa LFO Step16 (28~100)
+ –36~+36
+00 00 01 1A Total Size  
+
+===== PAGE 15 =====
+15
+AX-Synth MIDI Implementation
+4. Supplementary material
+●Decimal and Hexadecimal table
+(An “H” is appended to the end of numbers in hexadecimal notation.)
+In MIDI documentation, data values and addresses/sizes of exclusive messages etc. are expressed 
+as hexadecimal values for each 7 bits.
+The following table shows how these correspond to decimal numbers.
++——————+——————++——————+——————++——————+——————++——————+——————+
+| Dec. | Hex. || Dec .| Hex. || Dec. | Hex. || Dec. | Hex. |
++——————+——————++——————+——————++——————+——————++——————+——————+
+|    0 |  00H ||   32 |  20H ||   64 |  40H ||   96 |  60H |
+|    1 |  01H ||   33 |  21H ||   65 |  41H ||   97 |  61H |
+|    2 |  02H ||   34 |  22H ||   66 |  42H ||   98 |  62H |
+|    3 |  03H ||   35 |  23H ||   67 |  43H ||   99 |  63H |
+|    4 |  04H ||   36 |  24H ||   68 |  44H ||  100 |  64H |
+|    5 |  05H ||   37 |  25H ||   69 |  45H ||  101 |  65H |
+|    6 |  06H ||   38 |  26H ||   70 |  46H ||  102 |  66H |
+|    7 |  07H ||   39 |  27H ||   71 |  47H ||  103 |  67H |
+|    8 |  08H ||   40 |  28H ||   72 |  48H ||  104 |  68H |
+|    9 |  09H ||   41 |  29H ||   73 |  49H ||  105 |  69H |
+|   10 |  0AH ||   42 |  2AH ||   74 |  4AH ||  106 |  6AH |
+|   11 |  0BH ||   43 |  2BH ||   75 |  4BH ||  107 |  6BH |
+|   12 |  0CH ||   44 |  2CH ||   76 |  4CH ||  108 |  6CH |
+|   13 |  0DH ||   45 |  2DH ||   77 |  4DH ||  109 |  6DH |
+|   14 |  0EH ||   46 |  2EH ||   78 |  4EH ||  110 |  6EH |
+|   15 |  0FH ||   47 |  2FH ||   79 |  4FH ||  111 |  6FH |
+|   16 |  10H ||   48 |  30H ||   80 |  50H ||  112 |  70H |
+|   17 |  11H ||   49 |  31H ||   81 |  51H ||  113 |  71H |
+|   18 |  12H ||   50 |  32H ||   82 |  52H ||  114 |  72H |
+|   19 |  13H ||   51 |  33H ||   83 |  53H ||  115 |  73H |
+|   20 |  14H ||   52 |  34H ||   84 |  54H ||  116 |  74H |
+|   21 |  15H ||   53 |  35H ||   85 |  55H ||  117 |  75H |
+|   22 |  16H ||   54 |  36H ||   86 |  56H ||  118 |  76H |
+|   23 |  17H ||   55 |  37H ||   87 |  57H ||  119 |  77H |
+|   24 |  18H ||   56 |  38H ||   88 |  58H ||  120 |  78H |
+|   25 |  19H ||   57 |  39H ||   89 |  59H ||  121 |  79H |
+|   26 |  1AH ||   58 |  3AH ||   90 |  5AH ||  122 |  7AH |
+|   27 |  1BH ||   59 |  3BH ||   91 |  5BH ||  123 |  7BH |
+|   28 |  1CH ||   60 |  3CH ||   92 |  5CH ||  124 |  7CH |
+|   29 |  1DH ||   61 |  3DH ||   93 |  5DH ||  125 |  7DH |
+|   30 |  1EH ||   62 |  3EH ||   94 |  5EH ||  126 |  7EH |
+|   31 |  1FH ||   63 |  3FH ||   95 |  5FH ||  127 |  7FH |
++——————+——————++——————+——————++——————+——————++——————+——————+
+*D ecimal values such as MIDI channel, bank select, and program change are listed as one (1)
+greater than the values given in the above table.
+*A  7-bit byte can express data in the range of 128 steps. For data where greater precision is
+required, we must use two or more bytes. For example, two hexadecimal numbers aa bbH
+expressing two 7-bit bytes would indicate a value of aa x 128 + bb.
+* In the case of values which have a ± sign, 00H = -64, 40H = ±0, and 7FH = +63, so that the
+decimal expression would be 64 less than the value given in the above chart. In the case of two
+types, 00 00H = -8192, 40 00H = ±0, and 7F 7FH = +8191. For example if aa bbH were expressed
+as decimal, this would be aa bbH - 40 00H = aa x 128 + bb - 64 x 128.
+*D ata marked “nibbled” is expressed in hexadecimal in 4-bit units. A value expressed as a 2-byte
+nibble 0a 0bH has the value of a x 16 + b.
+<Example1> What is the decimal expression of 5AH?
+From the preceding table, 5AH = 90
+<Example2> What is the decimal expression of the value 12 34H given as 
+hexadecimal for each 7 bits?
+From the preceding table, since 12H = 18 and 34H = 52
+18 x 128 + 52 = 2356
+<Example3> What is the decimal expression of the nibbled value 0A 03 09 0D?
+From the preceding table, since 0AH = 10, 03H = 3, 09H = 9, 0DH = 13
+((10 x 16 + 3) x 16 + 9) x 16 + 13 = 41885
+<Example4> What is the nibbled expression of the decimal value 1258?
+16) 1258
+---------
+16)   78... 10
+---------
+16)    4... 14
+---------
+       0...  4
+Since from the preceding table, 0 = 00H, 4 = 04H, 14 = 0EH, 10 = 0AH, the answer is 00 04 0E 0AH.
+●Examples of actual MIDI messages
+<Example1> 92 3E 5F
+9n is the Note-on status, and n is the MIDI channel number. Since 2H = 2, 3EH = 62, and 5FH = 95, 
+this is a Note-on message with MIDI CH = 3, note number 62 (note name is D4), and velocity 95.
+<Example2> CE 49
+CnH is the Program Change status, and n is the MIDI channel number. Since EH = 14 and 49H = 73, 
+this is a Program Change message with MIDI CH = 15, program number 74 (Flute in GS).
+<Example3> EA 00 28
+EnH is the Pitch Bend Change status, and n is the MIDI channel number. The 2nd byte (00H = 0) is 
+the LSB and the 3rd byte (28H = 40) is the MSB, but Pitch Bend Value is a signed number in which 
+40 00H (= 64 x 128 + 0 = 8192) is 0, so this Pitch Bend Value is
+28 00H - 40 00H = 40 x 128 + 0 - (64 x 128 + 0) = 5120 - 8192 = -3072
+If the Pitch Bend Sensitivity is set to 2 semitones, -8192 (00 00H) will cause the pitch to change -
+200 cents, so in this case -200 x (-3072) / (-8192) = -75 cents of Pitch Bend is being applied to MIDI 
+channel 11.
+<Example4> B3 64 00 65 00 06 0C 26 00 64 7F 65 7F
+BnH is the Control Change status, and n is the MIDI channel number. For Control Changes, the 2nd 
+byte is the control number, and the 3rd byte is the value. In a case in which two or more messages 
+consecutive messages have the same status, MIDI has a provision called “running status” which 
+allows the status byte of the second and following messages to be omitted. Thus, the above 
+messages have the following meaning.
+ B3 64 00 MIDI ch.4, lower byte of RPN parameter number: 00H
+(B3) 65 00 (MIDI ch.4) upper byte of RPN parameter number: 00H
+(B3) 06 0C (MIDI ch.4) upper byte of parameter value: 0CH
+(B3) 26 00 (MIDI ch.4) lower byte of parameter value: 00H
+(B3) 64 7F (MIDI ch.4) lower byte of RPN parameter number: 7FH
+(B3) 65 7F (MIDI ch.4) upper byte of RPN parameter number: 7FH
+In other words, the above messages specify a value of 0C 00H for RPN parameter number 00 00H 
+on MIDI channel 4, and then set the RPN parameter number to 7F 7FH.
+RPN parameter number 00 00H is Pitch Bend Sensitivity, and the MSB of the value indicates 
+semitone units, so a value of 0CH = 12 sets the maximum pitch bend range to +/- 12 semitones (1 
+octave). (On GS sound sources the LSB of Pitch Bend Sensitivity is ignored, but the LSB should be 
+transmitted anyway (with a value of 0) so that operation will be correct on any device.)
+Once the parameter number has been specified for RPN or NRPN, all Data Entry messages 
+transmitted on that same channel will be valid, so after the desired value has been transmitted, it 
+is a good idea to set the parameter number to 7F 7FH to prevent accidents. This is the reason for 
+the (B3) 64 7F (B3) 65 7F at the end.
+It is not desirable for performance data (such as Standard MIDI File data) to contain many events 
+with running status as given in <Example 4>. This is because if playback is halted during the song 
+and then rewound or fast-forwarded, the sequencer may not be able to transmit the correct 
+status, and the sound source will then misinterpret the data. Take care to give each event its own 
+status.
+It is also necessary that the RPN or NRPN parameter number setting and the value setting be done 
+in the proper order. On some sequencers, events occurring in the same (or consecutive) clock may 
+be transmitted in an order different than the order in which they were received. For this reason it 
+is a good idea to slightly skew the time of each event (about 1 tick for TPQN = 96, and about 5 ticks 
+for TPQN = 480).
+* TPQN: Ticks Per Quarter Note
+
+===== PAGE 16 =====
+16
+AX-Synth MIDI Implementation
+●Example of an Exclusive message and calculating a 
+Checksum
+Roland Exclusive messages are transmitted with a checksum at the end (before F7) to make sure 
+that the message was correctly received. The value of the checksum is determined by the address 
+and data (or size) of the transmitted exclusive message.
+◆How to calculate the checksum (hexadecimal numbers are indicated by ‘H’)
+The checksum is a value derived by adding the address, size and checksum itself and inverting the 
+lower 7 bits.
+Here’s an example of how the checksum is calculated. We will assume that in the exclusive 
+message we are transmitting, the address is aa bb ccH and the data or size is dd ee ffH.
+aa + bb + cc + dd + ee + ff = sum
+sum / 128 = quotient ... remainder
+128 - remainder = checksum
+The Scale Tune Feature (address: 40 1x 40)
+The scale Tune feature allows you to finely adjust the individual pitch of the notes from C through 
+B. Though the settings are made while working with one octave, the fine adjustments will affect 
+all octaves. By making the appropriate Scale Tune settings, you can obtain a complete variety of 
+tuning methods other than equal temperament. As examples, three possible types of scale setting 
+are explained below.
+❍ Equal Temperament
+This method of tuning divides the octave into 12 equal parts. It is currently the most widely used 
+form of tuning, especially in occidental music. On the AX-Synth, the default settings for the Scale 
+Tune feature produce equal temperament.
+❍ Just Temperament (Keytone C)
+The three main chords resound much more beautifully than with equal temperament, but this 
+benefit can only be obtained in one key. If transposed, the chords tend to become ambiguous. 
+The example given involves settings for a key in which C is the keynote.
+❍ Arabian Scale
+By altering the setting for Scale Tune, you can obtain a variety of other tunings suited for ethnic 
+music. For example, the settings introduced below will set the unit to use the Arabian Scale.
+Example Settings
+Note name Equal Temperament Just Temperament (Keytone C) Arabian Scale
+C0 0 - 6
+C# 0 -8 +45
+D0 + 4 -2
+D# 0 +16 -12
+E0 -14 -51
+F0 - 2 -8
+F# 0 -10 +43
+G0 + 2 -4
+G# 0 +14 +47
+A0 -16 0
+A# 0 +14 -10
+B0 -12 -49
+The values in the table are given in cents. Refer to the explanation of Scale Tuning to convert 
+these values to hexadecimal, and transmit them as exclusive data.

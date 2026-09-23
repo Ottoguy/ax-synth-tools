@@ -1,0 +1,352 @@
+
+
+===== PAGE 1 =====
+AX‐Synth Librarian
+on-line manual
+©2009 Roland Corporation
+*  All rights reserved. No part of this publication may be reproduced in any form without the written permission of Roland 
+Corporation.
+*  Microsoft and Windows are registered trademarks of Microsoft Corporation.
+*  The screen shots in this document are used in compliance with the guidelines of the Microsoft Corporation.
+*  Windows® is known officially as: “Microsoft® Windows® operating system.”
+*  All product names mentioned in this document are trademarks or registered trademarks of their respective owners.
+
+===== PAGE 2 =====
+2
+1. Introduction
+AX-Synth Librarian is an application that lets you use your computer to manage AX-Synth tone settings as "libraries."
+This allows you to manage numerous Tones efficiently with your computer.
+"SuperNATURALTM" and "Special" Tones cannot be handled by AX-Synth Librarian.
+When using AX-Synth Librarian, select a “regular” tone on the AX-Synth beforehand.
+The "Tones" of the AX-Synth are equivalent to the "Patches" in the AX-Synth Librarian.
+The AX-Synth features a sound generating engine that is derived from the Fantom-X (However, it is not multitimbral).
+This means that the parameters handled by this librarian are a subset of those on the Fantom-X.
+When using AX-Synth Librarian, substitute the terms as shown below.
+The illustration below shows the correspondence between the AX-Synth and AX-Synth Librarian.
+1. Introduction
+AX-Synth AX-Synth Librarian
+(Fantom-X)
+Tone group Tone Family Bank
+Tone color Tone Patch
+Tone elements - Tone
+AX-Synth
+Tone Family 1
+Tone Family 8
+Tone 1
+Tone 32
+Bank 1
+Bank 8
+Tone
+1
+Tone
+2
+Tone
+3
+Tone
+4
+Patch 1
+Patch 32
+AX-Synth Librarian
+(Fantom-X)
+
+===== PAGE 3 =====
+3
+2. Connections and Settings
+Connect the AX-Synth and your computer as described in AX-Synth owner’s manual.
+AX-Synth Librarian may not operate correctly if these connections are not made correctly.
+If the AX-Synth is connected to your computer by a USB cable, you must power up the AX-Synth before you start up 
+AX-Synth Librarian.
+Do not disconnect the USB cable connected to the AX-Synth while AX-Synth Librarian is running.
+Specify the input/output devices :
+Make settings for the MIDI device you’ll be using.
+1.   From the menu, choose [Setup] - “Set Up MIDI Devices” to open the “Set Up MIDI Devices” dialog box.
+2.   Set AX-Synth Input/Output to the following settings.
+Windows Vista Users :
+Windows XP Users :
+3.   Click [OK].
+   
+A separate MIDI interface is required in order to connect the AX-Synth with your computer using MIDI cables. Con-
+nect both the MIDI IN and MIDI OUT connectors on the MIDI interface connected to your computer to the MIDI con-
+nectors on the AX-Synth.
+When using the software for the first time, you must choose the menu command [SETUP] - ”Set Up MIDI Devices” to 
+open the dialog box, and for AX-Synth Input/Output, choose the port to which AX-Synth is connected.
+2. Connections and Settings
+2-1.Connecting via USB cable
+Input Roland AX-Synth
+Output Roland AX-Synth
+Input USB Audio Device
+(or USB Speakers)
+Output USB Audio Device
+(or USB Speakers)
+2-2.Connecting via MIDI cables
+
+===== PAGE 4 =====
+4
+3. Overview of AX‐Synth Librarian
+The following diagram illustrates the relationship between the AX-Synth, AX-Synth Librarian, and the computer, and 
+shows the commands used for exchanging data between these components.
+3. Overview of AX-Synth Librarian
+3-1.Data path
+AX-Synth
+Patch : 256
+Patch Memory Temporary Area
+Patch : 256
+Main Window Library Window
+Patch
+changeable length
+(File Name)
+Cut
+Copy
+Insert
+Replace
+Delete
+AX-Synth Librarian
+Audition button
+Read All Data
+Read Selected Data
+Write All Data
+Write Selected Data
+Open/CloseImport SMF
+Export SMF
+*.mid *.a8l
+File
+
+===== PAGE 5 =====
+5
+3. Overview of AX‐Synth Librarian
+This is a graphic display window. 
+The window displays Patches in the AX-Synth as lists, and it includes categories where you can edit names, add 
+comments, and change the order in which information appears according to keywords.
+The Main Window is the primary window used when data is being exchanged with the AX-Synth. 
+It corresponds to the AX-Synth’s Patch Area (Patch Memory).
+The AX-Synth can store up to 256 patches.
+All of these patches are organized according to Bank (1-8) and Number (1-32).
+For example, a patch saved to "1-2" of the AX-Synth Librarian will be stored in the second location of the AX-Synth's 
+Bank 1.
+This is a graphic display window. 
+Just as with the Main Window, Patches are displayed as lists, and you can edit names and change the order in which 
+the information appears.
+You can have multiple Library Windows open at the same time.
+You can copy and paste the data in one Library Window to and from the Main Window and other Library Windows.
+Data you intend to use for a particular purpose can be collected and arranged in one window. The data you include 
+there might belong to a certain musical genre, or might have been created by a certain artist.
+Afterwards, simply by saving the content of the window in a file, you can create your own library.
+3-2.Main Window
+3-3.Library Window
+1   -   2
+           Bank       Number
+
+===== PAGE 6 =====
+6
+4. About the Menus
+New
+Creates a new library (Library Window) in the default state.
+Duplicate
+When the Main Window is active, copies Patch and creates 
+a new library with the data.
+When a Library Window is active, then that library is dupli-
+cated.
+Open
+Opens a library saved by AX-Synth Librarian.
+Close
+Closes the currently selected library.
+Save/Save As
+Saves a file that preserves the current library.
+Export SMF
+Saves the currently selected patches or all the patches in 
+SMF format.
+Import SMF
+Writes patches saved in SMF format to the Main Window.
+Exit
+Closes AX-Synth Librarian.
+Undo
+Returns things to the state prior to the previously executed 
+operation.
+Cut
+Deletes the selected Patch and moves it to the clipboard.
+INIT data (data having standard values) in the same 
+amount as the deleted data is added to the highest 
+numbered position in the Main Window.
+Copy
+Copies the currently selected Patch to the clipboard.
+Insert
+Places the content of the clipboard immediately ahead of 
+the selected point.
+At this time, in the Main Window, data is deleted sequen-
+tially, beginning with the data in the highest numbered 
+position, commensurate with the amount of data in the 
+clipboard.
+Replace
+Overwrites the contents of the clipboard onto the selected 
+location.
+Delete
+Deletes the selected Patch.
+At this point, INIT data (data having standard values) in the 
+same amount as the deleted data is added to the highest 
+numbered position in the Main Window.
+Initialize
+Initializes the settings of the currently selected Patch.
+This command is useful when you want to create data from 
+scratch.
+Select All
+Selects all data in the currently selected window.
+Tool Bar
+Switches the tool bar between visible and hidden.
+Status Bar
+Switches the status bar between visible and hidden.
+4. About the Menus
+4-1.File
+4-2.Edit
+4-3.View
+
+===== PAGE 7 =====
+7
+4. About the Menus
+Write All Data
+Writes all of the Patch data indicated in the Main Window 
+to the AX-Synth’s Patch Area.
+The [Write All] button in the upper part of the Main Win-
+dow performs the same function.
+Write Selected Data
+Writes the data selected in the Main Window to the identi-
+cally numbered data location in the AX-Synth’s Patch Area.
+The [Write Selected] button in the upper part of the Main 
+Window performs the same function.
+Read All Data
+Reads all of the Patch data indicated in the Main Window 
+from the AX-Synth’s Patch Area.
+The [Read All] button in the upper part of the Main Win-
+dow performs the same function.
+Read Selected Data
+Loads the data under the same number in the AX-Synth’s 
+Patch Area to the selected point in the Main Window.
+The [Read Selected] button in the upper part of the Main 
+Window performs the same function.
+Set Up MIDI Devices
+Sets the AX-Synth Input/Output to the port to which the 
+AX-Synth is connected.
+* Through provides a thru-connection from the MIDI OUT of 
+any desired MIDI device to the MIDI IN of any other MIDI 
+device.
+Set Up Font
+Sets the font to be used in displaying information on the 
+screen.
+Set Up Grid
+Sets whether the ruled grid is displayed in the window or 
+hidden from view.
+Move to Top
+Use this command when you want to display the foremost 
+currently open window.
+Maximize Height/Maximize Width
+Allows you to match the window size to the size of the 
+screen.
+Save Current Position
+Saves the placement of the currently active windows.
+The placement of the Main Window and the Library Win-
+dow are saved independently.
+If you save the position of the Main Window :
+The Main Window will open in the saved position 
+the next time you start AX-Synth Librarian.
+If you save the position of the Library Window :
+The Library Window will open in the saved posi-
+tion when you open a new Library Window or 
+when you restart AX-Synth Librarian.
+Cascade Windows/Tile Windows Horizontally/
+Tile Windows Vertically
+Arranges the placement of windows on the screen.
+Arrange Icons
+Organizes the placement of windows that have been 
+minimized.
+AX-Synth Librarian Manual
+Displays the AX-Synth Librarian Manual.
+About AX-Synth Librarian
+Displays the software version.
+4-4.MIDI
+4-5.Setup
+4-6.Window
+4-7.Help
+
+===== PAGE 8 =====
+8
+5. Using AX‐Synth Librarian
+Load Patches into AX-Synth Librarian from the AX-Synth’s Patch Area.
+•  When you run [ MIDI] - “ Read All Data ” or click the [ Read All] button in the upper part of the Main Window, all
+Patches in the AX-Synth’s Patch Area are read into the Main Window.
+•  You can use the “Read Selected Data” command or the [Read Selected] button to have only the selected data be
+read from the AX-Synth’s Patch Area.
+Whether you are in the Main Window or the Library Window, you can rename or sort the entries in the patch list.
+You can also save the content of Library Windows as files.
+Using the Mouse for Editing Data
+If you select a range of rows and then right-click, you can simultaneously input the same character string in all of the 
+selected rows.
+To confirm the input, either press the Enter key or click somewhere on the screen other than the input box.
+Right-click or press the Esc key to cancel the input.
+Keyboard Functions When Editing Data
+You can input using only the keyboard by using the following keys.
+Audition button
+When you click the button at the left end of each row (Audition button) in the Patch list, you can have the corre-
+sponding data be sent to the AX-Synth’s Temporary Area, allowing you to audition the sound in the AX-Synth.
+You can achieve the same result by double-clicking in the row.
+5. Using AX-Synth Librarian
+5-1.Reading data
+5-2.Editing and saving data
+To select a row Click
+To select a range of rows Hold the Shift key and click
+Add or cancel selection Hold the Ctrl key and click
+To select a cell for keyboard input Right-click
+To move cells , , , 
+*  Press ,  to move the input row up and down. When you press  or , the asterisk 
+(“*”) appearing in the top row of the window moves to the right or left to indicate the 
+row to which information is to be input.
+To select a cell for keyboard input [Enter]
+To confirm the input [Enter]
+To cancel the input [Esc]
+
+===== PAGE 9 =====
+9
+6. Notes Concerning Use of AX‐Synth Editor Together with AX‐Synth Librarian
+Patch Name
+Provides of entry of the Patch names.
+Patch names of up to twelve characters can be entered.
+You can use the following characters,
+space ! “ # $ % & ‘ ( ) * + , - . / 0-9 : ; < = > ? @ A-Z [ \ ] ^ _ ` a-z { | } ~
+Memo 1--4
+This allows you to enter up to four comments of your choice. 
+Here you may want to include information such as the data’s creator and date it was created.
+This information is not saved to the AX-Synth itself.
+Arrange Data
+When you click on the boxes in the top row of the display (Number, Patch Name, Memo 1--4), the data is listed in the 
+sequence corresponding to the clicked box.
+Write the Patches in the Main Window to the AX-Synth’s Patch Area.
+•   When you issue the command [MIDI] - “Write All Data” or click the [Write All] button in the upper part of the Main
+Window, all Patches in the Main Window are written to the AX-Synth’s Patch Area.
+•  By using “ Write Selected Data ” or the [ Write Selected] button, you can write just the selected data to the AX-
+Synth’s Patch Area.
+If the AX-Synth is connected to your computer using a USB cable, you may not be able to use AX-Synth Editor 
+together with AX-Synth Librarian. In such cases, try installing the Roland original driver.
+For details, refer to the AX-Synth owner's manual.
+You may experience some of the problems below if AX-Synth Librarian and AX-Synth Editor are used at the same 
+time.
+•   When you click the Audition button in AX-Synth Librarian, the correspondence between the values in AX-Synth
+Editor and the data in the AX-Synth’s Temporary Area may be lost.
+•  After you’ve issued the “Write All Data” or “Write Selected Data” commands in AX-Synth Librarian, the names of
+items and their sequence in AX-Synth Editor may no longer match the data in the AX-Synth’s Patch Area.
+If you have performed one of the above operations in AX-Synth Librarian and then move to AX-Synth Editor, you 
+must be sure to click the [SYNC] button located in the top line of AX-Synth Editor’s Main Window before you begin 
+editing. This executes the following actions, allowing the AX-Synth Editor and AX-Synth settings to be synchronized.
+•  The values of settings in AX-Synth Editor are written to the AX-Synth’s Temporary Area.
+•  The name lists of Patch in the AX-Synth’s Patch Area are read into AX-Synth Editor.
+5-3.Writing Data
+6. Notes Concerning Use of AX-Synth Editor Together with 
+AX-Synth Librarian
+
+===== PAGE 10 =====
+10
+7. If the Display Indicates “Unable to read/write data.”
+In cases such as following, the display may indicate “Unable to read/write data.”
+•   When the AX-Synth and the computer are not connected properly
+•   When a large number of notes are being sounded
+•   When AX-Synth Editor and AX-Synth Librarian simultaneously attempt to read (or write) data
+•   When the driver you’re using is the generic MIDI driver included with the OS, and you’ve attempted to use both AX-
+Synth Editor and AX-Synth Librarian at the same time.
+7. If the Display Indicates “Unable to read/write data.”

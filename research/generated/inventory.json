@@ -1,0 +1,1410 @@
+[
+ {
+  "path": "original-roland-files/A8EE.exe",
+  "ext": ".exe",
+  "size": 2183168,
+  "sha256": "f216db1cb5c737ac891b62b32372f6fd341fc56083a9c5f574631fd5ca49b932",
+  "kind": "binary",
+  "magic": "4d 5a 90 00 03 00 00 00 04 00 00 00 ff ff 00 00"
+ },
+ {
+  "path": "original-roland-files/A8EL.exe",
+  "ext": ".exe",
+  "size": 1875968,
+  "sha256": "81b43877bfdaad77efb4d04c1a791caa94133ffe3e5d69eb11e867d82c7e9f32",
+  "kind": "binary",
+  "magic": "4d 5a 90 00 03 00 00 00 04 00 00 00 ff ff 00 00"
+ },
+ {
+  "path": "original-roland-files/Manual/AX-SynthEditorManualE.pdf",
+  "ext": ".pdf",
+  "size": 2644829,
+  "sha256": "d5c6cba37a790a97c1a49ff32adbf16ed1e000efab3518db0fb1a6ffdd192f00",
+  "kind": "binary",
+  "magic": "25 50 44 46 2d 31 2e 34 0d 25 e2 e3 cf d3 0d 0a"
+ },
+ {
+  "path": "original-roland-files/Manual/AX-SynthEditorManualJ.pdf",
+  "ext": ".pdf",
+  "size": 2707710,
+  "sha256": "f55e6b93094be1efabe97961039b67b9982f52f3113f5072aae2357d0e2532fc",
+  "kind": "binary",
+  "magic": "25 50 44 46 2d 31 2e 34 0d 25 e2 e3 cf d3 0d 0a"
+ },
+ {
+  "path": "original-roland-files/Manual/AX-SynthLibrarianManualE.pdf",
+  "ext": ".pdf",
+  "size": 463949,
+  "sha256": "c6fed7f165d02f265cfddc292f7f510729b89112b0240353e21f2eedf8e02263",
+  "kind": "binary",
+  "magic": "25 50 44 46 2d 31 2e 34 0d 25 e2 e3 cf d3 0d 0a"
+ },
+ {
+  "path": "original-roland-files/Manual/AX-SynthLibrarianManualJ.pdf",
+  "ext": ".pdf",
+  "size": 456339,
+  "sha256": "d405088b3c2c068754704340881aa1330ccfad52ff96569be25ea850ab9f0fdf",
+  "kind": "binary",
+  "magic": "25 50 44 46 2d 31 2e 34 0d 25 e2 e3 cf d3 0d 0a"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/blueButton.bmp",
+  "ext": ".bmp",
+  "size": 3512,
+  "sha256": "42856cfc8698a5615d67025380b4cbe1c802aaf0dd028aba54295210b9e6e4d8",
+  "kind": "binary",
+  "magic": "42 4d b8 0d 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/blueSliderKnob.bmp",
+  "ext": ".bmp",
+  "size": 920,
+  "sha256": "43ceb0d1c9206760e3746544a7ac9399387c16c43fa6b96657798f8d456ab626",
+  "kind": "binary",
+  "magic": "42 4d 98 03 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonDecVioletS.bmp",
+  "ext": ".bmp",
+  "size": 1112,
+  "sha256": "a26ed1a350e0e65b78e45b9c64fca5021218735db7b3041adfdf103ac07cfde9",
+  "kind": "binary",
+  "magic": "42 4d 58 04 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonIncVioletS.bmp",
+  "ext": ".bmp",
+  "size": 1112,
+  "sha256": "fa07869dc12daa3da4fff9a0110f52e14b05db17dc5b210ea9747f92164de787",
+  "kind": "binary",
+  "magic": "42 4d 58 04 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonMenuGray.bmp",
+  "ext": ".bmp",
+  "size": 4664,
+  "sha256": "144f55d8bf55bed1c7e86205f629a19279e512745da3f44aed92d089b0060e06",
+  "kind": "binary",
+  "magic": "42 4d 38 12 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonMenuGray4State.bmp",
+  "ext": ".bmp",
+  "size": 9272,
+  "sha256": "037dff76d6243aa466e8764f558078723c4f446e2f9324a4556eb792115b6327",
+  "kind": "binary",
+  "magic": "42 4d 38 24 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonMenuKeyboard.bmp",
+  "ext": ".bmp",
+  "size": 9272,
+  "sha256": "9895ad55435496bb9fd812b8987c69de68285d7e041f8cbd42a2b84ce6cf13b9",
+  "kind": "binary",
+  "magic": "42 4d 38 24 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonNavigationOrangeFlat.bmp",
+  "ext": ".bmp",
+  "size": 87352,
+  "sha256": "ac61411b09ca71105a96d874d7f7992200d4639df154bcd2ede4674fb93fd149",
+  "kind": "binary",
+  "magic": "42 4d 38 55 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonPatchList.bmp",
+  "ext": ".bmp",
+  "size": 8120,
+  "sha256": "53241626c9f09aa8fb2fbe43c904393a21e712505121a76ec42806dfd9cfdc24",
+  "kind": "binary",
+  "magic": "42 4d b8 1f 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonRoundCobalt.bmp",
+  "ext": ".bmp",
+  "size": 1592,
+  "sha256": "0233e46db4a03c9b84ffe07313a34fc0dcacbb714f69fb832194d81046fdcfa7",
+  "kind": "binary",
+  "magic": "42 4d 38 06 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ButtonRoundCobalt6.bmp",
+  "ext": ".bmp",
+  "size": 2360,
+  "sha256": "2adff80b185757c51ed826e31ba6ea829a05221d68602efdc5cb60a89a2dd7f5",
+  "kind": "binary",
+  "magic": "42 4d 38 09 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/chorusChorus.bmp",
+  "ext": ".bmp",
+  "size": 317904,
+  "sha256": "e9d8b21440e36b0048f77f4231fa79fffde818ad2e44a7e6b2afe7de27e7e4e4",
+  "kind": "binary",
+  "magic": "42 4d d0 d9 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/chorusDelay.bmp",
+  "ext": ".bmp",
+  "size": 317904,
+  "sha256": "855c9238b53ce2301ef23e2386560c38b59422fe433e4845f522aa8c14bbbd9c",
+  "kind": "binary",
+  "magic": "42 4d d0 d9 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/chorusOff.bmp",
+  "ext": ".bmp",
+  "size": 317904,
+  "sha256": "d96b9ad42f0861e3342e48f2d20e9ec6571c34dd3e03419d53e5c884f6d6d5ed",
+  "kind": "binary",
+  "magic": "42 4d d0 d9 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/comboButton.bmp",
+  "ext": ".bmp",
+  "size": 848,
+  "sha256": "98ee18870538814e9ac088b17ebbe143eb9ea6dd446c00c1ece854a0042d0cb4",
+  "kind": "binary",
+  "magic": "42 4d 50 03 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/comboButtonLarge.bmp",
+  "ext": ".bmp",
+  "size": 1816,
+  "sha256": "35ac6b3e5d9d102c58ff1d473648878c07bbf76fe351e757a9b2a22dd40c3567",
+  "kind": "binary",
+  "magic": "42 4d 18 07 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/decButton.bmp",
+  "ext": ".bmp",
+  "size": 1904,
+  "sha256": "13b55f8ac85279aedca6ce2d5963fe857b4d6353f72b99ee907e5b27c56ccd04",
+  "kind": "binary",
+  "magic": "42 4d 70 07 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/editButton.bmp",
+  "ext": ".bmp",
+  "size": 848,
+  "sha256": "e71b9d09137f2db343416cdd11da0865c8b0572b5e9c6ad6c2e0cadb480684e4",
+  "kind": "binary",
+  "magic": "42 4d 50 03 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/editButtonLarge.bmp",
+  "ext": ".bmp",
+  "size": 1640,
+  "sha256": "3258404ded31be04ab9f6a70c142d56c36225f1d79fb28838d08fa35ace3409f",
+  "kind": "binary",
+  "magic": "42 4d 68 06 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/EditViewBackground.bmp",
+  "ext": ".bmp",
+  "size": 1328376,
+  "sha256": "351b8367ae6c83ca4c8d29804fc5fb2981b9231e090ec33c0ef41bee88a92f4e",
+  "kind": "binary",
+  "magic": "42 4d f8 44 14 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/greenButton6State.bmp",
+  "ext": ".bmp",
+  "size": 5240,
+  "sha256": "909d7ca773572c9e83a4c5e0139428efc262ba9bbf1298a34af2e7a7a772a9bb",
+  "kind": "binary",
+  "magic": "42 4d 78 14 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/horizontalSliderKnob.bmp",
+  "ext": ".bmp",
+  "size": 1976,
+  "sha256": "50024e37282f30ba6ee4911e5a106699c14a48faaa436acf4d33c5680bb67a8a",
+  "kind": "binary",
+  "magic": "42 4d b8 07 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/incButton.bmp",
+  "ext": ".bmp",
+  "size": 1904,
+  "sha256": "c932b02ebd0c9fa6dabcfd3d34d296044f3d3ce205b477f4966a4ebd35343a11",
+  "kind": "binary",
+  "magic": "42 4d 70 07 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/incButtonDownSmall.bmp",
+  "ext": ".bmp",
+  "size": 1112,
+  "sha256": "2d75a7d4e989dcb73b94dd2c827d6a411bb1bc4a406ced1439df1284f4e8a4f1",
+  "kind": "binary",
+  "magic": "42 4d 58 04 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/incButtonUpSmall.bmp",
+  "ext": ".bmp",
+  "size": 1112,
+  "sha256": "1232473a867b783a9300f9ccded7ff368f5bb906698eef8d2614b8d97985222f",
+  "kind": "binary",
+  "magic": "42 4d 58 04 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/InitialData.a8e",
+  "ext": ".a8e",
+  "size": 1465,
+  "sha256": "1117aca9459b533a08401ee77f991e62598296aa9ca99fb1e2376889cdb24de8",
+  "kind": "binary",
+  "magic": "4b 6f 61 44 61 74 61 46 69 6c 65 30 30 30 30 31"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/keyboard.bmp",
+  "ext": ".bmp",
+  "size": 110480,
+  "sha256": "56c95a330f2eb8423e76d1bc175d73803f164f8f003490d8f11863b74a37603a",
+  "kind": "binary",
+  "magic": "42 4d 90 af 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/keyboardBlock.bmp",
+  "ext": ".bmp",
+  "size": 362972,
+  "sha256": "81f5f39928b60566ef64d4ad582ce87fbb1e34afbcec77db4bbdcfa5fcf92dd2",
+  "kind": "binary",
+  "magic": "42 4d dc 89 05 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/knob.bmp",
+  "ext": ".bmp",
+  "size": 323000,
+  "sha256": "d931c93c74c673efc4e1c084e9d2b7bc2cfa897f33e992fcbe6c00c53e26261d",
+  "kind": "binary",
+  "magic": "42 4d b8 ed 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/knob21.bmp",
+  "ext": ".bmp",
+  "size": 169400,
+  "sha256": "db87c558cbb4f9e75c9ee6322114cd5e855952d41ce3b60a6b7205fee904ff52",
+  "kind": "binary",
+  "magic": "42 4d b8 95 02 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/latchButtonPlain.bmp",
+  "ext": ".bmp",
+  "size": 15094,
+  "sha256": "3766d9f379b51fca79a385acf81198f8fbce30a6b18464617263e288746bdb18",
+  "kind": "binary",
+  "magic": "42 4d f6 3a 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/MenuView.bmp",
+  "ext": ".bmp",
+  "size": 86012,
+  "sha256": "2a8b8080bd870cd2b35f287d200697b4371a999a10470224c07ef78a1a5f1615",
+  "kind": "binary",
+  "magic": "42 4d fc 4f 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx0.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "ae9b167e385eb822edd21005de7252f8890b3d02b3774ff818a4fa18651b2786",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx1.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "b332f22cce63f5fb4d5b4cf5e29ef799a114c4c3057ad84d697d00de1132bf7b",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx10.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "db03a7063b087df82f80e197a490a0c2e84356f2dbed6c65428caa37926336cc",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx11.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "0da08f29a2fefeffac6cb9b6ae318a26825866258775d4eb237104e3894bb546",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx12.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "6db5fe5fae8d16c51aead3f9a0787cdd54e641d8c103a685de9bbbaaf5e97fc0",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx13.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "d6932af901b026be1fa5ff5cf1b3dc79721df0277958b7a6886cff3a38095565",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx14.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "49ff263355adf57d55fd7eb5834e9a6dce36cf51bfbf41d87bd8bf598c29d083",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx15.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "e8ba2a8e4e057b022b00f74bd371f59e1f393197f7d24d56f29b8abee0b12dbe",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx16.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "0d304334560455f5de72c3403f25ec358691e52aa693a6ac759c560e94d9a16e",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx17.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "0cddea1c65af35ac9d7f4c9476863344f1694291a6fc1630e1fcd60ccba6f66c",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx18.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "47a843930f2c7ba0a7e77a799f7bf78d812709a6999ad59c1bc25ce65cfaf4fe",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx19.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "37c0c3f3adc905f363fe929621b5a5a63c2755f6e0c7853a05bd4c24781950bf",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx2.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "eee2746bf3234a23879d89cb56a13fcd0a9d88e67a1c32afe72dc312e20718b1",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx20.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "8e74073c29a226639739b5dc0f232797b723ba6ddf79f50745aa7fdd44c9397d",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx21.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "70fc60cc68368e6a2a7ba763f806dcdf2343534076527fc4ed44fe39f14e3764",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx22.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "4439270d071a41653570d34d7595763cc5a4f4e1fc96efe060f250b293c46426",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx23.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "5377863fdf55af9b60c4a5820aae4bf59fee1e1f855887c6ef18b4a09d6339ee",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx24.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "9b44ad161c77d095faa43ab472bc2e986112dc41f505554c75482ca6b59b560d",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx25.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "67c5645f070887eee222ad5e56b570e28c48898f56c193d9af1fd207f9423dd8",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx26.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "460753caa35b749ea0b191245afdf571bae16673749c5eb886d4aa5b30e906c8",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx27.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "a2ba2b55d1a84f69155c98ffe004e9c4d776534212c9ecc059f5bc5116a185e9",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx28.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "fde8f2f3a2ee3661b24063d963059d9570c5b4b166a614ba99f94fcfa1ddac76",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx29.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "b10532bf772a2fca62169b38ae74ae2f5c912fe0d8be8a0484851f0d5d3e30cc",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx3.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "791e863dde5648ac3561373efd914fef6991a834c707cec4bd6a5fda40aa1938",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx30.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "03e83ca182267131da522582ca7c80d7fbc3234f2743c4a883f47ff85247e092",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx31.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "a3231e55793ac3079417bed0b060aa129bdf3c31e67080d4616f45bf415be0bc",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx32.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "f2e16d018e6be9e9aa539fd531064211798e578995cbe57e9c7a6de1f2a6f8b5",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx33.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "8ac276f1bcc35f473b70e5c148f49b29eb920a3a63d0228ba43a0a995344d703",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx34.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "3af23669ea96a348f18d00f9e6dd0f184cad028f0d7c0bb1471c7c4682cc3d0a",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx35.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "4b6b4b8272126c06d1996749574be983db40c07e350042af3c3ee2470baa8c60",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx36.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "28fb1799e906a9c1cc96b5e32739dca23045743a51e617ba7f2e9affbd33a4db",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx37.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "8fdcff5cacb5762ccf71d6d7e3d1eae5d973a5ca0a6a738669315a863d12a08c",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx38.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "0965d49a86d3eeb90abb22473d1a3eb98328fedf11e41ab81217192e535515b3",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx39.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "625d85549be6a776e2aa04ac7a95eb71798f56835f2d4545fb5cf21a0046cfdc",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx4.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "fc309b61cd209e6b9361bcc40323d35094a586ec9da9bd20da3bd9159de8881b",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx40.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "fd9f2c6f41187622957803bb91f54fd40550df3b6470efba673ae5394ecf21d5",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx41.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "959ac287a9b3d2f3b69b9741a0b86c4e1e22c0e12f7221ce6ebb68cb2e4732e3",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx42.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "be59077d3d365fce7ebb5e2113ae5cecf55f0f4cd362d6d3e9c26b54daf4aa0d",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx43.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "e443aa3eee3810a3bf42871c7c6bf1772153c3d0582e530759c90c1be052e14e",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx44.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "ce523b6f3ec55dcc7f1446e30b2c448f548a478d782ea44c59765974205ed2e1",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx45.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "7f640c934b8f222051f16279b9b91d8ed055b8fbfa956c1e04f0bd98587b4720",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx46.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "f1e9b59f5025f09703f0b1981ac429f36d3393d265661f20713b11f8cb009989",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx47.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "74830bf8b2c111182ca4cea1bc721a0f5081ea57855adcd9bca29007fe61e58d",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx48.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "22318beb31544385b0ddfc76557364d6839a4a388ce3b94e4f6620f9770454ab",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx49.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "a2da33481fbe707d04234091617c39076e768c56201fd08453106cbc1ef609a4",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx5.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "da9a2cc1087d9b68af89d3406d5724b16693c620b9f59e23e49e13abbbcf7750",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx50.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "41124bedee304c088435189a755ae1cc44c7590753fff6fe29cf5cdc149df32a",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx51.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "b20f8ecb8667cafdccd4a04963c09086f3dfc804557efd4268ae9d5137a04ec2",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx52.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "775d2b70457c8bee75554ea58f7e6eb6f25d31b14aa7be935626e75bdf111116",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx53.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "29ad0c05688dd1f4fdc259bf68770996dfead8f710e805113a9fda9665dfeb1b",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx54.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "dbd43d746b0dd9f687084a0fd840186142cbf7f9641c66d68e99753f1a70c52e",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx55.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "1c3ed050cee2c15c00b8aab4524a438541802833f8814cb9d0ab824f9c6e3a69",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx56.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "6b0e68dd72f99b1fadb8a6f5e909385f6e6b15d0fd45515f36c728b76af5ef88",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx57.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "b2c7da048ae18a11ff342536fe1d8ba690ae16a05d1a4ac89b067b8521d01994",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx58.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "532102bd82aaa6be52598be6ffe289bcc5aa57361cbacdbbea9fd35a14bae79d",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx59.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "b477bc955b5c571f95ac16951c898bbca7025b4408caba789ffa3c572c2955eb",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx6.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "b119b7295732bed4c2b769809c3ced276e5f99221c27f0bdaabec2caca748466",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx60.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "241983992c79600cf2d76640e860e86a1b8ecd3c5c9b7d36cb4489becb4ce5a1",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx61.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "5d876ccb6ed78c24b163cc4864f31daeaf11cc9324e205f7d5d11b71c2ad898b",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx62.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "2a1bcf82d96d15d34322fd096c4e65b95132a56074383db26b5d9b42fdc6269e",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx63.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "039d7fe2fcdf764590e0a2b475bbc8f7676f04a3f4774db93a4192622e5620ad",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx64.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "52a9d2788f85eeea0153671ee7ed39733410e9d6fe7a37617e0f9f3bc9952321",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx65.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "397c06a178733c91f7f0156f479b671d6d065ebfd9546714001782d3fcabc8ca",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx66.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "52c9d6ede947a1b8d2bd4beeeac1d26ed2ac182ed8bbc66b99bbc45451d9b4e5",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx67.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "33cf5c0e657603a318a54db3a4a368dabf5425a753af59e1317f05221b022436",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx68.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "fe83e9fe38e5f0c4129e0db10720a71c9107774b0e8ddf960c59862464c2557b",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx69.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "5116e8948161cb283de60d01f6cd01aab328b129c981f144346b205cd2b99cc6",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx7.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "dcb1159aee016c597aef18c95a38168263a64e4f097a799cf146fbcff8f1094d",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx70.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "425fe08e2c0552f396aa105d6ac456658d9a1c0a4f70728a35c295dce4a931fb",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx71.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "45bc775fea95c5457a4a802552319a05c7aef48e15b806c99a06f5ebcc56e1bb",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx72.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "1fc3c6755ebf8f856dbfc3403152ea4479444e82742775b40b37384e42024e8c",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx73.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "5281b3c37a438fee99fd1a3a3767a3db4b07a3f46ac0c100f7f8c0fe50d8d1fb",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx74.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "7f096ab659896b333d71304de8b93b490b644f48e918c8a5b3aaf8a62bbd6841",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx75.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "d5799b0dcd483d7ade510cc8373110e2437b43e9014274039b84db2d07218362",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx76.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "8d40ac92fba2fcf776cfe165449b862cac47a15c97bb0254b850a79348e745f9",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx77.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "7fe515470d2e2947e68b90d592b3b6f3255b6e6ed41b5c75069bdfb432657c3b",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx78.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "a7d9c8953ab6860c97392ad7536a703f3bde9c6fb190c1e5bcf0a17971083d9a",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx8.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "64cca12ad948e74bd4d48a93ed5f942cb17aa32395e71dbbfaac2942358a1229",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfx9.bmp",
+  "ext": ".bmp",
+  "size": 646436,
+  "sha256": "9921b16440c64fc5bf3204a73c9f41c5b45a6d6ea5e207997669e55bfa2c4543",
+  "kind": "binary",
+  "magic": "42 4d 24 dd 09 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/mfxCore.bmp",
+  "ext": ".bmp",
+  "size": 215516,
+  "sha256": "10386051a46ae7c43397366fbafb92ea1a60fbb2ed06d138fd5fa53082f62eef",
+  "kind": "binary",
+  "magic": "42 4d dc 49 03 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ModeView.bmp",
+  "ext": ".bmp",
+  "size": 60252,
+  "sha256": "f22c18311e2834fef140c5302c0ed7fbe17d21d54b390e3b599fea4a39bbda28",
+  "kind": "binary",
+  "magic": "42 4d 5c eb 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/panelSelectPatchPatch.bmp",
+  "ext": ".bmp",
+  "size": 364676,
+  "sha256": "0864f56968756a26608e17a7e1bfefc5848fac32fd2c0073de955f3a78476095",
+  "kind": "binary",
+  "magic": "42 4d 84 90 05 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/panelWrite.bmp",
+  "ext": ".bmp",
+  "size": 364676,
+  "sha256": "4cb7987f7115468de103416a8ba30b07c172c63537c73d7be299e04a5e36a6b4",
+  "kind": "binary",
+  "magic": "42 4d 84 90 05 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/partNumber.bmp",
+  "ext": ".bmp",
+  "size": 7096,
+  "sha256": "910c4c2502446d3e3a61f4664e0482b892d63b340fdf9e29ffcd53f6d65843d7",
+  "kind": "binary",
+  "magic": "42 4d b8 1b 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchChorusTitle.bmp",
+  "ext": ".bmp",
+  "size": 61728,
+  "sha256": "c46bdb97cb728deed0d695b47a3b6e3c5dcdaeaf4c53fad787f11f31c3c721ca",
+  "kind": "binary",
+  "magic": "42 4d 20 f1 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchCommon.bmp",
+  "ext": ".bmp",
+  "size": 668960,
+  "sha256": "15edc0d1e8d461ff52281be2e523ab4aceeb7f0ef54899abc712018986a55ffe",
+  "kind": "binary",
+  "magic": "42 4d 20 35 0a 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchControlSw.bmp",
+  "ext": ".bmp",
+  "size": 1171824,
+  "sha256": "29236ff5e8981fdfd2c3e33913ae37130c3ed4a0f00c524161523306d05220bb",
+  "kind": "binary",
+  "magic": "42 4d 70 e1 11 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchEffectsChorusSelect.bmp",
+  "ext": ".bmp",
+  "size": 3248,
+  "sha256": "4324b72886ba0005cc622dbc3b44d1cc38308d10cbcb517d4b91413ccbd9473b",
+  "kind": "binary",
+  "magic": "42 4d b0 0c 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchEffectsChorusSelectRev.bmp",
+  "ext": ".bmp",
+  "size": 632,
+  "sha256": "0f99d52898ed43c1ebb5d3642f2d4aba545d9b0454db32f0ea9a2bb2e48bfc19",
+  "kind": "binary",
+  "magic": "42 4d 78 02 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchEffectsDryOut.bmp",
+  "ext": ".bmp",
+  "size": 596,
+  "sha256": "11900274c2d160289944cc3223ff7f8334ca47b4f7969a70a5a3caf7fa7d8804",
+  "kind": "binary",
+  "magic": "42 4d 54 02 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchEffectsOutputAssign.bmp",
+  "ext": ".bmp",
+  "size": 88232,
+  "sha256": "627c49799ae273c3974dd96826242f5502fc24b92e1046c70fcd49f14beb5ac2",
+  "kind": "binary",
+  "magic": "42 4d a8 58 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchEffectsRouting.bmp",
+  "ext": ".bmp",
+  "size": 1328376,
+  "sha256": "d59c70f65de0efcae21ecdabf4a87155c7ff5b327f598f3678974f367f28c90f",
+  "kind": "binary",
+  "magic": "42 4d f8 44 14 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchLfo1.bmp",
+  "ext": ".bmp",
+  "size": 303672,
+  "sha256": "7f6528e11afa6ddbee4b45b630f44dc76fd1fb4e7926ba7ed1ba4ea74e7265ec",
+  "kind": "binary",
+  "magic": "42 4d 38 a2 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchLfoStep.bmp",
+  "ext": ".bmp",
+  "size": 303672,
+  "sha256": "e5c3c2a6faf63d7702232923266bf28a9934b0bc83888f778ddc3571c2f49093",
+  "kind": "binary",
+  "magic": "42 4d 38 a2 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchLfoTitle.bmp",
+  "ext": ".bmp",
+  "size": 142376,
+  "sha256": "3c69cba2b5cc602c8b7e196f7d62be25cdbf1cfb023cb488732ad181c672ca37",
+  "kind": "binary",
+  "magic": "42 4d 28 2c 02 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchMFXTitle.bmp",
+  "ext": ".bmp",
+  "size": 45416,
+  "sha256": "2479c56cfb5ba5d9b5c09bda113b5102192fa60b858c25deea368b9724017319",
+  "kind": "binary",
+  "magic": "42 4d 68 b1 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchMtxCtrl1.bmp",
+  "ext": ".bmp",
+  "size": 303672,
+  "sha256": "b14c1b88e9dd57403e88db3e0637dc71e297ce072dc3642d59c0fd22749c8fab",
+  "kind": "binary",
+  "magic": "42 4d 38 a2 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchMtxCtrlTitle.bmp",
+  "ext": ".bmp",
+  "size": 113912,
+  "sha256": "abc24bb2c8ee45312112bbb37180fbaf943410d90425ac64a3bc18eb6f263c6d",
+  "kind": "binary",
+  "magic": "42 4d f8 bc 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchReverbTitle.bmp",
+  "ext": ".bmp",
+  "size": 61728,
+  "sha256": "72b2d65c5fce4ac83bedc53f23c04ba13e953ceb18b8d78c3a527c489f5f94cf",
+  "kind": "binary",
+  "magic": "42 4d 20 f1 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchRouteChorusToOutHorz.bmp",
+  "ext": ".bmp",
+  "size": 2996,
+  "sha256": "a93f00bf3f74b6fd5eb60816b282f9ba670face08b9a7e3a4f960ec239fcdf7f",
+  "kind": "binary",
+  "magic": "42 4d b4 0b 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchRoutePartToMfxHorz.bmp",
+  "ext": ".bmp",
+  "size": 440,
+  "sha256": "34cda526bf276d96646a564208a7de8d3777eb2a3e52fcbba5c44769b55d85db",
+  "kind": "binary",
+  "magic": "42 4d b8 01 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchRoutePartToMfxVert.bmp",
+  "ext": ".bmp",
+  "size": 236,
+  "sha256": "04a0c46f2468733fc5906efba023be30aa185ef00c5c451ce4d0a2817cbbc6dd",
+  "kind": "binary",
+  "magic": "42 4d ec 00 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchScaleTune.bmp",
+  "ext": ".bmp",
+  "size": 417528,
+  "sha256": "b858edeea831ff6f8b66dd26d8b3b6528ef0f7c01d65fa5926d74091711320c5",
+  "kind": "binary",
+  "magic": "42 4d f8 5e 06 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchStruct.bmp",
+  "ext": ".bmp",
+  "size": 543244,
+  "sha256": "2d3d24ac039376edca621a33d4653ae90baab463b51c2af281314a15a91b021b",
+  "kind": "binary",
+  "magic": "42 4d 0c 4a 08 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchSummary.bmp",
+  "ext": ".bmp",
+  "size": 835000,
+  "sha256": "62bd99e12fb923677417eb8195fdd2abcb64a1ab3c01029243a8a6dc8af5fc54",
+  "kind": "binary",
+  "magic": "42 4d b8 bd 0c 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatchToneControl.bmp",
+  "ext": ".bmp",
+  "size": 82424,
+  "sha256": "a08ea5565b70a2dcb6ef4c156f1e4cd6a255269e2e8480fd82530d9be8010aac",
+  "kind": "binary",
+  "magic": "42 4d f8 41 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchTVAEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 218280,
+  "sha256": "a288245057a40f1fb7d1a26ea83533b4330090cdd83164340ccebf03d677ead3",
+  "kind": "binary",
+  "magic": "42 4d a8 54 03 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchTVATone.bmp",
+  "ext": ".bmp",
+  "size": 137180,
+  "sha256": "24fecaf8afdd2e24505954ccc7981ee0119d061addb602704f3a7085b8addb52",
+  "kind": "binary",
+  "magic": "42 4d dc 17 02 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchTVAToneEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 81488,
+  "sha256": "6b62abbbe495459eac83bf056044c3597a2359354ba975e1b14fad6ae202af03",
+  "kind": "binary",
+  "magic": "42 4d 50 3e 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchTVAToneSendLevel.bmp",
+  "ext": ".bmp",
+  "size": 39368,
+  "sha256": "031a46c29c62d642dd253de7288b107e0d71ecc928d50d36fadf95c467049e73",
+  "kind": "binary",
+  "magic": "42 4d c8 99 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchTVFEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 218280,
+  "sha256": "e90c30cc5daea1742a924984fa6d1b9744ce006151259dd76940f2718dbeb41a",
+  "kind": "binary",
+  "magic": "42 4d a8 54 03 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchTVFTone.bmp",
+  "ext": ".bmp",
+  "size": 106292,
+  "sha256": "240c5ab88051885e9592186484fe46cec271954f73d204c8f45033b8a7584de1",
+  "kind": "binary",
+  "magic": "42 4d 34 9f 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchTVFToneEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 151220,
+  "sha256": "caa8b07dafffe736140f7bbb11e63fe25f1a4addabae20fae1533f1c084f2b73",
+  "kind": "binary",
+  "magic": "42 4d b4 4e 02 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchVelKeyRange.bmp",
+  "ext": ".bmp",
+  "size": 1022388,
+  "sha256": "301587f311491e8c1ab72d374e1112d17bff6cefda8e626ba6837fe3127b4a27",
+  "kind": "binary",
+  "magic": "42 4d b4 99 0f 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchWGEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 218280,
+  "sha256": "8722ff6fafefab96b291725b81c81da66dce0e248e46c9b9662635dfffbfb360",
+  "kind": "binary",
+  "magic": "42 4d a8 54 03 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchWGTone.bmp",
+  "ext": ".bmp",
+  "size": 152156,
+  "sha256": "5e76d778ddd77c8eef5d78e6dd878d0d4f7547c998babc489e551ee159d30ce4",
+  "kind": "binary",
+  "magic": "42 4d 5c 52 02 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/patchWGToneEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 105356,
+  "sha256": "f4e52a432d46dd3ec7f7e8d087bf98331d29e1666f74a6aaad325fbfceeb8c59",
+  "kind": "binary",
+  "magic": "42 4d 8c 9b 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatPatControlView.bmp",
+  "ext": ".bmp",
+  "size": 237256,
+  "sha256": "0741f16470aa6c46436d44b1fcbf3adac862cdcbd4bcd8b87d4b4a68a3e8367b",
+  "kind": "binary",
+  "magic": "42 4d c8 9e 03 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatPatNavigationView.bmp",
+  "ext": ".bmp",
+  "size": 333816,
+  "sha256": "c2d1a5f8eca45056c29d14f2c91492457b90272c5e0a2877e4ed6d5e5f0db26c",
+  "kind": "binary",
+  "magic": "42 4d f8 17 05 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatPatNavigationViewPro.bmp",
+  "ext": ".bmp",
+  "size": 102232,
+  "sha256": "17c5fc31dbea34f890d0047a41426390e41acefcf22acf927a9e1ca59369e752",
+  "kind": "binary",
+  "magic": "42 4d 58 8f 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PatPatNavigationViewZoom.bmp",
+  "ext": ".bmp",
+  "size": 102232,
+  "sha256": "5c4b63a4d1ab8e9fda23ddc8811c26e25e579db9064ba6bc0530de27366b94c0",
+  "kind": "binary",
+  "magic": "42 4d 58 8f 01 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/PictureLFONumber.bmp",
+  "ext": ".bmp",
+  "size": 536,
+  "sha256": "ea299bcc2290be31dfaa05159d75676f77ede5bac7252b42687c4ce278a6b35f",
+  "kind": "binary",
+  "magic": "42 4d 18 02 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/reverbOff.bmp",
+  "ext": ".bmp",
+  "size": 317904,
+  "sha256": "f066a6b9c67e515d02847eafe11589a377998af673504b0c65d2e01d99200b92",
+  "kind": "binary",
+  "magic": "42 4d d0 d9 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/reverbReverb.bmp",
+  "ext": ".bmp",
+  "size": 317904,
+  "sha256": "eb740cddddbb6bfaa206c484860b70b1b7399733eb8ec48dc5609d2333b2d88f",
+  "kind": "binary",
+  "magic": "42 4d d0 d9 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/reverbSRV.bmp",
+  "ext": ".bmp",
+  "size": 317904,
+  "sha256": "4004e1a1dca9c07aa1c3c5d7fb752f034283b457a5fb0a4e0d72e97ad931424b",
+  "kind": "binary",
+  "magic": "42 4d d0 d9 04 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/Script.xml",
+  "ext": ".xml",
+  "size": 1129507,
+  "sha256": "33799461bb98de18f3f4a6b0c4a10ac5ccc0a5d7fb363768d045e2413b36ab18",
+  "kind": "text",
+  "magic": "3c 3f 78 6d 6c 20 76 65 72 73 69 6f 6e 3d 22 31"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/sliderKnob.bmp",
+  "ext": ".bmp",
+  "size": 1976,
+  "sha256": "4598e51bde6af9486caff3778ba37eb583bb072578ab20524e466dc7b3736ee4",
+  "kind": "binary",
+  "magic": "42 4d b8 07 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/smallSliderKnob.bmp",
+  "ext": ".bmp",
+  "size": 1064,
+  "sha256": "cda5708fe13ad56eadf00faa7581f7d5ab4f2f25eefba7e29004f6fddee1665b",
+  "kind": "binary",
+  "magic": "42 4d 28 04 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/structType.bmp",
+  "ext": ".bmp",
+  "size": 758936,
+  "sha256": "2ee251a37f247ec17d1f243da0558ed964de5b1e81ac7e1c9951a280c4b4d8f1",
+  "kind": "binary",
+  "magic": "42 4d 98 94 0b 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/SystemCommon.bmp",
+  "ext": ".bmp",
+  "size": 339252,
+  "sha256": "2dc812b7ddf8681fb9fb134f43d6082478815c75639dad0929d7933fadb7c866",
+  "kind": "binary",
+  "magic": "42 4d 34 2d 05 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/SystemController.bmp",
+  "ext": ".bmp",
+  "size": 339252,
+  "sha256": "6037dd937de9f1dfb38ec242665c83cffcfdb2897282c7e9721aad7c1d50b35b",
+  "kind": "binary",
+  "magic": "42 4d 34 2d 05 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/unlatchButtonPlain.bmp",
+  "ext": ".bmp",
+  "size": 7576,
+  "sha256": "143817687fe3044674a27bba73bb882c3a7fc30fb33acf4f90c7749ff90f7ebf",
+  "kind": "binary",
+  "magic": "42 4d 98 1d 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/velocityCurve26.bmp",
+  "ext": ".bmp",
+  "size": 16696,
+  "sha256": "79a381c2767a6464d9564e1410effa430dab83f44e4000c3ca9892156578757a",
+  "kind": "binary",
+  "magic": "42 4d 38 41 00 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ZoomPatchLFO.bmp",
+  "ext": ".bmp",
+  "size": 1053224,
+  "sha256": "2c53dfdb572bb53e9320065a3c2f4c252ce729aa9cb35e34a94d704fd631c07e",
+  "kind": "binary",
+  "magic": "42 4d 28 12 10 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ZoomPitchEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 1328376,
+  "sha256": "b3fd0b9f116ae59914287d035f8d714195ee2486a6110085bc112ea6903ff90b",
+  "kind": "binary",
+  "magic": "42 4d f8 44 14 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ZoomTvaEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 1328376,
+  "sha256": "5fe25690cbe2d7b68b156593d97a2492e97221d51048c608c205a41c89895d6c",
+  "kind": "binary",
+  "magic": "42 4d f8 44 14 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EE/ZoomTvfEnvelope.bmp",
+  "ext": ".bmp",
+  "size": 1328376,
+  "sha256": "4348e043f596fb384184b016b2ebfe27c19044f041c21a69dfb527e895a1c980",
+  "kind": "binary",
+  "magic": "42 4d f8 44 14 00 00 00 00 00 36 00 00 00 28 00"
+ },
+ {
+  "path": "original-roland-files/Script/A8EL/InitialData.a8l",
+  "ext": ".a8l",
+  "size": 1276,
+  "sha256": "7ca5fb708d370ac319309606bac414478858c186e7a643a00c0f671bbe5ec858",
+  "kind": "binary",
+  "magic": "41 38 45 4c 69 62 72 61 72 69 61 6e 46 69 6c 65"
+ }
+]
