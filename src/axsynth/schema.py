@@ -220,14 +220,20 @@ class Schema:
                     out[(u["struct"], m["name"])] = (key, i, label)
         return out
 
+    @cached_property
+    def unreachable(self) -> set[tuple[str, str]]:
+        """(structType, name) of effect members listed in no *ValuePathTable
+        group (gm2Chorus-*, gm2Reverb-*): never meaningful on the AX-Synth."""
+        return {(u["struct"], n) for u in self.data["effect_unions"].values()
+                if "struct" in u for n in u.get("unlisted_members", [])}
+
     # -- parameter database -------------------------------------------------
     def parameters(self, root: str | None = "fm") -> list[Parameter]:
         ui = self.data["ui_bindings"]
         st_tables = self.data["stringTables"]
         num_tables = self.data["numberTables"]
         cc = self.crosscheck
-        unreachable = {(u["struct"], n) for u in self.data["effect_unions"].values()
-                       if "struct" in u for n in u.get("unlisted_members", [])}
+        unreachable = self.unreachable
         out = []
         for p in self.data["resolved_parameters"]:
             if root and p["root"] != root:

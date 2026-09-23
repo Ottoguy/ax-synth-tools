@@ -16,7 +16,9 @@ Source: `original-roland-files/` (176 files). Generated data with SHA-256 for ev
 | `Manual/*J.pdf` | .pdf | 2.7 MB / 456 KB | binary | Japanese manuals | Same content; not analysed |
 | `Script/A8EE/*.bmp` (167) | .bmp | 72.7 MB total | binary (`BM`) | UI artwork: panels, knobs, 79 `mfxN.bmp` effect diagrams, envelope zoom views | Little data value. `mfx0..78.bmp` visually document each MFX algorithm; possibly useful for human reference later. 166 are referenced by Script.xml; `PatchEffectsDryOut.bmp` is unused; `patchToneControl` vs `PatchToneControl` differ only in case |
 
-Also in the project but outside the installation: `docs/AX Synth docs.pdf` = **"AX-Synth MIDI Implementation", Roland Europe, Jan 2010, v1.00, 16 pages**. It is the official SysEx specification and the most important external reference (text in `generated/midi-implementation.pdf.txt`).
+Also in the project but outside the installation:
+- `docs/AX Synth docs.pdf` = **"AX-Synth MIDI Implementation", Roland Europe, Jan 2010, v1.00, 16 pages**. It is the official SysEx specification and the most important external reference (text in `generated/midi-implementation.pdf.txt`).
+- `docs/AX-Synth_Erratum2.pdf` (91,497 bytes, 1 page, Roland doc no. 602.00.0399 RES 747-09, dated 5 Oct 2009) = **erratum to the Owner's Manual p.27** (text in `generated/erratum2.pdf.txt`). It deletes the "Volume, CC07, transmission: [VOLUME] knob" row, because *"The AX-Synth's [VOLUME] knob cannot transmit MIDI messages, because it is analog."* The file name implies an Erratum 1 exists; we don't have it. We also don't have the Owner's Manual itself.
 
 ## Searched for and not present
 

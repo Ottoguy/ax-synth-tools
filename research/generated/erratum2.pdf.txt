@@ -1,0 +1,163 @@
+
+
+===== PAGE 1 =====
+MIDI messages that can be transmit-
+ted/received
+ 
+The most important MIDI messages the AX-Synth can 
+transmit and receive are:
+ 
+MIDI messages that can be transmit-
+ted/received
+ 
+The most important MIDI messages the AX-Synth can 
+transmit and receive are:
+ 
+Message Remarks
+ 
+Note On/Off
+Velocity
+ 
+Transmission: striking force of the AX-Synth’s 
+keys
+ 
+Aftertouch
+ 
+Transmission: channel aftertouch via 
+ 
+[AFTER¥TOUCH]
+ 
+ knob (not from the key-
+board). Reception: polyphonic & channel 
+aftertouch.
+ 
+Program Change
+ 
+Transmission also without changing sounds 
+on AX-Synth
+ 
+Bank Select
+ 
+Transmission: cannot be specified on the 
+AX-Synth.
+ 
+Pitch Bend
+ 
+Transmission: TOUCH CONTROLLER and/or 
+D Beam
+ 
+Modulation
+ 
+CC01, transmission: MODULATION BAR
+ 
+Volume
+ 
+CC07, transmission: 
+ 
+[VOLUME]
+ 
+ knob
+ 
+Hold/Sustain
+ 
+CC64, 
+ 
+[HOLD]
+ 
+ button & optional footswitch 
+connected to 
+ 
+[FOOT¥PEDAL]
+ 
+CC01~31, CC33~95
+ 
+Transmission: the control change number 
+assigned to the D BEAM 
+ 
+[ASSIGNABLE]
+ 
+ but-
+ton.
+ 
+Message Remarks
+ 
+Note On/Off
+Velocity
+ 
+Transmission: striking force of the AX-Synth’s 
+keys
+ 
+Aftertouch
+ 
+Transmission: channel aftertouch via 
+ 
+[AFTER¥TOUCH]
+ 
+ knob (not from the key-
+board). Reception: polyphonic & channel 
+aftertouch.
+ 
+Program Change
+ 
+Transmission also without changing sounds 
+on AX-Synth
+ 
+Bank Select
+ 
+Transmission: cannot be specified on the 
+AX-Synth.
+ 
+Pitch Bend
+ 
+Transmission: TOUCH CONTROLLER and/or 
+D Beam
+ 
+Modulation
+ 
+CC01, transmission: MODULATION BAR
+ 
+Hold/Sustain
+ 
+CC64, 
+ 
+[HOLD]
+ 
+ button & optional footswitch 
+connected to 
+ 
+[FOOT¥PEDAL]
+ 
+CC01~31, CC33~95
+ 
+Transmission: the control change number 
+assigned to the D BEAM 
+ 
+[ASSIGNABLE]
+ 
+ but-
+ton.
+ 
+r® 
+ 
+Erratum
+ 
+To our regret, the AX-Synth owner’s manual requires the following correction. 
+ 
+Page 27, table in the left column
+ 
+The AX-Synth’s 
+ 
+[VOLUME]
+ 
+ knob cannot transmit MIDI messages, because it is analog.
+ 
+We apologize for the inconvenience this may cause.
+ 
+602.00.0399 RES 747-09    AX-Synth Erratum - E
+ 
+Please delete 
+this row.
+ 
+(Old version in the owner’s manual.) (Correct version.)
+ 
+AX-Sth_Erratum2.fm  Page 1  Monday, October 5, 2009  4:16 PM

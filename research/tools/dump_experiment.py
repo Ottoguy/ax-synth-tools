@@ -8,6 +8,10 @@ This tool never opens a MIDI port. It writes/reads files only.
       4F-vs-50 discrepancy. RQ1 only asks the synth to reply; it changes no
       synth memory.
 
+  python dump_experiment.py a8-to-syx patch.a8e out.syx
+      Patch -> 9 DT1s for the volatile Temporary Patch (1F 00 00 00), the
+      same format as the Editor's Export SMF. Never targets User slots.
+
   python dump_experiment.py decode reply.syx|export.mid
       Parses DT1 messages (raw .syx, or an SMF written by the Editor/Librarian
       "Export SMF"), checks checksums and model ID, assembles an address->byte
@@ -98,5 +102,21 @@ def decode(src):
     print(f"{len(mem)} bytes received, {hits} parameter reads decoded")
 
 
+def a8_to_syx(src, dest):
+    """Patch in an .a8e/.a8l -> 9 DT1s addressed to the TEMPORARY patch only
+    (volatile; never a User slot). Same format as Roland's Editor export."""
+    sys.path.insert(0, str(ROOT / "research" / "tools"))
+    import a8_files
+    buf = Path(src).read_bytes()
+    res = a8_files.parse(src, S)
+    blocks = res["blocks"] if res["format"] == "a8e" else res["patches"][0]["blocks"]
+    images = {b["path"].split("pat.", 1)[1]: buf[b["file_offset"]:b["file_offset"] + b["size"]]
+              for b in blocks if "pat." in b["path"]}
+    msgs = sysex.patch_messages(images, sysex.TEMPORARY_PATCH)
+    Path(dest).write_bytes(b"".join(msgs))
+    print(f"{len(msgs)} DT1 -> Temporary Patch, {sum(map(len, msgs))} bytes written to {dest} (NOT sent)")
+
+
 if __name__ == "__main__":
-    {"make-requests": make_requests, "decode": decode}[sys.argv[1]](sys.argv[2])
+    cmds = {"make-requests": make_requests, "decode": decode, "a8-to-syx": a8_to_syx}
+    cmds[sys.argv[1]](*sys.argv[2:])

@@ -77,7 +77,7 @@ The `.a8l` stores **only patches** (no Setup/System). The Librarian manages the 
 
 ## What remains unknown
 
-1. The 4 trailing bytes in each `.a8l` record (memo hypothesis).
-2. Whether a real User-patch dump from the hardware is byte-identical to an `.a8l` block. Very likely, since both use the same encoding and struct sizes, but unverified.
+1. The 4 trailing bytes in each `.a8l` record (memo hypothesis). They are **not** transmitted in the Librarian's SMF export.
+2. Whether a real User-patch dump from the *hardware* is byte-identical to an `.a8l` block. On the software side this is settled: Roland's own SMF exports carry exactly these block bytes as DT1 payloads (see [smf-export-analysis.md](smf-export-analysis.md)).
 3. The source of the non-default reserved bytes in `.a8e`.
-4. The `.mid` (Export SMF) format both apps can write. It is expected to contain DT1 SysEx; see `src/axsynth/sysex.py::smf_sysex` for a reader.
+4. **Resolved:** the Export SMF `.mid` format is SMF format 0, 96 PPQ, one DT1 per block. See `smf-export-analysis.md`.

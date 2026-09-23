@@ -14,7 +14,7 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "research" / "tools"))
 
 from axsynth import sysex  # noqa: E402
-from axsynth.schema import Schema, addr_to_int, decode_value, encode_value, int_to_addr  # noqa: E402
+from axsynth.schema import Schema, addr_to_int, decode_value, encode_value, fmt_addr, int_to_addr  # noqa: E402
 
 S = Schema.load()
 P = {p.path: p for p in S.parameters(root=None)}
@@ -153,6 +153,116 @@ class SysEx(unittest.TestCase):
         m = sysex.build_rq1(bytes([0x1F, 0, 0, 0]), S.struct_size("PatchCommon"))
         self.assertEqual(m[7:15], bytes([0x1F, 0, 0, 0, 0, 0, 0, 0x4F]))
         self.assertTrue(sysex.parse(m).checksum_ok)
+
+
+class RolandSmfExports(unittest.TestCase):
+    """dumps/: 'Export SMF' from the Editor and Librarian (INIT data, no synth
+    attached). Our encoder must reproduce Roland's bytes exactly."""
+
+    @classmethod
+    def setUpClass(cls):
+        import a8_files
+        import smf_inspect
+        path = ROOT / "original-roland-files/Script/A8EE/InitialData.a8e"
+        buf = path.read_bytes()
+        res = a8_files.parse(path, S)
+        cls.init = {b["path"].removeprefix("fm.pat."): buf[b["file_offset"]:b["file_offset"] + b["size"]]
+                    for b in res["blocks"] if b["path"].startswith("fm.pat")}
+
+        def load(name):
+            evs = [e for t, e in smf_inspect.events((ROOT / "dumps" / name).read_bytes()) if t == "event"]
+            return [e for e in evs if e[3] == "sysex"]
+        cls.editor = load("AX-Synth Editor clean export.mid")
+        cls.librarian = load("AX-Synth Librarian Clean export.mid")
+
+    def test_editor_export_is_byte_identical_to_our_encoder(self):
+        ours = sysex.patch_messages(self.init)  # Temporary Patch
+        self.assertEqual([e[4] for e in self.editor], ours)
+
+    def test_librarian_export_is_256_user_patches(self):
+        self.assertEqual(len(self.librarian), 256 * 9)
+        for n in (0, 1, 127, 128, 255):
+            ours = sysex.patch_messages(self.init, sysex.user_patch_address(n))
+            self.assertEqual([e[4] for e in self.librarian[9 * n:9 * n + 9]], ours, n)
+        self.assertEqual(fmt_addr(int_to_addr(sysex.user_patch_address(255))), "31 7F 00 00")
+
+    def test_export_timing_model(self):
+        for msgs in (self.editor, self.librarian):
+            for cur, nxt in zip(msgs, msgs[1:]):
+                self.assertEqual(nxt[2], sysex.roland_export_delay_ticks(len(cur[4])))
+
+
+class ThirdPartyPatches(unittest.TestCase):
+    """patches/: two .a8e files shared on a forum by their author, with a
+    description of what was changed (research/third-party-patches-analysis.md).
+    The description is independent ground truth for our meanings/labels."""
+
+    @classmethod
+    def setUpClass(cls):
+        import a8_files
+
+        def load(name):
+            res = a8_files.parse(ROOT / "patches" / name, S)
+            return {v["path"].removeprefix("fm."): v for b in res["blocks"] for v in b["values"]}, res
+        (cls.g, cls.g_res), (cls.g1, cls.g1_res) = load("guitar.a8e"), load("guitar01.a8e")
+
+    def v(self, patch, path):
+        return patch[path]["value"]
+
+    def test_files_parse_completely(self):
+        for res in (self.g_res, self.g1_res):
+            self.assertEqual(res["bytes_consumed"], res["file_size"])
+
+    def test_pitch_bend_two_octaves_down_one_up(self):
+        for p in (self.g, self.g1):
+            self.assertEqual(self.v(p, "pat.common.pitchBendRangeDown"), 24)
+            self.assertEqual(self.v(p, "pat.common.pitchBendRangeUp"), 12)
+
+    def test_mono(self):
+        for p in (self.g, self.g1):
+            self.assertEqual(self.v(p, "pat.common.monoPoly"), 0)  # doc: MONO, POLY
+
+    def test_velocity_1_69_layer_is_tone4(self):
+        for p in (self.g, self.g1):
+            self.assertEqual(self.v(p, "pat.tmt.tmtToneSwitch[3]"), 1)
+            self.assertEqual(self.v(p, "pat.tmt.tmtVelocityRangeLower[3]"), 1)
+            self.assertEqual(self.v(p, "pat.tmt.tmtVelocityRangeUpper[3]"), 69)
+
+    def test_cc70_matrix_source_label(self):
+        p = P["fm.pat.common.matrixControl3Source"]
+        raw = self.v(self.g, "pat.common.matrixControl3Source")
+        self.assertEqual(raw, 70)
+        self.assertTrue(p.enum[raw - p.range[0]].startswith("CC70"))  # table keeps a '32:OFF' slot
+
+    def test_feedback_patch_has_beam_on_cc70(self):
+        # "controller number 70 (if you choose it for your beam controller)";
+        # guitar01 = "feedback works". Beam table has no CC32 slot: raw 68 = CC70.
+        p = P["fm.system.controller.beamAssign"]
+        raw = self.v(self.g1, "system.controller.beamAssign")
+        self.assertEqual(raw, 68)
+        self.assertTrue(p.enum[raw - p.range[0]].startswith("CC70"))
+
+    def test_24_semitone_layer_in_guitar01(self):
+        p = P["fm.pat.tone[1].toneCoarseTune"]
+        self.assertEqual(self.v(self.g1, "pat.tone[1].toneCoarseTune") + p.display_offset, 24)
+
+    def test_mfx_is_guitar_amp(self):
+        names = S.data["effect_unions"]["mfx"]["display_names"]["names"]
+        self.assertEqual(names[self.v(self.g, "pat.mfx.mfxType")], "GUITAR AMP SIMULATOR")
+        active = {k for k, v in self.g.items() if v["active"] and k.startswith("pat.mfx.guitarAmp")}
+        self.assertTrue(active)
+
+    def test_all_active_values_within_script_range(self):
+        # only known exception: SystemController reserve04 (=100 in every .a8e
+        # seen, incl. Roland's InitialData; script says 0..1, doc says 7-bit)
+        for p in (self.g, self.g1):
+            for path, v in p.items():
+                prm = P.get("fm." + path)
+                if not v["active"] or prm is None or not prm.range or not isinstance(v["value"], int):
+                    continue
+                if path == "system.controller.reserve04":
+                    continue
+                self.assertTrue(prm.range[0] <= v["value"] <= prm.range[1], path)
 
 
 if __name__ == "__main__":

@@ -45,6 +45,47 @@ def build_rq1(address: int | bytes, size: int, device: int = DEFAULT_DEVICE) -> 
     return bytes([0xF0, ROLAND, device, *MODEL_ID, RQ1]) + body + bytes([checksum(body), 0xF7])
 
 
+# Whole-patch transfer, as produced by Roland's own "Export SMF" (dumps/):
+# one DT1 per Patch child block, in this order, each carrying the full
+# struct image. Editor -> Temporary Patch, Librarian -> User Patch n.
+def _a(s: str) -> int:
+    v = 0
+    for t in s.split():
+        v = v * 128 + int(t, 16)
+    return v
+
+
+TEMPORARY_PATCH = _a("1F 00 00 00")
+PATCH_BLOCKS = tuple((name, _a(off)) for name, off in (   # (block, offset within patch)
+    ("common", "00 00 00"), ("mfx", "00 02 00"), ("cho", "00 04 00"), ("rev", "00 06 00"),
+    ("tmt", "00 10 00"), ("tone[0]", "00 20 00"), ("tone[1]", "00 22 00"),
+    ("tone[2]", "00 24 00"), ("tone[3]", "00 26 00")))
+
+
+def user_patch_address(n: int) -> int:
+    """User Patch n (0..255) = 30 00 00 00 + n x 00 01 00 00 (doc p.7; the
+    Librarian export uses exactly these addresses)."""
+    if not 0 <= n <= 255:
+        raise ValueError("user patch number must be 0..255")
+    return _a("30 00 00 00") + n * _a("01 00 00")
+
+
+def patch_messages(blocks: dict[str, bytes], base: int = TEMPORARY_PATCH,
+                   device: int = DEFAULT_DEVICE) -> list[bytes]:
+    """DT1 messages for a whole patch. `blocks` maps block name -> struct
+    image bytes (as stored in .a8e/.a8l). Byte-identical to Roland's export."""
+    return [build_dt1(base + off, blocks[name], device) for name, off in PATCH_BLOCKS]
+
+
+def roland_export_delay_ticks(message_len: int, ppq: int = 96, bpm: float = 120.0) -> int:
+    """Gap the Editor/Librarian put after a message in their SMF export:
+    ceil((wire time at 31250 baud + 20 ms) / tick). Fits all 2,312 gaps in
+    dumps/; whether the synth *needs* it is unverified (doc: 'about 20 ms')."""
+    import math
+    ms = message_len * 10 / 31.25 + 20
+    return math.ceil(ms / (60000 / bpm / ppq))
+
+
 @dataclass
 class RolandMessage:
     device: int

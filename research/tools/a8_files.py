@@ -66,7 +66,7 @@ def decode_block(schema: Schema, stype: str, data: bytes, path: str):
             continue
         raw = data[v.offset:v.offset + v.size]
         um = schema.union_membership.get((stype, v.name))
-        active = um is None or um[1] == active_type
+        active = (um is None or um[1] == active_type) and (stype, v.name) not in schema.unreachable
         val = decode_value(v, raw)
         out.append({"path": f"{path}.{v.name}", "raw": raw.hex(" ").upper(),
                     "value": val, "default": v.default, "active": active,
