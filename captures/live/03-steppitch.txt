@@ -1,0 +1,41 @@
+ TIMESTAMP IN PORT STATUS DATA1 DATA2 CHAN NOTE EVENT               
+ 000127BB   1  --     F0  Buffer:   158 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 02 00 3F 7F 00 00 00 00 40
+ SYSX: 00 40 00 40 00 40 00 00 00 00 08 00 01 0A 08 00 01 08
+ SYSX: 08 00 01 08 08 00 01 08 08 00 01 0B 08 00 01 08 08 00
+ SYSX: 01 08 08 00 01 0B 08 00 01 08 08 00 01 0B 08 00 01 08
+ SYSX: 08 00 01 0B 08 00 01 08 08 00 01 08 08 00 01 0A 08 00
+ SYSX: 01 08 08 00 00 00 08 00 00 0A 08 00 01 02 08 00 06 04
+ SYSX: 08 00 06 04 08 00 03 02 08 00 00 00 08 00 00 00 08 00
+ SYSX: 01 02 08 00 03 01 08 00 00 0F 08 00 00 0F 08 00 06 04
+ SYSX: 08 00 07 0F 08 00 00 00 08 00 00 00 16 F7
+ 000127EF   1  --     F0  Buffer:    14 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 02 00 3F 20 F7
+ 00015024   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 0C 49 F7
+ 00015039   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 0B 4A F7
+ 00015047   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 09 4C F7
+ 0001506B   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 06 4F F7
+ 00015080   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 05 50 F7
+ 0001508E   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 04 51 F7
+ 000150A1   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 03 52 F7
+ 000150AE   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 02 53 F7
+ 000150C2   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 01 08 00 00 00 55 F7
+ 000159E7   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 05 08 00 07 0C 3E F7
+ 00015A03   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 05 08 00 07 0A 40 F7
+ 00015A35   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 05 08 00 07 07 43 F7
+ 00015A51   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 05 08 00 07 05 45 F7
+ 00015B20   1  --     F0  Buffer:    17 Bytes   System Exclusive      
+ SYSX: F0 41 10 00 00 3C 12 1F 00 03 05 08 00 07 00 4A F7

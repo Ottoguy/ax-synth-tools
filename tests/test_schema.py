@@ -347,3 +347,77 @@ class KnowledgeBase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LiveEditorCaptures(unittest.TestCase):
+    """captures/live/*.txt: MIDI-OX logs of the Editor's/Librarian's live
+    output through a loopback port (NEXT-STEPS step 2; no synth attached,
+    so nothing ever answered). See research/live-capture-analysis.md."""
+
+    @classmethod
+    def setUpClass(cls):
+        import midiox_log
+        cls.logs = {f.stem: midiox_log.read_log(f) for f in (ROOT / "captures" / "live").glob("*.txt")}
+
+    def msgs(self, stem):
+        return [m for _, _, _, m in self.logs[stem]]
+
+    def test_all_captured_messages_well_formed(self):
+        self.assertEqual(len(self.logs), 8)
+        for stem, log in self.logs.items():
+            for _, _, declared, m in log:
+                self.assertEqual(declared, len(m), stem)
+                if m[1] == sysex.ROLAND:
+                    r = sysex.parse(m)
+                    self.assertTrue(r.checksum_ok, stem)
+                    self.assertEqual((r.device, r.model_id), (sysex.DEFAULT_DEVICE, sysex.MODEL_ID))
+
+    def dt1(self, path, value):
+        p = P[path]
+        return sysex.build_dt1(addr_to_int(p.address), encode_value(S.value(p.structure, p.name), value))
+
+    def test_single_parameter_edits_are_one_dt1_per_value(self):
+        self.assertEqual(self.msgs("01-cutoff"), [self.dt1("fm.pat.tone[0].tvfCutoffFrequency", 124)])
+        self.assertEqual(self.msgs("02-name"), [self.dt1("fm.pat.common.patchName", "TEST")])
+        sysmsgs = self.msgs("04-system")
+        self.assertEqual(sysmsgs[0], self.dt1("fm.system.common.masterTune", 1297))
+        self.assertEqual(sysmsgs[7], self.dt1("fm.system.controller.beamRangeLower", 3))
+        self.assertEqual(sysmsgs[-1], self.dt1("fm.system.controller.beamRangeUpper", 109))
+
+    def test_step_pitch_shifter_addresses_are_base128(self):
+        # Script.xml says 00 81 / 00 85; the Editor sends 1F 00 03 01 / 05,
+        # exactly what our base-128 resolution gives.
+        m = self.msgs("03-steppitch")
+        self.assertEqual(P["fm.pat.mfx.stepPitchShifter-bal"].address, "1F 00 03 01")
+        self.assertEqual(P["fm.pat.mfx.stepPitchShifter-level"].address, "1F 00 03 05")
+        self.assertEqual(m[2], self.dt1("fm.pat.mfx.stepPitchShifter-bal", 32768 + 12))
+        self.assertEqual(m[-1], self.dt1("fm.pat.mfx.stepPitchShifter-level", 32768 + 112))
+        self.assertEqual({sysex.parse(x).address for x in m[2:]},
+                         {bytes.fromhex("1F000301"), bytes.fromhex("1F000305")})
+
+    def test_mfx_type_change_sends_whole_block_of_script_defaults(self):
+        # new type 63 = STEP PITCH SHIFTER; every member = Script.xml default
+        mfx_type = 63
+        base = addr_to_int(P["fm.pat.mfx.mfxType"].address)
+        block = bytearray(S.struct_size("PatchCommonMFX"))
+        for p in sorted((p for p in P.values() if p.path.startswith("fm.pat.mfx.")
+                         and (p.effect is None or p.effect_index == mfx_type)),
+                        key=lambda p: p.effect is not None):   # members overlay generic slots
+            v = mfx_type if p.name == "mfxType" else p.default
+            raw = encode_value(S.value(p.structure, p.name), v)
+            o = addr_to_int(p.address) - base
+            block[o:o + len(raw)] = raw
+        m = self.msgs("03-steppitch")
+        self.assertEqual(m[0], sysex.build_dt1(base, bytes(block)))
+        self.assertEqual(m[1], self.dt1("fm.pat.mfx.mfxType", mfx_type))   # then the type byte again
+
+    def test_read_sync_librarian_start_with_identity_request(self):
+        for stem in ("05-read", "06-sync", "08-librarian"):
+            log = self.logs[stem]
+            self.assertEqual([m for *_, m in log], [sysex.identity_request()] * 2, stem)
+            self.assertAlmostEqual(log[1][0] - log[0][0], 3000, delta=50)   # ~3 s timeout, 1 retry
+
+    def test_write_reads_user_patch_name_by_plain_rq1(self):
+        m = self.msgs("07-write")
+        rq = sysex.build_rq1(sysex.user_patch_address(0), P["fm.pat.common.patchName"].size)
+        self.assertEqual(m, [rq, rq, sysex.identity_request(), sysex.identity_request()])

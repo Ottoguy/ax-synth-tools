@@ -7,9 +7,9 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - **End goal:** the user describes a sound in natural language, an LLM produces a patch, and the patch reaches a **Roland AX-Synth** keytar via MIDI SysEx. There's an intermediate goal of a **simple GUI** with a few high-level "big knob" controls (abstracting the Roland Editor's ~825 parameters).
 - **Intended architecture** (user-specified separation; keep it):
   `natural language → LLM sound design → AX-Synth parameter model → patch representation → encoder → DT1 SysEx → hardware`
-- **Phase now: research / reverse engineering (phase 1) is complete on the file/doc side.** Hardware verification has **not** started. No synth has been connected, and nothing has ever been transmitted.
+- **Phase now: research / reverse engineering (phase 1) is complete on the file/doc side.** NEXT-STEPS step 2 (live Editor output via loopback, no synth) is **done** (`captures/live/`, `research/live-capture-analysis.md`). Hardware verification has **not** started. No synth has been connected, and nothing has ever been transmitted.
 - **Not built yet, on purpose:** AI preset generator, GUI, MIDI I/O code. Don't build these unless the user asks. Keep code evidence-driven and small; no speculative application code.
-- **The user's checklist of manual tasks** (hardware steps, captures, decisions) is `NEXT-STEPS.md`. Results are expected under `captures/` (the folder doesn't exist yet). When the user says "step N done", read those captures, decode them with the tools, and update research, tests and NEXT-STEPS.
+- **The user's checklist of manual tasks** (hardware steps, captures, decisions) is `NEXT-STEPS.md`. Results go under `captures/` (`live/` exists; next: `mitm/`, `backup/`, `bulkdump/`, `rq1/`, …). The user saves MIDI-OX *Monitor* text logs (Windows may add a double `.txt.txt`), and may skip writing notes.md; write it for them from their message. When the user says "step N done", read those captures, decode them with the tools, and update research, tests and NEXT-STEPS.
 
 ## 2. Hard rules
 
@@ -26,7 +26,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**40 tests, all passing**). No pytest.
+- Tests: `py -3 -m unittest discover -s tests` (**46 tests, all passing**). No pytest.
 - Not a git repo yet. `.gitignore` exists (see §9).
 
 ## 4. Repository map
@@ -59,6 +59,7 @@ ax-synth-ai/
 ├── patches/                  third-party forum patches (.a8e) + author's description; test fixtures; check license before publishing
 │   ├── guitar.a8e            "SearingGtr 1" tuned: "muted chug" layer, beam=CC71
 │   └── guitar01.a8e          "SearingGtr 1" tuned: CC70 "feedback" works, beam=CC70, +24 sine layer
+├── captures/live/           user's MIDI-OX logs of Editor/Librarian live output (step 2, no synth) + notes.md; test fixtures
 ├── knowledge/                LLM/human KNOWLEDGE BASE: meaning of every parameter & effect type (see knowledge/README.md)
 │   ├── concepts.toml, system.toml, patch.toml, mfx-01-42.toml, mfx-43-78.toml, chorus_reverb.toml   SOURCE (hand-extracted from Editor manual + OM + MI, page refs, schema links)
 │   ├── knowledge.json        GENERATED: validated, joined with data-model facts (addresses, raw ranges, defaults, enums)
@@ -77,6 +78,7 @@ ax-synth-ai/
     ├── script-analysis.md    Script.xml structure, address system, types (tasks 1-3, 7)
     ├── initialdata-analysis.md   .a8e / .a8l byte layouts
     ├── smf-export-analysis.md    dumps/ analysis: whole-patch wire format, pacing
+    ├── live-capture-analysis.md  captures/live/ analysis: value-edit DT1s, effect type change, Identity Request gating, name RQ1
     ├── third-party-patches-analysis.md   patches/ vs author's description (ground truth)
     ├── owners-manual-analysis.md Owner's Manual: Tone list, UI limits, maintenance combos, controllers, terminology
     ├── roland-installation-inventory.md  every installation file + external docs
@@ -134,6 +136,7 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 | `build_knowledge.py` | no args | validate `knowledge/*.toml` against the data model; write `knowledge.json` + `knowledge.md`; report coverage |
 | `a8_files.py` | `<file.a8e/.a8l> [--all] [--json]` | parse Koa data / Librarian files, decode all values, flag inactive union members |
 | `describe_a8.py` | `<A> [B] [--all]` | non-default active values with labels; or A-vs-B diff; flags out-of-range |
+| `midiox_log.py` | `<log.txt>... [--syx out.syx]` | MIDI-OX Monitor text log → per-message timestamp/gap/IN PORT, length+checksum check, every covered parameter decoded (User area mapped to patch paths, effect members for the type seen in the log) |
 | `smf_inspect.py` | `<file.mid> [--summary]` | every SMF event with ticks; Roland SysEx header, address, length, checksum |
 | `dump_experiment.py` | `make-requests <out.syx>` · `decode <in.syx or .mid>` · `a8-to-syx <patch.a8e> <out.syx>` | build RQ1 file; decode DT1 stream into named params (active union members only, enum labels); patch → Temporary-only DT1s |
 | `exe_strings.py`, `inventory.py`, `pdf2txt.py` | see §5 | |
@@ -149,7 +152,7 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 
 `sysex.py`
 - Constants: `ROLAND=0x41`, `MODEL_ID=00 00 3C`, `DEFAULT_DEVICE=0x10`, `RQ1=0x11`, `DT1=0x12`, `TEMPORARY_PATCH`, `PATCH_BLOCKS` (9 (name, offset) in Roland's order)
-- `checksum(body)`, `build_dt1(addr, data, device)`, `build_rq1(addr, size, device)`, `parse(msg) -> RolandMessage(device, model_id, command, address, payload, checksum_ok)`, `split_sysex(bytes)`, `smf_sysex(bytes)`
+- `checksum(body)`, `build_dt1(addr, data, device)`, `build_rq1(addr, size, device)`, `identity_request(device)`, `parse(msg) -> RolandMessage(device, model_id, command, address, payload, checksum_ok)`, `split_sysex(bytes)`, `smf_sysex(bytes)`
 - `user_patch_address(n)`, `patch_messages(blocks: {name: image}, base=TEMPORARY_PATCH) -> 9 DT1` (**byte-identical to Roland's export**), `roland_export_delay_ticks(msg_len, ppq=96, bpm=120)`
 
 `knowledge.py` (reads `knowledge/knowledge.json`)
@@ -164,7 +167,7 @@ Ignored: `original-roland-files/**/*.exe`, `original-roland-files/**/*.bmp`, `do
 
 ## 10. Test coverage (`tests/test_schema.py`)
 
-`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API).
+`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `LiveEditorCaptures` (captured value edits = our DT1 bytes, `00 81` → `01 01`, MFX type change = schema-default block, Identity Request ×2 @3 s, WRITE name RQ1) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API).
 
 ## 11. Core technical facts (quick reference; details in `research/`)
 
@@ -214,6 +217,12 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - Editor → Temporary; Librarian → User n. No `0F` handshake appears in either export.
 - SMF format 0, 96 PPQ, gap = `ceil((bytes×0.32 ms + 20 ms)/tick)`.
 
+**Live Editor protocol [F, captures/live/].**
+- Value edit = one DT1 per value, only that value's bytes (the whole 12-byte name for a name edit), sent immediately with no handshake and no pacing (gaps down to 1 ms). System values too (`02 00 …`).
+- Effect (MFX) type change = the whole 145-byte block with every member of the new type at its Script.xml default, then the type byte again.
+- READ / SYNC / WRITE / Librarian reads start with Identity Request `F0 7E 10 06 01 F7` (dev 10). No reply in ~3.0 s → 1 retry → "Unable to read/write data.", then nothing more. A loopback without a synth can't get further.
+- WRITE first sends RQ1 `30 00 00 00` size 12, reading User patch 0's name. Names are read on the User area, not via `cm`.
+
 **Factory Tones.**
 - 256 regular Tones = 8 families × 32: Synth Lead 1, Synth Lead 2, Bass, Lead Guitar (bank 87/0, PC 1–128); Brass/Poly Synth, Strings/Pad, Organ/Clavi, Choir/Piano (87/1, PC 1–128).
 - 4 SuperNATURAL (66/0) and 4 SPECIAL (87/64) are not editable.
@@ -238,7 +247,7 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - 172 effect members (`…Sync`/`…Note` tempo-sync variants of rate/delay parameters) exist in the data model but not in the AX-Synth manual; leave them at their defaults.
 
 **Known anomalies/discrepancies.**
-- `stepPitchShifter-bal/level` have address `00 81`/`00 85` (bytes > 0x7F); base-128 decoding gives the doc's `01 01`/`01 05`. This matters only for single-parameter DT1s.
+- `stepPitchShifter-bal/level` have address `00 81`/`00 85` (bytes > 0x7F); base-128 decoding gives the doc's `01 01`/`01 05`. **Settled:** the Editor sends `1F 00 03 01`/`05` (live capture), so our addresses are right.
 - SystemController: script 0x4F vs doc 0x50. The Owner's Manual confirms that the `00 4F` Portamento mode (Hld/SUt) exists.
 - SystemController `reserve04` = 100 in every `.a8e` (script range 0–1 is wrong).
 - PatchCommon `reserve1F` (20–250, tempo?) = 0 in all files.
@@ -252,7 +261,7 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - SystemController size.
 - Whether a DT1 to `30 …` commits to flash.
 - The `0F` write handshake payloads.
-- What the Editor sends for single-parameter edits (the `00 81` question).
+- The Identity Reply fields the Editor checks, and the RQ1 sequence READ/SYNC send after it (capture with MIDI-OX in the middle, NEXT-STEPS 3.0/3.1).
 - FAVORITE, USB-driver mode and sleep storage locations (Bulk Dump capture).
 - Exact stored factory names.
 - The wave numbering *N* ↔ `internalWaveNameTableA[N−1]` (strongly supported, unconfirmed).

@@ -12,7 +12,7 @@ Evidence labels: **[F]** our Roland files · **[D]** official Roland documentati
 Script.xml  ->  parameter model  ->  bytes  ->  DT1 SysEx (F0 41 10 00 00 3C 12 addr data sum F7)
 ```
 
-is **direct, with no hidden translation layer**: struct offsets equal SysEx address offsets, and struct images equal DT1 payloads. **Roland's own software confirms this**: the Editor and Librarian "Export SMF" files ([smf-export-analysis.md](smf-export-analysis.md)) contain 2,313 DT1 messages whose payloads are byte-identical to the struct images in `InitialData.a8e`, and our encoder reproduces them byte-for-byte. Of the 813 non-effect-specific parameter instances in `fm`, **807 are independently confirmed** (address, encoding, range) by the official MIDI Implementation. The other 6 are 3 range typos in the doc (one repeated across the 4 Tones). This rests on documents and Roland's files; it has not yet been observed on the hardware.
+is **direct, with no hidden translation layer**: struct offsets equal SysEx address offsets, and struct images equal DT1 payloads. **Roland's own software confirms this**: the Editor and Librarian "Export SMF" files ([smf-export-analysis.md](smf-export-analysis.md)) contain 2,313 DT1 messages whose payloads are byte-identical to the struct images in `InitialData.a8e`, and our encoder reproduces them byte-for-byte. Of the 813 non-effect-specific parameter instances in `fm`, **807 are independently confirmed** (address, encoding, range) by the official MIDI Implementation. The other 6 are 3 range typos in the doc (one repeated across the 4 Tones). This rests on documents and Roland's files; it has not yet been observed on the hardware. **Since 2026-09-23 it also rests on Roland's live traffic**: every value edit the Editor transmitted through a loopback port equals, byte for byte, what our library builds for that parameter ([live-capture-analysis.md](live-capture-analysis.md), item 15).
 
 ## What we know (directly supported)
 
@@ -46,6 +46,12 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
       - Every non-reserved data-model value has an entry.
       - **172 effect members are tempo-sync variants (`…Sync`/`…Note`) that the AX-Synth manual never documents** [F]. They are likely inherited from the Fantom-X engine.
       - The `#` (real-time controllable) flags are recorded per parameter.
+15. **Live Editor/Librarian output [F, `captures/live/`, 2026-09-23]**, see [live-capture-analysis.md](live-capture-analysis.md). 53 messages were captured through loopMIDI + MIDI-OX with no synth attached. All are well formed with device `10`, and all are decoded by `tools/midiox_log.py`.
+    - **Value edits = one DT1 per value**, carrying only that value's bytes (1 B cutoff, 4 B nibbled MFX/masterTune, the whole 12 B name). They are sent immediately, with no handshake and no pacing (gaps down to 1 ms). Reproduced byte-for-byte by `build_dt1` + schema.
+    - **`00 81`/`00 85` settled:** the Editor sends STEP PITCH SHIFTER Balance/Level to `1F 00 03 01`/`05`, i.e. base-128, exactly our resolved addresses.
+    - **Effect type change** = the whole 145-byte MFX block, with every member of the new type at its Script.xml default (rebuilt from the schema alone in the test), then the type byte again.
+    - **READ, SYNC, WRITE and the Librarian's Read Selected start with a Universal Identity Request** `F0 7E 10 06 01 F7` (device 10). With no reply within ~3.0 s, the Editor retries once, then shows "Unable to read/write data." and sends nothing more.
+    - **WRITE first reads User Patch 1-1's name with a plain RQ1** (`30 00 00 00`, size 12). Patch names are therefore read on the documented User area, not via `cm` (replaces an earlier inference). No `0F` write command was reached.
 
 ## What we strongly suspect (evidence-backed, unverified)
 
@@ -53,9 +59,10 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 - **SystemController really is `0x50` bytes**, as in the doc. The Owner's Manual describes the SuperNATURAL Portamento mode Hld/SUt as a remembered system setting, which is the doc's `00 4F` "Portament Mode". The Editor's script (size `4F`) just omits it.
 
 - The hardware accepts Roland's own stream: DT1 to `30 nn …` stores User patch *nn* (that's what the Librarian export would do when played back). Its replies to RQ1 will match the `.a8l`/export blocks. (The software side is now confirmed; the hardware side isn't.)
-- `cm.command.writeRequest/writeStart/writeComplete` at `0F 00 10 00–02` belong only to the Editor's live **WRITE (Temporary → User)** operation. They don't appear in either export. The Editor also appears to read patch-name lists through `cm` "…Information" addresses.
+- `cm.command.writeRequest/writeStart/writeComplete` at `0F 00 10 00–02` belong only to the Editor's live **WRITE (Temporary → User)** operation. They don't appear in either export, and the live WRITE capture stopped (at the unanswered Identity Request) before reaching them. ~~The Editor reads patch-name lists through `cm` "…Information" addresses~~: **refuted for the WRITE dialog** by the live capture, where names are read by RQ1 on `30 nn 00 00` (item 15). The Editor probably reads names for all 256 slots that way when the synth answers.
 - `gm2Chorus-*` (7) / `gm2Reverb-*` (5) are dead leftovers: in no path table, and outside the chorus/reverb type ranges.
-- `stepPitchShifter-bal/level` (`00 81`/`00 85`, invalid 7-bit bytes) are meant to be `01 01`/`01 05`, the doc's MFX Parameter 29/30. This only affects single-parameter DT1s: whole-patch transfers send block images and never use these addresses.
+- Changing the chorus or reverb type behaves like the captured MFX type change: whole block, members at their Script.xml defaults. (Only MFX was captured.)
+- System-area DT1s (the Editor sends Master Tune etc. live to `02 00 …`) are volatile until a "System Write" (Editor manual p.9).
 - PatchCommon `reserve1F` (int2x4, 20–250, default 120) is a tempo.
 - Wave number *N* ↔ `internalWaveNameTableA[N−1]`. Well supported by the third-party patches: 61 → "Overdrive Gt" in a guitar patch, and 220 → "Sine" on filter-off pure-tone layers.
 - An `.a8l` record's final 4 bytes relate to Librarian memo fields.
@@ -65,8 +72,8 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 
 | Area | Open question |
 |---|---|
-| SysEx | Whether the synth accepts RQ1 for a whole block and how it packetizes replies (doc: ≤256-byte packets ~20 ms apart); the *minimum* DT1 spacing it tolerates. Roland's software uses device ID `10` and 31,250-baud time + 20 ms |
-| Address conversion | What the Editor actually sends for the two `00 81`/`00 85` addresses in live single-parameter edits |
+| SysEx | Whether the synth accepts RQ1 for a whole block and how it packetizes replies (doc: ≤256-byte packets ~20 ms apart); the *minimum* DT1 spacing it tolerates. Roland's software uses device ID `10`, 31,250-baud time + 20 ms between whole blocks in exports, and **no pacing at all** for live value edits (gaps down to 1 ms) |
+| Identity Reply | Which fields of the reply the Editor checks (the doc gives `F0 7E 10 06 02 41 3C 02 00 00 00 01 00 00 F7`). This gates READ/SYNC/WRITE |
 | SystemController | Doc size `50` (includes `00 4F` Portamento Mode, which the Owner's Manual confirms exists as the SuperNATURAL Hld/SUt setting) vs script/`.a8e` size `4F`. An RQ1 of size `50` settles it |
 | Undocumented storage | Where FAVORITE memories (2×8: Tone + volume + reverb send), USB driver mode (Gen/Uen) and sleep interval are stored. A synth-initiated Bulk Dump capture should reveal these areas |
 | Stored vs printed names | Exact 12-character stored names of the factory Tones ("Vintage Org 1" is 13 characters as printed) |
@@ -74,7 +81,7 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | Patch storage | Whether the synth commits a DT1 to `30 nn …` to flash immediately (the Librarian export implies yes), and the Editor's live WRITE handshake (`0F 00 10 0x` payloads). **Do not experiment with writes yet** |
 | .a8l | Trailing 4 bytes per record (not transmitted in exports; memo hypothesis) |
 | Serialization | Whether the hardware's reply includes reserved bytes identical to `.a8e`; `reserve1F` = 0 lies outside the script's range |
-| MIDI comms | Which RQ1s the Editor sends on READ/SYNC (the name list via `cm`?) |
+| MIDI comms | Which RQ1s the Editor sends on READ/SYNC after a successful Identity exchange. The loopback capture proved these are gated behind the Identity Reply; names are read by RQ1 on `30 nn 00 00` (item 15). **Needs the synth, observed via MIDI-OX in the middle** |
 
 ## Most valuable discoveries (ranked)
 
@@ -96,7 +103,9 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 
 **Done without hardware (2026-09-23):** Export SMF from both apps. See [smf-export-analysis.md](smf-export-analysis.md). It confirmed the block format, User-patch addressing, checksums and pacing, but it can't show live traffic.
 
-**Next zero-hardware step:** capture the Editor's *live* MIDI output through a virtual loopback port (e.g. loopMIDI + MIDI-OX), selected as the Editor's "AX-Synth Output". Moving a knob shows single-parameter DT1 addressing: select STEP PITCH SHIFTER and move Balance/Level to settle the `00 81` question. READ/SYNC show the RQ1s and `cm` name queries. WRITE shows the `0F 00 10 0x` handshake. Nothing reaches a synth, but the Editor may time out waiting for replies.
+**Done without hardware (2026-09-23): live loopback capture** (loopMIDI + MIDI-OX; `captures/live/`, [live-capture-analysis.md](live-capture-analysis.md), item 15). It settled single-parameter addressing (incl. `00 81`), effect-type-change behaviour and name reads. It also showed that **everything else (READ/SYNC RQ1s, the write handshake) waits for the synth's Identity Reply**, so zero-hardware capture is exhausted.
+
+**Next capture, with the synth: MIDI-OX as a man-in-the-middle.** Editor/Librarian → loopMIDI port A → MIDI-OX → AX-Synth, and AX-Synth → MIDI-OX → loopMIDI port B → Editor/Librarian. MIDI-OX logs both directions in one log, and `midiox_log.py` prints the IN PORT column to tell them apart. Doing the Librarian **Read All** (backup, NEXT-STEPS 3.1) and the Editor **READ** this way shows the Identity Reply, the RQ1 sequence and the synth's reply packetization, all from read-only operations. WRITE stays off-limits until a verified backup exists and the user decides to test it.
 
 **Useful follow-up once the synth is connected (non-destructive):** send `research/generated/guitar01-temporary.syx`, a real patch encoded by our tools for the Temporary Patch only. It should sound like a metal lead, with the velocity layers and CC70 behaviour the author described. The synth can't show the name, so confirm it with the Editor's READ ("SearingGtr 1") or an RQ1 dump. Alternatively play `dumps/AX-Synth Editor clean export.mid` to the synth, which targets only the volatile Temporary Patch (the name read back should be "INIT PATCH"). ⚠ **Never** play the Librarian export without a verified backup: it would overwrite all 256 User patches. If that happens by accident, factory reset (Owner's Manual p.34) restores the factory Tones, but not your own edits.
 
@@ -113,6 +122,7 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `research/roland-installation-inventory.md` | Task 5 |
 | `research/online-research.md` | Task 6 |
 | `research/smf-export-analysis.md` | Editor/Librarian "Export SMF" captures in `dumps/` |
+| `research/live-capture-analysis.md` | Editor/Librarian live MIDI output via loopback (`captures/live/`): value-edit DT1s, effect type change, Identity Request gating, name RQ1 |
 | `research/third-party-patches-analysis.md` | Forum-shared patches in `patches/`, checked against the author's description |
 | `research/owners-manual-analysis.md` | Owner's Manual: Tone list, UI limits, maintenance functions, controllers, design implications, terminology |
 | `research/generated/factory-tones.{json,csv}` | 264 factory Tones (`tools/extract_tone_list.py`); `src/axsynth/factory.py` |
@@ -123,11 +133,12 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `research/generated/crosscheck-midi-implementation.md`, `crosscheck.json` | Script vs official doc, row by row |
 | `research/generated/*.strings.txt`, `*.pdf.txt`, `inventory.json` | EXE strings, PDF text, hashes |
 | `research/generated/experiment-rq1-temporary-patch.syx` | Ready-to-send read-only requests (not sent) |
-| `research/tools/` | `extract_script_schema.py`, `crosscheck_midi_impl.py`, `extract_tone_list.py`, `build_knowledge.py`, `a8_files.py`, `describe_a8.py`, `build_parameter_db.py`, `dump_experiment.py`, `smf_inspect.py`, `exe_strings.py`, `inventory.py`, `pdf2txt.py` |
+| `research/tools/` | `extract_script_schema.py`, `crosscheck_midi_impl.py`, `extract_tone_list.py`, `build_knowledge.py`, `a8_files.py`, `describe_a8.py`, `build_parameter_db.py`, `dump_experiment.py`, `smf_inspect.py`, `midiox_log.py`, `exe_strings.py`, `inventory.py`, `pdf2txt.py` |
 | `dumps/` | Roland "Export SMF" captures (test fixtures) |
 | `patches/` | Third-party `.a8e` patches (test fixtures) |
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
-| `src/axsynth/sysex.py` | Checksum, DT1/RQ1 builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
-| `tests/test_schema.py` | 40 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `src/axsynth/sysex.py` | Checksum, DT1/RQ1/Identity Request builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
+| `captures/live/` | User's MIDI-OX logs of the Editor/Librarian live output (step 2) + `notes.md` |
+| `tests/test_schema.py` | 46 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

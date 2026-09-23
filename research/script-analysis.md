@@ -72,7 +72,7 @@ Not in the official address map **[D]**. The values are information/command byte
 | 20 00 | `phrasePreviewSwitch` (0–16) |
 | 7F 00 / 7F 01 | `pcModeRequest` / `pcModeResult` |
 
-Most of these (performances, rhythm sets, samples, phrase preview) do not exist on the AX-Synth. The block is inherited from a larger Fantom-X/Juno-G class instrument **[I]**. `A8EE.exe` references `cm.command.writeRequest`, `writeStart` and `writeComplete` by path, plus functions `WritePatch` and `ReadReservedPatches` **[F]**. This is almost certainly how the Editor stores the Temporary patch into a User slot **[I]**. **Payload semantics are unknown. Do not send.**
+Most of these (performances, rhythm sets, samples, phrase preview) do not exist on the AX-Synth. The block is inherited from a larger Fantom-X/Juno-G class instrument **[I]**. `A8EE.exe` references `cm.command.writeRequest`, `writeStart` and `writeComplete` by path, plus functions `WritePatch` and `ReadReservedPatches` **[F]**. This is almost certainly how the Editor stores the Temporary patch into a User slot **[I]**. **Payload semantics are unknown. Do not send.** The live WRITE capture never got that far: the Editor stops at an unanswered Identity Request ([live-capture-analysis.md](live-capture-analysis.md) §4–5).
 
 ### Effect unions (the biggest thing the doc doesn't tell you)
 
@@ -108,7 +108,7 @@ How to read the address strings:
 - `<size>` on a **leaf** struct = byte count (in 7-bit notation: `01 1A` = 154). On a **node** struct it is the address extent (`Patch` size `27 1A` = end of Tone 4). `FileModel` size `1F 01 00 00` = end of the patch area.
 - `vs` (ViewState) also starts at `00 00 00 00`, but it is not a MIDI root. It is a separate, Editor-internal address space.
 
-**Anomaly [F]:** `stepPitchShifter-bal` / `-level` have `<address>00 81</address>` / `00 85`, and bytes above 0x7F are illegal in SysEx. The generic `mfxParameter29/30` sit at `01 01` / `01 05`, which the doc agrees with. Decoding leniently in base 128 (`0×128 + 0x81 = 129` = `01 01`) gives the doc address. The author probably did hex arithmetic `7D + 4` **[I]**. Whether the Editor sends `01 01` or a broken `00 81` is **unknown**. STEP PITCH SHIFTER is the only MFX type that uses slots 29–30. Whole-patch transfers are unaffected: Roland's SMF exports send each block as one image (see `smf-export-analysis.md`). Only live single-parameter edits could expose it.
+**Anomaly [F]:** `stepPitchShifter-bal` / `-level` have `<address>00 81</address>` / `00 85`, and bytes above 0x7F are illegal in SysEx. The generic `mfxParameter29/30` sit at `01 01` / `01 05`, which the doc agrees with. Decoding leniently in base 128 (`0×128 + 0x81 = 129` = `01 01`) gives the doc address. The author probably did hex arithmetic `7D + 4` **[I]**. **Settled 2026-09-23 [F]:** the live capture (`captures/live/03-steppitch.txt`, [live-capture-analysis.md](live-capture-analysis.md) §2) shows the Editor sending Balance/Level to `1F 00 03 01`/`1F 00 03 05`. So the Koa engine resolves the script's addresses base-128 exactly as our extractor does, and the anomaly is harmless.
 
 **Discrepancy [F vs D]:** SystemController. The doc says Total Size `00 00 00 50` and lists `00 4F` "Portament Mode (SWITCH/HOLD)". The script size is `4F` and has no such value, and `InitialData.a8e` holds 79 bytes. **Update:** the Owner's Manual (p.24) describes exactly this setting, the SuperNATURAL Portamento mode "Hld"/"SUt", as a system setting remembered after power-off. So the hardware has it, and the doc's size `50` is most likely right; the Editor script just doesn't expose it. Confirm with an RQ1 of size `50`.
 
@@ -136,5 +136,5 @@ Signed values are **not** a separate type. They are stored offset: 64 = 0 for 7-
 
 - **MIDI**: `midiIn`/`midiOut` "AX-Synth" (model ID, roots `fm`,`cm`, `midiStructRef ms`, `midiMessageValueRef vs.midiMessage.midiMessage`), "Through" port pair; the keyboard control (`ms.ch[…].note`); `receiveProgramChange`, `receiveBankSelect`, `kbdPatchRxTxChannel`, control sources `CC01…CC95` (stringTable `controlSourceTable`).
 - **SysEx**: not named explicitly in the script. The model ID plus DT1/RQ1 classes in the exe are the link.
-- **Banks/patches**: Setup `kbdPatchBankSelectMsb/Lsb/ProgramNumber` (doc: MSB 87 Regular/Special, 66 SuperNATURAL); `vs.patchNameList` (the Editor's patch list, fed by `cm` name-information requests **[I]**).
+- **Banks/patches**: Setup `kbdPatchBankSelectMsb/Lsb/ProgramNumber` (doc: MSB 87 Regular/Special, 66 SuperNATURAL); `vs.patchNameList` (the Editor's patch list). ~~fed by `cm` name-information requests~~: the live WRITE capture shows the Editor reading a User slot's name by **plain RQ1 of `patchName` at `30 nn 00 00`** **[F]** ([live-capture-analysis.md](live-capture-analysis.md) §5).
 - **Files**: none in the script. The exe names `InitialData.a8e`, `ViewState.txt`, `Untitled.mid`, `/Script/Script.xml`.

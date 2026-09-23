@@ -1,0 +1,5 @@
+ TIMESTAMP IN PORT STATUS DATA1 DATA2 CHAN NOTE EVENT               
+ 0004A45D   1  --     F0  Buffer:     6 Bytes   System Exclusive      
+ SYSX: F0 7E 10 06 01 F7
+ 0004B014   1  --     F0  Buffer:     6 Bytes   System Exclusive      
+ SYSX: F0 7E 10 06 01 F7

@@ -39,6 +39,13 @@ def build_dt1(address: int | bytes, data: bytes, device: int = DEFAULT_DEVICE) -
     return bytes([0xF0, ROLAND, device, *MODEL_ID, DT1]) + body + bytes([checksum(body), 0xF7])
 
 
+def identity_request(device: int = DEFAULT_DEVICE) -> bytes:
+    """Universal Identity Request (doc p.3). The Editor and Librarian send it
+    with device 10H before READ/SYNC/WRITE and give up after 2 tries ~3 s apart
+    (captures/live/, research/live-capture-analysis.md)."""
+    return bytes([0xF0, 0x7E, device, 0x06, 0x01, 0xF7])
+
+
 def build_rq1(address: int | bytes, size: int, device: int = DEFAULT_DEVICE) -> bytes:
     from .schema import int_to_addr
     body = _addr(address) + int_to_addr(size)

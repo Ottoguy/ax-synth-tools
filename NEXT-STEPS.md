@@ -2,7 +2,7 @@
 
 **Goal:** you describe a sound to an LLM, and your AX-Synth ends up with a patch that sounds like it. Along the way there will be a simple GUI with a handful of meaningful controls instead of the Editor's 800+ parameters.
 
-**Where we are:** the whole data model is decoded and checked against Roland's docs, Roland's own export files, two real patches and the Owner's Manual (`research/REPORT.md`). We also have the list of all 256 factory sounds (`research/generated/factory-tones.csv`) and Roland's parameter and effect explanations (Editor manual). What's missing is almost entirely things only you can do: **real hardware, your ears, and your preferences.**
+**Where we are:** the whole data model is decoded and checked against Roland's docs, Roland's own export files, two real patches, the Owner's Manual, and (step 2) the Editor's own live messages, which our code reproduces byte for byte (`research/REPORT.md`). We also have the list of all 256 factory sounds (`research/generated/factory-tones.csv`) and Roland's parameter and effect explanations (Editor manual). What's missing is almost entirely things only you can do: **real hardware, your ears, and your preferences.**
 
 **Two facts about the AX-Synth that shape everything below** (Owner's Manual):
 - Its display has **3 characters**. It can't show patch names, wave names or values, so checks go through the **Editor (READ)** or a SysEx dump.
@@ -12,7 +12,7 @@
 
 ## The safety rules (read once, apply always)
 
-1. **Back up first.** Do step 3.1 before *anything* is sent to the synth.
+1. **Back up first.** Do the backup in step 3.1 before *anything* except read requests is sent to the synth.
 2. **Only send to the Temporary Patch.** Every file I prepare for you to send targets `1F 00 00 00`, the working copy the synth throws away when you switch sounds or power off. The `*-temporary.syx` files are safe.
 3. **Never play `dumps/AX-Synth Librarian Clean export.mid` to the synth.** It would overwrite all 256 sounds with INIT PATCH. (Safety net: a factory reset restores the factory sounds, but not your own edits. Owner's Manual p.34.)
 4. **Never send anything I haven't prepared or named** as safe. Don't use WRITE in the Editor/Librarian, the synth's Bulk Dump *receive* mode, or factory reset unless a step asks for it.
@@ -20,7 +20,7 @@
 
 ---
 
-## Step 0: Tell me about your setup (10 minutes)
+## Step 0: Tell me about your setup (10 minutes), still open
 
 Write the answers in `captures/setup.md` (create the folder):
 
@@ -44,47 +44,62 @@ Write the answers in `captures/setup.md` (create the folder):
 
 ---
 
-## Step 2: Capture the Editor's live traffic, no synth needed (30–45 minutes)
+## Step 2: Capture the Editor's live traffic, no synth needed ✅ done (2026-09-23)
 
-**Why:** the SMF exports showed how whole patches are sent. What we still don't know is what the Editor sends when you **turn one knob**, or press **READ**, **SYNC** or **WRITE**. That answers the open questions (the `00 81` address bug, how patch names are listed, how "write to slot" works) without touching the synth.
+Your 8 logs are in `captures/live/`. I renamed them from `*.txt.txt` to `*.txt` and wrote `captures/live/notes.md` from your report. The full analysis is in `research/live-capture-analysis.md`. What they showed:
 
-**Setup:**
-1. Install **loopMIDI** (Tobias Erichsen, free) and create one port, e.g. `loopAX`.
-2. Install **MIDI-OX** (free). Set its MIDI **input** to `loopAX` and open the *SysEx View* (View → SysEx). Make its SysEx input buffers large (Options → SysEx…, e.g. 64 buffers × 4096 bytes).
-3. In the AX-Synth **Editor**: *Setup → Set Up MIDI Devices* → **Output = `loopAX`**. Leave Input on nothing, or on another loopMIDI port. The Editor will likely complain that it gets no answers; that's expected.
-
-**Actions.** Clear the MIDI-OX log before each one and **save the log as a separate file** afterwards (File → Save, or copy the SysEx view text):
-
-| # | Do this in the Editor | Save as |
-|---|---|---|
-| 2.1 | Move **Tone 1 TVF Cutoff** one step up, then back | `captures/live/01-cutoff.txt` |
-| 2.2 | Change **Patch Name** to `TEST` | `02-name.txt` |
-| 2.3 | Set **MFX type** to *STEP PITCH SHIFTER*, then move **Balance** and **Level** (the two bugged addresses) | `03-steppitch.txt` |
-| 2.4 | Change **Master Tune** (System) and **Beam Range** | `04-system.txt` |
-| 2.5 | Press **READ** | `05-read.txt` |
-| 2.6 | Press **SYNC** | `06-sync.txt` |
-| 2.7 | Press **WRITE** and pick User patch 1-1 (safe here: it only goes to the loopback) | `07-write.txt` |
-| 2.8 | Same idea in the **Librarian**: set its Output to `loopAX`, press **Read Selected** and **Write Selected** on one row | `08-librarian-read.txt`, `09-librarian-write.txt` |
-
-For each file, add one line to `captures/live/notes.md` saying what you did, plus anything the app showed (error dialogs, timeouts). Screenshots of error dialogs help too.
+- **Turning a knob sends one small message for that value only**, immediately and without any waiting. Our code builds **exactly the same bytes** for every value you changed (cutoff, name, the STEP PITCH SHIFTER values, Master Tune, Beam Range). The drags with several steps were fine: every step is a separate, correct message.
+- **The `00 81` bug is harmless.** The Editor sends the correct address, the same one our model uses.
+- **Changing the effect type sends the whole effect block** with Roland's default settings for the new effect. Our model reproduces that message exactly too. This matters later: when the AI picks an effect, it should start from those defaults.
+- **The "Unable to read/write data." errors were expected.** Before READ, SYNC, WRITE or a Librarian read, the software first asks "who's there?" (an *Identity Request*). It waits 3 seconds, asks once more, and then gives up with that message. Without a synth nobody answers, so a loopback can't show more. Everything still unknown about READ/WRITE now needs the synth.
+- **WRITE first asks for the name of memory slot 1-1**, using an ordinary read request on the stored-patch area. So reading names and patches from the synth's memory is a normal, read-only operation.
+- `09-librarian-write` isn't needed: it would have stopped at the same question.
 
 ---
 
 ## Step 3: First contact with the synth, read-only (1–1.5 hours, mostly waiting)
 
-Connect the synth. Set the Editor/Librarian ports back to the real AX-Synth ports.
+Connect the synth.
 
-### 3.1 Back up everything (do this first, always)
-- [ ] Open the **Librarian** and press **Read All Data**. This *reads* all 256 sounds from the synth.
+### 3.0 Put MIDI-OX in the middle, so we see both directions (15 minutes, new)
+Step 2 showed that the interesting part is the conversation between the software and the synth. MIDI-OX can pass the messages through and log both sides:
+
+```
+Editor/Librarian ──> loopMIDI "loopAX" ──> MIDI-OX ──> AX-Synth
+Editor/Librarian <── loopMIDI "loopAX-back" <── MIDI-OX <── AX-Synth
+```
+
+1. In loopMIDI, add a second port, `loopAX-back`.
+2. MIDI-OX, *Options → MIDI Devices*: **inputs** `loopAX` + the AX-Synth port; **outputs** the AX-Synth port + `loopAX-back`.
+3. *View → Port Routings*: keep **exactly two** connections, and delete any others MIDI-OX added automatically:
+   - `loopAX` (in) → AX-Synth (out)
+   - AX-Synth (in) → `loopAX-back` (out)
+
+   ⚠ There must **never** be a route from AX-Synth (in) to AX-Synth (out): the synth's own data would be sent straight back into it. If unsure, send me a screenshot of the routing window before continuing.
+4. Make sure *Options → Pass SysEx* is ticked, and keep the large SysEx buffers from step 2.
+5. Editor and Librarian, *Setup → Set Up MIDI Devices*: **Output = `loopAX`, Input = `loopAX-back`**. (This also avoids the "Generic driver can't be shared between Editor and Librarian" problem, because only MIDI-OX opens the synth's port.)
+6. Test: press **READ** in the Editor. If the error from step 2 is gone, the route works.
+
+If this setup gives you trouble, skip it: connect the Editor/Librarian directly to the synth and do 3.1 without captures.
+
+### 3.1 Capture the read conversation, then back up everything (do this before anything else is sent to the synth)
+Clear the MIDI-OX log before each capture and save it afterwards, as in step 2:
+
+- [ ] Librarian: **Read Selected** on one row (1-1) → `captures/mitm/01-librarian-read-selected.txt`
+- [ ] Editor: **READ** → `captures/mitm/02-editor-read.txt` (reads the sound currently selected on the synth)
+- [ ] Librarian: **Read All Data**. This *reads* all 256 sounds from the synth. The log isn't needed here, and it may be too long for MIDI-OX anyway.
 - [ ] **Save** it as `captures/backup/ax-synth-backup-YYYY-MM-DD.a8l`.
 - [ ] Also **File → Export SMF** to `captures/backup/ax-synth-backup-YYYY-MM-DD.mid`.
 - [ ] Put a copy somewhere outside this project (cloud drive, USB stick).
+- [ ] *After the backup:* Editor **SYNC** → `captures/mitm/03-editor-sync.txt`. SYNC sends the Editor's current sound into the synth's temporary working copy (lost when you switch sounds) and reads the name list. Switch sounds afterwards to get your stored sound back.
+- [ ] Still **no WRITE** in the Editor or Librarian.
+- [ ] One line per file in `captures/mitm/notes.md`, as before.
 
-This one file is also the **main dataset for the AI**: all 256 professionally designed sounds, which the LLM will use as starting points. It also lets me confirm that the synth's memory slots are in the same order as the factory sound list.
+The backup file is also the **main dataset for the AI**: all 256 professionally designed sounds, which the LLM will use as starting points. It also lets me confirm that the synth's memory slots are in the same order as the factory sound list.
 
 ### 3.2 The synth's own Bulk Dump (second backup + a very useful capture, ~16 minutes)
 The synth can send "all of its settings" by itself (Owner's Manual p.29). This shows *how the synth formats its own SysEx*, including areas nobody documented (favorites, system settings).
-- [ ] Close the Editor and Librarian. In MIDI-OX, set the input to the synth and clear the SysEx view.
+- [ ] Close the Editor and Librarian. In MIDI-OX, set the input to the synth and clear the SysEx view. If the step 3.0 routing is still active, **remove it first** (or at least check that nothing routes the AX-Synth input to the AX-Synth output).
 - [ ] Switch the synth off. Hold **VARIATION [–] + [+] + TONE [6] (STRINGS/PAD)** and switch on. The display shows **"dMP"**.
 - [ ] Press **FAVORITE [B]** (= *send*; display "Snd"). **Do not press [A]**: [A] is *receive* mode.
 - [ ] Wait until **"dNE"** (about 16 minutes). Save the capture as `captures/bulkdump/bulkdump-YYYY-MM-DD.syx`.
@@ -164,6 +179,7 @@ Answer these in `captures/decisions.md`. Rough answers are fine, and you can cha
 ## How to hand things back to me
 
 - Put everything under `captures/` with the file names above, plus a `notes.md` per folder.
+- Folder names so far: `captures/live/` (step 2, done), `captures/mitm/` and `captures/backup/` (3.1), `captures/bulkdump/`, `captures/rq1/`, `captures/factory/`, `captures/first-write/`.
 - Then just tell me "step N done". I'll read the files, decode them, update the research and tests, and prepare the next step.
 
 ## What I'll build with it (for orientation)
