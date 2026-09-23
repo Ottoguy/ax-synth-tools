@@ -1,0 +1,1592 @@
+# AX-Synth knowledge base: PATCH parameters (Common, Structure/TMT, Tone 1-4,
+# Matrix Control, effect routing and effect units). Source: AX-Synth Editor manual
+# (EM) unless doc says otherwise. Format: knowledge/README.md.
+#
+# schema paths: "fm.pat.tone[]" = each of the 4 tones; "x[]" = each array element
+# (LFO1/LFO2, TMT tones 1-4). matrix = Matrix Control DESTINATION name that can
+# modulate the parameter (EM p.42; linked by name because the manual's marker symbol
+# was lost in text extraction).
+
+# ---------------------------------------------------------------- COMMON ----
+[[group]]
+id = "common"
+title = "PATCH COMMON"
+doc = "EM"
+pages = [20, 24, 25]
+text = "Settings that apply to the whole patch (all four tones)."
+
+[[param]]
+id = "common.name"
+group = "common"
+label = "PATCH NAME"
+schema = ["fm.pat.common.patchName"]
+values = "12 characters (ASCII 32–127)"
+meaning = "Patch name. Allowed characters: space ! \" # $ % & ' ( ) * + , - . / 0-9 : ; < = > ? @ A-Z [ \\ ] ^ _ ` a-z { | } ~ (EM p.5)."
+doc = "EM"
+pages = [24, 5]
+
+[[param]]
+id = "common.category"
+group = "common"
+label = "Patch Category"
+schema = ["fm.pat.common.patchCategory"]
+values = "0–127"
+meaning = "Category number of the patch (used by the Editor's patch list)."
+notes = ["Not described in the Editor manual; listed in the MIDI Implementation only. [3P/I] Numbering probably follows Roland's XV/Fantom category scheme (forum guitar patch = 11); unverified."]
+doc = "MI"
+pages = [8]
+
+[[param]]
+id = "common.level"
+group = "common"
+label = "LEVEL"
+schema = ["fm.pat.common.patchLevel"]
+values = "0–127"
+meaning = "Volume of the patch."
+doc = "EM"
+pages = [20, 24]
+
+[[param]]
+id = "common.pan"
+group = "common"
+label = "PAN"
+schema = ["fm.pat.common.patchPan"]
+values = "L64–0–63R"
+meaning = "Left/right position of the patch."
+doc = "EM"
+pages = [24]
+
+[[param]]
+id = "common.output_assign"
+group = "common"
+label = "OUTPUT ASSIGN (PATCH OUTPUT ASSIGN)"
+schema = ["fm.pat.common.patchOutputAssign"]
+values = "MFX, L+R, L, R, TONE"
+meaning = "How the direct (unprocessed) sound of the patch is output. MFX: in stereo through the multi-effect (chorus and reverb can also be applied after it). L+R: in stereo to the OUTPUT jacks without passing through the MFX. L: in mono to OUTPUT L without the MFX. R: in mono to OUTPUT R without the MFX. TONE: according to each tone's own OUTPUT ASSIGN."
+notes = ["[F] Legal stored values are 0, 1, 5, 6, 13 (numberTable outputAssignXV5050Table) = MFX, L+R, L, R, TONE."]
+doc = "EM"
+pages = [15, 24]
+
+[[param]]
+id = "common.octave_shift"
+group = "common"
+label = "OCTAVE SHIFT"
+schema = ["fm.pat.common.octaveShift"]
+values = "-3–+3"
+meaning = "Pitch of the patch's sound in octaves."
+doc = "EM"
+pages = [24]
+
+[[param]]
+id = "common.coarse_tune"
+group = "common"
+label = "TUNE COARSE"
+schema = ["fm.pat.common.patchCoarseTune"]
+values = "-48–+48"
+meaning = "Pitch of the patch's sound in semitones (±4 octaves)."
+doc = "EM"
+pages = [24]
+
+[[param]]
+id = "common.fine_tune"
+group = "common"
+label = "TUNE FINE"
+schema = ["fm.pat.common.patchFineTune"]
+values = "-50–+50"
+meaning = "Pitch of the patch's sound in 1-cent steps (1 cent = 1/100 semitone)."
+doc = "EM"
+pages = [24]
+
+[[param]]
+id = "common.stretch_tune"
+group = "common"
+label = "STRETCH TUNE DEPTH"
+schema = ["fm.pat.common.stretchTuneDepth"]
+values = "OFF, 1–3"
+meaning = "Stretched tuning, the way acoustic pianos are normally tuned: the low range lower and the high range higher than mathematical tuning. OFF: equal temperament. 1–3: higher settings give a greater pitch difference between low and high ranges."
+doc = "EM"
+pages = [24]
+
+[[group]]
+id = "common.bend"
+title = "Pitch bend range"
+doc = "EM"
+pages = [24]
+text = "Range of the TOUCH CONTROLLER ribbon (pitch bend)."
+
+[[param]]
+id = "common.bend_up"
+group = "common.bend"
+label = "PITCH BEND RANGE UP"
+schema = ["fm.pat.common.pitchBendRangeUp"]
+values = "0–+48"
+meaning = "Pitch change in semitones when the touch controller is all the way right."
+doc = "EM"
+pages = [24]
+
+[[param]]
+id = "common.bend_down"
+group = "common.bend"
+label = "PITCH BEND RANGE DOWN"
+schema = ["fm.pat.common.pitchBendRangeDown"]
+values = "-48–0"
+meaning = "Pitch change in semitones when the touch controller is all the way left."
+notes = ["[F] Stored as a positive number of semitones (e.g. 24 = -24)."]
+doc = "EM"
+pages = [24]
+
+[[group]]
+id = "common.offset"
+title = "OFFSET (Modify): patch-wide offsets applied to all tones"
+doc = "EM"
+pages = [25]
+text = "Offsets that modify the corresponding per-tone parameters of all tones at once. Stored 1–127 with 64 = 0 [D MI]. [I] Natural candidates for simplified 'big knob' controls."
+
+[[param]]
+id = "common.offset_cutoff"
+group = "common.offset"
+label = "OFFSET CUTOFF"
+schema = ["fm.pat.common.cutoffOffset"]
+values = "-63–+63"
+meaning = "Offset applied to the tones' TVF CUTOFF."
+doc = "EM"
+pages = [25]
+
+[[param]]
+id = "common.offset_resonance"
+group = "common.offset"
+label = "OFFSET RES (Resonance)"
+schema = ["fm.pat.common.resonanceOffset"]
+values = "-63–+63"
+meaning = "Offset applied to the tones' TVF RES (resonance)."
+doc = "EM"
+pages = [25]
+
+[[param]]
+id = "common.offset_attack"
+group = "common.offset"
+label = "OFFSET ATTACK TIME"
+schema = ["fm.pat.common.attackTimeOffset"]
+values = "-63–+63"
+meaning = "Offset applied to TVF Envelope Time 1 and TVA Envelope Time 1 (attack)."
+doc = "EM"
+pages = [25]
+
+[[param]]
+id = "common.offset_release"
+group = "common.offset"
+label = "OFFSET RELEASE TIME"
+schema = ["fm.pat.common.releaseTimeOffset"]
+values = "-63–+63"
+meaning = "Offset applied to TVF Envelope Time 4 and TVA Envelope Time 4 (release)."
+doc = "EM"
+pages = [25]
+
+[[param]]
+id = "common.offset_velocity"
+group = "common.offset"
+label = "OFFSET VELOCITY SENS"
+schema = ["fm.pat.common.velocitySensOffset"]
+values = "-63–+63"
+meaning = "Offset applied to TVF Cutoff Velocity Sens and TVA VEL SENS (velocity sensitivity)."
+doc = "EM"
+pages = [25]
+
+[[param]]
+id = "common.priority"
+group = "common"
+label = "PRIORITY"
+schema = ["fm.pat.common.patchPriority"]
+values = "LAST, LOUDEST"
+meaning = "How notes are managed when maximum polyphony (128 voices) is exceeded. LAST: the last-played voices get priority (notes are turned off beginning with the first-played). LOUDEST: the loudest voices get priority (the lowest-volume voice is turned off first). Usually LAST."
+doc = "EM"
+pages = [10, 25]
+
+[[param]]
+id = "common.mono_poly"
+group = "common"
+label = "MONO/POLY"
+schema = ["fm.pat.common.monoPoly"]
+values = "MONO, POLY"
+meaning = "MONO: only the last-played note sounds; effective for solo instrument patches such as sax or flute. POLY: two or more notes can be played simultaneously."
+doc = "EM"
+pages = [20, 25]
+
+[[param]]
+id = "common.legato_sw"
+group = "common"
+label = "LEGATO SW (Switch)"
+schema = ["fm.pat.common.legatoSwitch"]
+values = "OFF, ON"
+meaning = "Whether the Legato Switch is used. Valid only with MONO. When ON, pressing a key while still holding a previous key changes the pitch to the newest key while the note keeps sounding: a smooth transition that simulates a guitarist's hammer-on/pull-off."
+notes = ["EM caution: with LEGATO SW ON and RETRIGGER OFF, a legato to a higher key may not reach the intended pitch (stops at an intermediate pitch) because the wave-level pitch-rise limit is exceeded; with multiple tones using waves with different upper limits the patch may stop being heard in MONO. For large pitch changes set LEGATO RETRIGGER ON."]
+doc = "EM"
+pages = [25]
+
+[[param]]
+id = "common.legato_retrigger"
+group = "common"
+label = "LEGATO RETRIGGER"
+schema = ["fm.pat.common.legatoRetrigger"]
+values = "OFF, ON"
+meaning = "Whether sounds are replayed (ON) or not (OFF) when playing legato. Valid when MONO and LEGATO SW ON. Normally ON. When OFF, holding one key and pressing another changes only the pitch, without playing the new key's attack; set OFF for wind and string phrases or when using modulation with a mono synth keyboard sound."
+doc = "EM"
+pages = [25]
+
+[[param]]
+id = "common.analog_feel"
+group = "common"
+label = "ANALOG FEEL"
+schema = ["fm.pat.common.analogFeel"]
+values = "0–127"
+meaning = "Depth of 1/f modulation (a pleasant, naturally occurring modulation ratio, like a babbling brook or rustling wind). Simulates the natural instability of an analog synthesizer."
+doc = "EM"
+pages = [25]
+
+[[group]]
+id = "common.portamento"
+title = "PORTAMENTO"
+doc = "EM"
+pages = [20, 26]
+text = "Portamento smoothly changes the pitch from the first-played key to the next-played key."
+
+[[param]]
+id = "common.portamento_sw"
+group = "common.portamento"
+label = "PORTAMENTO SW"
+schema = ["fm.pat.common.portamentoSwitch"]
+values = "OFF, ON"
+meaning = "Whether the portamento effect is applied."
+notes = ["[D OM p.24] The panel [PORTAMENTO] button switches portamento on/off for regular patches."]
+doc = "EM"
+pages = [20, 26]
+
+[[param]]
+id = "common.portamento_mode"
+group = "common.portamento"
+label = "PORTAMENTO MODE"
+schema = ["fm.pat.common.portamentoMode"]
+values = "NORMAL, LEGATO"
+meaning = "NORMAL: portamento is always applied. LEGATO: portamento is applied only when you play legato."
+doc = "EM"
+pages = [26]
+
+[[param]]
+id = "common.portamento_type"
+group = "common.portamento"
+label = "PORTAMENTO TYPE"
+schema = ["fm.pat.common.portamentoType"]
+values = "RATE, TIME"
+meaning = "RATE: uniform speed of pitch change (the time taken corresponds to the pitch distance). TIME: constant time regardless of how far apart the notes are."
+doc = "EM"
+pages = [26]
+
+[[param]]
+id = "common.portamento_start"
+group = "common.portamento"
+label = "PORTAMENTO START"
+schema = ["fm.pat.common.portamentoStart"]
+values = "PITCH, NOTE"
+meaning = "PITCH: a new portamento starts from the current (moving) pitch when another key is pressed during a glide. NOTE: the new portamento begins from the pitch where the current change would have ended."
+doc = "EM"
+pages = [26]
+
+[[param]]
+id = "common.portamento_time"
+group = "common.portamento"
+label = "PORTAMENTO TIME"
+schema = ["fm.pat.common.portamentoTime"]
+values = "0–127"
+meaning = "Time over which the pitch changes."
+doc = "EM"
+pages = [20, 26]
+
+# --------------------------------------------------------- STRUCTURE / TMT --
+[[group]]
+id = "tmt.structure"
+title = "STRUCTURE (tone pair connection) and BOOSTER"
+doc = "EM"
+pages = [27, 28]
+text = "See concept structure.types for the 10 connection types."
+
+[[param]]
+id = "tmt.structure_12"
+group = "tmt.structure"
+label = "STRUCTURE TONE 1 & 2 TYPE"
+schema = ["fm.pat.tmt.structureType12"]
+values = "TYPE 1–10"
+meaning = "How tones 1 and 2 are connected (independent, stacked filters, booster, ring modulator variants). See concept structure.types."
+doc = "EM"
+pages = [27]
+
+[[param]]
+id = "tmt.structure_34"
+group = "tmt.structure"
+label = "STRUCTURE TONE 3 & 4 TYPE"
+schema = ["fm.pat.tmt.structureType34"]
+values = "TYPE 1–10"
+meaning = "How tones 3 and 4 are connected. See concept structure.types."
+doc = "EM"
+pages = [27]
+
+[[param]]
+id = "tmt.booster_12"
+group = "tmt.structure"
+label = "BOOSTER (TONE 1 & 2)"
+schema = ["fm.pat.tmt.booster12"]
+values = "0, +6, +12, +18 (dB)"
+meaning = "Amount of boost applied when the Structure Type is 03 or 04. The booster distorts the sound by boosting the input signal (electric-guitar-style distortion); higher = stronger distortion."
+related = ["structure.booster"]
+doc = "EM"
+pages = [28]
+
+[[param]]
+id = "tmt.booster_34"
+group = "tmt.structure"
+label = "BOOSTER (TONE 3 & 4)"
+schema = ["fm.pat.tmt.booster34"]
+values = "0, +6, +12, +18 (dB)"
+meaning = "Same as BOOSTER for tones 3 & 4."
+related = ["structure.booster"]
+doc = "EM"
+pages = [28]
+
+[[param]]
+id = "tmt.tone_switch"
+group = "tmt.structure"
+label = "TONE SWITCH (SW) 1–4"
+schema = ["fm.pat.tmt.tmtToneSwitch[]"]
+values = "OFF, ON"
+meaning = "Turns each of the four tones on (heard) or off (silent). Turning off unneeded tones conserves polyphony."
+doc = "EM"
+pages = [18]
+
+[[group]]
+id = "tmt.velocity"
+title = "VELOCITY RANGE (TMT)"
+doc = "EM"
+pages = [40]
+text = "Per tone: which velocities make the tone sound; see concept tmt.overview."
+
+[[param]]
+id = "tmt.velocity_control"
+group = "tmt.velocity"
+label = "VELOCITY CONTROL"
+schema = ["fm.pat.tmt.tmtVelocityControl"]
+values = "OFF, ON, RANDOM, CYCLE"
+meaning = "Whether a different tone is played depending on velocity (ON) or not (OFF). RANDOM: the patch's tones sound randomly regardless of velocity. CYCLE: the tones sound consecutively regardless of velocity. Set OFF when using Matrix Control to switch tones."
+doc = "EM"
+pages = [40]
+
+[[param]]
+id = "tmt.control_sw"
+group = "tmt.velocity"
+label = "TMT CONTROL SW"
+schema = ["fm.pat.common.tmtControlSwitch"]
+values = "OFF, ON"
+meaning = "Use the Matrix Control (destination TMT) to enable (ON) or disable (OFF) sounding of different tones."
+doc = "EM"
+pages = [40]
+
+[[param]]
+id = "tmt.velo_fade_lower"
+group = "tmt.velocity"
+label = "VELOCITY FADE LOWER"
+schema = ["fm.pat.tmt.tmtVelocityFadeWidthLower[]"]
+values = "0–127"
+meaning = "What happens to the tone's level when played at a velocity lower than Velocity Range Lower (a fade). Set 0 if the tone should not sound at all below the range."
+doc = "EM"
+pages = [40]
+
+[[param]]
+id = "tmt.velo_lower"
+group = "tmt.velocity"
+label = "VELOCITY RANGE LOWER"
+schema = ["fm.pat.tmt.tmtVelocityRangeLower[]"]
+values = "1–(UPPER)"
+meaning = "Lowest velocity at which the tone sounds."
+matrix = "TMT"
+doc = "EM"
+pages = [40]
+
+[[param]]
+id = "tmt.velo_upper"
+group = "tmt.velocity"
+label = "VELOCITY RANGE UPPER"
+schema = ["fm.pat.tmt.tmtVelocityRangeUpper[]"]
+values = "(LOWER)–127"
+meaning = "Highest velocity at which the tone sounds."
+matrix = "TMT"
+doc = "EM"
+pages = [40]
+
+[[param]]
+id = "tmt.velo_fade_upper"
+group = "tmt.velocity"
+label = "VELOCITY FADE UPPER"
+schema = ["fm.pat.tmt.tmtVelocityFadeWidthUpper[]"]
+values = "0–127"
+meaning = "What happens to the tone's level when played at a velocity greater than Velocity Range Upper. Set 0 if the tone should not sound at all above the range."
+doc = "EM"
+pages = [40]
+
+[[group]]
+id = "tmt.key"
+title = "KEY RANGE (TMT)"
+doc = "EM"
+pages = [41]
+text = "Per tone: which notes make the tone sound (keyboard split/layer)."
+
+[[param]]
+id = "tmt.key_fade_lower"
+group = "tmt.key"
+label = "KEY FADE LOWER"
+schema = ["fm.pat.tmt.tmtKeyboardFadeWidthLower[]"]
+values = "0–127"
+meaning = "What happens to the tone's level when a note lower than Key Range Lower is played. Set 0 if the tone should not sound at all."
+doc = "EM"
+pages = [41]
+
+[[param]]
+id = "tmt.key_lower"
+group = "tmt.key"
+label = "KEY RANGE LOWER"
+schema = ["fm.pat.tmt.tmtKeyboardRangeLower[]"]
+values = "C-1–(UPPER)"
+meaning = "Lowest note at which the tone sounds."
+doc = "EM"
+pages = [41]
+
+[[param]]
+id = "tmt.key_upper"
+group = "tmt.key"
+label = "KEY RANGE UPPER"
+schema = ["fm.pat.tmt.tmtKeyboardRangeUpper[]"]
+values = "(LOWER)–G9"
+meaning = "Highest note at which the tone sounds."
+doc = "EM"
+pages = [41]
+
+[[param]]
+id = "tmt.key_fade_upper"
+group = "tmt.key"
+label = "KEY FADE UPPER"
+schema = ["fm.pat.tmt.tmtKeyboardFadeWidthUpper[]"]
+values = "0–127"
+meaning = "What happens to the tone's level when a note higher than Key Range Upper is played. Set 0 if the tone should not sound at all."
+doc = "EM"
+pages = [41]
+
+# ------------------------------------------------------------------- WG -----
+[[group]]
+id = "tone.wg"
+title = "WG (Wave Generator): waveform and pitch"
+doc = "EM"
+pages = [21, 29]
+text = "Per tone. Modifies waveform, pitch and pitch envelope."
+
+[[param]]
+id = "tone.wave_group"
+group = "tone.wg"
+label = "Wave Group Type / Wave Group ID"
+schema = ["fm.pat.tone[].waveGroupType", "fm.pat.tone[].waveGroupID"]
+values = "Type: ---, INT, ---, --- ; ID: OFF, 1–16384"
+meaning = "Which wave bank the wave number refers to. Only INT (internal) exists on the AX-Synth."
+notes = ["Not described in the Editor manual; from the MIDI Implementation."]
+doc = "MI"
+pages = [13]
+
+[[param]]
+id = "tone.wave_number"
+group = "tone.wg"
+label = "WAVE NUMBER L (Mono) / R"
+schema = ["fm.pat.tone[].waveNumberL", "fm.pat.tone[].waveNumberR"]
+values = "Off, 1–"
+meaning = "Basic waveform of the tone. In mono only L is specified; in stereo R is also specified (select L first, then pick the matching R, whose number is L+1)."
+notes = ["[F] Wave names: Script.xml stringTable internalWaveNameTableA (313 names); wave N probably = entry N-1 [I, strongly supported by the forum patches]."]
+related = ["wave.stereo", "wave.oneshot_loop"]
+doc = "EM"
+pages = [21, 29, 19]
+
+[[param]]
+id = "tone.wave_gain"
+group = "tone.wg"
+label = "GAIN"
+schema = ["fm.pat.tone[].waveGain"]
+values = "-6, 0, +6, +12 (dB)"
+meaning = "Gain (amplification) of the waveform in 6 dB steps; +6 dB doubles the gain. When using the Booster to distort the sound, set this to its maximum."
+doc = "EM"
+pages = [21, 29]
+
+[[param]]
+id = "tone.fxm_sw"
+group = "tone.wg"
+label = "FXM ON"
+schema = ["fm.pat.tone[].waveFXMSwitch"]
+values = "OFF, ON"
+meaning = "Whether FXM (frequency cross modulation) is used."
+related = ["wave.fxm"]
+doc = "EM"
+pages = [21, 29]
+
+[[param]]
+id = "tone.fxm_color"
+group = "tone.wg"
+label = "FXM COLOR"
+schema = ["fm.pat.tone[].waveFXMColor"]
+values = "1–4"
+meaning = "How FXM performs frequency modulation: higher settings give a grainier sound, lower settings a more metallic sound."
+doc = "EM"
+pages = [21, 29]
+
+[[param]]
+id = "tone.fxm_depth"
+group = "tone.wg"
+label = "FXM DEPTH"
+schema = ["fm.pat.tone[].waveFXMDepth"]
+values = "0–16"
+meaning = "Depth of the modulation produced by FXM."
+matrix = "FXM DEPTH"
+doc = "EM"
+pages = [21, 29]
+
+[[param]]
+id = "tone.coarse_tune"
+group = "tone.wg"
+label = "TUNE COARSE"
+schema = ["fm.pat.tone[].toneCoarseTune"]
+values = "-48–+48"
+meaning = "Pitch of the tone's sound in semitones (±4 octaves)."
+matrix = "PITCH"
+doc = "EM"
+pages = [21, 29]
+
+[[param]]
+id = "tone.fine_tune"
+group = "tone.wg"
+label = "TUNE FINE"
+schema = ["fm.pat.tone[].toneFineTune"]
+values = "-50–+50"
+meaning = "Pitch of the tone's sound in 1-cent steps (1/100 semitone)."
+matrix = "PITCH"
+doc = "EM"
+pages = [21, 29]
+
+[[param]]
+id = "tone.random_pitch"
+group = "tone.wg"
+label = "RANDOM PITCH"
+schema = ["fm.pat.tone[].toneRandomPitchDepth"]
+values = "0–1200 (cents; stored as 31 steps: 0–10, 20–100 by 10, 200–1200 by 100)"
+meaning = "Width of random pitch deviation each time a key is pressed. Set 0 for no random pitch change."
+doc = "EM"
+pages = [29]
+
+[[param]]
+id = "tone.pitch_kf"
+group = "tone.wg"
+label = "PITCH KF (Pitch Keyfollow)"
+schema = ["fm.pat.tone[].wavePitchKeyfollow"]
+values = "-200–+200"
+meaning = "Amount of pitch change when you play a key one octave higher. +100: the pitch rises one octave per octave as on a conventional keyboard; +200: two octaves."
+doc = "EM"
+pages = [29]
+
+# ------------------------------------------------------------- TONE DELAY ---
+[[group]]
+id = "tone.delay"
+title = "TONE DELAY"
+doc = "EM"
+pages = [30]
+text = "See concept tone.delay_modes."
+
+[[param]]
+id = "tone.delay_mode"
+group = "tone.delay"
+label = "TONE DELAY MODE"
+schema = ["fm.pat.tone[].toneDelayMode"]
+values = "NORMAL, HOLD, KEY-OFF-NOR, KEY-OFF-DCY"
+meaning = "NORMAL: the tone begins after the delay time. HOLD: begins after the delay time, but if the key is released before the time has elapsed the tone is not played. KEY-OFF-NOR: the tone begins the delay time after the key is released instead of while it is held (e.g. simulating guitar noises). KEY-OFF-DCY: like KEY-OFF-NOR but the TVA envelope already runs while the key is held, so often only the release portion is heard. With a decaying (one-shot) wave, KEY-OFF modes may give no sound."
+doc = "EM"
+pages = [30]
+
+[[param]]
+id = "tone.delay_time"
+group = "tone.delay"
+label = "TONE DELAY TIME"
+schema = ["fm.pat.tone[].toneDelayTime"]
+values = "0–127"
+meaning = "Time from key press (or, in KEY-OFF modes, from key release) until the tone sounds."
+doc = "EM"
+pages = [30]
+
+# ----------------------------------------------------------- PITCH ENV ------
+[[group]]
+id = "tone.pitch_env"
+title = "PITCH ENV (Wave Pitch Envelope)"
+doc = "EM"
+pages = [21, 31]
+text = "Five levels L0–L4 joined by four times T1–T4; T1 starts at note-on, T4 is the release. Levels are relative to the pitch set by coarse/fine tune."
+
+[[param]]
+id = "tone.penv_depth"
+group = "tone.pitch_env"
+label = "DEPTH (PITCH ENV DEPTH)"
+schema = ["fm.pat.tone[].pitchEnvDepth"]
+values = "-12–+12"
+meaning = "Depth of the pitch envelope. Higher settings produce greater change; negative settings invert the envelope's shape."
+doc = "EM"
+pages = [21, 31]
+
+[[param]]
+id = "tone.penv_time_kf"
+group = "tone.pitch_env"
+label = "TIME KF (Time Keyfollow)"
+schema = ["fm.pat.tone[].pitchEnvTimeKeyFollow"]
+values = "-100–+100"
+meaning = "Makes pitch envelope times T2–T4 depend on key position. Relative to C4, positive settings make notes above C4 have increasingly shorter times."
+doc = "EM"
+pages = [31]
+
+[[param]]
+id = "tone.penv_vel_sens"
+group = "tone.pitch_env"
+label = "VEL SENS (Velocity Sens)"
+schema = ["fm.pat.tone[].pitchEnvVelocitySens"]
+values = "-63–+63"
+meaning = "Lets keyboard dynamics control the pitch envelope depth; positive = more effect for strongly played notes."
+doc = "EM"
+pages = [31]
+
+[[param]]
+id = "tone.penv_t1_sens"
+group = "tone.pitch_env"
+label = "T1 SENS (T1 Velocity Sens)"
+schema = ["fm.pat.tone[].pitchEnvTime1VelocitySens"]
+values = "-63–+63"
+meaning = "Lets keyboard dynamics affect T1; positive = T1 speeds up for strongly played notes."
+doc = "EM"
+pages = [31]
+
+[[param]]
+id = "tone.penv_t4_sens"
+group = "tone.pitch_env"
+label = "T4 SENS (T4 Velocity Sens)"
+schema = ["fm.pat.tone[].pitchEnvTime4VelocitySens"]
+values = "-63–+63"
+meaning = "Lets key release speed affect T4; positive = T4 speeds up for quickly released notes."
+doc = "EM"
+pages = [31]
+
+[[param]]
+id = "tone.penv_times"
+group = "tone.pitch_env"
+label = "T1–T4 (Time 1–4)"
+schema = ["fm.pat.tone[].pitchEnvTime1", "fm.pat.tone[].pitchEnvTime2", "fm.pat.tone[].pitchEnvTime3", "fm.pat.tone[].pitchEnvTime4"]
+values = "0–127"
+meaning = "Pitch envelope times; higher = longer time until the next pitch level is reached. Simplified controls: PITCH ENV A = T1, D = T3, R = T4."
+matrix = "PCH ENV A-TIME (T1), PCH ENV D-TIME (T3), PCH ENV R-TIME (T4)"
+doc = "EM"
+pages = [21, 31]
+
+[[param]]
+id = "tone.penv_levels"
+group = "tone.pitch_env"
+label = "L0–L4 (Level 0–4)"
+schema = ["fm.pat.tone[].pitchEnvLevel0", "fm.pat.tone[].pitchEnvLevel1", "fm.pat.tone[].pitchEnvLevel2", "fm.pat.tone[].pitchEnvLevel3", "fm.pat.tone[].pitchEnvLevel4"]
+values = "-63–+63"
+meaning = "Pitch envelope levels: how the pitch changes at each point relative to the pitch set by COARSE/FINE TUNE. Simplified control PITCH ENV S = L3."
+doc = "EM"
+pages = [21, 31]
+
+# ------------------------------------------------------------------ TVF -----
+[[group]]
+id = "tone.tvf"
+title = "TVF (filter)"
+doc = "EM"
+pages = [22, 32]
+text = "A filter cuts or boosts a frequency region to change the sound's brightness, thickness or other qualities."
+
+[[param]]
+id = "tone.filter_type"
+group = "tone.tvf"
+label = "FILTER TYPE"
+schema = ["fm.pat.tone[].tvfFilterType"]
+values = "OFF, LPF, BPF, HPF, PKG, LPF2, LPF3"
+meaning = "OFF: no filter. LPF (low pass): reduces all frequencies above the cutoff to round off / un-brighten the sound. BPF (band pass): leaves only frequencies around the cutoff; useful for distinctive sounds. HPF (high pass): cuts frequencies below the cutoff; suits percussive sounds emphasizing higher tones. PKG (peaking): emphasizes frequencies around the cutoff; with an LFO sweeping the cutoff gives wah-wah. LPF2: low pass with half the sensitivity of LPF; good for simulated instruments such as acoustic piano. LPF3: low pass whose sensitivity changes with the cutoff frequency; also for acoustic instruments, with a different nuance from LPF2 even with the same envelope. With LPF2/LPF3 the RES setting is ignored."
+doc = "EM"
+pages = [22, 32]
+
+[[param]]
+id = "tone.cutoff"
+group = "tone.tvf"
+label = "CUTOFF (Cutoff Frequency)"
+schema = ["fm.pat.tone[].tvfCutoffFrequency"]
+values = "0–127"
+meaning = "Frequency at which the filter begins to affect the waveform's frequency components."
+matrix = "CUTOFF"
+doc = "EM"
+pages = [22, 32]
+
+[[param]]
+id = "tone.resonance"
+group = "tone.tvf"
+label = "RES (Resonance)"
+schema = ["fm.pat.tone[].tvfResonance"]
+values = "0–127"
+meaning = "Emphasizes the region around the cutoff frequency, adding character. Excessively high settings can produce oscillation, causing distortion."
+matrix = "RESONANCE"
+doc = "EM"
+pages = [22, 32]
+
+[[param]]
+id = "tone.res_vel_sens"
+group = "tone.tvf"
+label = "RES VEL SENS (Resonance Velocity Sens)"
+schema = ["fm.pat.tone[].tvfResonanceVelocitySens"]
+values = "-63–+63"
+meaning = "Lets velocity modify the resonance amount; positive = strongly played notes get more resonance."
+doc = "EM"
+pages = [32]
+
+[[param]]
+id = "tone.cutoff_kf"
+group = "tone.tvf"
+label = "CUTOFF KF (Cutoff Keyfollow)"
+schema = ["fm.pat.tone[].tvfCutoffKeyfollow"]
+values = "-200–+200"
+meaning = "Makes the cutoff depend on the key played. Relative to C4, positive settings raise the cutoff for notes above C4, negative settings lower it; larger = more change."
+doc = "EM"
+pages = [32]
+
+# ------------------------------------------------------------- TVF ENV ------
+[[group]]
+id = "tone.tvf_env"
+title = "FILTER ENV (TVF Envelope) and cutoff velocity"
+doc = "EM"
+pages = [22, 33]
+text = "Five levels L0–L4 joined by times T1–T4, relative to the CUTOFF value."
+
+[[param]]
+id = "tone.cutoff_vel_curve"
+group = "tone.tvf_env"
+label = "VEL CURVE (Cutoff Velocity Curve)"
+schema = ["fm.pat.tone[].tvfCutoffVelocityCurve"]
+values = "FIX, 1–7"
+meaning = "Curve by which velocity affects the cutoff frequency. FIX: the cutoff is not affected by velocity."
+doc = "EM"
+pages = [33]
+
+[[param]]
+id = "tone.cutoff_vel_sens"
+group = "tone.tvf_env"
+label = "VEL SENS (Cutoff Velocity Sens)"
+schema = ["fm.pat.tone[].tvfCutoffVelocitySens"]
+values = "-63–+63"
+meaning = "How playing velocity changes the cutoff; positive = strongly played notes raise the cutoff (brighter)."
+doc = "EM"
+pages = [33]
+
+[[param]]
+id = "tone.fenv_depth"
+group = "tone.tvf_env"
+label = "DEPTH (FILTER ENV DEPTH)"
+schema = ["fm.pat.tone[].tvfEnvDepth"]
+values = "-63–+63"
+meaning = "Depth of the TVF envelope. Higher settings produce greater change; negative settings invert the envelope's shape."
+doc = "EM"
+pages = [22, 33]
+
+[[param]]
+id = "tone.fenv_time_kf"
+group = "tone.tvf_env"
+label = "TIME KF (Time Keyfollow)"
+schema = ["fm.pat.tone[].tvfEnvTimeKeyfollow"]
+values = "-100–+100"
+meaning = "Makes TVF envelope times T2–T4 depend on key position; relative to C4, positive = shorter times for higher notes."
+doc = "EM"
+pages = [33]
+
+[[param]]
+id = "tone.fenv_vel_curve"
+group = "tone.tvf_env"
+label = "VEL CURVE (Velocity Curve)"
+schema = ["fm.pat.tone[].tvfEnvVelocityCurve"]
+values = "FIX, 1–7"
+meaning = "Curve by which velocity affects the TVF envelope. FIX: the envelope is not affected by velocity."
+doc = "EM"
+pages = [33]
+
+[[param]]
+id = "tone.fenv_vel_sens"
+group = "tone.tvf_env"
+label = "VEL SENS (Velocity Sens)"
+schema = ["fm.pat.tone[].tvfEnvVelocitySens"]
+values = "-63–+63"
+meaning = "How velocity affects the TVF envelope depth; positive = greater effect for strongly played notes, negative = less."
+doc = "EM"
+pages = [33]
+
+[[param]]
+id = "tone.fenv_t1_sens"
+group = "tone.tvf_env"
+label = "T1 SENS"
+schema = ["fm.pat.tone[].tvfEnvTime1VelocitySens"]
+values = "-63–+63"
+meaning = "Lets keyboard dynamics affect T1 of the TVF envelope; positive = T1 speeds up for strongly played notes."
+doc = "EM"
+pages = [33]
+
+[[param]]
+id = "tone.fenv_t4_sens"
+group = "tone.tvf_env"
+label = "T4 SENS"
+schema = ["fm.pat.tone[].tvfEnvTime4VelocitySens"]
+values = "-63–+63"
+meaning = "Lets key release speed affect T4 of the TVF envelope; positive = T4 speeds up for quickly released notes."
+doc = "EM"
+pages = [33]
+
+[[param]]
+id = "tone.fenv_times"
+group = "tone.tvf_env"
+label = "T1–T4 (Time 1–4)"
+schema = ["fm.pat.tone[].tvfEnvTime1", "fm.pat.tone[].tvfEnvTime2", "fm.pat.tone[].tvfEnvTime3", "fm.pat.tone[].tvfEnvTime4"]
+values = "0–127"
+meaning = "TVF envelope times; higher = longer until the next cutoff level is reached. Simplified FILTER ENV A = T1, D = T3, R = T4. The patch OFFSET ATTACK/RELEASE TIME modifies T1/T4."
+matrix = "TVF ENV A-TIME (T1), TVF ENV D-TIME (T3), TVF ENV R-TIME (T4)"
+doc = "EM"
+pages = [22, 33]
+
+[[param]]
+id = "tone.fenv_levels"
+group = "tone.tvf_env"
+label = "L0–L4 (Level 0–4)"
+schema = ["fm.pat.tone[].tvfEnvLevel0", "fm.pat.tone[].tvfEnvLevel1", "fm.pat.tone[].tvfEnvLevel2", "fm.pat.tone[].tvfEnvLevel3", "fm.pat.tone[].tvfEnvLevel4"]
+values = "0–127"
+meaning = "TVF envelope levels: how the cutoff changes at each point relative to the CUTOFF value. Simplified FILTER ENV S = L3."
+doc = "EM"
+pages = [22, 33]
+
+# ------------------------------------------------------------------ TVA -----
+[[group]]
+id = "tone.tva"
+title = "TVA (amplifier): level, velocity, bias, pan"
+doc = "EM"
+pages = [23, 34, 35]
+text = "TVA adjusts the volume and stereo position of the tone."
+
+[[param]]
+id = "tone.level"
+group = "tone.tva"
+label = "LEVEL"
+schema = ["fm.pat.tone[].toneLevel"]
+values = "0–127"
+meaning = "Volume of the tone; mainly for adjusting the volume balance between tones."
+matrix = "LEVEL"
+doc = "EM"
+pages = [23, 34]
+
+[[param]]
+id = "tone.tva_vel_curve"
+group = "tone.tva"
+label = "VEL CURVE (Velocity Curve)"
+schema = ["fm.pat.tone[].tvaLevelVelocityCurve"]
+values = "FIX, 1–7"
+meaning = "Curve by which velocity affects the volume. FIX: the tone's volume is not affected by velocity."
+doc = "EM"
+pages = [34]
+
+[[param]]
+id = "tone.tva_vel_sens"
+group = "tone.tva"
+label = "VEL SENS (Velocity Sens)"
+schema = ["fm.pat.tone[].tvaLevelVelocitySens"]
+values = "-63–+63"
+meaning = "How playing dynamics change the tone's volume; positive = louder the harder you play; negative = softer the harder you play."
+doc = "EM"
+pages = [34]
+
+[[param]]
+id = "tone.bias_level"
+group = "tone.tva"
+label = "BIAS LEVEL"
+schema = ["fm.pat.tone[].biasLevel"]
+values = "-100–+100"
+meaning = "Bias makes the volume depend on keyboard position (useful for acoustic instruments). BIAS LEVEL is the angle of the volume change in the selected direction; larger = more change; negative inverts the direction."
+doc = "EM"
+pages = [34]
+
+[[param]]
+id = "tone.bias_position"
+group = "tone.tva"
+label = "BIAS POSITION"
+schema = ["fm.pat.tone[].biasPosition"]
+values = "C-1–G9"
+meaning = "Key relative to which the volume is modified."
+doc = "EM"
+pages = [34]
+
+[[param]]
+id = "tone.bias_direction"
+group = "tone.tva"
+label = "BIAS DIRECTION"
+schema = ["fm.pat.tone[].biasDirection"]
+values = "LOWER, UPPER, LO&UP, ALL"
+meaning = "LOWER: volume modified below the bias position. UPPER: above it. LO&UP: symmetrically on both sides. ALL: volume changes linearly with the bias position at the center."
+doc = "EM"
+pages = [34]
+
+[[param]]
+id = "tone.pan"
+group = "tone.tva"
+label = "PAN"
+schema = ["fm.pat.tone[].tonePan"]
+values = "L64–0–63R"
+meaning = "Left/right position of the tone."
+matrix = "PAN"
+doc = "EM"
+pages = [23, 35]
+
+[[param]]
+id = "tone.pan_kf"
+group = "tone.tva"
+label = "PAN KF (Pan Keyfollow)"
+schema = ["fm.pat.tone[].tonePanKeyfollow"]
+values = "-100–+100"
+meaning = "Makes key position affect panning: positive = notes above C4 pan increasingly to the right; negative = to the left; larger = more change. With Structure TYPE 02–10 tone 1 (3) follows tone 2 (4)."
+doc = "EM"
+pages = [35]
+
+[[param]]
+id = "tone.random_pan"
+group = "tone.tva"
+label = "RANDOM PAN DEPTH"
+schema = ["fm.pat.tone[].toneRandomPanDepth"]
+values = "0–63"
+meaning = "Stereo position changes randomly each time a key is pressed; higher = more change."
+doc = "EM"
+pages = [35]
+
+[[param]]
+id = "tone.alt_pan"
+group = "tone.tva"
+label = "ALT. PAN DEPTH (Alternate Pan Depth)"
+schema = ["fm.pat.tone[].toneAlternatePanDepth"]
+values = "L63–0–63R"
+meaning = "Panning alternates between left and right each time a key is pressed; higher = more change. L or R reverses the alternation order: two tones set to L and R respectively alternate opposite to each other."
+doc = "EM"
+pages = [35]
+
+# -------------------------------------------------------------- TVA ENV -----
+[[group]]
+id = "tone.tva_env"
+title = "AMP ENV (TVA Envelope)"
+doc = "EM"
+pages = [23, 36]
+text = "Four times T1–T4 and three levels L1–L3 (level 0 at start and end), relative to the LEVEL value."
+
+[[param]]
+id = "tone.aenv_time_kf"
+group = "tone.tva_env"
+label = "TIME KF (Time Keyfollow)"
+schema = ["fm.pat.tone[].tvaEnvTimeKeyfollow"]
+values = "-100–+100"
+meaning = "Makes TVA envelope times T2–T4 depend on key position; relative to C4, positive = shorter times for higher notes, negative = longer; larger = more change."
+doc = "EM"
+pages = [36]
+
+[[param]]
+id = "tone.aenv_t1_sens"
+group = "tone.tva_env"
+label = "T1 SENS"
+schema = ["fm.pat.tone[].tvaEnvTime1VelocitySens"]
+values = "-63–+63"
+meaning = "Lets keyboard dynamics affect T1 (attack) of the TVA envelope; positive = faster for strongly played notes, negative = slower."
+doc = "EM"
+pages = [36]
+
+[[param]]
+id = "tone.aenv_t4_sens"
+group = "tone.tva_env"
+label = "T4 SENS"
+schema = ["fm.pat.tone[].tvaEnvTime4VelocitySens"]
+values = "-63–+63"
+meaning = "Lets key release speed affect T4 (release); positive = faster for quickly released notes, negative = slower."
+doc = "EM"
+pages = [36]
+
+[[param]]
+id = "tone.aenv_times"
+group = "tone.tva_env"
+label = "T1–T4 (Time 1–4)"
+schema = ["fm.pat.tone[].tvaEnvTime1", "fm.pat.tone[].tvaEnvTime2", "fm.pat.tone[].tvaEnvTime3", "fm.pat.tone[].tvaEnvTime4"]
+values = "0–127"
+meaning = "TVA envelope times; higher = longer until the next volume level is reached. Simplified AMP ENV A = T1, D = T3, R = T4. The patch OFFSET ATTACK/RELEASE TIME modifies T1/T4."
+matrix = "TVA ENV A-TIME (T1), TVA ENV D-TIME (T3), TVA ENV R-TIME (T4)"
+doc = "EM"
+pages = [23, 36]
+
+[[param]]
+id = "tone.aenv_levels"
+group = "tone.tva_env"
+label = "L1–L3 (Level 1–3)"
+schema = ["fm.pat.tone[].tvaEnvLevel1", "fm.pat.tone[].tvaEnvLevel2", "fm.pat.tone[].tvaEnvLevel3"]
+values = "0–127"
+meaning = "TVA envelope levels: how the volume changes at each point relative to LEVEL. Simplified AMP ENV S = L3 (sustain level)."
+doc = "EM"
+pages = [23, 36]
+
+# --------------------------------------------------------------- OUTPUT -----
+[[group]]
+id = "tone.output"
+title = "Tone OUTPUT and send levels"
+doc = "EM"
+pages = [15, 23, 37]
+text = "Where each tone's direct sound goes and how much of it is sent to chorus and reverb. Sounds are always sent to chorus and reverb in mono."
+
+[[param]]
+id = "tone.output_assign"
+group = "tone.output"
+label = "OUTPUT ASSIGN (TONE OUTPUT ASSIGN)"
+schema = ["fm.pat.tone[].toneOutputAssign"]
+values = "MFX, L+R, L, R"
+meaning = "How the tone's direct sound is output. MFX: stereo through the multi-effect (chorus/reverb can follow). L+R: stereo to the OUTPUT jacks bypassing the MFX. L / R: mono to OUTPUT L / R bypassing the MFX. Valid only if PATCH OUTPUT ASSIGN is TONE. With Structure TYPE 02–10 tone 1 (3) follows tone 2 (4)."
+notes = ["[F] Legal stored values 0, 1, 5, 6 (numberTable toneOutputAssignXV5050Table)."]
+doc = "EM"
+pages = [15, 37]
+
+[[param]]
+id = "tone.output_level"
+group = "tone.output"
+label = "SEND LEVEL OUT (Output Level / TONE OUTPUT LEVEL)"
+schema = ["fm.pat.tone[].toneDrySendLevel"]
+values = "0–127"
+meaning = "Level of the tone's signal sent to the destination set by OUTPUT ASSIGN."
+matrix = "OUTPUT LEVEL"
+doc = "EM"
+pages = [15, 23, 37]
+
+[[param]]
+id = "tone.chorus_send_mfx"
+group = "tone.output"
+label = "CHO (Chorus Send), OUTPUT ASSIGN = MFX"
+schema = ["fm.pat.tone[].toneChorusSendLevelMFX"]
+values = "0–127"
+meaning = "Level sent to chorus for the tone when the tone goes through the MFX."
+matrix = "CHORUS SEND"
+doc = "EM"
+pages = [23, 37]
+
+[[param]]
+id = "tone.reverb_send_mfx"
+group = "tone.output"
+label = "REV (Reverb Send), OUTPUT ASSIGN = MFX"
+schema = ["fm.pat.tone[].toneReverbSendLevelMFX"]
+values = "0–127"
+meaning = "Level sent to reverb for the tone when the tone goes through the MFX."
+matrix = "REVERB SEND"
+doc = "EM"
+pages = [23, 37]
+
+[[param]]
+id = "tone.chorus_send_direct"
+group = "tone.output"
+label = "CHO (Chorus Send), OUTPUT ASSIGN = non MFX"
+schema = ["fm.pat.tone[].toneChorusSendLevelNonMFX"]
+values = "0–127"
+meaning = "Level sent to chorus for the tone when the tone does not go through the MFX."
+matrix = "CHORUS SEND"
+doc = "EM"
+pages = [23, 37]
+
+[[param]]
+id = "tone.reverb_send_direct"
+group = "tone.output"
+label = "REV (Reverb Send), OUTPUT ASSIGN = non MFX"
+schema = ["fm.pat.tone[].toneReverbSendLevelNonMFX"]
+values = "0–127"
+meaning = "Level sent to reverb for the tone when the tone does not go through the MFX."
+matrix = "REVERB SEND"
+notes = ["[D OM p.26] The on-device 'reU' (Reverb Send) edit changes a reverb send of regular patches and can only be saved to FAVORITE memories; which address it changes is unverified."]
+doc = "EM"
+pages = [23, 37]
+
+# ------------------------------------------------------------------ LFO -----
+[[group]]
+id = "tone.lfo"
+title = "LFO1 / LFO2"
+doc = "EM"
+pages = [20, 21, 37, 38, 39]
+text = "Each tone has two LFOs with identical parameters. They cyclically change pitch (vibrato), cutoff (wah), volume (tremolo) and pan. Schema arrays: [0] = LFO1, [1] = LFO2. With Structure TYPE 02–10, tone 1 (3) follows tone 2 (4). See concept lfo.fade_modes."
+
+[[param]]
+id = "tone.lfo_waveform"
+group = "tone.lfo"
+label = "WAVEFORM"
+schema = ["fm.pat.tone[].lfoWaveForm[]"]
+values = "SIN, TRI, SAW-UP, SAW-DW, SQR, RND, BEND-UP, BEND-DW, TRP, S&H, CHS, VSIN, STEP"
+meaning = "SIN sine; TRI triangle; SAW-UP sawtooth; SAW-DW sawtooth (negative polarity); SQR square; RND random; BEND-UP: once the attack of the LFO waveform has developed normally, it continues without further change; BEND-DW: once the decay has developed normally, it continues without further change; TRP trapezoid; S&H sample & hold (value changes once per cycle); CHS chaos; VSIN modified sine whose amplitude is randomly varied once each cycle; STEP: waveform generated from LFO STEP 1–16 (stepped change with a fixed pattern, like a step modulator). BEND-UP/BEND-DW require KEY TRIGGER ON, otherwise they have no effect."
+doc = "EM"
+pages = [20, 37]
+
+[[param]]
+id = "tone.lfo_rate"
+group = "tone.lfo"
+label = "RATE (RATE VALUE)"
+schema = ["fm.pat.tone[].lfoRate[]"]
+values = "0–127"
+meaning = "Modulation speed of the LFO. Ignored when WAVEFORM is CHS."
+matrix = "LFO1 RATE / LFO2 RATE"
+doc = "EM"
+pages = [20, 38]
+
+[[param]]
+id = "tone.lfo_offset"
+group = "tone.lfo"
+label = "OFFSET"
+schema = ["fm.pat.tone[].lfoOffset[]"]
+values = "-100, -50, 0, +50, +100"
+meaning = "Raises or lowers the LFO waveform relative to the central value (pitch or cutoff). Positive: modulation occurs upward from the central value. Negative: downward."
+doc = "EM"
+pages = [38]
+
+[[param]]
+id = "tone.lfo_rate_detune"
+group = "tone.lfo"
+label = "RATE DETUNE"
+schema = ["fm.pat.tone[].lfoRateDetune[]"]
+values = "0–127"
+meaning = "Subtly changes the LFO rate each time a key is pressed; higher = greater change."
+doc = "EM"
+pages = [38]
+
+[[param]]
+id = "tone.lfo_delay"
+group = "tone.lfo"
+label = "DELAY (DELAY TIME)"
+schema = ["fm.pat.tone[].lfoDelayTime[]"]
+values = "0–127"
+meaning = "Time before the LFO effect is applied (or continues) after the key is pressed (or released), depending on FADE MODE. For violin, wind and similar sounds, adding vibrato only after the note has been drawn out can be effective."
+doc = "EM"
+pages = [21, 38]
+
+[[param]]
+id = "tone.lfo_delay_kf"
+group = "tone.lfo"
+label = "DELAY KEYFOLLOW (Delay Time Keyfollow)"
+schema = ["fm.pat.tone[].lfoDelayTimeKeyfollow[]"]
+values = "-100–+100"
+meaning = "Adjusts DELAY TIME by key position relative to C4; positive = shorter delay for notes above C4."
+doc = "EM"
+pages = [38]
+
+[[param]]
+id = "tone.lfo_fade_mode"
+group = "tone.lfo"
+label = "FADE MODE"
+schema = ["fm.pat.tone[].lfoFadeMode[]"]
+values = "ON-IN, ON-OUT, OFF-IN, OFF-OUT"
+meaning = "How the LFO is applied over time (fade in/out after key on/off). See concept lfo.fade_modes."
+related = ["lfo.fade_modes"]
+doc = "EM"
+pages = [38, 39]
+
+[[param]]
+id = "tone.lfo_fade_time"
+group = "tone.lfo"
+label = "FADE TIME"
+schema = ["fm.pat.tone[].lfoFadeTime[]"]
+values = "0–127"
+meaning = "Time over which the LFO amplitude reaches its maximum (or minimum), per FADE MODE."
+doc = "EM"
+pages = [38]
+
+[[param]]
+id = "tone.lfo_key_trigger"
+group = "tone.lfo"
+label = "KEY TRIGGER"
+schema = ["fm.pat.tone[].lfoKeyTrigger[]"]
+values = "OFF, ON"
+meaning = "Whether the LFO cycle restarts in sync with each key press (ON) or free-runs (OFF). Required ON for BEND-UP/BEND-DW waveforms."
+doc = "EM"
+pages = [38]
+
+[[param]]
+id = "tone.lfo_depth_pitch"
+group = "tone.lfo"
+label = "DEPTH PITCH"
+schema = ["fm.pat.tone[].lfoPitchDepth[]"]
+values = "-63–+63"
+meaning = "How deeply the LFO affects pitch (vibrato). Opposite signs on two tones give opposite modulation phase."
+matrix = "LFO1 PCH DEPTH / LFO2 PCH DEPTH"
+doc = "EM"
+pages = [21, 38]
+
+[[param]]
+id = "tone.lfo_depth_tvf"
+group = "tone.lfo"
+label = "DEPTH TVF"
+schema = ["fm.pat.tone[].lfoTvfDepth[]"]
+values = "-63–+63"
+meaning = "How deeply the LFO affects the cutoff frequency (wah)."
+matrix = "LFO1 TVF DEPTH / LFO2 TVF DEPTH"
+doc = "EM"
+pages = [21, 38]
+
+[[param]]
+id = "tone.lfo_depth_tva"
+group = "tone.lfo"
+label = "DEPTH TVA"
+schema = ["fm.pat.tone[].lfoTvaDepth[]"]
+values = "-63–+63"
+meaning = "How deeply the LFO affects the volume (tremolo)."
+matrix = "LFO1 TVA DEPTH / LFO2 TVA DEPTH"
+doc = "EM"
+pages = [21, 38]
+
+[[param]]
+id = "tone.lfo_depth_pan"
+group = "tone.lfo"
+label = "DEPTH PAN"
+schema = ["fm.pat.tone[].lfoPanDepth[]"]
+values = "-63–+63"
+meaning = "How deeply the LFO affects the pan (auto-pan)."
+matrix = "LFO1 PAN DEPTH / LFO2 PAN DEPTH"
+doc = "EM"
+pages = [21, 38]
+
+[[group]]
+id = "tone.step_lfo"
+title = "STEP LFO"
+doc = "EM"
+pages = [39]
+text = "Data for LFO waveform STEP (one set per tone, shared by LFO1 and LFO2)."
+
+[[param]]
+id = "tone.step_type"
+group = "tone.step_lfo"
+label = "STEP TYPE"
+schema = ["fm.pat.tone[].lfoStepType"]
+values = "TYPE1, TYPE2"
+meaning = "Whether the step LFO level changes abruptly at each step (TYPE1: stair-step) or is connected linearly (TYPE2: linear)."
+doc = "EM"
+pages = [39]
+
+[[param]]
+id = "tone.steps"
+group = "tone.step_lfo"
+label = "STEP 1–16"
+schema = ["fm.pat.tone[].lfoStep1", "fm.pat.tone[].lfoStep2", "fm.pat.tone[].lfoStep3", "fm.pat.tone[].lfoStep4", "fm.pat.tone[].lfoStep5", "fm.pat.tone[].lfoStep6", "fm.pat.tone[].lfoStep7", "fm.pat.tone[].lfoStep8", "fm.pat.tone[].lfoStep9", "fm.pat.tone[].lfoStep10", "fm.pat.tone[].lfoStep11", "fm.pat.tone[].lfoStep12", "fm.pat.tone[].lfoStep13", "fm.pat.tone[].lfoStep14", "fm.pat.tone[].lfoStep15", "fm.pat.tone[].lfoStep16"]
+values = "-36–+36"
+meaning = "Step LFO data. With LFO PITCH DEPTH +63, each +1 unit of step data corresponds to +50 cents."
+doc = "EM"
+pages = [39]
+
+# ------------------------------------------------------------ CONTROL SW ----
+[[group]]
+id = "tone.control_sw"
+title = "CONTROL SW (per-tone MIDI reception and envelope mode)"
+doc = "EM"
+pages = [43]
+text = "Per-tone switches for which MIDI messages affect the tone."
+
+[[param]]
+id = "tone.rcv_bender"
+group = "tone.control_sw"
+label = "RCV BENDER (Receive Bender)"
+schema = ["fm.pat.tone[].toneReceiveBender"]
+values = "OFF, ON"
+meaning = "Whether this tone receives MIDI Pitch Bend."
+doc = "EM"
+pages = [43]
+
+[[param]]
+id = "tone.rcv_expression"
+group = "tone.control_sw"
+label = "RCV EXP (Receive Expression)"
+schema = ["fm.pat.tone[].toneReceiveExpression"]
+values = "OFF, ON"
+meaning = "Whether this tone receives MIDI Expression (CC11)."
+doc = "EM"
+pages = [43]
+
+[[param]]
+id = "tone.rcv_hold"
+group = "tone.control_sw"
+label = "RCV HOLD-1 (Receive Hold-1)"
+schema = ["fm.pat.tone[].toneReceiveHold-1"]
+values = "OFF, ON"
+meaning = "Whether this tone receives MIDI Hold-1 (CC64). No effect if ENV MODE is NO-SUS."
+doc = "EM"
+pages = [43]
+
+[[param]]
+id = "tone.redamper"
+group = "tone.control_sw"
+label = "REDAMPER"
+schema = ["fm.pat.tone[].toneRedamperSwitch"]
+values = "OFF, ON"
+meaning = "Whether the sound is held when Hold 1 is received after a key is released but before the sound has decayed to silence; set ON to sustain. Effective for piano sounds. Requires RCV HOLD-1 ON."
+doc = "EM"
+pages = [43]
+
+[[param]]
+id = "tone.rcv_pan_mode"
+group = "tone.control_sw"
+label = "RCV PAN MODE (Receive Pan Mode)"
+schema = ["fm.pat.tone[].toneReceivePanMode"]
+values = "CONTINUOUS, KEY-ON"
+meaning = "How Pan messages are received. CONTINUOUS: the stereo position changes whenever a Pan message arrives. KEY-ON: the pan changes only when the next note is played. Pan messages cannot be ignored entirely."
+doc = "EM"
+pages = [43]
+
+[[param]]
+id = "tone.env_mode"
+group = "tone.control_sw"
+label = "ENV MODE (Envelope Mode)"
+schema = ["fm.pat.tone[].toneEnvMode"]
+values = "NO-SUS, SUSTAIN"
+meaning = "With a loop waveform the sound normally continues while the key is held; NO-SUS makes it decay naturally even with the key held. A one-shot wave does not sustain even with SUSTAIN."
+related = ["wave.oneshot_loop"]
+doc = "EM"
+pages = [43]
+
+# -------------------------------------------------------- MATRIX CONTROL ----
+[[group]]
+id = "common.matrix"
+title = "MATRIX CONTROL 1–4"
+doc = "EM"
+pages = [41, 42]
+text = "Four matrix controls per patch; each has one SOURCE and up to four DESTINATION/SENS pairs. See concept matrix.overview."
+
+[[param]]
+id = "matrix.source"
+group = "common.matrix"
+label = "SOURCE 1–4"
+schema = ["fm.pat.common.matrixControl1Source", "fm.pat.common.matrixControl2Source", "fm.pat.common.matrixControl3Source", "fm.pat.common.matrixControl4Source"]
+values = "OFF, CC01–31, CC33–95, PITCH BEND, AFTERTOUCH, VELOCITY, KEYFOLLOW, LFO1, LFO2, PITCH ENV, TVF ENV, TVA ENV"
+meaning = "Message used to change tone parameters. OFF: not used. CC01–31, 33–95: controller numbers. PITCH BEND. AFTERTOUCH. VELOCITY: how hard the key is pressed. KEYFOLLOW: keyboard position with C4 = 0. LFO1, LFO2, PITCH ENV, TVF ENV, TVA ENV: internal modulators."
+notes = ["[F] Stored index keeps a placeholder at 32, so raw value = CC number (raw 70 = CC70). The MIDI Implementation also lists unused slots ('---') between AFT and VELOCITY and between KEYFOLLOW and LFO1."]
+doc = "EM"
+pages = [41]
+
+[[param]]
+id = "matrix.destination"
+group = "common.matrix"
+label = "DESTINATION 1–4"
+schema = ["fm.pat.common.matrixControl1Destination1", "fm.pat.common.matrixControl1Destination2", "fm.pat.common.matrixControl1Destination3", "fm.pat.common.matrixControl1Destination4", "fm.pat.common.matrixControl2Destination1", "fm.pat.common.matrixControl2Destination2", "fm.pat.common.matrixControl2Destination3", "fm.pat.common.matrixControl2Destination4", "fm.pat.common.matrixControl3Destination1", "fm.pat.common.matrixControl3Destination2", "fm.pat.common.matrixControl3Destination3", "fm.pat.common.matrixControl3Destination4", "fm.pat.common.matrixControl4Destination1", "fm.pat.common.matrixControl4Destination2", "fm.pat.common.matrixControl4Destination3", "fm.pat.common.matrixControl4Destination4"]
+values = "OFF, PITCH, CUTOFF, RESONANCE, LEVEL, PAN, OUTPUT LEVEL, CHORUS SEND, REVERB SEND, LFO1/2 PCH DEPTH, LFO1/2 TVF DEPTH, LFO1/2 TVA DEPTH, LFO1/2 PAN DEPTH, LFO1/2 RATE, PCH ENV A-TIME, PCH ENV D-TIME, PCH ENV R-TIME, TVF ENV A-TIME, TVF ENV D-TIME, TVF ENV R-TIME, TVA ENV A-TIME, TVA ENV D-TIME, TVA ENV R-TIME, TMT, FXM DEPTH, MFX-CTRL1–4"
+meaning = "Tone parameters controlled by the matrix control; up to four per matrix control, controlled simultaneously. MFX-CTRL1–4 route to the multi-effect control parameters. TMT switches tones (with TMT CONTROL SW ON)."
+doc = "EM"
+pages = [42]
+
+[[param]]
+id = "matrix.sens"
+group = "common.matrix"
+label = "SENS 1–4"
+schema = ["fm.pat.common.matrixControl1Sens1", "fm.pat.common.matrixControl1Sens2", "fm.pat.common.matrixControl1Sens3", "fm.pat.common.matrixControl1Sens4", "fm.pat.common.matrixControl2Sens1", "fm.pat.common.matrixControl2Sens2", "fm.pat.common.matrixControl2Sens3", "fm.pat.common.matrixControl2Sens4", "fm.pat.common.matrixControl3Sens1", "fm.pat.common.matrixControl3Sens2", "fm.pat.common.matrixControl3Sens3", "fm.pat.common.matrixControl3Sens4", "fm.pat.common.matrixControl4Sens1", "fm.pat.common.matrixControl4Sens2", "fm.pat.common.matrixControl4Sens3", "fm.pat.common.matrixControl4Sens4"]
+values = "-63–+63"
+meaning = "Amount of the matrix control's effect. Positive: modifies the destination in the positive direction (higher, to the right, faster, ...) from its current setting; negative: in the negative direction. Larger absolute values = more change; 0 = no effect."
+doc = "EM"
+pages = [42]
+
+[[param]]
+id = "matrix.tone_switch"
+group = "common.matrix"
+label = "TONE 1–4 (Tone Switch 1–4)"
+schema = ["fm.pat.tone[].toneControl1Switch1", "fm.pat.tone[].toneControl1Switch2", "fm.pat.tone[].toneControl1Switch3", "fm.pat.tone[].toneControl1Switch4", "fm.pat.tone[].toneControl2Switch1", "fm.pat.tone[].toneControl2Switch2", "fm.pat.tone[].toneControl2Switch3", "fm.pat.tone[].toneControl2Switch4", "fm.pat.tone[].toneControl3Switch1", "fm.pat.tone[].toneControl3Switch2", "fm.pat.tone[].toneControl3Switch3", "fm.pat.tone[].toneControl3Switch4", "fm.pat.tone[].toneControl4Switch1", "fm.pat.tone[].toneControl4Switch2", "fm.pat.tone[].toneControl4Switch3", "fm.pat.tone[].toneControl4Switch4"]
+values = "OFF, ON, REV"
+meaning = "Which tones the matrix control affects. OFF: not applied. ON: applied. REV: applied in reverse."
+notes = ["[I] Storage is per tone: toneControl{c}Switch{d} in tone t is the switch for matrix control c, destination d, applied to tone t (the MIDI Implementation lists 'Tone Control c Switch d' inside each Patch Tone block)."]
+doc = "EM"
+pages = [42]
+
+# ---------------------------------------------------- EFFECT ROUTING --------
+[[group]]
+id = "fx.routing"
+title = "PATCH EFFECTS: ROUTING"
+doc = "EM"
+pages = [14, 15]
+text = "One MFX, one chorus and one reverb per patch. Patch/tone OUTPUT ASSIGN and the tone send levels (tone.output group) decide what reaches which effect."
+
+[[group]]
+id = "fx.mfx"
+title = "Multi-effect (MFX) settings"
+doc = "EM"
+pages = [15, 16]
+text = "Type-specific parameters: knowledge/mfx.toml."
+
+[[param]]
+id = "mfx.type"
+group = "fx.mfx"
+label = "MFX TYPE"
+schema = ["fm.pat.mfx.mfxType"]
+values = "00: THROUGH – 78: SYMPATHETIC RESONANCE"
+meaning = "Type of multi-effect. 00 THROUGH = no multi-effect. See knowledge/mfx.toml for the 78 types."
+doc = "EM"
+pages = [15, 16]
+
+[[param]]
+id = "mfx.output_level"
+group = "fx.mfx"
+label = "MFX OUTPUT LEVEL (SEND LEVEL OUT)"
+schema = ["fm.pat.mfx.mfxDrySendLevel"]
+values = "0–127"
+meaning = "Volume of the sound processed by the multi-effect."
+doc = "EM"
+pages = [15, 16]
+
+[[param]]
+id = "mfx.chorus_send"
+group = "fx.mfx"
+label = "MFX CHORUS SEND LEVEL (CHO)"
+schema = ["fm.pat.mfx.mfxChorusSendLevel"]
+values = "0–127"
+meaning = "Amount of chorus applied to the sound processed by the multi-effect."
+doc = "EM"
+pages = [15, 16]
+
+[[param]]
+id = "mfx.reverb_send"
+group = "fx.mfx"
+label = "MFX REVERB SEND LEVEL (REV)"
+schema = ["fm.pat.mfx.mfxReverbSendLevel"]
+values = "0–127"
+meaning = "Amount of reverb applied to the sound processed by the multi-effect."
+doc = "EM"
+pages = [15, 16]
+
+[[param]]
+id = "mfx.output_assign"
+group = "fx.mfx"
+label = "MFX Output Assign"
+schema = ["fm.pat.mfx.mfxOutputAssign"]
+values = "A, ---, ---, ---"
+meaning = "Output of the multi-effect. Only 'A' exists; the MIDI Implementation marks it as ignored on reception."
+doc = "MI"
+pages = [10]
+
+[[group]]
+id = "fx.mfx_control"
+title = "MFX CONTROL (Multi-Effect Control 1–4)"
+doc = "EM"
+pages = [16]
+text = "See concept mfx.control."
+
+[[param]]
+id = "mfx.control_source"
+group = "fx.mfx_control"
+label = "CONTROL SOURCE 1–4"
+schema = ["fm.pat.mfx.mfxControl1Source", "fm.pat.mfx.mfxControl2Source", "fm.pat.mfx.mfxControl3Source", "fm.pat.mfx.mfxControl4Source"]
+values = "OFF, CC01–31, CC33–95, PITCH BEND, AFTERTOUCH"
+meaning = "MIDI message that controls the corresponding MFX control parameter. OFF: not used."
+notes = ["[F] Same index rule as matrix source (raw = CC number, 97 = AFTERTOUCH)."]
+doc = "EM"
+pages = [16]
+
+[[param]]
+id = "mfx.control_destination"
+group = "fx.mfx_control"
+label = "DESTINATION 1–4"
+schema = ["fm.pat.mfx.mfxControlAssign1", "fm.pat.mfx.mfxControlAssign2", "fm.pat.mfx.mfxControlAssign3", "fm.pat.mfx.mfxControlAssign4"]
+values = "per MFX type (parameters marked '#' in knowledge/mfx.toml), OFF, 1–16"
+meaning = "Which MFX parameter the CONTROL SOURCE controls. The selectable parameters depend on the MFX type."
+notes = ["[F] Script.xml has a '<type>-destinationTable' string table per MFX type listing the destinations in index order."]
+doc = "EM"
+pages = [16]
+
+[[param]]
+id = "mfx.control_sens"
+group = "fx.mfx_control"
+label = "SENS 1–4"
+schema = ["fm.pat.mfx.mfxControl1Sens", "fm.pat.mfx.mfxControl2Sens", "fm.pat.mfx.mfxControl3Sens", "fm.pat.mfx.mfxControl4Sens"]
+values = "-63–+63"
+meaning = "Depth of multi-effect control. Positive changes the destination in the positive direction (larger, toward the right, faster, ...), negative in the negative direction; larger values give more control."
+doc = "EM"
+pages = [16]
+
+[[group]]
+id = "fx.chorus"
+title = "Chorus unit settings"
+doc = "EM"
+pages = [15, 17, 77]
+text = "Type-specific parameters: knowledge/chorus_reverb.toml."
+
+[[param]]
+id = "chorus.type"
+group = "fx.chorus"
+label = "CHORUS TYPE"
+schema = ["fm.pat.cho.chorusType"]
+values = "OFF, CHORUS, DELAY"
+meaning = "OFF: chorus/delay not used. CHORUS: chorus. DELAY: the chorus unit works as a stereo delay."
+doc = "EM"
+pages = [15, 17, 77]
+
+[[param]]
+id = "chorus.level"
+group = "fx.chorus"
+label = "CHORUS LEVEL"
+schema = ["fm.pat.cho.chorusLevel"]
+values = "0–127"
+meaning = "Volume of the sound processed by the chorus."
+doc = "EM"
+pages = [15, 17, 77]
+
+[[param]]
+id = "chorus.output_select"
+group = "fx.chorus"
+label = "CHORUS OUTPUT SELECT"
+schema = ["fm.pat.cho.chorusOutputSelect"]
+values = "MAIN, MAIN+REV, REV"
+meaning = "Destination of the chorus output. MAIN: stereo to the OUTPUT jacks. MAIN+REV: stereo to OUTPUT and mono to the reverb. REV: mono to the reverb only."
+notes = ["[F] Stored order is MAIN, REV, MAIN+REV (MIDI Implementation: 0 MAIN, 1 REV, 2 MAIN+REV)."]
+doc = "EM"
+pages = [15, 17]
+
+[[param]]
+id = "chorus.output_assign"
+group = "fx.chorus"
+label = "Chorus Output Assign"
+schema = ["fm.pat.cho.chorusOutputAssign"]
+values = "A, ---, ---, ---"
+meaning = "Output of the chorus; only 'A' exists; ignored on reception."
+doc = "MI"
+pages = [11]
+
+[[group]]
+id = "fx.reverb"
+title = "Reverb unit settings"
+doc = "EM"
+pages = [15, 17, 78]
+text = "Type-specific parameters: knowledge/chorus_reverb.toml."
+
+[[param]]
+id = "reverb.type"
+group = "fx.reverb"
+label = "REVERB TYPE"
+schema = ["fm.pat.rev.reverbType"]
+values = "OFF, REVERB, SRV ROOM, SRV HALL, SRV PLATE"
+meaning = "OFF: not used. REVERB: basic reverb (with room/stage/hall and delay variations). SRV ROOM: simulates room reverberation in greater detail. SRV HALL: simulates hall reverberation in greater detail. SRV PLATE: simulation of plate echo (a reverb device using a vibrating metal plate)."
+doc = "EM"
+pages = [15, 17, 78]
+
+[[param]]
+id = "reverb.level"
+group = "fx.reverb"
+label = "REVERB LEVEL"
+schema = ["fm.pat.rev.reverbLevel"]
+values = "0–127"
+meaning = "Volume of the sound processed by the reverb."
+doc = "EM"
+pages = [15, 17, 78]
+
+[[param]]
+id = "reverb.output_assign"
+group = "fx.reverb"
+label = "Reverb Output Assign"
+schema = ["fm.pat.rev.reverbOutputAssign"]
+values = "A, ---, ---, ---"
+meaning = "Output of the reverb; only 'A' exists; ignored on reception."
+doc = "MI"
+pages = [11]

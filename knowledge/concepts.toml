@@ -1,0 +1,267 @@
+# AX-Synth knowledge base: concepts (how the instrument works)
+#
+# Format: see knowledge/README.md. Each [[concept]] has:
+#   id, title, doc ("EM" Editor manual | "OM" Owner's manual | "MI" MIDI Implementation),
+#   pages (printed page numbers in that doc), text (faithful extraction), optional
+#   schema (related data-model paths, [] = any index), optional related (ids in other KB files),
+#   optional notes (project-side facts, marked [F]/[D]/[3P]/[I] where not from the doc itself).
+
+[[concept]]
+id = "architecture.overview"
+title = "Controller section and sound generator section"
+doc = "EM"
+pages = [9]
+text = """
+The AX-Synth consists of a controller section and a sound generator section. The controller section is the keyboard, touch controller (ribbon), modulation bar, panel buttons and knobs, D Beam controller, and pedals connected to the rear panel; the performance information it generates (pressing/releasing keys, pressing the hold button, etc.) is transmitted as MIDI messages to the sound generator section and/or an external MIDI device. The sound generator section produces the sound: it receives MIDI messages from the controller section or an external device, generates sound accordingly, and outputs it from the output and headphone jacks. The AX-Synth plays a single Patch at a time; a variety of effects can be used on that patch."""
+
+[[concept]]
+id = "architecture.patch"
+title = "Patch = up to four Tones"
+doc = "EM"
+pages = [9, 18]
+schema = ["fm.pat"]
+text = """
+Patches are the basic sound configurations you play. Each patch combines up to four tones; each tone can be turned on/off individually (TONE SWITCH, see TMT). A tone is the smallest unit of sound, but a tone cannot be played by itself: the patch is the playable unit and the tones are its building blocks."""
+notes = [
+  "Terminology [D OM]: the Owner's Manual calls a whole sound a 'Tone' (8 families x 32). In the Editor/MIDI Implementation that object is a Patch, and 'Tone 1-4' are its internal layers. This knowledge base uses the Editor meaning: tone = layer.",
+]
+
+[[concept]]
+id = "architecture.tone_signal_path"
+title = "Signal path inside a tone: WG -> TVF -> TVA, with envelopes and 2 LFOs"
+doc = "EM"
+pages = [9, 10]
+schema = ["fm.pat.tone[]"]
+related = ["tone.wg", "tone.pitch_env", "tone.tvf", "tone.tvf_env", "tone.tva", "tone.tva_env", "tone.lfo"]
+text = """
+WG (Wave Generator): specifies the PCM waveform (wave) that is the basis of the sound, and how the pitch changes.
+TVF (Time Variant Filter): specifies how the frequency components of the sound change.
+TVA (Time Variant Amplifier): specifies volume changes and the sound's position in the stereo field.
+Envelope: initiates changes over time. There are separate envelopes for Pitch, TVF (filter) and TVA (volume).
+LFO (Low Frequency Oscillator): creates cyclic changes (modulation). There are two LFOs per tone; either or both can be applied to WG pitch (vibrato), TVF cutoff (wah) and/or TVA volume (tremolo)."""
+
+[[concept]]
+id = "architecture.polyphony"
+title = "Polyphony (128 voices) and voice counting"
+doc = "EM"
+pages = [10]
+related = ["common.priority"]
+text = """
+The AX-Synth plays up to 128 notes simultaneously. Voices used = (patches being played) x (tones used by the patch) x (waves used in the tones). Example: a patch combining four tones, each using two waves (stereo), uses eight voices per note. When more than 128 voices are requested, currently sounding notes are turned off to make room, lowest priority first, as set by Patch Priority (LAST or LOUDEST; usually LAST)."""
+notes = ["Owner's Manual p.35 says the same: notes are cut off beyond 128 voices."]
+
+[[concept]]
+id = "architecture.effects"
+title = "Effect units: one MFX, one Chorus, one Reverb per patch"
+doc = "EM"
+pages = [10, 14, 15]
+related = ["fx.routing", "fx.mfx", "fx.chorus", "fx.reverb"]
+text = """
+Multi-effects (MFX) are multi-purpose effects that completely change the sound type; 78 effect types (plus 00 THROUGH) including simple effects such as distortion and flanger, and types that connect effects in series or parallel. Chorus adds depth and spaciousness and can alternatively work as a delay. Reverb adds the reverberation of halls or auditoriums; four types. Although chorus and reverb types also exist among the MFX types, the separate Chorus and Reverb units are handled by a different system. MFX, chorus and reverb are set individually for each patch; the same effects apply to all tones of the patch, and the per-tone send levels control how strongly each tone is affected. Effect changes are lost when another patch is selected unless the patch is written."""
+
+[[concept]]
+id = "architecture.memory"
+title = "Temporary area, Patch memory (256), System memory"
+doc = "EM"
+pages = [11, 19]
+schema = ["fm.pat", "fm.system"]
+text = """
+Temporary memory holds the data of the patch selected with the panel buttons; the instrument sounds from this data. Editing modifies the temporary area, not memory; the temporary area is lost at power-off or when another patch is selected. To keep settings, write them into Patch memory, which holds 256 patches (Patch Write / the Editor's WRITE button; the previous contents of the destination are overwritten; never switch off while saving). System memory stores system parameters (System Write)."""
+notes = [
+  "[D MI] Temporary Patch = SysEx address 1F 00 00 00; User/Patch memory n = 30 00 00 00 + n x 00 01 00 00 (n = 0..255).",
+  "[D OM p.10, p.26] The synth's own panel [WRITE] button stores FAVORITE/system settings only; patches are written from the Editor/Librarian.",
+]
+
+[[concept]]
+id = "editing.tips"
+title = "Four tips when creating patches (Roland)"
+doc = "EM"
+pages = [18]
+text = """
+1. Choose a patch that is close to what you have in mind; editing an arbitrary patch blindly makes little progress.
+2. Decide which tones you will use: use TONE SWITCH 1-4 to make each tone heard or silent. Turning off unneeded tones also conserves polyphony.
+3. Check the STRUCTURE setting first: it specifies how the four tones are combined; understand the relationship between tones before editing them.
+4. Turn the effects off while editing: effects have a major impact, and turning them off lets you hear the patch itself and the result of your changes. Sometimes editing only the effects is enough to get the sound you want."""
+notes = ["[I] Directly relevant to the AI strategy: start from the nearest factory patch (see research/generated/factory-tones.csv)."]
+
+[[concept]]
+id = "editing.initialize_copy"
+title = "Initialize / Copy / Paste (Editor)"
+doc = "EM"
+pages = [18]
+text = """
+Initialize Patch resets the currently selected patch only; to return all settings to factory values, run a Factory Reset on the AX-Synth itself. Copy copies settings to the clipboard; Paste pastes them to a chosen destination. With TONE SELECT you choose which tone(s) to edit; Shift+click selects several tones and edits change all selected tones simultaneously."""
+
+[[concept]]
+id = "editing.summary_adsr"
+title = "SUMMARY / Zoom view ADSR = envelope T1/T3/L3/T4"
+doc = "EM"
+pages = [7, 21, 22, 23]
+related = ["tone.pitch_env", "tone.tvf_env", "tone.tva_env"]
+text = """
+In [SUMMARY] (Pro Edit) and the Zoom Edit envelope views, the simplified ENV A/D/S/R controls for WG (pitch), TVF and TVA change these envelope values: A (Attack) = ENV T1, D (Decay) = ENV T3, S (Sustain) = ENV L3, R (Release) = ENV T4."""
+notes = ["[I] Useful macro mapping for a simplified GUI: ADSR -> T1, T3, L3, T4 of the chosen envelope."]
+
+[[concept]]
+id = "wave.stereo"
+title = "Stereo waves (L/R pairs)"
+doc = "EM"
+pages = [19, 21, 29]
+schema = ["fm.pat.tone[].waveNumberL", "fm.pat.tone[].waveNumberR"]
+text = """
+Some waves are stereo. A left-channel wave name ends in 'L', a right-channel wave name ends in 'R', and they are numbered consecutively: the right wave number is one greater than the left. In mono only WAVE NUMBER L is specified; in stereo WAVE NUMBER R is also specified (in the Editor: select L, then double-click R to pick the matching right wave). A stereo wave uses two voices per note."""
+
+[[concept]]
+id = "wave.oneshot_loop"
+title = "One-shot vs. loop waveforms"
+doc = "EM"
+pages = [19]
+related = ["tone.control_sw"]
+text = """
+The AX-Synth's internal waveforms are complex PCM waves; choosing a waveform very different from the original may give unexpected results. Two kinds:
+One-shot: short-decay sounds containing the whole sound from attack to silence (percussion, or attack components such as a piano hammer strike or guitar fret noise). The envelope cannot give a one-shot wave a longer decay than it contains, nor make it sustain.
+Loop: long-decay or sustaining sounds; a portion is looped once the sound is stable (vibrating piano string, resonating pipe, ...).
+Example: an electric organ can combine a one-shot key-click with a looped organ wave.
+Many acoustic instruments (piano, sax) have a sudden timbre change at the very start that defines their character; with such waves use the waveform's own attack unmodified and use the envelope only to shape the decay; modifying the attack with the envelope interacts with the wave's own attack and may not give the intended result."""
+
+[[concept]]
+id = "structure.types"
+title = "STRUCTURE types 1-10 (how tone pairs 1&2 and 3&4 are connected)"
+doc = "EM"
+pages = [27, 28]
+schema = ["fm.pat.tmt.structureType12", "fm.pat.tmt.structureType34"]
+related = ["tmt.structure"]
+text = """
+TYPE 01: tones 1 and 2 (or 3 and 4) are independent. Use it to preserve PCM sounds or to create and combine sounds per tone.
+TYPE 02: stacks the two filters together to intensify the filter characteristics. Tone 1 (3) TVA controls the volume balance between the two tones.
+TYPE 03: mixes tone 1 (3) and tone 2 (4), applies a filter, then a booster to distort the waveform.
+TYPE 04: applies a booster to distort the waveform, then combines the two filters. Tone 1 (3) TVA controls the volume balance between the two tones and adjusts the booster level.
+TYPE 05: a ring modulator creates new overtones, and the two filters are combined. Tone 1 (3) TVA controls the balance of the two tones, adjusting the ring modulator depth.
+TYPE 06: ring modulator creates new overtones, and the sound of tone 2 (4) is also mixed in and the two filters stacked. Tone 1 (3) TVA adjusts the amount of ring-modulated sound.
+TYPE 07: filters tone 1 (3) and ring-modulates it with tone 2 (4) to create new overtones.
+TYPE 08: sends filtered tone 1 (3) and tone 2 (4) through a ring modulator, then mixes in tone 2 (4) and applies a filter to the result.
+TYPE 09: passes the filtered sound of each tone through a ring modulator to create new overtones. Tone 1 (3) TVA controls the balance of the two tones, adjusting ring modulator depth.
+TYPE 10: passes the filtered sound of each tone through a ring modulator and also mixes in tone 2 (4). Tone 1 (3) TVA adjusts the amount of ring-modulated sound.
+Rules: when TYPE 02-10 is selected and one tone of the pair is off, the other sounds as TYPE 01 regardless of the display. Key ranges or velocity ranges in which one tone of the pair does not sound behave the same way (notes there sound as TYPE 01). With TYPE 02-10, several settings of tone 1 (3) follow tone 2 (4) because the pair's outputs are combined into tone 2 (4): output assign, tone delay, pan keyfollow / random pan / alternate pan, and LFO settings."""
+notes = ["[D MI] Stored value 0-9 = TYPE 01-10."]
+
+[[concept]]
+id = "structure.booster"
+title = "Booster"
+doc = "EM"
+pages = [28]
+schema = ["fm.pat.tmt.booster12", "fm.pat.tmt.booster34"]
+text = """
+The booster distorts the incoming signal by boosting it (distortion like an electric guitar; higher values = stronger distortion). Used with Structure TYPE 03 or 04. It can also use the waveform of one tone (WG1) as an LFO that shifts the other waveform (WG2) up or down, creating modulation similar to PWM (pulse width modulation). Works best together with WAVE GAIN (set GAIN to maximum when using the booster for distortion)."""
+
+[[concept]]
+id = "structure.ring_modulator"
+title = "Ring modulator"
+doc = "EM"
+pages = [28]
+text = """
+A ring modulator multiplies the waveforms of two tones, generating many new overtones not present in either waveform (evenly spaced harmonic components are usually not generated unless one waveform is a sine wave). As the pitch difference between the two waveforms changes the harmonic structure, the result is an unpitched metallic sound; suitable for metallic sounds such as bells. Available in Structure TYPE 05-10."""
+
+[[concept]]
+id = "wave.fxm"
+title = "FXM (Frequency Cross Modulation)"
+doc = "EM"
+pages = [29]
+schema = ["fm.pat.tone[].waveFXMSwitch", "fm.pat.tone[].waveFXMColor", "fm.pat.tone[].waveFXMDepth"]
+text = """
+FXM uses a specified waveform to apply frequency modulation to the selected waveform, creating complex overtones; useful for dramatic sounds or sound effects. FXM COLOR: higher = grainier, lower = more metallic. FXM DEPTH: depth of modulation."""
+
+[[concept]]
+id = "tone.delay_modes"
+title = "Tone Delay"
+doc = "EM"
+pages = [30]
+schema = ["fm.pat.tone[].toneDelayMode", "fm.pat.tone[].toneDelayTime"]
+text = """
+Tone Delay produces a time delay between the key being pressed (or released) and the tone starting to sound; it can shift the timing at which each tone sounds. Unlike an effect delay, the delayed tones can have their own sound and pitch, so arpeggio-like passages can be played with a single key. If not used: MODE = NORMAL and TIME = 0. With STRUCTURE TYPE 02-10, tone 1 (3) follows tone 2 (4)."""
+
+[[concept]]
+id = "lfo.fade_modes"
+title = "How to apply the LFO (FADE MODE with DELAY TIME and FADE TIME)"
+doc = "EM"
+pages = [39]
+schema = ["fm.pat.tone[].lfoFadeMode[]", "fm.pat.tone[].lfoDelayTime[]", "fm.pat.tone[].lfoFadeTime[]"]
+text = """
+ON-IN: apply the LFO gradually after the key is pressed. DELAY TIME = time from key press until the LFO begins; FADE TIME = time for the LFO amplitude to reach maximum after the delay.
+ON-OUT: apply the LFO immediately at key press, then gradually decrease it. DELAY TIME = time the LFO continues after key press; FADE TIME = time to reach minimum after the delay.
+OFF-IN: apply the LFO gradually after the key is released. DELAY TIME = time from key release until the LFO begins; FADE TIME = time to reach maximum.
+OFF-OUT: apply the LFO from key press until release, and gradually decrease it after release. DELAY TIME = time the LFO continues after release; FADE TIME = time to reach minimum.
+Positive vs. negative DEPTH values give opposite modulation phase: two tones with the same depth but opposite sign modulate in reverse phase, which can alternate between two tones or, combined with pan, move the sound image cyclically."""
+
+[[concept]]
+id = "tmt.overview"
+title = "TMT (Tone Mix Table): velocity and key ranges per tone"
+doc = "EM"
+pages = [40, 41]
+related = ["tmt.velocity", "tmt.key"]
+text = """
+The force with which keys are played (velocity) and the note number can control which tones sound. For each tone, a velocity range (LOWER/UPPER with FADE LOWER/UPPER) and a key range (LOWER/UPPER with FADE LOWER/UPPER) are set. Instead of velocity, the Matrix Control can switch tones (TMT CONTROL SW), but keyboard velocity and Matrix Control cannot be used simultaneously for tone switching: when using Matrix Control, set VELOCITY CONTROL to OFF."""
+
+[[concept]]
+id = "matrix.overview"
+title = "Matrix Control"
+doc = "EM"
+pages = [41, 42]
+related = ["common.matrix"]
+text = """
+Matrix Control uses MIDI messages (SOURCE) to change tone parameters (DESTINATION) in real time by an amount (SENS), for chosen tones (TONE). Up to four Matrix Controls per patch; each can control up to four destinations simultaneously. VELOCITY and KEYFOLLOW correspond to note messages. LFO1/LFO2/PITCH ENV/TVF ENV/TVA ENV are not MIDI messages but can be used as sources: the tone settings then change in real time as the patch is played. If RCV BENDER / RCV EXP / RCV HOLD-1 are ON, those incoming messages also apply their normal pitch bend / expression / hold effect in addition to the destination; turn them OFF to affect only the destination. Parameters that Matrix Control can modulate are marked in the manual with a symbol (lost in text extraction; this KB records the corresponding destination in each param's 'matrix' field instead)."""
+
+[[concept]]
+id = "mfx.control"
+title = "Multi-Effect Control (real-time control of MFX parameters)"
+doc = "EM"
+pages = [16, 17]
+related = ["fx.mfx_control"]
+text = """
+Instead of system exclusive messages, control changes and other common MIDI messages can control the most important MFX parameters in real time (e.g. touch controller -> amount of distortion, keyboard touch -> delay time). The controllable parameters are predetermined per MFX type and are marked '#' in the Effects List ('#1'/'#2': two items change simultaneously). Up to four assignments: SOURCE (MIDI message), DESTINATION (parameter), SENS (amount). Matrix Control (MFX-CTRL1-4 destinations) can also be used. If a tone's RCV BENDER / RCV EXP / RCV HOLD-1 is ON, the message also applies its normal effect; leave them OFF to control only the MFX parameter."""
+
+[[concept]]
+id = "mfx.step_reset"
+title = "STEP RESET for step-sequencer MFX types"
+doc = "EM"
+pages = [45]
+text = """
+06 STEP FILTER, 16 STEP RING MODULATOR, 19 STEP PAN, 20 SLICER and 63 STEP PITCH SHIFTER contain a 16-step sequencer. A Multi-Effect Control with DESTINATION = STEP RESET restarts the sequence from the first step. Example: SOURCE = CC01 (modulation bar), DESTINATION = STEP RESET, SENS = +63 restarts the sequence whenever the modulation bar is operated."""
+
+[[concept]]
+id = "mfx.3d"
+title = "3D (RSS) effects and OUTPUT MODE"
+doc = "EM"
+pages = [45]
+text = """
+29 3D CHORUS, 30 3D FLANGER, 31 3D STEP FLANGER and 52 3D DELAY use RSS (Roland Sound Space) to create spaciousness beyond delay/reverb/chorus. Place speakers appropriately and away from side walls; if the speakers are too far apart or the room is very reverberant, the full 3D effect may not appear. Each has OUTPUT MODE: SPEAKER when listening through speakers, PHONES when listening through headphones."""
+
+[[concept]]
+id = "scale.examples"
+title = "Scale Tune examples (equal, just, Arabian)"
+doc = "EM"
+pages = [12]
+schema = ["fm.system.common.scaleTuneSwitch", "fm.system.common.patchScaleTuneForC"]
+text = """
+Equal temperament divides the octave into 12 equal parts (used when Scale Tune Switch is OFF). Just intonation (tonic C): the principal triads sound pure, but only in one key. Arabian scale: E and B a quarter-tone lower and C#, F#, G# a quarter-tone higher than equal temperament; usable in G, C and F.
+Example offsets in cents (C, C#, D, D#, E, F, F#, G, G#, A, A#, B):
+Equal: 0 0 0 0 0 0 0 0 0 0 0 0
+Just (C): 0 -8 +4 +16 -14 -2 -10 +2 +14 -16 +14 -12
+Arabian: -6 +45 -2 -12 -51 -8 +43 -4 +47 0 -10 -49"""
+notes = ["The sharp/flat signs were lost in the PDF text; the note order follows the MIDI Implementation's example table (p.16), which lists the same values."]
+
+[[concept]]
+id = "performance.controllers"
+title = "The instrument's real-time controllers (what a patch can respond to)"
+doc = "OM"
+pages = [10, 11, 22, 23, 24, 25, 27]
+related = ["common.matrix", "fx.mfx_control", "common.bend", "system.controller"]
+text = """
+MODULATION BAR: sends CC01 (vibrato in most patches; 'Dynamics' for SuperNATURAL tones). The response depends on the patch's assignments made in the Editor.
+TOUCH CONTROLLER ribbon: pitch bend (BENDER MODE off = normal; lit = 'Catch + Last': a note played while touching off-center keeps normal pitch until the finger crosses the center; allows guitar-like 'double bendings'). Not available for SuperNATURAL tones.
+AFTER TOUCH knob: sends channel aftertouch for the notes being played; the keyboard itself sends no aftertouch (it is velocity sensitive). The knob does not return to zero by itself.
+D Beam: PITCH (changes pitch), FILTER (changes cutoff/brightness), ASSIGNABLE (sends the assigned CC01-95, CC32 not available; stored in the system).
+PORTAMENTO button: portamento on/off (for SuperNATURAL tones selectable Hld / SUt mode).
+HOLD button and FOOT PEDAL: hold/sustain (CC64); any pedal acts as hold, expression pedals are not supported.
+Keyboard: 49 keys, velocity sensitive."""
+notes = ["[D Erratum2] The VOLUME knob is analog and transmits no MIDI (CC07).", "[D OM p.40] Recognized CCs include 1, 5, 7, 10, 11, 64, 65, 66, 71-75, 84, 91, 93."]

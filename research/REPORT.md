@@ -38,6 +38,14 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
     - The real-time controllers are the mod bar (CC01), the aftertouch *knob* (the keys send no aftertouch), the ribbon (bend), the D-Beam (pitch / filter / CC01–95 without 32), portamento and hold.
     - The Implementation Chart lists CC71–75, 91 and 93 as received.
 13. **Parameter knowledge base [D].** The **Editor manual** we already had explains every parameter (p.9–43) and every effect type (Effects List p.44–78). No document contains a wave list; `internalWaveNameTableA` in Script.xml remains the only source.
+14. **Knowledge base built** (`knowledge/`, see its README).
+    - **Contents:** Roland's explanation of every parameter and all 78 MFX + 2 chorus + 4 reverb types, plus 24 concepts: structure types, LFO fade modes, TMT, Matrix Control, STEP RESET, 3D effects, controllers and more.
+    - **Format:** each entry has page references and exact data-model links. The TOML sources are validated by `tools/build_knowledge.py`, which also generates `knowledge.json` (joined with addresses, raw ranges, defaults and enum labels) and `knowledge.md`.
+    - **Validation findings:**
+      - The effect names in the manual equal the A8EE.exe names for all 78 MFX types.
+      - Every non-reserved data-model value has an entry.
+      - **172 effect members are tempo-sync variants (`…Sync`/`…Note`) that the AX-Synth manual never documents** [F]. They are likely inherited from the Fantom-X engine.
+      - The `#` (real-time controllable) flags are recorded per parameter.
 
 ## What we strongly suspect (evidence-backed, unverified)
 
@@ -108,17 +116,18 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `research/third-party-patches-analysis.md` | Forum-shared patches in `patches/`, checked against the author's description |
 | `research/owners-manual-analysis.md` | Owner's Manual: Tone list, UI limits, maintenance functions, controllers, design implications, terminology |
 | `research/generated/factory-tones.{json,csv}` | 264 factory Tones (`tools/extract_tone_list.py`); `src/axsynth/factory.py` |
+| `knowledge/` | Knowledge base: meaning of every parameter/effect (TOML sources + generated `knowledge.json`/`knowledge.md`); `tools/build_knowledge.py`; `src/axsynth/knowledge.py` |
 | `research/generated/guitar{,01}-temporary.syx` | Those patches as Temporary-Patch DT1s (not sent) |
 | `research/script-schema.json` | Complete extraction (every element + source line), resolved absolute addresses, unions, tables, UI bindings |
 | `research/generated/parameters.{csv,json}` | Parameter database: 1,934 `fm`+`cm` parameters with address, type, range, default, enum, effect, source line, confidence |
 | `research/generated/crosscheck-midi-implementation.md`, `crosscheck.json` | Script vs official doc, row by row |
 | `research/generated/*.strings.txt`, `*.pdf.txt`, `inventory.json` | EXE strings, PDF text, hashes |
 | `research/generated/experiment-rq1-temporary-patch.syx` | Ready-to-send read-only requests (not sent) |
-| `research/tools/` | `extract_script_schema.py`, `crosscheck_midi_impl.py`, `extract_tone_list.py`, `a8_files.py`, `describe_a8.py`, `build_parameter_db.py`, `dump_experiment.py`, `smf_inspect.py`, `exe_strings.py`, `inventory.py`, `pdf2txt.py` |
+| `research/tools/` | `extract_script_schema.py`, `crosscheck_midi_impl.py`, `extract_tone_list.py`, `build_knowledge.py`, `a8_files.py`, `describe_a8.py`, `build_parameter_db.py`, `dump_experiment.py`, `smf_inspect.py`, `exe_strings.py`, `inventory.py`, `pdf2txt.py` |
 | `dumps/` | Roland "Export SMF" captures (test fixtures) |
 | `patches/` | Third-party `.a8e` patches (test fixtures) |
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
 | `src/axsynth/sysex.py` | Checksum, DT1/RQ1 builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
-| `tests/test_schema.py` | 34 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `tests/test_schema.py` | 40 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

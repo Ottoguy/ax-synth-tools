@@ -1,0 +1,267 @@
+# AX-Synth knowledge base: SYSTEM and SETUP parameters
+#
+# [[param]] fields (see knowledge/README.md):
+#   id, group, label (as printed), schema (data-model paths; "[]" = any index),
+#   values (as printed), meaning, notes (optional), matrix (optional Matrix Control
+#   destination that modulates it), doc ("EM"|"OM"|"MI"), pages.
+
+[[group]]
+id = "system.common"
+title = "System COMMON"
+doc = "EM"
+pages = [12]
+text = "Global settings stored in System memory (address 02 00 00 00, System Common block)."
+
+[[param]]
+id = "system.master_level"
+group = "system.common"
+label = "MASTER LEVEL"
+schema = ["fm.system.common.masterLevel"]
+values = "0–127"
+meaning = "Volume of the entire AX-Synth."
+doc = "EM"
+pages = [12, 20]
+
+[[param]]
+id = "system.master_tune"
+group = "system.common"
+label = "MASTER TUNE"
+schema = ["fm.system.common.masterTune"]
+values = "415.3–466.2 Hz"
+meaning = "Overall tuning of the AX-Synth. The display shows the frequency of the A4 note (center A)."
+notes = ["[D OM p.21] Factory default 440 Hz; also settable on the panel ([SHIFT]+[TRANSPOSE])."]
+doc = "EM"
+pages = [12]
+
+[[param]]
+id = "system.master_key_shift"
+group = "system.common"
+label = "MASTER KEY SHIFT"
+schema = ["fm.system.common.masterKeyShift"]
+values = "-24–+24"
+meaning = "Shifts the overall pitch of the AX-Synth in semitone steps."
+doc = "EM"
+pages = [12]
+
+[[param]]
+id = "system.rxtx_channel"
+group = "system.common"
+label = "PATCH RX/TX CH (Patch Rx/Tx Channel)"
+schema = ["fm.system.common.kbdPatchRxTxChannel"]
+values = "1–16"
+meaning = "Channel used to transmit and receive MIDI messages for the Keyboard part."
+notes = ["[D OM p.27] Receive channel always equals the transmit channel; set on the panel with [SHIFT]+[TX ON]+key."]
+doc = "EM"
+pages = [12, 20]
+
+[[param]]
+id = "system.rcv_pc"
+group = "system.common"
+label = "RCV PC (Receive Program Change)"
+schema = ["fm.system.common.receiveProgramChange"]
+values = "OFF, ON"
+meaning = "Specifies whether Program Change messages will be received (ON) or not (OFF)."
+doc = "EM"
+pages = [12]
+
+[[param]]
+id = "system.rcv_bs"
+group = "system.common"
+label = "RCV BS (Receive Bank Select)"
+schema = ["fm.system.common.receiveBankSelect"]
+values = "OFF, ON"
+meaning = "Specifies whether Bank Select messages will be received (ON) or not (OFF)."
+doc = "EM"
+pages = [12]
+
+[[param]]
+id = "system.scale_tune_switch"
+group = "system.common"
+label = "SCALE TUNE SWITCH"
+schema = ["fm.system.common.scaleTuneSwitch"]
+values = "OFF, ON"
+meaning = "Turn this on when you wish to use a tuning scale other than equal temperament."
+related = ["scale.examples"]
+doc = "EM"
+pages = [12]
+
+[[param]]
+id = "system.scale_tune"
+group = "system.common"
+label = "PATCH SCALE TUNE C–B"
+schema = ["fm.system.common.patchScaleTuneForC", "fm.system.common.patchScaleTuneForC#", "fm.system.common.patchScaleTuneForD", "fm.system.common.patchScaleTuneForD#", "fm.system.common.patchScaleTuneForE", "fm.system.common.patchScaleTuneForF", "fm.system.common.patchScaleTuneForF#", "fm.system.common.patchScaleTuneForG", "fm.system.common.patchScaleTuneForG#", "fm.system.common.patchScaleTuneForA", "fm.system.common.patchScaleTuneForA#", "fm.system.common.patchScaleTuneForB"]
+values = "-64–+63 (cents)"
+meaning = "Pitch of each note of the octave relative to equal temperament, in one-cent units (1 cent = 1/100 semitone), allowing temperaments other than equal temperament. One set of Scale Tune settings can be created; it also applies to MIDI messages received from an external device."
+notes = ["Despite the 'patch' name these values are in System Common (one global set)."]
+related = ["scale.examples"]
+doc = "EM"
+pages = [12]
+
+[[group]]
+id = "system.controller"
+title = "System CONTROLLER"
+doc = "EM"
+pages = [13]
+text = "Controller behaviour stored in System memory (address 02 00 40 00)."
+
+[[param]]
+id = "system.keyboard_velocity"
+group = "system.controller"
+label = "KEYBOARD VELOCITY"
+schema = ["fm.system.controller.keyboardVelocity"]
+values = "REAL, 1–127"
+meaning = "Velocity value transmitted when you play the keyboard. REAL: the actual keyboard velocity is transmitted. 1–127: a fixed velocity is transmitted regardless of how you play."
+doc = "EM"
+pages = [13]
+
+[[param]]
+id = "system.hold_polarity"
+group = "system.controller"
+label = "HOLD PEDAL POLARITY"
+schema = ["fm.system.controller.holdPedalPolarity"]
+values = "STANDARD, REVERSE"
+meaning = "Polarity of the hold pedal. Some pedals output the opposite electrical signal when pressed/released; if your pedal works the wrong way round set REVERSE. For a Roland pedal (no polarity switch) set STANDARD."
+doc = "EM"
+pages = [13]
+
+[[param]]
+id = "system.beam_assign"
+group = "system.controller"
+label = "D BEAM ASSIGN"
+schema = ["fm.system.controller.beamAssign"]
+values = "CC01–CC31, CC33–CC95"
+meaning = "Function (controller number) sent by the D Beam controller when its [ASSIGNABLE] button is active."
+notes = ["[F] Stored index has no CC32 slot: raw 0 = CC01, raw 30 = CC31, raw 31 = CC33, raw 68 = CC70.", "[D OM p.24] Settable on the panel: [SHIFT]+[ASSIGNABLE], 'C01'…'C95'."]
+doc = "EM"
+pages = [13]
+
+[[param]]
+id = "system.beam_range_min"
+group = "system.controller"
+label = "D BEAM RANGE MIN"
+schema = ["fm.system.controller.beamRangeLower"]
+values = "0–127"
+meaning = "Lower limit of the D Beam controller's range. By setting D BEAM RANGE MAX below MIN you can invert the range of change."
+doc = "EM"
+pages = [13]
+
+[[param]]
+id = "system.beam_range_max"
+group = "system.controller"
+label = "D BEAM RANGE MAX"
+schema = ["fm.system.controller.beamRangeUpper"]
+values = "0–127"
+meaning = "Upper limit of the D Beam controller's range. Setting MAX below MIN inverts the range of change."
+doc = "EM"
+pages = [13]
+
+[[param]]
+id = "system.octave_variation_buttons"
+group = "system.controller"
+label = "OCTAVE/VARIATION BUTTONS ASSIGN"
+schema = ["fm.system.controller.neckSwitchSelect"]
+values = "OCTAVE SWITCH, OCTAVE HOLD, VARIATION"
+meaning = "Function of the OCTAVE/VARIATION buttons on the neck. OCTAVE SWITCH: each press shifts the range by one octave (within ±3 octaves). OCTAVE HOLD: the range is raised/lowered by one octave only while the button is held. VARIATION: select the patch."
+notes = ["[D OM p.18, 22] Panel display codes: OCS, OCH, Var."]
+doc = "EM"
+pages = [13]
+
+[[param]]
+id = "system.sn_portamento_mode"
+group = "system.controller"
+label = "Portament Mode (SuperNATURAL portamento: Hld / SUt)"
+schema = []
+values = "SWITCH, HOLD"
+meaning = "Portamento button behaviour for SuperNATURAL tones only. Hld: portamento applies while the [PORTAMENTO] button is held. SUt: the button toggles portamento on/off. Ignored by regular tones."
+notes = ["[D MI] SystemController offset 00 4F. [F] Not in the Editor's Script.xml (its SystemController size is 4F), so no schema path; the Owner's Manual shows the setting exists on the hardware."]
+doc = "OM"
+pages = [24]
+
+[[group]]
+id = "setup"
+title = "SETUP (current selection and switches)"
+doc = "MI"
+pages = [7]
+text = "Setup block at 01 00 00 00. Not described in the Editor manual; descriptions from the MIDI Implementation. Many other Setup bytes are reserved and ignored on reception."
+
+[[param]]
+id = "setup.bank_msb"
+group = "setup"
+label = "Patch Bank Select MSB (CC#0)"
+schema = ["fm.setup.kbdPatchBankSelectMsb"]
+values = "0–127 (66: SuperNATURAL, 87: Regular/Special Patch)"
+meaning = "Bank Select MSB of the currently selected patch."
+notes = ["[F] Real .a8e files store the bank/program that was selected when the file was saved (e.g. 87/0/96 = factory 'SearingGtr 1')."]
+doc = "MI"
+pages = [7]
+
+[[param]]
+id = "setup.bank_lsb"
+group = "setup"
+label = "Patch Bank Select LSB (CC#32)"
+schema = ["fm.setup.kbdPatchBankSelectLsb"]
+values = "0–127 (0: SuperNATURAL, 0–1: Regular Patch, 64: Special Patch)"
+meaning = "Bank Select LSB of the currently selected patch."
+doc = "MI"
+pages = [7]
+
+[[param]]
+id = "setup.program"
+group = "setup"
+label = "Patch Program Number (PC)"
+schema = ["fm.setup.kbdPatchProgramNumber"]
+values = "0–127"
+meaning = "Program number (0-based) of the currently selected patch."
+doc = "MI"
+pages = [7]
+
+[[param]]
+id = "setup.mfx_switch"
+group = "setup"
+label = "MFX1 Switch"
+schema = ["fm.setup.mfx1Switch"]
+values = "BYPASS, ON"
+meaning = "Multi-effect on/bypass (the Editor's MFX ON/OFF switch; EM p.16: the effect on/off settings cannot be saved in the patch)."
+doc = "MI"
+pages = [7]
+
+[[param]]
+id = "setup.chorus_switch"
+group = "setup"
+label = "Chorus Switch"
+schema = ["fm.setup.chorusSwitch"]
+values = "OFF, ON"
+meaning = "Chorus on/off (not saved in the patch; EM p.17)."
+doc = "MI"
+pages = [7]
+
+[[param]]
+id = "setup.reverb_switch"
+group = "setup"
+label = "Reverb Switch"
+schema = ["fm.setup.reverbSwitch"]
+values = "OFF, ON"
+meaning = "Reverb on/off (not saved in the patch; EM p.17)."
+doc = "MI"
+pages = [7]
+
+[[param]]
+id = "setup.transpose"
+group = "setup"
+label = "Transpose Value"
+schema = ["fm.setup.transposeValue"]
+values = "-5–+6 (stored 59–70)"
+meaning = "Keyboard transposition in semitones (panel TRANSPOSE function)."
+notes = ["[D OM p.21] Set with [TRANSPOSE] + OCTAVE/VARIATION [+]/[–]."]
+doc = "MI"
+pages = [7]
+
+[[param]]
+id = "setup.octave_shift"
+group = "setup"
+label = "Octave Shift"
+schema = ["fm.setup.octaveShift"]
+values = "-3–+3 (stored 61–67)"
+meaning = "Keyboard octave shift (panel OCTAVE function)."
+doc = "MI"
+pages = [7]

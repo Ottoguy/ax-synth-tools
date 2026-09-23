@@ -304,5 +304,46 @@ class OwnersManual(unittest.TestCase):
         self.assertEqual((mt[0], mt[-1]), ("415.30", "466.20"))
 
 
+class KnowledgeBase(unittest.TestCase):
+    """knowledge/*.toml (manual extraction) validated against the data model."""
+
+    @classmethod
+    def setUpClass(cls):
+        import build_knowledge
+        cls.kb, cls.errors = build_knowledge.build()
+
+    def test_builds_without_errors(self):
+        self.assertEqual([e for e in self.errors if not e.startswith("WARNING")], [])
+
+    def test_all_effect_types_present(self):
+        self.assertEqual([e["number"] for e in self.kb["mfx"]], list(range(1, 79)))
+        self.assertEqual([e["number"] for e in self.kb["chorus"]], [1, 2])
+        self.assertEqual([e["number"] for e in self.kb["reverb"]], [1, 2, 3, 4])
+
+    def test_only_reserved_values_undocumented(self):
+        for path in self.kb["coverage"]["data_model_values_without_kb_entry"]:
+            self.assertIn("reserve", path.rsplit(".", 1)[1])
+
+    def test_schema_only_effect_members_are_tempo_sync_variants(self):
+        for groups in self.kb["coverage"]["schema_only_effect_members"].values():
+            for members in groups.values():
+                for m in members:
+                    self.assertRegex(m, r"(Sync|Note)$")
+
+    def test_committed_json_is_current(self):
+        import json
+        committed = json.loads((ROOT / "knowledge/knowledge.json").read_text(encoding="utf-8"))
+        self.assertEqual(committed, json.loads(json.dumps(self.kb, ensure_ascii=False)),
+                         "rerun research/tools/build_knowledge.py")
+
+    def test_lookup_api(self):
+        from axsynth import knowledge
+        d = knowledge.describe("fm.pat.tone[2].tvfCutoffFrequency")
+        self.assertEqual(d[0]["id"], "tone.cutoff")
+        e = knowledge.describe("fm.pat.mfx.guitarAmpSimulator-ampType")
+        self.assertEqual((e[0]["kind"], e[0]["number"]), ("mfx", 39))
+        self.assertEqual(knowledge.effect("reverb", 4)["name"], "SRV PLATE")
+
+
 if __name__ == "__main__":
     unittest.main()

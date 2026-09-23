@@ -1,0 +1,2466 @@
+# AX-Synth knowledge base: MFX (multi-effect) types 01-42
+# Source: AX-Synth Editor manual (EM) "Effects List" p.44-61. Format: knowledge/README.md.
+#
+# [[mfx]]: number (= stored mfxType), name (= A8EE.exe display name), manual_name (as printed
+#   when different), category, pages, description, notes.
+# [[mfx.param]]: label, schema (member names inside this type's union group in Script.xml,
+#   i.e. fm.pat.mfx.<prefix>-<member>), values, meaning, control (true = marked '#': usable as
+#   Multi-Effect Control / Matrix Control destination; "#1"/"#2" = two items change together).
+# Stored values of all MFX parameters are offset by 32768 (see script-analysis.md).
+
+# ================================================================ FILTER ======
+[[mfx]]
+number = 1
+name = "EQUALIZER"
+category = "FILTER"
+pages = [46]
+description = "A four-band stereo equalizer (low, mid x 2, high)."
+
+[[mfx.param]]
+label = "Low Freq"
+schema = ["loFreq"]
+values = "200, 400 Hz"
+meaning = "Frequency of the low range."
+
+[[mfx.param]]
+label = "Low Gain"
+schema = ["loGain"]
+values = "-15–+15 dB"
+meaning = "Gain of the low range."
+control = true
+
+[[mfx.param]]
+label = "Mid1 Freq"
+schema = ["mid1Freq"]
+values = "200–8000 Hz"
+meaning = "Frequency of the middle range 1."
+
+[[mfx.param]]
+label = "Mid1 Gain"
+schema = ["mid1Gain"]
+values = "-15–+15 dB"
+meaning = "Gain of the middle range 1."
+
+[[mfx.param]]
+label = "Mid1 Q"
+schema = ["mid1Q"]
+values = "0.5, 1.0, 2.0, 4.0, 8.0"
+meaning = "Width of the middle range 1. A higher Q narrows the range affected."
+
+[[mfx.param]]
+label = "Mid2 Freq"
+schema = ["mid2Freq"]
+values = "200–8000 Hz"
+meaning = "Frequency of the middle range 2."
+
+[[mfx.param]]
+label = "Mid2 Gain"
+schema = ["mid2Gain"]
+values = "-15–+15 dB"
+meaning = "Gain of the middle range 2."
+
+[[mfx.param]]
+label = "Mid2 Q"
+schema = ["mid2Q"]
+values = "0.5, 1.0, 2.0, 4.0, 8.0"
+meaning = "Width of the middle range 2. A higher Q narrows the range affected."
+
+[[mfx.param]]
+label = "High Freq"
+schema = ["hiFreq"]
+values = "2000, 4000, 8000 Hz"
+meaning = "Frequency of the high range."
+
+[[mfx.param]]
+label = "High Gain"
+schema = ["hiGain"]
+values = "-15–+15 dB"
+meaning = "Gain of the high range."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx]]
+number = 2
+name = "SPECTRUM"
+category = "FILTER"
+pages = [46]
+description = "A stereo spectrum: a type of filter that modifies the timbre by boosting or cutting the level at specific frequencies."
+
+[[mfx.param]]
+label = "Band1 (250 Hz) … Band8 (8000 Hz)"
+schema = ["band1", "band2", "band3", "band4", "band5", "band6", "band7", "band8"]
+values = "-15–+15 dB each; bands 250, 500, 1000, 1250, 2000, 3150, 4000, 8000 Hz"
+meaning = "Gain of each frequency band."
+
+[[mfx.param]]
+label = "Q"
+schema = ["width"]
+values = "0.5, 1.0, 2.0, 4.0, 8.0"
+meaning = "Simultaneously adjusts the width of the adjusted ranges for all frequency bands."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx]]
+number = 3
+name = "ISOLATOR"
+category = "FILTER"
+pages = [46]
+description = "An equalizer that cuts the volume greatly, allowing you to add a special effect to the sound by cutting the volume in varying ranges."
+
+[[mfx.param]]
+label = "Boost/Cut Low / Mid / High"
+schema = ["loLevel", "midLevel", "hiLevel"]
+values = "-60–+4 dB"
+meaning = "Boost and cut each of the Low, Middle and High frequency ranges. At -60 dB the range becomes inaudible; 0 dB equals the input level."
+control = true
+
+[[mfx.param]]
+label = "Anti Phase Low Sw"
+schema = ["loApSw"]
+values = "OFF, ON"
+meaning = "Turns the Anti-Phase function on/off for the Low range. When on, the counter-channel of the stereo sound is inverted and added to the signal."
+
+[[mfx.param]]
+label = "Anti Phase Low Level"
+schema = ["loAp"]
+values = "0–127"
+meaning = "Level of the Anti-Phase function for the Low range. Adjusting it for certain frequencies lends emphasis to specific parts (effective only for a stereo source)."
+
+[[mfx.param]]
+label = "Anti Phase Mid Sw"
+schema = ["midApSw"]
+values = "OFF, ON"
+meaning = "Anti-Phase on/off for the Middle range (same as for Low)."
+
+[[mfx.param]]
+label = "Anti Phase Mid Level"
+schema = ["midAp"]
+values = "0–127"
+meaning = "Anti-Phase level for the Middle range (same as for Low)."
+
+[[mfx.param]]
+label = "Low Boost Sw"
+schema = ["boostSw"]
+values = "OFF, ON"
+meaning = "Turns the Low Booster on/off; emphasizes the bottom to create a heavy bass sound."
+
+[[mfx.param]]
+label = "Low Boost Level"
+schema = ["boostLevel"]
+values = "0–127"
+meaning = "Increasing this value gives a heavier low end. Depending on the Isolator and filter settings this effect may be hard to distinguish."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 4
+name = "LOW BOOST"
+category = "FILTER"
+pages = [47]
+description = "Boosts the volume of the lower range, creating powerful lows."
+
+[[mfx.param]]
+label = "Boost Frequency"
+schema = ["freq"]
+values = "50–125 Hz"
+meaning = "Center frequency at which the lower range will be boosted."
+control = true
+
+[[mfx.param]]
+label = "Boost Gain"
+schema = ["gain"]
+values = "0–+12 dB"
+meaning = "Amount by which the lower range will be boosted."
+control = true
+
+[[mfx.param]]
+label = "Boost Width"
+schema = ["width"]
+values = "WIDE, MID, NARROW"
+meaning = "Width of the lower range that will be boosted."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range (2-band EQ)."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 5
+name = "SUPER FILTER"
+category = "FILTER"
+pages = [47]
+description = "A filter with an extremely sharp slope. The cutoff frequency can be varied cyclically."
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filtType"]
+values = "LPF, BPF, HPF, NOTCH"
+meaning = "Frequency range that passes: LPF below the cutoff; BPF around the cutoff; HPF above the cutoff; NOTCH everything except the region around the cutoff."
+
+[[mfx.param]]
+label = "Filter Slope"
+schema = ["filtSlope"]
+values = "-12, -24, -36 dB"
+meaning = "Attenuation per octave: -12 dB gentle, -24 dB steep, -36 dB extremely steep."
+
+[[mfx.param]]
+label = "Filter Cutoff"
+schema = ["filtCutoff"]
+values = "0–127"
+meaning = "Cutoff frequency; higher = higher cutoff."
+control = true
+
+[[mfx.param]]
+label = "Filter Resonance"
+schema = ["filtReso"]
+values = "0–127"
+meaning = "Filter resonance; higher emphasizes the region near the cutoff."
+control = true
+
+[[mfx.param]]
+label = "Filter Gain"
+schema = ["filtGain"]
+values = "0–+12 dB"
+meaning = "Amount of boost for the filter output."
+
+[[mfx.param]]
+label = "Modulation Sw"
+schema = ["modSw"]
+values = "OFF, ON"
+meaning = "On/off switch for cyclic change of the cutoff."
+
+[[mfx.param]]
+label = "Modulation Wave"
+schema = ["modWave"]
+values = "TRI, SQR, SIN, SAW1, SAW2"
+meaning = "How the cutoff is modulated: triangle, square, sine, sawtooth upward (SAW1), sawtooth downward (SAW2)."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Attack"
+schema = ["attack"]
+values = "0–127"
+meaning = "Speed at which the cutoff changes; effective if Modulation Wave is SQR, SAW1 or SAW2."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 6
+name = "STEP FILTER"
+category = "FILTER"
+pages = [47]
+description = "A filter whose cutoff frequency can be modulated in steps; you specify the pattern by which the cutoff changes (16-step sequencer; STEP RESET available)."
+
+[[mfx.param]]
+label = "Step 01–16"
+schema = ["step01", "step02", "step03", "step04", "step05", "step06", "step07", "step08", "step09", "step10", "step11", "step12", "step13", "step14", "step15", "step16"]
+values = "0–127"
+meaning = "Cutoff frequency at each step."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate of modulation (sequence speed)."
+control = true
+
+[[mfx.param]]
+label = "Attack"
+schema = ["attack"]
+values = "0–127"
+meaning = "Speed at which the cutoff changes between steps."
+control = true
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filtType"]
+values = "LPF, BPF, HPF, NOTCH"
+meaning = "LPF passes below the cutoff; BPF around it; HPF above it; NOTCH everything except the region around it."
+
+[[mfx.param]]
+label = "Filter Slope"
+schema = ["filtSlope"]
+values = "-12, -24, -36 dB"
+meaning = "Attenuation per octave: gentle, steep, extremely steep."
+
+[[mfx.param]]
+label = "Filter Resonance"
+schema = ["filtReso"]
+values = "0–127"
+meaning = "Filter resonance; higher emphasizes the region near the cutoff."
+control = true
+
+[[mfx.param]]
+label = "Filter Gain"
+schema = ["filtGain"]
+values = "0–+12 dB"
+meaning = "Amount of boost for the filter output."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 7
+name = "ENHANCER"
+category = "FILTER"
+pages = [48]
+description = "Controls the overtone structure of the high frequencies, adding sparkle and tightness to the sound."
+
+[[mfx.param]]
+label = "Sens"
+schema = ["sens"]
+values = "0–127"
+meaning = "Sensitivity of the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Mix"
+schema = ["mix"]
+values = "0–127"
+meaning = "Level of the overtones generated by the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 8
+name = "AUTO WAH"
+category = "FILTER"
+pages = [48]
+description = "Cyclically controls a filter to create cyclic change in timbre."
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["mode"]
+values = "LPF, BPF"
+meaning = "LPF: the wah effect is applied over a wide frequency range. BPF: over a narrow range."
+
+[[mfx.param]]
+label = "Manual"
+schema = ["manual"]
+values = "0–127"
+meaning = "Center frequency at which the effect is applied."
+control = true
+
+[[mfx.param]]
+label = "Peak"
+schema = ["peak"]
+values = "0–127"
+meaning = "Amount of wah effect around the center frequency; a higher value narrows the affected range (like Q)."
+
+[[mfx.param]]
+label = "Sens"
+schema = ["sens"]
+values = "0–127"
+meaning = "Sensitivity with which the filter is controlled."
+control = true
+
+[[mfx.param]]
+label = "Polarity"
+schema = ["polarity"]
+values = "UP, DOWN"
+meaning = "Direction the frequency changes when the filter is modulated: UP toward higher, DOWN toward lower."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+control = true
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Phase shift between the left and right sounds while the wah is applied."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 9
+name = "HUMANIZER"
+category = "FILTER"
+pages = [48]
+description = "Adds a vowel character to the sound, making it similar to a human voice (overdrive -> formant filter -> 2-band EQ -> pan)."
+
+[[mfx.param]]
+label = "Drive Sw"
+schema = ["driveSw"]
+values = "OFF, ON"
+meaning = "Turns Drive on/off."
+
+[[mfx.param]]
+label = "Drive"
+schema = ["drv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Vowel1 / Vowel2"
+schema = ["vowel1", "vowel2"]
+values = "a, e, i, o, u"
+meaning = "The two vowels the effect switches between."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency at which the two vowels switch."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Effect depth."
+control = true
+
+[[mfx.param]]
+label = "Input Sync Sw"
+schema = ["ksSw"]
+values = "OFF, ON"
+meaning = "Whether the LFO switching the vowels is reset by the input signal (ON) or not (OFF)."
+
+[[mfx.param]]
+label = "Input Sync Threshold"
+schema = ["ksThre"]
+values = "0–127"
+meaning = "Volume level at which the reset is applied."
+
+[[mfx.param]]
+label = "Manual"
+schema = ["manual"]
+values = "0–100"
+meaning = "Point at which Vowel 1/2 switch: 49 or less = Vowel 1 lasts longer; 50 = equal; 51 or more = Vowel 2 lasts longer."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the output."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 10
+name = "SPEAKER SIMULATOR"
+category = "FILTER"
+pages = [49]
+description = "Simulates the speaker type and the mic settings used to record the speaker sound."
+notes = ["Speaker types (cabinet / speaker inches x units / mic): SMALL 1 small open-back 10 dynamic; SMALL 2 small open-back 10 dynamic; MIDDLE open back 12x1 dynamic; JC-120 open back 12x2 dynamic; BUILT-IN 1 open back 12x2 dynamic; BUILT-IN 2–5 open back 12x2 condenser; BG STACK 1 sealed 12x2 condenser; BG STACK 2 large sealed 12x2 condenser; MS STACK 1 and 2 large sealed 12x4 condenser; METAL STACK large double stack 12x4 condenser; 2-STACK large double stack 12x4 condenser; 3-STACK large triple stack 12x4 condenser."]
+
+[[mfx.param]]
+label = "Speaker Type"
+schema = ["spType"]
+values = "SMALL 1, SMALL 2, MIDDLE, JC-120, BUILT-IN 1–5, BG STACK 1–2, MS STACK 1–2, METAL STACK, 2-STACK, 3-STACK"
+meaning = "Type of speaker (see notes for cabinet/speaker/mic of each)."
+
+[[mfx.param]]
+label = "Mic Setting"
+schema = ["micSetting"]
+values = "1, 2, 3"
+meaning = "Location of the mic recording the speaker; it becomes more distant in the order 1, 2, 3."
+
+[[mfx.param]]
+label = "Mic Level"
+schema = ["micLevel"]
+values = "0–127"
+meaning = "Volume of the microphone."
+control = true
+
+[[mfx.param]]
+label = "Direct Level"
+schema = ["directLevel"]
+values = "0–127"
+meaning = "Volume of the direct sound."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+# ============================================================ MODULATION ======
+[[mfx]]
+number = 11
+name = "PHASER"
+category = "MODULATION"
+pages = [49]
+description = "A phase-shifted sound is added to the original sound and modulated."
+
+[[mfx.param]]
+label = "Mode"
+schema = ["mode"]
+values = "4-STAGE, 8-STAGE, 12-STAGE"
+meaning = "Number of stages in the phaser."
+
+[[mfx.param]]
+label = "Manual"
+schema = ["manual"]
+values = "0–127"
+meaning = "Basic frequency from which the sound is modulated."
+control = true
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Polarity"
+schema = ["polarity"]
+values = "INVERSE, SYNCHRO"
+meaning = "INVERSE: left and right modulation phase opposite; spreads a mono source. SYNCHRO: same phase; select for a stereo source."
+
+[[mfx.param]]
+label = "Resonance"
+schema = ["reso"]
+values = "0–127"
+meaning = "Amount of feedback."
+control = true
+
+[[mfx.param]]
+label = "Cross Feedback"
+schema = ["xfbk"]
+values = "-98–+98%"
+meaning = "Proportion of the phaser sound fed back into the effect; negative settings invert the phase."
+
+[[mfx.param]]
+label = "Mix"
+schema = ["mix"]
+values = "0–127"
+meaning = "Level of the phase-shifted sound."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 12
+name = "STEP PHASER"
+category = "MODULATION"
+pages = [50]
+description = "The phaser effect is varied in steps (stepwise change of the phaser effect at Step Rate)."
+notes = ["The manual's one-line description reads 'The phaser effect will be varied gradually.'"]
+
+[[mfx.param]]
+label = "Mode"
+schema = ["mode"]
+values = "4-STAGE, 8-STAGE, 12-STAGE"
+meaning = "Number of stages in the phaser."
+
+[[mfx.param]]
+label = "Manual"
+schema = ["manual"]
+values = "0–127"
+meaning = "Basic frequency from which the sound is modulated."
+control = true
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Polarity"
+schema = ["polarity"]
+values = "INVERSE, SYNCHRO"
+meaning = "INVERSE: left/right phase opposite (spreads a mono source). SYNCHRO: same phase (for a stereo source)."
+
+[[mfx.param]]
+label = "Resonance"
+schema = ["reso"]
+values = "0–127"
+meaning = "Amount of feedback."
+control = true
+
+[[mfx.param]]
+label = "Cross Feedback"
+schema = ["xfbk"]
+values = "-98–+98%"
+meaning = "Proportion of the phaser sound fed back into the effect; negative inverts the phase."
+
+[[mfx.param]]
+label = "Step Rate"
+schema = ["sRateHz"]
+values = "0.10–20.00 Hz"
+meaning = "Rate of the step-wise change in the phaser effect."
+control = true
+
+[[mfx.param]]
+label = "Mix"
+schema = ["mix"]
+values = "0–127"
+meaning = "Level of the phase-shifted sound."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 13
+name = "MULTI STAGE PHASER"
+category = "MODULATION"
+pages = [50]
+description = "Extremely high settings of the phase difference produce a deep phaser effect."
+
+[[mfx.param]]
+label = "Mode"
+schema = ["mode"]
+values = "4-STAGE, 8-STAGE, 12-STAGE, 16-STAGE, 20-STAGE, 24-STAGE"
+meaning = "Number of phaser stages."
+
+[[mfx.param]]
+label = "Manual"
+schema = ["manual"]
+values = "0–127"
+meaning = "Basic frequency from which the sound is modulated."
+control = true
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Resonance"
+schema = ["reso"]
+values = "0–127"
+meaning = "Amount of feedback."
+control = true
+
+[[mfx.param]]
+label = "Mix"
+schema = ["mix"]
+values = "0–127"
+meaning = "Level of the phase-shifted sound."
+control = true
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the output sound."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 14
+name = "INFINITE PHASER"
+category = "MODULATION"
+pages = [50]
+description = "A phaser that keeps raising/lowering the frequency at which the sound is modulated."
+
+[[mfx.param]]
+label = "Mode"
+schema = ["mode"]
+values = "1, 2, 3, 4"
+meaning = "Higher values produce a deeper phaser effect."
+
+[[mfx.param]]
+label = "Speed"
+schema = ["speed"]
+values = "-100–+100"
+meaning = "Speed at which the modulated frequency is raised (+) or lowered (-)."
+control = true
+
+[[mfx.param]]
+label = "Resonance"
+schema = ["reso"]
+values = "0–127"
+meaning = "Amount of feedback."
+control = true
+
+[[mfx.param]]
+label = "Mix"
+schema = ["mix"]
+values = "0–127"
+meaning = "Level of the phase-shifted sound."
+control = true
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Panning of the output sound."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Boost/cut for the low / high frequency range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 15
+name = "RING MODULATOR"
+category = "MODULATION"
+pages = [51]
+description = "Applies amplitude modulation (AM) to the input signal, producing bell-like sounds. The modulation frequency can also change in response to the volume of the sound sent into the effect."
+
+[[mfx.param]]
+label = "Frequency"
+schema = ["freq"]
+values = "0–127"
+meaning = "Frequency at which modulation is applied."
+control = true
+
+[[mfx.param]]
+label = "Sens"
+schema = ["sens"]
+values = "0–127"
+meaning = "Amount of frequency modulation applied (response to input volume)."
+control = true
+
+[[mfx.param]]
+label = "Polarity"
+schema = ["polarity"]
+values = "UP, DOWN"
+meaning = "Whether the frequency modulation moves toward higher (UP) or lower (DOWN) frequencies."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 16
+name = "STEP RING MODULATOR"
+category = "MODULATION"
+pages = [51]
+description = "A ring modulator that uses a 16-step sequence to vary the modulation frequency (STEP RESET available)."
+
+[[mfx.param]]
+label = "Step 01–16"
+schema = ["step01", "step02", "step03", "step04", "step05", "step06", "step07", "step08", "step09", "step10", "step11", "step12", "step13", "step14", "step15", "step16"]
+values = "0–127"
+meaning = "Frequency of ring modulation at each step."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate at which the 16-step sequence cycles."
+control = true
+
+[[mfx.param]]
+label = "Attack"
+schema = ["attack"]
+values = "0–127"
+meaning = "Speed at which the modulation frequency changes between steps."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Boost/cut for the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 17
+name = "TREMOLO"
+category = "MODULATION"
+pages = [51]
+description = "Cyclically modulates the volume to add tremolo to the sound."
+
+[[mfx.param]]
+label = "Mod Wave"
+schema = ["modWave"]
+values = "TRI, SQR, SIN, SAW1, SAW2"
+meaning = "Modulation wave: triangle, square, sine, sawtooth (SAW1/SAW2 = rising/falling)."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of the change."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth to which the effect is applied."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 18
+name = "AUTO PAN"
+category = "MODULATION"
+pages = [52]
+description = "Cyclically modulates the stereo location of the sound."
+
+[[mfx.param]]
+label = "Mod Wave"
+schema = ["modWave"]
+values = "TRI, SQR, SIN, SAW1, SAW2"
+meaning = "Modulation wave: triangle, square, sine, sawtooth (SAW1/SAW2)."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of the change."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth to which the effect is applied."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 19
+name = "STEP PAN"
+category = "MODULATION"
+pages = [52]
+description = "Uses a 16-step sequence to vary the panning of the sound (STEP RESET available)."
+
+[[mfx.param]]
+label = "Step 01–16"
+schema = ["step01", "step02", "step03", "step04", "step05", "step06", "step07", "step08", "step09", "step10", "step11", "step12", "step13", "step14", "step15", "step16"]
+values = "L64–63R"
+meaning = "Pan at each step."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate at which the 16-step sequence cycles."
+control = true
+
+[[mfx.param]]
+label = "Attack"
+schema = ["attack"]
+values = "0–127"
+meaning = "Speed at which the pan changes between steps."
+control = true
+
+[[mfx.param]]
+label = "Input Sync Sw"
+schema = ["resetSw"]
+values = "OFF, ON"
+meaning = "Whether an input note makes the sequence resume from its first step."
+
+[[mfx.param]]
+label = "Input Sync Threshold"
+schema = ["resetThre"]
+values = "0–127"
+meaning = "Volume at which an input note is detected."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 20
+name = "SLICER"
+category = "MODULATION"
+pages = [52]
+description = "Applies successive cuts to the sound, turning a conventional sound into one that appears to be played as a backing phrase; especially effective on sustain-type sounds (16-step sequence; STEP RESET available)."
+
+[[mfx.param]]
+label = "Step 01–16"
+schema = ["step01", "step02", "step03", "step04", "step05", "step06", "step07", "step08", "step09", "step10", "step11", "step12", "step13", "step14", "step15", "step16"]
+values = "0–127"
+meaning = "Level at each step."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate at which the 16-step sequence cycles."
+control = true
+
+[[mfx.param]]
+label = "Attack"
+schema = ["attack"]
+values = "0–127"
+meaning = "Speed at which the level changes between steps."
+control = true
+
+[[mfx.param]]
+label = "Input Sync Sw"
+schema = ["resetSw"]
+values = "OFF, ON"
+meaning = "Whether an input note makes the sequence resume from its first step."
+
+[[mfx.param]]
+label = "Input Sync Threshold"
+schema = ["resetThre"]
+values = "0–127"
+meaning = "Volume at which an input note is detected."
+
+[[mfx.param]]
+label = "Mode"
+schema = ["mode"]
+values = "LEGATO, SLASH"
+meaning = "How the volume changes from step to step. LEGATO: unaltered; equal consecutive levels give no change. SLASH: the level is momentarily set to 0 before the next step, even if the next level is the same."
+
+[[mfx.param]]
+label = "Shuffle"
+schema = ["shuffle"]
+values = "0–127"
+meaning = "Timing of the level changes on even-numbered steps (2, 4, 6, …); higher = later (swing)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 21
+name = "ROTARY"
+category = "MODULATION"
+pages = [53]
+description = "Simulates the rotary speakers often used with electric organs. The high-range and low-range rotors can be set independently, closely simulating the characteristic modulation. Most suitable for electric organ patches."
+
+[[mfx.param]]
+label = "Speed"
+schema = ["speed"]
+values = "SLOW, FAST"
+meaning = "Switches the rotation speed of both rotors simultaneously to their Slow / Fast rates."
+control = true
+
+[[mfx.param]]
+label = "Woofer Slow Speed / Woofer Fast Speed"
+schema = ["wfSlowSpeed", "wfFastSpeed"]
+values = "0.05–10.00 Hz"
+meaning = "Slow and fast rotation speeds of the low-frequency rotor."
+
+[[mfx.param]]
+label = "Woofer Acceleration"
+schema = ["wfAccel"]
+values = "0–15"
+meaning = "Time the low-frequency rotor takes to reach the new speed when switching; lower values = longer times."
+
+[[mfx.param]]
+label = "Woofer Level"
+schema = ["wfLevel"]
+values = "0–127"
+meaning = "Volume of the low-frequency rotor."
+
+[[mfx.param]]
+label = "Tweeter Slow Speed / Fast Speed / Acceleration / Level"
+schema = ["twSlowSpeed", "twFastSpeed", "twAccel", "twLevel"]
+values = "0.05–10.00 Hz / 0.05–10.00 Hz / 0–15 / 0–127"
+meaning = "Same settings for the high-frequency rotor."
+
+[[mfx.param]]
+label = "Separation"
+schema = ["sepa"]
+values = "0–127"
+meaning = "Spatial dispersion of the sound."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx]]
+number = 22
+name = "VK ROTARY"
+category = "MODULATION"
+pages = [53]
+description = "Rotary speaker with modified response and the low end boosted further; same specifications as the VK-7's built-in rotary speaker."
+
+[[mfx.param]]
+label = "Speed"
+schema = ["speed"]
+values = "SLOW, FAST"
+meaning = "Rotational speed of the rotating speaker."
+control = true
+
+[[mfx.param]]
+label = "Brake"
+schema = ["brake"]
+values = "OFF, ON"
+meaning = "ON: the rotation gradually stops. OFF: the rotation gradually resumes."
+control = true
+
+[[mfx.param]]
+label = "Woofer Slow Speed / Woofer Fast Speed"
+schema = ["wfSlowSpeed", "wfFastSpeed"]
+values = "0.05–10.00 Hz"
+meaning = "Low-speed and high-speed rotation of the woofer."
+
+[[mfx.param]]
+label = "Woofer Trans Up"
+schema = ["wfTransUp"]
+values = "0–127"
+meaning = "Rate at which the woofer rotation speeds up when switched from Slow to Fast."
+
+[[mfx.param]]
+label = "Woofer Trans Down"
+schema = ["wfTransDw"]
+values = "0–127"
+meaning = "Rate at which the woofer rotation changes when switched from Fast to Slow."
+
+[[mfx.param]]
+label = "Woofer Level"
+schema = ["wfLevel"]
+values = "0–127"
+meaning = "Volume of the woofer."
+
+[[mfx.param]]
+label = "Tweeter Slow Speed / Fast Speed / Trans Up / Trans Down / Level"
+schema = ["twSlowSpeed", "twFastSpeed", "twTransUp", "twTransDw", "twLevel"]
+values = "0.05–10.00 Hz / 0.05–10.00 Hz / 0–127 / 0–127 / 0–127"
+meaning = "Same settings for the tweeter."
+
+[[mfx.param]]
+label = "Spread"
+schema = ["spread"]
+values = "0–10"
+meaning = "Stereo image of the rotary speaker; higher = wider."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx.param]]
+label = "Type"
+schema = ["type"]
+values = "STANDARD, STACK, CLEAN"
+meaning = "Type of rotary speaker."
+
+# ================================================================ CHORUS ======
+[[mfx]]
+number = 23
+name = "CHORUS"
+category = "CHORUS"
+pages = [54]
+description = "A stereo chorus, with a filter to adjust the timbre of the chorus sound."
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the Cutoff Freq. HPF: cuts below the Cutoff Freq."
+
+[[mfx.param]]
+label = "Cutoff Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Center frequency of the filter."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 24
+name = "FLANGER"
+category = "CHORUS"
+pages = [54]
+description = "A stereo flanger (LFO in phase for left and right). Produces a metallic resonance that rises and falls like a jet airplane taking off or landing; a filter adjusts the timbre of the flanged sound."
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the Cutoff Freq. HPF: cuts below it."
+
+[[mfx.param]]
+label = "Cutoff Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Center frequency of the filter."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the flanger sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 25
+name = "STEP FLANGER"
+category = "CHORUS"
+pages = [55]
+description = "A flanger whose pitch changes in steps. The speed of the pitch change can also be specified as a note value of a specified tempo."
+notes = ["[F] The tempo/note-value option corresponds to the schema members sRateSync/sRateNote (not further documented)."]
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the Cutoff Freq. HPF: cuts below it."
+
+[[mfx.param]]
+label = "Cutoff Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Center frequency of the filter."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Step Rate"
+schema = ["sRateHz"]
+values = "0.10–20.00 Hz"
+meaning = "Rate (period) of the pitch change."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the flanger sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 26
+name = "HEXA-CHORUS"
+category = "CHORUS"
+pages = [55]
+description = "A six-phase chorus (six layers of chorused sound) giving richness and spatial spread."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Pre Delay Deviation"
+schema = ["dlyDev"]
+values = "0–20"
+meaning = "Differences in Pre Delay between the chorus sounds."
+
+[[mfx.param]]
+label = "Depth Deviation"
+schema = ["depthDev"]
+values = "-20–+20"
+meaning = "Difference in modulation depth between the chorus sounds."
+
+[[mfx.param]]
+label = "Pan Deviation"
+schema = ["panDev"]
+values = "0–20"
+meaning = "Difference in stereo location between the chorus sounds: 0 = all in the center; 20 = spaced at 60-degree intervals relative to the center."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 27
+name = "TREMOLO CHORUS"
+category = "CHORUS"
+pages = [56]
+description = "A chorus with added tremolo (cyclic modulation of volume)."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Chorus Rate"
+schema = ["choRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Modulation frequency of the chorus."
+control = true
+
+[[mfx.param]]
+label = "Chorus Depth"
+schema = ["choDepth"]
+values = "0–127"
+meaning = "Modulation depth of the chorus."
+
+[[mfx.param]]
+label = "Tremolo Rate"
+schema = ["treRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Modulation frequency of the tremolo."
+control = true
+
+[[mfx.param]]
+label = "Tremolo Separation"
+schema = ["treSepa"]
+values = "0–127"
+meaning = "Spread of the tremolo effect."
+
+[[mfx.param]]
+label = "Tremolo Phase"
+schema = ["trePhs"]
+values = "0–180 deg"
+meaning = "Spread of the tremolo effect (phase)."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the tremolo chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 28
+name = "SPACE-D"
+category = "CHORUS"
+pages = [56]
+description = "A multiple chorus applying two-phase modulation in stereo. It gives no impression of modulation, but a transparent chorus effect."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 29
+name = "3D CHORUS"
+category = "CHORUS"
+pages = [56]
+description = "Applies a 3D (RSS) effect to the chorus sound: the chorus sound is positioned 90 degrees left and 90 degrees right."
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the Cutoff Freq. HPF: cuts below it."
+
+[[mfx.param]]
+label = "Cutoff Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Center frequency of the filter."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Modulation depth of the chorus."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Output Mode"
+schema = ["out"]
+values = "SPEAKER, PHONES"
+meaning = "How the output is heard: SPEAKER for speakers, PHONES for headphones (optimal 3D effect)."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 30
+name = "3D FLANGER"
+category = "CHORUS"
+pages = [57]
+description = "Applies a 3D effect to the flanger sound, positioned 90 degrees left and 90 degrees right."
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the Cutoff Freq. HPF: cuts below it."
+
+[[mfx.param]]
+label = "Cutoff Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Center frequency of the filter."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Output Mode"
+schema = ["out"]
+values = "SPEAKER, PHONES"
+meaning = "SPEAKER for speakers, PHONES for headphones (optimal 3D effect)."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the flanger sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 31
+name = "3D STEP FLANGER"
+category = "CHORUS"
+pages = [57]
+description = "Applies a 3D effect to the step flanger sound, positioned 90 degrees left and 90 degrees right."
+
+[[mfx.param]]
+label = "Filter Type"
+schema = ["filt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the Cutoff Freq. HPF: cuts below it."
+
+[[mfx.param]]
+label = "Cutoff Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Center frequency of the filter."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Step Rate"
+schema = ["sRateHz"]
+values = "0.10–20.00 Hz"
+meaning = "Rate (period) of the pitch change."
+control = true
+
+[[mfx.param]]
+label = "Output Mode"
+schema = ["out"]
+values = "SPEAKER, PHONES"
+meaning = "SPEAKER for speakers, PHONES for headphones (optimal 3D effect)."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the flanger sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 32
+name = "2BAND CHORUS"
+manual_name = "2 BAND CHORUS"
+category = "CHORUS"
+pages = [58]
+description = "A chorus that applies the effect independently to the low-frequency and high-frequency ranges."
+
+[[mfx.param]]
+label = "Split Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Frequency at which the low and high ranges are divided."
+
+[[mfx.param]]
+label = "Low Pre Delay"
+schema = ["loDly"]
+values = "0.0–100 msec"
+meaning = "Delay from the original sound to the low-range chorus sound."
+
+[[mfx.param]]
+label = "Low Rate"
+schema = ["loRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate at which the low-range chorus sound is modulated."
+control = true
+
+[[mfx.param]]
+label = "Low Depth"
+schema = ["loDepth"]
+values = "0–127"
+meaning = "Modulation depth of the low-range chorus sound."
+
+[[mfx.param]]
+label = "Low Phase"
+schema = ["loPhs"]
+values = "0–180 deg"
+meaning = "Spaciousness of the low-range chorus sound."
+
+[[mfx.param]]
+label = "High Pre Delay"
+schema = ["hiDly"]
+values = "0.0–100 msec"
+meaning = "Delay from the original sound to the high-range chorus sound."
+
+[[mfx.param]]
+label = "High Rate"
+schema = ["hiRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate at which the high-range chorus sound is modulated."
+control = true
+notes = ["The manual's explanation text says 'low-range' here, evidently a typo."]
+
+[[mfx.param]]
+label = "High Depth"
+schema = ["hiDepth"]
+values = "0–127"
+meaning = "Modulation depth of the high-range chorus sound."
+
+[[mfx.param]]
+label = "High Phase"
+schema = ["hiPhs"]
+values = "0–180 deg"
+meaning = "Spaciousness of the high-range chorus sound."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and the chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 33
+name = "2BAND FLANGER"
+manual_name = "2 BAND FLANGER"
+category = "CHORUS"
+pages = [58]
+description = "A flanger that applies the effect independently to the low-frequency and high-frequency ranges."
+
+[[mfx.param]]
+label = "Split Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Frequency at which the low and high ranges are divided."
+
+[[mfx.param]]
+label = "Low Pre Delay / Low Rate / Low Depth / Low Phase"
+schema = ["loDly", "loRateHz", "loDepth", "loPhs"]
+values = "0.0–100 msec / 0.05–10.00 Hz / 0–127 / 0–180 deg"
+meaning = "Low-range flanger: delay from the original sound, modulation rate, modulation depth, spaciousness."
+control = ["loRateHz"]
+
+[[mfx.param]]
+label = "Low Feedback"
+schema = ["loFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the low-range flanger sound returned to the input (negative inverts the phase)."
+control = true
+
+[[mfx.param]]
+label = "High Pre Delay / High Rate / High Depth / High Phase"
+schema = ["hiDly", "hiRateHz", "hiDepth", "hiPhs"]
+values = "0.0–100 msec / 0.05–10.00 Hz / 0–127 / 0–180 deg"
+meaning = "High-range flanger: delay, modulation rate, depth, spaciousness."
+control = ["hiRateHz"]
+
+[[mfx.param]]
+label = "High Feedback"
+schema = ["hiFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the high-range flanger sound returned to the input (negative inverts the phase)."
+control = true
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and the flanger sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 34
+name = "2BAND STEP FLANGER"
+manual_name = "2 BAND STEP FLANGER"
+category = "CHORUS"
+pages = [59]
+description = "A step flanger that applies the effect independently to the low-frequency and high-frequency ranges."
+
+[[mfx.param]]
+label = "Split Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Frequency at which the low and high ranges are divided."
+
+[[mfx.param]]
+label = "Low Pre Delay / Low Rate / Low Depth / Low Phase"
+schema = ["loDly", "loRateHz", "loDepth", "loPhs"]
+values = "0.0–100 msec / 0.05–10.00 Hz / 0–127 / 0–180 deg"
+meaning = "Low-range flanger: delay, modulation rate, depth, spaciousness."
+control = ["loRateHz"]
+
+[[mfx.param]]
+label = "Low Feedback"
+schema = ["loFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the low-range flanger sound returned to the input."
+control = true
+
+[[mfx.param]]
+label = "Low Step Rate"
+schema = ["loSRateHz"]
+values = "0.10–20.00 Hz"
+meaning = "Rate at which the steps cycle for the low-range flanger sound."
+control = true
+
+[[mfx.param]]
+label = "High Pre Delay / High Rate / High Depth / High Phase"
+schema = ["hiDly", "hiRateHz", "hiDepth", "hiPhs"]
+values = "0.0–100 msec / 0.05–10.00 Hz / 0–127 / 0–180 deg"
+meaning = "High-range flanger: delay, modulation rate, depth, spaciousness."
+control = ["hiRateHz"]
+
+[[mfx.param]]
+label = "High Feedback"
+schema = ["hiFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the high-range flanger sound returned to the input."
+control = true
+
+[[mfx.param]]
+label = "High Step Rate"
+schema = ["hiSRateHz"]
+values = "0.10–20.00 Hz"
+meaning = "Rate at which the steps cycle for the high-range flanger sound."
+control = true
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and the flanger sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+# ============================================================== DYNAMICS ======
+[[mfx]]
+number = 35
+name = "OVERDRIVE"
+category = "DYNAMICS"
+pages = [59]
+description = "Creates a soft distortion similar to that produced by vacuum tube amplifiers (overdrive -> amp simulator -> 2-band EQ)."
+
+[[mfx.param]]
+label = "Drive"
+schema = ["drv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Amp Type"
+schema = ["ampType"]
+values = "SMALL, BUILT-IN, 2-STACK, 3-STACK"
+meaning = "Type of guitar amp: small amp, single-unit amp, large double stack, large triple stack."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the output sound."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 36
+name = "DISTORTION"
+category = "DYNAMICS"
+pages = [59]
+description = "Produces a more intense distortion than Overdrive. Parameters are the same as 35 OVERDRIVE."
+
+[[mfx.param]]
+label = "Drive"
+schema = ["drv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Amp Type"
+schema = ["ampType"]
+values = "SMALL, BUILT-IN, 2-STACK, 3-STACK"
+meaning = "Type of guitar amp: small, single-unit, large double stack, large triple stack."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the output sound."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 37
+name = "VS OVERDRIVE"
+category = "DYNAMICS"
+pages = [60]
+description = "An overdrive that provides heavy distortion."
+
+[[mfx.param]]
+label = "Drive"
+schema = ["drv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Tone"
+schema = ["tone"]
+values = "0–127"
+meaning = "Sound quality of the overdrive effect."
+control = true
+
+[[mfx.param]]
+label = "Amp Sw"
+schema = ["ampSw"]
+values = "OFF, ON"
+meaning = "Turns the amp simulator on/off."
+
+[[mfx.param]]
+label = "Amp Type"
+schema = ["ampType"]
+values = "SMALL, BUILT-IN, 2-STACK, 3-STACK"
+meaning = "Type of guitar amp: small, single-unit, large double stack, large triple stack."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the output sound."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 38
+name = "VS DISTORTION"
+category = "DYNAMICS"
+pages = [60]
+description = "A distortion that provides heavy distortion. Parameters are the same as 37 VS OVERDRIVE."
+
+[[mfx.param]]
+label = "Drive"
+schema = ["drv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Tone"
+schema = ["tone"]
+values = "0–127"
+meaning = "Sound quality of the distortion effect."
+control = true
+
+[[mfx.param]]
+label = "Amp Sw"
+schema = ["ampSw"]
+values = "OFF, ON"
+meaning = "Turns the amp simulator on/off."
+
+[[mfx.param]]
+label = "Amp Type"
+schema = ["ampType"]
+values = "SMALL, BUILT-IN, 2-STACK, 3-STACK"
+meaning = "Type of guitar amp."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the output sound."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 39
+name = "GUITAR AMP SIMULATOR"
+category = "DYNAMICS"
+pages = [60, 61]
+description = "Simulates the sound of a guitar amplifier (pre-amp -> speaker)."
+notes = ["Speaker types as for 10 SPEAKER SIMULATOR (see that entry's notes).", "[3P] Used by the forum metal-lead patches (patches/*.a8e) with Pre Amp Type METAL LEAD and speaker MS STACK 1."]
+
+[[mfx.param]]
+label = "Pre Amp Sw"
+schema = ["ampSw"]
+values = "OFF, ON"
+meaning = "Turns the amp on/off."
+
+[[mfx.param]]
+label = "Pre Amp Type"
+schema = ["ampType"]
+values = "JC-120, CLEAN TWIN, MATCH DRIVE, BG LEAD, MS1959I, MS1959II, MS1959I+II, SLDN LEAD, METAL 5150, METAL LEAD, OD-1, OD-2 TURBO, DISTORTION, FUZZ"
+meaning = "Type of guitar amp."
+
+[[mfx.param]]
+label = "Pre Amp Volume"
+schema = ["ampVolume"]
+values = "0–127"
+meaning = "Volume and amount of distortion of the amp."
+control = true
+
+[[mfx.param]]
+label = "Pre Amp Master"
+schema = ["ampMaster"]
+values = "0–127"
+meaning = "Volume of the entire pre-amp."
+control = true
+
+[[mfx.param]]
+label = "Pre Amp Gain"
+schema = ["ampGain"]
+values = "LOW, MIDDLE, HIGH"
+meaning = "Amount of pre-amp distortion."
+
+[[mfx.param]]
+label = "Pre Amp Bass / Middle / Treble"
+schema = ["ampBass", "ampMiddle", "ampTreble"]
+values = "0–127"
+meaning = "Tone of the bass / mid / treble range. Middle cannot be set if the Pre Amp Type is MATCH DRIVE."
+
+[[mfx.param]]
+label = "Pre Amp Presence"
+schema = ["ampPresence"]
+values = "0–127"
+meaning = "Tone of the ultra-high frequency range."
+
+[[mfx.param]]
+label = "Pre Amp Bright"
+schema = ["ampBright"]
+values = "OFF, ON"
+meaning = "ON gives a sharper, brighter sound. Applies to the JC-120, CLEAN TWIN and BG LEAD types."
+
+[[mfx.param]]
+label = "Speaker Sw"
+schema = ["spSw"]
+values = "OFF, ON"
+meaning = "Whether the signal passes through the speaker simulation."
+
+[[mfx.param]]
+label = "Speaker Type"
+schema = ["spType"]
+values = "SMALL 1, SMALL 2, MIDDLE, JC-120, BUILT-IN 1–5, BG STACK 1–2, MS STACK 1–2, METAL STACK, 2-STACK, 3-STACK"
+meaning = "Type of speaker."
+
+[[mfx.param]]
+label = "Mic Setting"
+schema = ["micSetting"]
+values = "1, 2, 3"
+meaning = "Location of the mic capturing the speaker; more distant as the value increases."
+
+[[mfx.param]]
+label = "Mic Level"
+schema = ["micLevel"]
+values = "0–127"
+meaning = "Volume of the mic."
+
+[[mfx.param]]
+label = "Direct Level"
+schema = ["directLevel"]
+values = "0–127"
+meaning = "Volume of the direct sound."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the output."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx]]
+number = 40
+name = "COMPRESSOR"
+category = "DYNAMICS"
+pages = [61]
+description = "Flattens out high levels and boosts low levels, smoothing out fluctuations in volume."
+
+[[mfx.param]]
+label = "Attack"
+schema = ["atk"]
+values = "0–127"
+meaning = "Time from when the input exceeds the Threshold until compression starts."
+control = true
+
+[[mfx.param]]
+label = "Threshold"
+schema = ["thres"]
+values = "0–127"
+meaning = "Volume at which compression begins."
+control = true
+
+[[mfx.param]]
+label = "Post Gain"
+schema = ["gain"]
+values = "0–+18 dB"
+meaning = "Output gain."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx]]
+number = 41
+name = "LIMITER"
+category = "DYNAMICS"
+pages = [61]
+description = "Compresses signals that exceed a specified volume level, preventing distortion."
+
+[[mfx.param]]
+label = "Release"
+schema = ["rels"]
+values = "0–127"
+meaning = "Time after the signal falls below the Threshold until compression is no longer applied."
+control = true
+
+[[mfx.param]]
+label = "Threshold"
+schema = ["thres"]
+values = "0–127"
+meaning = "Volume at which compression begins."
+control = true
+
+[[mfx.param]]
+label = "Ratio"
+schema = ["ratio"]
+values = "1.5:1, 2:1, 4:1, 100:1"
+meaning = "Compression ratio."
+
+[[mfx.param]]
+label = "Post Gain"
+schema = ["gain"]
+values = "0–+18 dB"
+meaning = "Output gain."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx]]
+number = 42
+name = "GATE"
+category = "DYNAMICS"
+pages = [61]
+description = "Cuts the reverb's delay according to the volume of the sound sent into the effect; use it to create an artificial-sounding decrease in the reverb's decay."
+
+[[mfx.param]]
+label = "Threshold"
+schema = ["thres"]
+values = "0–127"
+meaning = "Volume level at which the gate begins to close."
+control = true
+
+[[mfx.param]]
+label = "Mode"
+schema = ["mode"]
+values = "GATE, DUCK"
+meaning = "GATE: the gate closes when the original sound's volume decreases, cutting it. DUCK (ducking): the gate closes when the original sound's volume increases, cutting it."
+
+[[mfx.param]]
+label = "Attack"
+schema = ["atk"]
+values = "0–127"
+meaning = "Time for the gate to fully open after being triggered."
+
+[[mfx.param]]
+label = "Hold"
+schema = ["hold"]
+values = "0–127"
+meaning = "Time until the gate starts closing after the source falls below the Threshold."
+
+[[mfx.param]]
+label = "Release"
+schema = ["rels"]
+values = "0–127"
+meaning = "Time for the gate to fully close after the hold time."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."

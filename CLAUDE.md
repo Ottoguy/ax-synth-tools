@@ -26,7 +26,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**34 tests, all passing**). No pytest.
+- Tests: `py -3 -m unittest discover -s tests` (**40 tests, all passing**). No pytest.
 - Not a git repo yet. `.gitignore` exists (see §9).
 
 ## 4. Repository map
@@ -59,12 +59,18 @@ ax-synth-ai/
 ├── patches/                  third-party forum patches (.a8e) + author's description; test fixtures; check license before publishing
 │   ├── guitar.a8e            "SearingGtr 1" tuned: "muted chug" layer, beam=CC71
 │   └── guitar01.a8e          "SearingGtr 1" tuned: CC70 "feedback" works, beam=CC70, +24 sine layer
+├── knowledge/                LLM/human KNOWLEDGE BASE: meaning of every parameter & effect type (see knowledge/README.md)
+│   ├── concepts.toml, system.toml, patch.toml, mfx-01-42.toml, mfx-43-78.toml, chorus_reverb.toml   SOURCE (hand-extracted from Editor manual + OM + MI, page refs, schema links)
+│   ├── knowledge.json        GENERATED: validated, joined with data-model facts (addresses, raw ranges, defaults, enums)
+│   ├── knowledge.md          GENERATED: human-readable rendering
+│   └── README.md             format spec, conventions, coverage
 ├── src/axsynth/              typed library (stdlib only), see §8
-│   ├── __init__.py           empty
+│   ├── __init__.py           package docstring
 │   ├── schema.py             Schema, Parameter, ValueDef, value codec, address helpers
 │   ├── sysex.py              DT1/RQ1 build/parse, checksum, whole-patch encoder, .syx/SMF readers (no MIDI I/O)
-│   └── factory.py            factory Tone list access
-├── tests/test_schema.py      34 evidence tests (§10)
+│   ├── factory.py            factory Tone list access
+│   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
+├── tests/test_schema.py      40 evidence tests (§10)
 └── research/
     ├── README.md             index: question -> file
     ├── REPORT.md             MAIN findings report: known / suspected / unknown / next experiments / files
@@ -97,11 +103,12 @@ ax-synth-ai/
 | 2 | `py -3 research/tools/crosscheck_midi_impl.py` | script-schema.json, `generated/midi-implementation.pdf.txt` | `generated/crosscheck-midi-implementation.md`, `generated/crosscheck.json` |
 | 3 | `py -3 research/tools/build_parameter_db.py` | via `axsynth.schema` (schema + crosscheck.json) | `generated/parameters.{json,csv}` |
 | 4 | `py -3 research/tools/extract_tone_list.py` | `generated/owners-manual.pdf.txt` | `generated/factory-tones.{json,csv}` |
+| 5 | `py -3 research/tools/build_knowledge.py` | `knowledge/*.toml`, data model (via `axsynth.schema`) | `knowledge/knowledge.{json,md}`; exit 1 on broken links |
 | – | `.\.venv\Scripts\python.exe research/tools/pdf2txt.py x <outdir> <pdf>...` | PDFs | `<outdir>/<pdf stem, spaces→_>.txt` (argv[1] is an unused placeholder); rename to the `*.pdf.txt` convention by hand |
 | – | `py -3 research/tools/exe_strings.py <file> [minlen] > out.txt` | binary | strings list |
 | – | `py -3 research/tools/inventory.py` | original-roland-files/ | `generated/inventory.json` |
 
-Rerun 1→3 after changing the extractor or schema.py; then run the tests.
+Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing `knowledge/*.toml`; then run the tests (a test fails if `knowledge.json` is stale).
 
 ## 6. Source documents and what each is authoritative for
 
@@ -110,7 +117,7 @@ Rerun 1→3 after changing the extractor or schema.py; then run the tests.
 | `Script.xml` [F] | parameter names, per-value address/size/type/range/default, struct tree, effect unions (`mfxValuePathTable` etc.), enum labels (`stringTable`), sparse enum values (`numberTable`), 313 wave names (`internalWaveNameTableA`, l.16202), undocumented `CommunicationModel` | Has anomalies (§11) |
 | MIDI Implementation PDF [D] | model ID, DT1/RQ1 format, checksum, address map incl. **User patches `30 00 00 00`+n·`00 01 00 00`**, nibble encoding definition, packet rule (≤256 B, ~20 ms) | Has typos (§11) |
 | Owner's Manual [D] | factory Tone list (p.37–38), UI/panel, Bulk Dump (p.29), factory reset/firmware (p.34), controllers, Implementation Chart (p.40) | No parameter explanations, no wave list |
-| Editor manual [D] | **meaning of every parameter** (p.9–43) and every effect type (Effects List p.44–78) = the future LLM knowledge base | Not yet mined into structured data |
+| Editor manual [D] | **meaning of every parameter** (p.9–43) and every effect type (Effects List p.44–78) | Fully extracted into `knowledge/` (validated against the data model) |
 | Librarian manual [D] | 256 patches = Bank 1–8 × Number 1–32; memos aren't stored on the device | |
 | Erratum2 [D] | VOLUME knob is analog, sends no CC07; D-Beam sends CC01–31, 33–95 | |
 | dumps/*.mid [F] | exact bytes/order/pacing Roland software sends | |
@@ -124,6 +131,7 @@ Rerun 1→3 after changing the extractor or schema.py; then run the tests.
 | `crosscheck_midi_impl.py` | no args | parse doc rows, compare offset/encoding/range/size |
 | `build_parameter_db.py` | no args | export `Schema.parameters(None)` for fm+cm |
 | `extract_tone_list.py` | no args | Owner's Manual Tone list → factory-tones |
+| `build_knowledge.py` | no args | validate `knowledge/*.toml` against the data model; write `knowledge.json` + `knowledge.md`; report coverage |
 | `a8_files.py` | `<file.a8e/.a8l> [--all] [--json]` | parse Koa data / Librarian files, decode all values, flag inactive union members |
 | `describe_a8.py` | `<A> [B] [--all]` | non-default active values with labels; or A-vs-B diff; flags out-of-range |
 | `smf_inspect.py` | `<file.mid> [--summary]` | every SMF event with ticks; Roland SysEx header, address, length, checksum |
@@ -144,6 +152,9 @@ Rerun 1→3 after changing the extractor or schema.py; then run the tests.
 - `checksum(body)`, `build_dt1(addr, data, device)`, `build_rq1(addr, size, device)`, `parse(msg) -> RolandMessage(device, model_id, command, address, payload, checksum_ok)`, `split_sysex(bytes)`, `smf_sysex(bytes)`
 - `user_patch_address(n)`, `patch_messages(blocks: {name: image}, base=TEMPORARY_PATCH) -> 9 DT1` (**byte-identical to Roland's export**), `roland_export_delay_ticks(msg_len, ppq=96, bpm=120)`
 
+`knowledge.py` (reads `knowledge/knowledge.json`)
+- `describe(path) -> list[{kind, id|number, type, entry}]` (any data-model path, tone/array index ignored), `effect(kind, number)`, `concept(id)`, `param(id)`, `load()`
+
 `factory.py`
 - `tones() -> tuple[FactoryTone]` (group, position, name, cc00_msb, cc32_lsb, pc [1-based], editable, user_patch_index, librarian_slot, user_patch_address), `by_name(name)` (ignores spaces/dots/case), `by_program(msb, lsb, pc0)`, `by_user_index(n)`, `families()`
 
@@ -153,7 +164,7 @@ Ignored: `original-roland-files/**/*.exe`, `original-roland-files/**/*.bmp`, `do
 
 ## 10. Test coverage (`tests/test_schema.py`)
 
-`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges).
+`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API).
 
 ## 11. Core technical facts (quick reference; details in `research/`)
 
@@ -220,6 +231,11 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - PORTAMENTO, HOLD = CC64. The foot pedal is hold only; no expression pedal.
 - Received real-time CCs 71–75 (+76–78 per MIDI Impl.), 91 and 93 are relative offsets that aren't stored.
 - Patch-level macro-like params: PatchCommon `cutoffOffset`, `resonanceOffset`, `attackTimeOffset`, `releaseTimeOffset`, `velocitySensOffset` (1–127, 64 = 0).
+
+**Knowledge base facts.**
+- All 78 MFX, 2 chorus and 4 reverb types are documented, with 697 effect-parameter links.
+- Every non-reserved `fm` value has an entry.
+- 172 effect members (`…Sync`/`…Note` tempo-sync variants of rate/delay parameters) exist in the data model but not in the AX-Synth manual; leave them at their defaults.
 
 **Known anomalies/discrepancies.**
 - `stepPitchShifter-bal/level` have address `00 81`/`00 85` (bytes > 0x7F); base-128 decoding gives the doc's `01 01`/`01 05`. This matters only for single-parameter DT1s.

@@ -23,7 +23,9 @@ Start with `../CLAUDE.md` (project context) and `REPORT.md` (findings). This fil
 | Raw Script.xml element for X (with line number) | `script-schema.json` → `structTypes.<Type>.children[]` (`line` field) |
 | Does X match the official doc? | `generated/crosscheck-midi-implementation.md`; machine: `generated/crosscheck.json` keyed `"<StructType>:<offset int>"` |
 | Which MFX/chorus/reverb parameters apply to effect type N | `script-schema.json` → `effect_unions.{mfx,chorus,reverb}.groups[N]`; MFX names: `effect_unions.mfx.display_names.names[N]` |
-| What a parameter/effect *does* to the sound | `generated/editor-manual.pdf.txt` (parameter guide p.9–43, Effects List p.44–78) |
+| What a parameter/effect *does* to the sound | **`../knowledge/`**: `knowledge.md` (read), `knowledge.json` (machine), `*.toml` (source); code: `axsynth.knowledge.describe(path)`. Raw source text: `generated/editor-manual.pdf.txt` (parameter guide p.9–43, Effects List p.44–78) |
+| Which effect parameters are `#` (real-time controllable) | `../knowledge/knowledge.json` → `mfx[].params[].control` |
+| Concepts (structure types, LFO fade modes, TMT, Matrix Control, …) | `../knowledge/concepts.toml` / `knowledge.md` §Concepts |
 | Official byte-level spec text | `generated/midi-implementation.pdf.txt` |
 | Factory sound names, family, bank/PC, memory slot | `generated/factory-tones.csv`; code: `axsynth.factory` |
 | Wave names | `script-schema.json` → `stringTables.internalWaveNameTableA.items` (313; wave N ↔ item N−1 [I]) |
@@ -48,5 +50,6 @@ Start with `../CLAUDE.md` (project context) and `REPORT.md` (findings). This fil
 | `generated/*.pdf.txt` | `tools/pdf2txt.py` (then renamed) |
 | `generated/experiment-rq1-temporary-patch.syx` | `tools/dump_experiment.py make-requests` |
 | `generated/guitar{,01}-temporary.syx` | `tools/dump_experiment.py a8-to-syx` |
+| `../knowledge/knowledge.{json,md}` | `tools/build_knowledge.py` (from `../knowledge/*.toml`, which are hand-extracted sources) |
 
 Order and exact commands: `../CLAUDE.md` §5.

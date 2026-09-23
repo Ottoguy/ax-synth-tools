@@ -1,0 +1,312 @@
+# AX-Synth knowledge base: Chorus unit and Reverb unit types
+# Source: AX-Synth Editor manual (EM) p.77-78. Format: knowledge/README.md (same param
+# fields as the MFX files; schema = member names inside the type's union group of
+# PatchCommonChorus / PatchCommonReverb). The unit-level settings (type, level, output
+# select) are in patch.toml (groups fx.chorus / fx.reverb).
+# None of these parameters is marked '#' in the manual.
+
+[[chorus]]
+number = 1
+name = "CHORUS"
+pages = [77]
+description = "The chorus unit used as a chorus (chorusType = CHORUS)."
+
+[[chorus.param]]
+label = "Filter Type"
+schema = ["filt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the Cutoff Freq. HPF: cuts below the Cutoff Freq."
+
+[[chorus.param]]
+label = "Cutoff Freq"
+schema = ["splt"]
+values = "200–8000 Hz"
+meaning = "Basic frequency of the filter."
+
+[[chorus.param]]
+label = "Pre Delay"
+schema = ["delay"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[chorus.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+
+[[chorus.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[chorus.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[chorus.param]]
+label = "Feedback"
+schema = ["fb"]
+values = "0–127"
+meaning = "Amount of the chorus sound fed back into the effect."
+
+[[chorus]]
+number = 2
+name = "DELAY"
+pages = [77]
+description = "The chorus unit used as a stereo delay (chorusType = DELAY) with left, right and center delays."
+
+[[chorus.param]]
+label = "Delay Left / Delay Right / Delay Center"
+schema = ["dlyLMsec", "dlyRMsec", "dlyCMsec"]
+values = "0–1000 msec"
+meaning = "Delay from the direct sound until each delay sound is heard."
+
+[[chorus.param]]
+label = "Center Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound fed back into the effect; negative inverts the phase."
+
+[[chorus.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is cut. BYPASS: no cut."
+
+[[chorus.param]]
+label = "Left Level / Right Level / Center Level"
+schema = ["levelL", "levelR", "levelC"]
+values = "0–127"
+meaning = "Volume of each delay sound."
+
+[[reverb]]
+number = 1
+name = "REVERB"
+pages = [78]
+description = "Basic reverb unit type (reverbType = REVERB), which also offers delay and pan-delay variations."
+
+[[reverb.param]]
+label = "Type"
+schema = ["type"]
+values = "ROOM1, ROOM2, STAGE1, STAGE2, HALL1, HALL2, DELAY, PAN-DELAY"
+meaning = "ROOM1: short reverb with high density. ROOM2: short reverb with low density. STAGE1: more late reverberation. STAGE2: strong early reflections. HALL1: very clear-sounding reverb. HALL2: rich reverb. DELAY: conventional delay effect. PAN-DELAY: delay with echoes that pan left and right."
+
+[[reverb.param]]
+label = "Time"
+schema = ["time"]
+values = "0–127"
+meaning = "Length of the reverberation (types ROOM1–HALL2) or the delay time (types DELAY, PAN-DELAY)."
+
+[[reverb.param]]
+label = "HF Damp"
+schema = ["HF"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the high-frequency content of the reverb sound is cut ('damped'). BYPASS: no cut."
+
+[[reverb.param]]
+label = "Delay Feedback"
+schema = ["fb"]
+values = "0–127"
+meaning = "Amount of delay sound returned to the input; valid only when Type is DELAY or PAN-DELAY."
+
+[[reverb]]
+number = 2
+name = "SRV ROOM"
+pages = [78]
+description = "Reverb that simulates typical room acoustic reflections in greater detail."
+
+[[reverb.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the reverb sound is heard."
+
+[[reverb.param]]
+label = "Time"
+schema = ["tm"]
+values = "0–127"
+meaning = "Length of the reverberation."
+
+[[reverb.param]]
+label = "Size"
+schema = ["size"]
+values = "1–8"
+meaning = "Size of the simulated room or hall."
+
+[[reverb.param]]
+label = "High Cut"
+schema = ["hicut"]
+values = "160–12500 Hz, BYPASS"
+meaning = "Frequency above which the high-frequency content of the reverb is reduced. BYPASS: no reduction."
+
+[[reverb.param]]
+label = "Density"
+schema = ["dnsty"]
+values = "0–127"
+meaning = "Density of the reverb."
+
+[[reverb.param]]
+label = "Diffusion"
+schema = ["dfsn"]
+values = "0–127"
+meaning = "Change in the density of the reverb over time; higher = density increases more with time (most pronounced with long reverb times)."
+
+[[reverb.param]]
+label = "LF Damp Freq"
+schema = ["lfdmpf"]
+values = "50–4000 Hz"
+meaning = "Frequency below which the low-frequency content of the reverb is reduced ('damped')."
+
+[[reverb.param]]
+label = "LF Damp Gain"
+schema = ["lfdmpg"]
+values = "-36–0 dB"
+meaning = "Amount of damping applied below LF Damp Freq; 0 = no reduction of the low frequencies."
+
+[[reverb.param]]
+label = "HF Damp Freq"
+schema = ["HFDmpF"]
+values = "4000–12500 Hz"
+meaning = "Frequency above which the high-frequency content of the reverb is reduced ('damped')."
+
+[[reverb.param]]
+label = "HF Damp Gain"
+schema = ["HFDmpG"]
+values = "-36–0 dB"
+meaning = "Amount of damping applied above HF Damp Freq; 0 = no reduction of the high frequencies."
+
+[[reverb]]
+number = 3
+name = "SRV HALL"
+pages = [78]
+description = "Reverb that simulates typical concert hall acoustic reflections in greater detail. Same parameters as SRV ROOM."
+
+[[reverb.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the reverb sound is heard."
+
+[[reverb.param]]
+label = "Time"
+schema = ["tm"]
+values = "0–127"
+meaning = "Length of the reverberation."
+
+[[reverb.param]]
+label = "Size"
+schema = ["size"]
+values = "1–8"
+meaning = "Size of the simulated room or hall."
+
+[[reverb.param]]
+label = "High Cut"
+schema = ["hicut"]
+values = "160–12500 Hz, BYPASS"
+meaning = "Frequency above which the high-frequency content is reduced. BYPASS: no reduction."
+
+[[reverb.param]]
+label = "Density"
+schema = ["dnsty"]
+values = "0–127"
+meaning = "Density of the reverb."
+
+[[reverb.param]]
+label = "Diffusion"
+schema = ["dfsn"]
+values = "0–127"
+meaning = "Change in density over time; higher = density increases more with time."
+
+[[reverb.param]]
+label = "LF Damp Freq"
+schema = ["lfdmpf"]
+values = "50–4000 Hz"
+meaning = "Frequency below which the low frequencies are damped."
+
+[[reverb.param]]
+label = "LF Damp Gain"
+schema = ["lfdmpg"]
+values = "-36–0 dB"
+meaning = "Amount of low-frequency damping; 0 = none."
+
+[[reverb.param]]
+label = "HF Damp Freq"
+schema = ["HFDmpF"]
+values = "4000–12500 Hz"
+meaning = "Frequency above which the high frequencies are damped."
+
+[[reverb.param]]
+label = "HF Damp Gain"
+schema = ["HFDmpG"]
+values = "-36–0 dB"
+meaning = "Amount of high-frequency damping; 0 = none."
+
+[[reverb]]
+number = 4
+name = "SRV PLATE"
+pages = [78]
+description = "Simulates a reverb plate, an artificial reverb unit that derives its sound from the vibration of a metallic plate. Same parameters as SRV ROOM."
+
+[[reverb.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the reverb sound is heard."
+
+[[reverb.param]]
+label = "Time"
+schema = ["tm"]
+values = "0–127"
+meaning = "Length of the reverberation."
+
+[[reverb.param]]
+label = "Size"
+schema = ["size"]
+values = "1–8"
+meaning = "Size of the simulated space."
+
+[[reverb.param]]
+label = "High Cut"
+schema = ["hicut"]
+values = "160–12500 Hz, BYPASS"
+meaning = "Frequency above which the high-frequency content is reduced. BYPASS: no reduction."
+
+[[reverb.param]]
+label = "Density"
+schema = ["dnsty"]
+values = "0–127"
+meaning = "Density of the reverb."
+
+[[reverb.param]]
+label = "Diffusion"
+schema = ["dfsn"]
+values = "0–127"
+meaning = "Change in density over time; higher = density increases more with time."
+
+[[reverb.param]]
+label = "LF Damp Freq"
+schema = ["lfdmpf"]
+values = "50–4000 Hz"
+meaning = "Frequency below which the low frequencies are damped."
+
+[[reverb.param]]
+label = "LF Damp Gain"
+schema = ["lfdmpg"]
+values = "-36–0 dB"
+meaning = "Amount of low-frequency damping; 0 = none."
+
+[[reverb.param]]
+label = "HF Damp Freq"
+schema = ["HFDmpF"]
+values = "4000–12500 Hz"
+meaning = "Frequency above which the high frequencies are damped."
+
+[[reverb.param]]
+label = "HF Damp Gain"
+schema = ["HFDmpG"]
+values = "-36–0 dB"
+meaning = "Amount of high-frequency damping; 0 = none."

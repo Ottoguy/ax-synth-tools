@@ -1,0 +1,2292 @@
+# AX-Synth knowledge base: MFX (multi-effect) types 43-78
+# Source: AX-Synth Editor manual (EM) "Effects List" p.62-76. Format: knowledge/README.md
+# (same fields as mfx-01-42.toml).
+
+# ================================================================= DELAY ======
+[[mfx]]
+number = 43
+name = "DELAY"
+category = "DELAY"
+pages = [62]
+description = "A stereo delay. Feedback Mode NORMAL feeds each channel back into itself; CROSS feeds each channel back into the opposite channel."
+
+[[mfx.param]]
+label = "Delay Left / Delay Right"
+schema = ["dlyLMsec", "dlyRMsec"]
+values = "0–1300 msec"
+meaning = "Time until the delay sound is heard (left / right)."
+
+[[mfx.param]]
+label = "Phase Left / Phase Right"
+schema = ["phsL", "phsR"]
+values = "NORMAL, INVERSE"
+meaning = "Phase of the delay sound (left / right)."
+
+[[mfx.param]]
+label = "Feedback Mode"
+schema = ["fbkMode"]
+values = "NORMAL, CROSS"
+meaning = "How the delay sound is fed back into the effect (NORMAL: same channel; CROSS: crossed L/R)."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out. BYPASS: no high frequencies are filtered."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 44
+name = "LONG DELAY"
+category = "DELAY"
+pages = [62]
+description = "A delay that provides a long delay time."
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Delay from the original sound until the delay sound is heard."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "NORMAL, INVERSE"
+meaning = "Phase of the delay (non-inverted / inverted)."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound returned to the input (negative inverts the phase)."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency at which the high-frequency content of the delayed sound is cut (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Panning of the delay sound."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Boost/cut for the low / high frequency range."
+notes = ["The manual text describes Low Gain as 'high-frequency range', evidently a typo."]
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 45
+name = "SERIAL DELAY"
+category = "DELAY"
+pages = [63]
+description = "Two delay units connected in series; feedback can be applied independently to each, producing complex delay sounds."
+
+[[mfx.param]]
+label = "Delay 1 Time"
+schema = ["dly1Msec"]
+values = "0–1300 msec"
+meaning = "Delay from when sound is input to delay 1 until its delay sound is heard."
+
+[[mfx.param]]
+label = "Delay 1 Feedback"
+schema = ["dly1Fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound returned to the input of delay 1 (negative inverts the phase)."
+control = true
+
+[[mfx.param]]
+label = "Delay 1 HF Damp"
+schema = ["dly1HfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency at which the high-frequency content of delay 1's delayed sound is cut (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "Delay 2 Time"
+schema = ["dly2Msec"]
+values = "0–1300 msec"
+meaning = "Delay from when sound is input to delay 2 until its delay sound is heard."
+
+[[mfx.param]]
+label = "Delay 2 Feedback"
+schema = ["dly2Fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound returned to the input of delay 2."
+control = true
+
+[[mfx.param]]
+label = "Delay 2 HF Damp"
+schema = ["dly2HfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency at which the high-frequency content of delay 2's delayed sound is cut."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Panning of the delay sound."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Boost/cut for the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 46
+name = "MODULATION DELAY"
+category = "DELAY"
+pages = [63]
+description = "Adds modulation to the delayed sound (Feedback Mode NORMAL or CROSS as for 43 DELAY)."
+
+[[mfx.param]]
+label = "Delay Left / Delay Right"
+schema = ["dlyLMsec", "dlyRMsec"]
+values = "0–1300 msec"
+meaning = "Time until the delay sound is heard (left / right)."
+
+[[mfx.param]]
+label = "Feedback Mode"
+schema = ["fbkMode"]
+values = "NORMAL, CROSS"
+meaning = "How the delay sound is fed back into the effect."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out (BYPASS: none)."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Phase"
+schema = ["phs"]
+values = "0–180 deg"
+meaning = "Spatial spread of the sound."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 47
+name = "3TAP PAN DELAY"
+category = "DELAY"
+pages = [64]
+description = "Produces three delay sounds: center, left and right."
+
+[[mfx.param]]
+label = "Delay Left / Right / Center"
+schema = ["dlyLMsec", "dlyRMsec", "dlyCMsec"]
+values = "0–2600 msec"
+meaning = "Time from the original sound until the left, right and center delay sounds are heard."
+
+[[mfx.param]]
+label = "Center Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out (BYPASS: none)."
+
+[[mfx.param]]
+label = "Left / Right / Center Level"
+schema = ["levelL", "levelR", "levelC"]
+values = "0–127"
+meaning = "Volume of each delay."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 48
+name = "4TAP PAN DELAY"
+category = "DELAY"
+pages = [64]
+description = "A delay with four delays at fixed stereo locations (shown in the manual's diagram)."
+
+[[mfx.param]]
+label = "Delay 1–4 Time"
+schema = ["dly1Msec", "dly2Msec", "dly3Msec", "dly4Msec"]
+values = "0–2600 msec"
+meaning = "Time from the original sound until delay sounds 1–4 are heard."
+
+[[mfx.param]]
+label = "Delay 1 Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out (BYPASS: none)."
+
+[[mfx.param]]
+label = "Delay 1–4 Level"
+schema = ["level1", "level2", "level3", "level4"]
+values = "0–127"
+meaning = "Volume of each delay."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 49
+name = "MULTI TAP DELAY"
+category = "DELAY"
+pages = [65]
+description = "Four delays whose panning and level can each be set."
+
+[[mfx.param]]
+label = "Delay 1–4 Time"
+schema = ["dly1Msec", "dly2Msec", "dly3Msec", "dly4Msec"]
+values = "0–2600 msec"
+meaning = "Time until delays 1–4 are heard."
+
+[[mfx.param]]
+label = "Delay 1 Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out (BYPASS: none)."
+
+[[mfx.param]]
+label = "Delay 1–4 Pan"
+schema = ["pan1", "pan2", "pan3", "pan4"]
+values = "L64–63R"
+meaning = "Stereo location of delays 1–4."
+
+[[mfx.param]]
+label = "Delay 1–4 Level"
+schema = ["level1", "level2", "level3", "level4"]
+values = "0–127"
+meaning = "Output level of delays 1–4."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 50
+name = "REVERSE DELAY"
+category = "DELAY"
+pages = [65]
+description = "Adds a reversed and delayed sound to the input sound; a tap delay is connected immediately after the reverse delay."
+
+[[mfx.param]]
+label = "Threshold"
+schema = ["threshold"]
+values = "0–127"
+meaning = "Volume at which the reverse delay begins to be applied."
+
+[[mfx.param]]
+label = "Rev Delay Time"
+schema = ["dlyrMsec"]
+values = "0–1300 msec"
+meaning = "Delay from when sound enters the reverse delay until its delay sound is heard."
+
+[[mfx.param]]
+label = "Rev Delay Feedback"
+schema = ["dlyrFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound returned to the reverse delay's input (negative inverts the phase)."
+control = true
+
+[[mfx.param]]
+label = "Rev Delay HF Damp"
+schema = ["dlyrHfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency at which the high-frequency content of the reverse-delayed sound is cut (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "Rev Delay Pan"
+schema = ["dlyrPan"]
+values = "L64–63R"
+meaning = "Panning of the reverse delay sound."
+
+[[mfx.param]]
+label = "Rev Delay Level"
+schema = ["dlyrLvl"]
+values = "0–127"
+meaning = "Volume of the reverse delay sound."
+
+[[mfx.param]]
+label = "Delay 1–3 Time"
+schema = ["dly1Msec", "dly2Msec", "dly3Msec"]
+values = "0–1300 msec"
+meaning = "Delay from when sound enters the tap delay until each delay sound is heard."
+
+[[mfx.param]]
+label = "Delay 3 Feedback"
+schema = ["dly3Fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound returned to the tap delay's input (negative inverts the phase)."
+control = true
+
+[[mfx.param]]
+label = "Delay HF Damp"
+schema = ["dlyHfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency at which the tap delay sound is damped (BYPASS: no cut)."
+notes = ["The manual says 'low-frequency content' here while every other HF Damp cuts high frequencies; probably a typo."]
+
+[[mfx.param]]
+label = "Delay 1 Pan / Delay 2 Pan"
+schema = ["dly1Pan", "dly2Pan"]
+values = "L64–63R"
+meaning = "Panning of the tap delay sounds."
+
+[[mfx.param]]
+label = "Delay 1 Level / Delay 2 Level"
+schema = ["dly1Lvl", "dly2Lvl"]
+values = "0–127"
+meaning = "Volume of the tap delay sounds."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Boost/cut for the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+[[mfx]]
+number = 51
+name = "SHUFFLE DELAY"
+category = "DELAY"
+pages = [66]
+description = "Adds a shuffle to the delay sound, giving a bouncy delay effect with a swing feel (delays A and B)."
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Time until the delay sound is heard."
+control = true
+
+[[mfx.param]]
+label = "Shuffle Rate"
+schema = ["shuffle"]
+values = "0–100"
+meaning = "Time before delay B sounds as a percentage of the time before delay A sounds; 100 = the same time."
+control = true
+
+[[mfx.param]]
+label = "Acceleration"
+schema = ["accel"]
+values = "0–15"
+meaning = "Speed with which the Delay Time changes from the current setting to a new setting."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out (BYPASS: none)."
+
+[[mfx.param]]
+label = "Pan A / Pan B"
+schema = ["panA", "panB"]
+values = "L64–63R"
+meaning = "Stereo location of delay A / B."
+
+[[mfx.param]]
+label = "Level A / Level B"
+schema = ["levelA", "levelB"]
+values = "0–127"
+meaning = "Volume of delay A / B."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 52
+name = "3D DELAY"
+category = "DELAY"
+pages = [66]
+description = "Applies a 3D (RSS) effect to the delay sound, positioned 90 degrees left and 90 degrees right."
+
+[[mfx.param]]
+label = "Delay Left / Right / Center"
+schema = ["dlyLMsec", "dlyRMsec", "dlyCMsec"]
+values = "0–2600 msec"
+meaning = "Delay from the direct sound until each delay sound is heard."
+
+[[mfx.param]]
+label = "Center Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is cut (BYPASS: none)."
+
+[[mfx.param]]
+label = "Left / Right / Center Level"
+schema = ["lLevel", "rLevel", "cLevel"]
+values = "0–127"
+meaning = "Output level of each delay sound."
+
+[[mfx.param]]
+label = "Output Mode"
+schema = ["out"]
+values = "SPEAKER, PHONES"
+meaning = "SPEAKER for speakers, PHONES for headphones (optimal 3D effect)."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 53
+name = "ANALOG DELAY"
+category = "DELAY"
+pages = [67]
+description = "A stereo delay whose delay time can be varied smoothly."
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–1300 msec"
+meaning = "Time until the delay is heard."
+control = true
+
+[[mfx.param]]
+label = "Acceleration"
+schema = ["accel"]
+values = "0–15"
+meaning = "Speed with which the Delay Time changes to a newly specified setting; the rate of change of the delay time directly affects the rate of pitch change."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out (BYPASS: none)."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 54
+name = "ANALOG LONG DELAY"
+category = "DELAY"
+pages = [67]
+description = "A delay whose delay time can be varied smoothly, allowing an extended delay."
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Time until the delay is heard."
+control = true
+
+[[mfx.param]]
+label = "Acceleration"
+schema = ["accel"]
+values = "0–15"
+meaning = "Speed with which the Delay Time changes to a new setting; directly affects the rate of pitch change."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Amount of delay fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is filtered out (BYPASS: none)."
+
+[[mfx.param]]
+label = "Pan"
+schema = ["pan"]
+values = "L64–63R"
+meaning = "Stereo location of the delay."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the delay sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 55
+name = "TAPE ECHO"
+category = "DELAY"
+pages = [68]
+description = "A virtual tape echo with a realistic tape delay sound; simulates the tape echo section of a Roland RE-201 Space Echo."
+
+[[mfx.param]]
+label = "Mode"
+schema = ["mode"]
+values = "S, M, L, S+M, S+L, M+L, S+M+L"
+meaning = "Combination of playback heads: three heads with different delay times (S short, M middle, L long)."
+
+[[mfx.param]]
+label = "Repeat Rate"
+schema = ["rpRate"]
+values = "0–127"
+meaning = "Tape speed; increasing it shortens the spacing of the delayed sounds."
+control = true
+
+[[mfx.param]]
+label = "Intensity"
+schema = ["intens"]
+values = "0–127"
+meaning = "Amount of delay repeats."
+control = true
+
+[[mfx.param]]
+label = "Bass / Treble"
+schema = ["bass", "treble"]
+values = "-15–+15 dB"
+meaning = "Boost/cut for the lower / upper range of the echo sound."
+
+[[mfx.param]]
+label = "Head S / M / L Pan"
+schema = ["panS", "panM", "panL"]
+values = "L64–63R"
+meaning = "Independent panning for the short, middle and long playback heads."
+
+[[mfx.param]]
+label = "Tape Distortion"
+schema = ["dist"]
+values = "0–5"
+meaning = "Amount of tape-dependent distortion added; simulates slight tonal changes detectable by signal-analysis equipment. Higher = more distortion."
+
+[[mfx.param]]
+label = "Wow/Flutter Rate"
+schema = ["wfRate"]
+values = "0–127"
+meaning = "Speed of wow/flutter (complex pitch variation caused by tape wear and rotational irregularity)."
+
+[[mfx.param]]
+label = "Wow/Flutter Depth"
+schema = ["wfDepth"]
+values = "0–127"
+meaning = "Depth of wow/flutter."
+
+[[mfx.param]]
+label = "Echo Level"
+schema = ["echoLev"]
+values = "0–127"
+meaning = "Volume of the echo sound."
+control = true
+
+[[mfx.param]]
+label = "Direct Level"
+schema = ["directLev"]
+values = "0–127"
+meaning = "Volume of the original sound."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+# ================================================================= LO-FI ======
+[[mfx]]
+number = 56
+name = "LOFI NOISE"
+category = "LO-FI"
+pages = [68]
+description = "A lo-fi effect that also adds various types of noise such as white noise and disc (record) noise."
+
+[[mfx.param]]
+label = "LoFi Type"
+schema = ["lofiType"]
+values = "1–9"
+meaning = "Degrades the sound quality; poorer as the value increases."
+
+[[mfx.param]]
+label = "Post Filter Type"
+schema = ["filType"]
+values = "OFF, LPF, HPF"
+meaning = "Filter following the LoFi effect. OFF: none. LPF: cuts above the cutoff. HPF: cuts below the cutoff."
+
+[[mfx.param]]
+label = "Post Filter Cutoff"
+schema = ["cutoff"]
+values = "200–8000 Hz"
+meaning = "Center frequency of the filter."
+
+[[mfx.param]]
+label = "W/P Noise Type"
+schema = ["wPType"]
+values = "WHITE, PINK"
+meaning = "Switches between white noise and pink noise."
+
+[[mfx.param]]
+label = "W/P Noise LPF"
+schema = ["wPLpf"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Center frequency of the low pass filter applied to the white/pink noise (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "W/P Noise Level"
+schema = ["wPLevel"]
+values = "0–127"
+meaning = "Volume of the white/pink noise."
+control = true
+
+[[mfx.param]]
+label = "Disc Noise Type"
+schema = ["discType"]
+values = "LP, EP, SP, RND"
+meaning = "Type of record noise; the frequency at which the noise is heard depends on the type."
+
+[[mfx.param]]
+label = "Disc Noise LPF"
+schema = ["discLpf"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Cutoff of the low pass filter applied to the record noise (BYPASS: none)."
+
+[[mfx.param]]
+label = "Disc Noise Level"
+schema = ["discLevel"]
+values = "0–127"
+meaning = "Volume of the record noise."
+control = true
+
+[[mfx.param]]
+label = "Hum Noise Type"
+schema = ["humType"]
+values = "50 Hz, 60 Hz"
+meaning = "Frequency of the hum noise."
+
+[[mfx.param]]
+label = "Hum Noise LPF"
+schema = ["humLpf"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Center frequency of the low pass filter applied to the hum noise (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "Hum Noise Level"
+schema = ["humLevel"]
+values = "0–127"
+meaning = "Volume of the hum noise."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 57
+name = "LOFI COMPRESS"
+category = "LO-FI"
+pages = [69]
+description = "Intentionally degrades the sound quality for creative purposes (compressor -> lo-fi -> 2-band EQ)."
+
+[[mfx.param]]
+label = "Pre Filter Type"
+schema = ["preFilt"]
+values = "1–6"
+meaning = "Filter applied before the Lo-Fi effect. 1: compressor off; 2–6: compressor on."
+
+[[mfx.param]]
+label = "LoFi Type"
+schema = ["lofiType"]
+values = "1–9"
+meaning = "Degrades the sound quality; poorer as the value increases."
+
+[[mfx.param]]
+label = "Post Filter Type"
+schema = ["postFilt"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the cutoff. HPF: cuts below the cutoff."
+
+[[mfx.param]]
+label = "Post Filter Cutoff"
+schema = ["cutoff"]
+values = "200–8000 Hz"
+meaning = "Basic frequency of the post filter."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+[[mfx]]
+number = 58
+name = "LOFI RADIO"
+category = "LO-FI"
+pages = [69]
+description = "A lo-fi effect that also generates radio noise."
+
+[[mfx.param]]
+label = "LoFi Type"
+schema = ["lofiType"]
+values = "1–9"
+meaning = "Degrades the sound quality; poorer as the value increases."
+
+[[mfx.param]]
+label = "Post Filter Type"
+schema = ["filType"]
+values = "OFF, LPF, HPF"
+meaning = "OFF: no filter. LPF: cuts above the cutoff. HPF: cuts below the cutoff."
+
+[[mfx.param]]
+label = "Post Filter Cutoff"
+schema = ["cutoff"]
+values = "200–8000 Hz"
+meaning = "Basic frequency of the post filter."
+
+[[mfx.param]]
+label = "Radio Detune"
+schema = ["rDetune"]
+values = "0–127"
+meaning = "Simulates radio tuning noise; the higher the value, the further the tuning drifts."
+control = true
+
+[[mfx.param]]
+label = "Radio Noise Level"
+schema = ["rNzLev"]
+values = "0–127"
+meaning = "Volume of the radio noise."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 59
+name = "TELEPHONE"
+category = "LO-FI"
+pages = [69]
+description = "Produces a muffled sound, like that heard through a telephone."
+
+[[mfx.param]]
+label = "Voice Quality"
+schema = ["quality"]
+values = "0–15"
+meaning = "Audio quality of the telephone voice."
+control = true
+
+[[mfx.param]]
+label = "Treble"
+schema = ["treble"]
+values = "-15–+15 dB"
+meaning = "Bandwidth of the telephone voice."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 60
+name = "PHONOGRAPH"
+category = "LO-FI"
+pages = [70]
+description = "Simulates a sound recorded on an analog record and played back on a record player, including typical record noise and the rotational irregularities of an old turntable."
+
+[[mfx.param]]
+label = "Signal Distortion"
+schema = ["dist"]
+values = "0–127"
+meaning = "Depth of distortion."
+
+[[mfx.param]]
+label = "Frequency Range"
+schema = ["range"]
+values = "0–127"
+meaning = "Frequency response of the playback system; lower values give the impression of an old system with poor frequency response."
+
+[[mfx.param]]
+label = "Disc Type"
+schema = ["disc"]
+values = "LP, EP, SP"
+meaning = "Rotational speed of the turntable; affects the frequency of the scratch noise."
+
+[[mfx.param]]
+label = "Scratch Noise Level"
+schema = ["scratch"]
+values = "0–127"
+meaning = "Amount of noise due to scratches on the record."
+
+[[mfx.param]]
+label = "Dust Noise Level"
+schema = ["dust"]
+values = "0–127"
+meaning = "Volume of noise due to dust on the record."
+
+[[mfx.param]]
+label = "Hiss Noise Level"
+schema = ["hiss"]
+values = "0–127"
+meaning = "Volume of continuous hiss."
+
+[[mfx.param]]
+label = "Total Noise Level"
+schema = ["totalNs"]
+values = "0–127"
+meaning = "Volume of the overall noise."
+control = true
+
+[[mfx.param]]
+label = "Wow"
+schema = ["wow"]
+values = "0–127"
+meaning = "Depth of long-cycle rotational irregularity."
+
+[[mfx.param]]
+label = "Flutter"
+schema = ["flt"]
+values = "0–127"
+meaning = "Depth of short-cycle rotational irregularity."
+
+[[mfx.param]]
+label = "Random"
+schema = ["random"]
+values = "0–127"
+meaning = "Depth of indefinite-cycle rotational irregularity."
+
+[[mfx.param]]
+label = "Total Wow/Flutter"
+schema = ["totalWf"]
+values = "0–127"
+meaning = "Depth of the overall rotational irregularity."
+control = true
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the effect sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+# ================================================================= PITCH ======
+[[mfx]]
+number = 61
+name = "PITCH SHIFTER"
+category = "PITCH"
+pages = [70]
+description = "A stereo pitch shifter."
+
+[[mfx.param]]
+label = "Coarse"
+schema = ["crs"]
+values = "-24–+12 semi"
+meaning = "Pitch of the pitch-shifted sound in semitone steps."
+control = "#1"
+
+[[mfx.param]]
+label = "Fine"
+schema = ["fine"]
+values = "-100–+100 cent"
+meaning = "Pitch of the pitch-shifted sound in 2-cent steps."
+control = "#1"
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–1300 msec"
+meaning = "Delay from the direct sound until the pitch-shifted sound is heard."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the pitch-shifted sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the pitch-shifted sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 62
+name = "2VOICE PITCH SHIFTER"
+category = "PITCH"
+pages = [71]
+description = "Two pitch shifters that add two pitch-shifted sounds to the original sound."
+
+[[mfx.param]]
+label = "Pitch1 Coarse / Pitch1 Fine"
+schema = ["crs1", "fine1"]
+values = "-24–+12 semi / -100–+100 cent (2-cent steps)"
+meaning = "Pitch of Pitch Shift 1 in semitones / fine steps."
+control = "#1"
+
+[[mfx.param]]
+label = "Pitch1 Delay"
+schema = ["dly1Msec"]
+values = "0–1300 msec"
+meaning = "Delay from the direct sound until the Pitch Shift 1 sound is heard."
+
+[[mfx.param]]
+label = "Pitch1 Feedback"
+schema = ["fbk1"]
+values = "-98–+98%"
+meaning = "Proportion of the pitch-shifted sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Pitch1 Pan"
+schema = ["pan1"]
+values = "L64–63R"
+meaning = "Stereo location of the Pitch Shift 1 sound."
+control = true
+
+[[mfx.param]]
+label = "Pitch1 Level"
+schema = ["level1"]
+values = "0–127"
+meaning = "Volume of the Pitch Shift 1 sound."
+
+[[mfx.param]]
+label = "Pitch2 Coarse / Pitch2 Fine"
+schema = ["crs2", "fine2"]
+values = "-24–+12 semi / -100–+100 cent"
+meaning = "Pitch of Pitch Shift 2 (same as Pitch Shift 1)."
+control = "#2"
+
+[[mfx.param]]
+label = "Pitch2 Delay"
+schema = ["dly2Msec"]
+values = "0–1300 msec"
+meaning = "Delay of the Pitch Shift 2 sound."
+
+[[mfx.param]]
+label = "Pitch2 Feedback"
+schema = ["fbk2"]
+values = "-98–+98%"
+meaning = "Feedback of Pitch Shift 2."
+control = true
+
+[[mfx.param]]
+label = "Pitch2 Pan"
+schema = ["pan2"]
+values = "L64–63R"
+meaning = "Stereo location of the Pitch Shift 2 sound."
+control = true
+
+[[mfx.param]]
+label = "Pitch2 Level"
+schema = ["level2"]
+values = "0–127"
+meaning = "Volume of the Pitch Shift 2 sound."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the pitch-shifted sound (W)."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 63
+name = "STEP PITCH SHIFTER"
+category = "PITCH"
+pages = [71]
+description = "A pitch shifter whose amount of pitch shift is varied by a 16-step sequence (STEP RESET available)."
+notes = ["[F] Balance and Level have invalid addresses in Script.xml (00 81 / 00 85); the intended addresses are MFX Parameter 29/30 (01 01 / 01 05)."]
+
+[[mfx.param]]
+label = "Step 01–16"
+schema = ["step01", "step02", "step03", "step04", "step05", "step06", "step07", "step08", "step09", "step10", "step11", "step12", "step13", "step14", "step15", "step16"]
+values = "-24–+12 semi"
+meaning = "Amount of pitch shift at each step (semitones)."
+
+[[mfx.param]]
+label = "Rate"
+schema = ["rateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Rate at which the 16-step sequence cycles."
+control = true
+
+[[mfx.param]]
+label = "Attack"
+schema = ["attack"]
+values = "0–127"
+meaning = "Speed at which the amount of pitch shift changes between steps."
+control = true
+
+[[mfx.param]]
+label = "Gate Time"
+schema = ["gate"]
+values = "0–127"
+meaning = "Duration of the pitch-shifted sound at each step."
+control = true
+
+[[mfx.param]]
+label = "Fine"
+schema = ["fine"]
+values = "-100–+100 cent"
+meaning = "Pitch-shift adjustment for all steps (2-cent units)."
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–1300 msec"
+meaning = "Delay from the original sound until the pitch-shifted sound is heard."
+
+[[mfx.param]]
+label = "Feedback"
+schema = ["fbk"]
+values = "-98–+98%"
+meaning = "Proportion of the pitch-shifted sound returned to the input (negative inverts the phase)."
+control = true
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Boost/cut for the low / high frequency range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance of the original sound (D) and the pitch-shifted sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output volume."
+
+# ================================================================ REVERB ======
+[[mfx]]
+number = 64
+name = "REVERB"
+category = "REVERB"
+pages = [72]
+description = "Adds reverberation to the sound, simulating an acoustic space."
+
+[[mfx.param]]
+label = "Type"
+schema = ["type"]
+values = "ROOM1, ROOM2, STAGE1, STAGE2, HALL1, HALL2"
+meaning = "ROOM1: dense reverb with short decay. ROOM2: sparse reverb with short decay. STAGE1: more late reverberation. STAGE2: strong early reflections. HALL1: clear reverberance. HALL2: rich reverberance."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the reverb sound is heard."
+
+[[mfx.param]]
+label = "Time"
+schema = ["tm"]
+values = "0–127"
+meaning = "Length of the reverberation."
+control = true
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the reverberant sound is cut; lower settings cut more highs for a softer, more muted reverb. BYPASS: no cut."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the reverb sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 65
+name = "GATED REVERB"
+category = "REVERB"
+pages = [72]
+description = "A special reverb in which the reverberant sound is cut off before its natural length."
+
+[[mfx.param]]
+label = "Type"
+schema = ["type"]
+values = "NORMAL, REVERSE, SWEEP1, SWEEP2"
+meaning = "NORMAL: conventional gated reverb. REVERSE: backwards reverb. SWEEP1: the reverberant sound moves from right to left. SWEEP2: from left to right."
+
+[[mfx.param]]
+label = "Pre Delay"
+schema = ["dly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the reverb sound is heard."
+
+[[mfx.param]]
+label = "Gate Time"
+schema = ["tm"]
+values = "5–500 msec"
+meaning = "Time from when the reverb is heard until it disappears."
+
+[[mfx.param]]
+label = "Low Gain / High Gain"
+schema = ["eqLo", "eqHi"]
+values = "-15–+15 dB"
+meaning = "Gain of the low / high range."
+
+[[mfx.param]]
+label = "Balance"
+schema = ["bal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the reverb sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+control = true
+
+# =========================================================== COMBINATION ======
+[[mfx]]
+number = 66
+name = "OVERDRIVE->CHORUS"
+manual_name = "OVERDRIVE → CHORUS"
+category = "COMBINATION"
+pages = [72]
+description = "Overdrive followed by chorus, in series."
+
+[[mfx.param]]
+label = "Overdrive Drive"
+schema = ["odDrv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Overdrive Pan"
+schema = ["odPan"]
+values = "L64–63R"
+meaning = "Stereo location of the overdrive sound."
+control = true
+
+[[mfx.param]]
+label = "Chorus Pre Delay"
+schema = ["choDly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Chorus Rate"
+schema = ["choRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Chorus Depth"
+schema = ["choDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Chorus Balance"
+schema = ["choBal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the sound sent through the chorus (W) and the sound not sent through it (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 67
+name = "OVERDRIVE->FLANGER"
+manual_name = "OVERDRIVE → FLANGER"
+category = "COMBINATION"
+pages = [73]
+description = "Overdrive followed by flanger, in series."
+
+[[mfx.param]]
+label = "Overdrive Drive"
+schema = ["odDrv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Overdrive Pan"
+schema = ["odPan"]
+values = "L64–63R"
+meaning = "Stereo location of the overdrive sound."
+control = true
+
+[[mfx.param]]
+label = "Flanger Pre Delay"
+schema = ["flgDly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Flanger Rate"
+schema = ["flgRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Flanger Depth"
+schema = ["flgDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Flanger Feedback"
+schema = ["flgFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Flanger Balance"
+schema = ["flgBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the flanger (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 68
+name = "OVERDRIVE->DELAY"
+manual_name = "OVERDRIVE → DELAY"
+category = "COMBINATION"
+pages = [73]
+description = "Overdrive followed by delay, in series."
+
+[[mfx.param]]
+label = "Overdrive Drive"
+schema = ["odDrv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Overdrive Pan"
+schema = ["odPan"]
+values = "L64–63R"
+meaning = "Stereo location of the overdrive sound."
+control = true
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Delay from the direct sound until the delay sound is heard."
+
+[[mfx.param]]
+label = "Delay Feedback"
+schema = ["dlyFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound fed back into the effect; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Delay HF Damp"
+schema = ["dlyHfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is cut (BYPASS: none)."
+
+[[mfx.param]]
+label = "Delay Balance"
+schema = ["dlyBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the delay (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 69
+name = "DISTORTION->CHORUS"
+manual_name = "DISTORTION → CHORUS"
+category = "COMBINATION"
+pages = [73]
+description = "Distortion followed by chorus. Parameters as 66 OVERDRIVE→CHORUS with Overdrive Drive/Pan replaced by Distortion Drive/Pan."
+
+[[mfx.param]]
+label = "Distortion Drive"
+schema = ["dstDrv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Distortion Pan"
+schema = ["dstPan"]
+values = "L64–63R"
+meaning = "Stereo location of the distortion sound."
+control = true
+
+[[mfx.param]]
+label = "Chorus Pre Delay"
+schema = ["choDly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Chorus Rate"
+schema = ["choRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Chorus Depth"
+schema = ["choDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Chorus Balance"
+schema = ["choBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the chorus (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 70
+name = "DISTORTION->FLANGER"
+manual_name = "DISTORTION → FLANGER"
+category = "COMBINATION"
+pages = [74]
+description = "Distortion followed by flanger. Parameters as 67 OVERDRIVE→FLANGER with Overdrive Drive/Pan replaced by Distortion Drive/Pan."
+
+[[mfx.param]]
+label = "Distortion Drive"
+schema = ["dstDrv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Distortion Pan"
+schema = ["dstPan"]
+values = "L64–63R"
+meaning = "Stereo location of the distortion sound."
+control = true
+
+[[mfx.param]]
+label = "Flanger Pre Delay"
+schema = ["flgDly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Flanger Rate"
+schema = ["flgRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Flanger Depth"
+schema = ["flgDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Flanger Feedback"
+schema = ["flgFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Flanger Balance"
+schema = ["flgBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the flanger (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 71
+name = "DISTORTION->DELAY"
+manual_name = "DISTORTION → DELAY"
+category = "COMBINATION"
+pages = [74]
+description = "Distortion followed by delay. Parameters as 68 OVERDRIVE→DELAY with Overdrive Drive/Pan replaced by Distortion Drive/Pan."
+
+[[mfx.param]]
+label = "Distortion Drive"
+schema = ["dstDrv"]
+values = "0–127"
+meaning = "Degree of distortion; also changes the volume."
+control = true
+
+[[mfx.param]]
+label = "Distortion Pan"
+schema = ["dstPan"]
+values = "L64–63R"
+meaning = "Stereo location of the distortion sound."
+control = true
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Delay from the direct sound until the delay sound is heard."
+
+[[mfx.param]]
+label = "Delay Feedback"
+schema = ["dlyFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Delay HF Damp"
+schema = ["dlyHfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is cut (BYPASS: none)."
+
+[[mfx.param]]
+label = "Delay Balance"
+schema = ["dlyBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the delay (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 72
+name = "ENHANCER->CHORUS"
+manual_name = "ENHANCER → CHORUS"
+category = "COMBINATION"
+pages = [74]
+description = "Enhancer followed by chorus, in series."
+
+[[mfx.param]]
+label = "Enhancer Sens"
+schema = ["ehSens"]
+values = "0–127"
+meaning = "Sensitivity of the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Enhancer Mix"
+schema = ["ehMix"]
+values = "0–127"
+meaning = "Level of the overtones generated by the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Chorus Pre Delay"
+schema = ["choDly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Chorus Rate"
+schema = ["choRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Chorus Depth"
+schema = ["choDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Chorus Balance"
+schema = ["choBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the chorus (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 73
+name = "ENHANCER->FLANGER"
+manual_name = "ENHANCER → FLANGER"
+category = "COMBINATION"
+pages = [74]
+description = "Enhancer followed by flanger, in series."
+
+[[mfx.param]]
+label = "Enhancer Sens"
+schema = ["ehSens"]
+values = "0–127"
+meaning = "Sensitivity of the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Enhancer Mix"
+schema = ["ehMix"]
+values = "0–127"
+meaning = "Level of the overtones generated by the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Flanger Pre Delay"
+schema = ["flgDly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Flanger Rate"
+schema = ["flgRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Flanger Depth"
+schema = ["flgDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Flanger Feedback"
+schema = ["flgFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Flanger Balance"
+schema = ["flgBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the flanger (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 74
+name = "ENHANCER->DELAY"
+manual_name = "ENHANCER → DELAY"
+category = "COMBINATION"
+pages = [75]
+description = "Enhancer followed by delay, in series."
+
+[[mfx.param]]
+label = "Enhancer Sens"
+schema = ["ehSens"]
+values = "0–127"
+meaning = "Sensitivity of the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Enhancer Mix"
+schema = ["ehMix"]
+values = "0–127"
+meaning = "Level of the overtones generated by the enhancer."
+control = true
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Delay from the direct sound until the delay sound is heard."
+
+[[mfx.param]]
+label = "Delay Feedback"
+schema = ["dlyFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Delay HF Damp"
+schema = ["dlyHfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is cut (BYPASS: none)."
+
+[[mfx.param]]
+label = "Delay Balance"
+schema = ["dlyBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the delay (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 75
+name = "CHORUS->DELAY"
+manual_name = "CHORUS → DELAY"
+category = "COMBINATION"
+pages = [75]
+description = "Chorus followed by delay, in series."
+
+[[mfx.param]]
+label = "Chorus Pre Delay"
+schema = ["choDly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Chorus Rate"
+schema = ["choRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Chorus Depth"
+schema = ["choDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Chorus Balance"
+schema = ["choBal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Delay from the direct sound until the delay sound is heard."
+
+[[mfx.param]]
+label = "Delay Feedback"
+schema = ["dlyFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Delay HF Damp"
+schema = ["dlyHfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is cut (BYPASS: none)."
+
+[[mfx.param]]
+label = "Delay Balance"
+schema = ["dlyBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the delay (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 76
+name = "FLANGER->DELAY"
+manual_name = "FLANGER → DELAY"
+category = "COMBINATION"
+pages = [75]
+description = "Flanger followed by delay, in series."
+
+[[mfx.param]]
+label = "Flanger Pre Delay"
+schema = ["flgDly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Flanger Rate"
+schema = ["flgRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Frequency of modulation."
+control = true
+
+[[mfx.param]]
+label = "Flanger Depth"
+schema = ["flgDepth"]
+values = "0–127"
+meaning = "Depth of modulation."
+
+[[mfx.param]]
+label = "Flanger Feedback"
+schema = ["flgFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Flanger Balance"
+schema = ["flgBal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the flanger sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Delay Time"
+schema = ["dlyMsec"]
+values = "0–2600 msec"
+meaning = "Delay from the direct sound until the delay sound is heard."
+
+[[mfx.param]]
+label = "Delay Feedback"
+schema = ["dlyFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the delay sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Delay HF Damp"
+schema = ["dlyHfDamp"]
+values = "200–8000 Hz, BYPASS"
+meaning = "Frequency above which the fed-back sound is cut (BYPASS: none)."
+
+[[mfx.param]]
+label = "Delay Balance"
+schema = ["dlyBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the delay (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+[[mfx]]
+number = 77
+name = "CHORUS->FLANGER"
+manual_name = "CHORUS → FLANGER"
+category = "COMBINATION"
+pages = [76]
+description = "Chorus followed by flanger, in series."
+
+[[mfx.param]]
+label = "Chorus Pre Delay"
+schema = ["choDly"]
+values = "0.0–100 msec"
+meaning = "Delay from the direct sound until the chorus sound is heard."
+
+[[mfx.param]]
+label = "Chorus Rate"
+schema = ["choRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Modulation frequency of the chorus."
+control = true
+
+[[mfx.param]]
+label = "Chorus Depth"
+schema = ["choDepth"]
+values = "0–127"
+meaning = "Modulation depth of the chorus."
+
+[[mfx.param]]
+label = "Chorus Balance"
+schema = ["choBal"]
+values = "D100:0W–D0:100W"
+meaning = "Volume balance between the direct sound (D) and the chorus sound (W)."
+control = true
+
+[[mfx.param]]
+label = "Flanger Pre Delay"
+schema = ["flgDly"]
+values = "0.0–100 msec"
+meaning = "Delay from when the direct sound begins until the flanger sound is heard."
+
+[[mfx.param]]
+label = "Flanger Rate"
+schema = ["flgRateHz"]
+values = "0.05–10.00 Hz"
+meaning = "Modulation frequency of the flanger."
+control = true
+
+[[mfx.param]]
+label = "Flanger Depth"
+schema = ["flgDepth"]
+values = "0–127"
+meaning = "Modulation depth of the flanger."
+
+[[mfx.param]]
+label = "Flanger Feedback"
+schema = ["flgFbk"]
+values = "-98–+98%"
+meaning = "Proportion of the flanger sound fed back; negative inverts the phase."
+control = true
+
+[[mfx.param]]
+label = "Flanger Balance"
+schema = ["flgBal"]
+values = "D100:0W–D0:100W"
+meaning = "Balance between the sound sent through the flanger (W) and not (D)."
+control = true
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
+
+# ================================================================= PIANO ======
+[[mfx]]
+number = 78
+name = "SYMPATHETIC RESONANCE"
+category = "PIANO"
+pages = [76]
+description = "On an acoustic piano, holding the damper pedal lets other strings resonate in sympathy with the notes played, creating rich, spacious resonance. This effect simulates these sympathetic resonances (followed by a 3-band EQ)."
+
+[[mfx.param]]
+label = "Depth"
+schema = ["depth"]
+values = "0–127"
+meaning = "Depth of the effect."
+control = true
+
+[[mfx.param]]
+label = "Damper"
+schema = ["damp"]
+values = "0–127"
+meaning = "Depth to which the damper pedal is pressed (controls the resonant sound)."
+control = true
+
+[[mfx.param]]
+label = "Pre LPF"
+schema = ["preLpf"]
+values = "16–15000 Hz, BYPASS"
+meaning = "Frequency of the filter that cuts the high-frequency content of the input sound (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "Pre HPF"
+schema = ["preHpf"]
+values = "BYPASS, 16–15000 Hz"
+meaning = "Frequency of the filter that cuts the low-frequency content of the input sound (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "Peaking Freq"
+schema = ["pkgFreq"]
+values = "200–8000 Hz"
+meaning = "Frequency of the filter that boosts/cuts a specific region of the input sound."
+
+[[mfx.param]]
+label = "Peaking Gain"
+schema = ["pkgGain"]
+values = "-15–+15 dB"
+meaning = "Amount of boost/cut at the Peaking Freq."
+
+[[mfx.param]]
+label = "Peaking Q"
+schema = ["pkgQ"]
+values = "0.5, 1.0, 2.0, 4.0, 8.0"
+meaning = "Width of the region boosted/cut by Peaking Gain (larger values = narrower)."
+
+[[mfx.param]]
+label = "HF Damp"
+schema = ["hfDamp"]
+values = "16–15000 Hz, BYPASS"
+meaning = "Frequency at which the high-frequency content of the resonant sound is cut (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "LF Damp"
+schema = ["lfDamp"]
+values = "BYPASS, 16–15000 Hz"
+meaning = "Frequency at which the low-frequency content of the resonant sound is cut (BYPASS: no cut)."
+
+[[mfx.param]]
+label = "Lid"
+schema = ["lid"]
+values = "1–6"
+meaning = "Simulates the change in sound when the lid of a grand piano is set at different heights."
+
+[[mfx.param]]
+label = "EQ Low Freq / EQ Low Gain"
+schema = ["loFreq", "loGain"]
+values = "200, 400 Hz / -15–+15 dB"
+meaning = "Frequency and amount of the low-range EQ boost/cut."
+
+[[mfx.param]]
+label = "EQ Mid Freq / EQ Mid Gain / EQ Mid Q"
+schema = ["midFreq", "midGain", "midQ"]
+values = "200–8000 Hz / -15–+15 dB / 0.5, 1.0, 2.0, 4.0, 8.0"
+meaning = "Frequency, amount and width (larger Q = narrower) of the midrange EQ."
+
+[[mfx.param]]
+label = "EQ High Freq / EQ High Gain"
+schema = ["hiFreq", "hiGain"]
+values = "2000, 4000, 8000 Hz / -15–+15 dB"
+meaning = "Frequency and amount of the high-range EQ boost/cut."
+
+[[mfx.param]]
+label = "Level"
+schema = ["level"]
+values = "0–127"
+meaning = "Output level."
