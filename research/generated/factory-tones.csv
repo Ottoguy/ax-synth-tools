@@ -1,0 +1,265 @@
+group,position,name,cc00_msb,cc32_lsb,pc,user_patch_index,librarian_slot,user_patch_address,editable,source_line
+SuperNATURAL,1,Violin,66,0,1,,,,False,2454
+SuperNATURAL,2,Cello,66,0,2,,,,False,2455
+SuperNATURAL,3,Shakuhachi,66,0,3,,,,False,2456
+SuperNATURAL,4,Trombone,66,0,4,,,,False,2457
+SPECIAL,5,Trumpet,87,64,1,,,,False,2459
+SPECIAL,6,Sax,87,64,2,,,,False,2460
+SPECIAL,7,Strings,87,64,3,,,,False,2461
+SPECIAL,8,Jazz Scat,87,64,4,,,,False,2462
+Synth Lead 1,1,AX Saw Lead,87,0,1,0,1-1,30 00 00 00,True,2464
+Synth Lead 1,2,AX Sync Lead,87,0,2,1,1-2,30 01 00 00,True,2465
+Synth Lead 1,3,GR300 Lead 1,87,0,3,2,1-3,30 02 00 00,True,2466
+Synth Lead 1,4,JupiterLead1,87,0,4,3,1-4,30 03 00 00,True,2467
+Synth Lead 1,5,JupiterLead2,87,0,5,4,1-5,30 04 00 00,True,2468
+Synth Lead 1,6,Saw Lead 1,87,0,6,5,1-6,30 05 00 00,True,2469
+Synth Lead 1,7,Saw Lead 2,87,0,7,6,1-7,30 06 00 00,True,2470
+Synth Lead 1,8,Saw Lead 3,87,0,8,7,1-8,30 07 00 00,True,2471
+Synth Lead 1,9,Saw Lead 4,87,0,9,8,1-9,30 08 00 00,True,2472
+Synth Lead 1,10,Saw Lead 5,87,0,10,9,1-10,30 09 00 00,True,2473
+Synth Lead 1,11,Classic Ld,87,0,11,10,1-11,30 0A 00 00,True,2474
+Synth Lead 1,12,Delayed Lead,87,0,12,11,1-12,30 0B 00 00,True,2475
+Synth Lead 1,13,GR300 Lead 2,87,0,13,12,1-13,30 0C 00 00,True,2476
+Synth Lead 1,14,Alpha Spit,87,0,14,13,1-14,30 0D 00 00,True,2477
+Synth Lead 1,15,Pro Fat Ld,87,0,15,14,1-15,30 0E 00 00,True,2478
+Synth Lead 1,16,Fat GR Lead,87,0,16,15,1-16,30 0F 00 00,True,2479
+Synth Lead 1,17,Bright Pls,87,0,17,16,1-17,30 10 00 00,True,2480
+Synth Lead 1,18,Octa Juice,87,0,18,17,1-18,30 11 00 00,True,2481
+Synth Lead 1,19,Octa Saw,87,0,19,18,1-19,30 12 00 00,True,2482
+Synth Lead 1,20,Octa Sync,87,0,20,19,1-20,30 13 00 00,True,2483
+Synth Lead 1,21,Phase Lead,87,0,21,20,1-21,30 14 00 00,True,2484
+Synth Lead 1,22,Waspy Lead,87,0,22,21,1-22,30 15 00 00,True,2485
+Synth Lead 1,23,Follow Me,87,0,23,22,1-23,30 16 00 00,True,2486
+Synth Lead 1,24,Digi Lead 1,87,0,24,23,1-24,30 17 00 00,True,2487
+Synth Lead 1,25,Digi Lead 2,87,0,25,24,1-25,30 18 00 00,True,2488
+Synth Lead 1,26,Hot Coffee,87,0,26,25,1-26,30 19 00 00,True,2489
+Synth Lead 1,27,Hot Sync,87,0,27,26,1-27,30 1A 00 00,True,2490
+Synth Lead 1,28,Sync Tank,87,0,28,27,1-28,30 1B 00 00,True,2491
+Synth Lead 1,29,2krazy Brite,87,0,29,28,1-29,30 1C 00 00,True,2492
+Synth Lead 1,30,Juicy Lead,87,0,30,29,1-30,30 1D 00 00,True,2493
+Synth Lead 1,31,Vintager,87,0,31,30,1-31,30 1E 00 00,True,2494
+Synth Lead 1,32,BagShakuLead,87,0,32,31,1-32,30 1F 00 00,True,2495
+Synth Lead 2,1,ResoSawLead,87,0,33,32,2-1,30 20 00 00,True,2497
+Synth Lead 2,2,Theramax 1,87,0,34,33,2-2,30 21 00 00,True,2498
+Synth Lead 2,3,AX Sqr Lead,87,0,35,34,2-3,30 22 00 00,True,2499
+Synth Lead 2,4,Pulse Lead 1,87,0,36,35,2-4,30 23 00 00,True,2500
+Synth Lead 2,5,Pulse Lead 2,87,0,37,36,2-5,30 24 00 00,True,2501
+Synth Lead 2,6,Mid Saw Ld,87,0,38,37,2-6,30 25 00 00,True,2502
+Synth Lead 2,7,On Air,87,0,39,38,2-7,30 26 00 00,True,2503
+Synth Lead 2,8,2krazy Soft,87,0,40,39,2-8,30 27 00 00,True,2504
+Synth Lead 2,9,Soft Lead,87,0,41,40,2-9,30 28 00 00,True,2505
+Synth Lead 2,10,Tri Lead 1,87,0,42,41,2-10,30 29 00 00,True,2506
+Synth Lead 2,11,Tri Lead 2,87,0,43,42,2-11,30 2A 00 00,True,2507
+Synth Lead 2,12,Sine Lead 1,87,0,44,43,2-12,30 2B 00 00,True,2508
+Synth Lead 2,13,Sine Lead 2,87,0,45,44,2-13,30 2C 00 00,True,2509
+Synth Lead 2,14,Simple Sine,87,0,46,45,2-14,30 2D 00 00,True,2510
+Synth Lead 2,15,Simple Tri,87,0,47,46,2-15,30 2E 00 00,True,2511
+Synth Lead 2,16,Simple Sqr,87,0,48,47,2-16,30 2F 00 00,True,2512
+Synth Lead 2,17,Spooky Lead,87,0,49,48,2-17,30 30 00 00,True,2513
+Synth Lead 2,18,Ramp Lead,87,0,50,49,2-18,30 31 00 00,True,2514
+Synth Lead 2,19,Air Lead,87,0,51,50,2-19,30 32 00 00,True,2515
+Synth Lead 2,20,Growl Lead,87,0,52,51,2-20,30 33 00 00,True,2516
+Synth Lead 2,21,Pulstar Ld,87,0,53,52,2-21,30 34 00 00,True,2517
+Synth Lead 2,22,Mini Growl,87,0,54,53,2-22,30 35 00 00,True,2518
+Synth Lead 2,23,Round SQR,87,0,55,54,2-23,30 36 00 00,True,2519
+Synth Lead 2,24,Brite Square,87,0,56,55,2-24,30 37 00 00,True,2520
+Synth Lead 2,25,Octa Square,87,0,57,56,2-25,30 38 00 00,True,2521
+Synth Lead 2,26,Square SAW,87,0,58,57,2-26,30 39 00 00,True,2522
+Synth Lead 2,27,Soft Squ Ld,87,0,59,58,2-27,30 3A 00 00,True,2523
+Synth Lead 2,28,Wormy Lead,87,0,60,59,2-28,30 3B 00 00,True,2524
+Synth Lead 2,29,Theramax 2,87,0,61,60,2-29,30 3C 00 00,True,2525
+Synth Lead 2,30,SoloNzPeaker,87,0,62,61,2-30,30 3D 00 00,True,2526
+Synth Lead 2,31,Mlt Pipes,87,0,63,62,2-31,30 3E 00 00,True,2527
+Synth Lead 2,32,5th SawLead,87,0,64,63,2-32,30 3F 00 00,True,2528
+Bass,1,Reso Bs 1,87,0,65,64,3-1,30 40 00 00,True,2530
+Bass,2,Round Bs,87,0,66,65,3-2,30 41 00 00,True,2531
+Bass,3,Moogue Bs1,87,0,67,66,3-3,30 42 00 00,True,2532
+Bass,4,Monster Bass,87,0,68,67,3-4,30 43 00 00,True,2533
+Bass,5,Moogue Bs2,87,0,69,68,3-5,30 44 00 00,True,2534
+Bass,6,Triangle Bs,87,0,70,69,3-6,30 45 00 00,True,2535
+Bass,7,Punch MG,87,0,71,70,3-7,30 46 00 00,True,2536
+Bass,8,Acdg Bass,87,0,72,71,3-8,30 47 00 00,True,2537
+Bass,9,Alpha Bs,87,0,73,72,3-9,30 48 00 00,True,2538
+Bass,10,Reso Bs 2,87,0,74,73,3-10,30 49 00 00,True,2539
+Bass,11,Reso Bs 3,87,0,75,74,3-11,30 4A 00 00,True,2540
+Bass,12,MKS-50 SBs,87,0,76,75,3-12,30 4B 00 00,True,2541
+Bass,13,TB Dist Bs,87,0,77,76,3-13,30 4C 00 00,True,2542
+Bass,14,TB Bs,87,0,78,77,3-14,30 4D 00 00,True,2543
+Bass,15,Fat Analog,87,0,79,78,3-15,30 4E 00 00,True,2544
+Bass,16,Compu SBs,87,0,80,79,3-16,30 4F 00 00,True,2545
+Bass,17,Modular Bs1,87,0,81,80,3-17,30 50 00 00,True,2546
+Bass,18,Modular Bs2,87,0,82,81,3-18,30 51 00 00,True,2547
+Bass,19,Garage Bass,87,0,83,82,3-19,30 52 00 00,True,2548
+Bass,20,Spike Bs,87,0,84,83,3-20,30 53 00 00,True,2549
+Bass,21,FatMG Bs,87,0,85,84,3-21,30 54 00 00,True,2550
+Bass,22,JunoSqu Bs,87,0,86,85,3-22,30 55 00 00,True,2551
+Bass,23,Acoustic Bs1,87,0,87,86,3-23,30 56 00 00,True,2552
+Bass,24,Acoustic Bs2,87,0,88,87,3-24,30 57 00 00,True,2553
+Bass,25,Finger EBs 1,87,0,89,88,3-25,30 58 00 00,True,2554
+Bass,26,Finger EBs 2,87,0,90,89,3-26,30 59 00 00,True,2555
+Bass,27,Finger EBs 3,87,0,91,90,3-27,30 5A 00 00,True,2556
+Bass,28,Finger EBs 4,87,0,92,91,3-28,30 5B 00 00,True,2557
+Bass,29,Pick Bs 1,87,0,93,92,3-29,30 5C 00 00,True,2558
+Bass,30,Pick Bs 2,87,0,94,93,3-30,30 5D 00 00,True,2559
+Bass,31,Fretnot Bs,87,0,95,94,3-31,30 5E 00 00,True,2560
+Bass,32,Slap Bass,87,0,96,95,3-32,30 5F 00 00,True,2561
+Lead Guitar,1,SearingGtr 1,87,0,97,96,4-1,30 60 00 00,True,2563
+Lead Guitar,2,SearingGtr 2,87,0,98,97,4-2,30 61 00 00,True,2564
+Lead Guitar,3,SearingGtr 3,87,0,99,98,4-3,30 62 00 00,True,2565
+Lead Guitar,4,SearingGtr 4,87,0,100,99,4-4,30 63 00 00,True,2566
+Lead Guitar,5,OctSearingGt,87,0,101,100,4-5,30 64 00 00,True,2567
+Lead Guitar,6,Dist.Fingerz,87,0,102,101,4-6,30 65 00 00,True,2568
+Lead Guitar,7,AX DistGt,87,0,103,102,4-7,30 66 00 00,True,2569
+Lead Guitar,8,Digi DistGt,87,0,104,103,4-8,30 67 00 00,True,2570
+Lead Guitar,9,Fuzz,87,0,105,104,4-9,30 68 00 00,True,2571
+Lead Guitar,10,Nice Dist Gt,87,0,106,105,4-10,30 69 00 00,True,2572
+Lead Guitar,11,Guitar Rip,87,0,107,106,4-11,30 6A 00 00,True,2573
+Lead Guitar,12,Twin,87,0,108,107,4-12,30 6B 00 00,True,2574
+Lead Guitar,13,MS1959 I,87,0,109,108,4-13,30 6C 00 00,True,2575
+Lead Guitar,14,MS1959 II,87,0,110,109,4-14,30 6D 00 00,True,2576
+Lead Guitar,15,Metal Lead,87,0,111,110,4-15,30 6E 00 00,True,2577
+Lead Guitar,16,OD-2 Turbo,87,0,112,111,4-16,30 6F 00 00,True,2578
+Lead Guitar,17,Jazz EGtr,87,0,113,112,4-17,30 70 00 00,True,2579
+Lead Guitar,18,Clean EGtr,87,0,114,113,4-18,30 71 00 00,True,2580
+Lead Guitar,19,Pick EGtr,87,0,115,114,4-19,30 72 00 00,True,2581
+Lead Guitar,20,Funk EGtr,87,0,116,115,4-20,30 73 00 00,True,2582
+Lead Guitar,21,Strat EGtr,87,0,117,116,4-21,30 74 00 00,True,2583
+Lead Guitar,22,Nylon Gtr 1,87,0,118,117,4-22,30 75 00 00,True,2584
+Lead Guitar,23,Nylon Gtr 2,87,0,119,118,4-23,30 76 00 00,True,2585
+Lead Guitar,24,Nylon Gtr 3,87,0,120,119,4-24,30 77 00 00,True,2586
+Lead Guitar,25,Folk Gtr 1,87,0,121,120,4-25,30 78 00 00,True,2587
+Lead Guitar,26,Folk Gtr 2,87,0,122,121,4-26,30 79 00 00,True,2588
+Lead Guitar,27,Folk Gtr 3,87,0,123,122,4-27,30 7A 00 00,True,2589
+Lead Guitar,28,Harp,87,0,124,123,4-28,30 7B 00 00,True,2590
+Lead Guitar,29,Aerial Harp,87,0,125,124,4-29,30 7C 00 00,True,2591
+Lead Guitar,30,LostParadise,87,0,126,125,4-30,30 7D 00 00,True,2592
+Lead Guitar,31,Sitar,87,0,127,126,4-31,30 7E 00 00,True,2593
+Lead Guitar,32,Santur Stack,87,0,128,127,4-32,30 7F 00 00,True,2594
+Brass/Poly Synth,1,80s Brass 1,87,1,1,128,5-1,31 00 00 00,True,2596
+Brass/Poly Synth,2,80s Brass 2,87,1,2,129,5-2,31 01 00 00,True,2597
+Brass/Poly Synth,3,Soft SynBrs,87,1,3,130,5-3,31 02 00 00,True,2598
+Brass/Poly Synth,4,Brite SynBrs,87,1,4,131,5-4,31 03 00 00,True,2599
+Brass/Poly Synth,5,Wide SynBrs,87,1,5,132,5-5,31 04 00 00,True,2600
+Brass/Poly Synth,6,Analog Brass,87,1,6,133,5-6,31 05 00 00,True,2601
+Brass/Poly Synth,7,Juno Brass,87,1,7,134,5-7,31 06 00 00,True,2602
+Brass/Poly Synth,8,Poly Brass,87,1,8,135,5-8,31 07 00 00,True,2603
+Brass/Poly Synth,9,106 Brass,87,1,9,136,5-9,31 08 00 00,True,2604
+Brass/Poly Synth,10,Octa Brass,87,1,10,137,5-10,31 09 00 00,True,2605
+Brass/Poly Synth,11,AX BrassSect,87,1,11,138,5-11,31 0A 00 00,True,2606
+Brass/Poly Synth,12,Trumpeter,87,1,12,139,5-12,31 0B 00 00,True,2607
+Brass/Poly Synth,13,Soft Brass,87,1,13,140,5-13,31 0C 00 00,True,2608
+Brass/Poly Synth,14,Sax Sect 1,87,1,14,141,5-14,31 0D 00 00,True,2609
+Brass/Poly Synth,15,Sax Sect 2,87,1,15,142,5-15,31 0E 00 00,True,2610
+Brass/Poly Synth,16,Breathy Sax,87,1,16,143,5-16,31 0F 00 00,True,2611
+Brass/Poly Synth,17,Soprano Sax,87,1,17,144,5-17,31 10 00 00,True,2612
+Brass/Poly Synth,18,Alto Sax,87,1,18,145,5-18,31 11 00 00,True,2613
+Brass/Poly Synth,19,Tenor Sax,87,1,19,146,5-19,31 12 00 00,True,2614
+Brass/Poly Synth,20,Baritone Sax,87,1,20,147,5-20,31 13 00 00,True,2615
+Brass/Poly Synth,21,Pan Pipes,87,1,21,148,5-21,31 14 00 00,True,2616
+Brass/Poly Synth,22,Harmonica,87,1,22,149,5-22,31 15 00 00,True,2617
+Brass/Poly Synth,23,Ox Synth,87,1,23,150,5-23,31 16 00 00,True,2618
+Brass/Poly Synth,24,Poly Synth 1,87,1,24,151,5-24,31 17 00 00,True,2619
+Brass/Poly Synth,25,Poly Synth 2,87,1,25,152,5-25,31 18 00 00,True,2620
+Brass/Poly Synth,26,Poly Synth 3,87,1,26,153,5-26,31 19 00 00,True,2621
+Brass/Poly Synth,27,Poly Synth 4,87,1,27,154,5-27,31 1A 00 00,True,2622
+Brass/Poly Synth,28,Juno SAW,87,1,28,155,5-28,31 1B 00 00,True,2623
+Brass/Poly Synth,29,Super Saw,87,1,29,156,5-29,31 1C 00 00,True,2624
+Brass/Poly Synth,30,Touchy,87,1,30,157,5-30,31 1D 00 00,True,2625
+Brass/Poly Synth,31,Euro Express,87,1,31,158,5-31,31 1E 00 00,True,2626
+Brass/Poly Synth,32,Analog Dream,87,1,32,159,5-32,31 1F 00 00,True,2627
+Strings/Pad,1,AX Strings 1,87,1,33,160,6-1,31 20 00 00,True,2629
+Strings/Pad,2,AX Strings 2,87,1,34,161,6-2,31 21 00 00,True,2630
+Strings/Pad,3,Tape Strings,87,1,35,162,6-3,31 22 00 00,True,2631
+Strings/Pad,4,PhaserPad,87,1,36,163,6-4,31 23 00 00,True,2632
+Strings/Pad,5,Cosmic Rays,87,1,37,164,6-5,31 24 00 00,True,2633
+Strings/Pad,6,Soft Pad 1,87,1,38,165,6-6,31 25 00 00,True,2634
+Strings/Pad,7,Soft Pad 2,87,1,39,166,6-7,31 26 00 00,True,2635
+Strings/Pad,8,Synth Str 1,87,1,40,167,6-8,31 27 00 00,True,2636
+Strings/Pad,9,Synth Str 2,87,1,41,168,6-9,31 28 00 00,True,2637
+Strings/Pad,10,JX Strings,87,1,42,169,6-10,31 29 00 00,True,2638
+Strings/Pad,11,JP Strings,87,1,43,170,6-11,31 2A 00 00,True,2639
+Strings/Pad,12,106 Strings,87,1,44,171,6-12,31 2B 00 00,True,2640
+Strings/Pad,13,Sawtooth Str,87,1,45,172,6-13,31 2C 00 00,True,2641
+Strings/Pad,14,Chorus Pad,87,1,46,173,6-14,31 2D 00 00,True,2642
+Strings/Pad,15,5th DLA Pad,87,1,47,174,6-15,31 2E 00 00,True,2643
+Strings/Pad,16,Hollow Pad,87,1,48,175,6-16,31 2F 00 00,True,2644
+Strings/Pad,17,Nu Epic Pad,87,1,49,176,6-17,31 30 00 00,True,2645
+Strings/Pad,18,Angelis Pad,87,1,50,177,6-18,31 31 00 00,True,2646
+Strings/Pad,19,TrnsSweepPad,87,1,51,178,6-19,31 32 00 00,True,2647
+Strings/Pad,20,Heaven Pad,87,1,52,179,6-20,31 33 00 00,True,2648
+Strings/Pad,21,Voyager,87,1,53,180,6-21,31 34 00 00,True,2649
+Strings/Pad,22,OB Strings,87,1,54,181,6-22,31 35 00 00,True,2650
+Strings/Pad,23,Shimmer Pad,87,1,55,182,6-23,31 36 00 00,True,2651
+Strings/Pad,24,Xadecimal,87,1,56,183,6-24,31 37 00 00,True,2652
+Strings/Pad,25,World X,87,1,57,184,6-25,31 38 00 00,True,2653
+Strings/Pad,26,Sliced Pad,87,1,58,185,6-26,31 39 00 00,True,2654
+Strings/Pad,27,Trance Synth,87,1,59,186,6-27,31 3A 00 00,True,2655
+Strings/Pad,28,Major 7,87,1,60,187,6-28,31 3B 00 00,True,2656
+Strings/Pad,29,Freeze Synth,87,1,61,188,6-29,31 3C 00 00,True,2657
+Strings/Pad,30,Bustranza,87,1,62,189,6-30,31 3D 00 00,True,2658
+Strings/Pad,31,SuperSaw Pad,87,1,63,190,6-31,31 3E 00 00,True,2659
+Strings/Pad,32,Digitaless,87,1,64,191,6-32,31 3F 00 00,True,2660
+Organ/Clavi,1,Lord Organ 1,87,1,65,192,7-1,31 40 00 00,True,2667
+Organ/Clavi,2,Lord Organ 2,87,1,66,193,7-2,31 41 00 00,True,2668
+Organ/Clavi,3,Rotary Org 1,87,1,67,194,7-3,31 42 00 00,True,2669
+Organ/Clavi,4,Rotary Org 2,87,1,68,195,7-4,31 43 00 00,True,2670
+Organ/Clavi,5,Vintage Org 1,87,1,69,196,7-5,31 44 00 00,True,2671
+Organ/Clavi,6,Vintage Org 2,87,1,70,197,7-6,31 45 00 00,True,2672
+Organ/Clavi,7,VK Organ 1,87,1,71,198,7-7,31 46 00 00,True,2673
+Organ/Clavi,8,VK Organ 2,87,1,72,199,7-8,31 47 00 00,True,2674
+Organ/Clavi,9,D-Bars 1,87,1,73,200,7-9,31 48 00 00,True,2675
+Organ/Clavi,10,D-Bars 2,87,1,74,201,7-10,31 49 00 00,True,2676
+Organ/Clavi,11,D-Bars 3,87,1,75,202,7-11,31 4A 00 00,True,2677
+Organ/Clavi,12,D-Bars 4,87,1,76,203,7-12,31 4B 00 00,True,2678
+Organ/Clavi,13,D-Bars 5,87,1,77,204,7-13,31 4C 00 00,True,2679
+Organ/Clavi,14,AX Dist Org1,87,1,78,205,7-14,31 4D 00 00,True,2680
+Organ/Clavi,15,AX Dist Org2,87,1,79,206,7-15,31 4E 00 00,True,2681
+Organ/Clavi,16,Technorgan,87,1,80,207,7-16,31 4F 00 00,True,2682
+Organ/Clavi,17,Old Fashion,87,1,81,208,7-17,31 50 00 00,True,2683
+Organ/Clavi,18,Posit/Mod,87,1,82,209,7-18,31 51 00 00,True,2684
+Organ/Clavi,19,Grand Pipes,87,1,83,210,7-19,31 52 00 00,True,2685
+Organ/Clavi,20,Musette,87,1,84,211,7-20,31 53 00 00,True,2686
+Organ/Clavi,21,Amped D6,87,1,85,212,7-21,31 54 00 00,True,2687
+Organ/Clavi,22,AX Clav 1,87,1,86,213,7-22,31 55 00 00,True,2688
+Organ/Clavi,23,AX Clav 2,87,1,87,214,7-23,31 56 00 00,True,2689
+Organ/Clavi,24,Pulse Clav 1,87,1,88,215,7-24,31 57 00 00,True,2690
+Organ/Clavi,25,Pulse Clav 2,87,1,89,216,7-25,31 58 00 00,True,2691
+Organ/Clavi,26,Phase Clavi,87,1,90,217,7-26,31 59 00 00,True,2692
+Organ/Clavi,27,Sweepin Clav,87,1,91,218,7-27,31 5A 00 00,True,2693
+Organ/Clavi,28,AX Vibe,87,1,92,219,7-28,31 5B 00 00,True,2694
+Organ/Clavi,29,Marimba,87,1,93,220,7-29,31 5C 00 00,True,2695
+Organ/Clavi,30,Xylophone,87,1,94,221,7-30,31 5D 00 00,True,2696
+Organ/Clavi,31,Steel Drums,87,1,95,222,7-31,31 5E 00 00,True,2697
+Organ/Clavi,32,Ethno Keys,87,1,96,223,7-32,31 5F 00 00,True,2698
+Choir/Piano,1,Angels Choir,87,1,97,224,8-1,31 60 00 00,True,2700
+Choir/Piano,2,Aerial Choir,87,1,98,225,8-2,31 61 00 00,True,2701
+Choir/Piano,3,Humming,87,1,99,226,8-3,31 62 00 00,True,2702
+Choir/Piano,4,Gospel Hum,87,1,100,227,8-4,31 63 00 00,True,2703
+Choir/Piano,5,Vox Pad 1,87,1,101,228,8-5,31 64 00 00,True,2704
+Choir/Piano,6,Vox Pad 2,87,1,102,229,8-6,31 65 00 00,True,2705
+Choir/Piano,7,80s Vox,87,1,103,230,8-7,31 66 00 00,True,2706
+Choir/Piano,8,SynVox 1,87,1,104,231,8-8,31 67 00 00,True,2707
+Choir/Piano,9,SynVox 2,87,1,105,232,8-9,31 68 00 00,True,2708
+Choir/Piano,10,Sample Opera,87,1,106,233,8-10,31 69 00 00,True,2709
+Choir/Piano,11,Jazz Dooos,87,1,107,234,8-11,31 6A 00 00,True,2710
+Choir/Piano,12,AX Grand,87,1,108,235,8-12,31 6B 00 00,True,2711
+Choir/Piano,13,AX Mono Pno,87,1,109,236,8-13,31 6C 00 00,True,2712
+Choir/Piano,14,E-Grand,87,1,110,237,8-14,31 6D 00 00,True,2713
+Choir/Piano,15,JD-800 Piano,87,1,111,238,8-15,31 6E 00 00,True,2714
+Choir/Piano,16,Honky Tonk,87,1,112,239,8-16,31 6F 00 00,True,2715
+Choir/Piano,17,Blend Piano,87,1,113,240,8-17,31 70 00 00,True,2716
+Choir/Piano,18,Harpsichord,87,1,114,241,8-18,31 71 00 00,True,2717
+Choir/Piano,19,Phase Stage,87,1,115,242,8-19,31 72 00 00,True,2718
+Choir/Piano,20,PhaseEP,87,1,116,243,8-20,31 73 00 00,True,2719
+Choir/Piano,21,Stage EP,87,1,117,244,8-21,31 74 00 00,True,2720
+Choir/Piano,22,Dyno EP,87,1,118,245,8-22,31 75 00 00,True,2721
+Choir/Piano,23,SA EP,87,1,119,246,8-23,31 76 00 00,True,2722
+Choir/Piano,24,Wurly EP,87,1,120,247,8-24,31 77 00 00,True,2723
+Choir/Piano,25,Dist Wurly,87,1,121,248,8-25,31 78 00 00,True,2724
+Choir/Piano,26,FM EP 1,87,1,122,249,8-26,31 79 00 00,True,2725
+Choir/Piano,27,FM EP 2,87,1,123,250,8-27,31 7A 00 00,True,2726
+Choir/Piano,28,Psycho EP,87,1,124,251,8-28,31 7B 00 00,True,2727
+Choir/Piano,29,D-50 Fantsia,87,1,125,252,8-29,31 7C 00 00,True,2728
+Choir/Piano,30,FM Sparkles,87,1,126,253,8-30,31 7D 00 00,True,2729
+Choir/Piano,31,Dreaming Box,87,1,127,254,8-31,31 7E 00 00,True,2730
+Choir/Piano,32,Sweet Keys,87,1,128,255,8-32,31 7F 00 00,True,2731

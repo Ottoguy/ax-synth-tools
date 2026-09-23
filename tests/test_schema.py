@@ -265,5 +265,44 @@ class ThirdPartyPatches(unittest.TestCase):
                 self.assertTrue(prm.range[0] <= v["value"] <= prm.range[1], path)
 
 
+class OwnersManual(unittest.TestCase):
+    """docs/AX-Synth_OM.pdf (text: research/generated/owners-manual.pdf.txt)."""
+
+    def test_tone_list_shape(self):
+        from axsynth import factory
+        t = factory.tones()
+        self.assertEqual(len(t), 264)
+        reg = [x for x in t if x.editable]
+        self.assertEqual(len(reg), 256)
+        self.assertEqual(sorted(x.user_patch_index for x in reg), list(range(256)))
+        self.assertEqual(len(factory.families()), 8)
+        self.assertEqual(factory.by_name("Violin").cc00_msb, 66)   # SuperNATURAL bank
+        self.assertEqual(factory.by_name("Sax").cc32_lsb, 64)      # SPECIAL bank
+
+    def test_forum_patch_is_factory_searing_gtr_1(self):
+        # Both forum files keep name 'SearingGtr 1' and Setup bank 87/0, program 96 (0-based):
+        # the manual lists SearingGtr 1 as Lead Guitar #1 = 87/0/PC 97.
+        import a8_files
+        from axsynth import factory
+        res = a8_files.parse(ROOT / "patches" / "guitar.a8e", S)
+        v = {x["path"]: x["value"] for b in res["blocks"] for x in b["values"]}
+        t = factory.by_program(v["fm.setup.kbdPatchBankSelectMsb"], v["fm.setup.kbdPatchBankSelectLsb"],
+                               v["fm.setup.kbdPatchProgramNumber"])
+        self.assertEqual(t.name, "SearingGtr 1")
+        self.assertEqual(factory.by_name(v["fm.pat.common.patchName"]), t)
+        self.assertEqual((t.group, t.position, t.librarian_slot), ("Lead Guitar", 1, "4-1"))
+
+    def test_setup_default_bank_is_regular(self):
+        # Setup default kbdPatchBankSelectMsb = 87 = regular/special Tone bank (manual p.37)
+        self.assertEqual(S.value("Setup", "kbdPatchBankSelectMsb").default, 87)
+
+    def test_manual_ranges_match_model(self):
+        # Transpose -5..+6 (p.21), octave +-3 (p.22), master tune 415.3-466.2 Hz (p.21)
+        self.assertEqual(S.value("Setup", "transposeValue").range, (59, 70))
+        self.assertEqual(S.value("Setup", "octaveShift").range, (61, 67))
+        mt = [x for x in S.data["stringTables"]["masterTuneTable"]["items"] if x]
+        self.assertEqual((mt[0], mt[-1]), ("415.30", "466.20"))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -110,7 +110,7 @@ How to read the address strings:
 
 **Anomaly [F]:** `stepPitchShifter-bal` / `-level` have `<address>00 81</address>` / `00 85`, and bytes above 0x7F are illegal in SysEx. The generic `mfxParameter29/30` sit at `01 01` / `01 05`, which the doc agrees with. Decoding leniently in base 128 (`0×128 + 0x81 = 129` = `01 01`) gives the doc address. The author probably did hex arithmetic `7D + 4` **[I]**. Whether the Editor sends `01 01` or a broken `00 81` is **unknown**. STEP PITCH SHIFTER is the only MFX type that uses slots 29–30. Whole-patch transfers are unaffected: Roland's SMF exports send each block as one image (see `smf-export-analysis.md`). Only live single-parameter edits could expose it.
 
-**Discrepancy [F vs D]:** SystemController. The doc says Total Size `00 00 00 50` and lists `00 4F` "Portament Mode (SWITCH/HOLD)". The script size is `4F` and has no such value, and `InitialData.a8e` holds 79 bytes. The hardware will settle which is right.
+**Discrepancy [F vs D]:** SystemController. The doc says Total Size `00 00 00 50` and lists `00 4F` "Portament Mode (SWITCH/HOLD)". The script size is `4F` and has no such value, and `InitialData.a8e` holds 79 bytes. **Update:** the Owner's Manual (p.24) describes exactly this setting, the SuperNATURAL Portamento mode "Hld"/"SUt", as a system setting remembered after power-off. So the hardware has it, and the doc's size `50` is most likely right; the Editor script just doesn't expose it. Confirm with an RQ1 of size `50`.
 
 ## 4. Data types (Task 3)
 

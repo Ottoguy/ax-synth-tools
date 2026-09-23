@@ -30,7 +30,19 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 
 11. **Roland erratum [D, `docs/AX-Synth_Erratum2.pdf`].** The [VOLUME] knob is analog and **transmits no CC07**. This also contradicts the MIDI Implementation, which lists Volume (CC7) under "Data transmission" (p.5; `generated/midi-implementation.pdf.txt` l.772). There's no effect on SysEx, addresses or patch data. The same page confirms the D Beam transmits "CC01~31, CC33~95" (no CC32), the beam-table indexing found in item 10. Practical rule: don't expect volume-knob CCs from the synth, and don't use CC07 from the synth as a signal. Receiving CC07 is not affected by the erratum.
 
+12. **Owner's Manual [D, `docs/AX-Synth_OM.pdf`], see [owners-manual-analysis.md](owners-manual-analysis.md):**
+    - The **factory Tone list**: 256 regular Tones in 8 families × 32 (bank 87/0 and 87/1, PC 1–128), plus 4 SuperNATURAL (66/0) and 4 SPECIAL (87/64), which aren't editable. Extracted to `generated/factory-tones.{json,csv}` and available through `axsynth.factory`.
+    - The forum patches are factory **SearingGtr 1** (Lead Guitar #1, 87/0/PC 97 ↔ Setup program 96).
+    - The instrument has a **3-character LED display** and no patch editing on the device.
+    - A synth-initiated **Bulk Dump** (~16 min), **factory reset** and **firmware display** are available via power-on key combinations.
+    - The real-time controllers are the mod bar (CC01), the aftertouch *knob* (the keys send no aftertouch), the ribbon (bend), the D-Beam (pitch / filter / CC01–95 without 32), portamento and hold.
+    - The Implementation Chart lists CC71–75, 91 and 93 as received.
+13. **Parameter knowledge base [D].** The **Editor manual** we already had explains every parameter (p.9–43) and every effect type (Effects List p.44–78). No document contains a wave list; `internalWaveNameTableA` in Script.xml remains the only source.
+
 ## What we strongly suspect (evidence-backed, unverified)
+
+- **The 256 factory Tones are the 256 User patches**: Tone (family *f*, variation *v*) = User patch *n* = 32·*f* + *v* − 1 = LSB·128 + PC − 1, at address `30 00 00 00 + n·00 01 00 00`, Librarian slot *f*-*v*. Supported by the manuals (8 × 32 = Bank 1–8 × Number 1–32, factory reset restores edits) and by the forum patch's Setup; confirm with a Librarian Read All.
+- **SystemController really is `0x50` bytes**, as in the doc. The Owner's Manual describes the SuperNATURAL Portamento mode Hld/SUt as a remembered system setting, which is the doc's `00 4F` "Portament Mode". The Editor's script (size `4F`) just omits it.
 
 - The hardware accepts Roland's own stream: DT1 to `30 nn …` stores User patch *nn* (that's what the Librarian export would do when played back). Its replies to RQ1 will match the `.a8l`/export blocks. (The software side is now confirmed; the hardware side isn't.)
 - `cm.command.writeRequest/writeStart/writeComplete` at `0F 00 10 00–02` belong only to the Editor's live **WRITE (Temporary → User)** operation. They don't appear in either export. The Editor also appears to read patch-name lists through `cm` "…Information" addresses.
@@ -47,7 +59,9 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 |---|---|
 | SysEx | Whether the synth accepts RQ1 for a whole block and how it packetizes replies (doc: ≤256-byte packets ~20 ms apart); the *minimum* DT1 spacing it tolerates. Roland's software uses device ID `10` and 31,250-baud time + 20 ms |
 | Address conversion | What the Editor actually sends for the two `00 81`/`00 85` addresses in live single-parameter edits |
-| SystemController | Doc size `50` (includes `00 4F` Portamento Mode) vs script/`.a8e` size `4F` (not in exports) |
+| SystemController | Doc size `50` (includes `00 4F` Portamento Mode, which the Owner's Manual confirms exists as the SuperNATURAL Hld/SUt setting) vs script/`.a8e` size `4F`. An RQ1 of size `50` settles it |
+| Undocumented storage | Where FAVORITE memories (2×8: Tone + volume + reverb send), USB driver mode (Gen/Uen) and sleep interval are stored. A synth-initiated Bulk Dump capture should reveal these areas |
+| Stored vs printed names | Exact 12-character stored names of the factory Tones ("Vintage Org 1" is 13 characters as printed) |
 | Checksums | Formula confirmed on 2,313 messages produced by Roland's software; not yet on a message from the synth itself |
 | Patch storage | Whether the synth commits a DT1 to `30 nn …` to flash immediately (the Librarian export implies yes), and the Editor's live WRITE handshake (`0F 00 10 0x` payloads). **Do not experiment with writes yet** |
 | .a8l | Trailing 4 bytes per record (not transmitted in exports; memo hypothesis) |
@@ -66,39 +80,45 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 
 **Goal:** confirm on real hardware that addresses, sizes, encoding, checksums and enum mapping match the model, with **zero risk of changing synth memory** (RQ1 only asks the synth to reply).
 
-1. On the AX-Synth, select a known factory patch. Note its name and a few values (e.g. filter type, patch level).
+1. On the AX-Synth, select a known factory Tone by family button + variation number, e.g. LEAD GUITAR variation 1. The synth's 3-character display can't show names; the expected name comes from `generated/factory-tones.csv` ("SearingGtr 1").
 2. Send `research/generated/experiment-rq1-temporary-patch.syx` (10 RQ1s: 9 patch blocks + SystemController with size 50) using a SysEx utility such as MIDI-OX. Record all incoming SysEx to `reply.syx`.
 3. `py -3 research/tools/dump_experiment.py decode reply.syx`
-   Expect: 9–10 DT1 replies with `checksum_ok=True`, patchName = the displayed name, labels that make sense (e.g. `tvfFilterType = LPF`), and the SystemController reply length answering the 4F/50 question.
-4. Change **one** parameter on the synth's panel (e.g. cutoff via the knob), re-send, re-record, and diff. Exactly the predicted address (Tone *n* `…49` TVF cutoff) should change.
+   Expect: 9–10 DT1 replies with `checksum_ok=True`, patchName = the Tone-list name, labels that make sense (e.g. `tvfFilterType = LPF`), and the SystemController reply length answering the 4F/50 question. For SearingGtr 1, the non-edited parts should also equal the forum patches' unchanged values.
+4. Change **one** value without storing anything. Use the synth's own Volume edit ([SHIFT] + the lit TONE button → "UOl", change the value; Owner's Manual p.26) but **don't press WRITE**. Then re-send, re-record and diff. That shows where the on-device volume edit lives (prediction: PatchCommon `patchLevel`, `1F 00 00 0E`). Alternatively, change one value in the Editor (e.g. Tone 1 cutoff), which should change `1F 00 20 49`.
 
 **Done without hardware (2026-09-23):** Export SMF from both apps. See [smf-export-analysis.md](smf-export-analysis.md). It confirmed the block format, User-patch addressing, checksums and pacing, but it can't show live traffic.
 
 **Next zero-hardware step:** capture the Editor's *live* MIDI output through a virtual loopback port (e.g. loopMIDI + MIDI-OX), selected as the Editor's "AX-Synth Output". Moving a knob shows single-parameter DT1 addressing: select STEP PITCH SHIFTER and move Balance/Level to settle the `00 81` question. READ/SYNC show the RQ1s and `cm` name queries. WRITE shows the `0F 00 10 0x` handshake. Nothing reaches a synth, but the Editor may time out waiting for replies.
 
-**Useful follow-up once the synth is connected (non-destructive):** send `research/generated/guitar01-temporary.syx`, a real patch encoded by our tools for the Temporary Patch only. The display should read "SearingGtr 1", and it should sound like a metal lead, with the velocity layers and CC70 behaviour the author described. Alternatively play `dumps/AX-Synth Editor clean export.mid` to the synth. It targets only the volatile Temporary Patch, so the display should show "INIT PATCH". ⚠ **Never** play the Librarian export without a verified backup: it would overwrite all 256 User patches.
+**Useful follow-up once the synth is connected (non-destructive):** send `research/generated/guitar01-temporary.syx`, a real patch encoded by our tools for the Temporary Patch only. It should sound like a metal lead, with the velocity layers and CC70 behaviour the author described. The synth can't show the name, so confirm it with the Editor's READ ("SearingGtr 1") or an RQ1 dump. Alternatively play `dumps/AX-Synth Editor clean export.mid` to the synth, which targets only the volatile Temporary Patch (the name read back should be "INIT PATCH"). ⚠ **Never** play the Librarian export without a verified backup: it would overwrite all 256 User patches. If that happens by accident, factory reset (Owner's Manual p.34) restores the factory Tones, but not your own edits.
+
+**Synth-initiated capture (read-only for the synth):** record the **Bulk Dump** (power-on with VARIATION [−]+[+]+TONE [6], then FAVORITE [B]; ~16 min; Owner's Manual p.29) in MIDI-OX. It's a full backup *and* shows the synth's own DT1 format: addresses, packet sizes and pacing, plus the undocumented FAVORITE/system areas.
 
 ## Files produced
 
 | Path | What |
 |---|---|
+| `CLAUDE.md`, `AGENTS.md` | Project context for LLM agents: rules, environment, repository map, pipeline, API, core facts |
+| `research/README.md` | Index: question → file; generated artifact → producer |
 | `research/script-analysis.md` | Tasks 1–3, 7: structure, address system, type table |
 | `research/initialdata-analysis.md` | Task 4: `.a8e`/`.a8l` formats |
 | `research/roland-installation-inventory.md` | Task 5 |
 | `research/online-research.md` | Task 6 |
 | `research/smf-export-analysis.md` | Editor/Librarian "Export SMF" captures in `dumps/` |
 | `research/third-party-patches-analysis.md` | Forum-shared patches in `patches/`, checked against the author's description |
+| `research/owners-manual-analysis.md` | Owner's Manual: Tone list, UI limits, maintenance functions, controllers, design implications, terminology |
+| `research/generated/factory-tones.{json,csv}` | 264 factory Tones (`tools/extract_tone_list.py`); `src/axsynth/factory.py` |
 | `research/generated/guitar{,01}-temporary.syx` | Those patches as Temporary-Patch DT1s (not sent) |
 | `research/script-schema.json` | Complete extraction (every element + source line), resolved absolute addresses, unions, tables, UI bindings |
 | `research/generated/parameters.{csv,json}` | Parameter database: 1,934 `fm`+`cm` parameters with address, type, range, default, enum, effect, source line, confidence |
 | `research/generated/crosscheck-midi-implementation.md`, `crosscheck.json` | Script vs official doc, row by row |
 | `research/generated/*.strings.txt`, `*.pdf.txt`, `inventory.json` | EXE strings, PDF text, hashes |
 | `research/generated/experiment-rq1-temporary-patch.syx` | Ready-to-send read-only requests (not sent) |
-| `research/tools/` | `extract_script_schema.py`, `crosscheck_midi_impl.py`, `a8_files.py`, `describe_a8.py`, `build_parameter_db.py`, `dump_experiment.py`, `smf_inspect.py`, `exe_strings.py`, `inventory.py`, `pdf2txt.py` |
+| `research/tools/` | `extract_script_schema.py`, `crosscheck_midi_impl.py`, `extract_tone_list.py`, `a8_files.py`, `describe_a8.py`, `build_parameter_db.py`, `dump_experiment.py`, `smf_inspect.py`, `exe_strings.py`, `inventory.py`, `pdf2txt.py` |
 | `dumps/` | Roland "Export SMF" captures (test fixtures) |
 | `patches/` | Third-party `.a8e` patches (test fixtures) |
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
 | `src/axsynth/sysex.py` | Checksum, DT1/RQ1 builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
-| `tests/test_schema.py` | 30 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `tests/test_schema.py` | 34 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

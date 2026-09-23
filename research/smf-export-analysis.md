@@ -39,10 +39,10 @@ Every message is `F0 41 10 00 00 3C 12 <addr ×4> <data> <sum> F7`: Roland, devi
 
 ## Still open
 
-- Whether the hardware **accepts** these streams: timing tolerance, whether User-area DT1s commit to flash immediately, and whether a Temporary write redraws the display.
+- Whether the hardware **accepts** these streams: timing tolerance, and whether User-area DT1s commit to flash immediately. (The 3-character display won't show names; check by Editor READ or an RQ1 dump.)
 - System Controller size (`4F` vs `50`): Setup/System aren't exported.
 - The single-parameter addressing the Editor uses (e.g. the `00 81` case) and the `cm` protocol. These appear only in live traffic, which can also be captured without a synth (see the REPORT's next steps).
 
 ## ⚠ Safety note for later hardware work
 
-Playing the **Librarian** export to a real AX-Synth would, if the synth accepts DT1 to the User area, **overwrite all 256 User patches with INIT PATCH**. Never send it without a verified backup (RQ1 dump of all 256 slots). The **Editor** export targets only the Temporary Patch, which is volatile and doesn't touch stored patches.
+Playing the **Librarian** export to a real AX-Synth would, if the synth accepts DT1 to the User area, **overwrite all 256 User patches with INIT PATCH**. Never send it without a verified backup (Librarian "Read All Data", or the synth's own Bulk Dump, Owner's Manual p.29). If it happens anyway, a factory reset (p.34) restores the *factory* Tones, but not your own edits. The **Editor** export targets only the Temporary Patch, which is volatile and doesn't touch stored patches.

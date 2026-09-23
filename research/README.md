@@ -1,0 +1,52 @@
+# research/ index
+
+Start with `../CLAUDE.md` (project context) and `REPORT.md` (findings). This file maps **questions → the file that answers them**. Evidence labels used throughout: [F] our Roland files, [D] official Roland docs, [3P] third party, [I] inference.
+
+## Documents
+
+| File | Scope | Key sections |
+|---|---|---|
+| `REPORT.md` | Main report | Bottom line; What we know (items 1–13); Strongly suspect; Remains unknown (table); Most valuable discoveries; Next experiments; Files produced |
+| `script-analysis.md` | `Script.xml` | 1 What the file is · 2 Data model (roots, tree, CommunicationModel, effect unions, relationships) · 3 Address system (+ anomaly, SystemController discrepancy) · 4 Data types table · 5 MIDI/SysEx/file references |
+| `initialdata-analysis.md` | `.a8e`, `.a8l` | Byte-offset tables for both formats; block table; correspondence to Script.xml; unknowns |
+| `smf-export-analysis.md` | `../dumps/*.mid` | Message table (order, sizes, delays); what it settles (items 1–7); still open; safety note |
+| `third-party-patches-analysis.md` | `../patches/*.a8e` | Claim-vs-data table; what this changes (items 1–6); SearingGtr 1 = factory Lead Guitar #1; provenance |
+| `owners-manual-analysis.md` | `../docs/AX-Synth_OM.pdf` | 1 Factory Tone list · 2 UI constraints (3-character display, WRITE) · 3 Power-on functions · 4 Confirmations · 5 Performance controls · 6 Implications for the goal · 7 Terminology |
+| `roland-installation-inventory.md` | All installation files + external docs | Per-file purpose/relevance; what was searched for and absent |
+| `online-research.md` | Web/GitHub | Exact-term search results; third-party evidence; common "Koa" editor framework |
+
+## Question → where to look
+
+| Question | Answer location |
+|---|---|
+| Absolute address / type / range / default / enum labels of parameter X | `generated/parameters.csv` (or `.json`); code: `axsynth.schema.Schema.parameters()` |
+| Raw Script.xml element for X (with line number) | `script-schema.json` → `structTypes.<Type>.children[]` (`line` field) |
+| Does X match the official doc? | `generated/crosscheck-midi-implementation.md`; machine: `generated/crosscheck.json` keyed `"<StructType>:<offset int>"` |
+| Which MFX/chorus/reverb parameters apply to effect type N | `script-schema.json` → `effect_unions.{mfx,chorus,reverb}.groups[N]`; MFX names: `effect_unions.mfx.display_names.names[N]` |
+| What a parameter/effect *does* to the sound | `generated/editor-manual.pdf.txt` (parameter guide p.9–43, Effects List p.44–78) |
+| Official byte-level spec text | `generated/midi-implementation.pdf.txt` |
+| Factory sound names, family, bank/PC, memory slot | `generated/factory-tones.csv`; code: `axsynth.factory` |
+| Wave names | `script-schema.json` → `stringTables.internalWaveNameTableA.items` (313; wave N ↔ item N−1 [I]) |
+| Enum label table for a UI value | `script-schema.json` → `ui_bindings["fm.pat.tone[].x"].stringTableRefs` → `stringTables` |
+| How a whole patch is sent | `smf-export-analysis.md`; code: `axsynth.sysex.patch_messages` |
+| Byte layout of `.a8e` / `.a8l` | `initialdata-analysis.md`; code: `tools/a8_files.py` |
+| Hardware UI limits, maintenance key combinations, controllers | `owners-manual-analysis.md` §2, §3, §5 |
+| Strings inside the Roland EXEs (class names, format strings, type vocabulary) | `generated/A8EE.exe.strings.txt`, `generated/A8EL.exe.strings.txt` |
+| SHA-256 of original files (immutability check) | `generated/inventory.json` |
+| Open questions and planned experiments | `REPORT.md` "What remains unknown" and "Next experiment"; user-side steps in `../NEXT-STEPS.md` |
+
+## Generated artifacts (never edit by hand; regenerate)
+
+| Artifact | Producer |
+|---|---|
+| `script-schema.json` | `tools/extract_script_schema.py` |
+| `generated/crosscheck-midi-implementation.md`, `generated/crosscheck.json` | `tools/crosscheck_midi_impl.py` |
+| `generated/parameters.{csv,json}` | `tools/build_parameter_db.py` |
+| `generated/factory-tones.{csv,json}` | `tools/extract_tone_list.py` |
+| `generated/inventory.json` | `tools/inventory.py` |
+| `generated/*.exe.strings.txt` | `tools/exe_strings.py` (output redirected) |
+| `generated/*.pdf.txt` | `tools/pdf2txt.py` (then renamed) |
+| `generated/experiment-rq1-temporary-patch.syx` | `tools/dump_experiment.py make-requests` |
+| `generated/guitar{,01}-temporary.syx` | `tools/dump_experiment.py a8-to-syx` |
+
+Order and exact commands: `../CLAUDE.md` §5.

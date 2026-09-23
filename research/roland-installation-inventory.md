@@ -18,7 +18,8 @@ Source: `original-roland-files/` (176 files). Generated data with SHA-256 for ev
 
 Also in the project but outside the installation:
 - `docs/AX Synth docs.pdf` = **"AX-Synth MIDI Implementation", Roland Europe, Jan 2010, v1.00, 16 pages**. It is the official SysEx specification and the most important external reference (text in `generated/midi-implementation.pdf.txt`).
-- `docs/AX-Synth_Erratum2.pdf` (91,497 bytes, 1 page, Roland doc no. 602.00.0399 RES 747-09, dated 5 Oct 2009) = **erratum to the Owner's Manual p.27** (text in `generated/erratum2.pdf.txt`). It deletes the "Volume, CC07, transmission: [VOLUME] knob" row, because *"The AX-Synth's [VOLUME] knob cannot transmit MIDI messages, because it is analog."* The file name implies an Erratum 1 exists; we don't have it. We also don't have the Owner's Manual itself.
+- `docs/AX-Synth_Erratum2.pdf` (91,497 bytes, 1 page, Roland doc no. 602.00.0399 RES 747-09, dated 5 Oct 2009) = **erratum to the Owner's Manual p.27** (text in `generated/erratum2.pdf.txt`). It deletes the "Volume, CC07, transmission: [VOLUME] knob" row, because *"The AX-Synth's [VOLUME] knob cannot transmit MIDI messages, because it is analog."* The file name implies an Erratum 1 exists; we don't have it.
+- `docs/AX-Synth_OM.pdf` (5,048,286 bytes, 44 pages, doc no. 602.00.0354.02 RES 750-09, file `AX-Synth_e2`, 12 Oct 2009) = **Owner's Manual** (text in `generated/owners-manual.pdf.txt`). Contains the **factory Tone list** (→ `generated/factory-tones.*`), panel/UI description, Bulk Dump, factory reset, firmware check, the MIDI Implementation Chart and the CC list. No parameter explanations and no wave list; see `owners-manual-analysis.md`.
 
 ## Searched for and not present
 

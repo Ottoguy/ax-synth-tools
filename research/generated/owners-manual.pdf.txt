@@ -1,0 +1,3593 @@
+
+
+===== PAGE 1 =====
+r®
+ 
+Owner’s Manual
+ 
+AX-Synth_e2  Page 1  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 2 =====
+  
+For Canada
+This Class B digital apparatus meets all requirements of the Canadian Interference-Causing Equipment Regulations.
+NOTICE
+AVIS
+For the USA
+FEDERAL COMMUNICATIONS COMMISSION
+RADIO FREQUENCY INTERFERENCE STATEMENT
+This equipment has been tested and found to comply with the limits for a Class B digital device, pursuant to Part 15 of the 
+FCC Rules. These limits are designed to provide reasonable protection against harmful interference in a residential 
+installation. This equipment generates, uses, and can radiate radio frequency energy and, if not installed and used in 
+accordance with the instructions, may cause harmful interference to radio communications. However, there is no guarantee 
+that interference will not occur in a particular installation. If this equipment does cause harmful interference to radio or 
+television reception, which can be determined by turning the equipment off and on, the user is encouraged to try to correct the 
+interference by one or more of the following measures:
+—   Reorient or relocate the receiving antenna.
+—   Increase the separation between the equipment and receiver.
+—   Connect the equipment into an outlet on a circuit different from that to which the receiver is connected.
+—   Consult the dealer or an experienced radio/TV technician for help.
+This device complies with Part 15 of the FCC Rules. Operation is subject to the following two conditions:
+ (1) This device may not cause harmful interference, and
+ (2) This device must accept any interference received, including interference that may cause undesired operation.
+Unauthorized changes or modification to this system can void the users authority to operate this equipment.
+This equipment requires shielded interface cables in order to meet FCC class B Limit.
+This product complies with the requirements of European Directive EMC 2004/108/EC.
+For EU Countries
+  
+WARNING
+This product contains chemicals known to cause cancer, birth defects and other reproductive harm, including lead.
+For C.A. US (Proposition 65)
+IMPORTANT: THE WIRES IN THIS MAINS LEAD ARE COLOURED IN ACCORDANCE WITH THE FOLLOWING CODE.
+BLUE: 
+BROWN: 
+As the colours of the wires in the mains lead of this apparatus may not correspond with the coloured markings identifying 
+the terminals in your plug, proceed as follows:
+The wire which is coloured BLUE must be connected to the terminal which is marked with the letter N or coloured BLACK.
+The wire which is coloured BROWN must be connected to the terminal which is marked with the letter L or coloured RED.
+Under no circumstances must either of the above wires be connected to the earth terminal of a three pin plug.
+NEUTRAL
+LIVE
+For the U.K.
+  
+For the USA
+DECLARATION OF CONFORMITY
+Compliance Information Statement
+Model Name :
+Type of Equipment :
+Responsible Party :
+Address :
+Telephone :
+AX-Synth
+Shoulder Synthesizer
+Roland Corporation U.S.
+5100 S. Eastern Avenue, Los Angeles, CA 90040-2938
+(323) 890-3700
+ 
+AX-Synth_e2  Page 2  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 3 =====
+ 
+r
+ 
+Shoulder Synthesizer
+ 
+Owner’s Manual
+ 
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+ 
+Thank you and congratulations on your choice of the Roland AX-Synth Shoulder Synthesizer. Fitted with a 
+powerful sound engine, the AX-Synth represents the next generation of Roland’s legendary AX-series of 
+shoulder keyboards, with sounds derived from Roland’s latest synthesizers. 
+With its support for battery and wireless audio use and its stylish design, the AX-Synth allows keyboardists 
+and other musicians to take center stage with mesmerizing keyboard solos, basslines, etc. In addition, the 
+AX-Synth can be used to control MIDI sound modules, function as input device for your computer-based 
+DAW, to control samplers, etc. 
+To avoid confusion, let’s agree to…
+• …use the word “button” for all keys on the front panel, and only use “key” when referring to the AX-Synth’s key-
+board. 
+• …use “sequencer” when referring to both hardware sequencers and computers with sequencer software.
+•… talk about “MIDI instruments” to signify both isolated (“monotimbral”) instruments and parts/timbres/voices/multi 
+channels of a multitimbral module or synth. 
+The explanations in this manual include illustrations that depict what should typically be shown by the dis-
+play. Note, however, that your unit may incorporate a newer, enhanced version of the system (e.g., includes 
+newer sounds), so what you actually see in the display may not always match what appears in the manual.
+ 
+Before using this unit, carefully read the sections entitled: “USING THE UNIT SAFELY” on p. 4 and “Important notes” on p. 6. 
+These sections provide important information concerning the proper operation of the unit. Additionally, in order to feel assured 
+that you have gained a good grasp of every feature provided by your new unit, this owner’s manual should be read in its 
+entirety. The manual should be saved and kept on hand as a convenient reference.
+Copyright ©2009 ROLAND EUROPE. All rights reserved. 
+No part of this publication may be reproduced in any form without the written permission of Roland Europe s.p.a.
+ 
+AX-Synth_e2  Page 3  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 4 =====
+ 
+4
+ 
+USING THE UNIT SAFELY
+ 
+• Do not open (or modify in any way) the instrument, and 
+avoid damaging the AC adapter.
+ 
+• Do not attempt to repair the instrument, or replace parts 
+within it (except when this manual provides specific 
+instructions directing you to do so). Refer all servicing to 
+your retailer, the nearest Roland Service Center, or an 
+authorized Roland distributor, as listed on the “Informa-
+tion” page.
+ 
+• If you do not use the AX-Synth as a shoulder keyboard, 
+make sure you always have it placed so it is level and sure 
+to remain stable. Never place it on stands that could 
+wobble, or on inclined surfaces.
+ 
+• Never use or store the AX-Synth in any of the following 
+locations:
+• Subject to temperature extremes (e.g., direct sunlight 
+in an enclosed vehicle, near a heating duct, on top of 
+heat-generating equipment); or are
+• Damp (e.g., baths, washrooms, on wet floors); or are
+• Exposed to steam or smoke; or are
+• Subject to salt exposure; or are
+• Humid; or are
+• Exposed to rain; or are
+• Dusty; or are
+• Subject to high levels of vibration.
+ 
+•M ake sure you always have the unit placed so it is level 
+and sure to remain stable. Never place it on stands that 
+could wobble, or on inclined surfaces.
+ 
+• Be sure to use only the AC adaptor supplied with the unit. 
+Also, make sure the line voltage at the installation 
+matches the input voltage specified on the AC adaptor's 
+body. Other AC adaptors may use a different polarity, or 
+be designed for a different voltage, so their use could result in 
+damage, malfunction, or electric shock.
+ 
+• Use only the attached power-supply cord. Also, the sup-
+plied power cord must not be used with any other device. 
+ 
+• Do not excessively twist or bend the adaptor cord, nor 
+place heavy objects on it. Doing so can damage the cord, 
+producing severed elements and short circuits. Damaged 
+cords are fire and shock hazards!
+• This instrument, either alone or in combination with an 
+amplifier and headphones or speakers, may be capable of 
+producing sound levels that could cause permanent hear-
+ing loss. Do not operate for a long period of time at a high volume 
+level or at a level that is uncomfortable. If you experience any 
+hearing loss or ringing in the ears, you should immediately stop 
+using the AX-Synth and consult an audiologist.
+ 
+• Do not allow any objects (e.g., flammable material, coins, 
+pins); or liquids of any kind (water, soft drinks, etc.) to 
+penetrate the AX-Synth.
+ 
+•I mmediately turn the power off, disconnect the adaptor 
+from the outlet, and request servicing by your retailer, 
+the nearest Roland Service Center, or an authorized 
+Roland distributor, as listed on the “Information” page 
+when:
+• The AC adaptor, the power-supply cord, or the plug 
+has been damaged; or
+•I f smoke or unusual odor occurs
+• Objects have fallen into, or liquid has been spilled onto 
+the unit; or
+• The unit has been exposed to rain (or otherwise has become 
+wet); or
+• The unit does not appear to operate normally or exhibits a 
+marked change in performance.
+ 
+•I n households with small children, an adult should pro-
+vide supervision until the child is capable of following all 
+the rules essential for the safe operation of the unit.
+ 
+• Protect the AX-Synth from strong impact.
+Do not drop it!
+ 
+• Do not force the unit's power-supply cord to share an 
+outlet with an unreasonable number of other devices. Be 
+especially careful when using extension cords—the total 
+power used by all devices you have connected to the extension 
+cord's outlet must never exceed the power rating (watts/amperes) 
+for the extension cord. Excessive loads can cause the insulation on 
+the cord to heat up and eventually melt through.
+ 
+• Before using the AX-Synth in a foreign country, consult 
+with your retailer, the nearest Roland Service Center, or 
+an authorized Roland distributor, as listed on the “Infor-
+mation” page.
+Used for instructions intended to alert 
+the user to the risk of injury or material 
+damage should the unit be used 
+improperly. 
+* Material damage refers to damage or 
+other adverse effects caused with 
+respect to the home and all its 
+furnishings, as well to domestic 
+animals or pets. 
+Used for instructions intended to alert 
+the user to the risk of death or severe 
+injury should the unit be used 
+improperly. 
+The ● symbol alerts the user to things that must be 
+carried out. The specific thing that must be done is 
+indicated by the design contained within the circle. In 
+the case of the symbol at left, it means that the power-
+cord plug must be unplugged from the outlet. 
+The      symbol alerts the user to important instructions 
+or warnings.The specific meaning of the symbol is 
+determined by the design contained within the 
+triangle. In the case of the symbol at left, it is used for 
+general cautions, warnings, or alerts to danger. 
+The       symbol alerts the user to items that must never 
+be carried out (are forbidden). The specific thing that 
+must not be done is indicated by the design contained 
+within the circle. In the case of the symbol at left, it 
+means that the unit must never be disassembled. 
+ 
+AX-Synth_e2  Page 4  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 5 =====
+ 
+r
+ 
+ AX-Synth Owner’s Manual
+ 
+5
+ 
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+ 
+• Batteries must never be heated, taken apart, or thrown 
+into fire or water.
+ 
+• DO NOT play a CD-ROM disc on a conventional audio CD 
+player. The resulting sound may be of a level that could 
+cause permanent hearing loss. Damage to speakers or 
+other system components may result.
+ 
+• Never expose Ni-MH batteries to excessive heat such as 
+sunshine, fire or the like.
+• The AX-Synth and the AC adaptor should be located so 
+that their location or position does not interfere with its 
+proper ventilation.
+ 
+•A lways grasp only the plug on the AC adaptor cord when 
+plugging into, or unplugging from, an outlet or this unit.
+ 
+• At regular intervals, you should unplug the AC adaptor 
+and clean it by using a dry cloth to wipe all dust and other 
+accumulations away from its prongs. Also, disconnect the 
+power plug from the power outlet whenever the unit is to remain 
+unused for an extended period of time. Any accumulation of dust 
+between the power plug and the power outlet can result in poor 
+insulation and lead to fire.
+ 
+• Try to prevent cords and cables from becoming entangled. 
+Also, all cords and cables should be placed so they are out 
+of the reach of children.
+ 
+• Never climb on top of, nor place heavy objects on the 
+AX-Synth.
+ 
+• Never handle the AC adaptor or its plugs with wet hands 
+when plugging into, or unplugging from, an outlet or this 
+unit.
+ 
+• Before moving the AX-Synth, disconnect the AC adaptor 
+and all cords coming from external devices. 
+ 
+• Before cleaning the unit, turn off the power and unplug 
+the AC adaptor from the outlet (see p. 13).
+ 
+•W henever you suspect the possibility of lightning in your 
+area, disconnect the AC adaptor from the outlet.
+ 
+• If used improperly, batteries may explode or leak and 
+cause damage or injury. In the interest of safety, please 
+read and observe the following precautions.
+• Carefully follow the installation instructions for batter-
+ies, and make sure you observe the correct polarity.
+• Avoid using new batteries together with used ones. In 
+addition, avoid mixing different types of batteries.
+• Remove the batteries whenever the unit is to remain 
+unused for an extended period of time.
+• If a battery has leaked, use a soft piece of cloth or paper towel 
+to wipe all remnants of the discharge from the battery com-
+partment. Then install new batteries. To avoid inflammation of 
+the skin, make sure that none of the battery discharge gets onto 
+your hands or skin. Exercise the utmost caution so that none of 
+the discharge gets near your eyes. Immediately rinse the 
+affected area with running water if any of the discharge has 
+entered the eyes.
+• Never keep batteries together with metallic objects such as ball-
+point pens, necklaces, hairpins, etc.
+ 
+• Used batteries must be disposed of in compliance with 
+whatever regulations for their safe disposal that may be 
+observed in the region in which you live.
+ 
+AX-Synth_e2  Page 5  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 6 =====
+ 
+Important notes
+ 
+6
+ 
+In addition to the items listed under “USING THE UNIT SAFELY” on p. 4, please read and observe the following:
+ 
+Power supply
+ 
+• The AX-Synth can be operated using 8 rechargeable AA-type 
+Ni-MH batteries or the supplied adaptor. Be careful to insert the 
+batteries the right way around. If you prefer to use the adaptor, be 
+sure to use the enclosed Roland PSB-1U model.
+• Do not connect this unit to same electrical outlet that is being 
+used by an electrical appliance that is controlled by an inverter 
+(such as a refrigerator, washing machine, microwave oven, or air 
+conditioner), or that contains a motor. Depending on the way in 
+which the electrical appliance is used, power supply noise may 
+cause this unit to malfunction or may produce audible noise. If it is 
+not practical to use a separate electrical outlet, connect a power 
+supply noise filter between this unit and the electrical outlet.
+• The AC adaptor will begin to generate heat after long hours of 
+consecutive use. This is normal, and is not a cause for concern. 
+• The use of an AC adaptor is recommended as the unit’s power 
+consumption is relatively high. Should you prefer to use batteries, 
+please use the rechargeable AA-type Ni-MH type. 
+•W hen installing or replacing batteries, always turn off the power 
+on this unit and disconnect any other devices you may have con-
+nected. This way, you can prevent malfunction and/or damage to 
+speakers or other devices. 
+• Before connecting the AX-Synth to other devices, turn off the 
+power to all units. This will help prevent malfunctions and/or dam-
+age to other devices.
+ 
+Placement
+ 
+• Using the unit near power amplifiers (or other equipment contain-
+ing large power transformers) may induce hum. To alleviate the 
+problem, change the orientation of this unit; or move it farther 
+away from the source of interference.
+• This device may interfere with radio and television reception. Do 
+not use this device in the vicinity of such receivers.
+• Noise may be produced if wireless communications devices, such 
+as cell phones, are operated in the vicinity of this unit. Such noise 
+could occur when receiving or initiating a call, or while conversing. 
+Should you experience such problems, you should relocate such 
+wireless devices so they are at a greater distance from this unit, or 
+switch them off.
+• Do not expose the AX-Synth to direct sunlight, place it near 
+devices that radiate heat, leave it inside an enclosed vehicle, or 
+otherwise subject it to temperature extremes. Excessive heat can 
+deform or discolor the instrument.
+•W hen moved from one location to another where the temperature 
+and/or humidity is very different, water droplets (condensation) 
+may form inside the AX-Synth. Damage or malfunction may result 
+if you attempt to use the AX-Synth in this condition. Therefore, 
+before using the AX-Synth, you must allow it to stand for several 
+hours, until the condensation has completely evaporated. 
+• Do not allow objects to remain on top of the keyboard. This can be 
+the cause of malfunction, such as keys ceasing to produce sound.
+• Depending on the material and temperature of the surface on 
+which you place the unit, its rubber feet may discolor or mar the 
+surface. 
+You can place a piece of felt or cloth under the rubber feet to pre-
+vent this from happening. If you do so, please make sure that the 
+unit will not slip or move accidentally.
+ 
+Maintenance
+ 
+• For everyday cleaning wipe the AX-Synth with a soft, dry cloth or 
+one that has been slightly dampened with water. To remove stub-
+born dirt, use a mild, non-abrasive detergent. Afterwards, be sure 
+to wipe the instrument thoroughly with a soft, dry cloth.
+• Never use benzene, thinners, alcohol or solvents of any kind, to 
+avoid the possibility of discoloration and/or deformation.
+ 
+Repairs and data
+ 
+•P lease be aware that all data contained in the instrument’s mem-
+ory may be lost when it is sent for repairs. Important data should 
+always be backed up using the Bulk Dump function (see p. 29). In 
+certain cases (such as when circuitry related to memory itself is 
+out of order), we regret that it may not be possible to restore the 
+data. Roland assumes no liability concerning such loss of data.
+ 
+Additional precautions
+ 
+•P lease be aware that the contents of memory can be irretrievably 
+lost as a result of a malfunction, or the improper operation of the 
+unit. To protect yourself against the risk of losing important data, 
+we recommend that you periodically save a backup copy of impor-
+tant data you have stored in the unit's memory (see p. 29).
+• Unfortunately, it may be impossible to restore the contents of data 
+that was stored in the AX-Synth’s memory once it has been lost. 
+Roland Europe assumes no liability concerning such loss of data.
+• Use a reasonable amount of care when using the AX-Synth’s but-
+tons, sliders, or other controls; and when using its jacks and con-
+nectors. Rough handling can lead to malfunctions.
+•W hen connecting/disconnecting all cables, grasp the connector 
+itself—never pull on the cable. This way you will avoid causing 
+shorts, or damage to the cable’s internal elements.
+• To avoid disturbing your neighbors, try to keep the AX-Synth’s vol-
+ume at reasonable levels. You may prefer to use headphones, so 
+you do not need to be concerned about those around you (espe-
+cially when it is late at night).
+•W hen you need to transport the unit, package it in the box 
+(including padding) that it came in, if possible. Otherwise, you will 
+need to use equivalent packaging materials.
+• The usable range of D Beam controller will become extremely small 
+when used under strong direct sunlight. Please be aware of this 
+when using the D Beam controller outside.
+• Use a reasonable amount of care when using the instrument’s 
+buttons, other controls, and jacks/connectors. Rough handling can 
+lead to malfunctions. 
+• Never strike or apply strong pressure to the display.
+ 
+Handling CD-ROMs
+ 
+• Avoid touching or scratching the shiny underside (encoded sur-
+face) of the CD-ROM. Damaged or dirty CD-ROM discs may not be 
+read properly. Keep your discs clean using a commercially available 
+CD cleaner.
+ 
+Precautions for batteries
+ 
+• Never use alkaline or zinc-carbon batteries.
+• The temperature range for use of the batteries depends on the 
+battery type being used. Please see the documentation that came 
+with the batteries.
+• Do not use or store batteries at high temperature, such as in 
+strong direct sunlight, in cars during hot weather or directly in 
+front of heaters. This may cause battery fluid leakage, impaired 
+performance and shorten the batteries’ service life.
+• Do not splash fresh or saltwater on a battery or allow the termi-
+nals to become damp. This may cause heat generation and forma-
+tion of rust on the battery and its terminals.
+•I f newly purchased batteries exhibit rust, generate heat or seem 
+abnormal in any other way, do not use them. Take them back to 
+your dealer.
+• Keep the batteries out of reach of babies or small children.
+ 
+ Important notes
+ 
+AX-Synth_e2  Page 6  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 7 =====
+ 
+r
+ 
+ AX-Synth Owner’s Manual
+ 
+7
+ 
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+ 
+• Be sure to carefully instruct any person on the proper way of han-
+dling batteries.
+• Never dispose of the battery in a fire. Never heat it. Doing so may 
+melt the insulation, damage the gas release vents or protective 
+devices, cause combustion through chemical reaction with gener-
+ated hydrogen, ejection of battery fluid, bursting or fire.
+• Do not use batteries with the positive (+) and negative (–) termi-
+nals reversed, as this may drain the batteries or cause abnormal 
+chemical reactions.
+• Do no strike or drop the batteries. Strong impact can cause leak-
+age of battery fluid, heat generation, bursting or fire.
+• Never try to connect several batteries in parallel as this may cause 
+leakage of battery fluid, heat generation, bursting or fire.
+• Do not alter or remove protective mechanisms or other parts. 
+Never disassemble the batteries.
+• If any fluid from a battery comes in contact with the eyes, flush 
+the eyes immediately, washing them thoroughly with clean water 
+from a tap or other source and consult a doctor. Strong alkaline 
+fluid can damage the eyes and lead to permanent loss of eyesight.
+• If skin or clothing comes in contact with any fluid from a battery, 
+wash the area immediately with clean water from a tap. Battery 
+fluid can cause skin damage.
+•W hen a battery is no longer usable, dispose of it in accordance 
+with all applicable local laws and regulations.
+• If a battery leaks fluid, changes color or shape or changes in any 
+other way, do not use it, otherwise it may cause heat generation, 
+bursting or fire.
+ 
+Battery handling
+ 
+• Incorrect handling of batteries, rechargeable batteries, or a battery 
+charger can cause leakage, overheating, fire, or explosion. Before 
+use, you must read and strictly observe all of the precautions that 
+accompany the batteries, rechargeable batteries, or battery 
+charger. When using rechargeable batteries and a charger, use 
+only the combination of rechargeable batteries and charger speci-
+fied by the battery manufacturer.
+ 
+Strap holder precaution
+ 
+• Never unscrew the strap pins to avoid damaging the AX-Synth’s 
+plastic housing, which eventually compromises overall stability 
+and safety.
+• To avoid dropping the unit and damaging it or causing injuries to 
+yourself or other people, be sure to double-check whether the 
+supplied strap is securely attached to the two pins before using 
+the AX-Synth.
+• Roland Europe recommends installing commercially available 
+strap locks for guitar to guard against damage and injuries caused 
+by the strap coming loose while your are playing.
+ 
+Copyright
+ 
+•M icrosoft and Windows are registered trademarks of Microsoft 
+Corporation.
+• Apple and Macintosh are registered trademarks of Apple Inc.
+•M ac OS is a trademark of Apple Inc.
+ 
+AX-Synth_e2  Page 7  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 8 =====
+ 
+Important notes
+ 
+8
+ 
+USING THE UNIT SAFELY  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+Important notes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+1. The AX-Synth in a nutshell . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2. Panel descriptions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1 0
+ 
+Front panel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+Bottom panel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+ 
+Connection panel (rear) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+ 
+3. Making connections  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+ 
+Connecting the AC adaptor . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+Inserting or replacing batteries . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+Connecting the AX-Synth. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+Using headphones . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+Powering up . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+ 
+4. Playing the AX-Synth  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+ 
+Selecting ‘regular’ Tones . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+Selecting ‘SuperNATURAL’ and ‘SPECIAL’ Tones . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+Grouping frequently-used Tones (FAVORITE) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+ 
+5. Using the AX-Synth’s performance functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+ 
+Master Tune  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Transpose. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+Shifting the keyboard pitch in octave steps . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+Using the Modulation Bar  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+Using the Touch Controller  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+Aftertouch . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+Using the D Beam controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+Portamento . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+Sustaining notes. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+ 
+6. Editing Tone settings. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+ 
+Editing the volume and Reverb Send levels. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+ 
+7. Using the AX-Synth as MIDI controller . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+ 
+MIDI messages that can be transmitted/received  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+Activating the AX-Synth’s MIDI transmission . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+Setting the MIDI transmit channel . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+Transmitting Program Change numbers . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+Using the Bulk Dump function . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 29
+ 
+8. Using the AX-Synth’s USB port. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+ 
+General considerations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+Making the settings for the USB driver . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+ 
+9. About V-LINK. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  33
+ 
+How to use V-LINK. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+ 
+10. Additional functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3 4
+ 
+Battery-related functions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+Loading the factory settings  . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+Checking the AX-Synth’s firmware version . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 34
+ 
+11. Appendix . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . . 35
+ 
+Troubleshooting . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 35
+Control Change list . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+Tone list . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 37
+ 
+12. Specifications. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 39
+13. MIDI implementation chart. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+14. Index. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  . . . . 41
+ 
+ Contents
+ 
+AX-Synth_e2  Page 8  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 9 =====
+ 
+r
+ 
+ AX-Synth Owner’s Manual
+ 
+9
+ 
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+ 
+High-quality Internal sound source
+ 
+A “shoulder synthesizer”, the AX-Synth comes with 
+256 high-quality sounds specially selected for solo 
+performances, 4 SuperNATURAL™ sounds (Violin, 
+Cello, Shakuhachi, Trombone) and 4 SPECIAL sounds 
+(Trumpet, Sax, Strings and Jazz Scat).
+ 
+Cable-free live operation possible
+ 
+The AX-Synth can be powered by 8 rechargeable AA-
+type Ni-MH batteries with a battery life of about 6 
+hours. If combined with a commercially available 
+wireless system, it allows you to play wherever you 
+like, to follow the singer or any other musician on 
+stage, etc., with no cables to pay attention to.
+It even provides an attenuator switch to adapt its 
+output level to the input sensitivity of the wireless 
+system you are using.
+ 
+Convenient studio operation
+ 
+An AC adaptor and the USB port allow the AX-Synth 
+to be used with a computer. Dedicated editor and 
+librarian software is also available. The “AX-Synth 
+Editor” software, which includes librarian software, 
+can be downloaded free of charge from Roland’s 
+website: http://www.Roland.com.
+ 
+All performance controls within reach
+ 
+The AX-Synth provides control functions that are 
+conveniently and ergonomically built into its neck. 
+The AX-Synth puts you in control of your sound: key 
+velocity sensitivity, a D Beam controller, an AFTER-
+TOUCH knob, a modulation bar, a TOUCH CONTROL-
+LER ribbon, a PORTAMENTO button, a HOLD button 
+and a BENDER MODE button are built in. 
+The D Beam controller can be set to transmit almost 
+any control change message (CC) you may ever need. 
+Finally, the AX-Synth sports a FOOT PEDAL socket to 
+which you can connect a DP-series hold pedal. 
+ 
+In-depth programming with the ‘AX-Synth editor’
+ 
+The AX-Synth comes with dedicated editor and 
+librarian software that allows you to modify (and 
+save) all aspects of the internal sounds. Combined 
+with this intuitive software, the AX-Synth becomes a 
+fully-fledged synthesizer.
+ 
+1. The AX-Synth in a nutshell
+ 
+AX-Synth_e2  Page 9  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 10 =====
+ 
+Panel descriptions
+ 
+10
+ 
+Front panel
+ 
+A
+ 
+PGM CHANGE INC & DEC buttons
+ 
+These buttons are used to transmit program change 
+messages on the selected MIDI channel. They work in 
+a sequential fashion (incremental or decremental). 
+Program change numbers can also be entered 
+directly, however (see p. 28).
+ 
+B
+ 
+TX ON button
+ 
+This button is used to enable (button lights) or disable 
+the transmission of MIDI messages. Pressing it while 
+holding down the 
+ 
+[SHIFT]
+ 
+ button allows you to use 
+the keys in the highest octave (NUMERIC KEYPAD) 
+and the keys in the lowest octave (TX MIDI CHAN-
+NELS) for numeric entry of program change or MIDI 
+channel numbers.
+ 
+C
+ 
+TRANSPOSE button
+ 
+Press this button to display the current transposition 
+interval. Holding it while pressing the OCTAVE/VARI-
+ATION 
+ 
+[+]
+ 
+/
+ 
+[–]
+ 
+ buttons allows you to set the interval in 
+semi-tone steps.
+ 
+D
+ 
+V-LINK button
+ 
+Press this button to activate the AX-Synth’s V-LINK 
+control function (see p. 33).
+ 
+E
+ 
+SHIFT button
+ 
+Pressing this button allows you to select the second-
+ary (hidden) function of some of the other buttons.
+ 
+F
+ 
+Display
+ 
+This three-character display keeps you posted about 
+the selected Tone, mode or the parameter value you 
+set.
+ 
+G
+ 
+TONE buttons
+ 
+These buttons are used to select the desired Tone 
+family, SuperNATURAL, SPECIAL or FAVORITE Tone 
+(the button you press lights blue).
+ 
+H
+ 
+VARIATION DEC/– & INC/+ buttons
+ 
+These buttons allow you to select a Tone from the 
+active Tone family (see above) in a sequential fashion. 
+This function can also be assigned to the OCTAVE/
+VARIATION 
+ 
+[+]
+ 
+/
+ 
+[–]
+ 
+ buttons (page 18).
+A third, usually faster, way to select Tones is by hold-
+ing down 
+ 
+[SHIFT]
+ 
+ while using the keys in the highest 
+octave (NUMERIC KEYPAD).
+ 
+I
+ 
+FAVORITE A, B buttons
+ 
+These buttons allow you to select the corresponding 
+bank of “favorite” Tones. 
+ 
+J
+ 
+WRITE button
+ 
+The 
+ 
+[WRITE]
+ 
+ button is used to assign the desired 
+Tones to the 16 memories of FAVORITE banks “A” and 
+“B” and to save all settings you change. 
+ 
+2. Panel descriptions
+A
+B
+C D
+E
+F G H I J
+ 
+AX-Synth_e2  Page 10  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 11 =====
+ 
+r
+ 
+ AX-Synth Owner’s Manual
+ 
+11
+ 
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+ 
+‘Neck’ (control) section
+ 
+K
+ 
+VOLUME knob
+ 
+This knob allows you to set the AX-Synth’s overall 
+output volume. 
+ 
+L
+ 
+AFTER TOUCH knob
+ 
+This knob sends channel aftertouch messages for the 
+notes you are playing (see p. 23).
+ 
+M
+ 
+OCTAVE/VARIATION (TRANSPOSE) buttons
+ 
+These buttons are used to transpose the AX-Synth’s 
+keyboard in steps of one octave (see p. 22). 
+You can also use these buttons to select Tone varia-
+tions (see p. 18).
+If you hold down 
+ 
+[TRANSPOSE]
+ 
+ while pressing one of 
+these buttons, the pitch changes in semi-tone steps.
+ 
+N
+ 
+MODULATION BAR/TOUCH CONTROLLER
+ 
+Press the modulation bar to add modulation to the 
+notes you are playing. Behind the modulation bar lies 
+the ribbon strip. Slide your finger towards the left or 
+right on this ribbon to change the pitch of the notes.
+ 
+O
+ 
+D Beam controller & PITCH, FILTER & ASSIGNABLE 
+buttons
+ 
+This controller allows you to influence the pitch or 
+timbre of the notes you play, or to create unique 
+effects by moving one hand up/down or left/right 
+above the two “eyes”.
+The buttons to its left allow you to assign the desired 
+function to the D Beam controller (see p. 24).
+ 
+P
+ 
+PORTAMENTO button
+ 
+This button allows you to switch the Portamento 
+function on and off.
+ 
+Q
+ 
+BENDER MODE button
+ 
+This button allows you to specify how the TOUCH 
+CONTROLLER ribbon works.
+ 
+Note: 
+ 
+This function is not available for the SuperNATURAL 
+Tones.
+ 
+R
+ 
+HOLD button
+ 
+This button allows you to hold the notes you are 
+playing (see p. 25).
+ 
+Bottom panel
+ 
+S
+ 
+Strap pins 
+ 
+This is where you can attach the ends of the supplied 
+strap. Choose any two pins.
+ 
+T
+ 
+Battery compartment
+ 
+This is where you can insert AA-type Ni-MH batteries.
+M
+K LN O
+Front view
+Rear view
+P Q R
+S STS S
+AX-Synth_e2  Page 11  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 12 =====
+Panel descriptions
+12
+Connection panel (rear)
+U OUTPUT R & L/MONO sockets
+These 1/4” sockets need to be connected to the 
+inputs of a keyboard amplifier, mixer, etc. To take 
+advantage of the AX-Synth mobility factor, consider 
+using a commercially available wireless system.
+Note: If you can/want to use only one channel on your 
+external amplifier, connect the L/MONO socket to its input. 
+For optimum sound quality, we recommend working in ste-
+reo, though.
+Note: Be sure to only use wireless transmitters that comply 
+with local radio regulations. 
+V ATT ON/OFF switch
+If you are using 1/4” cables to connect the AX-Synth 
+to an amplifier, etc., slide this switch to the “OFF” 
+position. 
+If you notice distortion while using a wireless system, 
+slide this switch to the “ON” position to reduce the 
+level of the AX-Synth’s audio output signal.
+Note: Be sure to only use wireless transmitters that comply 
+with local radio regulations. 
+W PHONES socket
+This is where you can connect a pair of optional 
+headphones (Roland RH-25, RH-50, RH-200, RH-300, 
+etc.). 
+X Cord hook (1)
+This hook is intended to secure the MIDI cable con-
+nected to the MIDI OUT socket when you are using 
+the AX-Synth as a shoulder keyboard. This is a safe-
+guard against accidental disconnection.
+Y MIDI OUT, IN sockets
+Connect the MIDI IN socket to the device that should 
+transmit MIDI messages to the AX-Synth. Connect 
+the MIDI OUT socket to the MIDI instrument you wish 
+to control with your AX-Synth.
+Z USB port
+Connect this port to a free USB port on your com-
+puter using an “A—B”-type USB cable.
+a FOOT PEDAL socket
+This is where you can connect an optional Roland 
+DP-series pedal.
+Note: Though you can also connect an expression pedal, 
+any pedal you connect will act as Hold pedal.
+b POWER switch
+Set this switch to the ON position to switch the 
+AX-Synth on. Select the OFF position to power off 
+your AX-Synth. 
+If you need to turn off the power completely (when 
+using the supplied AC adapter), first turn off the 
+power switch, then disconnect the AC adapter’s 
+power from the wall outlet.
+c DC IN socket
+This is where you can connect the supplied PSB-1U 
+adaptor.
+d Cord hook (2)
+If you connect the supplied adaptor to the DC IN 
+socket, be sure to wind its cable around this hook as a 
+safeguard against accidental disconnection.
+U V W X Y Z
+a
+b
+c
+d
+AX-Synth_e2  Page 12  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 13 =====
+r AX-Synth Owner’s Manual
+13
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+Note: To prevent malfunction and/or damage to speakers or 
+other devices, always turn down the volume, and turn off the 
+power on all devices before making any connections.
+Note: When audio cables with resistors are used, the 
+AX-Synth’s volume level may be low. If this happens, use con-
+nection cables that do not contain resistors.
+Connecting the AC adaptor
+The AX-Synth can be powered either by 8 AA-type 
+Ni-MH batteries or the supplied AC adaptor.
+(1) Make sure that the [POWER] switch is in the “OFF” 
+position.
+(2) Turn the [VOLUME] knob to the lowest setting to 
+minimize the volume.
+Note: Be sure to use only the supplied AC adaptor. Using 
+any other type may cause malfunction or electric shock. 
+Note: If the AX-Synth is to remain unused for an extended 
+period of time, unplug the adaptor.
+(3) Connect the included power cord to the AC adap-
+tor.
+The indicator will light when you plug the AC adaptor 
+into an AC outlet.
+Place the AC adaptor so the side with the indicator 
+(see illustration) faces upwards and the side with tex-
+tual information faces downwards.
+Note: Depending on your region, the included power cord 
+may differ from the one shown above.
+(4) Connect the AC adaptor to the DC IN jack on the 
+AX-Synth’s rear panel, and then plug the AC adap-
+tor into an electrical outlet.
+To prevent inadvertent disruption of power to your 
+unit (should the plug be pulled out accidentally), and 
+to avoid applying undue stress to the AC adaptor 
+jack, anchor the power cord using the cord hook, as 
+shown in the illustration.
+Inserting or replacing batteries
+Eight AA batteries are required to run the AX-Synth on 
+battery power. We recommend the use of rechargeable 
+AA-type Ni-MH batteries. With these batteries you can 
+expect about 6 hours of continuous operation, although 
+this depends on how the AX-Synth is being used.
+Note: If you plan to use batteries, please disconnect the AC 
+adaptor from the AX-Synth.
+Note: If batteries are installed, disconnecting or reconnecting 
+the AC adaptor’s power cord or the adaptor plug from the 
+AX-Synth’s DC IN socket while the power is on will cause the 
+AX-Synth to turn off. You must turn off the power before con-
+necting or disconnecting the power cord or AC adaptor.
+Note: Avoid using new batteries together with old ones. In 
+addition, avoid mixing different types of batteries (e.g. regular 
+carbon and alkaline batteries).
+Note: When replacing batteries, be sure to insert them cor-
+rectly (ensure correct polarity).
+Note: Remove the batteries whenever the AX-Synth is to 
+remain unused for an extended period of time.
+(1) Switch off the AX-Synth.
+(2) Remove the battery cover located on the bottom 
+of the instrument.
+Note: When turning the AX-Synth upside-down, get a 
+bunch of newspapers or magazines, and place them under 
+the four corners or at both ends to prevent damage to the 
+buttons and controls. Also, you should try to orient the unit 
+so no buttons or controls get damaged.
+Note: When turning the AX-Synth upside-down, handle 
+with care to avoid dropping it, or allowing it to fall or tip 
+over.
+3. Making connections
+AC adaptor Power cord
+to an AC outletIndicator
+AX-Synth rear panel
+Cord hook
+(a) Press the tabs forward.
+(b) Lift up.
+AX-Synth_e2  Page 13  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 14 =====
+Making connections
+14
+(3) Insert 8 rechargeable AA-type Ni-MH batteries 
+into the compartment (4 on either side), taking 
+care to orient them in accordance with the “+” and 
+“–” indications.
+(4) Close the AX-Synth’s battery compartment.
+Battery charge indication
+If, while using batteries, three flashing dots appears 
+in the display, the remaining battery power is low. 
+Replace the batteries at your earliest convenience. 
+Three constantly lit dots mean that you need to 
+replace the batteries right away (or use the supplied 
+adaptor).
+Note: The AX-Synth cannot recharge your batteries.
+Note: The battery charge indication is only an approxima-
+tion.
+Note about rechargeable batteries
+Certain batteries can be recharged several times 
+before they need to be replaced with a new ones. 
+Note that it is normal for the batteries to last 
+increasingly shorter as time goes by. At the end of 
+their life cycle, they may only last one hour, for 
+example. But that is a gradual process.
+Connecting the AX-Synth
+Connecting the AX-Synth to an amplifier, mixer, 
+etc., using cables
+The AX-Synth needs to be connected to audio equip-
+ment, such as a keyboard amplifier, a mixing console, 
+active speakers, etc.
+(1) Connect the OUTPUT jacks on the AX-Synth’s rear 
+panel to the input jacks of your external device.
+Please choose unbalanced (mono) cables with 1/4” 
+jacks at one end (for the AX-Synth). The connectors 
+at the other end need to match the input sockets of 
+the device to which you are connecting the 
+AX-Synth.
+Note: If your amplifier is monaural, you only need to con-
+nect the L/MONO socket.
+(2) Set the ATT switch to the “OFF” position.
+Note: You can also connect headphones to the PHONES 
+socket, in which case you do not need to establish an audio 
+connection.
+INPUT L & R
+AX-Synth_e2  Page 14  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 15 =====
+r AX-Synth Owner’s Manual
+15
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+Using a wireless system to connect the AX-Synth 
+to your amplifier, etc.
+Using a commercially available wireless system and bat-
+teries has the advantage that you are free in your move-
+ments on stage—with no cables to worry about.
+Note: Be sure to only use wireless transmitters that comply 
+with local radio regulations. 
+(1) Connect the wireless transmitters to the OUTPUT 
+jacks on the AX-Synth’s rear panel.
+Note: The shape of the wireless connectors depends on the 
+model you are using.
+Note: If your amplifier is monaural, you need only one 
+transmitter. Connect it to the L/MONO socket.
+(2) If the wireless receiver is intended for low-level 
+signals (high input sensitivity), set the [ATT] switch 
+to the “ON” position to reduce the AX-Synth’s 
+audio output level.
+“ATT” is short for “attenuator”.
+(3) Connect the wireless receiver’s audio output(s) to 
+the mixing console, amplifier, etc.
+Controlling a MIDI-compatible sound source
+(1) Connect the AX-Synth’s MIDI OUT socket to the 
+MIDI IN socket of the module or synthesizer you 
+want to control.
+Note: Do not forget to connect the module, synthesizer, 
+etc., to an amplifier. See its manual for details.
+(2) Switch on the [TX¥ON] button.
+Note: See page 27 for details about the AX-Synth’s MIDI 
+functions.
+Controlling the AX-Synth from an external MIDI 
+device
+The AX-Synth’s tone generator can also receive MIDI 
+data and play the notes using the currently selected 
+sound. The AX-Synth always receives on the MIDI chan-
+nel that has the same number as the transmit channel 
+you select (see p. 27). 
+(1) Connect the AX-Synth’s MIDI IN socket to the MIDI 
+OUT socket of the instrument that should control 
+the AX-Synth.
+Wireless transmitters
+MIDI OUT
+MIDI IN
+AX-Synth (transmits MIDI messages)
+Module, synthesizer, etc. (receives MIDI messages)
+MIDI IN
+MIDI OUT
+AX-Synth (receives MIDI messages)
+ Synthesizer, stage piano, etc. (transmits MIDI messages)
+AX-Synth_e2  Page 15  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 16 =====
+Making connections
+16
+Working with a computer or sequencer
+If you want to use the AX-Synth as Master keyboard for 
+recording applications that involve a computer with 
+sequencing software, or take advantage of the 
+“AX-Synth Editor” software, here is the most useful con-
+nection system:
+Note: The AX-Synth is not multitimbral.
+Using headphones
+The AX-Synth has one jack for plugging in headphones. 
+This allows you to play without having to worry about 
+bothering others around you, even at night.
+(1) Plug the headphones into the [PHONES] jack 
+located on the AX-Synth’s rear panel.
+Note: Use stereo headphones. Please use only Roland 
+headphones. Headphones from other manufacturers may 
+be unable to provide sufficient volume.
+(2) The headphone volume can be adjusted with the 
+[VOLUME] knob.
+Some notes on using headphones
+•T o prevent damage to the cord, handle the head-
+phones only by the headset or the plug.
+• Connecting headphones when the volume of con-
+nected equipment is turned up may result in damage 
+to the headphones. Lower the volume on the 
+AX-Synth before plugging in the headphones.
+• Listening at excessively high volume levels will not 
+only damage the headphones, but may also cause 
+hearing loss. Use the headphones at a moderate vol-
+ume level.
+USB port
+USB port
+AX-Synth (transmits MIDI 
+messages)
+Computer or sequencer 
+(records and transmits 
+MIDI messages)
+Module, synthesizer, etc. (receives MIDI messages)
+(Not necessary when you are using the “AX-Synth Editor” software.
+MIDI OUT
+MIDI IN
+AX-Synth_e2  Page 16  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 17 =====
+r AX-Synth Owner’s Manual
+17
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+Powering up
+Once the connections have been completed (page 14), 
+turn on the power to your various devices in the order 
+specified. By turning on devices in the wrong order, you 
+risk causing malfunction and/or damage to speakers 
+and other devices.
+(1) Before you turn on the power, turn the [VOLUME] 
+knob to the lowest setting to minimize the volume.
+(2) Slide the rear-panel [POWER] switch to the “ON” 
+position to turn on the power.
+This unit is equipped with a protection circuit. A brief 
+interval (a few seconds) after power up is required 
+before it will operate normally.
+Note: If the AX-Synth is connected to a keyboard amp or 
+audio amp, turn on the power of the AX-Synth first, and 
+then switch on your amp.
+(3) Turn the [VOLUME] knob to adjust the volume of 
+the AX-Synth.
+The AX-Synth has a “sleep” function for reduced 
+power consumption when you are using batteries. 
+After several minutes of inactivity, all LEDs go dark, 
+and only a dot will scroll through the display. To 
+“wake” the AX-Synth, simply press a key or button. 
+(This function is not available while you are using the 
+supplied AC adaptor.)
+Note: See page 34 for how change the sleep interval.
+Turning the power off
+(1) Before you turn off the power, turn the [VOLUME] 
+knob to the lowest setting.
+(2) Slide the [POWER] switch to the “OFF” position to 
+turn off the power.
+If the AX-Synth is connected to a keyboard amp or 
+audio amp, switch off the amp first, then turn off the 
+AX-Synth.
+AX-Synth_e2  Page 17  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 18 =====
+Playing the AX-Synth
+18
+Selecting ‘regular’ Tones
+The AX-Synth contains 256 Tones derived from Roland’s 
+cutting-edge synthesizers, 4 “SuperNATURAL™” Tones, 
+and 4 “SPECIAL” Tones. These sounds can be played via 
+the 49 velocity-sensitive keys (or via MIDI).
+Selecting ‘regular’ Tones sequentially
+The AX-Synth’s “regular” Tones are grouped into 8 fami-
+lies with 32 “variations” (sounds) each.
+(1) Connect the AX-Synth to your amplifier (page 14) 
+and switch it on (page 17).
+(2) If the [SuperNATURAL÷SPECIAL¥TONE], the FAVOR-
+ITE [A] or [B] button lights, switch it off.
+(3) Press one of the following buttons to select a Tone 
+family:
+The family names of regular Tones are printed in 
+white on the AX-Synth’s front panel. The family but-
+ton you press lights blue.
+When you press a family button, the AX-Synth auto-
+matically selects the last Tone you chose in this fam-
+ily since switching it on.
+(4) Use the VARIATION [DEC÷–]/[INC÷+] buttons (whose 
+legends are also white) to select a Tone from the 
+selected family.
+Press [INC÷+] to select the next Tone, or [DEC÷–] to 
+select the previous one. You may have to press the 
+selected button several times to call up the sound 
+you need.
+The display shows the number of the Tone you 
+selected (1~32).
+To scroll through the available Tones of the active 
+family, you can hold down either VARIATION [INC÷+] 
+or [DEC÷–]. To scroll even faster, press and hold the 
+“other” VARIATION button.
+You can also use the OCTAVE/VARIATION [+]/[–] but-
+tons on the neck to select Tones. To do so, you first 
+need to assign them the “Uar” function.
+(a) Hold down the [SHIFT] button and press OCTAVE/
+VARIATION [+] or [–] to select “Uar” (see the dis-
+play).
+The [WRITE] button flashes. 
+(b) Keep holding the [SHIFT] button and press the 
+[WRITE] button to confirm your selection.
+You only need to make this selection once: the 
+AX-Synth will remember it until you change it again.
+(c) Release the [SHIFT] button.
+(d) Use OCTAVE/VARIATION [+]/[–] to select Tones in the 
+same way as VARIATION [DEC÷–]/[INC÷+].
+Numeric selection of a ‘regular’ Tone
+To save time, you can also specify the number of the 
+desired Tone directly:
+(1) Connect the AX-Synth to your amplifier (page 14) 
+and switch it on (page 17).
+(2) Press one of the following buttons to select a Tone 
+family:
+(3) Press and hold the [SHIFT] button.
+(4) Keep holding the [SHIFT] button and enter the 
+desired variation number with the keys in the 
+highest octave (NUMERIC KEYPAD). Confirm by 
+pressing the highest key (ENTER).
+4. Playing the AX-Synth
+AX-Synth_e2  Page 18  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 19 =====
+r AX-Synth Owner’s Manual
+19
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+You can repeat this step to select other sounds at a 
+later stage.
+If you entered the wrong number, you can erase it by 
+pressing the CANCEL key, then start again.
+(5) Release the [SHIFT] button.
+Selecting ‘SuperNATURAL’ and 
+‘SPECIAL’ Tones
+There are four “SuperNATURAL” and four “SPECIAL” 
+Tones for breathtakingly realistic solo performances.
+Selecting ‘SuperNATURAL’ Tones
+SuperNATURAL is Roland’s breakthrough 
+sound-generating technology that 
+enables a new level of realism and 
+expression. SuperNATURAL reproduces 
+the delicate, organic tonal changes and 
+playing nuances of acoustic and electric 
+musical instruments.
+The AX-Synth contains four SuperNATURAL sounds: 
+VIOLIN, CELLO, SHAKUHACHI and TROMBONE.
+(1) Connect the AX-Synth to your amplifier (page 14) 
+and switch it on (page 17).
+(2) Press the [SuperNATURAL÷SPECIAL¥TONE] button.
+(3) Press one of the first four TONE buttons to select 
+the corresponding SuperNATURAL Tone.
+See the blue legends above the buttons.
+Note: Switch off the [SuperNATURAL÷SPECIAL¥TONE] but-
+ton if you want to select a “regular” Tone again.
+Selecting ‘SPECIAL’ Tones
+There are four “special” Tones: TRUMPET, SAX, STRINGS 
+and JAZZ SCAT. These sounds are based on a different 
+technology than SuperNATURAL Tones.
+(1) Connect the AX-Synth to your amplifier (page 14) 
+and switch it on (page 17).
+(2) Press the [SuperNATURAL÷SPECIAL¥TONE] button.
+(3) Press one of the last four TONE buttons to select 
+the corresponding SPECIAL Tone.
+Note: Switch off the [SuperNATURAL÷SPECIAL¥TONE] but-
+ton if you want to select a “regular” Tone again.
+Grouping frequently-used Tones 
+(FAVORITE)
+The AX-Synth provides 16 “FAVORITE” memories where 
+you can “compile” the Tones you want to select at the 
+press of two buttons during a live performance.
+If you like, you can change the volume and Reverb Send 
+levels of the Tones before assigning them to the FAVOR-
+ITE memories (see p. 26).
+Assigning a Tone to a FAVORITE memory
+(1) Select the Tone you want to assign to a FAVORITE 
+memory.
+See “Editing the volume and Reverb Send levels” on 
+p. 26 if you want to change the Tone’s volume and/or 
+Reverb Send level before saving it. 
+(2) Press the [WRITE] button (it flashes).
+(3) Press the FAVORITE [A] or [B] button to select the 
+bank.
+The FAVORITE button you press lights and the display 
+shows “A -” (bank “A”) or “b -” (bank “B”).
+(4) Press one of the eight TONE buttons to specify the 
+target memory (see the red numbers below the 
+buttons).
+The button you press lights and the [WRITE] button 
+goes dark.
+Note: To select a “regular” Tone again, press the [A] or [B] 
+button that lights to switch it off.
+AX-Synth_e2  Page 19  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 20 =====
+Playing the AX-Synth
+20
+Recalling FAVORITE memories
+To select the Tones assigned to the FAVORITE memories, 
+proceed as follows.
+(1) Press the FAVORITE [A] or [B] button to select the 
+bank.
+The FAVORITE button you press lights and the display 
+shows “A -” (bank “A”) or “b -” (bank “B”).
+(2) Press one of the eight TONE buttons to select the 
+desired FAVORITE memory in the currently selected 
+bank.
+You can also use the VARIATION [DEC÷–]/[INC÷+] but-
+tons to select the FAVORITE memories sequentially, 
+which may be handy for live performances.
+This procedure does not allow you to change banks 
+(from “A” to “B” and vice versa), however.
+Note: When the “Uar” function is selected (see p. 18), you 
+can also use the OCTAVE/VARIATION [+]/[–] buttons to select 
+FAVORITE memories.
+Note: To select a “regular” Tone again, press the [A] or [B] 
+button that lights to switch it off.
+AX-Synth_e2  Page 20  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 21 =====
+r AX-Synth Owner’s Manual
+21
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+The AX-Synth provides several functions that allow you to add expression to your music, change the pitch/key, etc.
+Master Tune
+This parameter allows you to change the AX-Synth’s 
+overall tuning. The factory default, 440Hz, represents 
+the reference pitch used by most electronic musical 
+instruments. 
+(1) Hold down the [SHIFT] button and press the 
+[TRANPOSE] button.
+The current tuning value flashes in the display and 
+the [WRITE] button flashes.
+(2) Keep holding the [SHIFT] button and set the desired 
+tuning value with the VARIATION [DEC÷–]/[INC÷+] 
+buttons.
+Press [INC÷+] to increase the value, or [DEC÷–] to select 
+a lower one. You may have to press the selected but-
+ton several times to select the desired value.
+The setting range is 415.3~466.2Hz. The display only 
+shows the last three digits (the initial “4” is therefore 
+omitted).
+To scroll through the available values, you can hold 
+down either VARIATION [INC÷+] or [DEC÷–]. To scroll 
+even faster, press and hold the “other” VARIATION 
+button.
+You can play on the keyboard to check whether you 
+have selected the correct interval. Feel free to change 
+it again before confirming you setting (see below).
+(3) Press the [WRITE] button to confirm your setting.
+(4) Release the [SHIFT] button.
+Transpose
+Your AX-Synth comes with a TRANSPOSE function you 
+may want to use for playing songs in other keys than 
+the ones you are used to.
+(1) Hold down the [TRANSPOSE] button and wait until 
+the current transposition interval flashes in the 
+display.
+(2) Keep holding the [TRANSPOSE] button and press 
+OCTAVE/VARIATION [+] or [–] to set the desired 
+value.
+The setting range is “–5” (five semi-tones down) to 
+“6” (six semi-tones up).
+(3) Release the [TRANPOSE] button and start playing.
+If you selected a transposition interval other than “0”, 
+the [TRANPOSE] button lights.
+(4) To reset the transposition interval to “0”, hold 
+down [TRANSPOSE] and press OCTAVE/VARIATION 
+[+] and [–] simultaneously.
+The [TRANSPOSE] button goes dark.
+5. Using the AX-Synth’s performance functions
+AX-Synth_e2  Page 21  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 22 =====
+Using the AX-Synth’s performance functions
+22
+Shifting the keyboard pitch in 
+octave steps
+You can shift the pitch of the currently selected Tone 
+upward or downward in steps of an octave, over a max-
+imum of three octaves up or down.
+Octave Switch mode
+This mode means that the octave transposition you set 
+is used until you change this setting again. (Choose this 
+setting to play a bass part, for instance.)
+(1) Check whether the OCTAVE/VARIATION [+]/[–] but-
+tons are assigned to the “OCS” function.
+(a) Hold down the [SHIFT] button and press OCTAVE/
+VARIATION [+] or [–].
+If the display reads “OCS”, there is nothing you need 
+to do, so continue with step (2) below. If the display 
+reads “OCH” or “Var”, however…
+(b) Keep holding [SHIFT] and press OCTAVE/VARIATION 
+[+] or [–] to select “OCS”.
+You only need to do this once: the AX-Synth will 
+remember this setting until you change it again.
+The [WRITE] button now flashes.
+(c) Press the [WRITE] button (it goes dark).
+(d) Release the [SHIFT] button.
+(2) Press the OCTAVE/VARIATION [+] button to select a 
+higher octave (“1”~“3”), or use [–] to select a lower 
+octave (“–1”~“–3”).
+The button you pressed lights if the octave interval is 
+different from “0”. The selected value briefly flashes 
+in the display and the OCTAVE/VARIATION button you 
+pressed lights.
+(3) To return to standard pitch (“0”), press OCTAVE/
+VARIATION [+] and [–] simultaneously.
+The OCTAVE/VARIATION [+] and [–] go dark to indicate 
+that the keyboard’s octave has returned to normal 
+pitch.
+Octave Hold mode
+This mode means that the keyboard’s pitch is only 
+shifted one octave up or down while you press the 
+OCTAVE/VARIATION [+] or [–] button. When you release 
+the button, the keyboard’s pitch returns to normal. This 
+can be used to quickly play a few notes in a higher or 
+lower octave before returning to the keyboard’s normal 
+pitch.
+(1) Check whether the OCTAVE/VARIATION [+]/[–] but-
+tons are assigned to the “OCH” function.
+(a) Hold down the [SHIFT] button and press OCTAVE/
+VARIATION [+] or [–].
+If the display reads “OCH”, there is nothing you need 
+to do, so continue with step (2) below. If the display 
+reads “OCS” or “Var”, however…
+(b) Keep holding [SHIFT] and press OCTAVE/VARIATION 
+[+] or [–] to select “OCH”.
+You only need to do this once: the AX-Synth will 
+remember this setting until you change it again.
+The [WRITE] button now flashes.
+(c) Press the [WRITE] button (it goes dark).
+(d) Release the [SHIFT] button.
+(2) Press the OCTAVE/VARIATION [+] button to tempo-
+rarily transpose the keyboard’s pitch one octave up 
+(”1”). Press [–] to temporarily transpose the key-
+board’s pitch one octave down (“–1”).
+(3) To return to standard pitch (“0”), release the 
+OCTAVE/VARIATION [+] or [–] button.
+Using the Modulation Bar
+Press the Modulation Bar to generate MIDI Modulation 
+messages (CC01). 
+What happens now depends on the Modulation assign-
+ment of the Tone you are using. (This needs to be speci-
+fied using the “AX-Synth Editor” software.)
+In most cases, pressing this bar generates a vibrato 
+effect. If you select a SuperNATURAL Tone (VIOLIN~
+TROMBONE), however, it acts as “Dynamics” function.
+Using the Touch Controller
+The AX-Synth also provides a TOUCH CONTROLLER rib-
+bon that allows you to change the sound by sliding a 
+finger towards the left or right. 
+What happens now depends on the assignment for the 
+Tone you are using. (This needs to be specified using the 
+“AX-Synth Editor” software.)
+Modulation bar
+TOUCH CONTROLLER ribbon
+AX-Synth_e2  Page 22  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 23 =====
+r AX-Synth Owner’s Manual
+23
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+In most cases, the ribbon allows you to change the pitch 
+of the notes you are playing (Pitch Bend).
+Selecting the Bender Mode
+The [BENDER¥MODE] button at the back of the neck can 
+be used to select one of two modes for the TOUCH CON-
+TROLLER ribbon:
+Aftertouch 
+The [AFTER¥TOUCH] knob can be used to generate chan-
+nel aftertouch messages for the notes you are playing. 
+The AX-Synth’s keyboard does not transmit these mes-
+sages (it is velocity sensitive, however). 
+What happens now depends on the aftertouch assign-
+ment of the Tone you are using: the knob may change 
+the Tone’s level or pitch, generate filter sweeps etc. (This 
+needs to be specified using the “AX-Synth Editor” soft-
+ware.)
+Note: The knob does not return to its minimum setting auto-
+matically. Do not forget to turn it back to zero if you no longer 
+need the aftertouch functionality.
+Using the D Beam controller
+The D Beam controller can be used simply by waving 
+your hand over it. Depending on the function you select, 
+the D Beam controller can be used to apply various 
+effects and to modify the sounds.
+The usable range of the D Beam controller
+The diagram shows the usable range 
+of the D Beam controller. Waving 
+your hand outside this range will 
+produce no effect.
+Note: The usable range of the D Beam 
+controller will become extremely small 
+when used under strong light. 
+(1) Select the function you want the D Beam control-
+ler to perform by pressing one of the following 
+buttons:
+(2) While you play the keyboard to produce sound, 
+place your hand above the D Beam controller and 
+move it slowly up and down.
+The button you pressed in step (1) above flashes.
+(3) To turn off the D Beam controller, once again press 
+the button you pressed in step (1) so the indicator 
+goes dark.
+[BENDER¥MODE] 
+is off
+(Normal mode)
+The ribbon works like any Pitch Bend 
+device, i.e. it immediately affects the pitch 
+of the notes you are playing.
+[BENDER¥MODE] 
+lights
+(Catch + Last 
+mode)
+If you place a finger somewhere off cen-
+ter on the Touch Controller (not in the 
+middle) and then play a note, that note 
+uses its normal pitch. To bend it at a later 
+stage, keep holding the note and slide 
+your finger past the Touch Controller’s 
+center.
+If you first play a note and then slide a 
+finger over the Touch Controller, the 
+note’s pitch changes immediately. Subse-
+quent notes you play while still touching 
+the ribbon will use their normal pitch, 
+however. Combining these two tech-
+niques allows you to simulate “double 
+bendings” of electric guitarists.
+PITCH Moving your hand over the D Beam con-
+troller changes the pitch of the notes you 
+are playing. 
+FILTER Moving your hand over the D Beam con-
+troller changes the cutoff frequency 
+(brightness). 
+ASSIGNABLE The D Beam transmits the selected Control 
+Change message (see below).
+AX-Synth_e2  Page 23  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 24 =====
+Using the AX-Synth’s performance functions
+24
+Assigning a different function to the D Beam 
+controller
+While the functions of the D BEAM [PITCH] and [FILTER] 
+buttons are fixed, you can assign a MIDI control change 
+number (CC) to the [ASSIGNABLE] button to control the 
+desired parameter in real-time.
+(1) Hold down the [SHIFT] button while pressing the 
+[ASSIGNABLE] button.
+The current assignment now flashes in the display.
+(This is only an example.) The [WRITE] button flashes.
+(2) Keep holding the [SHIFT] button and select a differ-
+ent assignment with the VARIATION [DEC÷–]/[INC÷+] 
+buttons.
+The setting range is “C01”~“C95” (“C32” is not avail-
+able). See the “MIDI implementation chart” on p. 40 
+to find out which control change numbers the 
+AX-Synth understands. To control a specific parame-
+ter of an external instrument, see the manual for that 
+instrument.
+Note: You can hold down [DEC÷–] or [INC÷+] or hold one 
+while pressing the other to speed up this operation.
+(3) Press the [WRITE] button to confirm your choice.
+Note: This selection is remembered even after switching 
+the AX-Synth off.
+(4) Release the [SHIFT] button.
+Portamento
+“Portamento” means that the pitch of the notes you 
+play doesn’t change in clearly defined steps: it glides 
+from one note to the next.
+The speed of those pitch changes can be set for each 
+Tone individually using the “AX-Synth Editor” software. 
+For “regular” Tones, Portamento can be switched on or 
+off by pressing the [PORTAMENTO] button repeatedly: 
+press it once to switch it on (the button lights), press it 
+again to switch it off. 
+For the SuperNATURAL Tones (VIOLIN~TROMBONE), 
+however, you can select one of two modes.
+Selecting the Portamento mode
+As stated above, this mode selection is only available for 
+SuperNATURAL Tones. The other Tones do not support 
+“Hld” mode. However, if you are sure that you always 
+want to use “Hld” mode for SuperNATURAL Tones, 
+switch it on now—it will be ignored by the remaining 
+Tones but used whenever you select a SuperNATURAL 
+Tone.
+Here is how to select a different mode:
+(1) Select a SuperNATURAL Tone (any of the four).
+(2) Press and hold the [SHIFT] button.
+(3) Keep holding [SHIFT] and press [PORTAMENTO] once 
+or twice to select the desired mode:
+Please use your thumb to avoid having to flip the 
+AX-Synth over: you need to be able to see the dis-
+play. 
+The [WRITE] button flashes.
+The display shows your selection:
+C01
+Hld The Portamento effect will be applied while you 
+hold down the [PORTAMENTO] button. Releas-
+ing the button switches off the Portamento 
+effect.
+SUt Pressing the [PORTAMENTO] button once (it 
+lights) switches the effect on. Pressing it again 
+switches it off.
+AX-Synth_e2  Page 24  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 25 =====
+r AX-Synth Owner’s Manual
+25
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+(4) Confirm your selection by pressing the [WRITE] 
+button.
+Note: This selection is remembered even after switching 
+the AX-Synth off.
+(5) Release the [SHIFT] button
+Sustaining notes
+The AX-Synth provides two controls for holding the 
+notes you are currently playing.
+HOLD button
+This button allows you to hold the notes you play on the 
+keyboard in much the same way as on an acoustic 
+piano.
+Play a note or chord and press [HOLD] to sustain the 
+note(s).
+FOOT PEDAL socket
+Also called “sustain” or “damper”, an optional footswitch 
+you connect to the FOOT PEDAL socket allows you to 
+hold the notes you play on the keyboard in much the 
+same way as on an acoustic piano.
+For obvious reasons, connecting a footswitch to the 
+AX-Synth while using it to move around on stage seems 
+impractical. In such cases, we recommend using the 
+[HOLD] button.
+Note: Please use a Roland DP-series or a BOSS FS-5U foot-
+switch to ensure that it uses the correct polarity (on when 
+pressed, off when released). 
+Note: The AX-Synth does not support expression pedals.
+Optional footswitch
+(Roland DP-series, BOSS FS-5U)
+AX-Synth_e2  Page 25  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 26 =====
+Editing Tone settings
+26
+Editing the volume and Reverb Send 
+levels
+Though most sound parameter can only be edited using 
+the dedicated “AX-Synth Editor” software and a com-
+puter, you can change the volume and Reverb Send lev-
+els of the Tones on the AX-Synth itself and save those 
+changes to a FAVORITE memory.
+Note: The two parameters discussed here are not available for 
+SuperNATURAL or SPECIAL Tones.
+Note: All parameters of the AX-Synth can be edited using the 
+dedicated “AX-Synth Editor” software. This software can be 
+downloaded free of charge from Roland’s website (http://
+www.Roland.com).
+(1) Select the “regular” Tone whose volume and or 
+Reverb Send level you want to set (see p. 18).
+Note: The “VOl” and “reU” parameters are not available 
+for SuperNATURAL or SPECIAL Tones.
+(2) Press and keep holding the [SHIFT] button.
+The display now shows “---”.
+(3) Keep holding the [SHIFT] button and press the TONE 
+button of the sound you selected in step (1) above 
+(i.e. the button that lights).
+The “UOL” message briefly flashes in the display.
+This message refers to the Tone’s volume parameter.
+Note: Skip to step (6) if you only need to change the 
+Reverb Send level.
+(4) Wait until the volume value is displayed.
+(5) Keep holding the [SHIFT] button and use VARIATION 
+[DEC÷–]/[INC÷+] to select the desired setting (0~127).
+Note: You can hold down VARIATION [DEC÷–] or [INC÷+], or 
+hold one while pressing the other to speed up this opera-
+tion.
+Note: If you don’t need to change the Reverb Send level, 
+skip to step (9).
+(6) Press the TONE button used in step (3) again.
+The “reU” message briefly flashes in the display:
+This message refers to the Tone’s Reverb Send param-
+eter.
+(7) Wait until the Reverb Send value is displayed.
+(8) Keep holding the [SHIFT] button and use VARIATION 
+[DEC÷–]/[INC÷+] to select the desired setting (0~127).
+Note: You can hold down VARIATION [DEC÷–] or [INC÷+], or 
+hold one while pressing the other to speed up this opera-
+tion.
+(9) Release the [SHIFT] button.
+(10) Start playing to check whether your settings corre-
+spond to what you had in mind.
+Note: Do not select other sounds at this stage, or switch 
+off the AX-Synth, because that would cancel the settings 
+you have made so far.
+If you like your settings, continue with step (11). If 
+you don’t, return to step (2).
+(11) Press the [WRITE] button.
+The [WRITE] button now flashes.
+(12) Press the FAVORITE [A] or [B] button to select the 
+bank and then choose
+(13) Press one of the eight TONE buttons to select the 
+target memory.
+6. Editing Tone settings
+UOl
+reU
+AX-Synth_e2  Page 26  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 27 =====
+r AX-Synth Owner’s Manual
+27
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+The AX-Synth can transmit and receive performance data when connected to an external MIDI device, which enables the 
+two devices to control each other’s performance. For example, one device can play or switch sounds on the other device. 
+MIDI stands for “Musical Instrument Digital Interface.” It is a universal standard for exchanging musical performance 
+data among electronic musical instruments and computers.
+Please see page 15 for how to connect the AX-Synth to your MIDI rig.
+MIDI messages that can be trans-
+mitted/received
+The most important MIDI messages the AX-Synth can 
+transmit and receive are:
+Please see the “MIDI implementation chart” on p. 40 for 
+a complete overview of the supported MIDI messages.
+About the AX-Synth’s receive channel
+The AX-Synth always receives MIDI messages via its 
+MIDI IN socket and USB port.
+The receive channel (RX) always corresponds to the 
+transmit channel you select (see the right column). As 
+long as you don’t need to transmit MIDI messages, you 
+can therefore “set” the receive channel by selecting the 
+corresponding transmit channel.
+Activating the AX-Synth’s MIDI 
+transmission
+If you want the AX-Synth to transmit MIDI messages, 
+proceed as follows:
+(1) Connect the AX-Synth’s MIDI OUT socket to the 
+MIDI IN socket of the device you wish to control.
+(2) Switch on the [TX¥ON] button (it must light).
+Note: Activating this button does not bypass the 
+AX-Synth’s internal sound source.
+Setting the MIDI transmit channel
+The transmit (“TX”) channel can be set to match the 
+reception channel of the instrument you want to con-
+trol. 
+MIDI provides sixteen channels, numbered 1~16. Even if 
+two MIDI devices are connected, you won’t be able to 
+select or play sounds on the other device unless both 
+devices are set to the same MIDI channel.
+(1) Press and hold the [SHIFT] button.
+(2) Keep holding the [SHIFT] button and press the 
+[TX¥ON] button.
+The [TX¥ON] button flashes.
+(3) Keep holding the [SHIFT] button and press a key in 
+the TX MIDI CHANNELS section (left side of the 
+keyboard) to select the desired transmit channel.
+The display now shows the number of the selected 
+MIDI transmit channel and the [WRITE] button 
+flashes.
+7. Using the AX-Synth as MIDI controller
+Message Remarks
+Note On/Offa
+a. The AX-Synth has no Local switch. To control a MIDI device without
+hearing its internal sound source, set the [VOLUME] control to the mini-
+mum value, disconnect the AX-Synth’s OUTPUT sockets or turn down the
+volume on your amplifier, mixing console, etc.
+Velocity Transmission: striking force of the AX-Synth’s 
+keys
+Aftertouch Transmission: channel aftertouch via 
+[AFTER¥TOUCH] knob (not from the key-
+board). Reception: polyphonic & channel 
+aftertouch.
+Program Change Transmission also without changing sounds 
+on the AX-Synth
+Bank Select Transmission: cannot be specified on the 
+AX-Synthb.
+b. The AX-Synth does not allow you to enter Bank Select messages (CC00
+and CC32) for the Program Change numbers you transmit using the PGM
+CHANGE functionality. However, when you select an internal sound, its
+Bank Select address (CC00 and CC32, see also page 37) will be transmit-
+ted along with its program Change number.
+Pitch Bend Transmission: TOUCH CONTROLLER and/or 
+D Beam
+Modulation CC01, transmission: MODULATION BAR
+Hold/Sustain CC64, [HOLD] button & optional footswitch 
+connected to [FOOT¥PEDAL]
+CC01~31, CC33~95 Transmission: the control change number 
+assigned to the D BEAM [ASSIGNABLE] but-
+ton.
+AX-Synth_e2  Page 27  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 28 =====
+Using the AX-Synth as MIDI controller
+28
+(4) Press the [WRITE] button to confirm your setting.
+(5) Release the [SHIFT] button.
+Transmitting Program Change 
+numbers
+The AX-Synth automatically transmits the Program 
+Change numbers of the sounds you select in the TONE 
+section. The messages sent in this way also include the 
+Bank Select address (CC00 and CC32). See the “Tone list” 
+on p. 37.
+If you want to select another sound on the receiving 
+MIDI instrument without changing sounds on the 
+AX-Synth, proceed as follows.
+Note: The methods described here only allow you to transmit 
+Program Change messages. Bank Select messages (CC00 and 
+CC32) cannot be entered by hand. What you can do, however, 
+is first select one of the AX-Synth’s internal Tones that uses 
+the correct bank, and then proceed with the following.
+Transmitting Program Change numbers sequen-
+tially
+(1) Switch on the [TX¥ON] button (it must light).
+(2) Use the PGM CHANGE [INC] and [DEC] buttons to 
+select the number you want to transmit (1~128).
+The display briefly shows the number you selected 
+and then reverts to the last internal Tone number you 
+selected.
+Press [INC] to select the next number, or [DEC] to 
+select the previous one. You may have to press the 
+selected button several times to call up the sound 
+you need.
+To scroll through the available Program Change 
+numbers, you can hold down either PGM CHANGE 
+[INC] or [DEC]. To scroll even faster, press and hold the 
+“other” PGM CHANGE button.
+Note: Be aware that the receiving MIDI instrument will 
+select sounds/memories as you increase or decrease Pro-
+gram Change numbers.
+Entering Program Change numbers directly
+To save time, you can also enter the desired Program 
+Change number numerically:
+(1) Switch on the [TX¥ON] button (it must light).
+(2) Press and hold the [SHIFT] button.
+(3) Keep holding the [SHIFT] button and press the 
+[TX¥ON] button.
+The [TX¥ON] button flashes.
+(4) Keep holding the [SHIFT] button and enter the 
+desired Program Change number with the keys in 
+the highest octave (NUMERIC KEYPAD). Confirm by 
+pressing the highest key (ENTER).
+If you entered the wrong number, you can erase it by 
+pressing the CANCEL key, then start again.
+(5) Release the [SHIFT] button.
+AX-Synth_e2  Page 28  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 29 =====
+r AX-Synth Owner’s Manual
+29
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+Using the Bulk Dump function
+The AX-Synth provides a Bulk Dump function that 
+allows you to archive its settings by transmitting them 
+to a MIDI sequencer, and to send them back to the 
+AX-Synth at a later stage.
+Archiving the AX-Synth’s settings using a MIDI 
+sequencer
+This procedure transmits all of the AX-Synth’s settings—
+including the ones that can only be edited with the 
+“AX-Synth Editor” software.
+Note: The Bulk Dump procedure takes about 16 minutes. We 
+therefore recommend connecting the AC adaptor to the 
+AX-Synth.
+(1) Connect the AX-Synth’s MIDI OUT socket to the 
+sequencer’s MIDI IN socket.
+You can also connect the AX-Synth’s USB port to a 
+USB port on your computer and use a sequencer pro-
+gram:
+(2) Hold down the VARIATION [DEC÷–] + [INC÷+] + TONE 
+[6] (STRINGS/PAD) buttons and switch on the 
+AX-Synth.
+The display now shows the “dMP” message and the 
+FAVORITE [A] and [B] buttons flash.
+(3) Start recording on your sequencer.
+You may also have to activate its reception of SysEx 
+data. See the sequencer’s manual for details.
+(4) Press the FAVORITE [B] button on the AX-Synth to 
+start transmitting its settings.
+The display now shows the “Snd” (sending) message 
+and the FAVORITE [WRITE] button flashes.
+(5) Wait until “ dNE” appears in the AX-Synth’s display 
+and the FAVORITE [WRITE] button goes dark, then 
+stop the sequencer.
+(6) Save your “song” (or data file) on the sequencer/
+computer.
+(7) Switch the AX-Synth off, wait a moment, then 
+switch it back on again.
+Sending your settings back to the AX-Synth
+Note: The Bulk Dump procedure takes about 16 minutes. We 
+therefore recommend connecting the AC adaptor to the 
+AX-Synth.
+(1) Connect the sequencer’s MIDI OUT socket to the 
+AX-Synth’s MIDI IN socket.
+You can also connect the AX-Synth’s USB port to a 
+USB port on your computer and use a sequencer pro-
+gram.
+(2) Hold down the VARIATION [DEC÷–] + [INC÷+] + TONE 
+[6] (STRINGS/PAD) buttons and switch on the 
+AX-Synth.
+The display now shows the “dMP” message and the 
+FAVORITE [A] and [B] buttons flash.
+(3) Press the FAVORITE [A] button on the AX-Synth to 
+enable its reception of SysEx data.
+The display now shows the “RCU” (ready to receive) 
+message and the FAVORITE [WRITE] button lights.
+(4) On your sequencer, load the file containing your 
+settings and start playback.
+You may also have to activate its transmission of 
+SysEx messages. See the sequencer’s manual for 
+details.
+MIDI OUT
+MIDI IN
+AX-Synth
+MIDI sequencer
+USB port
+AX-Synth
+USB port
+Computer with sequencer software
+MIDI OUT
+MIDI IN
+AX-Synth
+MIDI sequencer
+AX-Synth_e2  Page 29  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 30 =====
+Using the AX-Synth as MIDI controller
+30
+The AX-Synth’s FAVORITE [WRITE] button flashes to 
+indicate that SysEx data are being received. When all 
+data blocks have been received, the display changes 
+to “Urt” (writing data) and the FAVORITE [WRITE] 
+button lights.
+(5) Wait until “ dne” appears in the AX-Synth’s display 
+and until the FAVORITE [WRITE] button starts flash-
+ing.
+Note: If the “Err” message appears during the reception of 
+bulk data, the AX-Synth was unable to process the data 
+correctly, then stop the sequencer. The FAVORITE [WRITE] 
+button will go dark at that time. In such a case, please 
+repeat the entire procedure.
+(6) Switch the AX-Synth off, wait a moment, then 
+switch it back on again.
+Note: We recommend using the librarian software 
+included in the “AX-Synth Editor” to transmit and receive 
+the AX-Synth’s settings to your computer. This software is 
+available for the Mac and PC platforms and can be down-
+loaded from Roland’s website: www.Roland.com.
+AX-Synth_e2  Page 30  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 31 =====
+r AX-Synth Owner’s Manual
+31
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+The AX-Synth is equipped with a USB port for MIDI communication with a computer. 
+General considerations
+Possible applications
+If you connect the USB port located on the AX-Synth’s 
+rear panel to a USB port of your computer, you’ll be able 
+to do the following things.
+•T ake advantage of the “AX-Synth Editor” and librar-
+ian software to edit the internal sounds to your lik-
+ing. This software is available for the Mac and PC 
+platforms and can be downloaded from Roland’s 
+website: http://www.Roland.com. 
+Settings you change in this way can be stored inside 
+the AX-Synth and used even when it is not con-
+nected to a computer.
+• By transferring MIDI data between the AX-Synth and 
+your sequencer software, you’ll be able to enjoy a 
+wide range of possibilities for music production and 
+editing.
+Connection
+Caution
+•T o avoid the risk of malfunction and/or speaker dam-
+age, always make sure to turn the volume all the way 
+down and turn off the power on all equipment 
+before you make any connections.
+• Only MIDI data can be transmitted and received via 
+USB.
+•A  USB cable is not included. If you need to obtain 
+one, ask the dealer where you purchased the 
+AX-Synth.
+• Switch on the AX-Synth before you start up the MIDI 
+application on your computer. Don’t turn the 
+AX-Synth’s power on/off while your MIDI application 
+is running.
+Connect the AX-Synth to your computer as shown 
+below.
+Refer to the Roland website for system requirements:
+http://www.Roland.com/
+Note: Do not connect two or more AX-Synth units to one 
+computer via USB. The system will not operate correctly with 
+such connections.
+If connection to your computer is unsuccessful…
+Normally, you don’t need to install a driver in order 
+to connect the AX-Synth to your computer. However, 
+if a problem occurs, or if the performance is poor, 
+using the Roland original driver may solve the prob-
+lem.
+For details on downloading and installing the Roland 
+original driver, refer to the Roland website:
+http://www.roland.com/
+If you are using Windows XP/Windows Vista, you 
+must log onto Windows as one of the following users 
+in order to complete the USB connection correctly.
+•A  user name belonging to the Administrators group, 
+such as Administrator
+•A  user name whose account type is a computer 
+administrator
+8. Using the AX-Synth’s USB port
+Computer
+To a USB port
+USB cable
+MIDI USB port
+AX-Synth_e2  Page 31  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 32 =====
+Using the AX-Synth’s USB port
+32
+Making the settings for the USB 
+driver
+For successful USB communication, you need to specify 
+the USB driver you want to use, and then activate that 
+driver.
+(1) Hold down the [SHIFT] button and press PGM 
+CHANGE [INC].
+The display now shows the name of the driver that is 
+currently active (“Gen” or “Uen”) and the [WRITE] 
+button flashes.
+(2) Keep holding the [SHIFT] button and press the PGM 
+CHANGE [INC] button to switch between “Gen” or 
+“Uen”.
+(3) Press the [WRITE] button to confirm your selection.
+(4) Release the [SHIFT] button.
+(5) Switch the AX-Synth off, wait a few seconds, then 
+switch it on again.
+Uen Select this if you use the supplied driver.
+Gen Select this if you use a generic USB driver 
+included with the OS.
+AX-Synth_e2  Page 32  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 33 =====
+r AX-Synth Owner’s Manual
+33
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+V-LINK ( ) is a function that allows music and images to be performed together. By using MIDI to connect two 
+or more V-LINK compatible devices, you can easily enjoy performing a wide range of visual effects that are linked to the 
+expressive elements of a music performance.
+How to use V-LINK
+Activating V-LINK
+(1) Connect the AX-Synth’s MIDI OUT socket to the 
+MIDI IN socket of your optional Edirol video device.
+Note: V-LINK communication is not possible via the USB 
+port.
+(2) Press the [V-LINK] button (it lights).
+Operations on the AX-Synth
+V-LINK messages are transmitted on MIDI channel “10”. 
+The following functions can be controlled from the 
+AX-Synth:
+•V ideo clip selection: the keys in the lowest octave 
+allow you to switch clips on an optional Edirol device. 
+(Those keys are temporarily unavailable for triggering 
+notes.)
+•V ideo playback speed control: Sliding your finger 
+over the TOUCH CONTROLLER ribbon will speed up or 
+slow down the video playback speed.
+(The ribbon still generates Pitch Bend messages, how-
+ever.)
+9. About V-LINK
+AX-Synth_e2  Page 33  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 34 =====
+Additional functions
+34
+Battery-related functions
+Here are two functions that may come in handy when 
+you are using the AX-Synth with batteries.
+Checking the remaining battery charge
+If you are not sure whether your AX-Synth contains 
+fresh (or fully recharged) batteries, you may want to 
+check how much power is left before going on stage.
+(1) Hold down the [SHIFT] button and press the [V-LINK] 
+button.
+The display now shows the remaining battery charge 
+as a percentage value (between “0” and “100”).
+(2) Release the [SHIFT] to leave this function.
+Note: The battery charge indication is only an approxima-
+tion.
+Note: Do not use this function while the AC adaptor is 
+connected, because the displayed value will always be 
+“100”.
+Sleep mode setting
+When the AX-Synth runs on batteries, it is programmed 
+to go into sleep mode after a while. By default, this 
+interval is set to “15” (minutes). But you can change it 
+as follows:
+(1) Hold down the [SHIFT] button and press the PGM 
+CHANGE [DEC] button.
+The display shows the current setting and the [WRITE] 
+button flashes.
+(2) Keep holding the [SHIFT] button and press the PGM 
+CHANGE [DEC] button to select the desired sleep 
+mode interval.
+The possibilities are: “Off” (the sleep function is off), 
+“15”, “30” and “60” (minutes).
+(3) Press the [WRITE] button to confirm your selection.
+(4) Release the [SHIFT] button.
+Loading the factory settings
+The AX-Synth allows you to change and store certain 
+settings, thereby overwriting its original settings.
+Furthermore, in-depth editing using the “AX-Synth Edi-
+tor” software may cause one AX-Synth to sound and 
+behave radically different from another,. This may 
+become a problem when you are using someone else’s 
+AX-Synth. 
+This function returns all of the AX-Synth’s parameters to 
+their factory settings. 
+Note: Consider archiving your settings using the Bulk Dump 
+function (see p. 29) before loading the factory defaults.
+Here is how to load the factory settings.
+(1) Hold down the VARIATION [INC÷+] + [DEC÷–] + TONE 
+[7] (ORGAN/CLAVI) buttons and switch on the 
+AX-Synth.
+The display shows the “FCt” message and the [WRITE] 
+button flashes.
+(2) Press the [WRITE] button to load the factory set-
+tings.
+All indicators flash.
+(3) Wait until the “ dne” message appears in the dis-
+play, then switch the AX-Synth off, wait a few sec-
+onds, and switch it back on.
+Note: Never switch off the AX-Synth while the [WRITE] 
+button is still lit, because doing so may damage it.
+Checking the AX-Synth’s firmware 
+version
+In some cases, your Roland dealer or local Roland dis-
+tributor may ask you which firmware version you are 
+using when you report a problem. In other cases, you 
+may need want to check whether the AX-Synth you are 
+using contains the latest firmware version. In such cases, 
+proceed as follows:
+(1) Hold down the VARIATION [INC÷+] + [DEC÷–] + TONE 
+[8] (CHOIR/PIANO) buttons and switch on the 
+AX-Synth.
+The display shows the version number of the firm-
+ware your AX-Synth is using.
+(2) Switch the AX-Synth off, wait a few seconds, then 
+switch it back on again.
+10. Additional functions
+AX-Synth_e2  Page 34  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 35 =====
+r AX-Synth Owner’s Manual
+35
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+Troubleshooting
+This section provides points to check and actions to take 
+when the AX-Synth does not function as you expect. 
+Refer to the appropriate section for the problem you are 
+experiencing.
+Power does not turn on
+Is the included AC adaptor/power cord correctly con-
+nected to an AC outlet and to the AX-Synth?
+→ Do not use any AC adaptor or power cord other 
+than the ones included. Doing so will cause malfunc-
+tions. See page 13.
+Are you sure that the AX-Synth contains batteries 
+that are not depleted?
+→ Check the batteries. See page 13.
+Were the batteries inserted correctly?
+→ Open the battery compartment and check the 
+batteries’ orientation. See page 13.
+The AX-Synth suddenly turns off
+If you are able to “wake it up” simply by pressing a 
+button or key, this means that sleep mode had been 
+activated. All settings are preserved in this state, so 
+there is no need to worry.
+There are three flashing dots in the display
+This means that the remaining battery power is low. 
+Replace the batteries at your earliest convenience.
+The display only shows three dots
+This means that the batteries are empty.
+→ Please install new batteries. See page 13.
+No sound from the AX-Synth
+Could the [VOLUME] knob be turned down?
+Did you select a FAVORITE memory for which the vol-
+ume level was set to “0”?
+→ Select a higher volume setting. See page 26.
+The OCTAVE/VARIATION buttons do not allow me to 
+select a different octave
+Did you change the mode setting for these buttons?
+→ Select “OCS” or ““OCH” mode. See page 22.
+The OCTAVE/VARIATION buttons no longer allow me 
+to select Tones
+Did you change the mode setting for these buttons?
+→ Select “Var” mode. See page 18.
+No sound from a connected MIDI device
+Are MIDI messages being transmitted?
+→ The AX-Synth only transmits MIDI messages when 
+the [TX¥ON] button lights. Please switch it on.
+Does the MIDI transmit channel of the AX-Synth 
+match the MIDI receive channel of the connected 
+MIDI device?
+→ Set the MIDI channel of the connected external 
+device to match the AX-Synth, or change the 
+AX-Synth’s transmit channel. See page 27.
+The AX-Synth no longer sounds and behaves like 
+before
+Did you, or someone else, load its factory settings?
+→ If in doubt, please use the Bulk Dump function 
+(see p. 29) to transmit your own settings to the 
+AX-Synth.
+Pitch Bend not obtained when the TOUCH CON-
+TROLLER ribbon is used
+Could the Pitch Bend Range be set to 0?
+→ Set the Pitch Bend Range to a value other than 
+“0”. This needs to be done in the “AX-Synth Editor” 
+software after connecting the AX-Synth to your 
+computer.
+The Portamento function goes off when I release 
+the button
+You have selected a SuperNATURAL Tone after acti-
+vating the [PORTAMENTO] button’s “Hld” mode.
+→ Select “SUt” mode. See page 24.
+Pitch is wrong
+For some Tones, the pitch in certain ranges may 
+sound different than other Tones.
+Could the pitch have been changed by movements 
+on the TOUCH CONTROLLER ribbon or by Pitch Bend 
+messages received from an external MIDI device?
+Notes are cut off
+If you attempt to play more than 128 voices simulta-
+neously, currently sounding notes may be cut off.
+Standard MIDI Files played back with a sequencer 
+sound strange
+The AX-Synth is not GS/GM2 compatible and 
+“monotimbral”.
+Sound is distorted when using a wireless system
+The AX-Synth’s output level is too high for your wire-
+less system.
+→ Set the [ATT] switch to the “ON” position. See 
+page 15.
+Note: Be sure to only use wireless transmitters that comply 
+with local radio regulations. 
+Could you be applying an effect such as overdrive or 
+distortion which intentionally distorts the sound?
+→ Please check this in the “AX-Synth Editor” soft-
+ware.
+11. Appendix
+AX-Synth_e2  Page 35  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 36 =====
+Appendix
+36
+Control Change list
+Here are the official or frequently-used functions of 
+Control Change numbers CC00~127. Not all MIDI 
+instruments support all Control Changes, while some 
+instruments may use certain numbers for different pur-
+poses. Be sure to check the MIDI implementation chart 
+of the external instrument.
+CC00 . . . . . . . . . . Bank Select MSB
+CC01 . . . . . . . . . . Modulation wheel
+CC02 . . . . . . . . . . Breath control
+CC03 . . . . . . . . . . Undefined
+CC04 . . . . . . . . . . Foot controller
+CC05 . . . . . . . . . . Portamento time
+CC06 . . . . . . . . . . Data Entry MSB
+CC07 . . . . . . . . . . Channel Volume
+CC08 . . . . . . . . . . Balance
+CC09 . . . . . . . . . . Undefined
+CC10 . . . . . . . . . . Pan
+CC11 . . . . . . . . . . Expression
+CC12 . . . . . . . . . . Effect control 1
+CC13 . . . . . . . . . . Effect control 2
+CC14 . . . . . . . . . . Undefined
+CC15 . . . . . . . . . . Undefined
+CC16 . . . . . . . . . . General Purpose Controller #1
+CC17 . . . . . . . . . . General Purpose Controller #2
+CC18 . . . . . . . . . . General Purpose Controller #3
+CC19 . . . . . . . . . . General Purpose Controller #4
+CC20~CC31 . . . . Undefined
+CC32 . . . . . . . . . . Bank Select LSB
+CC33 . . . . . . . . . . Modulation wheel LSB
+CC34 . . . . . . . . . . Breath control LSB
+CC35 . . . . . . . . . . Undefined
+CC36 . . . . . . . . . . Foot controller LSB
+CC37 . . . . . . . . . . Portamento time LSB
+CC38 . . . . . . . . . . Data entry LSB
+CC39 . . . . . . . . . . Channel Volume LSB
+CC40 . . . . . . . . . . Balance LSB
+CC41 . . . . . . . . . . Undefined
+CC42 . . . . . . . . . . Pan LSB
+CC43 . . . . . . . . . . Expression Controller LSB
+CC44 . . . . . . . . . . Effect control 1 LSB
+CC45 . . . . . . . . . . Effect control 2 LSB
+CC46 . . . . . . . . . . Undefined
+CC47 . . . . . . . . . . Undefined
+CC48 . . . . . . . . . . General Purpose Controller #1 LSB
+CC49 . . . . . . . . . . General Purpose Controller #2 LSB
+CC50 . . . . . . . . . . General Purpose Controller #3 LSB
+CC51 . . . . . . . . . . General Purpose Controller #4 LSB
+CC52~63. . . . . . . Undefined
+CC64 . . . . . . . . . . Damper/Hold (Sustain)
+CC65 . . . . . . . . . . Portamento on/off
+CC66 . . . . . . . . . . Sustenuto on/off
+CC67 . . . . . . . . . . Soft pedal on/off
+CC68 . . . . . . . . . . Legato Footswitch
+CC69 . . . . . . . . . . Hold 2
+CC70 . . . . . . . . . . Sound Controller 1
+CC71 . . . . . . . . . . Harmonic Content (Resonance)*
+CC72 . . . . . . . . . . Release Time*
+CC73 . . . . . . . . . . Attack Time*
+CC74 . . . . . . . . . . Brightness (Cutoff)*
+CC75 . . . . . . . . . . Decay Time*
+CC76 . . . . . . . . . . Vibrato Rate*
+CC77 . . . . . . . . . . Vibrato Depth*
+CC78 . . . . . . . . . . Vibrato Delay*
+CC79 . . . . . . . . . . Sound Controller 10
+CC80 . . . . . . . . . . General Purpose Controller #5
+CC81 . . . . . . . . . . General Purpose Controller #6
+CC82 . . . . . . . . . . General Purpose Controller #7
+CC83 . . . . . . . . . . General Purpose Controller #8
+CC84 . . . . . . . . . . Portamento Control (Source Note)
+CC85~90 . . . . . . Undefined
+CC91 . . . . . . . . . . Effects 1 Depth
+CC92 . . . . . . . . . . Effects 2 Depth
+CC93 . . . . . . . . . . Effects 3 Depth
+CC94 . . . . . . . . . . Effects 4 Depth
+CC95 . . . . . . . . . . Effects 5 Depth
+CC96 . . . . . . . . . . Data entry +1
+CC97 . . . . . . . . . . Data entry -1
+CC98 . . . . . . . . . . NRPN LSB
+CC99 . . . . . . . . . . NRPN MSB
+CC100. . . . . . . . . RPN LSB
+CC101. . . . . . . . . RPN MSB
+CC102~CC120  . Undefined
+CC120. . . . . . . . . All Sound Off
+CC121. . . . . . . . . Reset All Controllers
+CC122. . . . . . . . . Local control on/off
+CC123. . . . . . . . . All notes off
+CC124. . . . . . . . . Omni mode off (+ all notes off)
+CC125. . . . . . . . . Omni mode on (+ all notes off)
+CC126. . . . . . . . . Poly mode on/off (+ all notes off)
+CC127. . . . . . . . . Poly mode on (incl mono=off +all 
+notes off)
+(*) Definition according to General MIDI System Level 2 (GM2)
+AX-Synth_e2  Page 36  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 37 =====
+r AX-Synth Owner’s Manual
+37
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+Tone list
+SuperNATURAL Tones
+SPECIAL Tones
+Regular Tones
+Position Tone CC00 CC32 PC
+1 Violin 66 0 1
+2 Cello 66 0 2
+3 Shakuhachi 66 0 3
+4 Trombone 66 0 4
+Position Tone CC00 CC32 PC
+5 Trumpet 87 64 1
+6 Sax 87 64 2
+7 Strings 87 64 3
+8 Jazz Scat 87 64 4
+Synth Lead 1 CC00 CC32 PC
+1 AX Saw Lead 87 0 1
+2 AX Sync Lead 87 0 2
+3 GR300 Lead 1 87 0 3
+4 JupiterLead1 87 0 4
+5 JupiterLead2 87 0 5
+6 Saw Lead 1  87 0 6
+7 Saw Lead 2  87 0 7
+8 Saw Lead 3  87 0 8
+9 Saw Lead 4  87 0 9
+10 Saw Lead 5  87 0 10
+11 Classic Ld  87 0 11
+12 Delayed Lead 87 0 12
+13 GR300 Lead 2 87 0 13
+14 Alpha Spit  87 0 14
+15 Pro Fat Ld  87 0 15
+16 Fat GR Lead 87 0 16
+17 Bright Pls  87 0 17
+18 Octa Juice  87 0 18
+19 Octa Saw    87 0 19
+20 Octa Sync   87 0 20
+21 Phase Lead  87 0 21
+22 Waspy Lead  87 0 22
+23 Follow Me   87 0 23
+24 Digi Lead 1 87 0 24
+25 Digi Lead 2 87 0 25
+26 Hot Coffee  87 0 26
+27 Hot Sync    87 0 27
+28 Sync Tank   87 0 28
+29 2krazy Brite 87 0 29
+30 Juicy Lead  87 0 30
+31 Vintager    87 0 31
+32 BagShakuLead 87 0 32
+Synth Lead 2 CC00 CC32 PC
+1 ResoSawLead 87 0 33
+2 Theramax 1  87 0 34
+3 AX Sqr Lead 87 0 35
+4 Pulse Lead 1 87 0 36
+5 Pulse Lead 2 87 0 37
+6 Mid Saw Ld  87 0 38
+7 On Air      87 0 39
+8 2krazy Soft 87 0 40
+9 Soft Lead   87 0 41
+10 Tri Lead 1  87 0 42
+11 Tri Lead 2  87 0 43
+12 Sine Lead 1 87 0 44
+13 Sine Lead 2 87 0 45
+14 Simple Sine 87 0 46
+15 Simple Tri  87 0 47
+16 Simple Sqr  87 0 48
+17 Spooky Lead 87 0 49
+18 Ramp Lead   87 0 50
+19 Air Lead    87 0 51
+20 Growl Lead  87 0 52
+21 Pulstar Ld  87 0 53
+22 Mini Growl  87 0 54
+23 Round SQR   87 0 55
+24 Brite Square 87 0 56
+25 Octa Square 87 0 57
+26 Square SAW  87 0 58
+27 Soft Squ Ld 87 0 59
+28 Wormy Lead  87 0 60
+29 Theramax 2  87 0 61
+30 SoloNzPeaker 87 0 62
+31 Mlt Pipes   87 0 63
+32 5th SawLead 87 0 64
+Bass CC00 CC32 PC
+1 Reso Bs 1   87 0 65
+2 Round Bs    87 0 66
+3 Moogue Bs1  87 0 67
+4 Monster Bass 87 0 68
+5 Moogue Bs2  87 0 69
+6 Triangle Bs 87 0 70
+7 Punch MG    87 0 71
+8 Acdg Bass   87 0 72
+9 Alpha Bs    87 0 73
+10 Reso Bs 2 87 0 74
+11 Reso Bs 3 87 0 75
+12 MKS-50 SBs  87 0 76
+13 TB Dist Bs  87 0 77
+14 TB Bs       87 0 78
+15 Fat Analog  87 0 79
+16 Compu SBs   87 0 80
+17 Modular Bs1 87 0 81
+18 Modular Bs2 87 0 82
+19 Garage Bass 87 0 83
+20 Spike Bs    87 0 84
+21 FatMG Bs    87 0 85
+22 JunoSqu Bs  87 0 86
+23 Acoustic Bs1 87 0 87
+24 Acoustic Bs2 87 0 88
+25 Finger EBs 1 87 0 89
+26 Finger EBs 2 87 0 90
+27 Finger EBs 3 87 0 91
+28 Finger EBs 4 87 0 92
+29 Pick Bs 1 87 0 93
+30 Pick Bs 2 87 0 94
+31 Fretnot Bs 87 0 95
+32 Slap Bass   87 0 96
+Lead Guitar CC00 CC32 PC
+1 SearingGtr 1 87 0 97
+2 SearingGtr 2 87 0 98
+3 SearingGtr 3 87 0 99
+4 SearingGtr 4 87 0 100
+5 OctSearingGt 87 0 101
+6 Dist.Fingerz 87 0 102
+7 AX DistGt   87 0 103
+8 Digi DistGt 87 0 104
+9 Fuzz        87 0 105
+10 Nice Dist Gt 87 0 106
+11 Guitar Rip  87 0 107
+12 Twin        87 0 108
+13 MS1959 I    87 0 109
+14 MS1959 II   87 0 110
+15 Metal Lead  87 0 111
+16 OD-2 Turbo  87 0 112
+17 Jazz EGtr   87 0 113
+18 Clean EGtr  87 0 114
+19 Pick EGtr   87 0 115
+20 Funk EGtr   87 0 116
+21 Strat EGtr  87 0 117
+22 Nylon Gtr 1 87 0 118
+23 Nylon Gtr 2 87 0 119
+24 Nylon Gtr 3 87 0 120
+25 Folk Gtr 1  87 0 121
+26 Folk Gtr 2  87 0 122
+27 Folk Gtr 3  87 0 123
+28 Harp        87 0 124
+29 Aerial Harp 87 0 125
+30 LostParadise 87 0 126
+31 Sitar       87 0 127
+32 Santur Stack 87 0 128
+Brass/Poly Synth CC00 CC32 PC
+1 80s Brass 1 87 1 1
+2 80s Brass 2 87 1 2
+3 Soft SynBrs 87 1 3
+4 Brite SynBrs 87 1 4
+5 Wide SynBrs 87 1 5
+6 Analog Brass 87 1 6
+7 Juno Brass  87 1 7
+8 Poly Brass  87 1 8
+9 106 Brass   87 1 9
+10 Octa Brass  87 1 10
+11 AX BrassSect 87 1 11
+12 Trumpeter   87 1 12
+13 Soft Brass  87 1 13
+14 Sax Sect 1  87 1 14
+15 Sax Sect 2  87 1 15
+16 Breathy Sax 87 1 16
+17 Soprano Sax 87 1 17
+18 Alto Sax    87 1 18
+19 Tenor Sax   87 1 19
+20 Baritone Sax    87 1 20
+21 Pan Pipes   87 1 21
+22 Harmonica   87 1 22
+23 Ox Synth    87 1 23
+24 Poly Synth 1 87 1 24
+25 Poly Synth 2 87 1 25
+26 Poly Synth 3 87 1 26
+27 Poly Synth 4 87 1 27
+28 Juno SAW    87 1 28
+29 Super Saw   87 1 29
+30 Touchy      87 1 30
+31 Euro Express 87 1 31
+32 Analog Dream 87 1 32
+Strings/Pad CC00 CC32 PC
+1 AX Strings 1 87 1 33
+2 AX Strings 2 87 1 34
+3 Tape Strings 87 1 35
+4 PhaserPad   87 1 36
+5 Cosmic Rays 87 1 37
+6 Soft Pad 1  87 1 38
+7 Soft Pad 2  87 1 39
+8 Synth Str 1 87 1 40
+9 Synth Str 2 87 1 41
+10 JX Strings  87 1 42
+11 JP Strings  87 1 43
+12 106 Strings 87 1 44
+13 Sawtooth Str 87 1 45
+14 Chorus Pad  87 1 46
+15 5th DLA Pad 87 1 47
+16 Hollow Pad  87 1 48
+17 Nu Epic Pad 87 1 49
+18 Angelis Pad 87 1 50
+19 TrnsSweepPad 87 1 51
+20 Heaven Pad  87 1 52
+21 Voyager     87 1 53
+22 OB Strings  87 1 54
+23 Shimmer Pad 87 1 55
+24 Xadecimal   87 1 56
+25 World X     87 1 57
+26 Sliced Pad  87 1 58
+27 Trance Synth 87 1 59
+28 Major 7     87 1 60
+29 Freeze Synth 87 1 61
+30 Bustranza   87 1 62
+31 SuperSaw Pad 87 1 63
+32 Digitaless  87 1 64
+AX-Synth_e2  Page 37  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 38 =====
+Appendix
+38
+Organ/Clavi CC00 CC32 PC
+1 Lord Organ 1 87 1 65
+2 Lord Organ 2 87 1 66
+3 Rotary Org 1 87 1 67
+4 Rotary Org 2 87 1 68
+5 Vintage Org 1 87 1 69
+6 Vintage Org 2 87 1 70
+7 VK Organ 1  87 1 71
+8 VK Organ 2  87 1 72
+9 D-Bars 1  87 1 73
+10 D-Bars 2  87 1 74
+11 D-Bars 3  87 1 75
+12 D-Bars 4  87 1 76
+13 D-Bars 5  87 1 77
+14 AX Dist Org1 87 1 78
+15 AX Dist Org2 87 1 79
+16 Technorgan  87 1 80
+17 Old Fashion 87 1 81
+18 Posit/Mod   87 1 82
+19 Grand Pipes 87 1 83
+20 Musette     87 1 84
+21 Amped D6    87 1 85
+22 AX Clav 1   87 1 86
+23 AX Clav 2   87 1 87
+24 Pulse Clav 1 87 1 88
+25 Pulse Clav 2 87 1 89
+26 Phase Clavi 87 1 90
+27 Sweepin Clav 87 1 91
+28 AX Vibe     87 1 92
+29 Marimba     87 1 93
+30 Xylophone   87 1 94
+31 Steel Drums 87 1 95
+32 Ethno Keys  87 1 96
+Choir/Piano CC00 CC32 PC
+1 Angels Choir 87 1 97
+2 Aerial Choir 87 1 98
+3 Humming     87 1 99
+4 Gospel Hum  87 1 100
+5 Vox Pad 1   87 1 101
+6 Vox Pad 2   87 1 102
+7 80s Vox     87 1 103
+8 SynVox 1    87 1 104
+9 SynVox 2    87 1 105
+10 Sample Opera 87 1 106
+11 Jazz Dooos  87 1 107
+12 AX Grand    87 1 108
+13 AX Mono Pno 87 1 109
+14 E-Grand     87 1 110
+15 JD-800 Piano 87 1 111
+16 Honky Tonk  87 1 112
+17 Blend Piano 87 1 113
+18 Harpsichord 87 1 114
+19 Phase Stage 87 1 115
+20 PhaseEP     87 1 116
+21 Stage EP    87 1 117
+22 Dyno EP     87 1 118
+23 SA EP       87 1 119
+24 Wurly EP    87 1 120
+25 Dist Wurly  87 1 121
+26 FM EP 1 87 1 122
+27 FM EP 2     87 1 123
+28 Psycho EP   87 1 124
+29 D-50 Fantsia 87 1 125
+30 FM Sparkles 87 1 126
+31 Dreaming Box 87 1 127
+32 Sweet Keys  87 1 128
+AX-Synth_e2  Page 38  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 39 =====
+r AX-Synth Owner’s Manual
+39
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+Roland AX-Synth Shoulder Synthesizer
+Note: In the interest of product improvement, the specifications and/or appearance of this unit are subject to change without prior notice.
+12. Specifications
+Keyboard 49 keys, velocity sensitive
+Sound Generator
+Maximum polyphony 128 voices
+Sounds 4 SuperNATURAL Tones
+4 SPECIAL Tones
+256 Tones (8 families x 32 sounds)
+Memories 8 x 2 FAVORITE memories (Tone assignments + Volume and Reverb Send levels)
+Real-time controllers
+D Beam controller, MODULATION BAR, TOUCH CONTROLLER ribbon, VOLUME knob,
+AFTER TOUCH knob, PORTAMENTO button (2 modes for SuperNATURAL Tones), 
+BENDER MODE button (2 modes), HOLD button, OCTAVE/VARIATION buttons
+Connectors
+OUTPUT L/MONO, R: 1/4” phone jacks x2
+PHONES: 1/4” TRS phone jack x1
+FOOT PEDAL: for Roland DP-series or BOSS FS-5U footswitch
+USB port: COMPUTER (supports USB–MIDI)
+  * See http://www.Roland.com for the supported operating systems
+MIDI: IN, OUT
+DC IN: For supplied PSB-1U adaptor
+Others
+Display 7 segments x 3 (LED)
+Power supply Batteries (AA-type, rechargeable Ni-MH x8)
+Supplied PSB-1U adaptor
+Current draw 320mA
+Dimensions: 1142 (W) x 266 (D) x 87 (H) mm
+Weight: 3.9kg
+Supplied accessories: Owner’s Manual,
+Shoulder strap
+Options: Roland DP-series footswitch
+AX-Synth_e2  Page 39  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 40 =====
+MIDI implementation chart
+40
+[Shoulder Synthesizer] Date: March 2009
+Model: AX-Synth Version: 1.00
+13. MIDI implementation chart
+Function... Transmitted Recognized Remarks
+Basic
+Channel
+Default
+Changed
+1
+1~16, Off
+1
+1~16 Memorized
+Mode Default
+Message
+Altered
+Mode 3
+Mono, Poly
+*****
+Mode 3
+Mode 3, 4 (M= 1)
+X
+Note 
+Number True Voice
+0~127
+*****
+0~127
+0~127
+Velocity Note ON
+Note OFF
+O
+O
+O
+O
+After 
+Touch
+Key’s
+Ch’s
+X
+O
+O
+O
+Pitch Bend O O
+Control 
+Change
+0,32
+1
+5
+6, 38
+7
+10
+11
+34
+64
+65
+66
+71
+72
+73
+74
+75
+84
+91
+93
+1~31, 33~95
+100, 101
+O* 1
+O* 1
+O* 1
+O* 1
+O* 1
+O* 1
+O* 1
+O* 1
+O* 1
+O* 1
+O* 1
+O
+O
+O
+O
+O
+O
+O (Reverb) *1
+O (Chorus) *1
+O* 1
+X* 1
+O 
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+O
+X
+O
+Bank Select
+Modulation
+Portamento Time
+Data entry
+Volume
+Panpot
+Expression
+Breath type
+Hold 1
+Portamento SW
+Sostenuto
+Harm. Content (Reso) 
+Release Time
+Attack Time
+Brightness (Cutoff) 
+Sound Control
+Portamento Control
+Effect 1 Depth
+Effect 3 Depth
+D Beam
+RPN LSB, MSB
+Program 
+Change True #
+O
+*****
+O
+O~127 Program no. 1~128
+System Exclusive O O
+System 
+Common
+Song Position Pointer
+Song Sel
+Tune
+X
+X
+X
+X
+X
+X
+System 
+Real Time
+Clock
+Commands
+X
+X
+X
+X
+Aux 
+Messages
+All Sounds Off
+Local On/Off
+All Notes Off
+Active Sensing
+Reset
+X
+X
+X
+O
+X* 1
+O
+X
+O (123~127)
+O
+X
+Notes *1 O X is selectable
+*2 Recognized as M=1 even if M≠1
+Mode 1: OMNI ON, POL Y
+Mode 3: OMNI OFF , POL Y
+Mode 2: OMNI ON, MONO
+Mode 4: OMNI OFF , MONO
+O: Y es
+X: No
+AX-Synth_e2  Page 40  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 41 =====
+r AX-Synth Owner’s Manual
+41
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+A
+Aftertouch . . . . . . . . . . . . . . . . . . 23
+Archiving settings. . . . . . . . . . . . 29
+ATT . . . . . . . . . . . . . . . . . . . . . . . . 15
+Attenuation . . . . . . . . . . . . . . . . . 15
+B
+Bank Select . . . . . . . . . . . . . . . . . 28
+Batteries. . . . . . . . . . . . . . . . . .6, 13
+Indication. . . . . . . . . . . . . . . . . 34
+Bender . . . . . . . . . . . . . . . . . . . . . 22
+Mode. . . . . . . . . . . . . . . . . . . . . 23
+Bulk Dump. . . . . . . . . . . . . . . . . . 29
+C
+CANCEL  . . . . . . . . . . . . . . . . . . . . 19
+CC01. . . . . . . . . . . . . . . . . . . . . . . 22
+Connections. . . . . . . . . . . . . . . . . 14
+D
+D Beam. . . . . . . . . . . . . . . . . . . . . 23
+Damper. . . . . . . . . . . . . . . . . . . . . 25
+DC IN . . . . . . . . . . . . . . . . . . . . . . 13
+Different key . . . . . . . . . . . . . . . . 21
+Dmp . . . . . . . . . . . . . . . . . . . . . . . 29
+dne . . . . . . . . . . . . . . . . . . . . . . . . 34
+Driver . . . . . . . . . . . . . . . . . . . . . . 32
+Dynamics . . . . . . . . . . . . . . . . . . . 22
+E
+ENTER . . . . . . . . . . . . . . . . . . . . . . 18
+Err. . . . . . . . . . . . . . . . . . . . . . . . . 30
+F
+Factory settings. . . . . . . . . . . . . . 34
+Favorite . . . . . . . . . . . . . . . . . . . . 26
+Assigning Tones . . . . . . . . . . . . 19
+Recalling. . . . . . . . . . . . . . . . . . 20
+Fct. . . . . . . . . . . . . . . . . . . . . . . . . 34
+Filter . . . . . . . . . . . . . . . . . . . . . . . 23
+Firmware . . . . . . . . . . . . . . . . . . . 34
+Foot Pedal . . . . . . . . . . . . . . . . . . 25
+G
+Gen . . . . . . . . . . . . . . . . . . . . . . . . 32
+H
+Headphones. . . . . . . . . . . . . . . . . 16
+Hld . . . . . . . . . . . . . . . . . . . . . . . . 24
+Hold . . . . . . . . . . . . . . . . . . . . . . . 25
+I
+Initialize . . . . . . . . . . . . . . . . . . . . 34
+M
+MIDI . . . . . . . . . . . . . . . . . . . . . . . 27
+Channels. . . . . . . . . . . . . . . . . . 27
+Program Change . . . . . . . . . . . 28
+Receive channel . . . . . . . . . . . .27
+TX Channels . . . . . . . . . . . . . . .27
+Modulation Bar . . . . . . . . . . . . . .22
+N
+Numeric Keypad  . . . . . . . . . 18, 28
+O
+OCH. . . . . . . . . . . . . . . . . . . . . . . .22
+OCS . . . . . . . . . . . . . . . . . . . . . . . .22
+Octave. . . . . . . . . . . . . . . . . . . . . .22
+OCTAVE/VARIATION. . . . . . . . . . .18
+P
+Pedal . . . . . . . . . . . . . . . . . . . . . . .25
+PGM CHANGE  . . . . . . . . . . . . . . .28
+PHONES  . . . . . . . . . . . . . . . . . . . .16
+Pitch . . . . . . . . . . . . . . . . . . . . . . .21
+Bend . . . . . . . . . . . . . . . . . . . . .22
+D Beam . . . . . . . . . . . . . . . . . . .23
+Portamento . . . . . . . . . . . . . . . . .24
+Mode . . . . . . . . . . . . . . . . . . . . .24
+POWER . . . . . . . . . . . . . . . . . . . . .17
+Program Change . . . . . . . . . . . . .28
+R
+rCV  . . . . . . . . . . . . . . . . . . . . . . . .29
+Receive channel. . . . . . . . . . . . . .27
+Rev  . . . . . . . . . . . . . . . . . . . . . . . .26
+Reverb Send . . . . . . . . . . . . . . . . .26
+Ribbon  . . . . . . . . . . . . . . . . . . . . .22
+RX channel . . . . . . . . . . . . . . . . . .27
+S
+Sleep function . . . . . . . . . . . . . . .17
+Sleep mode. . . . . . . . . . . . . . . . . .34
+Snd . . . . . . . . . . . . . . . . . . . . . . . .29
+Sounds . . . . . . . . . . . . . . . . . . . . .18
+Special  . . . . . . . . . . . . . . . . . . . . .19
+SuperNATURAL  . . . . . . . . . . . . . .19
+Sustain . . . . . . . . . . . . . . . . . . . . .25
+Sut. . . . . . . . . . . . . . . . . . . . . . . . .24
+Switching on/off . . . . . . . . . . . . .17
+SysEx. . . . . . . . . . . . . . . . . . . . . . .29
+T
+Tone
+Numeric selection . . . . . . . . . .18
+Regular . . . . . . . . . . . . . . . . . . .18
+Selection. . . . . . . . . . . . . . . . . .18
+Special. . . . . . . . . . . . . . . . . . . .19
+SuperNATURAL. . . . . . . . . . . . .19
+Touch Controller . . . . . . . . . . . . .22
+Transmit Channel. . . . . . . . . . . . .27
+Transpose . . . . . . . . . . . . . . . . . . .21
+Troubleshooting. . . . . . . . . . . . . .35
+TX
+MIDI Channels . . . . . . . . . . . . .27
+ON . . . . . . . . . . . . . . . . . . . . . . 27
+U
+USB . . . . . . . . . . . . . . . . . . . . . . . 31
+Driver. . . . . . . . . . . . . . . . . . . . 32
+V
+Var . . . . . . . . . . . . . . . . . . . . . . . . 18
+VARIATION . . . . . . . . . . . . . . 18, 21
+Ven. . . . . . . . . . . . . . . . . . . . . . . . 32
+Version  . . . . . . . . . . . . . . . . . . . . 34
+Vibrato  . . . . . . . . . . . . . . . . . . . . 22
+V-LINK . . . . . . . . . . . . . . . . . . . . . 33
+Vol . . . . . . . . . . . . . . . . . . . . . . . . 26
+Volume . . . . . . . . . . . . . . . . . 17, 26
+W
+Windows . . . . . . . . . . . . . . . . . . . 31
+WRITE  . . . . . . . . . . . .18, 19, 21, 22
+Wrt. . . . . . . . . . . . . . . . . . . . . . . . 30
+14. Index
+AX-Synth_e2  Page 41  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 42 =====
+42
+ 
+As of Jan. 1, 2009 (ROLAND)
+Information When you need repair service, call your nearest Roland Service Center or authorized Roland
+distributor in your country as shown below.
+EGYPT
+Al Fanny Trading Office
+9, EBN Hagar Al Askalany 
+Street,
+ARD E1 Golf, Heliopolis, 
+Cairo 11341, EGYPT
+TEL: (022)-417-1828
+REUNION
+Maison FO - YAM Marcel
+25 Rue Jules Hermann,
+Chaudron - BP79 97 491
+Ste Clotilde Cedex,
+REUNION ISLAND
+TEL: (0262) 218-429
+SOUTH AFRICA
+T.O.M.S. Sound & Music 
+(Pty)Ltd.
+2 ASTRON ROAD DENVER 
+JOHANNESBURG ZA 2195, 
+SOUTH AFRICA
+TEL: (011)417 3400
+Paul Bothner(PTY)Ltd.
+Royal Cape Park, Unit 24
+Londonderry Road, Ottery 7800  
+Cape Town, SOUTH AFRICA
+TEL: (021) 799 4900 
+CHINA
+Roland Shanghai Electronics 
+Co.,Ltd.
+5F. No.1500 Pingliang Road 
+Shanghai 200090, CHINA
+TEL: (021) 5580-0800
+Roland Shanghai Electronics 
+Co.,Ltd.
+(BEIJING OFFICE)
+10F. No.18 3 Section Anhuaxili 
+Chaoyang District Beijing 
+100011 CHINA
+TEL: (010) 6426-5050
+HONG KONG
+Tom Lee Music Co., Ltd. 
+Service Division
+22-32 Pun Shan Street, Tsuen 
+Wan, New Territories, 
+HONG KONG
+TEL: 2415 0911
+Parsons Music Ltd. 
+8th Floor, Railway Plaza, 39 
+Chatham Road South, T.S.T,
+Kowloon, HONG KONG
+TEL: 2333 1863
+INDIA
+Rivera Digitec (India) Pvt. Ltd.
+411,  Nirman Kendra 
+Mahalaxmi Flats Compound 
+Off. Dr. Edwin Moses Road, 
+Mumbai-400011, INDIA
+TEL: (022) 2493 9051
+INDONESIA
+PT Citra IntiRama
+Jl. Cideng Timur No. 15J-15O 
+Jakarta Pusat
+INDONESIA
+TEL: (021) 6324170
+KOREA
+Cosmos Corporation
+1461-9, Seocho-Dong,
+Seocho Ku, Seoul, KOREA
+TEL: (02) 3486-8855
+MALAYSIA
+Roland Asia Pacific Sdn. Bhd.
+45-1, Block C2, Jalan PJU 1/39, 
+Dataran Prima, 47301 Petaling 
+Jaya, Selangor, MALAYSIA
+TEL: (03) 7805-3263
+VIET NAM 
+VIET THUONG 
+CORPORATION 
+386 CACH MANG THANG 
+TAM ST. DIST.3, 
+HO CHI MINH CITY
+VIET NAM 
+TEL: 9316540
+PHILIPPINES
+G.A. Yupangco & Co. Inc.
+339 Gil J. Puyat Avenue
+Makati, Metro Manila 1200,
+PHILIPPINES
+TEL: (02)  899  9801
+SINGAPORE
+SWEE LEE MUSIC 
+COMPANY PTE. LTD.
+150 Sims Drive,
+SINGAPORE 387381
+TEL: 6846-3676
+TAIWAN
+ROLAND TAIWAN 
+ENTERPRISE CO., LTD.
+Room 5, 9fl. No. 112 Chung 
+Shan N.Road Sec.2, Taipei, 
+TAIWAN, R.O.C.
+TEL: (02) 2561 3339
+THAILAND
+Theera Music Co. , Ltd.
+100-108 Soi Verng 
+Nakornkasem, New 
+Road,Sumpantawongse, 
+Bangkok 10100 THAILAND
+TEL: (02) 224-8821
+AUSTRALIA/
+NEW ZEALAND 
+Roland Corporation
+Australia Pty.,Ltd. 
+38 Campbell Avenue
+Dee Why West. NSW 2099
+AUSTRALIA
+For Australia
+Tel: (02) 9982 8266
+For New Zealand
+Tel: (09) 3098 715
+ARGENTINA
+Instrumentos Musicales S.A.
+Av.Santa Fe 2055 
+(1123) Buenos Aires
+ARGENTINA
+TEL: (011) 4508-2700
+BARBADOS
+A&B Music Supplies LTD
+12 Webster Industrial Park
+Wildey, St.Michael, Barbados
+TEL: (246)430-1100
+BRAZIL
+Roland Brasil Ltda.
+Rua San Jose,  211
+Parque Industrial San Jose
+Cotia - Sao Paulo - SP, BRAZIL
+TEL: (011) 4615 5666  
+CHILE
+Comercial Fancy II S.A.
+Rut.: 96.919.420-1
+Nataniel Cox #739, 4th Floor
+Santiago - Centro, CHILE
+TEL: (02) 688-9540
+COLOMBIA
+Centro Musical Ltda.
+Cra 43 B No 25 A 41 Bododega 9
+Medellin, Colombia
+TEL: (574)3812529
+COSTA RICA
+JUAN Bansbach Instrumentos 
+Musicales
+Ave.1. Calle 11, Apartado 
+10237,
+San Jose, COSTA RICA
+TEL: 258-0211
+CURACAO
+Zeelandia Music Center Inc.
+Orionweg 30
+Curacao, Netherland Antilles
+TEL:(305)5926866
+DOMINICAN REPUBLIC
+Instrumentos Fernando Giraldez
+Calle Proyecto Central No.3
+Ens.La Esperilla
+Santo Domingo, 
+Dominican Republic
+TEL:(809) 683 0305
+ECUADOR
+Mas Musika
+Rumichaca 822 y Zaruma
+Guayaquil - Ecuador
+TEL:(593-4)2302364
+EL SALVADOR
+OMNI MUSIC
+75 Avenida Norte y Final 
+Alameda Juan Pablo II, 
+Edificio No.4010 San Salvador, 
+EL SALVADOR
+TEL: 262-0788
+GUATEMALA
+Casa Instrumental
+Calzada Roosevelt 34-01,zona 11
+Ciudad de Guatemala
+Guatemala
+TEL:(502) 599-2888
+HONDURAS
+Almacen Pajaro Azul S.A. de C.V.
+BO.Paz Barahona
+3 Ave.11 Calle S.O
+San Pedro Sula, Honduras
+TEL: (504) 553-2029
+MARTINIQUE
+Musique & Son
+Z.I.Les Mangle
+97232 Le Lamantin
+Martinique F.W.I.
+TEL: 596 596 426860
+Gigamusic SARL
+10 Rte De La Folie
+97200 Fort De France
+Martinique F.W.I.
+TEL: 596 596 715222
+MEXICO
+Casa Veerkamp, s.a. de c.v.
+Av. Toluca No. 323, Col. Olivar 
+de los Padres 01780 Mexico 
+D.F. MEXICO
+TEL: (55) 5668-6699
+NICARAGUA
+Bansbach Instrumentos 
+Musicales Nicaragua
+Altamira D'Este Calle Principal
+de la Farmacia 5ta.Avenida
+1 Cuadra al Lago.#503
+Managua, Nicaragua
+TEL: (505)277-2557
+PANAMA
+SUPRO MUNDIAL, S.A.
+Boulevard Andrews, Albrook, 
+Panama City, REP. DE 
+PANAMA
+TEL: 315-0101
+PARAGUAY
+Distribuidora De 
+Instrumentos Musicales
+J.E. Olear y ESQ. Manduvira 
+Asuncion PARAGUAY
+TEL: (595) 21 492147
+PERU
+Audionet
+Distribuciones Musicales SAC
+Juan Fanning 530
+Miraflores
+Lima - Peru
+TEL: (511) 4461388
+TRINIDAD
+AMR Ltd
+Ground Floor
+Maritime Plaza
+Barataria Trinidad W.I.
+TEL: (868) 638 6385
+NORWAY
+Roland Scandinavia Avd. 
+Kontor Norge
+Lilleakerveien 2 Postboks 95 
+Lilleaker N-0216 Oslo 
+NORWAY
+TEL: 2273 0074
+POLAND
+ROLAND POLSKA SP. Z O.O.
+ul. Kty Grodziskie 16B
+03-289 Warszawa, POLAND
+TEL: (022) 678 9512 
+PORTUGAL
+Roland Iberia, S.L.
+Portugal Office
+Cais das Pedras, 8/9-1 Dto
+4050-465, Porto, PORTUGAL
+TEL: 22 608 00 60
+ROMANIA
+FBS LINES
+Piata Libertatii 1,
+535500 Gheorgheni, 
+ROMANIA
+TEL: (266) 364 609
+RUSSIA
+MuTek
+Dorozhnaya ul.3,korp.6
+117 545 Moscow, RUSSIA 
+TEL: (095) 981-4967
+SLOVAKIA
+DAN Acoustic s.r.o. 
+Povazská 18.
+SK - 940 01 Nové Zámky
+TEL: (035) 6424 330
+SPAIN
+Roland Iberia, S.L. 
+Paseo García Faria, 33-35 
+08005 Barcelona SPAIN
+TEL: 93 493 91 00
+SWEDEN 
+Roland Scandinavia A/S 
+SWEDISH SALES OFFICE
+Danvik Center 28, 2 tr. 
+S-131 30 Nacka SWEDEN 
+TEL: (0)8 702 00 20
+SWITZERLAND
+Roland (Switzerland) AG 
+Landstrasse 5, Postfach,
+CH-4452 Itingen, 
+SWITZERLAND
+TEL:(061)975-9987
+UKRAINE
+EURHYTHMICS Ltd.
+P.O.Box: 37-a.
+Nedecey Str. 30
+UA - 89600 Mukachevo, 
+UKRAINE
+TEL: (03131) 414-40
+UNITED KINGDOM 
+Roland (U.K.) Ltd.
+Atlantic Close, Swansea 
+Enterprise Park, SWANSEA
+SA7 9FJ, 
+UNITED KINGDOM
+TEL: (01792) 702701
+BAHRAIN
+Moon Stores
+No.1231&1249 Rumaytha 
+Building Road 3931, Manama 
+339 BAHRAIN
+TEL: 17 813 942 
+IRAN
+MOCO INC.
+No.41 Nike St., Dr.Shariyati Ave.,
+Roberoye Cerahe Mirdamad
+Tehran, IRAN
+TEL: (021)-2285-4169
+ISRAEL
+Halilit P. Greenspoon & Sons 
+Ltd.
+8 Retzif Ha'alia Hashnia St.
+Tel-Aviv-Yafo ISRAEL
+TEL: (03) 6823666
+URUGUAY
+Todo Musica S.A.
+Francisco Acuna de Figueroa 
+1771
+C.P.: 11.800 
+Montevideo, URUGUAY
+TEL: (02) 924-2335
+VENEZUELA
+Instrumentos Musicales 
+Allegro,C.A.
+Av.las industrias edf.Guitar 
+import
+#7 zona Industrial de Turumo
+Caracas, Venezuela
+TEL: (212) 244-1122
+AUSTRIA
+Roland Elektronische
+Musikinstrumente HmbH.
+Austrian Office
+Eduard-Bodem-Gasse 8,
+A-6020 Innsbruck, AUSTRIA
+TEL: (0512) 26 44 260
+BELGIUM/FRANCE/
+HOLLAND/
+LUXEMBOURG
+Roland Central Europe N.V.
+Houtstraat 3, B-2260, Oevel 
+(Westerlo) BELGIUM
+TEL: (014) 575811
+CROATIA
+ART-CENTAR
+Degenova 3.
+HR - 10000 Zagreb
+TEL: (1) 466 8493
+CZECH REP.
+CZECH REPUBLIC 
+DISTRIBUTOR s.r.o
+Voctárova 247/16
+CZ - 180 00 PRAHA 8,
+CZECH REP.
+TEL: (2) 830 20270
+DENMARK 
+Roland Scandinavia A/S
+Nordhavnsvej 7, Postbox 880,
+DK-2100 Copenhagen
+DENMARK 
+TEL: 3916 6200
+FINLAND
+Roland Scandinavia As, Filial 
+Finland
+Elannontie 5
+FIN-01510 Vantaa, FINLAND
+TEL: (0)9 68 24 020
+GERMANY 
+Roland Elektronische 
+Musikinstrumente  HmbH.
+Oststrasse 96, 22844 
+Norderstedt, GERMANY 
+TEL: (040) 52 60090 
+GREECE/CYPRUS
+STOLLAS S.A.
+Music Sound Light
+155, New National Road
+Patras 26442, GREECE
+TEL: 2610 435400 
+HUNGARY
+Roland East Europe Ltd.
+Warehouse Area ‘DEPO’ Pf.83
+H-2046 Torokbalint,  
+HUNGARY
+TEL: (23) 511011
+IRELAND
+Roland Ireland
+G2 Calmount Park, Calmount 
+Avenue, Dublin 12
+Republic of IRELAND
+TEL: (01) 4294444
+ITALY
+Roland Italy S. p. A. 
+Viale delle Industrie 8, 
+20020  Arese, Milano, ITALY
+TEL: (02) 937-78300
+JORDAN
+MUSIC HOUSE CO. LTD. 
+FREDDY FOR MUSIC 
+P. O. Box 922846
+Amman 11192 JORDAN
+TEL: (06) 5692696
+KUWAIT
+EASA HUSAIN AL-YOUSIFI 
+& SONS CO.
+Al-Yousifi Service Center
+P.O.Box 126 (Safat) 13002 
+KUWAIT
+TEL: 00 965 802929
+LEBANON
+Chahine S.A.L.
+George Zeidan St., Chahine 
+Bldg., Achrafieh, P.O.Box: 16-
+5857
+Beirut, LEBANON
+TEL: (01) 20-1441
+OMAN
+TALENTZ CENTRE L.L.C.
+Malatan House No.1
+Al Noor Street, Ruwi
+SULTANATE OF OMAN
+TEL: 2478 3443
+QATAR
+Al Emadi Co. (Badie Studio & 
+Stores)
+P.O. Box 62, Doha, QATAR
+TEL: 4423-554
+SAUDI ARABIA
+aDawliah Universal 
+Electronics APL
+Behind Pizza Inn
+Prince Turkey Street
+aDawliah Building,
+PO BOX 2154,
+Alkhobar 31952
+SAUDI ARABIA
+TEL: (03) 8643601
+SYRIA
+Technical Light & Sound 
+Center
+PO BOX 13520 BLDG No.17 
+ABDUL WAHAB 
+KANAWATI.ST RAWDA 
+DAMASCUS, SYRIA
+TEL: (011) 223-5384
+TURKEY 
+ZUHAL DIS TICARET A.S.
+Galip Dede Cad. No.37
+Beyoglu - Istanbul / TURKEY
+TEL: (0212) 249 85 10
+U.A.E.
+Zak Electronics & Musical 
+Instruments Co. L.L.C.
+Zabeel Road, Al Sherooq Bldg., 
+No. 14, Ground Floor, Dubai, 
+U.A.E.
+TEL: (04) 3360715
+CANADA 
+Roland Canada Ltd.
+(Head Office)
+5480 Parkwood Way 
+Richmond B. C., V6V 2M4 
+CANADA 
+TEL: (604) 270 6626 
+Roland Canada Ltd.
+(Toronto Office)
+170 Admiral Boulevard
+Mississauga On L5T 2N6 
+CANADA 
+TEL: (905) 362 9707  
+U. S. A. 
+Roland Corporation U.S.
+5100 S. Eastern Avenue
+Los Angeles, CA 90040-2938,
+U. S. A.
+TEL: (323) 890 3700
+ASIA
+AFRICA
+EUROPE
+CENTRAL/LATIN
+AMERICA
+MIDDLE EAST
+NORTH AMERICA
+OCEANIA
+AX-Synth_e2  Page 42  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 43 =====
+r AX-Synth Owner’s Manual
+43
+ENGLISH ENGLISHENGLISH ENGLISH ENGLISH ENGLISH
+For China
+AX-Synth_e2  Page 43  Monday, October 12, 2009  3:41 PM
+
+===== PAGE 44 =====
+R®
+602.00.0354.02 RES 750-09    AX-Synth Owner's Manual - E
+AX-Synth_e2  Page 44  Monday, October 12, 2009  3:41 PM
