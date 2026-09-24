@@ -2,7 +2,7 @@
 
 **Goal:** you describe a sound to an LLM, and your AX-Synth ends up with a patch that sounds like it. Along the way there will be a simple GUI with a handful of meaningful controls instead of the Editor's 800+ parameters.
 
-**Where we are:** the whole data model is decoded and checked against Roland's docs, Roland's own export files, two real patches, the Owner's Manual, and (step 2) the Editor's own live messages, which our code reproduces byte for byte (`research/REPORT.md`). We also have the list of all 256 factory sounds (`research/generated/factory-tones.csv`) and Roland's parameter and effect explanations (Editor manual). What's missing is almost entirely things only you can do: **real hardware, your ears, and your preferences.**
+**Where we are:** the whole data model is decoded and checked against Roland's docs, Roland's own export files, two real patches, the Owner's Manual, and (step 2) the Editor's own live messages, which our code reproduces byte for byte (`research/REPORT.md`). There is now also a **sound-design knowledge base** built from all 63 parts of *Synth Secrets*: which settings make a sound bright, hollow, breathy, brassy, bell-like…, plus 35 instrument recipes mapped onto the AX-Synth (`knowledge/sound-design/`). It hasn't been checked by ear yet; that's what your listening steps are for. We also have the list of all 256 factory sounds (`research/generated/factory-tones.csv`) and Roland's parameter and effect explanations (Editor manual). What's missing is almost entirely things only you can do: **real hardware, your ears, and your preferences.**
 
 **Two facts about the AX-Synth that shape everything below** (Owner's Manual):
 - Its display has **3 characters**. It can't show patch names, wave names or values, so checks go through the **Editor (READ)** or a SysEx dump.
@@ -117,7 +117,7 @@ Take `research/generated/factory-tones.csv` and play through about **20–40 fac
 
 *`Strings/Pad 23 Shimmer Pad — slow bright attack, glassy, wide, lots of movement; great for ambient intros`*
 
-Write the way you'd describe a sound to the LLM later. These lines become the **language ↔ sound** examples the AI learns from. You don't need to save any files here: step 3.1 already captured all the sounds.
+Write the way you'd describe a sound to the LLM later. These lines become the **language ↔ sound** examples the AI learns from. Any words are fine; they'll be matched against the descriptor vocabulary in `knowledge/sound-design/sound-design.md` (bright, warm, hollow, breathy, punchy, lush, metallic, …), and your words will extend it. You don't need to save any files here: step 3.1 already captured all the sounds.
 
 Also note whether the **SuperNATURAL** and **SPECIAL** sounds can be read by the Editor at all.
 
@@ -186,6 +186,6 @@ Answer these in `captures/decisions.md`. Rough answers are fine, and you can cha
 
 1. **Hardware-verified model**: confirm or fix the open questions (steps 2–4).
 2. **Safe sender**: a small tool that loads any patch into the Temporary patch with correct pacing, and can never touch memory slots unless explicitly told to.
-3. **Sound corpus + meaning layer**: the 256 factory sounds, your descriptions, and Roland's parameter/effect explanations (Editor manual) turned into a "what each parameter does to the sound" knowledge base. On top of that, the big-knob **macro** layer. The patch format already has some built-in candidates: patch-wide cutoff, resonance, attack, release and velocity offsets.
+3. **Sound corpus + meaning layer**: the 256 factory sounds, your descriptions, Roland's parameter/effect explanations (Editor manual, done), and the general sound-design knowledge from *Synth Secrets* (done, `knowledge/sound-design/`). On top of that, the big-knob **macro** layer. The patch format already has some built-in candidates: patch-wide cutoff, resonance, attack, release and velocity offsets.
 4. **Simple GUI** with those macros, a factory-sound picker, and "send to synth".
 5. **LLM integration**: you describe the sound, the LLM picks the nearest factory sound and sets the macros (and, when needed, specific parameters), the model validates every value, and the result goes to the Temporary patch. You listen, say "brighter" or "less reverb", and it adjusts.

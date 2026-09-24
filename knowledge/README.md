@@ -21,7 +21,10 @@ The Owner's Manual itself has no parameter explanations; the Editor manual is th
 | `patch.toml` | Patch Common, portamento, bend, offsets, structure/TMT, tone WG / tone delay / pitch env / TVF / TVF env / TVA / TVA env / output / LFO / step LFO / control switches, Matrix Control, MFX routing and control, chorus/reverb unit settings | source |
 | `mfx-01-42.toml`, `mfx-43-78.toml` | All 78 MFX types with every parameter | source |
 | `chorus_reverb.toml` | Chorus unit types (CHORUS, DELAY) and reverb unit types (REVERB, SRV ROOM/HALL/PLATE) | source |
-| `knowledge.json` | Everything above, validated, with data-model facts joined in | **generated** |
+| `sound_design.toml`, `sound_recipes.toml` | **Sound design** (not from Roland): 27 principles, 37 descriptors (words → settings), 35 instrument/sound recipes distilled from Gordon Reid's *Synth Secrets* [3P] and mapped onto AX-Synth parameters [I]. See `sound-design/README.md` | source |
+| `sound-design/digests/` | One digest per Synth Secrets part (63), with an AX-Synth translation | source |
+| `sound-design/sound-design.md` | Rendering of the sound-design entries | **generated** |
+| `knowledge.json` | Everything above, validated, with data-model facts joined in (`sound_design` section for the Synth Secrets material) | **generated** |
 | `knowledge.md` | Human-readable rendering of everything | **generated** |
 
 Regenerate and validate: `py -3 research/tools/build_knowledge.py` (exit code 1 on any broken link). Test: `tests/test_schema.py::KnowledgeBase` (also checks that `knowledge.json` is current).
@@ -90,7 +93,7 @@ Each `model` entry (joined from the data model; never hand-typed) contains:
 
 `values` in the TOML are what the manual prints (display units), while `raw_range` is what's stored. Example: MFX Rate prints "0.05–10.00 Hz" but is stored as raw 32769–32968.
 
-Lookup from code: `axsynth.knowledge.describe("fm.pat.tone[2].tvfCutoffFrequency")`, `.effect("mfx", 39)`, `.concept(id)`, `.param(id)`.
+Lookup from code: `axsynth.knowledge.describe("fm.pat.tone[2].tvfCutoffFrequency")`, `.effect("mfx", 39)`, `.concept(id)`, `.param(id)`; sound design: `.descriptor("warm")`, `.recipe("brass.synth")`, `.principle(id)`, `.sound_design()`.
 
 ## Coverage (as validated)
 

@@ -344,6 +344,26 @@ class KnowledgeBase(unittest.TestCase):
         self.assertEqual((e[0]["kind"], e[0]["number"]), ("mfx", 39))
         self.assertEqual(knowledge.effect("reverb", 4)["name"], "SRV PLATE")
 
+    def test_sound_design_section(self):
+        # Synth Secrets knowledge [3P] mapped to the AX-Synth [I]; every ref, wave,
+        # factory Tone and part number is validated by build() (no errors above)
+        sd = self.kb["sound_design"]
+        self.assertEqual([p["part"] for p in sd["synth_secrets"]], list(range(1, 64)))
+        for p in sd["synth_secrets"]:
+            self.assertTrue((ROOT / p["digest"]).exists())
+            self.assertTrue(p["url"].startswith("https://www.soundonsound.com/techniques/"))
+        self.assertGreaterEqual(len(sd["principles"]), 25)
+        self.assertGreaterEqual(len(sd["descriptors"]), 35)
+        self.assertGreaterEqual(len(sd["recipes"]), 30)
+        cited = {n for kind in ("principles", "descriptors", "recipes") for e in sd[kind] for n in e["ss"]}
+        self.assertLessEqual(cited, set(range(1, 64)))
+
+    def test_sound_design_lookup(self):
+        from axsynth import knowledge
+        self.assertEqual(knowledge.descriptor("warm")["id"], "dark")
+        self.assertEqual(knowledge.recipe("perc.cowbell")["waves"][0], {"number": 214, "name": "Syn Triangle"})
+        self.assertIn(54, knowledge.principle("dynamics.flute_pressure_is_brightness")["ss"])
+
 
 if __name__ == "__main__":
     unittest.main()

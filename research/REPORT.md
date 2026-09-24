@@ -52,6 +52,11 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
     - **Effect type change** = the whole 145-byte MFX block, with every member of the new type at its Script.xml default (rebuilt from the schema alone in the test), then the type byte again.
     - **READ, SYNC, WRITE and the Librarian's Read Selected start with a Universal Identity Request** `F0 7E 10 06 01 F7` (device 10). With no reply within ~3.0 s, the Editor retries once, then shows "Unable to read/write data." and sends nothing more.
     - **WRITE first reads User Patch 1-1's name with a plain RQ1** (`30 00 00 00`, size 12). Patch names are therefore read on the documented User area, not via `cm` (replaces an earlier inference). No `0F` write command was reached.
+16. **Sound-design knowledge [3P → I, 2026-09-24]** (`knowledge/sound-design/`, `knowledge/sound_*.toml`). All 63 parts of Gordon Reid's *Synth Secrets* (SOS 1999–2004) were read and digested one by one, then condensed into 27 principles, 37 descriptors (words → acoustic cause → AX-Synth moves) and 35 recipes (brass, strings, winds, organ, piano, guitars, bass, drums, percussion, bells, leads, pads, choir). Every reference is validated against the KB, the wave table, the MFX list and the factory Tone list. The mappings onto the AX-Synth are inference, not hardware-verified. Relevant findings for this instrument:
+    - the PWM sound can be built from two saw tones, one with a tiny pitch LFO (SS47)
+    - the Matrix sources AFTERTOUCH (the knob), CC01 and the D-Beam CC routed to LEVEL/CUTOFF/LFO depth reproduce the "hand-controlled" articulation Reid found most realistic (SS50/51)
+    - Structure ring-mod on both tone pairs matches the "pairs of modulated squares" cymbal recipe (SS39)
+    - the AX-Synth lacks oscillator sync, audio-rate LFOs and an audio input; the substitutes are documented
 
 ## What we strongly suspect (evidence-backed, unverified)
 
@@ -126,6 +131,7 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `research/third-party-patches-analysis.md` | Forum-shared patches in `patches/`, checked against the author's description |
 | `research/owners-manual-analysis.md` | Owner's Manual: Tone list, UI limits, maintenance functions, controllers, design implications, terminology |
 | `research/generated/factory-tones.{json,csv}` | 264 factory Tones (`tools/extract_tone_list.py`); `src/axsynth/factory.py` |
+| `knowledge/sound-design/`, `knowledge/sound_design.toml`, `knowledge/sound_recipes.toml` | Sound-design knowledge from *Synth Secrets* (63 digests, 27 principles, 37 descriptors, 35 recipes); `tools/fetch_synth_secrets.py` (articles → git-ignored `reference/synth-secrets/`) |
 | `knowledge/` | Knowledge base: meaning of every parameter/effect (TOML sources + generated `knowledge.json`/`knowledge.md`); `tools/build_knowledge.py`; `src/axsynth/knowledge.py` |
 | `research/generated/guitar{,01}-temporary.syx` | Those patches as Temporary-Patch DT1s (not sent) |
 | `research/script-schema.json` | Complete extraction (every element + source line), resolved absolute addresses, unions, tables, UI bindings |
@@ -139,6 +145,6 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
 | `src/axsynth/sysex.py` | Checksum, DT1/RQ1/Identity Request builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
 | `captures/live/` | User's MIDI-OX logs of the Editor/Librarian live output (step 2) + `notes.md` |
-| `tests/test_schema.py` | 46 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `tests/test_schema.py` | 48 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

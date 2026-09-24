@@ -26,8 +26,8 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**46 tests, all passing**). No pytest.
-- Not a git repo yet. `.gitignore` exists (see §9).
+- Tests: `py -3 -m unittest discover -s tests` (**48 tests, all passing**). No pytest.
+- Git repo, branch `main`, remote `origin` = github.com/Ottoguy/ax-synth-tools. Commit/push only when the user asks. `.gitignore`: see §9.
 
 ## 4. Repository map
 
@@ -60,9 +60,12 @@ ax-synth-ai/
 │   ├── guitar.a8e            "SearingGtr 1" tuned: "muted chug" layer, beam=CC71
 │   └── guitar01.a8e          "SearingGtr 1" tuned: CC70 "feedback" works, beam=CC70, +24 sine layer
 ├── captures/live/           user's MIDI-OX logs of Editor/Librarian live output (step 2, no synth) + notes.md; test fixtures
+├── reference/synth-secrets/  [git-ignored, copyrighted] 63 Synth Secrets articles as Markdown + index.{md,json} (fetch_synth_secrets.py)
 ├── knowledge/                LLM/human KNOWLEDGE BASE: meaning of every parameter & effect type (see knowledge/README.md)
 │   ├── concepts.toml, system.toml, patch.toml, mfx-01-42.toml, mfx-43-78.toml, chorus_reverb.toml   SOURCE (hand-extracted from Editor manual + OM + MI, page refs, schema links)
-│   ├── knowledge.json        GENERATED: validated, joined with data-model facts (addresses, raw ranges, defaults, enums)
+│   ├── sound_design.toml, sound_recipes.toml   SOURCE: SOUND DESIGN from Synth Secrets [3P] mapped to AX-Synth [I]: 27 principles, 37 descriptors, 35 recipes
+│   ├── sound-design/         README (format, how an LLM uses it), digests/NN-*.md (63 per-article digests), sound-design.md (GENERATED)
+│   ├── knowledge.json        GENERATED: validated, joined with data-model facts (addresses, raw ranges, defaults, enums); `sound_design` section
 │   ├── knowledge.md          GENERATED: human-readable rendering
 │   └── README.md             format spec, conventions, coverage
 ├── src/axsynth/              typed library (stdlib only), see §8
@@ -71,7 +74,7 @@ ax-synth-ai/
 │   ├── sysex.py              DT1/RQ1 build/parse, checksum, whole-patch encoder, .syx/SMF readers (no MIDI I/O)
 │   ├── factory.py            factory Tone list access
 │   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
-├── tests/test_schema.py      40 evidence tests (§10)
+├── tests/test_schema.py      48 evidence tests (§10)
 └── research/
     ├── README.md             index: question -> file
     ├── REPORT.md             MAIN findings report: known / suspected / unknown / next experiments / files
@@ -105,7 +108,8 @@ ax-synth-ai/
 | 2 | `py -3 research/tools/crosscheck_midi_impl.py` | script-schema.json, `generated/midi-implementation.pdf.txt` | `generated/crosscheck-midi-implementation.md`, `generated/crosscheck.json` |
 | 3 | `py -3 research/tools/build_parameter_db.py` | via `axsynth.schema` (schema + crosscheck.json) | `generated/parameters.{json,csv}` |
 | 4 | `py -3 research/tools/extract_tone_list.py` | `generated/owners-manual.pdf.txt` | `generated/factory-tones.{json,csv}` |
-| 5 | `py -3 research/tools/build_knowledge.py` | `knowledge/*.toml`, data model (via `axsynth.schema`) | `knowledge/knowledge.{json,md}`; exit 1 on broken links |
+| 5 | `py -3 research/tools/build_knowledge.py` | `knowledge/*.toml`, `knowledge/sound-design/digests/`, data model (via `axsynth.schema`), factory Tones | `knowledge/knowledge.{json,md}`, `knowledge/sound-design/sound-design.md`; exit 1 on broken links |
+| – | `py -3 research/tools/fetch_synth_secrets.py [outdir]` | soundonsound.com (network, ~1.5 s/request) | `reference/synth-secrets/NN-*.md`, `index.{md,json}` (git-ignored) |
 | – | `.\.venv\Scripts\python.exe research/tools/pdf2txt.py x <outdir> <pdf>...` | PDFs | `<outdir>/<pdf stem, spaces→_>.txt` (argv[1] is an unused placeholder); rename to the `*.pdf.txt` convention by hand |
 | – | `py -3 research/tools/exe_strings.py <file> [minlen] > out.txt` | binary | strings list |
 | – | `py -3 research/tools/inventory.py` | original-roland-files/ | `generated/inventory.json` |
@@ -124,6 +128,7 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 | Erratum2 [D] | VOLUME knob is analog, sends no CC07; D-Beam sends CC01–31, 33–95 | |
 | dumps/*.mid [F] | exact bytes/order/pacing Roland software sends | |
 | patches/*.a8e [3P] | real non-default data + author's description = semantic ground truth | |
+| Synth Secrets [3P] (Gordon Reid, SOS 1999–2004) | general acoustics and synthesis: what settings produce what sounds, instrument recipes | Analogue/modular-centric; AX-Synth mappings are [I]. Copies git-ignored; digests in `knowledge/sound-design/digests/` |
 
 ## 7. Tools (`research/tools/`, all read-only on inputs, none touch MIDI ports)
 
@@ -133,7 +138,8 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 | `crosscheck_midi_impl.py` | no args | parse doc rows, compare offset/encoding/range/size |
 | `build_parameter_db.py` | no args | export `Schema.parameters(None)` for fm+cm |
 | `extract_tone_list.py` | no args | Owner's Manual Tone list → factory-tones |
-| `build_knowledge.py` | no args | validate `knowledge/*.toml` against the data model; write `knowledge.json` + `knowledge.md`; report coverage |
+| `build_knowledge.py` | no args | validate `knowledge/*.toml` against the data model (incl. sound-design refs, waves 1–313, factory Tone names, Synth Secrets parts); write `knowledge.json` + `knowledge.md` + `sound-design/sound-design.md`; report coverage |
+| `fetch_synth_secrets.py` | `[outdir] [--force]` | download the 63 Synth Secrets articles as clean Markdown (only network tool; output git-ignored) |
 | `a8_files.py` | `<file.a8e/.a8l> [--all] [--json]` | parse Koa data / Librarian files, decode all values, flag inactive union members |
 | `describe_a8.py` | `<A> [B] [--all]` | non-default active values with labels; or A-vs-B diff; flags out-of-range |
 | `midiox_log.py` | `<log.txt>... [--syx out.syx]` | MIDI-OX Monitor text log → per-message timestamp/gap/IN PORT, length+checksum check, every covered parameter decoded (User area mapped to patch paths, effect members for the type seen in the log) |
@@ -157,17 +163,18 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 
 `knowledge.py` (reads `knowledge/knowledge.json`)
 - `describe(path) -> list[{kind, id|number, type, entry}]` (any data-model path, tone/array index ignored), `effect(kind, number)`, `concept(id)`, `param(id)`, `load()`
+- Sound design: `descriptor(word)` (id or any term, e.g. 'warm' → `dark`), `recipe(id)`, `principle(id)`, `sound_design()` (principles, descriptors, recipes, synth_secrets part index, meta)
 
 `factory.py`
 - `tones() -> tuple[FactoryTone]` (group, position, name, cc00_msb, cc32_lsb, pc [1-based], editable, user_patch_index, librarian_slot, user_patch_address), `by_name(name)` (ignores spaces/dots/case), `by_program(msb, lsb, pc0)`, `by_user_index(n)`, `families()`
 
 ## 9. `.gitignore` policy (user decisions)
 
-Ignored: `original-roland-files/**/*.exe`, `original-roland-files/**/*.bmp`, `docs/`, `.venv/` and other Python caches, IDE/OS files, `.claude/settings.local.json`, `*.log`, `tmp/`, `scratch/`. Everything else is tracked, including `src/`, `research/` (all of `generated/`), `tests/`, `dumps/`, `patches/`, Script.xml, InitialData files and the manuals under `original-roland-files/Manual/`. Consequence: on a fresh clone, rerunning the extractor without A8EE.exe loses the MFX display names (falls back to prefixes); the committed JSON keeps them.
+Ignored: `original-roland-files/**/*.exe`, `original-roland-files/**/*.bmp`, `docs/`, `reference/synth-secrets/` (copyrighted articles; only our digests/TOML are tracked), `.venv/` and other Python caches, IDE/OS files, `.claude/settings.local.json`, `*.log`, `tmp/`, `scratch/`. Everything else is tracked, including `src/`, `research/` (all of `generated/`), `tests/`, `dumps/`, `patches/`, Script.xml, InitialData files and the manuals under `original-roland-files/Manual/`. Consequence: on a fresh clone, rerunning the extractor without A8EE.exe loses the MFX display names (falls back to prefixes); the committed JSON keeps them.
 
 ## 10. Test coverage (`tests/test_schema.py`)
 
-`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `LiveEditorCaptures` (captured value edits = our DT1 bytes, `00 81` → `01 01`, MFX type change = schema-default block, Identity Request ×2 @3 s, WRITE name RQ1) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API).
+`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `LiveEditorCaptures` (captured value edits = our DT1 bytes, `00 81` → `01 01`, MFX type change = schema-default block, Identity Request ×2 @3 s, WRITE name RQ1) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API, sound-design section: 63 digests/parts, counts, lookups).
 
 ## 11. Core technical facts (quick reference; details in `research/`)
 
@@ -245,6 +252,7 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - All 78 MFX, 2 chorus and 4 reverb types are documented, with 697 effect-parameter links.
 - Every non-reserved `fm` value has an entry.
 - 172 effect members (`…Sync`/`…Note` tempo-sync variants of rate/delay parameters) exist in the data model but not in the AX-Synth manual; leave them at their defaults.
+- **Sound design** (`knowledge/sound_*.toml`, `knowledge/sound-design/`): general acoustics/synthesis knowledge from Gordon Reid's *Synth Secrets* (SOS 1999–2004, all 63 parts) [3P], every mapping onto AX-Synth parameters/waves/effects/factory Tones [I], unverified on hardware. Key AX-Synth findings: PWM sound = two saw tones with a tiny pitch LFO on one (SS47); no oscillator sync (use wave 219 or FXM + Matrix TVF ENV→FXM DEPTH); Matrix sources AFTERTOUCH/CC01/D-Beam CC → LEVEL/CUTOFF/LFO depth give the most expressive keytar patches (SS50/51); Structure ring-mod on both tone pairs = the 'pairs of modulated squares' metal recipe (SS39).
 
 **Known anomalies/discrepancies.**
 - `stepPitchShifter-bal/level` have address `00 81`/`00 85` (bytes > 0x7F); base-128 decoding gives the doc's `01 01`/`01 05`. **Settled:** the Editor sends `1F 00 03 01`/`05` (live capture), so our addresses are right.
@@ -272,5 +280,5 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 
 - Wants thorough, verified, evidence-labelled investigation; don't assume, and say explicitly when something is inference.
 - Wants tools over manual retyping; provenance on every fact.
-- Prefers being shown proposals before commits (e.g. `.gitignore`); hasn't asked for a git repo or commits yet.
+- Prefers being shown proposals before commits (e.g. `.gitignore`); commits and pushes to `main` when asked.
 - Documents for the user: `NEXT-STEPS.md` (their checklist) and `research/REPORT.md` (findings). Keep both consistent after every new discovery, together with the relevant `research/*-analysis.md`.

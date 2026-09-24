@@ -7,6 +7,7 @@ original-roland-files/**/*.bmp
 # --- Reference PDFs (local only) ----------------------------------------------
 # Text extracts are tracked in research/generated/*.pdf.txt
 docs/
+reference/synth-secrets/
 
 # --- Python ------------------------------------------------------------------
 .venv/

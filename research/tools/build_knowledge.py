@@ -165,6 +165,9 @@ def build():
         if np_ not in referenced:
             uncovered.append(np_)
 
+    # ---- sound design (Synth Secrets principles / descriptors / recipes) --------
+    sound_design = build_sound_design(data, ids, S, errors)
+
     # ---- assemble JSON -------------------------------------------------------
     def clean(it):
         return {k: v for k, v in it.items() if not k.startswith("_")} | {"file": it["_file"]}
@@ -183,6 +186,7 @@ def build():
         "groups": [clean(g) for g in data["group"]],
         "params": [clean(p) | {"model": [model_facts(s) for s in p.get("schema", [])]} for p in data["param"]],
         "mfx": effects_out["mfx"], "chorus": effects_out["chorus"], "reverb": effects_out["reverb"],
+        "sound_design": sound_design,
         "coverage": {
             "data_model_values_without_kb_entry": uncovered,
             "schema_only_effect_members": {k: {e["number"]: e["schema_only_members"] for e in v if e["schema_only_members"]}
@@ -192,10 +196,171 @@ def build():
     return kb, errors + [f"WARNING {w}" for w in warnings]
 
 
+SD_DIR = KB / "sound-design"
+SS_URL = "https://www.soundonsound.com/series/synth-secrets-sound-sound"
+REF = re.compile(r"(mfx|chorus|reverb|wave):(\d+)$")
+
+
+def synth_secrets_parts():
+    """part number -> {part, title, published, url, digest} from the digest files."""
+    parts = {}
+    for f in sorted((SD_DIR / "digests").glob("*.md")):
+        text = f.read_text(encoding="utf-8")
+        m = re.match(r"# SS(\d+) (.+) \(([A-Z][a-z]{2} \d{4})\): digest", text)
+        url = re.search(r"https://www\.soundonsound\.com/techniques/\S+?(?=\.?\s|$)", text)
+        if m:
+            parts[int(m.group(1))] = {"part": int(m.group(1)), "title": m.group(2), "published": m.group(3),
+                                      "url": url.group(0) if url else None,
+                                      "digest": f"knowledge/sound-design/digests/{f.name}"}
+    return parts
+
+
+def build_sound_design(data, ids, S, errors):
+    """Validate [[principle]] / [[descriptor]] / [[recipe]] (knowledge/sound_*.toml) and join
+    wave names, effect names and Synth Secrets part metadata."""
+    from axsynth import factory
+    waves = S.data["stringTables"]["internalWaveNameTableA"]["items"]
+    n_waves = len([w for w in waves if w.strip()])
+    parts = synth_secrets_parts()
+    families = set(factory.families()) | {"SuperNATURAL", "SPECIAL", "other"}
+    eff_count = {"mfx": 78, "chorus": 2, "reverb": 4}
+    mfx_names = S.data["effect_unions"]["mfx"]["display_names"]["names"]
+
+    def wave(n, where):
+        if not isinstance(n, int) or not 1 <= n <= n_waves:
+            errors.append(f"{where}: wave {n!r} not in 1..{n_waves}")
+            return None
+        return {"number": n, "name": waves[n - 1].strip()}
+
+    def ref(r, where):
+        m = REF.match(r)
+        if m:
+            kind, n = m.group(1), int(m.group(2))
+            if kind == "wave":
+                w = wave(n, where)
+                return {"ref": r, "wave": w} if w else None
+            if not 1 <= n <= eff_count[kind]:
+                errors.append(f"{where}: {r} out of range")
+                return None
+            return {"ref": r, "effect": mfx_names[n] if kind == "mfx" else f"{kind} type {n}"}
+        if r not in ids:
+            errors.append(f"{where}: ref {r!r} is not a KB id")
+            return None
+        return {"ref": r, "kind": ids[r]}
+
+    def check_links(it, key, where):
+        out = []
+        for link in it.get(key, []):
+            if "ref" not in link:
+                errors.append(f"{where}: {key} entry without ref")
+                continue
+            resolved = ref(link["ref"], where)
+            out.append({k: v for k, v in link.items()} | ({"resolved": resolved} if resolved else {}))
+        return out
+
+    def check_ss(it, where):
+        for p in it.get("ss", []):
+            if p not in parts:
+                errors.append(f"{where}: Synth Secrets part {p} has no digest")
+
+    seen = set()
+    out = {"principles": [], "descriptors": [], "recipes": []}
+    descriptor_ids = {d["id"] for d in data["descriptor"]}
+    for kind, key in (("principle", "principles"), ("descriptor", "descriptors"), ("recipe", "recipes")):
+        for it in data[kind]:
+            where = f"{kind} {it.get('id')}"
+            if it["id"] in seen:
+                errors.append(f"{where}: duplicate id")
+            seen.add(it["id"])
+            check_ss(it, where)
+            entry = {k: v for k, v in it.items() if not k.startswith("_") and k not in ("ax", "steps", "performance", "effects")}
+            entry["file"] = it["_file"]
+            for linkkey in ("ax", "steps", "performance", "effects"):
+                if linkkey in it:
+                    entry[linkkey] = check_links(it, linkkey, where)
+            if kind == "descriptor" and it.get("opposite") and it["opposite"] not in descriptor_ids:
+                errors.append(f"{where}: opposite {it['opposite']!r} is not a descriptor")
+            if kind == "recipe":
+                if it.get("family") not in families:
+                    errors.append(f"{where}: family {it.get('family')!r} unknown")
+                for name in it.get("factory", []):
+                    if factory.by_name(name) is None:
+                        errors.append(f"{where}: factory Tone {name!r} not in the Owner's Manual list")
+                entry["waves"] = [w for w in (wave(n, where) for n in it.get("waves", [])) if w]
+            out[key].append(entry)
+    out["synth_secrets"] = [parts[k] for k in sorted(parts)]
+    out["meta"] = {
+        "source": f"Gordon Reid, 'Synth Secrets', Sound On Sound 1999-2004, 63 parts ({SS_URL})",
+        "evidence": "principle/descriptor meanings and recipe summaries = [3P] Synth Secrets (parts in 'ss'); "
+                    "all AX-Synth mappings (ax/steps/performance/effects, values, waves, factory Tones) = [I] "
+                    "inference, not hardware-verified",
+        "digests": "knowledge/sound-design/digests/NN-<slug>.md (per-part notes with AX-Synth translation)",
+        "wave_numbering": "wave N = internalWaveNameTableA[N-1] (strongly supported, unconfirmed on hardware)",
+    }
+    return out
+
+
+def render_sound_design_md(sd):
+    L = ["# AX-Synth sound design: what settings produce what sounds", "",
+         "Generated from `knowledge/sound_design.toml` and `knowledge/sound_recipes.toml` by "
+         "`research/tools/build_knowledge.py`. **Do not edit by hand.** Machine-readable: `knowledge/knowledge.json` → `sound_design`.", "",
+         f"Source: {sd['meta']['source']}. Evidence: {sd['meta']['evidence']}.", "",
+         "Per-article digests: [`digests/`](digests/). Parameter meanings: [`../knowledge.md`](../knowledge.md).", "",
+         "## Contents", "", "1. [Principles](#principles)", "2. [Descriptors (words → settings)](#descriptors)",
+         "3. [Recipes](#recipes)", "4. [Synth Secrets parts](#synth-secrets-parts)", ""]
+
+    def links(items):
+        rows = []
+        for x in items:
+            extra = ""
+            r = x.get("resolved") or {}
+            if r.get("wave"):
+                extra = f" ({r['wave']['name']})"
+            elif r.get("effect"):
+                extra = f" ({r['effect']})"
+            text = x.get("do") or x.get("set", "")
+            why = f" (*{x['why']}*)" if x.get("why") else ""
+            rows.append(f"- `{x['ref']}`{extra}: {text}{why}")
+        return rows
+
+    L += ["## Principles", ""]
+    for p in sd["principles"]:
+        L += [f"### {p['title']}", f"*id `{p['id']}` · Synth Secrets {', '.join(f'SS{n:02d}' for n in p['ss'])}*", "",
+              p["rule"].strip(), ""] + links(p.get("ax", [])) + [""]
+    L += ["## Descriptors", "", "| Descriptor | Words | Acoustic cause | AX-Synth moves [I] |", "|---|---|---|---|"]
+    for d in sd["descriptors"]:
+        moves = "; ".join(f"`{x['ref']}` {x['do']}" for x in d.get("ax", []))
+        opp = f" (opposite: {d['opposite']})" if d.get("opposite") else ""
+        L.append(f"| **{d['id']}**{opp} | {', '.join(d['terms'])} | {d['meaning']} | {moves.replace('|', '/')} |")
+    L += ["", "## Recipes", ""]
+    for r in sd["recipes"]:
+        L += [f"### {r['name']}", f"*id `{r['id']}` · family {r['family']} · Synth Secrets {', '.join(f'SS{n:02d}' for n in r['ss'])}*", "",
+              r["summary"].strip(), ""]
+        if r.get("factory"):
+            L.append("Start from factory Tones: " + ", ".join(r["factory"]))
+        if r.get("waves"):
+            L.append("Waves: " + ", ".join(f"{w['number']} {w['name']}" for w in r["waves"]))
+        L.append("")
+        for key, title in (("steps", "Steps"), ("performance", "Performance"), ("effects", "Effects")):
+            if r.get(key):
+                L += [f"**{title}**", ""] + links(r[key]) + [""]
+        if r.get("pitfalls"):
+            L += ["**Pitfalls**", ""] + [f"- {x}" for x in r["pitfalls"]] + [""]
+    L += ["## Synth Secrets parts", "", "| Part | Published | Title | Digest |", "|---|---|---|---|"]
+    for p in sd["synth_secrets"]:
+        L.append(f"| {p['part']} | {p['published']} | [{p['title']}]({p['url']}) | [{p['digest'].rsplit('/', 1)[1]}](digests/{p['digest'].rsplit('/', 1)[1]}) |")
+    L.append("")
+    return "\n".join(L)
+
+
 def main():
     kb, errors = build()
     (KB / "knowledge.json").write_text(json.dumps(kb, indent=1, ensure_ascii=False), encoding="utf-8")
     (KB / "knowledge.md").write_text(render_md(kb), encoding="utf-8")
+    (SD_DIR / "sound-design.md").write_text(render_sound_design_md(kb["sound_design"]), encoding="utf-8")
+    sd = kb["sound_design"]
+    print(f"sound design: principles={len(sd['principles'])} descriptors={len(sd['descriptors'])} "
+          f"recipes={len(sd['recipes'])} synth_secrets_digests={len(sd['synth_secrets'])}")
     effects_out = {k: kb[k] for k in ("mfx", "chorus", "reverb")}
     uncovered = kb["coverage"]["data_model_values_without_kb_entry"]
 

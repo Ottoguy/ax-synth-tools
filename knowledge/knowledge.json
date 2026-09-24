@@ -25,6 +25,13 @@
     "group": 24,
     "param": 136
    },
+   "sound_design.toml": {
+    "principle": 27,
+    "descriptor": 37
+   },
+   "sound_recipes.toml": {
+    "recipe": 35
+   },
    "system.toml": {
     "group": 3,
     "param": 23
@@ -70182,6 +70189,7518 @@
    "schema_only_members": []
   }
  ],
+ "sound_design": {
+  "principles": [
+   {
+    "id": "source.waveform_defines_family",
+    "title": "The source waveform decides the instrument family",
+    "rule": "Choose the wave first; filters and envelopes can't create harmonics that aren't in the source.\n- Sawtooth (all harmonics, 1/n): bright, full, buzzy; brass, bowed strings, most leads and pads.\n- Square (odd harmonics): hollow, woody; clarinet, closed pipes (pan pipes).\n- Narrow pulse (5-15 %): thin, nasal, reedy; oboe, bassoon.\n- 25-45 % pulse: between hollow and full; recorder (40 %), 'jazz guitar' (25 %).\n- Triangle/sine: soft, pure, few harmonics; flutes, whistles, sub bass, drum bodies.\n- Noise: drums, breath, wind, cymbals.\n- Inharmonic sources (ring mod, FM, metallic PCM): bells, metal, clangs.",
+    "ss": [
+     1,
+     2,
+     10,
+     24,
+     47,
+     53,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.wave_number",
+      "do": "pick the wave family first: saws 174-193, squares 194-202, pulses 203-212 (JP8 10/15/25/30/40/45 %), triangles 213-216, sine 220, noise 232/233, metallic 239-241",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "architecture.tone_signal_path",
+      "do": "the WG (wave) is the source; TVF and TVA only remove or shape what the wave contains",
+      "resolved": {
+       "ref": "architecture.tone_signal_path",
+       "kind": "concept"
+      }
+     }
+    ]
+   },
+   {
+    "id": "time.static_sounds_organlike",
+    "title": "Timbres that don't change over time sound static and organ-like",
+    "rule": "No natural sound is stationary. However rich the wave, a sound whose spectrum and loudness never change sounds like an organ (or a cheap test tone). Give sustained sounds movement: filter envelopes, slow LFOs, detuned layers, chorus, random wander, or player control. Effects add interest but don't change the essential nature of the sound.",
+    "ss": [
+     3,
+     10,
+     14,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.fenv_depth",
+      "do": "any non-zero filter envelope gives the timbre a life-cycle",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "do": "slow LFO on cutoff (rate low) for gentle movement",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.analog_feel",
+      "do": "1/f wander (20-40) makes sustained notes feel alive",
+      "resolved": {
+       "ref": "common.analog_feel",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "do": "a second, slightly detuned tone adds beating movement",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "dynamics.louder_is_brighter",
+    "title": "In natural instruments, louder means brighter",
+    "rule": "Blown, bowed, struck and plucked instruments get brighter (more and stronger upper harmonics) as they get louder, and duller as they get quieter. Couple brightness to whatever sets loudness: velocity, the amplitude envelope, pressure/aftertouch. Keeping brightness constant while loudness changes sounds synthetic. (Deliberately inverting it is an FM-style special effect.)",
+    "ss": [
+     12,
+     24,
+     25,
+     29,
+     35,
+     42,
+     51
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "do": "positive: harder = brighter",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_vel_sens",
+      "do": "positive: harder = bigger filter sweep",
+      "resolved": {
+       "ref": "tone.fenv_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.source",
+      "do": "AFTERTOUCH or CC01 to both LEVEL and CUTOFF (destinations) for sustained dynamics",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_levels",
+      "do": "shape the TVF envelope like the TVA envelope so brightness follows loudness",
+      "resolved": {
+       "ref": "tone.fenv_levels",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "dynamics.flute_pressure_is_brightness",
+    "title": "Flutes (and other edge-blown pipes) get brighter, not louder",
+    "rule": "Blowing harder into a flute mainly adds upper harmonics; the loudness barely changes. Flute 'vibrato' is a 5-6 Hz brightness (blowing-pressure) modulation of about +-10 %, not a pitch vibrato and not a tremolo.",
+    "ss": [
+     53,
+     54
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "do": "flute vibrato goes on the filter",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "do": "keep 0 for flute/recorder",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "do": "pressure (AFTERTOUCH/CC01) to CUTOFF, not LEVEL",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "attack.high_harmonics_speak_later",
+    "title": "In brass, the higher harmonics arrive later than the lower ones",
+    "rule": "When a brass note starts, the low harmonics reach full level quickly and the upper harmonics build up over roughly half a second. The ear uses this difference in onset as a main clue to the instrument's identity. Synthesis: make the filter attack clearly slower than the amplitude attack (e.g. amp attack about 100 ms, filter attack about 600 ms), with a brief initial overblown 'parp'.",
+    "ss": [
+     25,
+     26,
+     27
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.fenv_times",
+      "do": "TVF T1 several times longer than TVA T1",
+      "resolved": {
+       "ref": "tone.fenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "do": "TVA T1 short-moderate (not 0) for brass",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "decay.highs_die_first",
+    "title": "Struck and plucked sounds get darker as they decay",
+    "rule": "After a pluck or strike, the high partials decay fastest; the tail is dominated by the fundamental (bells and cymbals are exceptions with their own patterns). Make the filter decay faster than the amplitude decay, and make both faster for higher notes.",
+    "ss": [
+     14,
+     20,
+     28,
+     30,
+     32,
+     42
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.fenv_times",
+      "do": "TVF T2/T3 shorter than the TVA's",
+      "resolved": {
+       "ref": "tone.fenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_time_kf",
+      "do": "positive: shorter at higher notes",
+      "resolved": {
+       "ref": "tone.fenv_time_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_time_kf",
+      "do": "positive: high notes ring shorter (piano, guitar)",
+      "resolved": {
+       "ref": "tone.aenv_time_kf",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "attack.first_milliseconds_identify",
+    "title": "The first milliseconds identify the instrument",
+    "rule": "Listeners identify an instrument mostly from its attack transient: a flute's chiff, a hammer's clunk, a brass 'parp', a beater click, an organ's key-click. A convincing attack plus a simple sustain (Roland's LA synthesis idea) goes a long way. When a PCM wave already contains the real attack, don't reshape it with the envelope; layer extra transients instead.",
+    "ss": [
+     7,
+     19,
+     25,
+     42,
+     52,
+     55
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave.oneshot_loop",
+      "do": "keep acoustic PCM attacks intact; shape only the decay",
+      "resolved": {
+       "ref": "wave.oneshot_loop",
+       "kind": "concept"
+      }
+     },
+     {
+      "ref": "tmt.tone_switch",
+      "do": "add a short attack layer (e.g. wave 229 Digi Breath, 248 Key On Click, 247 JD EP Atk, 249-253 Org Click) on another tone",
+      "resolved": {
+       "ref": "tmt.tone_switch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.delay_time",
+      "do": "stagger layers: a tonal body entering just after a noise chiff",
+      "resolved": {
+       "ref": "tone.delay_time",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "keyboard.tracking_less_than_one",
+    "title": "Brightness tracks pitch, but usually by less than 1:1",
+    "rule": "Higher notes are usually brighter, but real instruments have a limited bandwidth, so high notes carry relatively fewer harmonics: brass and flute filters should track at somewhat less than 100 %, and strings/pads at around 30-65 %. Where a fixed spectral ceiling exists (the flute's ~2 kHz), track only a few percent. High notes also decay faster.",
+    "ss": [
+     24,
+     26,
+     29,
+     42,
+     44,
+     47,
+     54
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.cutoff_kf",
+      "do": "+50...+80 brass; +30...+65 strings/pads; +5...+15 flute; +100 when the cutoff must follow the pitch exactly (self-oscillating/tuned noise)",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "lushness.detune_and_unrelated_modulation",
+    "title": "Lushness comes from several slightly different pitches moving at unrelated rates",
+    "rule": "Thickness comes from multiple near-identical sources beating against each other. Keep the detune small (large detune sounds off-colour/honky-tonk), and modulate the sources differently: one layer vibrato'd, rates that differ from the beat rate, two LFOs at unrelated rates (e.g. ~0.5-1 Hz and ~6 Hz), a touch of randomness. PWM is itself two pitches moving against each other, and it can be imitated with two saws, one of them slightly pitch-modulated. Then a good chorus/ensemble adds the final sheen.",
+    "ss": [
+     10,
+     21,
+     46,
+     47,
+     62
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.fine_tune",
+      "do": "+-3...+-10 cents between otherwise identical tones",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "do": "tiny depth on ONE of two saw tones = the PWM sound",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_rate",
+      "do": "use different rates per tone",
+      "resolved": {
+       "ref": "tone.lfo_rate",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_rate_detune",
+      "do": "per-note rate variation",
+      "resolved": {
+       "ref": "tone.lfo_rate_detune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "chorus.type",
+      "do": "CHORUS for sheen",
+      "resolved": {
+       "ref": "chorus.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:26",
+      "do": "HEXA-CHORUS for multi-phase ensemble",
+      "resolved": {
+       "ref": "mfx:26",
+       "effect": "HEXA-CHORUS"
+      }
+     },
+     {
+      "ref": "mfx:28",
+      "do": "SPACE-D (Dimension-style) ensemble",
+      "resolved": {
+       "ref": "mfx:28",
+       "effect": "SPACE-D"
+      }
+     }
+    ]
+   },
+   {
+    "id": "layering.similar_not_identical",
+    "title": "Layer similar-but-not-identical sounds",
+    "rule": "Two related patches (slightly different waves, envelopes, filter settings and modulation) layered at equal level with a small detune sound richer, more vibrant and more real than either alone. One can supply the attack, the other the body; the one with the longer decay takes over in the tail. Layering two different instruments just sounds like two instruments; layering two identical ones just sounds chorused.",
+    "ss": [
+     45,
+     47,
+     25
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tmt.structure_12",
+      "do": "TYPE 01 keeps tones independent for layering",
+      "resolved": {
+       "ref": "tmt.structure_12",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.level",
+      "do": "equal levels for the layered pair",
+      "resolved": {
+       "ref": "tone.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "do": "give one layer a shorter, attack-focused envelope and the other the long body",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "modulation.right_kind_per_instrument",
+    "title": "Each instrument has its own kind of natural modulation",
+    "rule": "- Violin/viola/cello: finger vibrato of 5-8 Hz, fairly deep (up to a quarter tone), delayed, with a little tremolo from the body.\n- Brass: small, delayed ~5 Hz vibrato; filter 'growl' only at the attack.\n- Flute: brightness modulation (~5-6 Hz), no pitch vibrato.\n- Recorder: tiny random brightness wander, no vibrato.\n- Hammond: scanner chorus/vibrato at ~6-7 Hz (C-3 chorus is the favourite) and the Leslie.\n- Bells: warble (beating between near-identical modes).\n- Ensembles: several unrelated slow and fast modulations.\nRegular, identical LFO modulation on every note sounds mechanical.",
+    "ss": [
+     10,
+     25,
+     49,
+     53,
+     54,
+     57,
+     40,
+     62
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "do": "violin: moderate; brass: small; flute/recorder: 0",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "do": "flute and brass growl",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tva",
+      "do": "small companion tremolo for violin/brass",
+      "resolved": {
+       "ref": "tone.lfo_depth_tva",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "do": "ON-IN delayed modulation for violin, brass, voice",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "modulation.delayed_vibrato",
+    "title": "Vibrato belongs after the attack",
+    "rule": "Players add vibrato after a note has started, and they vary it. Delayed vibrato (the LFO depth fading in after the note starts) is far more natural than vibrato that is present from the very first moment.",
+    "ss": [
+     8,
+     25,
+     49,
+     50
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.lfo_fade_mode",
+      "do": "ON-IN",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_delay",
+      "do": "about 30-60",
+      "resolved": {
+       "ref": "tone.lfo_delay",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_time",
+      "do": "about 30-70",
+      "resolved": {
+       "ref": "tone.lfo_fade_time",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "lfo.fade_modes",
+      "do": "see the four fade modes",
+      "resolved": {
+       "ref": "lfo.fade_modes",
+       "kind": "concept"
+      }
+     }
+    ]
+   },
+   {
+    "id": "performance.controllers_over_envelopes",
+    "title": "Hand control makes sounds human",
+    "rule": "Envelopes and LFOs make every note identical, which is their strength and their weakness. The most realistic violin, brass and flute results come from putting loudness, brightness, vibrato depth and pitch on the player's hands (joystick, pressure, ribbon), even in very simple patches. On a keytar, map the ribbon, mod bar, aftertouch knob and D-Beam to musically meaningful destinations.",
+    "ss": [
+     50,
+     51,
+     52,
+     54,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "matrix.source",
+      "do": "AFTERTOUCH (knob), CC01 (mod bar), a D-Beam CC",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "do": "LEVEL + CUTOFF for swell/bow/breath; LFO1 PCH DEPTH for vibrato; FXM DEPTH, RESONANCE, TVA ENV times for expression",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "do": "ribbon bend range: 2 for most, 12+ for slides",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     },
+     {
+      "ref": "performance.controllers",
+      "do": "the AX-Synth's physical controllers",
+      "resolved": {
+       "ref": "performance.controllers",
+       "kind": "concept"
+      }
+     }
+    ]
+   },
+   {
+    "id": "percussion.inharmonic_recipes",
+    "title": "Drums are noise + a falling sine; metal is ring-mod/FM pairs",
+    "rule": "- Membranes (drums) have inharmonic, quickly decaying partials. Synthesise them as filtered noise plus one or two sines with a short downward pitch sweep (the pitch drops as the tension falls).\n- Snares: velocity moves the balance from tonal to noisy.\n- Cymbals/hi-hats: dense, flat, inharmonic fog. Several pairs of ring-modulated/FM'd square waves at unrelated pitches work best (noise is a weaker substitute), with band-split envelopes.\n- Tuned metal (bells): stretched partials, a fast clangy strike, a strike note, and a long sub-octave hum that beats.",
+    "ss": [
+     2,
+     11,
+     31,
+     32,
+     33,
+     34,
+     35,
+     36,
+     37,
+     38,
+     39,
+     40,
+     41
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "structure.ring_modulator",
+      "do": "Structure TYPE 05-10 for metallic partials",
+      "resolved": {
+       "ref": "structure.ring_modulator",
+       "kind": "concept"
+      }
+     },
+     {
+      "ref": "tone.fxm_color",
+      "do": "low values = more metallic",
+      "resolved": {
+       "ref": "tone.fxm_color",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.penv_depth",
+      "do": "downward pitch sweep for drum bodies",
+      "resolved": {
+       "ref": "tone.penv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "wave:232",
+      "do": "White Noise for snares/hats; wave:233 Pink Noise for softer noise",
+      "resolved": {
+       "ref": "wave:232",
+       "wave": {
+        "number": 232,
+        "name": "White Noise"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "body.fixed_formants",
+    "title": "Instrument bodies and vowels are fixed resonances that don't follow pitch",
+    "rule": "Body resonances (violin: a few hundred Hz plus 2-5 kHz; guitar and piano soundboards) and vowel formants stay at fixed frequencies whatever note is played. That's why an instrument family sounds consistent across its range. Emulate them with fixed EQ/band-pass peaks (no key tracking), not with a pitch-tracking filter. Static linear filtering after the voices (in the MFX) is equivalent to filtering each voice.",
+    "ss": [
+     6,
+     22,
+     23,
+     48,
+     49,
+     50
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "mfx:1",
+      "do": "EQUALIZER: parametric peaks for body resonances",
+      "resolved": {
+       "ref": "mfx:1",
+       "effect": "EQUALIZER"
+      }
+     },
+     {
+      "ref": "mfx:9",
+      "do": "HUMANIZER: vowel formants",
+      "resolved": {
+       "ref": "mfx:9",
+       "effect": "HUMANIZER"
+      }
+     },
+     {
+      "ref": "tone.cutoff_kf",
+      "do": "0 on BPF/PKG tones used as fixed formants",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "do": "BPF or PKG at a fixed cutoff",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "filter.resonance_sounds_electronic",
+    "title": "Resonance reads as 'synth'",
+    "rule": "A resonant peak sweeping through the spectrum is the signature analogue synth sound (squelch, wow, zap), and it's great for synth leads, basses and effects. For acoustic imitations (violin, brass, flute) resonance above a slight touch makes the result sound electronic. Keep it at 0 to about 20 % there, unless it's used deliberately as a fixed body peak.",
+    "ss": [
+     6,
+     26,
+     50,
+     54
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.resonance",
+      "do": "0-20 for acoustic imitations; 40-100 for synth squelch",
+      "resolved": {
+       "ref": "tone.resonance",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.offset_resonance",
+      "do": "patch-wide resonance trim",
+      "resolved": {
+       "ref": "common.offset_resonance",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "envelope.archetypes",
+    "title": "Envelope archetypes",
+    "rule": "- Organ: rectangular (instant attack, full sustain, instant release).\n- Brass: moderate attack, slight overshoot/decay to a high sustain, short release. Swell/spit brass: a spike, a dip, a slow swell.\n- Bowed strings: a gentle bow attack (slight bump), full sustain, a moderate release.\n- Plucked/struck: instant attack, decay to silence, no sustain (a two-slope decay for guitars and pianos).\n- Pads/string machines: a trapezoid (slow attack, full sustain, long release).\n- Drums: instant attack, short decay.\n- Flute: not instant but not slow; the release is just long enough to avoid 'sucking' between legato notes.",
+    "ss": [
+     3,
+     7,
+     8,
+     25,
+     26,
+     42,
+     46,
+     50,
+     54,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_times",
+      "do": "T1 attack, T2/T3 decay, T4 release",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "do": "L1 peak, L2 break point, L3 sustain",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "editing.summary_adsr",
+      "do": "Editor A/D/S/R = T1/T3/L3/T4",
+      "resolved": {
+       "ref": "editing.summary_adsr",
+       "kind": "concept"
+      }
+     },
+     {
+      "ref": "tone.env_mode",
+      "do": "NO-SUS for plucked/struck sounds on looped waves",
+      "resolved": {
+       "ref": "tone.env_mode",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "trigger.legato_choice",
+    "title": "Choose retriggering to suit the phrasing",
+    "rule": "- Re-articulating every note (multi-trigger) keeps fast lines punchy and gives every note its chiff/attack (pan pipes).\n- Single-trigger/legato slurs overlapped notes at the sustain level, which is natural for flute, brass valve changes and bowed legato.\n- Envelopes that reset to zero on every note sound choppy.\n- Mono sounds whose sustain is 0 can go silent when notes overlap.",
+    "ss": [
+     7,
+     18,
+     19,
+     27,
+     52
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "common.mono_poly",
+      "do": "MONO for solo lines",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.legato_sw",
+      "do": "ON for slurs",
+      "resolved": {
+       "ref": "common.legato_sw",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.legato_retrigger",
+      "do": "OFF = slur without re-attack (wind/strings); ON = re-attack",
+      "resolved": {
+       "ref": "common.legato_retrigger",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.portamento_mode",
+      "do": "LEGATO = glide only when overlapping",
+      "resolved": {
+       "ref": "common.portamento_mode",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "velocity.curves_per_destination",
+    "title": "Give level, brightness and modulation their own velocity curves",
+    "rule": "Expressive patches respond to velocity differently per destination: for example, loudness strongly, brightness moderately, vibrato depth slightly. Pianos need soft notes that are still audible (don't use a curve that goes to silence). String machines, organs and some pads should ignore velocity entirely.",
+    "ss": [
+     44,
+     42,
+     46,
+     56
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.tva_vel_curve",
+      "do": "FIX = no velocity response (organs, string machines)",
+      "resolved": {
+       "ref": "tone.tva_vel_curve",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_curve",
+      "do": "separate curve for brightness",
+      "resolved": {
+       "ref": "tone.cutoff_vel_curve",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_sens",
+      "do": "moderate for pianos so soft notes stay audible",
+      "resolved": {
+       "ref": "tone.tva_vel_sens",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "space.reverb_essential_for_acoustic",
+    "title": "Space is part of acoustic sounds",
+    "rule": "Acoustic instruments are heard in rooms: flutes radiate from many holes with complex phase, which a reverberant room smooths; strings and brass need a hall. A dry synthesized flute or violin sounds wrong. Use a hall-type reverb for orchestral imitations, and keep the reverb low on kicks and bass.",
+    "ss": [
+     22,
+     54,
+     57,
+     61
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "reverb.type",
+      "do": "SRV HALL for orchestral; SRV ROOM for drums/small; SRV PLATE for bright dense sheen",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.reverb_send_mfx",
+      "do": "per-tone reverb amount",
+      "resolved": {
+       "ref": "tone.reverb_send_mfx",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "chorus.not_for_every_sound",
+    "title": "Chorus fattens, but not everything should be fat",
+    "rule": "Chorus/ensemble makes bland waveforms lush (string machines, pads, EPs) and stereo chorus is the classic synth effect. It is inappropriate for acoustic piano imitations and single solo acoustic instruments (a solo trumpet isn't a section), and multi-stage ensemble chorus is too lush for a Hammond's scanner chorus.",
+    "ss": [
+     26,
+     44,
+     57,
+     62
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "chorus.level",
+      "do": "0 for acoustic piano/solo instruments; high for pads and string machines",
+      "resolved": {
+       "ref": "chorus.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:23",
+      "do": "CHORUS: simple dry + modulated copy (Hammond C-type)",
+      "resolved": {
+       "ref": "mfx:23",
+       "effect": "CHORUS"
+      }
+     }
+    ]
+   },
+   {
+    "id": "limits.use_pcm_for_guitars_pianos",
+    "title": "Some sounds need samples",
+    "rule": "Acoustic guitars, acoustic pianos and cymbals are beyond practical subtractive synthesis: coupled strings and bodies, stretched partials, sympathetic resonance and hammer/pick physics. Synth versions end up electric-piano-like or 'synth-guitar' (convincing only under heavy distortion). Use sampled/PCM sources for these and shape them lightly.",
+    "ss": [
+     28,
+     29,
+     30,
+     39,
+     42,
+     43,
+     44,
+     45
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:254",
+      "do": "AX Grand mp L (with 255 R, 256/257 ff)",
+      "resolved": {
+       "ref": "wave:254",
+       "wave": {
+        "number": 254,
+        "name": "AX Grand mpL"
+       }
+      }
+     },
+     {
+      "ref": "wave:52",
+      "do": "Ac.Gtr mp (53 mf, 54 ff); 49-51 nylon",
+      "resolved": {
+       "ref": "wave:52",
+       "wave": {
+        "number": 52,
+        "name": "Ac.Gtr mp"
+       }
+      }
+     },
+     {
+      "ref": "mfx:39",
+      "do": "GUITAR AMP SIMULATOR for electric guitar realism",
+      "resolved": {
+       "ref": "mfx:39",
+       "effect": "GUITAR AMP SIMULATOR"
+      }
+     }
+    ]
+   },
+   {
+    "id": "method.analyse_dont_twiddle",
+    "title": "Analyse the target, then choose sources, modifiers and controllers",
+    "rule": "To design a sound, work out: the source (which waveform or noise), the modifiers (which filters and effects, and where), and the controllers (envelopes, LFOs, the player's hands). Then set them deliberately. Also describe the target's brightness contour and loudness contour. Random twiddling produces clichés. There is no 'Big Red Button'.",
+    "ss": [
+     7,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "editing.tips",
+      "do": "Roland's tip: start from the closest patch",
+      "resolved": {
+       "ref": "editing.tips",
+       "kind": "concept"
+      }
+     }
+    ]
+   },
+   {
+    "id": "tuning.precision_vs_human",
+    "title": "Precise tuning for organs, tiny randomness for humans",
+    "rule": "Organ emulations need exact tuning and stable filters; slightly mistuned voices sound 'just wrong', not warm. Imitations of human players (strings, winds, voices) benefit from tiny random pitch/brightness wander, random voice-to-voice differences, and pitch 'hunting' at note starts. Too much sounds broken.",
+    "ss": [
+     16,
+     21,
+     49,
+     53,
+     56
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "common.analog_feel",
+      "do": "0 for organ; 10-40 for human/analogue feel",
+      "resolved": {
+       "ref": "common.analog_feel",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.random_pitch",
+      "do": "0 for organ; 2-10 cents for strings/voices",
+      "resolved": {
+       "ref": "tone.random_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_waveform",
+      "do": "RND at low depth for random wander",
+      "resolved": {
+       "ref": "tone.lfo_waveform",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "clicks.fast_edges",
+    "title": "Very fast attacks and releases click",
+    "rule": "A zero attack or release produces an audible click. That's desirable as a drum beater click or organ key-click, but it's undesirable on smooth sounds. Use a small non-zero release (and attack) to avoid clicks on sine/sub-heavy tones.",
+    "ss": [
+     27,
+     34,
+     55
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_times",
+      "do": "T4 about 3-5 rather than 0 on smooth sounds; T1 0 for deliberate clicks",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "pitch.implied_fundamental",
+    "title": "The ear supplies missing fundamentals",
+    "rule": "If partials lie in a harmonic pattern (e.g. 2:3:4), the ear hears the implied fundamental even when it's absent: the organ builders' 32' trick, the strike note of bells, the lowest piano notes. A weak or missing fundamental can still sound deep if the upper partials are correctly spaced.",
+    "ss": [
+     33,
+     40,
+     42
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.coarse_tune",
+      "do": "layer partials at +12/+19/+24 to imply a lower pitch",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "effects.are_sound_design",
+    "title": "Effects are part of the synthesis",
+    "rule": "Effects shape the sound as much as the voice does: the Leslie *is* the Hammond sound, amp simulation is the electric guitar, and chorus is what makes string machines lush. Program effects deliberately (order, delay times, feedback, modulation), not just as presets. Delays: 10-50 ms modulated = chorus; shorter = flanging/comb; longer = echo; cascaded with feedback = reverb (metallic if the delay times are fixed).",
+    "ss": [
+     4,
+     58,
+     59,
+     61,
+     62
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "fx.routing",
+      "do": "one MFX per patch, then chorus and reverb sends",
+      "resolved": {
+       "ref": "fx.routing",
+       "kind": "group"
+      }
+     },
+     {
+      "ref": "mfx:24",
+      "do": "FLANGER for short comb sweeps",
+      "resolved": {
+       "ref": "mfx:24",
+       "effect": "FLANGER"
+      }
+     },
+     {
+      "ref": "mfx:43",
+      "do": "DELAY for echoes; 55 TAPE ECHO / 53 ANALOG DELAY for degrading repeats",
+      "resolved": {
+       "ref": "mfx:43",
+       "effect": "DELAY"
+      }
+     }
+    ]
+   }
+  ],
+  "descriptors": [
+   {
+    "id": "bright",
+    "terms": [
+     "bright",
+     "brilliant",
+     "crisp",
+     "cutting",
+     "present",
+     "sharp",
+     "trebly"
+    ],
+    "meaning": "Strong upper harmonics. Comes from a harmonically rich wave (saw, narrow pulse), a high cutoff, a positive filter envelope, or strong playing.",
+    "opposite": "dark",
+    "ss": [
+     1,
+     5,
+     24
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.cutoff",
+      "do": "raise",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.offset_cutoff",
+      "do": "raise (patch-wide brightness macro, 64 = no change)",
+      "resolved": {
+       "ref": "common.offset_cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.wave_number",
+      "do": "choose a saw or narrow pulse",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "do": "raise the positive amount",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:7",
+      "do": "ENHANCER adds presence",
+      "resolved": {
+       "ref": "mfx:7",
+       "effect": "ENHANCER"
+      }
+     }
+    ]
+   },
+   {
+    "id": "dark",
+    "terms": [
+     "dark",
+     "dull",
+     "muffled",
+     "mellow",
+     "soft-toned",
+     "rounded",
+     "warm"
+    ],
+    "meaning": "Few upper harmonics. The ear hears even a gentle high-frequency roll-off as dullness; 'warm' usually means rolled-off highs with a full low-mid.",
+    "opposite": "bright",
+    "ss": [
+     1,
+     5,
+     44
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.cutoff",
+      "do": "lower",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "do": "LPF (LPF2 for a gentler, natural roll-off)",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.offset_cutoff",
+      "do": "lower",
+      "resolved": {
+       "ref": "common.offset_cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.wave_number",
+      "do": "triangle/sine/soft waves (213-216, 220)",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "hollow",
+    "terms": [
+     "hollow",
+     "woody",
+     "clarinet-like",
+     "square",
+     "boxy"
+    ],
+    "meaning": "Odd harmonics only (square wave, closed pipe): the clarinet or pan-pipe character.",
+    "ss": [
+     2,
+     10,
+     24,
+     52
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:196",
+      "do": "Fat Square (or 197/198)",
+      "resolved": {
+       "ref": "wave:196",
+       "wave": {
+        "number": 196,
+        "name": "Fat Square"
+       }
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "do": "LPF moderately closed to mellow it",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "nasal",
+    "terms": [
+     "nasal",
+     "reedy",
+     "thin",
+     "oboe-like",
+     "pinched",
+     "honky"
+    ],
+    "meaning": "A narrow pulse (5-15 %), a band-pass focus, or a formant peak in the upper mids.",
+    "ss": [
+     2,
+     6,
+     10
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:204",
+      "do": "JP8 Pls 10HD (or 205 15 %)",
+      "resolved": {
+       "ref": "wave:204",
+       "wave": {
+        "number": 204,
+        "name": "JP8 Pls 10HD"
+       }
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "do": "BPF for a focused, telephone-like nasality",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:59",
+      "do": "TELEPHONE for an extreme band-limited effect",
+      "resolved": {
+       "ref": "mfx:59",
+       "effect": "TELEPHONE"
+      }
+     }
+    ]
+   },
+   {
+    "id": "thin",
+    "terms": [
+     "thin",
+     "weedy",
+     "small",
+     "lightweight",
+     "tinny"
+    ],
+    "meaning": "Lacking low harmonics/body: a high-pass filter, narrow pulses, or a single un-layered source.",
+    "opposite": "fat",
+    "ss": [
+     6,
+     10,
+     50
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.filter_type",
+      "do": "HPF removes body (for layering a bright top, or hats)",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "do": "to fix thinness, add a -12 layer instead",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "fat",
+    "terms": [
+     "fat",
+     "thick",
+     "full",
+     "big",
+     "huge",
+     "wide-bodied",
+     "beefy"
+    ],
+    "meaning": "Several detuned sources, a sub-octave layer, rich waves, unison stacking; the classic 'unison' mono lead or the Minimoog bass.",
+    "opposite": "thin",
+    "ss": [
+     21,
+     27,
+     46,
+     62
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.fine_tune",
+      "do": "detune a second/third layer by 5-15 cents",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "do": "add a -12 (sub-octave) layer; SH101 tuba trick: saw + square an octave down",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "wave:122",
+      "do": "Super Saw (121 Unison Saw, 123 Trance Saw)",
+      "resolved": {
+       "ref": "wave:122",
+       "wave": {
+        "number": 122,
+        "name": "Super Saw"
+       }
+      }
+     },
+     {
+      "ref": "common.mono_poly",
+      "do": "MONO + layers = unison-style lead",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "buzzy",
+    "terms": [
+     "buzzy",
+     "raspy",
+     "edgy",
+     "saw-like",
+     "brassy",
+     "brash"
+    ],
+    "meaning": "A sawtooth-rich spectrum with little filtering. Brass is 'brash' because its conical bore gives the full harmonic series.",
+    "ss": [
+     1,
+     24,
+     25
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.wave_number",
+      "do": "a saw (e.g. 185 JP-8 Saw, 177 MG Saw HD)",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "do": "fairly open",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "soft_attack",
+    "terms": [
+     "soft attack",
+     "slow attack",
+     "swelling",
+     "fade in",
+     "bowed",
+     "gentle start",
+     "pad-like"
+    ],
+    "meaning": "A gradual amplitude (and brightness) rise: bowed strings, pads, swells.",
+    "opposite": "punchy",
+    "ss": [
+     3,
+     46,
+     50
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_times",
+      "do": "raise T1 (20-40 bowed; 40-80 pad swell)",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.offset_attack",
+      "do": "raise (patch-wide attack macro)",
+      "resolved": {
+       "ref": "common.offset_attack",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_times",
+      "do": "raise TVF T1 so the brightness swells too",
+      "resolved": {
+       "ref": "tone.fenv_times",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "punchy",
+    "terms": [
+     "punchy",
+     "snappy",
+     "percussive",
+     "tight",
+     "attacky",
+     "hard-hitting"
+    ],
+    "meaning": "An instant attack with a strong initial transient, often a brightness spike that settles quickly; re-triggered on every note.",
+    "opposite": "soft_attack",
+    "ss": [
+     7,
+     18,
+     34
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_times",
+      "do": "T1 0, a short T2 to a lower L2/L3",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "do": "positive with a fast decay (a brightness spike)",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.legato_sw",
+      "do": "OFF (re-attack every note)",
+      "resolved": {
+       "ref": "common.legato_sw",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:40",
+      "do": "COMPRESSOR for punch",
+      "resolved": {
+       "ref": "mfx:40",
+       "effect": "COMPRESSOR"
+      }
+     }
+    ]
+   },
+   {
+    "id": "plucked",
+    "terms": [
+     "plucked",
+     "plucky",
+     "pizzicato",
+     "picked",
+     "harp-like",
+     "stabby"
+    ],
+    "meaning": "An instant attack, decay to silence, highs dying first; brightness follows loudness.",
+    "ss": [
+     14,
+     28,
+     29,
+     30,
+     48
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_levels",
+      "do": "L3 = 0 (no sustain)",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.env_mode",
+      "do": "NO-SUS on loop waves",
+      "resolved": {
+       "ref": "tone.env_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_times",
+      "do": "TVF decay faster than the TVA",
+      "resolved": {
+       "ref": "tone.fenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_time_kf",
+      "do": "positive: shorter at high notes",
+      "resolved": {
+       "ref": "tone.aenv_time_kf",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "sustained",
+    "terms": [
+     "sustained",
+     "held",
+     "organ-like",
+     "constant",
+     "drone"
+    ],
+    "meaning": "Full sustain while held; a rectangular organ envelope; no decay.",
+    "ss": [
+     3,
+     20,
+     55
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_levels",
+      "do": "L1-L3 127",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "do": "T1 0, T4 0-5",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.env_mode",
+      "do": "SUSTAIN",
+      "resolved": {
+       "ref": "tone.env_mode",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "long_tail",
+    "terms": [
+     "long release",
+     "long tail",
+     "ringing",
+     "lingering",
+     "decaying slowly",
+     "ambient"
+    ],
+    "meaning": "A slow release or decay, often plus reverb.",
+    "ss": [
+     3,
+     22,
+     46
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_times",
+      "do": "raise T4 (release) or T3 (decay)",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.offset_release",
+      "do": "raise (patch-wide release macro)",
+      "resolved": {
+       "ref": "common.offset_release",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "reverb.level",
+      "do": "raise",
+      "resolved": {
+       "ref": "reverb.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "short",
+    "terms": [
+     "short",
+     "staccato",
+     "clipped",
+     "dry",
+     "choppy"
+    ],
+    "meaning": "A short decay/release; little reverb.",
+    "ss": [
+     3,
+     18
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.aenv_times",
+      "do": "short T3 and T4",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.offset_release",
+      "do": "lower",
+      "resolved": {
+       "ref": "common.offset_release",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "reverb.level",
+      "do": "lower",
+      "resolved": {
+       "ref": "reverb.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "breathy",
+    "terms": [
+     "breathy",
+     "airy",
+     "windy",
+     "flute-like",
+     "whispery",
+     "husky"
+    ],
+    "meaning": "Turbulence noise coloured by the instrument: pitched, high-frequency breath noise tracking the note, plus a chiff at the start.",
+    "ss": [
+     14,
+     25,
+     52,
+     53
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:229",
+      "do": "Digi Breath (228 Shaku Noise, 226 JD Vox Noise) on an extra tone",
+      "resolved": {
+       "ref": "wave:229",
+       "wave": {
+        "number": 229,
+        "name": "Digi Breath"
+       }
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "do": "BPF on the noise tone with cutoff_kf +100 = pitched breath",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.level",
+      "do": "keep the breath layer low for orchestral winds; higher for pan pipes",
+      "resolved": {
+       "ref": "tone.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "metallic",
+    "terms": [
+     "metallic",
+     "clangy",
+     "clangorous",
+     "tinny-metal",
+     "industrial",
+     "robotic"
+    ],
+    "meaning": "Inharmonic partials from ring modulation, FM at odd ratios, or metal PCM; a fixed-frequency ring-mod carrier changes timbre across the keyboard.",
+    "ss": [
+     2,
+     11,
+     13,
+     37,
+     39
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "structure.ring_modulator",
+      "do": "Structure TYPE 05-10 with a non-integer interval between the tones",
+      "resolved": {
+       "ref": "structure.ring_modulator",
+       "kind": "concept"
+      }
+     },
+     {
+      "ref": "tone.fxm_sw",
+      "do": "FXM on; low FXM COLOR = more metallic",
+      "resolved": {
+       "ref": "tone.fxm_sw",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:15",
+      "do": "RING MODULATOR (16 STEP RING MODULATOR)",
+      "resolved": {
+       "ref": "mfx:15",
+       "effect": "RING MODULATOR"
+      }
+     },
+     {
+      "ref": "wave:239",
+      "do": "Metal Vox 1 (240, 241), 223 JD MetalWind",
+      "resolved": {
+       "ref": "wave:239",
+       "wave": {
+        "number": 239,
+        "name": "Metal Vox 1"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "bell_like",
+    "terms": [
+     "bell",
+     "bell-like",
+     "chime",
+     "glassy",
+     "crystalline",
+     "tinkly",
+     "glockenspiel"
+    ],
+    "meaning": "Quasi-harmonic, slightly stretched partials; an instant attack, long ringing decay, sometimes a beating warble and a sub-octave hum.",
+    "ss": [
+     2,
+     13,
+     40
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:148",
+      "do": "D-50 Bell (154 Tubular, 155 Church, 157 JD Crystal, 146 Glocken)",
+      "resolved": {
+       "ref": "wave:148",
+       "wave": {
+        "number": 148,
+        "name": "D-50 Bell"
+       }
+      }
+     },
+     {
+      "ref": "tone.fxm_depth",
+      "do": "moderate FXM on a sine for DX-style bells",
+      "resolved": {
+       "ref": "tone.fxm_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "do": "a second layer a few cents off for warble",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "distorted",
+    "terms": [
+     "distorted",
+     "gritty",
+     "dirty",
+     "overdriven",
+     "fuzzy",
+     "crunchy",
+     "aggressive",
+     "saturated"
+    ],
+    "meaning": "Clipping adds harmonics and compression; soft clipping is warm, hard clipping harsh. Synth 'guitars' only convince under heavy distortion.",
+    "ss": [
+     9,
+     30,
+     57
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "mfx:35",
+      "do": "OVERDRIVE (36 DISTORTION, 37/38 VS versions, 39 GUITAR AMP SIMULATOR)",
+      "resolved": {
+       "ref": "mfx:35",
+       "effect": "OVERDRIVE"
+      }
+     },
+     {
+      "ref": "structure.booster",
+      "do": "Booster (Structure TYPE 03/04) + WAVE GAIN +12 for per-voice drive",
+      "resolved": {
+       "ref": "structure.booster",
+       "kind": "concept"
+      }
+     },
+     {
+      "ref": "tone.wave_gain",
+      "do": "+12 with the booster",
+      "resolved": {
+       "ref": "tone.wave_gain",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "lush",
+    "terms": [
+     "lush",
+     "chorused",
+     "ensemble",
+     "rich",
+     "shimmering",
+     "swirling",
+     "dreamy"
+    ],
+    "meaning": "Multiple slightly different pitches moving at unrelated rates, plus chorus/ensemble.",
+    "ss": [
+     10,
+     46,
+     47,
+     62
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.fine_tune",
+      "do": "a detuned layer",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "chorus.type",
+      "do": "CHORUS, level up",
+      "resolved": {
+       "ref": "chorus.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:26",
+      "do": "HEXA-CHORUS / 28 SPACE-D",
+      "resolved": {
+       "ref": "mfx:26",
+       "effect": "HEXA-CHORUS"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "do": "tiny pitch LFO on one saw layer (PWM sound)",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wide",
+    "terms": [
+     "wide",
+     "stereo",
+     "spacious",
+     "panoramic",
+     "enveloping"
+    ],
+    "meaning": "Different signals in left and right: stereo chorus (without the dry signal), panned layers, stereo PCM pairs, ping-pong delays.",
+    "ss": [
+     58,
+     61,
+     62
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.pan",
+      "do": "spread layers left/right",
+      "resolved": {
+       "ref": "tone.pan",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.alt_pan",
+      "do": "alternate pan per note",
+      "resolved": {
+       "ref": "tone.alt_pan",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.random_pan",
+      "do": "random pan per note",
+      "resolved": {
+       "ref": "tone.random_pan",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:29",
+      "do": "3D CHORUS / 52 3D DELAY",
+      "resolved": {
+       "ref": "mfx:29",
+       "effect": "3D CHORUS"
+      }
+     },
+     {
+      "ref": "wave.stereo",
+      "do": "use L/R stereo wave pairs",
+      "resolved": {
+       "ref": "wave.stereo",
+       "kind": "concept"
+      }
+     }
+    ]
+   },
+   {
+    "id": "evolving",
+    "terms": [
+     "evolving",
+     "moving",
+     "animated",
+     "alive",
+     "shifting",
+     "morphing"
+    ],
+    "meaning": "The timbre changes over the note: slow filter envelopes/LFOs, layers with different envelopes crossfading, spectral swells.",
+    "opposite": "static",
+    "ss": [
+     10,
+     14,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "do": "slow LFO (about 0.1 Hz) on cutoff",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "do": "one layer fading in slowly while another decays",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.step_type",
+      "do": "STEP LFO patterns for rhythmic evolution",
+      "resolved": {
+       "ref": "tone.step_type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "static",
+    "terms": [
+     "static",
+     "sterile",
+     "lifeless",
+     "cheap",
+     "flat",
+     "boring"
+    ],
+    "meaning": "No change over time. Fix with movement (see 'evolving') or player control.",
+    "opposite": "evolving",
+    "ss": [
+     3,
+     14,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "common.analog_feel",
+      "do": "raise slightly",
+      "resolved": {
+       "ref": "common.analog_feel",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "do": "add a filter contour",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "vibrato",
+    "terms": [
+     "vibrato",
+     "wavering pitch",
+     "singing",
+     "expressive pitch"
+    ],
+    "meaning": "Periodic pitch modulation, about 5-8 Hz for human players, usually delayed and player-controlled.",
+    "ss": [
+     10,
+     25,
+     49
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "do": "set depth",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_rate",
+      "do": "about 5-7 Hz feel",
+      "resolved": {
+       "ref": "tone.lfo_rate",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "do": "ON-IN for delayed vibrato",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "do": "CC01/AFTERTOUCH to LFO1 PCH DEPTH",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "tremolo",
+    "terms": [
+     "tremolo",
+     "pulsing",
+     "throbbing",
+     "amplitude wobble"
+    ],
+    "meaning": "Periodic loudness modulation (not pitch).",
+    "ss": [
+     3,
+     10
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.lfo_depth_tva",
+      "do": "set depth",
+      "resolved": {
+       "ref": "tone.lfo_depth_tva",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:17",
+      "do": "TREMOLO (27 TREMOLO CHORUS, 20 SLICER for rhythmic chopping)",
+      "resolved": {
+       "ref": "mfx:17",
+       "effect": "TREMOLO"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wah",
+    "terms": [
+     "wah",
+     "wah-wah",
+     "talking",
+     "quacky",
+     "funky filter"
+    ],
+    "meaning": "A resonant band-pass/peaking filter swept at about 1-2 Hz, by an envelope, or by a controller.",
+    "ss": [
+     6,
+     10,
+     23
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.filter_type",
+      "do": "PKG or BPF",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "do": "at about 1-2 Hz",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:8",
+      "do": "AUTO WAH",
+      "resolved": {
+       "ref": "mfx:8",
+       "effect": "AUTO WAH"
+      }
+     },
+     {
+      "ref": "mfx:9",
+      "do": "HUMANIZER for vowel 'talking'",
+      "resolved": {
+       "ref": "mfx:9",
+       "effect": "HUMANIZER"
+      }
+     }
+    ]
+   },
+   {
+    "id": "growl",
+    "terms": [
+     "growl",
+     "rasp",
+     "snarl",
+     "flutter"
+    ],
+    "meaning": "Fast (about 10-20 Hz, ideally audio-rate) modulation of the filter. On brass it belongs at the note start only, or it can be brought in by overblowing (aftertouch).",
+    "ss": [
+     10,
+     25,
+     26
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "do": "fast LFO rate",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "do": "ON-OUT so it fades after the attack",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "do": "AFTERTOUCH to LFO TVF DEPTH for expressive growl",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "squelchy",
+    "terms": [
+     "squelchy",
+     "resonant",
+     "acid",
+     "zappy",
+     "wet filter",
+     "rubbery"
+    ],
+    "meaning": "High resonance with the cutoff swept by an envelope or LFO: the defining analogue-synth sound.",
+    "ss": [
+     6,
+     34
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.resonance",
+      "do": "raise (60-110)",
+      "resolved": {
+       "ref": "tone.resonance",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "do": "a large positive amount, fast decay",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "do": "lower base cutoff",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "vocal",
+    "terms": [
+     "vocal",
+     "voice-like",
+     "formant",
+     "vowel",
+     "choir",
+     "ooh",
+     "aah"
+    ],
+    "meaning": "Fixed formant peaks (vowels) on a rich source; the second formant moves most in speech.",
+    "ss": [
+     15,
+     23
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:234",
+      "do": "Aah Formant (235 Eeh, 236 Iih, 237 Ooh, 238 Uuh); choirs 131-137",
+      "resolved": {
+       "ref": "wave:234",
+       "wave": {
+        "number": 234,
+        "name": "Aah Formant"
+       }
+      }
+     },
+     {
+      "ref": "mfx:9",
+      "do": "HUMANIZER vowel filter",
+      "resolved": {
+       "ref": "mfx:9",
+       "effect": "HUMANIZER"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "do": "BPF/PKG at fixed formant frequencies (cutoff_kf 0)",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "spacious",
+    "terms": [
+     "spacious",
+     "reverberant",
+     "roomy",
+     "hall",
+     "cathedral",
+     "ambient"
+    ],
+    "meaning": "Early reflections + a dense reverberant tail; the size sets the length.",
+    "ss": [
+     22,
+     61
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "reverb.type",
+      "do": "SRV HALL (large), SRV ROOM (small), SRV PLATE (bright)",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "reverb.level",
+      "do": "raise",
+      "resolved": {
+       "ref": "reverb.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "echo",
+    "terms": [
+     "echo",
+     "delay",
+     "repeats",
+     "slapback",
+     "ping-pong",
+     "dub"
+    ],
+    "meaning": "Discrete repeats; feedback sets how many; analogue/tape repeats degrade and darken.",
+    "ss": [
+     61
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "mfx:43",
+      "do": "DELAY (55 TAPE ECHO, 53 ANALOG DELAY, 47/48 TAP PAN DELAY for ping-pong)",
+      "resolved": {
+       "ref": "mfx:43",
+       "effect": "DELAY"
+      }
+     },
+     {
+      "ref": "chorus.type",
+      "do": "DELAY (send delay)",
+      "resolved": {
+       "ref": "chorus.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "lofi",
+    "terms": [
+     "lo-fi",
+     "retro digital",
+     "crunchy digital",
+     "bit-crushed",
+     "old sampler",
+     "radio",
+     "vinyl"
+    ],
+    "meaning": "Reduced bandwidth, bit/sample-rate reduction, noise.",
+    "ss": [
+     17
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "mfx:56",
+      "do": "LOFI NOISE (57 LOFI COMPRESS, 58 LOFI RADIO, 60 PHONOGRAPH)",
+      "resolved": {
+       "ref": "mfx:56",
+       "effect": "LOFI NOISE"
+      }
+     },
+     {
+      "ref": "wave:231",
+      "do": "Vinyl Noise layer",
+      "resolved": {
+       "ref": "wave:231",
+       "wave": {
+        "number": 231,
+        "name": "Vinyl Noise"
+       }
+      }
+     }
+    ]
+   },
+   {
+    "id": "clicky",
+    "terms": [
+     "clicky",
+     "key click",
+     "percussive click",
+     "spitty"
+    ],
+    "meaning": "A very short broadband transient at note-on (organ key-click, beater click).",
+    "ss": [
+     34,
+     55,
+     57
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:249",
+      "do": "Org Click 1 (250-253), 248 Key On Click, as a short extra tone",
+      "resolved": {
+       "ref": "wave:249",
+       "wave": {
+        "number": 249,
+        "name": "Org Click 1"
+       }
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "do": "a very fast positive TVF blip",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "human",
+    "terms": [
+     "human",
+     "organic",
+     "natural",
+     "analogue",
+     "unstable",
+     "imperfect",
+     "warm (analogue)"
+    ],
+    "meaning": "Small random variations: pitch wander, voice-to-voice differences, irregular modulation, pitch hunting at note starts.",
+    "ss": [
+     16,
+     21,
+     46,
+     49,
+     53
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "common.analog_feel",
+      "do": "10-40",
+      "resolved": {
+       "ref": "common.analog_feel",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.random_pitch",
+      "do": "2-10 cents",
+      "resolved": {
+       "ref": "tone.random_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_rate_detune",
+      "do": "raise slightly",
+      "resolved": {
+       "ref": "tone.lfo_rate_detune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_waveform",
+      "do": "RND/VSIN at a low depth",
+      "resolved": {
+       "ref": "tone.lfo_waveform",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "scifi",
+    "terms": [
+     "sci-fi",
+     "zap",
+     "laser",
+     "ray gun",
+     "bleepy",
+     "computer",
+     "space"
+    ],
+    "meaning": "Fast pitch sweeps (SynDrum zap), random S&H bleeps, FM/ring-mod sweeps, a self-oscillating resonance.",
+    "ss": [
+     12,
+     16,
+     34
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.penv_depth",
+      "do": "large pitch envelope sweep",
+      "resolved": {
+       "ref": "tone.penv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_waveform",
+      "do": "S&H on pitch for random bleeps",
+      "resolved": {
+       "ref": "tone.lfo_waveform",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "do": "TVF ENV to FXM DEPTH for FM sweeps",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "deep",
+    "terms": [
+     "deep",
+     "boomy",
+     "subby",
+     "low",
+     "heavy",
+     "weighty"
+    ],
+    "meaning": "Strong low fundamentals: sub-octave layers, sine/triangle bodies, a slow pitch drop on drums.",
+    "ss": [
+     27,
+     33,
+     34
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.coarse_tune",
+      "do": "a -12 or -24 layer",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "wave:220",
+      "do": "Sine or 214 triangle for sub layers",
+      "resolved": {
+       "ref": "wave:220",
+       "wave": {
+        "number": 220,
+        "name": "Sine"
+       }
+      }
+     },
+     {
+      "ref": "mfx:4",
+      "do": "LOW BOOST",
+      "resolved": {
+       "ref": "mfx:4",
+       "effect": "LOW BOOST"
+      }
+     }
+    ]
+   },
+   {
+    "id": "glide",
+    "terms": [
+     "glide",
+     "portamento",
+     "slide",
+     "swoop",
+     "legato slide"
+    ],
+    "meaning": "A continuous pitch transition between notes: a slew on the pitch.",
+    "ss": [
+     15,
+     16,
+     49
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "common.portamento_sw",
+      "do": "ON",
+      "resolved": {
+       "ref": "common.portamento_sw",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.portamento_time",
+      "do": "tiny (5-15) for string/voice realism; larger for synth swoops",
+      "resolved": {
+       "ref": "common.portamento_time",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.portamento_mode",
+      "do": "LEGATO to glide only on overlapping notes",
+      "resolved": {
+       "ref": "common.portamento_mode",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "sync_lead",
+    "terms": [
+     "sync",
+     "tearing",
+     "hard sync",
+     "screaming lead",
+     "zeeow"
+    ],
+    "meaning": "Hard-sync timbre sweeps: the slave oscillator's pitch swept by an envelope changes the timbre, not the pitch.",
+    "ss": [
+     43,
+     45
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "wave:219",
+      "do": "Sync Sweep PCM (no oscillator sync on the AX-Synth)",
+      "resolved": {
+       "ref": "wave:219",
+       "wave": {
+        "number": 219,
+        "name": "Sync Sweep"
+       }
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "do": "TVF ENV to FXM DEPTH for a timbre-sweep alternative",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "expressive",
+    "terms": [
+     "expressive",
+     "playable",
+     "dynamic",
+     "responsive",
+     "touch-sensitive"
+    ],
+    "meaning": "Velocity curves per destination, pressure/aftertouch control, bend and vibrato under the player's hands.",
+    "ss": [
+     44,
+     50,
+     51,
+     63
+    ],
+    "file": "sound_design.toml",
+    "ax": [
+     {
+      "ref": "tone.tva_vel_sens",
+      "do": "moderate",
+      "resolved": {
+       "ref": "tone.tva_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "do": "positive",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.source",
+      "do": "AFTERTOUCH/CC01 to LEVEL, CUTOFF, LFO depth",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     }
+    ]
+   }
+  ],
+  "recipes": [
+   {
+    "id": "brass.synth",
+    "name": "Analogue synth brass (Prophet/OB/Minimoog style)",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Analog Brass",
+     "Juno Brass",
+     "Poly Brass",
+     "106 Brass",
+     "80s Brass 1",
+     "Brite SynBrs",
+     "Soft SynBrs"
+    ],
+    "waves": [
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 177,
+      "name": "MG Saw HD"
+     },
+     {
+      "number": 174,
+      "name": "Juno Saw HD"
+     },
+     {
+      "number": 179,
+      "name": "P5 Saw HD"
+     }
+    ],
+    "ss": [
+     24,
+     25,
+     26,
+     27
+    ],
+    "summary": "Brass has the full harmonic series, so use a sawtooth. The key cue is a filter that opens more slowly than the amplitude (the higher harmonics speak later), a brief overblown 'parp', a high sustain and a short release. Harder = brighter. Avoid instant attacks, heavy resonance, and square/pulse waves.",
+    "pitfalls": [
+     "Instant attack or high resonance kills the brass illusion.",
+     "A square/pulse wave sounds like a clarinet, not brass.",
+     "The filter opening at the same speed as the amp sounds like a generic synth."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "saw (185 JP-8 Saw / 177 MG Saw HD)",
+      "why": "full harmonic series = brass",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "LPF",
+      "why": "",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "25-45 (fairly closed)",
+      "why": "the envelope opens it",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.resonance",
+      "set": "10-25",
+      "why": "a slight bump only; more sounds electronic",
+      "resolved": {
+       "ref": "tone.resonance",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "set": "+35...+55",
+      "why": "",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_times",
+      "set": "T1 40-65, T2 30-60, T3 40-70, T4 5-15",
+      "why": "filter attack slower than amp attack",
+      "resolved": {
+       "ref": "tone.fenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_levels",
+      "set": "L0 0, L1 127, L2 100, L3 60-80, L4 0",
+      "why": "parp, then settle",
+      "resolved": {
+       "ref": "tone.fenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 10-25, T2 20, T3 30, T4 5-15",
+      "why": "about a 100 ms attack, quick release",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L1 127, L2 115, L3 100-115",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_t1_sens",
+      "set": "+20...+40",
+      "why": "harder = faster attack",
+      "resolved": {
+       "ref": "tone.aenv_t1_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_kf",
+      "set": "+60...+90",
+      "why": "slightly under 1:1 tracking",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_vel_sens",
+      "set": "+20...+40",
+      "why": "harder = brighter",
+      "resolved": {
+       "ref": "tone.fenv_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.res_vel_sens",
+      "set": "+10",
+      "why": "louder = more upper-harmonic emphasis",
+      "resolved": {
+       "ref": "tone.res_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "set": "tone 2 same wave +5...+8 cents",
+      "why": "a section/fat variant; single tone for solo",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "matrix.source",
+      "set": "AFTERTOUCH -> CUTOFF +",
+      "why": "sustained brightness swell",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "set": "CC01 -> LFO1 PCH DEPTH",
+      "why": "mod-bar vibrato",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "set": "ON-IN, delay 40, fade 50, rate ~5 Hz, pitch depth small",
+      "why": "delayed vibrato",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "chorus.type",
+      "set": "CHORUS, moderate",
+      "why": "ensemble brass",
+      "resolved": {
+       "ref": "chorus.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "brass.trumpet_realistic",
+    "name": "Realistic trumpet / flugelhorn",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Trumpeter",
+     "Trumpet",
+     "AX BrassSect",
+     "Soft Brass"
+    ],
+    "waves": [
+     {
+      "number": 114,
+      "name": "Trumpet 1"
+     },
+     {
+      "number": 297,
+      "name": "Trumpet 2 p"
+     },
+     {
+      "number": 298,
+      "name": "Trumpet 2 mf"
+     },
+     {
+      "number": 299,
+      "name": "Trumpet 2 ff"
+     },
+     {
+      "number": 300,
+      "name": "Trumpet 3"
+     },
+     {
+      "number": 113,
+      "name": "Flugel"
+     },
+     {
+      "number": 115,
+      "name": "Tp Section"
+     }
+    ],
+    "ss": [
+     24,
+     25,
+     26
+    ],
+    "summary": "Start from trumpet PCM (velocity layers p/mf/ff) and add what samples lack: brighter-when-louder dynamics, delayed small vibrato, brief growl at the attack, faint breath, mono legato, and a hall. Trumpet sits an octave above the keyboard's 8' feel.",
+    "pitfalls": [
+     "Vibrato from the first instant sounds synthetic.",
+     "Too much pitch vibrato depth sounds electronic."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tmt.velocity",
+      "set": "tone 1 wave 297 (p) vel 1-70, tone 2 wave 298 (mf) vel 60-110, tone 3 wave 299 (ff) vel 100-127, with fades",
+      "why": "velocity-switched timbre = dynamic brightness",
+      "resolved": {
+       "ref": "tmt.velocity",
+       "kind": "group"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "LPF2",
+      "why": "natural roll-off",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "set": "+20",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "keep T1 0 (sample attack), T4 5-15",
+      "why": "don't overwrite the PCM attack",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "set": "ON-IN delay 40-60",
+      "why": "delayed vibrato",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "set": "small (2-5)",
+      "why": "subtle ~5 Hz vibrato",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO",
+      "why": "solo line",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.legato_retrigger",
+      "set": "OFF",
+      "why": "valve legato (Editor manual recommends OFF for wind phrases)",
+      "resolved": {
+       "ref": "common.legato_retrigger",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "set": "up 2 / down 2",
+      "why": "lip bends and falls",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     },
+     {
+      "ref": "matrix.source",
+      "set": "AFTERTOUCH -> CUTOFF and LFO1 TVF DEPTH",
+      "why": "overblown brightness/growl",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "chorus.level",
+      "set": "0",
+      "why": "a solo trumpet isn't a section",
+      "resolved": {
+       "ref": "chorus.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "brass.spit_swell",
+    "name": "Spit / swell brass (sforzando)",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Brite SynBrs",
+     "Wide SynBrs",
+     "Octa Brass",
+     "Alpha Spit"
+    ],
+    "waves": [
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 177,
+      "name": "MG Saw HD"
+     },
+     {
+      "number": 118,
+      "name": "XP Brass"
+     }
+    ],
+    "ss": [
+     8,
+     25,
+     63
+    ],
+    "summary": "Silence, then a fast 'psst' spike, a drop to a much lower and duller level, a slow swell to full volume and brightness, then a quick release. It needs multi-level envelopes, which the AX-Synth TVA/TVF envelopes provide.",
+    "pitfalls": [
+     "A plain ADSR can't make this shape; use L1/L2/L3."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0-5, T2 10-20, T3 60-90, T4 10-25",
+      "why": "spike, dip, swell",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L1 110-127, L2 50-70, L3 127",
+      "why": "L1 is not the max of the swell; L2 is the dip",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_levels",
+      "set": "same shape as TVA (L1 high, L2 low, L3 high)",
+      "why": "brightness follows loudness",
+      "resolved": {
+       "ref": "tone.fenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "set": "+40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.offset_attack",
+      "set": "use as a swell-speed macro",
+      "why": "",
+      "resolved": {
+       "ref": "common.offset_attack",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "brass.tuba_low",
+    "name": "Tuba / low brass",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Trombone",
+     "Soft Brass",
+     "Analog Brass"
+    ],
+    "waves": [
+     {
+      "number": 177,
+      "name": "MG Saw HD"
+     },
+     {
+      "number": 196,
+      "name": "Fat Square"
+     },
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     }
+    ],
+    "ss": [
+     26,
+     27,
+     51
+    ],
+    "summary": "Low brass is more forgiving. The SH101 trick: saw plus a square an octave down gives body (the saw alone lacks body, the square alone is hollow). A noise-roughened filter (not pitch modulation) adds rasp. Play 1-2 octaves down.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "tone 1 177 MG Saw HD; tone 2 196 Fat Square",
+      "why": "the waveform mix defines the timbre",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "tone 2 -12; whole patch -12 or -24 for tuba",
+      "why": "",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.level",
+      "set": "tone 1 ~75 %, tone 2 ~100 %",
+      "why": "per the SH101 mixer",
+      "resolved": {
+       "ref": "tone.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "20-35 + filter env +40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_waveform",
+      "set": "RND, fast, small TVF depth, ON-OUT fade",
+      "why": "noise-like rasp at the note start",
+      "resolved": {
+       "ref": "tone.lfo_waveform",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "matrix.source",
+      "set": "AFTERTOUCH -> CUTOFF (pressure brass, silent until pressed if base cutoff ~0)",
+      "why": "SS51 filter-gated brass",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "strings.string_machine",
+    "name": "String machine / ensemble pad (Solina, Omni, Logan)",
+    "family": "Strings/Pad",
+    "factory": [
+     "Tape Strings",
+     "Synth Str 1",
+     "Synth Str 2",
+     "JX Strings",
+     "JP Strings",
+     "106 Strings",
+     "Sawtooth Str",
+     "OB Strings",
+     "Chorus Pad"
+    ],
+    "waves": [
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 174,
+      "name": "Juno Saw HD"
+     },
+     {
+      "number": 121,
+      "name": "Unison Saw"
+     },
+     {
+      "number": 124,
+      "name": "Warm Pad"
+     },
+     {
+      "number": 125,
+      "name": "OB2 Pad 1"
+     },
+     {
+      "number": 126,
+      "name": "OB2 Pad 2"
+     }
+    ],
+    "ss": [
+     20,
+     46,
+     47,
+     62
+    ],
+    "summary": "Two saws, minimal detune, a subtle vibrato on only one of them (or small random modulation), no velocity, a filter about half closed with moderate tracking and no envelope, a trapezoid amp envelope, then chorus/ensemble for the sheen.",
+    "pitfalls": [
+     "Large detune sounds honky-tonk.",
+     "Identical regular modulation on both tones = plain vibrato, not ensemble."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "tones 1+2 saw (185 or 174)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "set": "tone 2 +4...+8",
+      "why": "small detune = thickening",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "set": "tone 1 only, tiny; TRI or RND; rate distinct from the beat",
+      "why": "the detune itself wobbles",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.analog_feel",
+      "set": "20-40",
+      "why": "",
+      "resolved": {
+       "ref": "common.analog_feel",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "LPF",
+      "why": "",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "60-75",
+      "why": "half closed",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_kf",
+      "set": "+30...+50",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "set": "0",
+      "why": "string machines had no filter sweep",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_curve",
+      "set": "FIX",
+      "why": "not velocity-sensitive",
+      "resolved": {
+       "ref": "tone.tva_vel_curve",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 40-70, T4 50-80",
+      "why": "trapezoid: crescendo + long tail",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L1-L3 127",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "tone.coarse_tune",
+      "set": "optional tone 3 -12",
+      "why": "weight / cello register",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:28",
+      "set": "SPACE-D or 26 HEXA-CHORUS",
+      "why": "ensemble sheen",
+      "resolved": {
+       "ref": "mfx:28",
+       "effect": "SPACE-D"
+      }
+     },
+     {
+      "ref": "chorus.type",
+      "set": "CHORUS",
+      "why": "",
+      "resolved": {
+       "ref": "chorus.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "strings.pwm_pad",
+    "name": "PWM strings / pad without PWM (two saws, one pitch-modulated)",
+    "family": "Strings/Pad",
+    "factory": [
+     "AX Strings 1",
+     "AX Strings 2",
+     "Soft Pad 1",
+     "Soft Pad 2",
+     "JX Strings",
+     "Hollow Pad"
+    ],
+    "waves": [
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 174,
+      "name": "Juno Saw HD"
+     },
+     {
+      "number": 207,
+      "name": "JP8 Pls 30HD"
+     }
+    ],
+    "ss": [
+     10,
+     46,
+     47,
+     62
+    ],
+    "summary": "The PWM sound equals two sawtooths with one of them slightly frequency-modulated (square or triangle LFO, tiny depth), plus a small static detune, which can be warmer than real PWM. Layer a second, slightly different pair for depth, then add chorus.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "tones 1+2 saw 185",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "set": "tone 2 -4...-10",
+      "why": "",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_waveform",
+      "set": "tone 1 SQR (or TRI)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.lfo_waveform",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_rate",
+      "set": "70-90 (fairly fast)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.lfo_rate",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "set": "tone 1 only: 1-3",
+      "why": "the PWM effect",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "60-75, env +10...+15, medium env attack",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_kf",
+      "set": "+40...+60",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 30-50, T4 50-65",
+      "why": "fast-but-smooth attack, gentle release",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_sens",
+      "set": "0",
+      "why": "",
+      "resolved": {
+       "ref": "tone.tva_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.bias_level",
+      "set": "negative (quieter upwards)",
+      "why": "bass-weighted warmth (Korg T2 trick)",
+      "resolved": {
+       "ref": "tone.bias_level",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "tmt.structure_34",
+      "set": "tones 3+4: a second pair with a different LFO rate/depth, detune and cutoff; optional -12/+12",
+      "why": "layer = cello/violin registers",
+      "resolved": {
+       "ref": "tmt.structure_34",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "chorus.type",
+      "set": "CHORUS",
+      "why": "",
+      "resolved": {
+       "ref": "chorus.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:26",
+      "set": "HEXA-CHORUS",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:26",
+       "effect": "HEXA-CHORUS"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "strings.solo_violin",
+    "name": "Expressive solo violin / cello",
+    "family": "Strings/Pad",
+    "factory": [
+     "Violin",
+     "Cello",
+     "Strings",
+     "AX Strings 1"
+    ],
+    "waves": [
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 177,
+      "name": "MG Saw HD"
+     },
+     {
+      "number": 301,
+      "name": "RSS Str L"
+     },
+     {
+      "number": 302,
+      "name": "RSS Str R"
+     },
+     {
+      "number": 303,
+      "name": "US Strings L"
+     },
+     {
+      "number": 304,
+      "name": "US Strings R"
+     }
+    ],
+    "ss": [
+     48,
+     49,
+     50,
+     51
+    ],
+    "summary": "The bowed string drives the bridge with a sawtooth; the body adds resonances (a few hundred Hz plus 2-5 kHz). Use a bowing attack with a slight bump, full sustain, deep delayed 5-8 Hz vibrato with a little tremolo, tiny glide, pitch hunting, and above all hand control of loudness and vibrato.",
+    "pitfalls": [
+     "A percussive envelope turns a violin into a banjo.",
+     "Resonance and a strong HPF make it sound electronic or gutted."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "saw 185/177 (or string PCM 301/303)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "+12 violin (4'), 0/-12 cello",
+      "why": "",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "LPF, cutoff 85-100, resonance 0",
+      "why": "resonance sounds electronic here",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_kf",
+      "set": "+50",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 20-35, T2 short, T4 20-30",
+      "why": "bow attack",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L1 127, L2/L3 105-115",
+      "why": "slight bump",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "set": "ON-IN, delay 30-50, fade 30-60",
+      "why": "delayed vibrato",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "set": "moderate (up to a quarter tone)",
+      "why": "finger vibrato 5-8 Hz",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tva",
+      "set": "small",
+      "why": "body-induced tremolo",
+      "resolved": {
+       "ref": "tone.lfo_depth_tva",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.random_pitch",
+      "set": "5-10 cents",
+      "why": "pitch hunting",
+      "resolved": {
+       "ref": "tone.random_pitch",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO, legato ON, retrigger OFF",
+      "why": "",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.portamento_time",
+      "set": "5-15 (just off zero), mode LEGATO",
+      "why": "fingered glide",
+      "resolved": {
+       "ref": "common.portamento_time",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.source",
+      "set": "AFTERTOUCH (or CC01 / D-Beam CC) -> LEVEL + and LFO1 PCH DEPTH +; low base tone.level",
+      "why": "the SS50/51 lesson: hand-controlled bowing",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "set": "2 (12 for slides)",
+      "why": "",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:1",
+      "set": "EQUALIZER: low cut, peaks ~300 Hz and ~700 Hz, broad boost ~3 kHz",
+      "why": "body formants",
+      "resolved": {
+       "ref": "mfx:1",
+       "effect": "EQUALIZER"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL / ROOM",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "strings.pizzicato",
+    "name": "Pizzicato / plucked strings",
+    "family": "Strings/Pad",
+    "factory": [
+     "Harp",
+     "Aerial Harp"
+    ],
+    "waves": [
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 301,
+      "name": "RSS Str L"
+     },
+     {
+      "number": 63,
+      "name": "Harp"
+     }
+    ],
+    "ss": [
+     28,
+     48
+    ],
+    "summary": "Pizzicato violin is banjo-like: the saw source with a plucked envelope, the filter decaying faster than the amp, and shorter decays higher up.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0, T3 20-40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L3 0",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.env_mode",
+      "set": "NO-SUS",
+      "why": "",
+      "resolved": {
+       "ref": "tone.env_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "set": "+30, decay faster than TVA",
+      "why": "highs die first",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_time_kf",
+      "set": "+20...+40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_time_kf",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wind.flute",
+    "name": "Orchestral flute",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Shakuhachi",
+     "Pan Pipes",
+     "Air Lead",
+     "Soft Lead"
+    ],
+    "waves": [
+     {
+      "number": 99,
+      "name": "Flute"
+     },
+     {
+      "number": 102,
+      "name": "JD Fl Push"
+     },
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     }
+    ],
+    "ss": [
+     53,
+     54
+    ],
+    "summary": "The flute spectrum is capped around 2 kHz for every note (HPF at a few hundred Hz, LPF ~2 kHz, tracking only a few %). Pressure changes brightness, not loudness. Vibrato is 5-6 Hz brightness modulation. The amp attack is not instant, sustain is full, and the release is just long enough to avoid 'sucking' in legato. Reid finds added noise detracts. Reverb is essential.",
+    "pitfalls": [
+     "Pitch vibrato and tremolo sound wrong on flute.",
+     "A velocity-to-level mapping that's too strong: flutes don't get much louder."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "99 Flute (PCM) or saw 185 for synth flute",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "LPF, cutoff ~60-75 (the 2 kHz region; calibrate by ear), resonance 15-30",
+      "why": "resonance adds edge without sounding electronic",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_kf",
+      "set": "+5...+15",
+      "why": "a fixed spectral ceiling",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 10-20, T4 10-20",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "set": "small-moderate, rate ~5-6 Hz",
+      "why": "brightness vibrato",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_pitch",
+      "set": "0",
+      "why": "",
+      "resolved": {
+       "ref": "tone.lfo_depth_pitch",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "set": "ON-IN, short delay",
+      "why": "after the chiff",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "set": "+20",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "matrix.source",
+      "set": "AFTERTOUCH -> CUTOFF + and LFO1 TVF DEPTH +",
+      "why": "blowing pressure = brightness",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO, legato ON, retrigger OFF",
+      "why": "",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:1",
+      "set": "EQUALIZER low cut (few hundred Hz)",
+      "why": "the HPF part of the flute spectrum",
+      "resolved": {
+       "ref": "mfx:1",
+       "effect": "EQUALIZER"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL, generous",
+      "why": "the flute radiates from many holes",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wind.pan_pipes",
+    "name": "Pan pipes / pan flute",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Pan Pipes",
+     "Shakuhachi",
+     "BagShakuLead"
+    ],
+    "waves": [
+     {
+      "number": 100,
+      "name": "Pan Flute"
+     },
+     {
+      "number": 101,
+      "name": "Shakuhachi"
+     },
+     {
+      "number": 214,
+      "name": "Syn Triangle"
+     },
+     {
+      "number": 196,
+      "name": "Fat Square"
+     },
+     {
+      "number": 228,
+      "name": "Shaku Noise"
+     },
+     {
+      "number": 229,
+      "name": "Digi Breath"
+     },
+     {
+      "number": 232,
+      "name": "White Noise"
+     }
+    ],
+    "ss": [
+     52
+    ],
+    "summary": "A stopped pipe gives odd harmonics only (triangle/square, mellow). Pitched, high-frequency breath noise tracks the note. A noisy chiff starts every note, and the tone swells in just after the chiff. Add small vibrato, filter modulation and inverted tremolo, plus bends, and a generous reverb.",
+    "pitfalls": [
+     "Plain square + independent noise sounds disassociated; the noise must be pitched and move with the note."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:100",
+      "set": "Pan Flute PCM as the quick route",
+      "why": "",
+      "resolved": {
+       "ref": "wave:100",
+       "wave": {
+        "number": 100,
+        "name": "Pan Flute"
+       }
+      }
+     },
+     {
+      "ref": "tone.wave_number",
+      "set": "synth: tone 1 214 triangle (or 196 square), LPF cutoff 50-65, cutoff_kf +50...+70",
+      "why": "mellow odd-harmonic tone",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.delay_time",
+      "set": "tone 1 delay mode NORMAL, small time; TVA T1 15-25",
+      "why": "the tone swells in after the chiff",
+      "resolved": {
+       "ref": "tone.delay_time",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "tone 2 noise (232/228) BPF, cutoff_kf +100, resonance high, low sustained level",
+      "why": "pitched breath",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "tone 3 white noise LPF, T1 0, T3 5-10, L3 0",
+      "why": "the chiff",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tva",
+      "set": "tone 1 small NEGATIVE while lfo_depth_tvf small positive",
+      "why": "inverted tremolo keeps the loudness steady",
+      "resolved": {
+       "ref": "tone.lfo_depth_tva",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_t1_sens",
+      "set": "+",
+      "why": "velocity-sensitive attack",
+      "resolved": {
+       "ref": "tone.aenv_t1_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.legato_sw",
+      "set": "OFF (or retrigger ON)",
+      "why": "a chiff on every note",
+      "resolved": {
+       "ref": "common.legato_sw",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "set": "2",
+      "why": "pan pipe players bend a lot",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     },
+     {
+      "ref": "matrix.source",
+      "set": "CC01 -> LFO1 PCH DEPTH",
+      "why": "",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL, generous",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wind.recorder",
+    "name": "Recorder / penny whistle",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Shakuhachi",
+     "Soft Lead",
+     "Simple Tri"
+    ],
+    "waves": [
+     {
+      "number": 208,
+      "name": "JP8 Pls 40HD"
+     },
+     {
+      "number": 214,
+      "name": "Syn Triangle"
+     },
+     {
+      "number": 99,
+      "name": "Flute"
+     }
+    ],
+    "ss": [
+     53
+    ],
+    "summary": "A dominant fundamental and a weak 2nd harmonic: a ~40 % pulse (woody with some edge) or a quiet triangle. The filter envelope peaks before the amplitude (a bright chiff while the note is still rising), a note-off 'thunk' from a set release, a tiny random brightness wander, no vibrato. Best from middle C up two octaves.",
+    "pitfalls": [
+     "Pitch vibrato sounds wrong on recorder."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:208",
+      "set": "JP8 Pls 40HD (tone 1), coarse +12",
+      "why": "",
+      "resolved": {
+       "ref": "wave:208",
+       "wave": {
+        "number": 208,
+        "name": "JP8 Pls 40HD"
+       }
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "45-60, resonance 10-20, cutoff_kf +65",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_times",
+      "set": "TVF T1 short (~5)",
+      "why": "brightness peaks first",
+      "resolved": {
+       "ref": "tone.fenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "TVA T1 15-20, T4 short-medium",
+      "why": "the amp slower than the filter; release = thunk",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_waveform",
+      "set": "RND, slow, tiny TVF depth; pitch depth 0",
+      "why": "blowing-pressure inconsistency",
+      "resolved": {
+       "ref": "tone.lfo_waveform",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO",
+      "why": "",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "set": "2",
+      "why": "pressure-like bends",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV ROOM",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wind.clarinet",
+    "name": "Clarinet-like woodwind",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Soft Lead",
+     "Round SQR",
+     "Soft Squ Ld"
+    ],
+    "waves": [
+     {
+      "number": 196,
+      "name": "Fat Square"
+     },
+     {
+      "number": 197,
+      "name": "JP-8 Square"
+     }
+    ],
+    "ss": [
+     2,
+     10,
+     24
+    ],
+    "summary": "A closed cylindrical pipe with a reed gives odd harmonics only: a square wave, 'hollow'. Mellow LPF, a moderate attack, delayed gentle vibrato.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:196",
+      "set": "Fat Square",
+      "why": "odd harmonics = hollow",
+      "resolved": {
+       "ref": "wave:196",
+       "wave": {
+        "number": 196,
+        "name": "Fat Square"
+       }
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "45-65, small positive env",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 8-15, T4 10-15",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "set": "ON-IN, small pitch depth",
+      "why": "",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "matrix.source",
+      "set": "AFTERTOUCH -> CUTOFF",
+      "why": "",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wind.oboe_reed",
+    "name": "Oboe / reedy double-reed",
+    "family": "Brass/Poly Synth",
+    "factory": [
+     "Breathy Sax",
+     "Soprano Sax"
+    ],
+    "waves": [
+     {
+      "number": 204,
+      "name": "JP8 Pls 10HD"
+     },
+     {
+      "number": 205,
+      "name": "JP8 Pls 15HD"
+     },
+     {
+      "number": 103,
+      "name": "Oboe 1 Mezzo"
+     },
+     {
+      "number": 104,
+      "name": "Oboe 1 Forte"
+     }
+    ],
+    "ss": [
+     2,
+     10
+    ],
+    "summary": "Thin and nasal: a narrow pulse (5-15 %) or oboe PCM, a moderately open filter, delayed vibrato.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:204",
+      "set": "JP8 Pls 10HD (or oboe PCM 103/104)",
+      "why": "narrow pulse = nasal",
+      "resolved": {
+       "ref": "wave:204",
+       "wave": {
+        "number": 204,
+        "name": "JP8 Pls 10HD"
+       }
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "60-80",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "set": "ON-IN, small depth",
+      "why": "",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "organ.drawbar",
+    "name": "Tonewheel drawbar organ (unadorned)",
+    "family": "Organ/Clavi",
+    "factory": [
+     "D-Bars 1",
+     "D-Bars 2",
+     "D-Bars 3",
+     "D-Bars 4",
+     "D-Bars 5",
+     "VK Organ 1",
+     "VK Organ 2",
+     "Vintage Org 1"
+    ],
+    "waves": [
+     {
+      "number": 220,
+      "name": "Sine"
+     },
+     {
+      "number": 30,
+      "name": "JD Full Draw"
+     },
+     {
+      "number": 258,
+      "name": "Full Organ 1"
+     },
+     {
+      "number": 259,
+      "name": "VK Full Org1"
+     },
+     {
+      "number": 261,
+      "name": "VK Jazz Org1"
+     },
+     {
+      "number": 249,
+      "name": "Org Click 1"
+     }
+    ],
+    "ss": [
+     14,
+     55,
+     56
+    ],
+    "summary": "A Hammond is additive: sine partials at 16' (-12), 5 1/3' (+7), 8' (0), 4' (+12), 2 2/3' (+19), 2' (+24), 1 3/5' (+28), 1 1/3' (+31) and 1' (+36), with drawbar levels. 88 8000 000 = the classic punchy registration. Rectangular envelope, key-click, no velocity, precise tuning.",
+    "pitfalls": [
+     "Filter resonance or extra harmonics (5th, 7th) make it too bright.",
+     "Velocity sensitivity makes it un-organ-like."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:220",
+      "set": "Sine on up to 4 tones (or organ PCM 30/258-281 for full registrations)",
+      "why": "",
+      "resolved": {
+       "ref": "wave:220",
+       "wave": {
+        "number": 220,
+        "name": "Sine"
+       }
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "per drawbar: -12, +7, 0, +12, +19, +24, +28, +31, +36",
+      "why": "footage to semitones",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "set": "0 (exact)",
+      "why": "mistuning sounds wrong on organs",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.level",
+      "set": "= drawbar levels (8 -> 127)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0, T4 0-3",
+      "why": "rectangular",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L1-L3 127",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_curve",
+      "set": "FIX",
+      "why": "organs aren't velocity-sensitive",
+      "resolved": {
+       "ref": "tone.tva_vel_curve",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.analog_feel",
+      "set": "0",
+      "why": "",
+      "resolved": {
+       "ref": "common.analog_feel",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "tone.fenv_depth",
+      "set": "optional tiny fast blip on one tone",
+      "why": "key-click",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:22",
+      "set": "VK ROTARY (see organ.hammond_full)",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:22",
+       "effect": "VK ROTARY"
+      }
+     }
+    ]
+   },
+   {
+    "id": "organ.hammond_full",
+    "name": "Full Hammond: percussion, scanner chorus, overdrive, Leslie",
+    "family": "Organ/Clavi",
+    "factory": [
+     "Rotary Org 1",
+     "Rotary Org 2",
+     "Lord Organ 1",
+     "Lord Organ 2",
+     "AX Dist Org1",
+     "AX Dist Org2",
+     "Amped D6"
+    ],
+    "waves": [
+     {
+      "number": 26,
+      "name": "JLOrg Slow L"
+     },
+     {
+      "number": 27,
+      "name": "JLOrg Slow R"
+     },
+     {
+      "number": 28,
+      "name": "JLOrg Fast L"
+     },
+     {
+      "number": 29,
+      "name": "JLOrg Fast R"
+     },
+     {
+      "number": 34,
+      "name": "3rd Perc Org"
+     },
+     {
+      "number": 35,
+      "name": "Perc Organ"
+     },
+     {
+      "number": 36,
+      "name": "Rock Organ"
+     },
+     {
+      "number": 37,
+      "name": "RtryOrg 1 L"
+     },
+     {
+      "number": 38,
+      "name": "RtryOrg 1 R"
+     },
+     {
+      "number": 270,
+      "name": "OD Organ"
+     }
+    ],
+    "ss": [
+     55,
+     57,
+     58,
+     59,
+     60
+    ],
+    "summary": "The Hammond sound = tonewheels + percussion (a decaying 2nd or 3rd harmonic accent) + scanner chorus (C-3: dry + one vibrato'd copy, ~6-7 Hz) + valve overdrive (with chord compression) + the Leslie (horn and rotor above/below 800 Hz, separate speeds, audible acceleration, Doppler about +-1 %, tremolo 90 deg out of phase, reflections). Chain: organ -> drive -> rotary -> cabinet.",
+    "pitfalls": [
+     "Multi-stage ensemble chorus is too lush for Hammond scanner chorus.",
+     "Pure V (vibrato) settings sound cheesy to many players."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "organ PCM (VK 259-263, Jazz 271/275) or sine drawbars (organ.drawbar)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "percussion tone: +12 (2nd) or +19 (3rd)",
+      "why": "Hammond percussion",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "percussion tone: T1 0, T3 20-30 (fast) or 40-60 (slow), L3 0, NO-SUS",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.level",
+      "set": "percussion tone lower for Soft",
+      "why": "",
+      "resolved": {
+       "ref": "tone.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "wave:249",
+      "set": "Org Click on a short tone, low level",
+      "why": "key-click",
+      "resolved": {
+       "ref": "wave:249",
+       "wave": {
+        "number": 249,
+        "name": "Org Click 1"
+       }
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "mfx.control_source",
+      "set": "CC01 (mod bar) or D-Beam CC -> rotary speed",
+      "why": "slow/fast Leslie switching",
+      "resolved": {
+       "ref": "mfx.control_source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:22",
+      "set": "VK ROTARY (drive + rotary; woofer/tweeter speeds and rise/fall times)",
+      "why": "the defining effect",
+      "resolved": {
+       "ref": "mfx:22",
+       "effect": "VK ROTARY"
+      }
+     },
+     {
+      "ref": "mfx:21",
+      "set": "ROTARY (alternative)",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:21",
+       "effect": "ROTARY"
+      }
+     },
+     {
+      "ref": "reverb.level",
+      "set": "low-moderate",
+      "why": "spring-like room after the drive",
+      "resolved": {
+       "ref": "reverb.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "piano.acoustic",
+    "name": "Acoustic grand piano",
+    "family": "Choir/Piano",
+    "factory": [
+     "AX Grand",
+     "E-Grand",
+     "JD-800 Piano",
+     "Blend Piano",
+     "Honky Tonk"
+    ],
+    "waves": [
+     {
+      "number": 254,
+      "name": "AX Grand mpL"
+     },
+     {
+      "number": 255,
+      "name": "AX Grand mpR"
+     },
+     {
+      "number": 256,
+      "name": "AX Grand ffL"
+     },
+     {
+      "number": 257,
+      "name": "AX Grand ffR"
+     },
+     {
+      "number": 1,
+      "name": "JD Piano"
+     }
+    ],
+    "ss": [
+     42,
+     44,
+     45
+    ],
+    "summary": "Only samples convince. Keep the wave's attack; crossfade soft/loud layers by velocity; harder = brighter; high notes brighter but shorter and quieter; a two-slope decay; stretch tuning; sustain pedal with sympathetic resonance; no chorus, no LFO, no bend; a hall/room.",
+    "pitfalls": [
+     "Reshaping the PCM attack with the envelope ruins the hammer transient.",
+     "Chorus or LFO on an acoustic piano sounds cheap."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tmt.velocity",
+      "set": "tones 1+2 = 254/255 (mp L/R), tones 3+4 = 256/257 (ff L/R) with velocity fades",
+      "why": "velocity layers",
+      "resolved": {
+       "ref": "tmt.velocity",
+       "kind": "group"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "LPF2",
+      "why": "the Editor manual: good for acoustic piano",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "set": "+15...+30",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_kf",
+      "set": "+20...+40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_time_kf",
+      "set": "+20...+40",
+      "why": "high notes decay faster",
+      "resolved": {
+       "ref": "tone.aenv_time_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.bias_level",
+      "set": "slightly negative toward the top",
+      "why": "high notes quieter",
+      "resolved": {
+       "ref": "tone.bias_level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.stretch_tune",
+      "set": "1-2",
+      "why": "stretched tuning sounds sweeter",
+      "resolved": {
+       "ref": "common.stretch_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_sens",
+      "set": "moderate",
+      "why": "soft notes still audible",
+      "resolved": {
+       "ref": "tone.tva_vel_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "tone.redamper",
+      "set": "ON (with RCV HOLD-1 ON)",
+      "why": "sustain pedal behaviour",
+      "resolved": {
+       "ref": "tone.redamper",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "set": "0",
+      "why": "a piano can't bend",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:78",
+      "set": "SYMPATHETIC RESONANCE",
+      "why": "damper/pedal resonance",
+      "resolved": {
+       "ref": "mfx:78",
+       "effect": "SYMPATHETIC RESONANCE"
+      }
+     },
+     {
+      "ref": "chorus.level",
+      "set": "0",
+      "why": "chorus is wrong for acoustic piano",
+      "resolved": {
+       "ref": "chorus.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL or ROOM",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "piano.analog_ep",
+    "name": "Analogue-synth piano / electric piano character (JX10 'Acoustic Piano')",
+    "family": "Choir/Piano",
+    "factory": [
+     "Stage EP",
+     "Dyno EP",
+     "Wurly EP",
+     "SA EP",
+     "FM EP 1",
+     "Phase Stage",
+     "PhaseEP"
+    ],
+    "waves": [
+     {
+      "number": 2,
+      "name": "Stage EP p"
+     },
+     {
+      "number": 4,
+      "name": "Dyno EP mp"
+     },
+     {
+      "number": 7,
+      "name": "Wurly mp"
+     },
+     {
+      "number": 12,
+      "name": "80's EP 1 mp"
+     },
+     {
+      "number": 16,
+      "name": "Hard E.Pno"
+     },
+     {
+      "number": 19,
+      "name": "ClavDB Brt"
+     }
+    ],
+    "ss": [
+     42,
+     43,
+     44,
+     45
+    ],
+    "summary": "Subtractive 'pianos' end up Rhodes/Wurlitzer-like, which is valuable in itself. The JX10 recipe: a wiry synced tone with a big timbral blip at the attack (the hammer), a plain square body that takes over in the decay, a piano-shaped envelope (instant attack, long decay, no sustain), key-follow shortening, a modest velocity-scaled filter envelope, no chorus/LFO. Then layer two similar variants with a slight detune.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "tone 1 EP/clav PCM (16 Hard E.Pno / 19 ClavDB Brt) or saw; tone 2 a softer EP or square",
+      "why": "attack layer + body layer",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "60-75, resonance 0-5, cutoff_kf +20...+30",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_depth",
+      "set": "+8...+12 with fenv_vel_sens +",
+      "why": "",
+      "resolved": {
+       "ref": "tone.fenv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0, T3 long, T4 medium; tone 1 shorter than tone 2",
+      "why": "the body dominates the tail",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L3 0",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_time_kf",
+      "set": "+20...+40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_time_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "set": "tone 2 +3...+8",
+      "why": "similar-not-identical layering",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "set": "TVF ENV -> FXM DEPTH on the attack tone (FXM on)",
+      "why": "a timbral blip at the attack instead of oscillator sync",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "tone.tva_vel_curve",
+      "set": "a curve that keeps soft notes audible",
+      "why": "",
+      "resolved": {
+       "ref": "tone.tva_vel_curve",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "chorus.level",
+      "set": "0 for piano-like; moderate for EP",
+      "why": "",
+      "resolved": {
+       "ref": "chorus.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:17",
+      "set": "TREMOLO / 18 AUTO PAN for classic EP",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:17",
+       "effect": "TREMOLO"
+      }
+     }
+    ]
+   },
+   {
+    "id": "keys.clav_harpsichord",
+    "name": "Clavinet / harpsichord (wiry plucked keys)",
+    "family": "Organ/Clavi",
+    "factory": [
+     "AX Clav 1",
+     "AX Clav 2",
+     "Pulse Clav 1",
+     "Pulse Clav 2",
+     "Harpsichord",
+     "Sweepin Clav"
+    ],
+    "waves": [
+     {
+      "number": 19,
+      "name": "ClavDB Brt"
+     },
+     {
+      "number": 20,
+      "name": "Reg.Clav"
+     },
+     {
+      "number": 21,
+      "name": "Retro Clav"
+     },
+     {
+      "number": 22,
+      "name": "Tight Clav"
+     },
+     {
+      "number": 23,
+      "name": "Hard Clav"
+     },
+     {
+      "number": 25,
+      "name": "Harpsichord"
+     }
+    ],
+    "ss": [
+     43,
+     28
+    ],
+    "summary": "A wiry, bright, fast-decaying pluck: hard-sync-like harmonic richness at the attack, key-follow on the envelope times. Use clav/harpsichord PCM; for synthetic versions, use a thin pulse with a PKG/HPF emphasis.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "19-24 clav, 25 Harpsichord",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_time_kf",
+      "set": "+20...+40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_time_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "PKG or HPF for thin wire tone",
+      "why": "",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "set": "+20",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "mfx:8",
+      "set": "AUTO WAH for funky clav",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:8",
+       "effect": "AUTO WAH"
+      }
+     },
+     {
+      "ref": "mfx:11",
+      "set": "PHASER",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:11",
+       "effect": "PHASER"
+      }
+     }
+    ]
+   },
+   {
+    "id": "guitar.electric_lead",
+    "name": "Electric (overdriven) lead guitar",
+    "family": "Lead Guitar",
+    "factory": [
+     "SearingGtr 1",
+     "SearingGtr 2",
+     "SearingGtr 3",
+     "SearingGtr 4",
+     "Metal Lead",
+     "OD-2 Turbo",
+     "Nice Dist Gt",
+     "MS1959 I"
+    ],
+    "waves": [
+     {
+      "number": 61,
+      "name": "Overdrive Gt"
+     },
+     {
+      "number": 62,
+      "name": "DistortionGt"
+     },
+     {
+      "number": 57,
+      "name": "Bright Strat"
+     },
+     {
+      "number": 58,
+      "name": "FstPick 70s"
+     }
+    ],
+    "ss": [
+     30,
+     57
+    ],
+    "summary": "Pickups comb-filter the string spectrum by note and the amp/speaker shapes the rest; subtractive synths only convince under heavy distortion. Use guitar PCM + an amp simulator; wide bends, mono legato, and feedback-like sustain for leads.",
+    "pitfalls": [
+     "Clean synth 'guitars' sound like synths; the distortion must dominate."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:61",
+      "set": "Overdrive Gt (62 DistortionGt)",
+      "why": "",
+      "resolved": {
+       "ref": "wave:61",
+       "wave": {
+        "number": 61,
+        "name": "Overdrive Gt"
+       }
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "sustain high for lead feedback sustain",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "set": "up 12 / down 24 (as in the SearingGtr forum patch)",
+      "why": "guitar-style bends and dives",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO, legato ON",
+      "why": "",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.source",
+      "set": "a CC (e.g. D-Beam CC70) -> a feedback/+24 sine layer (TMT or LEVEL)",
+      "why": "see patches/guitar01.a8e: a CC70 'feedback' layer",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:39",
+      "set": "GUITAR AMP SIMULATOR",
+      "why": "the amp and speaker are the sound",
+      "resolved": {
+       "ref": "mfx:39",
+       "effect": "GUITAR AMP SIMULATOR"
+      }
+     },
+     {
+      "ref": "mfx:68",
+      "set": "OVERDRIVE->DELAY / 71 DISTORTION->DELAY",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:68",
+       "effect": "OVERDRIVE->DELAY"
+      }
+     }
+    ]
+   },
+   {
+    "id": "guitar.synth_jazz",
+    "name": "Synth 'jazz guitar' (patch-book style)",
+    "family": "Lead Guitar",
+    "factory": [
+     "Jazz EGtr",
+     "Clean EGtr"
+    ],
+    "waves": [
+     {
+      "number": 206,
+      "name": "JP8 Pls 25HD"
+     },
+     {
+      "number": 177,
+      "name": "MG Saw HD"
+     },
+     {
+      "number": 55,
+      "name": "Jazz Gtr"
+     }
+    ],
+    "ss": [
+     30
+    ],
+    "summary": "Patch-book trick: a 25 % pulse (its spectral holes crudely mimic pickup/body notches), an instant attack, the same contour on filter and amp, sustain 0 (Reid), and the filter decaying faster than the amp. Pulse + saw from separate layers adds movement.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:206",
+      "set": "JP8 Pls 25HD on tone 1; optional tone 2 saw slightly detuned",
+      "why": "",
+      "resolved": {
+       "ref": "wave:206",
+       "wave": {
+        "number": 206,
+        "name": "JP8 Pls 25HD"
+       }
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L3 0",
+      "why": "a guitar doesn't sustain indefinitely",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fenv_times",
+      "set": "decay faster than TVA",
+      "why": "",
+      "resolved": {
+       "ref": "tone.fenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.penv_levels",
+      "set": "L0 +2...+5 falling to 0 over T1/T2 20-40",
+      "why": "a pluck starts slightly sharp",
+      "resolved": {
+       "ref": "tone.penv_levels",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "mfx:39",
+      "set": "GUITAR AMP SIMULATOR (clean amp)",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:39",
+       "effect": "GUITAR AMP SIMULATOR"
+      }
+     }
+    ]
+   },
+   {
+    "id": "guitar.acoustic",
+    "name": "Acoustic / nylon guitar",
+    "family": "Lead Guitar",
+    "factory": [
+     "Nylon Gtr 1",
+     "Nylon Gtr 2",
+     "Nylon Gtr 3",
+     "Folk Gtr 1",
+     "Folk Gtr 2",
+     "Folk Gtr 3"
+    ],
+    "waves": [
+     {
+      "number": 49,
+      "name": "Brt N.Gtr p"
+     },
+     {
+      "number": 50,
+      "name": "Brt N.Gtr mf"
+     },
+     {
+      "number": 51,
+      "name": "Brt N.Gtr ff"
+     },
+     {
+      "number": 52,
+      "name": "Ac.Gtr mp"
+     },
+     {
+      "number": 53,
+      "name": "Ac.Gtr mf"
+     },
+     {
+      "number": 54,
+      "name": "Ac.Gtr ff"
+     }
+    ],
+    "ss": [
+     28,
+     29
+    ],
+    "summary": "Acoustic guitars can't be synthesized subtractively; use PCM with velocity layers. Harder pluck = brighter and longer (Matrix VELOCITY -> TVA decay), a two-slope decay, the filter following the amp, and shorter decays at high notes. Mono for single-string lines.",
+    "pitfalls": [
+     "Don't reshape the PCM attack."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tmt.velocity",
+      "set": "49/50/51 (nylon p/mf/ff) or 52/53/54 (steel mp/mf/ff) across velocity",
+      "why": "",
+      "resolved": {
+       "ref": "tmt.velocity",
+       "kind": "group"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "set": "+20",
+      "why": "pick hardness = brightness",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "set": "VELOCITY -> TVA ENV D-TIME +",
+      "why": "harder = longer ring",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_time_kf",
+      "set": "+20...+30",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_time_kf",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.bend",
+      "set": "2",
+      "why": "",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:24",
+      "set": "FLANGER with slow/no modulation (static comb) for pick-position colour",
+      "why": "optional",
+      "resolved": {
+       "ref": "mfx:24",
+       "effect": "FLANGER"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV ROOM",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "bass.synth_classic",
+    "name": "Classic analogue synth bass / bass guitar imitation",
+    "family": "Bass",
+    "factory": [
+     "Moogue Bs1",
+     "Moogue Bs2",
+     "Fat Analog",
+     "Round Bs",
+     "Punch MG",
+     "Modular Bs1",
+     "JunoSqu Bs",
+     "Finger EBs 1",
+     "Pick Bs 1"
+    ],
+    "waves": [
+     {
+      "number": 95,
+      "name": "MG Bass 1"
+     },
+     {
+      "number": 96,
+      "name": "MG Bass 2"
+     },
+     {
+      "number": 97,
+      "name": "MG Bass 3"
+     },
+     {
+      "number": 93,
+      "name": "SH-101 Bs"
+     },
+     {
+      "number": 177,
+      "name": "MG Saw HD"
+     },
+     {
+      "number": 207,
+      "name": "JP8 Pls 30HD"
+     }
+    ],
+    "ss": [
+     2,
+     21,
+     27
+    ],
+    "summary": "Synth Secrets notes that saw + pulse together give remarkably accurate bass-guitar imitations; saw + square an octave down gives body. Punchy: instant attack, a filter envelope spike, multi-trigger. Fat: detuned layers or unison.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "saw (177/95-97 MG Bass) + pulse (207) on two tones",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "30-50, env +30...+50 fast decay, resonance to taste",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0; sustain medium-high for synth, 0 for plucked bass",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO; legato OFF for punch",
+      "why": "",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.portamento_time",
+      "set": "small, LEGATO mode, for slides",
+      "why": "",
+      "resolved": {
+       "ref": "common.portamento_time",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.level",
+      "set": "low",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:40",
+      "set": "COMPRESSOR",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:40",
+       "effect": "COMPRESSOR"
+      }
+     }
+    ]
+   },
+   {
+    "id": "drum.kick_808",
+    "name": "808-style kick (boom)",
+    "family": "other",
+    "factory": [],
+    "waves": [
+     {
+      "number": 220,
+      "name": "Sine"
+     },
+     {
+      "number": 214,
+      "name": "Syn Triangle"
+     },
+     {
+      "number": 248,
+      "name": "Key On Click"
+     }
+    ],
+    "ss": [
+     33,
+     34
+    ],
+    "summary": "A pinged, self-decaying sine with a small pitch drop that goes slightly flat on long decays, plus a trigger click tamed by an LPF. Boom length = decay.",
+    "pitfalls": [
+     "Avoid an unintended click on smooth kicks: T1 not exactly 0 if clicky."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:220",
+      "set": "Sine, play C1-G1",
+      "why": "",
+      "resolved": {
+       "ref": "wave:220",
+       "wave": {
+        "number": 220,
+        "name": "Sine"
+       }
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0, T3 long, L3 0, NO-SUS",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.penv_depth",
+      "set": "+",
+      "why": "",
+      "resolved": {
+       "ref": "tone.penv_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.penv_levels",
+      "set": "L0 +8, back to 0 fast, then L3/L4 -1...-3 over a long T3",
+      "why": "slight sag on long decays",
+      "resolved": {
+       "ref": "tone.penv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.penv_vel_sens",
+      "set": "+",
+      "why": "accent = bigger drop",
+      "resolved": {
+       "ref": "tone.penv_vel_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "reverb.level",
+      "set": "low",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "mfx:40",
+      "set": "COMPRESSOR / 4 LOW BOOST",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:40",
+       "effect": "COMPRESSOR"
+      }
+     }
+    ]
+   },
+   {
+    "id": "drum.kick_909",
+    "name": "909-style kick (punchy)",
+    "family": "other",
+    "factory": [],
+    "waves": [
+     {
+      "number": 214,
+      "name": "Syn Triangle"
+     },
+     {
+      "number": 220,
+      "name": "Sine"
+     },
+     {
+      "number": 232,
+      "name": "White Noise"
+     },
+     {
+      "number": 248,
+      "name": "Key On Click"
+     }
+    ],
+    "ss": [
+     33,
+     34
+    ],
+    "summary": "A near-sine body with a bigger, faster pitch drop, plus low-passed noise and a click pulse with their own short envelopes. Tight = short decay + fast drop.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.penv_levels",
+      "set": "tone 1: L0 +20...+30, T1 short",
+      "why": "",
+      "resolved": {
+       "ref": "tone.penv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "tone 1 T3 short-medium; tone 2 (232 noise, LPF cutoff 60-80) T3 10-20; tone 3 (248 click) T3 ~0-5",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_sens",
+      "set": "+",
+      "why": "accent",
+      "resolved": {
+       "ref": "tone.tva_vel_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "mfx:40",
+      "set": "COMPRESSOR",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:40",
+       "effect": "COMPRESSOR"
+      }
+     }
+    ]
+   },
+   {
+    "id": "drum.snare",
+    "name": "Snare drum (analogue-style)",
+    "family": "other",
+    "factory": [],
+    "waves": [
+     {
+      "number": 232,
+      "name": "White Noise"
+     },
+     {
+      "number": 220,
+      "name": "Sine"
+     },
+     {
+      "number": 214,
+      "name": "Syn Triangle"
+     }
+    ],
+    "ss": [
+     19,
+     35,
+     36
+    ],
+    "summary": "A tonal body (0,1 modes ~180 Hz and ~330 Hz, the upper decaying faster) plus snare-wire noise. Velocity moves the balance from tonal to noisy and brightens it. Simple version: full noise, LPF fully open, no resonance, a short decay, retrigger on every hit for rolls.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "tone 1 sine ~F#3 (180 Hz), tone 2 sine +10 st (330 Hz), tone 3 232 White Noise",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "body T3 short (tone 2 shorter), noise T3 15-30, all L3 0",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "noise: LPF open (100-127) or HPF 40-60 for 808 snap; resonance 0",
+      "why": "resonance makes an 'oww'",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff_vel_sens",
+      "set": "noise +",
+      "why": "harder = brighter",
+      "resolved": {
+       "ref": "tone.cutoff_vel_sens",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_sens",
+      "set": "noise high, body low",
+      "why": "harder = noisier",
+      "resolved": {
+       "ref": "tone.tva_vel_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "POLY",
+      "why": "rolls",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:65",
+      "set": "GATED REVERB for an '80s snare",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:65",
+       "effect": "GATED REVERB"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV ROOM",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "drum.hihat_cymbal",
+    "name": "Hi-hats, ride and crash cymbals (metal)",
+    "family": "other",
+    "factory": [],
+    "waves": [
+     {
+      "number": 196,
+      "name": "Fat Square"
+     },
+     {
+      "number": 197,
+      "name": "JP-8 Square"
+     },
+     {
+      "number": 198,
+      "name": "SH-2 Square"
+     },
+     {
+      "number": 232,
+      "name": "White Noise"
+     },
+     {
+      "number": 242,
+      "name": "JD Rattles"
+     }
+    ],
+    "ss": [
+     37,
+     38,
+     39,
+     40
+    ],
+    "summary": "A dense, flat, inharmonic fog. The best affordable method is several pairs of ring/FM-modulated square waves at unrelated pitches (Korg Rhythm 55), band-split with different decays (highs shortest). Crash/ride: a mid 'ping' sweeping down to ~1 kHz over 0.2 s plus a high-passed tail opening upward over 0.2 s and closing slowly. Hats = short decays; open hat = longer.",
+    "pitfalls": [
+     "Noise alone gives a 'weedy' synthetic cymbal.",
+     "A low filter ceiling kills cymbals: keep the cutoff high."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tmt.structure_12",
+      "set": "ring-mod type (05/06/09/10); same for tmt.structure_34",
+      "why": "two ring-mod pairs",
+      "resolved": {
+       "ref": "tmt.structure_12",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.wave_number",
+      "set": "all squares (196/197/198)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "e.g. 0, +6 (+23 ct), +11 (-17 ct), +17 (+37 ct)",
+      "why": "unrelated ratios",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "HPF, cutoff 60-90",
+      "why": "remove lows",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "closed hat T3 5-10; open 40-60; ride 40-60 with NO-SUS",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.pitch_kf",
+      "set": "0-20",
+      "why": "metal barely tracks the keyboard",
+      "resolved": {
+       "ref": "tone.pitch_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fxm_sw",
+      "set": "optional ON, color 1-2",
+      "why": "more partials",
+      "resolved": {
+       "ref": "tone.fxm_sw",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO with open and closed hats in one patch",
+      "why": "choke-like behaviour",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV ROOM",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "perc.cowbell",
+    "name": "808/CR-8000 cowbell",
+    "family": "other",
+    "factory": [],
+    "waves": [
+     {
+      "number": 214,
+      "name": "Syn Triangle"
+     },
+     {
+      "number": 153,
+      "name": "JD Cowbell"
+     },
+     {
+      "number": 233,
+      "name": "Pink Noise"
+     }
+    ],
+    "ss": [
+     41
+    ],
+    "summary": "Two triangles at 587 Hz and 845 Hz (ratio 1:1.44), the upper slightly louder, band-pass ~2.6 kHz (12 dB) with slight resonance, a two-stage decay (a loud short impact, then a tail), and a faint pink-noise halo. Exact tuning matters.",
+    "pitfalls": [
+     "Small tuning deviations destroy the cowbell illusion."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:214",
+      "set": "Syn Triangle on tones 1+2; play D5",
+      "why": "587 Hz",
+      "resolved": {
+       "ref": "wave:214",
+       "wave": {
+        "number": 214,
+        "name": "Syn Triangle"
+       }
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "tone 2 +6 with fine_tune +31",
+      "why": "ratio 1.44",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "BPF, cutoff high-mid, resonance low-moderate",
+      "why": "",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_levels",
+      "set": "L1 127, L2 50-60, L3 0 (T2 very short, T3 medium)",
+      "why": "a two-stage decay",
+      "resolved": {
+       "ref": "tone.aenv_levels",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "wave:233",
+      "set": "optional tone 3 Pink Noise, very short, low",
+      "why": "",
+      "resolved": {
+       "ref": "wave:233",
+       "wave": {
+        "number": 233,
+        "name": "Pink Noise"
+       }
+      }
+     }
+    ],
+    "performance": [],
+    "effects": []
+   },
+   {
+    "id": "perc.claves",
+    "name": "Claves / woodblock",
+    "family": "other",
+    "factory": [],
+    "waves": [
+     {
+      "number": 214,
+      "name": "Syn Triangle"
+     },
+     {
+      "number": 139,
+      "name": "JD Wood Crak"
+     },
+     {
+      "number": 142,
+      "name": "JD Log Drum"
+     }
+    ],
+    "ss": [
+     41
+    ],
+    "summary": "A triangle through a band-pass with no resonance and a very short decay: a woody click. PCM 139 JD Wood Crak / 142 JD Log Drum are alternatives.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:214",
+      "set": "Syn Triangle",
+      "why": "",
+      "resolved": {
+       "ref": "wave:214",
+       "wave": {
+        "number": 214,
+        "name": "Syn Triangle"
+       }
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "BPF, resonance 0",
+      "why": "",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0, T3 3-8",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": []
+   },
+   {
+    "id": "perc.timpani",
+    "name": "Timpani (kettle drum)",
+    "family": "other",
+    "factory": [],
+    "waves": [
+     {
+      "number": 220,
+      "name": "Sine"
+     },
+     {
+      "number": 233,
+      "name": "Pink Noise"
+     }
+    ],
+    "ss": [
+     31,
+     32
+    ],
+    "summary": "Four sine partials at 1.00 : 1.50 : 1.98 : 2.44 of the principal (~150 Hz), amplitudes ~5:4:3:1, relative decays ~45/73/91/84 %, plus a short enharmonic strike burst (tuned rough pink noise or ring mod). Velocity sets only the level. Play pitch with the bend (+-a fifth).",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:220",
+      "set": "Sine on tones 1-3 (or 1-4)",
+      "why": "",
+      "resolved": {
+       "ref": "wave:220",
+       "wave": {
+        "number": 220,
+        "name": "Sine"
+       }
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "0; +7 (+2 ct); +12 (-17 ct); +15 (+44 ct)",
+      "why": "the partial ratios",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.level",
+      "set": "127 / 102 / 76 / 25",
+      "why": "5:4:3:1",
+      "resolved": {
+       "ref": "tone.level",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 0; T3 ~45/73/91/84 % of the longest; T4 = T3; NO-SUS",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.filter_type",
+      "set": "strike tone: 233 Pink Noise BPF resonant, very short decay",
+      "why": "",
+      "resolved": {
+       "ref": "tone.filter_type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.tva_vel_sens",
+      "set": "+ (level only; cutoff vel sens 0)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.tva_vel_sens",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.bend",
+      "set": "7 / 7",
+      "why": "pedal timpani range",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "chorus.level",
+      "set": "0",
+      "why": "",
+      "resolved": {
+       "ref": "chorus.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "perc.bell",
+    "name": "Church / tubular / hand bell",
+    "family": "other",
+    "factory": [
+     "FM Sparkles",
+     "D-50 Fantsia",
+     "Dreaming Box"
+    ],
+    "waves": [
+     {
+      "number": 154,
+      "name": "Tubular Bell"
+     },
+     {
+      "number": 155,
+      "name": "Church Bell"
+     },
+     {
+      "number": 148,
+      "name": "D-50 Bell"
+     },
+     {
+      "number": 157,
+      "name": "JD Crystal"
+     },
+     {
+      "number": 220,
+      "name": "Sine"
+     }
+    ],
+    "ss": [
+     2,
+     13,
+     40
+    ],
+    "summary": "Three phases: a fast inharmonic strike (clang); a strike note of a few strong, slightly stretched low partials (a 2:3:4 pattern implies the pitch); a long sub-octave hum that beats slowly. Warble from nearly identical modes beating. Needs a reverb.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:154",
+      "set": "Tubular Bell / 155 Church Bell as the quick route",
+      "why": "",
+      "resolved": {
+       "ref": "wave:154",
+       "wave": {
+        "number": 154,
+        "name": "Tubular Bell"
+       }
+      }
+     },
+     {
+      "ref": "tone.fxm_depth",
+      "set": "synth: tone 1 sine + FXM 4-8, color 1-2; decay two-stage",
+      "why": "",
+      "resolved": {
+       "ref": "tone.fxm_depth",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.coarse_tune",
+      "set": "tone 2 +12 with +15...+30 ct (stretched); tone 3 -12 (hum); tone 4 -12 +2...+4 ct (beating)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.coarse_tune",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "hum tones: T1 20-40 (slower), T3 long",
+      "why": "the hum lingers",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tva",
+      "set": "small, 3-6 Hz, optional",
+      "why": "warble",
+      "resolved": {
+       "ref": "tone.lfo_depth_tva",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL, long",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "perc.metallic_fx",
+    "name": "Metallic / clangorous percussion and FX",
+    "family": "other",
+    "factory": [
+     "Ethno Keys",
+     "Steel Drums"
+    ],
+    "waves": [
+     {
+      "number": 239,
+      "name": "Metal Vox 1"
+     },
+     {
+      "number": 240,
+      "name": "Metal Vox 2"
+     },
+     {
+      "number": 241,
+      "name": "Metal Vox 3"
+     },
+     {
+      "number": 242,
+      "name": "JD Rattles"
+     },
+     {
+      "number": 223,
+      "name": "JD MetalWind"
+     },
+     {
+      "number": 147,
+      "name": "Steel Drums"
+     }
+    ],
+    "ss": [
+     2,
+     11,
+     13,
+     39
+    ],
+    "summary": "Inharmonic partials: ring mod between tones at odd ratios (a fixed-pitch modulator = the timbre changes across the keyboard), FXM with low colour, FM-style envelopes on the index, short percussive envelopes.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "structure.ring_modulator",
+      "set": "TYPE 05-10; tone 2 at an odd interval (+6, +11, +13 with odd cents)",
+      "why": "",
+      "resolved": {
+       "ref": "structure.ring_modulator",
+       "kind": "concept"
+      }
+     },
+     {
+      "ref": "tone.pitch_kf",
+      "set": "modulator tone 0 for an enharmonic keyboard sweep; 100 for a consistent timbre",
+      "why": "",
+      "resolved": {
+       "ref": "tone.pitch_kf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.destination",
+      "set": "TVF ENV -> FXM DEPTH",
+      "why": "an FM-like brightness envelope",
+      "resolved": {
+       "ref": "matrix.destination",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [],
+    "effects": [
+     {
+      "ref": "mfx:15",
+      "set": "RING MODULATOR / 16 STEP RING MODULATOR",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:15",
+       "effect": "RING MODULATOR"
+      }
+     }
+    ]
+   },
+   {
+    "id": "synth.mono_lead",
+    "name": "Classic mono synth lead",
+    "family": "Synth Lead 1",
+    "factory": [
+     "Saw Lead 1",
+     "Classic Ld",
+     "Pro Fat Ld",
+     "JupiterLead1",
+     "Waspy Lead",
+     "Mini Growl",
+     "Fat GR Lead"
+    ],
+    "waves": [
+     {
+      "number": 177,
+      "name": "MG Saw HD"
+     },
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 174,
+      "name": "Juno Saw HD"
+     },
+     {
+      "number": 122,
+      "name": "Super Saw"
+     },
+     {
+      "number": 196,
+      "name": "Fat Square"
+     }
+    ],
+    "ss": [
+     6,
+     7,
+     18,
+     21,
+     25,
+     50
+    ],
+    "summary": "Saw (or square for hollow), a resonant LPF with a punchy envelope spike, mono with a chosen trigger mode (legato slurs vs multi-trigger punch), portamento, delayed vibrato on the mod bar, bend. Fat = detuned unison layers.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "saw 177/185 (square 196 for hollow)",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.cutoff",
+      "set": "40-70; resonance 20-60; env +30...+50, fast T2",
+      "why": "",
+      "resolved": {
+       "ref": "tone.cutoff",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.fine_tune",
+      "set": "tones 2/3 +-7...+-15",
+      "why": "unison fatness",
+      "resolved": {
+       "ref": "tone.fine_tune",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO",
+      "why": "",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.legato_sw",
+      "set": "ON for singing lines, OFF for punchy staccato",
+      "why": "",
+      "resolved": {
+       "ref": "common.legato_sw",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.portamento_sw",
+      "set": "ON, time 10-40, mode LEGATO",
+      "why": "",
+      "resolved": {
+       "ref": "common.portamento_sw",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "matrix.source",
+      "set": "CC01 -> LFO1 PCH DEPTH; AFTERTOUCH -> CUTOFF or LFO TVF DEPTH (growl)",
+      "why": "",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.bend",
+      "set": "2 (or 12 for dives)",
+      "why": "",
+      "resolved": {
+       "ref": "common.bend",
+       "kind": "group"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:43",
+      "set": "DELAY",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:43",
+       "effect": "DELAY"
+      }
+     },
+     {
+      "ref": "reverb.level",
+      "set": "moderate",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.level",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "synth.sync_lead",
+    "name": "'Sync' lead (tearing timbre sweep)",
+    "family": "Synth Lead 1",
+    "factory": [
+     "AX Sync Lead",
+     "Octa Sync",
+     "Hot Sync",
+     "Sync Tank"
+    ],
+    "waves": [
+     {
+      "number": 219,
+      "name": "Sync Sweep"
+     }
+    ],
+    "ss": [
+     43,
+     45
+    ],
+    "summary": "Hard sync sweeps timbre, not pitch, as the slave's pitch is swept by an envelope. The AX-Synth has no oscillator sync: use the 219 Sync Sweep PCM, or FXM with the TVF envelope routed to FXM DEPTH for an evolving harmonic sweep.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:219",
+      "set": "Sync Sweep",
+      "why": "",
+      "resolved": {
+       "ref": "wave:219",
+       "wave": {
+        "number": 219,
+        "name": "Sync Sweep"
+       }
+      }
+     },
+     {
+      "ref": "tone.fxm_sw",
+      "set": "alternative: FXM ON on a saw; Matrix TVF ENV -> FXM DEPTH +",
+      "why": "",
+      "resolved": {
+       "ref": "tone.fxm_sw",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "common.mono_poly",
+      "set": "MONO",
+      "why": "",
+      "resolved": {
+       "ref": "common.mono_poly",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:35",
+      "set": "OVERDRIVE light",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:35",
+       "effect": "OVERDRIVE"
+      }
+     }
+    ]
+   },
+   {
+    "id": "synth.pad_carpet",
+    "name": "Warm pad ('carpet')",
+    "family": "Strings/Pad",
+    "factory": [
+     "Soft Pad 1",
+     "Soft Pad 2",
+     "Heaven Pad",
+     "Angelis Pad",
+     "Nu Epic Pad",
+     "Shimmer Pad",
+     "Voyager"
+    ],
+    "waves": [
+     {
+      "number": 124,
+      "name": "Warm Pad"
+     },
+     {
+      "number": 125,
+      "name": "OB2 Pad 1"
+     },
+     {
+      "number": 126,
+      "name": "OB2 Pad 2"
+     },
+     {
+      "number": 127,
+      "name": "D-50 Heaven"
+     },
+     {
+      "number": 185,
+      "name": "JP-8 Saw"
+     },
+     {
+      "number": 190,
+      "name": "Air Wave"
+     }
+    ],
+    "ss": [
+     14,
+     46,
+     62
+    ],
+    "summary": "Detuned saws or pad PCM, a moderate LPF with slow movement (slow LFO or a long filter envelope), a slow attack and long release, no velocity, chorus + a hall. Evolving: layers with different envelopes crossfading.",
+    "pitfalls": [],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "tone.wave_number",
+      "set": "124 Warm Pad / 125-126 OB2 Pad / 127 D-50 Heaven / detuned saws",
+      "why": "",
+      "resolved": {
+       "ref": "tone.wave_number",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 40-80, T4 60-100",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_depth_tvf",
+      "set": "small, very slow",
+      "why": "gentle movement",
+      "resolved": {
+       "ref": "tone.lfo_depth_tvf",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "common.analog_feel",
+      "set": "20-40",
+      "why": "",
+      "resolved": {
+       "ref": "common.analog_feel",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "matrix.source",
+      "set": "CC01 -> CUTOFF for hand-opened brightness",
+      "why": "",
+      "resolved": {
+       "ref": "matrix.source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "chorus.type",
+      "set": "CHORUS",
+      "why": "",
+      "resolved": {
+       "ref": "chorus.type",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL, long",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   },
+   {
+    "id": "voice.choir_formant",
+    "name": "Choir / vocal / formant sound",
+    "family": "Choir/Piano",
+    "factory": [
+     "Angels Choir",
+     "Aerial Choir",
+     "Humming",
+     "Gospel Hum",
+     "Vox Pad 1",
+     "SynVox 1",
+     "Jazz Dooos"
+    ],
+    "waves": [
+     {
+      "number": 131,
+      "name": "Female Ahs"
+     },
+     {
+      "number": 132,
+      "name": "Female Oos"
+     },
+     {
+      "number": 133,
+      "name": "Male Aahs"
+     },
+     {
+      "number": 134,
+      "name": "Jazz Doos"
+     },
+     {
+      "number": 136,
+      "name": "Gospel Hum"
+     },
+     {
+      "number": 234,
+      "name": "Aah Formant"
+     },
+     {
+      "number": 235,
+      "name": "Eeh Formant"
+     },
+     {
+      "number": 236,
+      "name": "Iih Formant"
+     },
+     {
+      "number": 237,
+      "name": "Ooh Formant"
+     },
+     {
+      "number": 238,
+      "name": "Uuh Formant"
+     }
+    ],
+    "ss": [
+     15,
+     23
+    ],
+    "summary": "Vowels are fixed formant peaks (ee 270/2300/3000 Hz, oo 300/870/2250, a 660/1700/2400 for an adult male; women's slightly higher/wider). Use choir or formant PCM or a HUMANIZER vowel filter; a slow attack, a little vibrato, chorus and hall. The AX-Synth has no vocoder/audio input.",
+    "pitfalls": [
+     "Don't promise vocoder sounds: there's no audio input."
+    ],
+    "file": "sound_recipes.toml",
+    "steps": [
+     {
+      "ref": "wave:131",
+      "set": "Female Ahs (132 Oos, 133 Male Aahs, 234-238 formant waves)",
+      "why": "",
+      "resolved": {
+       "ref": "wave:131",
+       "wave": {
+        "number": 131,
+        "name": "Female Ahs"
+       }
+      }
+     },
+     {
+      "ref": "tone.aenv_times",
+      "set": "T1 20-40",
+      "why": "",
+      "resolved": {
+       "ref": "tone.aenv_times",
+       "kind": "param"
+      }
+     },
+     {
+      "ref": "tone.lfo_fade_mode",
+      "set": "ON-IN, small pitch depth",
+      "why": "",
+      "resolved": {
+       "ref": "tone.lfo_fade_mode",
+       "kind": "param"
+      }
+     }
+    ],
+    "performance": [
+     {
+      "ref": "mfx.control_source",
+      "set": "CC01 -> HUMANIZER vowel",
+      "why": "vowel morph",
+      "resolved": {
+       "ref": "mfx.control_source",
+       "kind": "param"
+      }
+     }
+    ],
+    "effects": [
+     {
+      "ref": "mfx:9",
+      "set": "HUMANIZER",
+      "why": "",
+      "resolved": {
+       "ref": "mfx:9",
+       "effect": "HUMANIZER"
+      }
+     },
+     {
+      "ref": "reverb.type",
+      "set": "SRV HALL",
+      "why": "",
+      "resolved": {
+       "ref": "reverb.type",
+       "kind": "param"
+      }
+     }
+    ]
+   }
+  ],
+  "synth_secrets": [
+   {
+    "part": 1,
+    "title": "What's In A Sound?",
+    "published": "May 1999",
+    "url": "https://www.soundonsound.com/techniques/whats-sound",
+    "digest": "knowledge/sound-design/digests/01-whats-sound.md"
+   },
+   {
+    "part": 2,
+    "title": "The Physics Of Percussion",
+    "published": "Jun 1999",
+    "url": "https://www.soundonsound.com/techniques/physics-percussion",
+    "digest": "knowledge/sound-design/digests/02-physics-percussion.md"
+   },
+   {
+    "part": 3,
+    "title": "Modifiers & Controllers",
+    "published": "Jul 1999",
+    "url": "https://www.soundonsound.com/techniques/modifiers-controllers",
+    "digest": "knowledge/sound-design/digests/03-modifiers-controllers.md"
+   },
+   {
+    "part": 4,
+    "title": "Of Filters & Phase Relationships",
+    "published": "Aug 1999",
+    "url": "https://www.soundonsound.com/techniques/filters-phase-relationships",
+    "digest": "knowledge/sound-design/digests/04-filters-phase-relationships.md"
+   },
+   {
+    "part": 5,
+    "title": "Further With Filters",
+    "published": "Sep 1999",
+    "url": "https://www.soundonsound.com/techniques/further-filters",
+    "digest": "knowledge/sound-design/digests/05-further-filters.md"
+   },
+   {
+    "part": 6,
+    "title": "Of Responses & Resonance",
+    "published": "Oct 1999",
+    "url": "https://www.soundonsound.com/techniques/responses-resonance",
+    "digest": "knowledge/sound-design/digests/06-responses-resonance.md"
+   },
+   {
+    "part": 7,
+    "title": "Envelopes, Gates & Triggers",
+    "published": "Nov 1999",
+    "url": "https://www.soundonsound.com/techniques/envelopes-gates-triggers",
+    "digest": "knowledge/sound-design/digests/07-envelopes-gates-triggers.md"
+   },
+   {
+    "part": 8,
+    "title": "More About Envelopes",
+    "published": "Dec 1999",
+    "url": "https://www.soundonsound.com/techniques/more-about-envelopes",
+    "digest": "knowledge/sound-design/digests/08-more-about-envelopes.md"
+   },
+   {
+    "part": 9,
+    "title": "An Introduction To VCAs",
+    "published": "Jan 2000",
+    "url": "https://www.soundonsound.com/techniques/introduction-vcas",
+    "digest": "knowledge/sound-design/digests/09-introduction-vcas.md"
+   },
+   {
+    "part": 10,
+    "title": "Modulation",
+    "published": "Feb 2000",
+    "url": "https://www.soundonsound.com/techniques/modulation",
+    "digest": "knowledge/sound-design/digests/10-modulation.md"
+   },
+   {
+    "part": 11,
+    "title": "Amplitude Modulation",
+    "published": "Mar 2000",
+    "url": "https://www.soundonsound.com/techniques/amplitude-modulation",
+    "digest": "knowledge/sound-design/digests/11-amplitude-modulation.md"
+   },
+   {
+    "part": 12,
+    "title": "An Introduction To Frequency Modulation",
+    "published": "Apr 2000",
+    "url": "https://www.soundonsound.com/techniques/introduction-frequency-modulation",
+    "digest": "knowledge/sound-design/digests/12-introduction-frequency-modulation.md"
+   },
+   {
+    "part": 13,
+    "title": "More On Frequency Modulation",
+    "published": "May 2000",
+    "url": "https://www.soundonsound.com/techniques/more-frequency-modulation",
+    "digest": "knowledge/sound-design/digests/13-more-frequency-modulation.md"
+   },
+   {
+    "part": 14,
+    "title": "An Introduction To Additive Synthesis",
+    "published": "Jun 2000",
+    "url": "https://www.soundonsound.com/techniques/introduction-additive-synthesis",
+    "digest": "knowledge/sound-design/digests/14-introduction-additive-synthesis.md"
+   },
+   {
+    "part": 15,
+    "title": "An Introduction To ESPs & Vocoders",
+    "published": "Jul 2000",
+    "url": "https://www.soundonsound.com/techniques/introduction-esps-vocoders",
+    "digest": "knowledge/sound-design/digests/15-introduction-esps-vocoders.md"
+   },
+   {
+    "part": 16,
+    "title": "From Sample & Hold To Sample-rate Converters (1)",
+    "published": "Aug 2000",
+    "url": "https://www.soundonsound.com/techniques/sample-hold-sample-rate-converters-1",
+    "digest": "knowledge/sound-design/digests/16-sample-hold-sample-rate-converters-1.md"
+   },
+   {
+    "part": 17,
+    "title": "From Sample & Hold To Sample-rate Converters (2)",
+    "published": "Sep 2000",
+    "url": "https://www.soundonsound.com/techniques/sample-hold-sample-rate-converters-2",
+    "digest": "knowledge/sound-design/digests/17-sample-hold-sample-rate-converters-2.md"
+   },
+   {
+    "part": 18,
+    "title": "Priorities & Triggers",
+    "published": "Oct 2000",
+    "url": "https://www.soundonsound.com/techniques/priorities-triggers",
+    "digest": "knowledge/sound-design/digests/18-priorities-triggers.md"
+   },
+   {
+    "part": 19,
+    "title": "Duophony",
+    "published": "Nov 2000",
+    "url": "https://www.soundonsound.com/techniques/duophony",
+    "digest": "knowledge/sound-design/digests/19-duophony.md"
+   },
+   {
+    "part": 20,
+    "title": "Introducing Polyphony",
+    "published": "Dec 2000",
+    "url": "https://www.soundonsound.com/techniques/introducing-polyphony",
+    "digest": "knowledge/sound-design/digests/20-introducing-polyphony.md"
+   },
+   {
+    "part": 21,
+    "title": "From Polyphony To Digital Synths",
+    "published": "Jan 2001",
+    "url": "https://www.soundonsound.com/techniques/polyphony-digital-synths",
+    "digest": "knowledge/sound-design/digests/21-polyphony-digital-synths.md"
+   },
+   {
+    "part": 22,
+    "title": "From Springs, Plates & Buckets To Physical Modelling",
+    "published": "Feb 2001",
+    "url": "https://www.soundonsound.com/techniques/springs-plates-buckets-physical-modelling",
+    "digest": "knowledge/sound-design/digests/22-springs-plates-buckets-physical-modelling.md"
+   },
+   {
+    "part": 23,
+    "title": "Formant Synthesis",
+    "published": "Mar 2001",
+    "url": "https://www.soundonsound.com/techniques/formant-synthesis",
+    "digest": "knowledge/sound-design/digests/23-formant-synthesis.md"
+   },
+   {
+    "part": 24,
+    "title": "Synthesizing Wind Instruments",
+    "published": "Apr 2001",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-wind-instruments",
+    "digest": "knowledge/sound-design/digests/24-synthesizing-wind-instruments.md"
+   },
+   {
+    "part": 25,
+    "title": "Synthesizing Brass Instruments",
+    "published": "May 2001",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-brass-instruments",
+    "digest": "knowledge/sound-design/digests/25-synthesizing-brass-instruments.md"
+   },
+   {
+    "part": 26,
+    "title": "Brass Synthesis On A Minimoog",
+    "published": "Jun 2001",
+    "url": "https://www.soundonsound.com/techniques/brass-synthesis-minimoog",
+    "digest": "knowledge/sound-design/digests/26-brass-synthesis-minimoog.md"
+   },
+   {
+    "part": 27,
+    "title": "Roland SH101 & ARP Axxe Brass Synthesis",
+    "published": "Jul 2001",
+    "url": "https://www.soundonsound.com/techniques/roland-sh101-arp-axxe-brass-synthesis",
+    "digest": "knowledge/sound-design/digests/27-roland-sh101-arp-axxe-brass-synthesis.md"
+   },
+   {
+    "part": 28,
+    "title": "Synthesizing Plucked Strings",
+    "published": "Aug 2001",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-plucked-strings",
+    "digest": "knowledge/sound-design/digests/28-synthesizing-plucked-strings.md"
+   },
+   {
+    "part": 29,
+    "title": "The Theoretical Acoustic Guitar Patch",
+    "published": "Sep 2001",
+    "url": "https://www.soundonsound.com/techniques/theoretical-acoustic-guitar-patch",
+    "digest": "knowledge/sound-design/digests/29-theoretical-acoustic-guitar-patch.md"
+   },
+   {
+    "part": 30,
+    "title": "A Final Attempt To Synthesize Guitars",
+    "published": "Oct 2001",
+    "url": "https://www.soundonsound.com/techniques/final-attempt-synthesize-guitars",
+    "digest": "knowledge/sound-design/digests/30-final-attempt-synthesize-guitars.md"
+   },
+   {
+    "part": 31,
+    "title": "Synthesizing Percussion",
+    "published": "Nov 2001",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-percussion",
+    "digest": "knowledge/sound-design/digests/31-synthesizing-percussion.md"
+   },
+   {
+    "part": 32,
+    "title": "Practical Percussion Synthesis: Timpani",
+    "published": "Dec 2001",
+    "url": "https://www.soundonsound.com/techniques/practical-percussion-synthesis-timpani",
+    "digest": "knowledge/sound-design/digests/32-practical-percussion-synthesis-timpani.md"
+   },
+   {
+    "part": 33,
+    "title": "Synthesizing Drums: The Bass Drum",
+    "published": "Jan 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-drums-bass-drum",
+    "digest": "knowledge/sound-design/digests/33-synthesizing-drums-bass-drum.md"
+   },
+   {
+    "part": 34,
+    "title": "Practical Bass Drum Synthesis",
+    "published": "Feb 2002",
+    "url": "https://www.soundonsound.com/techniques/practical-bass-drum-synthesis",
+    "digest": "knowledge/sound-design/digests/34-practical-bass-drum-synthesis.md"
+   },
+   {
+    "part": 35,
+    "title": "Synthesizing Drums: The Snare Drum",
+    "published": "Mar 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-drums-snare-drum",
+    "digest": "knowledge/sound-design/digests/35-synthesizing-drums-snare-drum.md"
+   },
+   {
+    "part": 36,
+    "title": "Practical Snare Drum Synthesis",
+    "published": "Apr 2002",
+    "url": "https://www.soundonsound.com/techniques/practical-snare-drum-synthesis",
+    "digest": "knowledge/sound-design/digests/36-practical-snare-drum-synthesis.md"
+   },
+   {
+    "part": 37,
+    "title": "Analysing Metallic Percussion",
+    "published": "May 2002",
+    "url": "https://www.soundonsound.com/techniques/analysing-metallic-percussion",
+    "digest": "knowledge/sound-design/digests/37-analysing-metallic-percussion.md"
+   },
+   {
+    "part": 38,
+    "title": "Synthesizing Realistic Cymbals",
+    "published": "Jun 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-realistic-cymbals",
+    "digest": "knowledge/sound-design/digests/38-synthesizing-realistic-cymbals.md"
+   },
+   {
+    "part": 39,
+    "title": "Practical Cymbal Synthesis",
+    "published": "Jul 2002",
+    "url": "https://www.soundonsound.com/techniques/practical-cymbal-synthesis",
+    "digest": "knowledge/sound-design/digests/39-practical-cymbal-synthesis.md"
+   },
+   {
+    "part": 40,
+    "title": "Synthesizing Bells",
+    "published": "Aug 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-bells",
+    "digest": "knowledge/sound-design/digests/40-synthesizing-bells.md"
+   },
+   {
+    "part": 41,
+    "title": "Synthesizing Cowbells & Claves",
+    "published": "Sep 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-cowbells-claves",
+    "digest": "knowledge/sound-design/digests/41-synthesizing-cowbells-claves.md"
+   },
+   {
+    "part": 42,
+    "title": "Synthesizing Pianos",
+    "published": "Oct 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-pianos",
+    "digest": "knowledge/sound-design/digests/42-synthesizing-pianos.md"
+   },
+   {
+    "part": 43,
+    "title": "Synthesizing Acoustic Pianos On The Roland JX10 [Part 1]",
+    "published": "Nov 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-acoustic-pianos-roland-jx10-1102",
+    "digest": "knowledge/sound-design/digests/43-synthesizing-acoustic-pianos-roland-jx10-1102.md"
+   },
+   {
+    "part": 44,
+    "title": "Synthesizing Acoustic Pianos On The Roland JX10 [Part 2]",
+    "published": "Dec 2002",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-acoustic-piano-roland-jx10",
+    "digest": "knowledge/sound-design/digests/44-synthesizing-acoustic-piano-roland-jx10.md"
+   },
+   {
+    "part": 45,
+    "title": "Synthesizing Acoustic Pianos On The Roland JX10 [Part 3]",
+    "published": "Jan 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-acoustic-pianos-roland-jx10-part-3",
+    "digest": "knowledge/sound-design/digests/45-synthesizing-acoustic-pianos-roland-jx10-part-3.md"
+   },
+   {
+    "part": 46,
+    "title": "Synthesizing Strings: String Machines",
+    "published": "Feb 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-strings-string-machines",
+    "digest": "knowledge/sound-design/digests/46-synthesizing-strings-string-machines.md"
+   },
+   {
+    "part": 47,
+    "title": "Synthesizing Strings: PWM & String Sounds",
+    "published": "Mar 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-strings-pwm-string-sounds",
+    "digest": "knowledge/sound-design/digests/47-synthesizing-strings-pwm-string-sounds.md"
+   },
+   {
+    "part": 48,
+    "title": "Synthesizing Bowed Strings: The Violin Family",
+    "published": "Apr 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-bowed-strings-violin-family",
+    "digest": "knowledge/sound-design/digests/48-synthesizing-bowed-strings-violin-family.md"
+   },
+   {
+    "part": 49,
+    "title": "Practical Bowed-string Synthesis",
+    "published": "May 2003",
+    "url": "https://www.soundonsound.com/techniques/practical-bowed-string-synthesis",
+    "digest": "knowledge/sound-design/digests/49-practical-bowed-string-synthesis.md"
+   },
+   {
+    "part": 50,
+    "title": "Practical Bowed-string Synthesis (continued)",
+    "published": "Jun 2003",
+    "url": "https://www.soundonsound.com/techniques/practical-bowed-string-synthesis-continued",
+    "digest": "knowledge/sound-design/digests/50-practical-bowed-string-synthesis-continued.md"
+   },
+   {
+    "part": 51,
+    "title": "Articulation & Bowed-string Synthesis",
+    "published": "Jul 2003",
+    "url": "https://www.soundonsound.com/techniques/articulation-bowed-string-synthesis",
+    "digest": "knowledge/sound-design/digests/51-articulation-bowed-string-synthesis.md"
+   },
+   {
+    "part": 52,
+    "title": "Synthesizing Pan Pipes",
+    "published": "Aug 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-pan-pipes",
+    "digest": "knowledge/sound-design/digests/52-synthesizing-pan-pipes.md"
+   },
+   {
+    "part": 53,
+    "title": "Synthesizing Simple Flutes",
+    "published": "Sep 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-simple-flutes",
+    "digest": "knowledge/sound-design/digests/53-synthesizing-simple-flutes.md"
+   },
+   {
+    "part": 54,
+    "title": "Practical Flute Synthesis",
+    "published": "Oct 2003",
+    "url": "https://www.soundonsound.com/techniques/practical-flute-synthesis",
+    "digest": "knowledge/sound-design/digests/54-practical-flute-synthesis.md"
+   },
+   {
+    "part": 55,
+    "title": "Synthesizing Tonewheel Organs: Part 1",
+    "published": "Nov 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-tonewheel-organs-part-1",
+    "digest": "knowledge/sound-design/digests/55-synthesizing-tonewheel-organs-part-1.md"
+   },
+   {
+    "part": 56,
+    "title": "Synthesizing Tonewheel Organs: Part 2",
+    "published": "Dec 2003",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-tonewheel-organs-part-2",
+    "digest": "knowledge/sound-design/digests/56-synthesizing-tonewheel-organs-part-2.md"
+   },
+   {
+    "part": 57,
+    "title": "Synthesizing Hammond Organ Effects",
+    "published": "Jan 2004",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-hammond-organ-effects",
+    "digest": "knowledge/sound-design/digests/57-synthesizing-hammond-organ-effects.md"
+   },
+   {
+    "part": 58,
+    "title": "Synthesizing The Rest Of The Hammond Organ: Part 1",
+    "published": "Feb 2004",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-rest-hammond-organ-part-1",
+    "digest": "knowledge/sound-design/digests/58-synthesizing-rest-hammond-organ-part-1.md"
+   },
+   {
+    "part": 59,
+    "title": "Synthesizing The Rest Of The Hammond Organ: Part 2",
+    "published": "Mar 2004",
+    "url": "https://www.soundonsound.com/techniques/synthesizing-rest-hammond-organ-part-2",
+    "digest": "knowledge/sound-design/digests/59-synthesizing-rest-hammond-organ-part-2.md"
+   },
+   {
+    "part": 60,
+    "title": "From Analogue To Digital Effects",
+    "published": "Apr 2004",
+    "url": "https://www.soundonsound.com/techniques/analogue-digital-effects",
+    "digest": "knowledge/sound-design/digests/60-analogue-digital-effects.md"
+   },
+   {
+    "part": 61,
+    "title": "Creative Synthesis With Delays",
+    "published": "May 2004",
+    "url": "https://www.soundonsound.com/techniques/creative-synthesis-delays",
+    "digest": "knowledge/sound-design/digests/61-creative-synthesis-delays.md"
+   },
+   {
+    "part": 62,
+    "title": "More Creative Synthesis With Delays",
+    "published": "Jun 2004",
+    "url": "https://www.soundonsound.com/techniques/more-creative-synthesis-delays",
+    "digest": "knowledge/sound-design/digests/62-more-creative-synthesis-delays.md"
+   },
+   {
+    "part": 63,
+    "title": "The Secret Of The Big Red Button",
+    "published": "Jul 2004",
+    "url": "https://www.soundonsound.com/techniques/secret-big-red-button",
+    "digest": "knowledge/sound-design/digests/63-secret-big-red-button.md"
+   }
+  ],
+  "meta": {
+   "source": "Gordon Reid, 'Synth Secrets', Sound On Sound 1999-2004, 63 parts (https://www.soundonsound.com/series/synth-secrets-sound-sound)",
+   "evidence": "principle/descriptor meanings and recipe summaries = [3P] Synth Secrets (parts in 'ss'); all AX-Synth mappings (ax/steps/performance/effects, values, waves, factory Tones) = [I] inference, not hardware-verified",
+   "digests": "knowledge/sound-design/digests/NN-<slug>.md (per-part notes with AX-Synth translation)",
+   "wave_numbering": "wave N = internalWaveNameTableA[N-1] (strongly supported, unconfirmed on hardware)"
+  }
+ },
  "coverage": {
   "data_model_values_without_kb_entry": [
    "fm.pat.common.reserve0D",

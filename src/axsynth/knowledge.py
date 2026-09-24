@@ -61,3 +61,32 @@ def concept(concept_id: str) -> dict | None:
 
 def param(param_id: str) -> dict | None:
     return next((p for p in load()["params"] if p["id"] == param_id), None)
+
+
+# --------------------------------------------------------------------------
+# Sound design (knowledge/sound_design.toml, knowledge/sound_recipes.toml):
+# general "what settings produce what sounds" knowledge distilled from Gordon
+# Reid's Synth Secrets [3P], mapped onto AX-Synth parameters [I].
+# --------------------------------------------------------------------------
+def sound_design() -> dict:
+    """The whole sound-design section: principles, descriptors, recipes,
+    synth_secrets (part index with digest paths), meta."""
+    return load()["sound_design"]
+
+
+def principle(principle_id: str) -> dict | None:
+    return next((p for p in sound_design()["principles"] if p["id"] == principle_id), None)
+
+
+def recipe(recipe_id: str) -> dict | None:
+    return next((r for r in sound_design()["recipes"] if r["id"] == recipe_id), None)
+
+
+def descriptor(word: str) -> dict | None:
+    """Descriptor by id or by one of its terms, case-insensitive
+    (e.g. 'warm' -> the 'dark' descriptor, 'breathy' -> 'breathy')."""
+    w = word.strip().lower()
+    for d in sound_design()["descriptors"]:
+        if d["id"] == w or w in (t.lower() for t in d["terms"]):
+            return d
+    return None
