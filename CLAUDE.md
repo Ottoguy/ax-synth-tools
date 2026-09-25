@@ -1,13 +1,13 @@
 # CLAUDE.md: ax-synth-ai project context
 
-Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. Last updated 2026-09-23.
+Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. Last updated 2026-09-25.
 
 ## 1. Goal and current phase
 
 - **End goal:** the user describes a sound in natural language, an LLM produces a patch, and the patch reaches a **Roland AX-Synth** keytar via MIDI SysEx. There's an intermediate goal of a **simple GUI** with a few high-level "big knob" controls (abstracting the Roland Editor's ~825 parameters).
 - **Intended architecture** (user-specified separation; keep it):
   `natural language → LLM sound design → AX-Synth parameter model → patch representation → encoder → DT1 SysEx → hardware`
-- **Phase now: research / reverse engineering (phase 1) is complete on the file/doc side.** NEXT-STEPS step 2 (live Editor output via loopback, no synth) is **done** (`captures/live/`, `research/live-capture-analysis.md`). Hardware verification has **not** started. No synth has been connected, and nothing has ever been transmitted.
+- **Phase now: research / reverse engineering (phase 1) is complete on the file/doc side.** NEXT-STEPS step 2 (live Editor output via loopback, no synth) is **done** (`captures/live/`, `research/live-capture-analysis.md`). Step 0 (the user's setup) is **done** (`captures/setup.md`). Hardware verification has **not** started, and nothing has ever been transmitted by us.
 - **Not built yet, on purpose:** AI preset generator, GUI, MIDI I/O code. Don't build these unless the user asks. Keep code evidence-driven and small; no speculative application code.
 - **The user's checklist of manual tasks** (hardware steps, captures, decisions) is `NEXT-STEPS.md`. Results go under `captures/` (`live/` exists; next: `mitm/`, `backup/`, `bulkdump/`, `rq1/`, …). The user saves MIDI-OX *Monitor* text logs (Windows may add a double `.txt.txt`), and may skip writing notes.md; write it for them from their message. When the user says "step N done", read those captures, decode them with the tools, and update research, tests and NEXT-STEPS.
 
@@ -19,14 +19,15 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 4. **`dumps/AX-Synth Librarian Clean export.mid` must never be played to the synth**: 2,304 DT1s that would overwrite all 256 User patches with INIT PATCH. (Recovery: factory reset, Owner's Manual p.34, which restores factory sounds but loses user edits.)
 5. **Don't hand-type parameter data.** Everything is generated from Roland sources by `research/tools/`. Keep provenance (file + line or page) on every fact.
 6. **Label evidence** in research docs: **[F]** our Roland files, **[D]** official Roland documentation, **[3P]** third party, **[I]** inference. Don't present [I] as fact.
-7. **Hardware facts that constrain instructions to the user:** the synth has a **3-character 7-segment LED display** (it can't show names, waves or values, so verify via the Editor's READ or an RQ1 dump), and the synth's panel **[WRITE] stores only FAVORITE/system settings, never sound edits**. Sounds are stored only via Editor/Librarian SysEx.
+7. **The user's setup** (`captures/setup.md`): USB directly to Windows 10, driver mode "Gen" (OS generic, effectively one program per port; Editor manual p.8), port name **"Roland AX-Synth"**, **firmware 2.01** (newer than all our v1.00-era docs; Roland published no update, so it was probably factory-installed [I]). The synth is second hand and a few User patches may be non-factory; diff the backup against the factory list. Don't tell the user to switch driver mode (Roland's Uen driver stops at Windows 8).
+8. **Hardware facts that constrain instructions to the user:** the synth has a **3-character 7-segment LED display** (it can't show names, waves or values, so verify via the Editor's READ or an RQ1 dump), and the synth's panel **[WRITE] stores only FAVORITE/system settings, never sound edits**. Sounds are stored only via Editor/Librarian SysEx.
 
 ## 3. Environment (Windows 10, PowerShell 5.1)
 
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**48 tests, all passing**). No pytest.
+- Tests: `py -3 -m unittest discover -s tests` (**49 tests, all passing**). No pytest.
 - Git repo, branch `main`, remote `origin` = github.com/Ottoguy/ax-synth-tools. Commit/push only when the user asks. `.gitignore`: see §9.
 
 ## 4. Repository map
@@ -59,6 +60,7 @@ ax-synth-ai/
 ├── patches/                  third-party forum patches (.a8e) + author's description; test fixtures; check license before publishing
 │   ├── guitar.a8e            "SearingGtr 1" tuned: "muted chug" layer, beam=CC71
 │   └── guitar01.a8e          "SearingGtr 1" tuned: CC70 "feedback" works, beam=CC70, +24 sine layer
+├── captures/setup.md         the user's hardware setup (step 0): USB direct, driver "Gen", port "Roland AX-Synth", firmware 2.01
 ├── captures/live/           user's MIDI-OX logs of Editor/Librarian live output (step 2, no synth) + notes.md; test fixtures
 ├── reference/synth-secrets/  [git-ignored, copyrighted] 63 Synth Secrets articles as Markdown + index.{md,json} (fetch_synth_secrets.py)
 ├── knowledge/                LLM/human KNOWLEDGE BASE: meaning of every parameter & effect type (see knowledge/README.md)
@@ -74,7 +76,7 @@ ax-synth-ai/
 │   ├── sysex.py              DT1/RQ1 build/parse, checksum, whole-patch encoder, .syx/SMF readers (no MIDI I/O)
 │   ├── factory.py            factory Tone list access
 │   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
-├── tests/test_schema.py      48 evidence tests (§10)
+├── tests/test_schema.py      49 evidence tests (§10)
 └── research/
     ├── README.md             index: question -> file
     ├── REPORT.md             MAIN findings report: known / suspected / unknown / next experiments / files
@@ -142,7 +144,7 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 | `fetch_synth_secrets.py` | `[outdir] [--force]` | download the 63 Synth Secrets articles as clean Markdown (only network tool; output git-ignored) |
 | `a8_files.py` | `<file.a8e/.a8l> [--all] [--json]` | parse Koa data / Librarian files, decode all values, flag inactive union members |
 | `describe_a8.py` | `<A> [B] [--all]` | non-default active values with labels; or A-vs-B diff; flags out-of-range |
-| `midiox_log.py` | `<log.txt>... [--syx out.syx]` | MIDI-OX Monitor text log → per-message timestamp/gap/IN PORT, length+checksum check, every covered parameter decoded (User area mapped to patch paths, effect members for the type seen in the log) |
+| `midiox_log.py` | `<log.txt>... [--syx out.syx]` | MIDI-OX Monitor text log → per-message timestamp/gap/IN PORT, length+checksum check, Identity Reply fields diffed against the doc, every covered parameter decoded (User area mapped to patch paths, effect members for the type seen in the log) |
 | `smf_inspect.py` | `<file.mid> [--summary]` | every SMF event with ticks; Roland SysEx header, address, length, checksum |
 | `dump_experiment.py` | `make-requests <out.syx>` · `decode <in.syx or .mid>` · `a8-to-syx <patch.a8e> <out.syx>` | build RQ1 file; decode DT1 stream into named params (active union members only, enum labels); patch → Temporary-only DT1s |
 | `exe_strings.py`, `inventory.py`, `pdf2txt.py` | see §5 | |
@@ -158,7 +160,7 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 
 `sysex.py`
 - Constants: `ROLAND=0x41`, `MODEL_ID=00 00 3C`, `DEFAULT_DEVICE=0x10`, `RQ1=0x11`, `DT1=0x12`, `TEMPORARY_PATCH`, `PATCH_BLOCKS` (9 (name, offset) in Roland's order)
-- `checksum(body)`, `build_dt1(addr, data, device)`, `build_rq1(addr, size, device)`, `identity_request(device)`, `parse(msg) -> RolandMessage(device, model_id, command, address, payload, checksum_ok)`, `split_sysex(bytes)`, `smf_sysex(bytes)`
+- `checksum(body)`, `build_dt1(addr, data, device)`, `build_rq1(addr, size, device)`, `identity_request(device)`, `IDENTITY_REPLY_DOC`, `parse_identity_reply(msg) -> IdentityReply(device, manufacturer, family, family_number, revision)` + `.differences_from_doc()`, `parse(msg) -> RolandMessage(device, model_id, command, address, payload, checksum_ok)`, `split_sysex(bytes)`, `smf_sysex(bytes)`
 - `user_patch_address(n)`, `patch_messages(blocks: {name: image}, base=TEMPORARY_PATCH) -> 9 DT1` (**byte-identical to Roland's export**), `roland_export_delay_ticks(msg_len, ppq=96, bpm=120)`
 
 `knowledge.py` (reads `knowledge/knowledge.json`)
@@ -174,11 +176,11 @@ Ignored: `original-roland-files/**/*.exe`, `original-roland-files/**/*.bmp`, `do
 
 ## 10. Test coverage (`tests/test_schema.py`)
 
-`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `LiveEditorCaptures` (captured value edits = our DT1 bytes, `00 81` → `01 01`, MFX type change = schema-default block, Identity Request ×2 @3 s, WRITE name RQ1) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API, sound-design section: 63 digests/parts, counts, lookups).
+`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1, Identity Reply parse/diff) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `LiveEditorCaptures` (captured value edits = our DT1 bytes, `00 81` → `01 01`, MFX type change = schema-default block, Identity Request ×2 @3 s, WRITE name RQ1) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API, sound-design section: 63 digests/parts, counts, lookups).
 
 ## 11. Core technical facts (quick reference; details in `research/`)
 
-**SysEx.** `F0 41 <dev=10> 00 00 3C <11 RQ1 | 12 DT1> <addr×4> <data | size×4> <sum> F7`, where `sum = (128 − Σ(addr+data) mod 128) mod 128`. Addresses are 7-bit bytes, MSB first, and arithmetic is **base-128**. Identity reply: `F0 7E 10 06 02 41 3C 02 00 00 00 01 00 00 F7`.
+**SysEx.** `F0 41 <dev=10> 00 00 3C <11 RQ1 | 12 DT1> <addr×4> <data | size×4> <sum> F7`, where `sum = (128 − Σ(addr+data) mod 128) mod 128`. Addresses are 7-bit bytes, MSB first, and arithmetic is **base-128**. Identity reply (doc v1.00): `F0 7E 10 06 02 41 3C 02 00 00 00 01 00 00 F7`; the user's firmware-2.01 unit may report another revision.
 
 **Address map.**
 
@@ -269,6 +271,7 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - SystemController size.
 - Whether a DT1 to `30 …` commits to flash.
 - The `0F` write handshake payloads.
+- What firmware 2.01 changed vs the v1.00 docs (Identity Reply revision, factory sounds, block sizes).
 - The Identity Reply fields the Editor checks, and the RQ1 sequence READ/SYNC send after it (capture with MIDI-OX in the middle, NEXT-STEPS 3.0/3.1).
 - FAVORITE, USB-driver mode and sleep storage locations (Bulk Dump capture).
 - Exact stored factory names.

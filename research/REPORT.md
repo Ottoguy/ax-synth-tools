@@ -57,6 +57,11 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
     - the Matrix sources AFTERTOUCH (the knob), CC01 and the D-Beam CC routed to LEVEL/CUTOFF/LFO depth reproduce the "hand-controlled" articulation Reid found most realistic (SS50/51)
     - Structure ring-mod on both tone pairs matches the "pairs of modulated squares" cymbal recipe (SS39)
     - the AX-Synth lacks oscillator sync, audio-rate LFOs and an audio input; the substitutes are documented
+17. **The user's hardware [user report, `captures/setup.md`, 2026-09-25].**
+    - USB directly to Windows 10, driver mode **"Gen"** (OS generic driver), and one port pair named **"Roland AX-Synth"**. The Editor manual p.8 [D] warns that the Editor and Librarian may not both work over the generic driver, so captures go through MIDI-OX as the only program holding the port (NEXT-STEPS 3.0).
+    - **Firmware 2.01.** Every document we have is older: OM Oct 2009, MIDI Implementation v1.00 Jan 2010, Editor/Librarian v1.00. Roland's support page offers no firmware update and no newer Editor (checked 2026-09-25), so 2.01 is probably the factory-installed version of later units [I]. What it changed is undocumented.
+    - The unit is second hand, and some User patches may not be factory. The backup has to be diffed against the factory list before it is used as the factory corpus.
+    - `sysex.parse_identity_reply()` and `midiox_log.py` decode the Identity Reply and report every field that differs from the doc (the expected candidate is the software revision `00 01 00 00`).
 
 ## What we strongly suspect (evidence-backed, unverified)
 
@@ -78,7 +83,8 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | Area | Open question |
 |---|---|
 | SysEx | Whether the synth accepts RQ1 for a whole block and how it packetizes replies (doc: ≤256-byte packets ~20 ms apart); the *minimum* DT1 spacing it tolerates. Roland's software uses device ID `10`, 31,250-baud time + 20 ms between whole blocks in exports, and **no pacing at all** for live value edits (gaps down to 1 ms) |
-| Identity Reply | Which fields of the reply the Editor checks (the doc gives `F0 7E 10 06 02 41 3C 02 00 00 00 01 00 00 F7`). This gates READ/SYNC/WRITE |
+| Identity Reply | Which fields of the reply the Editor checks (the doc gives `F0 7E 10 06 02 41 3C 02 00 00 00 01 00 00 F7`). This gates READ/SYNC/WRITE. The user's unit runs **firmware 2.01**, so its software revision probably differs from the doc; whether Editor v1.00 accepts it is the first thing the MIDI-OX capture shows |
+| Firmware 2.01 | What changed since the v1.00-era documents: factory sounds (the OM p.3 warns of "newer sounds"), block sizes or new parameters. Settled by the backup names and RQ1 reply lengths vs `Schema.struct_size` |
 | SystemController | Doc size `50` (includes `00 4F` Portamento Mode, which the Owner's Manual confirms exists as the SuperNATURAL Hld/SUt setting) vs script/`.a8e` size `4F`. An RQ1 of size `50` settles it |
 | Undocumented storage | Where FAVORITE memories (2×8: Tone + volume + reverb send), USB driver mode (Gen/Uen) and sleep interval are stored. A synth-initiated Bulk Dump capture should reveal these areas |
 | Stored vs printed names | Exact 12-character stored names of the factory Tones ("Vintage Org 1" is 13 characters as printed) |
@@ -145,6 +151,6 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
 | `src/axsynth/sysex.py` | Checksum, DT1/RQ1/Identity Request builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
 | `captures/live/` | User's MIDI-OX logs of the Editor/Librarian live output (step 2) + `notes.md` |
-| `tests/test_schema.py` | 48 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `tests/test_schema.py` | 49 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

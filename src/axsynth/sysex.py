@@ -46,6 +46,35 @@ def identity_request(device: int = DEFAULT_DEVICE) -> bytes:
     return bytes([0xF0, 0x7E, device, 0x06, 0x01, 0xF7])
 
 
+# Identity Reply as printed in the MIDI Implementation v1.00 (Jan 2010, p.6).
+# The user's unit runs firmware 2.01 (captures/setup.md), so its software
+# revision bytes may differ from the documented 00 01 00 00 [I].
+IDENTITY_REPLY_DOC = bytes.fromhex("F07E100602413C02000000010000F7")
+
+
+@dataclass(frozen=True)
+class IdentityReply:
+    device: int
+    manufacturer: int
+    family: bytes           # 2 bytes, doc: 3C 02
+    family_number: bytes    # 2 bytes, doc: 00 00
+    revision: bytes         # 4 bytes, doc: 00 01 00 00
+
+    def differences_from_doc(self) -> list[str]:
+        doc = parse_identity_reply(IDENTITY_REPLY_DOC)
+        return [f"{f}: {getattr(self, f).hex(' ').upper() if isinstance(getattr(self, f), bytes) else f'{getattr(self, f):02X}'}"
+                f" (doc {getattr(doc, f).hex(' ').upper() if isinstance(getattr(doc, f), bytes) else f'{getattr(doc, f):02X}'})"
+                for f in ("device", "manufacturer", "family", "family_number", "revision")
+                if getattr(self, f) != getattr(doc, f)]
+
+
+def parse_identity_reply(msg: bytes) -> IdentityReply:
+    """Universal Identity Reply: F0 7E dev 06 02 mm ff ff nn nn rr rr rr rr F7."""
+    if len(msg) != 15 or msg[:2] != b"\xF0\x7E" or msg[3:5] != b"\x06\x02" or msg[-1] != 0xF7:
+        raise ValueError("not a 15-byte Universal Identity Reply")
+    return IdentityReply(msg[2], msg[5], bytes(msg[6:8]), bytes(msg[8:10]), bytes(msg[10:14]))
+
+
 def build_rq1(address: int | bytes, size: int, device: int = DEFAULT_DEVICE) -> bytes:
     from .schema import int_to_addr
     body = _addr(address) + int_to_addr(size)

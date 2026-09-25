@@ -100,7 +100,13 @@ def describe(msg, active):
     if msg[:2] == b"\xF0\x7E" and len(msg) >= 6 and msg[3:5] == b"\x06\x01":
         return [f"Universal Identity Request, device ID {msg[2]:02X}"]
     if msg[:2] == b"\xF0\x7E" and len(msg) >= 6 and msg[3:5] == b"\x06\x02":
-        return [f"Universal Identity Reply, device ID {msg[2]:02X}: {msg[5:-1].hex(' ').upper()}"]
+        head = f"Universal Identity Reply, device ID {msg[2]:02X}: {msg[5:-1].hex(' ').upper()}"
+        try:
+            diff = sysex.parse_identity_reply(bytes(msg)).differences_from_doc()
+        except ValueError as e:
+            return [head, f"  {e}"]
+        return [head, "  differs from MIDI Implementation p.6: " + "; ".join(diff) if diff
+                else "  identical to MIDI Implementation p.6"]
     try:
         r = sysex.parse(msg)
     except (ValueError, IndexError):

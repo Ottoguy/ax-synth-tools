@@ -20,18 +20,17 @@
 
 ---
 
-## Step 0: Tell me about your setup (10 minutes), still open
+## Step 0: Your setup ✅ done (2026-09-25)
 
-Write the answers in `captures/setup.md` (create the folder):
+Your answers are in `captures/setup.md`. What they mean:
 
-- [ ] How the synth connects: **USB cable directly**, or a **MIDI interface + 5-pin cables**? Which interface?
-- [ ] USB driver mode on the synth: hold **[SHIFT]** and press **PGM CHANGE [INC]**. The display shows **"Gen"** (Windows generic driver) or **"Uen"** (Roland driver). Just note it, then release [SHIFT] **without** pressing WRITE.
-- [ ] The exact **MIDI port names** Windows shows (e.g. in the Editor's *Setup → Set Up MIDI Devices*).
-- [ ] **Firmware version**: switch off, hold **VARIATION [+] + [–] + TONE [8] (CHOIR/PIANO)** and switch on. Note the number, then switch off and on again normally (Owner's Manual p.34).
-- [ ] The synth's **MIDI channel**, if you know it (it transmits and receives on the same one; factory default is 1).
-- [ ] Have you ever edited or overwritten the synth's stored sounds with the Editor/Librarian, or run a factory reset?
-
-*(No Device ID question after all: the Owner's Manual shows there is no such setting.)*
+- **USB cable directly, driver mode "Gen", port "Roland AX-Synth".** With Windows' own driver, only one program can use the synth's port at a time. Roland's Editor manual (p.8) warns that the Editor and Librarian may not both work over it. That's exactly why step 3.0 puts MIDI-OX in the middle: MIDI-OX is the only program that opens "Roland AX-Synth", and the Editor and Librarian talk to MIDI-OX. **Don't change the driver mode.** Roland's own driver (Uen) only exists for Windows up to 8, so it's a last resort.
+- **Firmware 2.01.** This is newer than every document we have: the manuals from 2009, the MIDI Implementation v1.00 from 2010 and the Editor/Librarian v1.00. Roland never published a firmware update, so your synth probably came from the factory with 2.01. It probably changes little, but three things are now worth watching in step 3:
+  - The synth's answer to the Editor's "who's there?" question may report a different version than Roland's document. My log tool now decodes the answer and prints any difference.
+  - If the Editor refuses to READ even with the synth connected, the version check could be the reason. Tell me the exact error.
+  - The stored sounds and the data layout could differ slightly from the 2009 documents. The backup will show this.
+- **Possibly overwritten sounds (second hand).** No problem. When I get the backup, I'll compare all 256 names with the factory list and mark any slot that differs, so the AI never mistakes an old owner's sound for a factory one.
+- *Still unknown, optional:* your MIDI channel. It doesn't matter for anything we send (SysEx), and the factory default is 1.
 
 ---
 
@@ -70,24 +69,24 @@ Editor/Librarian <── loopMIDI "loopAX-back" <── MIDI-OX <── AX-Synth
 ```
 
 1. In loopMIDI, add a second port, `loopAX-back`.
-2. MIDI-OX, *Options → MIDI Devices*: **inputs** `loopAX` + the AX-Synth port; **outputs** the AX-Synth port + `loopAX-back`.
+2. **Close the Editor and Librarian first**, because only one program can hold the synth's port (step 0). Then in MIDI-OX, *Options → MIDI Devices*: **inputs** `loopAX` + `Roland AX-Synth`; **outputs** `Roland AX-Synth` + `loopAX-back`.
 3. *View → Port Routings*: keep **exactly two** connections, and delete any others MIDI-OX added automatically:
-   - `loopAX` (in) → AX-Synth (out)
-   - AX-Synth (in) → `loopAX-back` (out)
+   - `loopAX` (in) → `Roland AX-Synth` (out)
+   - `Roland AX-Synth` (in) → `loopAX-back` (out)
 
-   ⚠ There must **never** be a route from AX-Synth (in) to AX-Synth (out): the synth's own data would be sent straight back into it. If unsure, send me a screenshot of the routing window before continuing.
+   ⚠ There must **never** be a route from `Roland AX-Synth` (in) to `Roland AX-Synth` (out): the synth's own data would be sent straight back into it. If unsure, send me a screenshot of the routing window before continuing.
 4. Make sure *Options → Pass SysEx* is ticked, and keep the large SysEx buffers from step 2.
 5. Editor and Librarian, *Setup → Set Up MIDI Devices*: **Output = `loopAX`, Input = `loopAX-back`**. (This also avoids the "Generic driver can't be shared between Editor and Librarian" problem, because only MIDI-OX opens the synth's port.)
-6. Test: press **READ** in the Editor. If the error from step 2 is gone, the route works.
+6. Test: press **READ** in the Editor. If the error from step 2 is gone, the route works. If it still says "Unable to read/write data.", save the MIDI-OX log anyway as `captures/mitm/00-read-failed.txt`. It shows whether the synth answered and what version it reported, which tells us whether the problem is the routing or the Editor rejecting firmware 2.01.
 
-If this setup gives you trouble, skip it: connect the Editor/Librarian directly to the synth and do 3.1 without captures.
+If this setup gives you trouble, skip it: close MIDI-OX, connect the Editor (or the Librarian, **one at a time**) directly to `Roland AX-Synth` and do 3.1 without captures.
 
 ### 3.1 Capture the read conversation, then back up everything (do this before anything else is sent to the synth)
 Clear the MIDI-OX log before each capture and save it afterwards, as in step 2:
 
 - [ ] Librarian: **Read Selected** on one row (1-1) → `captures/mitm/01-librarian-read-selected.txt`
 - [ ] Editor: **READ** → `captures/mitm/02-editor-read.txt` (reads the sound currently selected on the synth)
-- [ ] Librarian: **Read All Data**. This *reads* all 256 sounds from the synth. The log isn't needed here, and it may be too long for MIDI-OX anyway.
+- [ ] Librarian: **Read All Data** (if you connected directly, close the Editor first). This *reads* all 256 sounds from the synth. The log isn't needed here, and it may be too long for MIDI-OX anyway.
 - [ ] **Save** it as `captures/backup/ax-synth-backup-YYYY-MM-DD.a8l`.
 - [ ] Also **File → Export SMF** to `captures/backup/ax-synth-backup-YYYY-MM-DD.mid`.
 - [ ] Put a copy somewhere outside this project (cloud drive, USB stick).

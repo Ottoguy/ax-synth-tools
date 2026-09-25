@@ -154,6 +154,19 @@ class SysEx(unittest.TestCase):
         self.assertEqual(m[7:15], bytes([0x1F, 0, 0, 0, 0, 0, 0, 0x4F]))
         self.assertTrue(sysex.parse(m).checksum_ok)
 
+    def test_identity_reply_doc_fields(self):
+        r = sysex.parse_identity_reply(sysex.IDENTITY_REPLY_DOC)
+        self.assertEqual((r.device, r.manufacturer), (0x10, sysex.ROLAND))
+        self.assertEqual((r.family, r.family_number, r.revision),
+                         (bytes([0x3C, 0x02]), bytes(2), bytes([0, 1, 0, 0])))
+        self.assertEqual(r.differences_from_doc(), [])
+        other = bytearray(sysex.IDENTITY_REPLY_DOC)
+        other[10:14] = bytes([0, 2, 0, 1])   # hypothetical revision, e.g. firmware 2.01
+        self.assertEqual(sysex.parse_identity_reply(bytes(other)).differences_from_doc(),
+                         ["revision: 00 02 00 01 (doc 00 01 00 00)"])
+        with self.assertRaises(ValueError):
+            sysex.parse_identity_reply(sysex.identity_request())
+
 
 class RolandSmfExports(unittest.TestCase):
     """dumps/: 'Export SMF' from the Editor and Librarian (INIT data, no synth
