@@ -71,7 +71,9 @@ class AddressesMatchOfficialMap(unittest.TestCase):
 
     def test_known_discrepancy_system_controller(self):
         # doc: Total Size 00 00 00 50 (includes 00 4F Portament Mode);
-        # Script.xml: 00 00 00 4F. Kept visible until hardware settles it.
+        # Script.xml: 00 00 00 4F. The hardware answers an RQ1 of size 0x50
+        # with 80 bytes (captures/rq1/, SynthRequests), so the doc is right
+        # and the Editor's model omits the last byte.
         self.assertEqual(S.struct_size("SystemController"), 0x4F)
 
     def test_step_pitch_shifter_anomaly_resolves_to_doc_slots(self):
@@ -454,3 +456,264 @@ class LiveEditorCaptures(unittest.TestCase):
         m = self.msgs("07-write")
         rq = sysex.build_rq1(sysex.user_patch_address(0), P["fm.pat.common.patchName"].size)
         self.assertEqual(m, [rq, rq, sysex.identity_request(), sysex.identity_request()])
+
+
+INITIAL_A8E = ROOT / "original-roland-files/Script/A8EE/InitialData.a8e"
+BACKUP = ROOT / "captures/backup/ax-synth-backup-2026-09-26.mid"
+
+
+def initial_blocks():
+    """Leaf-struct images of the Editor's blank document, keyed by path without 'fm.'."""
+    import a8_files
+    buf = INITIAL_A8E.read_bytes()
+    return {b["path"].removeprefix("fm."): buf[b["file_offset"]:b["file_offset"] + b["size"]]
+            for b in a8_files.parse(INITIAL_A8E, S)["blocks"]}
+
+
+class SynthConversation(unittest.TestCase):
+    """captures/mitm/*.txt: Editor/Librarian <-> synth (firmware 2.01) through
+    MIDI-OX, both directions (port 1 = software -> synth, port 3 = synth ->
+    software). NEXT-STEPS 3.0/3.1; research/mitm-capture-analysis.md."""
+
+    @classmethod
+    def setUpClass(cls):
+        import midiox_log
+        cls.logs = {f.stem: [(ts, str(port), bytes(m)) for ts, port, _, m in midiox_log.read_log(f)]
+                    for f in (ROOT / "captures" / "mitm").glob("*.txt")}
+
+    def replies(self, stem):
+        return {bytes(r.address): r.payload for r in
+                (sysex.parse(m) for _, p, m in self.logs[stem] if p == "3" and m[1] == sysex.ROLAND)}
+
+    def test_identity_reply_equals_doc_despite_firmware_2_01(self):
+        self.assertEqual(len(self.logs), 3)
+        for stem, log in self.logs.items():
+            self.assertEqual(log[0][1:], ("1", sysex.identity_request()), stem)
+            self.assertEqual(log[1][1:], ("3", sysex.IDENTITY_REPLY_DOC), stem)
+
+    def test_every_rq1_answered_by_one_dt1_of_exactly_that_block(self):
+        n = 0
+        for stem in ("01-librarian-read-selected", "02-editor-read"):
+            log = self.logs[stem][2:]
+            self.assertEqual(len(log) % 2, 0)
+            for (_, p_rq, rq), (_, p_dt, dt) in zip(log[::2], log[1::2]):
+                q, r = sysex.parse(rq), sysex.parse(dt)
+                self.assertEqual((p_rq, q.command, p_dt, r.command), ("1", sysex.RQ1, "3", sysex.DT1))
+                self.assertTrue(r.checksum_ok)
+                self.assertEqual(r.address, q.address)
+                self.assertEqual(len(r.payload), addr_to_int(q.payload))   # no packetization up to 154 B
+                n += 1
+        self.assertEqual(n, 10 + 14)
+
+    def test_librarian_read_selected_reads_user_patch_0_block_by_block(self):
+        rqs = [sysex.parse(m) for _, p, m in self.logs["01-librarian-read-selected"][2:] if p == "1"]
+        self.assertEqual((fmt_addr(rqs[0].address), addr_to_int(rqs[0].payload)), ("01 00 00 04", 2))
+        self.assertEqual([addr_to_int(r.address) for r in rqs[1:]],
+                         [sysex.user_patch_address(0) + off for _, off in sysex.PATCH_BLOCKS])
+        self.assertEqual([addr_to_int(r.payload) for r in rqs[1:]],
+                         [S.struct_size(S.child_types("Patch")[name.split("[")[0]][0])
+                          for name, _ in sysex.PATCH_BLOCKS])
+
+    def test_editor_read_reads_setup_system_and_temporary(self):
+        rqs = [(addr_to_int(r.address), addr_to_int(r.payload)) for r in
+               (sysex.parse(m) for _, p, m in self.logs["02-editor-read"][2:] if p == "1")]
+        self.assertEqual([(fmt_addr(int_to_addr(a)), s) for a, s in rqs[:5]],
+                         [("01 00 00 04", 1), ("01 00 00 05", 1), ("01 00 00 00", 0x34),
+                          ("02 00 00 00", 0x1E), ("02 00 40 00", 0x4F)])
+        self.assertEqual([a for a, _ in rqs[5:]],
+                         [sysex.TEMPORARY_PATCH + off for _, off in sysex.PATCH_BLOCKS])
+
+    def test_sync_writes_back_exactly_what_read_received(self):
+        sync = [sysex.parse(m) for _, p, m in self.logs["03-editor-sync"][2:]]
+        self.assertTrue(all(r.command == sysex.DT1 for r in sync))
+        read = self.replies("02-editor-read")
+        del read[bytes([1, 0, 0, 4])], read[bytes([1, 0, 0, 5])]           # the 1-byte bank-select reads
+        self.assertEqual({bytes(r.address): r.payload for r in sync}, read)  # Setup, System, Temporary
+        self.assertFalse(any(p == "3" for _, p, _ in self.logs["03-editor-sync"][2:]))
+
+    def test_read_returned_the_editors_initial_document(self):
+        """Setup, System and Temporary on the synth equalled InitialData.a8e,
+        so the blank document had been sent to the synth earlier [I]."""
+        init = initial_blocks()
+        got = self.replies("02-editor-read")
+        self.assertEqual(got[bytes([1, 0, 0, 0])], init["setup"])
+        self.assertEqual(got[bytes([2, 0, 0, 0])], init["system.common"])
+        self.assertEqual(got[bytes([2, 0, 0x40, 0])], init["system.controller"])
+        tmp = sysex.patch_blocks([m for _, p, m in self.logs["02-editor-read"] if p == "3"])["temporary"]
+        self.assertEqual(tmp, {name: init[f"pat.{name}"] for name, _ in sysex.PATCH_BLOCKS})
+
+
+@unittest.skipUnless(BACKUP.exists(), "user's backup not present")
+class SynthBackup(unittest.TestCase):
+    """captures/backup/: Librarian Read All Data -> Export SMF of the user's
+    synth (second-hand unit, firmware 2.01)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import backup_summary
+        cls.msgs = sysex.smf_sysex(BACKUP.read_bytes())
+        cls.patches = sysex.patch_blocks(cls.msgs)
+        cls.rows = backup_summary.summarize(BACKUP, S)
+
+    def test_same_wire_format_as_librarian_clean_export(self):
+        self.assertEqual(len(self.msgs), 2304)
+        self.assertEqual(sorted(self.patches), list(range(256)))
+        for blocks in self.patches.values():
+            self.assertEqual([len(blocks[n]) for n, _ in sysex.PATCH_BLOCKS], [79, 145, 84, 83, 41] + [154] * 4)
+        self.assertEqual(sysex.patch_messages(self.patches[5], sysex.user_patch_address(5)), self.msgs[45:54])
+
+    def test_user_patch_n_is_factory_tone_n(self):
+        """Confirms n = LSB*128 + PC - 1 / Librarian slot f-v: 254/256 stored
+        names equal the Owner's Manual list. The other two are Reso Bs 2/3,
+        stored as 'Reso Bs 1'/'Reso Bs 2' (different sounds; cause unknown)."""
+        differ = [(r["user_patch"], r["factory_name"], r["stored_name"]) for r in self.rows
+                  if not r["name_matches_factory"]]
+        self.assertEqual(differ, [(73, "Reso Bs 2", "Reso Bs 1"), (74, "Reso Bs 3", "Reso Bs 2")])
+        self.assertNotEqual(self.patches[64], self.patches[73])   # 3-1 'Reso Bs 1' is another sound
+
+    def test_wave_numbering_confirmed_by_factory_patches(self):
+        waves = {r["factory_name"]: [t["wave_name"] for t in r["tones"] if t["on"]] for r in self.rows}
+        self.assertEqual(waves["SearingGtr 1"], ["Overdrive Gt", "Sine", "Stage EP p"])
+        self.assertEqual(waves["Soprano Sax"], ["Sop Sax 2 p", "Sop Sax 2 mf", "Sop Sax 2 f"])
+        self.assertEqual(waves["Folk Gtr 1"], ["Ac.Gtr mp", "Ac.Gtr mf", "Ac.Gtr ff", "Ac.Gtr ff"])
+        self.assertEqual(waves["Steel Drums"], ["Steel Drums"])
+
+    def test_librarian_read_selected_matches_backup(self):
+        import midiox_log
+        log = midiox_log.read_log(ROOT / "captures/mitm/01-librarian-read-selected.txt")
+        got = sysex.patch_blocks([bytes(m) for _, p, _, m in log if str(p) == "3"])
+        self.assertEqual(got[0], self.patches[0])
+
+    def test_forum_patch_is_factory_searing_gtr_1_edited_as_described(self):
+        """patches/guitar01.a8e vs its factory original (User patch 96): the
+        author's claims are among the differences."""
+        import a8_files
+        res = a8_files.parse(ROOT / "patches/guitar01.a8e", S)
+        forum = {v["path"].removeprefix("fm."): v["value"] for b in res["blocks"] for v in b["values"]}
+        dump = a8_files.parse_dump(BACKUP.read_bytes(), S)
+        fac = {v["path"]: v["value"] for p in dump["patches"] if p["slot"] == 96
+               for b in p["blocks"] for v in b["values"]}
+        self.assertEqual((fac["pat.common.pitchBendRangeUp"], fac["pat.common.pitchBendRangeDown"]), (2, 12))
+        self.assertEqual((forum["pat.common.pitchBendRangeUp"], forum["pat.common.pitchBendRangeDown"]), (12, 24))
+        self.assertEqual((fac["pat.common.matrixControl3Source"], forum["pat.common.matrixControl3Source"]),
+                         (4, 70))                                              # CC70 "feedback"
+        self.assertEqual((fac["pat.tone[1].waveNumberL"], fac["pat.tone[1].toneCoarseTune"]), (220, 71))  # +7 sine
+        self.assertEqual(forum["pat.tone[1].toneCoarseTune"], 88)              # retuned to +24
+        self.assertEqual((fac["pat.tmt.tmtToneSwitch[3]"], forum["pat.tmt.tmtToneSwitch[3]"]), (0, 1))
+        self.assertEqual(forum["pat.tmt.tmtVelocityRangeUpper[3]"], 69)        # extra tone on soft notes
+
+    def test_categories_group_by_instrument(self):
+        cat = {r["factory_name"]: r["category"] for r in self.rows}
+        self.assertEqual({cat[n] for n in ("SearingGtr 1", "AX DistGt")}, {11})
+        self.assertEqual({cat[n] for n in ("Nylon Gtr 1", "Folk Gtr 1")}, {9})
+        self.assertEqual((cat["Musette"], cat["Harmonica"]), (7, 8))
+
+    def test_generated_summary_is_current(self):
+        import json
+        saved = json.loads((ROOT / "research/generated/user-patches.json").read_text(encoding="utf-8"))
+        self.assertEqual(saved["patches"], self.rows)
+
+
+RQ1_DIR = ROOT / "captures/rq1"
+
+
+class SynthRequests(unittest.TestCase):
+    """captures/rq1/: our own read-only RQ1 file
+    (generated/experiment-rq1-temporary-patch.syx) sent from MIDI-OX with
+    LEAD GUITAR 1 selected, before and after a panel volume edit ("UOl",
+    not written). NEXT-STEPS 3.3."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.reply = sysex.split_sysex((RQ1_DIR / "reply.syx").read_bytes())
+        cls.after = sysex.split_sysex((RQ1_DIR / "reply-after-volume.syx").read_bytes())
+        cls.requests = sysex.split_sysex((ROOT / "research/generated/experiment-rq1-temporary-patch.syx").read_bytes())
+
+    def test_each_of_our_requests_answered_by_one_exact_dt1(self):
+        self.assertEqual(len(self.reply), len(self.requests))
+        for q, r in zip(map(sysex.parse, self.requests), map(sysex.parse, self.reply)):
+            self.assertEqual((r.command, r.address, len(r.payload), r.checksum_ok),
+                             (sysex.DT1, q.address, addr_to_int(q.payload), True))
+
+    def test_system_controller_is_0x50_bytes_on_the_hardware(self):
+        sc = sysex.parse(self.reply[-1])
+        self.assertEqual((fmt_addr(sc.address), len(sc.payload)), ("02 00 40 00", 0x50))
+        self.assertEqual(sc.payload[:0x4F], initial_blocks()["system.controller"])   # still Editor defaults
+        self.assertEqual(sc.payload[0x4F], 1)                                           # doc's 00 4F Portament Mode
+
+    def test_temporary_follows_panel_selection(self):
+        self.assertEqual(sysex.patch_blocks(self.reply)["temporary"]["common"][:12], b"SearingGtr 1")
+
+    @unittest.skipUnless(BACKUP.exists(), "user's backup not present")
+    def test_temporary_equals_stored_patch(self):
+        backup = sysex.patch_blocks(sysex.smf_sysex(BACKUP.read_bytes()))
+        self.assertEqual(sysex.patch_blocks(self.reply)["temporary"], backup[96])
+
+    def test_panel_volume_edit_is_not_patch_or_controller_data(self):
+        """OM p.26: the 'UOl'/'reU' edit belongs to a FAVORITE memory, so
+        neither the Temporary patch nor the System Controller changes."""
+        self.assertEqual(self.after, self.reply)
+
+    def test_system_request_file_matches_the_editors_setup_read(self):
+        ours = sysex.split_sysex((ROOT / "research/generated/experiment-rq1-setup-system.syx").read_bytes())
+        self.assertEqual([fmt_addr(sysex.parse(m).address) for m in ours], ["01 00 00 00", "02 00 00 00", "02 00 40 00"])
+        import midiox_log
+        editor = [bytes(m) for _, p, _, m in midiox_log.read_log(ROOT / "captures/mitm/02-editor-read.txt") if str(p) == "1"]
+        self.assertEqual(ours[:2], editor[3:5])   # Setup and System Common requests, byte for byte
+
+
+BULKDUMP = ROOT / "captures/bulkdump/bulkdump-2026-09-26.syx"
+
+
+@unittest.skipUnless(BULKDUMP.exists(), "user's bulk dump not present")
+class SynthBulkDump(unittest.TestCase):
+    """captures/bulkdump/: the synth's own Bulk Dump (NEXT-STEPS 3.2), a
+    7-in-8-packed memory image; tools/bulkdump.py, research/bulkdump-analysis.md."""
+
+    @classmethod
+    def setUpClass(cls):
+        import bulkdump
+        cls.bd = bulkdump
+        cls.dump = bulkdump.read_dump(BULKDUMP)
+        cls.img = cls.dump["image"]
+
+    def test_wire_format(self):
+        d = self.dump
+        self.assertEqual((d["messages"], d["bad"], d["gaps"]), (16230, [], []))
+        self.assertEqual(len(self.img), d["declared_length"])
+        self.assertEqual(len(self.img), 0x1A0040)
+        self.assertTrue(self.bd.trailer(self.img).startswith("Roland RE409DUMP"))
+        self.assertEqual([i for i in (0x4, 0x46A, 0x20004, 0x49864) if self.img.startswith(self.bd.SIGNATURE, i)],
+                         [0x4, 0x46A, 0x20004, 0x49864])
+
+    @unittest.skipUnless(BACKUP.exists(), "user's backup not present")
+    def test_every_patch_block_rebuilt_from_the_dump_equals_the_backup(self):
+        import json
+        S2 = Schema.load()
+        layout = json.loads(self.bd.LAYOUT.read_text(encoding="utf-8"))["fields"]
+        backup = sysex.patch_blocks(sysex.smf_sysex(BACKUP.read_bytes()))
+        for n, rec in enumerate(self.bd.records(self.img)):
+            self.assertEqual(self.bd.decode_patch(rec, layout, S2), backup[n], n)
+
+    def test_layout_is_script_order_at_range_width(self):
+        import json
+        lay = json.loads(self.bd.LAYOUT.read_text(encoding="utf-8"))
+        f = lay["fields"]
+        self.assertEqual((len(f), sum(e["verified"] for e in f)), (783, 690))
+        self.assertEqual([e["pos"] for e in f], sorted(e["pos"] for e in f))
+        self.assertTrue(all(e["width"] == e["range_width"] for e in f if e["verified"]))
+        name = [e for e in f if e["name"] == "patchName"]
+        self.assertEqual([(e["pos"], e["width"]) for e in name], [(7 * i, 7) for i in range(12)])
+
+    def test_favorites(self):
+        fav = self.bd.favorites(self.img)
+        self.assertEqual([f["tone"] for f in fav[:2]] + [fav[15]["tone"]], ["GR300 Lead 1", "Saw Lead 1", "Wurly EP"])
+        self.assertTrue(all(f["bank_msb"] == 87 and f["tone"] and f["pad"] == 0 for f in fav))
+        self.assertEqual({f["reverb_send"] for f in fav}, {100})
+        self.assertEqual([f["memory"] for f in fav if f["volume"] == 115], ["B2", "B7", "B8"])
+
+    def test_system_common_matches_the_synths_read_reply(self):
+        sc = self.bd.system_common(self.img)
+        self.assertEqual((sc["masterTune"], sc["masterKeyShift"], sc["masterLevel"], sc["scaleTuneSwitch"]),
+                         (1024, 64, 127, 1))
+        self.assertEqual(sc["scaleTunes"], [64] * 12)

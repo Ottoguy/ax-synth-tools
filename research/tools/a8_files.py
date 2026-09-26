@@ -23,6 +23,10 @@ struct sizes in Script.xml; see research/initialdata-analysis.md.
                        then 4 unexplained bytes (00 00 00 00 in the only
                        sample) that are still inside the record length
 
+  .mid / .syx  whole-patch DT1 dumps (Librarian/Editor "Export SMF", or
+               RQ1 replies saved from the synth); decoded per patch, keyed by
+               User patch number 0..255 or "temporary"
+
 Usage:
   python a8_files.py <file>            summary + non-default values
   python a8_files.py <file> --all      every value
@@ -38,6 +42,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
+from axsynth import sysex  # noqa: E402
 from axsynth.schema import Schema, decode_value  # noqa: E402
 
 
@@ -135,6 +140,25 @@ def parse_a8l(buf: bytes, schema: Schema):
             "trailing": buf[pos:].hex(" ").upper()}
 
 
+def parse_dump(buf: bytes, schema: Schema):
+    msgs = sysex.smf_sysex(buf) if buf[:4] == b"MThd" else sysex.split_sysex(buf)
+    patch_type = schema.child_types("Patch")
+    patches = []
+    for key, blocks in sorted(sysex.patch_blocks(msgs).items(), key=lambda kv: (isinstance(kv[0], str), kv[0])):
+        out = []
+        for name, _ in sysex.PATCH_BLOCKS:
+            if name not in blocks:
+                continue
+            stype = patch_type[name.split("[")[0]][0]
+            data = blocks[name]
+            out.append({"path": f"pat.{name}", "type": stype, "file_offset": 0, "size": len(data),
+                        "size_ok": len(data) == schema.struct_size(stype),
+                        "values": decode_block(schema, stype, data, f"pat.{name}")})
+        patches.append({"slot": key, "complete": len(out) == len(sysex.PATCH_BLOCKS), "blocks": out})
+    return {"format": "dump", "header": {"messages": len(msgs), "patches": len(patches)},
+            "patches": patches, "bytes_consumed": len(buf), "file_size": len(buf), "trailing": ""}
+
+
 def parse(path: str | Path, schema: Schema | None = None):
     schema = schema or Schema.load()
     buf = Path(path).read_bytes()
@@ -142,6 +166,8 @@ def parse(path: str | Path, schema: Schema | None = None):
         return parse_a8e(buf, schema)
     if buf.startswith(b"A8ELibrarianFile"):
         return parse_a8l(buf, schema)
+    if buf.startswith(b"MThd") or buf[:1] == bytes([0xF0]):
+        return parse_dump(buf, schema)
     raise ValueError("unknown file type")
 
 
@@ -160,6 +186,9 @@ def main(argv):
         return
     print(json.dumps(res["header"]))
     print(f"file_size={res['file_size']} consumed={res['bytes_consumed']} trailing={res['trailing']!r}")
+    if res["format"] == "dump":
+        for p in res["patches"]:
+            print(f"patch {p['slot']}: complete={p['complete']}")
     if res["format"] == "a8l":
         for p in res["patches"]:
             print(f"patch record @0x{p['record_offset']:X}: length field={p['record_length']}"

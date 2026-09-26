@@ -2,7 +2,7 @@
 
 **Goal:** you describe a sound to an LLM, and your AX-Synth ends up with a patch that sounds like it. Along the way there will be a simple GUI with a handful of meaningful controls instead of the Editor's 800+ parameters.
 
-**Where we are:** the whole data model is decoded and checked against Roland's docs, Roland's own export files, two real patches, the Owner's Manual, and (step 2) the Editor's own live messages, which our code reproduces byte for byte (`research/REPORT.md`). There is now also a **sound-design knowledge base** built from all 63 parts of *Synth Secrets*: which settings make a sound bright, hollow, breathy, brassy, bell-like…, plus 35 instrument recipes mapped onto the AX-Synth (`knowledge/sound-design/`). It hasn't been checked by ear yet; that's what your listening steps are for. We also have the list of all 256 factory sounds (`research/generated/factory-tones.csv`) and Roland's parameter and effect explanations (Editor manual). What's missing is almost entirely things only you can do: **real hardware, your ears, and your preferences.**
+**Where we are:** the whole data model is decoded and checked against Roland's docs, Roland's own export files, two real patches, the Owner's Manual, and (step 2) the Editor's own live messages, which our code reproduces byte for byte (`research/REPORT.md`). **Since steps 3.1–3.3 it is also checked against your real synth:** we've seen the complete read conversation, our own read requests work, and your backup and the synth's own memory dump agree byte for byte. The factory-sound order and the wave list are confirmed, and the Editor's model covers everything the synth stores for a sound (`research/generated/user-patches.csv` lists every sound with its waves and effects). **Next is the first write (step 4).** There is now also a **sound-design knowledge base** built from all 63 parts of *Synth Secrets*: which settings make a sound bright, hollow, breathy, brassy, bell-like…, plus 35 instrument recipes mapped onto the AX-Synth (`knowledge/sound-design/`). It hasn't been checked by ear yet; that's what your listening steps are for. We also have the list of all 256 factory sounds (`research/generated/factory-tones.csv`) and Roland's parameter and effect explanations (Editor manual). What's missing is almost entirely things only you can do: **real hardware, your ears, and your preferences.**
 
 **Two facts about the AX-Synth that shape everything below** (Owner's Manual):
 - Its display has **3 characters**. It can't show patch names, wave names or values, so checks go through the **Editor (READ)** or a SysEx dump.
@@ -15,7 +15,7 @@
 1. **Back up first.** Do the backup in step 3.1 before *anything* except read requests is sent to the synth.
 2. **Only send to the Temporary Patch.** Every file I prepare for you to send targets `1F 00 00 00`, the working copy the synth throws away when you switch sounds or power off. The `*-temporary.syx` files are safe.
 3. **Never play `dumps/AX-Synth Librarian Clean export.mid` to the synth.** It would overwrite all 256 sounds with INIT PATCH. (Safety net: a factory reset restores the factory sounds, but not your own edits. Owner's Manual p.34.)
-4. **Never send anything I haven't prepared or named** as safe. Don't use WRITE in the Editor/Librarian, the synth's Bulk Dump *receive* mode, or factory reset unless a step asks for it.
+4. **Never send anything I haven't prepared or named** as safe. Don't use WRITE or SYNC in the Editor, Write in the Librarian, the synth's Bulk Dump *receive* mode, or factory reset unless a step asks for it. (SYNC also overwrites the synth's system settings.)
 5. When in doubt, stop and tell me. A wrong read costs nothing, and a wrong write costs your sounds.
 
 ---
@@ -56,60 +56,46 @@ Your 8 logs are in `captures/live/`. I renamed them from `*.txt.txt` to `*.txt` 
 
 ---
 
-## Step 3: First contact with the synth, read-only (1–1.5 hours, mostly waiting)
+## Step 3: First contact with the synth, read-only
 
-Connect the synth.
+### 3.0 + 3.1 MIDI-OX in the middle, captures and backup ✅ done (2026-09-26)
 
-### 3.0 Put MIDI-OX in the middle, so we see both directions (15 minutes, new)
-Step 2 showed that the interesting part is the conversation between the software and the synth. MIDI-OX can pass the messages through and log both sides:
+Your three logs are in `captures/mitm/` (renamed from `*.txt.txt`, with `notes.md` written for you), and the backup is in `captures/backup/`. The full analysis is in `research/mitm-capture-analysis.md`. What they showed:
 
-```
-Editor/Librarian ──> loopMIDI "loopAX" ──> MIDI-OX ──> AX-Synth
-Editor/Librarian <── loopMIDI "loopAX-back" <── MIDI-OX <── AX-Synth
-```
+- **The MIDI-OX route works, and your firmware 2.01 is no problem.** The synth answers "who's there?" exactly as Roland's 2010 document says, and the Editor and Librarian accept it.
+- **Reading is simple.** For each part of a sound the software asks once, and the synth answers with exactly that part a few milliseconds later. There's no splitting into packets and no special handshake. Our own code builds the same requests.
+- **Your backup is complete and good:** all 256 sounds, all checksums valid.
+  - **254 of 256 names match the factory list**, in the expected order, so the memory-slot ↔ factory-sound mapping is now confirmed.
+  - The two exceptions are Bass 10 and 11 (printed "Reso Bs 2"/"Reso Bs 3"), stored as "Reso Bs 1"/"Reso Bs 2". They're real, distinct sounds, so they're either a Roland naming quirk or a previous owner's touch. Either way, nothing to worry about.
+- **Our wave list is confirmed.** Every factory sound uses the waves its name suggests (Soprano Sax → "Sop Sax" waves, Folk Gtr → "Ac.Gtr", Steel Drums → "Steel Drums"…).
+- **The forum guitar patches are factory SearingGtr 1 plus exactly the edits their author described.** Comparing them with your backup shows every changed setting: bend range, the CC70 "feedback" routing, the extra soft-note tone, and so on.
+- **One surprise:** when the Editor READ, the synth's working copy held the Editor's blank "INIT PATCH", plus the Editor's default Setup/System settings. That was probably caused by an earlier SYNC, or an automatic send while you were testing 3.0. It doesn't affect your 256 stored sounds. **But SYNC also sends the Editor's system settings** (MIDI channel, D-Beam assignment, velocity curve, master tune) to the synth. So from now on: **don't press SYNC** unless a step asks for it. If a system setting on the synth seems changed, that's the likely reason; set it back on the panel.
 
-1. In loopMIDI, add a second port, `loopAX-back`.
-2. **Close the Editor and Librarian first**, because only one program can hold the synth's port (step 0). Then in MIDI-OX, *Options → MIDI Devices*: **inputs** `loopAX` + `Roland AX-Synth`; **outputs** `Roland AX-Synth` + `loopAX-back`.
-3. *View → Port Routings*: keep **exactly two** connections, and delete any others MIDI-OX added automatically:
-   - `loopAX` (in) → `Roland AX-Synth` (out)
-   - `Roland AX-Synth` (in) → `loopAX-back` (out)
+**About the `.a8l` file (you asked).** The Librarian can only *save* a Library Window. The Main Window, which you read into, isn't one (Librarian manual p.5–6). If you want the `.a8l` (optional, since your `.mid` already holds the same sounds):
+1. Click inside the **Main Window** (the one with your 256 sounds).
+2. **File → Duplicate**. This opens a new Library Window with a copy of all 256 sounds.
+3. With that new window active: **File → Save As** → `captures/backup/ax-synth-backup-2026-09-26.a8l`.
 
-   ⚠ There must **never** be a route from `Roland AX-Synth` (in) to `Roland AX-Synth` (out): the synth's own data would be sent straight back into it. If unsure, send me a screenshot of the routing window before continuing.
-4. Make sure *Options → Pass SysEx* is ticked, and keep the large SysEx buffers from step 2.
-5. Editor and Librarian, *Setup → Set Up MIDI Devices*: **Output = `loopAX`, Input = `loopAX-back`**. (This also avoids the "Generic driver can't be shared between Editor and Librarian" problem, because only MIDI-OX opens the synth's port.)
-6. Test: press **READ** in the Editor. If the error from step 2 is gone, the route works. If it still says "Unable to read/write data.", save the MIDI-OX log anyway as `captures/mitm/00-read-failed.txt`. It shows whether the synth answered and what version it reported, which tells us whether the problem is the routing or the Editor rejecting firmware 2.01.
+It's a nice extra check of the file format, but not required. **Do put a copy of the `.mid` outside this project** (cloud drive, USB stick) if you haven't yet. ⚠ That `.mid` is a full *restore* file: playing it to the synth rewrites all 256 memory slots, so use it only when you deliberately want to restore.
 
-If this setup gives you trouble, skip it: close MIDI-OX, connect the Editor (or the Librarian, **one at a time**) directly to `Roland AX-Synth` and do 3.1 without captures.
+### 3.1b ~~Re-check~~: no longer needed
+Step 3.3 already answered it: the working copy does follow the sound you pick on the synth. With LEAD GUITAR 1 selected, it was byte for byte your stored SearingGtr 1. So the "INIT PATCH" in 3.1 came from something sent earlier, most likely a SYNC while testing 3.0.
 
-### 3.1 Capture the read conversation, then back up everything (do this before anything else is sent to the synth)
-Clear the MIDI-OX log before each capture and save it afterwards, as in step 2:
+### 3.2 The synth's own Bulk Dump ✅ done (2026-09-26)
+Your file is in `captures/bulkdump/` (renamed from `.sysx.syx`). The analysis is in `research/bulkdump-analysis.md`.
+- **It turned out to be a raw copy of the synth's memory**, not a list of sounds. I decoded it completely:
+  - The patch area holds your 256 sounds in a compact, bit-packed form.
+  - Rebuilt from it, **all 256 sounds are byte for byte identical to your Librarian backup**, so you now have two independent backups that agree.
+  - It also proves that the Editor's data model covers *everything* the synth stores for a sound. There are no hidden sound parameters we'd be missing.
+- **The 16 FAVORITE memories are in it too:** A1 GR300 Lead 1, A2 Saw Lead 1, A3 Hot Coffee, A4 Air Lead, A5 Modular Bs1, A6 SearingGtr 3, A7 MS1959 II, A8 Funk EGtr; B1 Wide SynBrs, B2 Harmonica, B3 Cosmic Rays, B4 Bustranza, B5 AX Dist Org1, B6 Phase Clavi, B7 Phase Stage, B8 Wurly EP. Each has its own volume and reverb send; B2, B7 and B8 are a bit louder.
+- **Your system settings are the standard defaults:** 440 Hz, MIDI channel 1, normal velocity, D-Beam ASSIGNABLE = CC01.
+- The 1-1 sound (AX Saw Lead) carries a small hidden difference that suggests it was sent to the synth over MIDI at some point, maybe by a previous owner. Its content is otherwise normal. Nothing to do.
 
-- [ ] Librarian: **Read Selected** on one row (1-1) → `captures/mitm/01-librarian-read-selected.txt`
-- [ ] Editor: **READ** → `captures/mitm/02-editor-read.txt` (reads the sound currently selected on the synth)
-- [ ] Librarian: **Read All Data** (if you connected directly, close the Editor first). This *reads* all 256 sounds from the synth. The log isn't needed here, and it may be too long for MIDI-OX anyway.
-- [ ] **Save** it as `captures/backup/ax-synth-backup-YYYY-MM-DD.a8l`.
-- [ ] Also **File → Export SMF** to `captures/backup/ax-synth-backup-YYYY-MM-DD.mid`.
-- [ ] Put a copy somewhere outside this project (cloud drive, USB stick).
-- [ ] *After the backup:* Editor **SYNC** → `captures/mitm/03-editor-sync.txt`. SYNC sends the Editor's current sound into the synth's temporary working copy (lost when you switch sounds) and reads the name list. Switch sounds afterwards to get your stored sound back.
-- [ ] Still **no WRITE** in the Editor or Librarian.
-- [ ] One line per file in `captures/mitm/notes.md`, as before.
-
-The backup file is also the **main dataset for the AI**: all 256 professionally designed sounds, which the LLM will use as starting points. It also lets me confirm that the synth's memory slots are in the same order as the factory sound list.
-
-### 3.2 The synth's own Bulk Dump (second backup + a very useful capture, ~16 minutes)
-The synth can send "all of its settings" by itself (Owner's Manual p.29). This shows *how the synth formats its own SysEx*, including areas nobody documented (favorites, system settings).
-- [ ] Close the Editor and Librarian. In MIDI-OX, set the input to the synth and clear the SysEx view. If the step 3.0 routing is still active, **remove it first** (or at least check that nothing routes the AX-Synth input to the AX-Synth output).
-- [ ] Switch the synth off. Hold **VARIATION [–] + [+] + TONE [6] (STRINGS/PAD)** and switch on. The display shows **"dMP"**.
-- [ ] Press **FAVORITE [B]** (= *send*; display "Snd"). **Do not press [A]**: [A] is *receive* mode.
-- [ ] Wait until **"dNE"** (about 16 minutes). Save the capture as `captures/bulkdump/bulkdump-YYYY-MM-DD.syx`.
-- [ ] Switch the synth off and on again.
-
-### 3.3 Read-only request test (checks our own SysEx code against the real synth)
-- [ ] Select **LEAD GUITAR** (family button), **variation 1**. That's factory "SearingGtr 1", the sound the forum patches were made from.
-- [ ] In MIDI-OX: *SysEx → Send/Receive SysEx*, load `research/generated/experiment-rq1-temporary-patch.syx`, and send it with the input set to the synth. Save everything received as `captures/rq1/reply.syx`. (These are *requests*; they change nothing.)
-- [ ] Now, **without storing anything**: hold [SHIFT], press the lit LEAD GUITAR button until "UOl" appears, and lower the volume a few steps with VARIATION [–]. Release [SHIFT] and **don't press WRITE**. Send the same requests again and save as `captures/rq1/reply-after-volume.syx`. This shows where the synth keeps that setting.
-- [ ] Switch to another sound and back (this discards the volume change).
-- [ ] Note in `captures/rq1/notes.md` what you did, how many messages came back each time, and any errors.
+### 3.3 Read-only request test ✅ done (2026-09-26)
+`captures/rq1/`, with `notes.md` written for you.
+- **Our own request file works on the real synth.** Every request got exactly the expected answer.
+- It **settled an old question**: the synth's controller-settings block is 80 bytes, as Roland's MIDI document says; the Editor only knows 79.
+- **The volume change didn't show up**, and that's correct. Per the Owner's Manual p.26, that [SHIFT] + TONE volume belongs to a **FAVORITE memory** and is stored only with [WRITE] + FAVORITE, not in the sound itself. (My guess that it was the patch level was wrong.) For our app this means the sound's own level and reverb settings are what we control.
 
 ### 3.4 Describe sounds in your own words (your ears are the scarce resource)
 Take `research/generated/factory-tones.csv` and play through about **20–40 factory sounds from different families** (you select them with the family button + variation number). For each, add a line to `captures/factory/descriptions.md`:
@@ -120,23 +106,39 @@ Write the way you'd describe a sound to the LLM later. These lines become the **
 
 Also note whether the **SuperNATURAL** and **SPECIAL** sounds can be read by the Editor at all.
 
+### 3.5 *(Optional, 10 minutes)* Where the synth keeps a few panel settings
+Only if you're curious. It isn't needed for the goal. With MIDI-OX set up as in 3.3 (input = the synth), SysEx → Send/Receive SysEx:
+- [ ] Send `research/generated/experiment-rq1-setup-system.syx` (3 read-only requests) and save the reply as `captures/rq1/system-before.syx`.
+- [ ] Hold [SHIFT], press the lit TONE button ("UOl"), change the volume a few steps, release [SHIFT] (**no WRITE**). Send again → `captures/rq1/system-after-volume.syx`. Switch sounds to discard the change.
+- [ ] Sleep interval: hold [SHIFT] + PGM CHANGE [DEC], note the shown value, change it one step, press [WRITE]. Send again → `captures/rq1/system-after-sleep.syx`. **Then set it back** the same way and press [WRITE].
+- [ ] One line per file in `captures/rq1/notes.md`.
+
 ---
 
-## Step 4: First write, Temporary only (15 minutes)
+## Step 4: First write, Temporary only (15 minutes), ready now
 
-Only after step 3.1 is done.
+Everything it depends on is now confirmed:
+- the working copy follows the panel and is thrown away when you switch sounds
+- the synth accepts whole-block writes to it (Roland's SYNC did exactly that)
+- our request file reads it back
 
-- [ ] In MIDI-OX, set a **delay between messages** of at least **25 ms** (Options → SysEx → "Delay after F7"; Roland's own software uses about 20 ms plus transmission time).
-- [ ] Send `research/generated/guitar01-temporary.syx` (the forum patch, encoded by *our* code, to the Temporary patch only).
-- [ ] Check and write down in `captures/first-write/notes.md`:
-  - Does it sound like a **metal lead guitar**, different from the factory SearingGtr 1?
+This is the last untested piece of the chain: **our code → synth**.
+
+Setup as in 3.3: MIDI-OX, *SysEx → Send/Receive SysEx*, input and output = `Roland AX-Synth`, and no Editor or Librarian running.
+- [ ] Select **LEAD GUITAR 1** (SearingGtr 1) on the synth, so you can compare the two sounds.
+- [ ] Set a **delay between messages of 60 ms** (in the SysEx window's options, "Delay after F7" or similar). That's slightly slower than Roland's own software (21–60 ms).
+- [ ] Send `research/generated/guitar01-temporary.syx`: the forum patch, encoded by *our* code, 9 messages, to the Temporary patch only.
+- [ ] **Without switching sounds**, send `research/generated/experiment-rq1-temporary-patch.syx` and save the reply as `captures/first-write/reply.syx`. I'll check it byte for byte against what we sent.
+- [ ] Listen and note in `captures/first-write/notes.md`:
+  - Does it sound different from the factory SearingGtr 1? More like a metal lead guitar?
   - Soft notes (velocity below ~70): does an extra high pure tone appear?
-  - Pitch bend on the ribbon: **2 octaves down, 1 up**?
-  - Press the D-Beam **[ASSIGNABLE]** button and wave your hand. Does it change the sound? (The patch expects **CC70**. To set it, hold [SHIFT] + [ASSIGNABLE], choose "C70", then [WRITE]. This changes a *system* setting, so note the old value "C__" first so you can set it back.)
-  - In the **Editor**, press **READ**. Does it show the name **"SearingGtr 1"**, and does **Tone 1's wave** read **"Overdrive Gt"**? (This confirms our wave numbering.)
-- [ ] Switch to another sound and back. The stored factory sound should be unchanged (Temporary is volatile).
+  - Pitch bend on the ribbon: **2 octaves down, 1 up** (the factory sound bends 2 semitones up, 1 octave down)?
+  - *(Optional)* D-Beam: the patch expects CC70 on [ASSIGNABLE]. Yours is CC01 (the default). To try it, hold [SHIFT] + [ASSIGNABLE], choose "C70", [WRITE]; later set it back to "C01" the same way.
+- [ ] Switch to another sound and back. You should hear the factory SearingGtr 1 again (Temporary is volatile).
 
-After this I'll prepare a small **listening test**: a few `.syx` files that each change one thing (cutoff, attack, reverb…) so you can confirm by ear that each parameter does what the model says.
+If the synth shows an error or nothing changes, save the MIDI-OX log and stop. That's a finding too.
+
+**Then comes the listening test.** Once step 4 works, I'll prepare 6–10 small `.syx` files, all Temporary-only, each starting from a factory sound and changing *one* thing: brightness (cutoff), resonance, attack, release, vibrato, reverb, chorus, an effect type, a layer on or off. You send each one and say whether you hear what the model predicts. That confirms our parameter meanings by ear, which is the basis for the "big knobs".
 
 ---
 
@@ -178,13 +180,21 @@ Answer these in `captures/decisions.md`. Rough answers are fine, and you can cha
 ## How to hand things back to me
 
 - Put everything under `captures/` with the file names above, plus a `notes.md` per folder.
-- Folder names so far: `captures/live/` (step 2, done), `captures/mitm/` and `captures/backup/` (3.1), `captures/bulkdump/`, `captures/rq1/`, `captures/factory/`, `captures/first-write/`.
+- Folder names so far: `captures/live/` (step 2), `captures/mitm/` and `captures/backup/` (3.1), `captures/bulkdump/` (3.2), `captures/rq1/` (3.3), all done; next `captures/first-write/` (4) and `captures/factory/` (3.4).
 - Then just tell me "step N done". I'll read the files, decode them, update the research and tests, and prepare the next step.
 
 ## What I'll build with it (for orientation)
 
-1. **Hardware-verified model**: confirm or fix the open questions (steps 2–4).
-2. **Safe sender**: a small tool that loads any patch into the Temporary patch with correct pacing, and can never touch memory slots unless explicitly told to.
-3. **Sound corpus + meaning layer**: the 256 factory sounds, your descriptions, Roland's parameter/effect explanations (Editor manual, done), and the general sound-design knowledge from *Synth Secrets* (done, `knowledge/sound-design/`). On top of that, the big-knob **macro** layer. The patch format already has some built-in candidates: patch-wide cutoff, resonance, attack, release and velocity offsets.
+1. **Hardware-verified model**: ~~reading~~ done (steps 2–3.3). Still to go: writing to the Temporary patch (step 4) and checking the parameter meanings by ear (listening test).
+2. **Safe sender** *(needs your go-ahead, because it's the first code that talks to the synth)*: a small tool that loads a patch into the Temporary patch with safe pacing and reads it back to verify. It can **never** address the memory slots or system settings. Until then you send my prepared files with MIDI-OX. Where it runs depends on your answer to step 5 question 1 (web page or Python).
+3. **Sound corpus + meaning layer**:
+   - the 256 factory sounds, fully decoded from your backup (`research/generated/user-patches.csv` has the overview)
+   - your descriptions (3.4)
+   - Roland's parameter and effect explanations
+   - the *Synth Secrets* sound-design knowledge
+
+   On top of these comes the big-knob **macro** layer. The patch format has built-in candidates: patch-wide cutoff, resonance, attack, release and velocity offsets.
 4. **Simple GUI** with those macros, a factory-sound picker, and "send to synth".
-5. **LLM integration**: you describe the sound, the LLM picks the nearest factory sound and sets the macros (and, when needed, specific parameters), the model validates every value, and the result goes to the Temporary patch. You listen, say "brighter" or "less reverb", and it adjusts.
+5. **LLM integration**: you describe the sound, and the LLM picks the nearest factory sound and sets the macros (and specific parameters when needed). The model validates every value, and the result goes to the Temporary patch. You listen, say "brighter" or "less reverb", and it adjusts.
+
+**Where your time helps most now:** step 4 (15 min), then 3.4 (descriptions) and step 5 (decisions). Those two are what the GUI and the AI are designed around.

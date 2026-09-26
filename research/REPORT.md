@@ -1,6 +1,6 @@
 # AX-Synth data model: research report (phase 1)
 
-Scope: how Roland represents an AX-Synth patch, established from Roland's own files. No AI or sound-design code. **Nothing has been sent to the hardware.**
+Scope: how Roland represents an AX-Synth patch, established from Roland's own files. No AI or sound-design code. **Nothing that writes has been sent by our tools.** Since 2026-09-26 the user's Roland Editor/Librarian have read from the synth, one Editor SYNC was sent (Temporary + Setup/System only), the synth sent its Bulk Dump, and the user sent our **read-only** RQ1 file (`captures/`).
 
 Evidence labels: **[F]** our Roland files · **[D]** official Roland documentation · **[3P]** third party · **[I]** inference.
 
@@ -12,7 +12,7 @@ Evidence labels: **[F]** our Roland files · **[D]** official Roland documentati
 Script.xml  ->  parameter model  ->  bytes  ->  DT1 SysEx (F0 41 10 00 00 3C 12 addr data sum F7)
 ```
 
-is **direct, with no hidden translation layer**: struct offsets equal SysEx address offsets, and struct images equal DT1 payloads. **Roland's own software confirms this**: the Editor and Librarian "Export SMF" files ([smf-export-analysis.md](smf-export-analysis.md)) contain 2,313 DT1 messages whose payloads are byte-identical to the struct images in `InitialData.a8e`, and our encoder reproduces them byte-for-byte. Of the 813 non-effect-specific parameter instances in `fm`, **807 are independently confirmed** (address, encoding, range) by the official MIDI Implementation. The other 6 are 3 range typos in the doc (one repeated across the 4 Tones). This rests on documents and Roland's files; it has not yet been observed on the hardware. **Since 2026-09-23 it also rests on Roland's live traffic**: every value edit the Editor transmitted through a loopback port equals, byte for byte, what our library builds for that parameter ([live-capture-analysis.md](live-capture-analysis.md), item 15).
+is **direct, with no hidden translation layer**: struct offsets equal SysEx address offsets, and struct images equal DT1 payloads. **Roland's own software confirms this**: the Editor and Librarian "Export SMF" files ([smf-export-analysis.md](smf-export-analysis.md)) contain 2,313 DT1 messages whose payloads are byte-identical to the struct images in `InitialData.a8e`, and our encoder reproduces them byte-for-byte. Of the 813 non-effect-specific parameter instances in `fm`, **807 are independently confirmed** (address, encoding, range) by the official MIDI Implementation. The other 6 are 3 range typos in the doc (one repeated across the 4 Tones). This rests on documents and Roland's files; it has not yet been observed on the hardware. **Since 2026-09-23 it also rests on Roland's live traffic**: every value edit the Editor transmitted through a loopback port equals, byte for byte, what our library builds for that parameter ([live-capture-analysis.md](live-capture-analysis.md), item 15). **Since 2026-09-26 it rests on the synth itself**: its RQ1 replies have exactly the model's block sizes, and a backup of all 256 User patches decodes into the factory Tone list with the expected waves ([mitm-capture-analysis.md](mitm-capture-analysis.md), item 18).
 
 ## What we know (directly supported)
 
@@ -63,18 +63,33 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
     - The unit is second hand, and some User patches may not be factory. The backup has to be diffed against the factory list before it is used as the factory corpus.
     - `sysex.parse_identity_reply()` and `midiox_log.py` decode the Identity Reply and report every field that differs from the doc (the expected candidate is the software revision `00 01 00 00`).
 
+18. **First conversation with the synth + full backup [F, `captures/mitm/`, `captures/backup/`, 2026-09-26]**, see [mitm-capture-analysis.md](mitm-capture-analysis.md). MIDI-OX sat between Editor/Librarian and the synth, logging both directions.
+    - **Identity Reply = the doc, byte for byte**, including revision `00 01 00 00` on firmware 2.01. Editor/Librarian v1.00 accept it.
+    - **RQ1 → one DT1 with the same address and exactly the requested size**, 2–47 ms later, not packetized (all blocks ≤154 B). Checksums from the synth are valid.
+    - **Librarian Read Selected:** Setup bank (RQ1 `01 00 00 04`, 2 B), then the 9 patch blocks of `30 nn …` in `PATCH_BLOCKS` order. **Editor READ:** Setup bank bytes, Setup, System Common, System Controller (size `4F`), then the 9 Temporary blocks. **Editor SYNC:** 12 DT1s (Setup, System Common, System Controller, 9 Temporary blocks) with the Editor's current values and no reads, contrary to the manual's "name lists are read". So SYNC overwrites the synth's system settings.
+    - The Temporary patch, Setup and System read back were **identical to `InitialData.a8e`** ("INIT PATCH"), although the panel's Tone was AX Saw Lead. Something had sent the Editor's blank document before the capture [I]; NEXT-STEPS 3.1b re-checks this.
+    - **Backup:** 2,304 DT1s, 256 complete patches, same layout as Roland's Librarian export. `backup_summary.py` → `generated/user-patches.{csv,json}`.
+    - **Confirmed (was strong inference):** User patch *n* = factory Tone *n* (254/256 stored names equal the Owner's Manual; 3-10/3-11 are stored as "Reso Bs 1"/"Reso Bs 2", cause unknown), and wave *N* = `internalWaveNameTableA[N−1]` (Soprano Sax → "Sop Sax 2 p/mf/f", Folk Gtr → "Ac.Gtr mp/mf/ff", SearingGtr 1 → "Overdrive Gt"…).
+    - **Forum patches vs their factory original** (User patch 96, `describe_a8.py backup.mid#96 patches/guitar01.a8e`): the author's claims are exact parameter diffs (bend 2/12 → 12/24, matrix 3 source CC04 → CC70 → cutoff + attack time, new +12 sine Tone 4 at velocity ≤69, factory +7 sine Tone 2 retuned to +24).
+    - **`patchCategory`:** 27 values grouped by instrument (11 = dist. guitar, 9 = ac. guitar, 7 = Musette, 8 = Harmonica, 22/23 = leads, 28/29 = pads…). The numbers are [F]; the names are Roland's XV/Fantom category list [3P, unverified].
+
+19. **The synth's own Bulk Dump, decoded + our first RQ1s [F, `captures/bulkdump/`, `captures/rq1/`, 2026-09-26]**, see [bulkdump-analysis.md](bulkdump-analysis.md).
+    - The Bulk Dump is a **raw memory image**: DT1 with 1-byte model ID `7F`, 7-in-8 packed, 1,704,000 bytes, 16,230 messages with valid checksums, trailer "Roland RE409DUMP VER.1.00". It contains the System area, the **16 FAVORITE memories** (bank/PC + volume + reverb send, 40 bits each) and **256 User patch records of 664 bytes**.
+    - The patch records are **every data-model value bit-packed in Script.xml order at the smallest width for its range** (unsigned as-is, centred values offset-binary). `bulkdump.py solve` derived the layout from the backup; 690/783 fields are verified by varying values.
+    - **All 2,304 DT1 blocks rebuilt from the dump are byte-identical to the Librarian backup.** So the Librarian's Read All = the synth's storage, and **the Script.xml model covers every stored patch byte**. The only extras are 146 hidden bits per record, identical except in 1-1: rewritten over MIDI once? [I].
+    - **Our own RQ1 file works:** 10 RQ1s → 10 exact DT1s. **System Controller = 0x50 bytes on the hardware** (doc right, script 0x4F short; `00 4F` = 1). The **Temporary patch follows the panel selection** (byte-identical to User patch 96 with LEAD GUITAR 1 selected).
+    - **The panel volume edit ("UOl") is a FAVORITE-memory value**, not a patch or System Controller value (Owner's Manual p.26; replies before and after were byte-identical). The prediction `patchLevel` is refuted.
+    - The stored System settings equal the Editor's defaults (System Common decoded in the dump; System Controller after power-cycling = `InitialData.a8e`).
+
 ## What we strongly suspect (evidence-backed, unverified)
 
-- **The 256 factory Tones are the 256 User patches**: Tone (family *f*, variation *v*) = User patch *n* = 32·*f* + *v* − 1 = LSB·128 + PC − 1, at address `30 00 00 00 + n·00 01 00 00`, Librarian slot *f*-*v*. Supported by the manuals (8 × 32 = Bank 1–8 × Number 1–32, factory reset restores edits) and by the forum patch's Setup; confirm with a Librarian Read All.
-- **SystemController really is `0x50` bytes**, as in the doc. The Owner's Manual describes the SuperNATURAL Portamento mode Hld/SUt as a remembered system setting, which is the doc's `00 4F` "Portament Mode". The Editor's script (size `4F`) just omits it.
 
-- The hardware accepts Roland's own stream: DT1 to `30 nn …` stores User patch *nn* (that's what the Librarian export would do when played back). Its replies to RQ1 will match the `.a8l`/export blocks. (The software side is now confirmed; the hardware side isn't.)
-- `cm.command.writeRequest/writeStart/writeComplete` at `0F 00 10 00–02` belong only to the Editor's live **WRITE (Temporary → User)** operation. They don't appear in either export, and the live WRITE capture stopped (at the unanswered Identity Request) before reaching them. ~~The Editor reads patch-name lists through `cm` "…Information" addresses~~: **refuted for the WRITE dialog** by the live capture, where names are read by RQ1 on `30 nn 00 00` (item 15). The Editor probably reads names for all 256 slots that way when the synth answers.
+- The hardware accepts Roland's own stream: DT1 to `30 nn …` stores User patch *nn* (that's what the Librarian export would do when played back). (Its RQ1 replies do match the export block format: item 18.)
+- `cm.command.writeRequest/writeStart/writeComplete` at `0F 00 10 00–02` belong only to the Editor's live **WRITE (Temporary → User)** operation. They don't appear in either export, and the live WRITE capture stopped (at the unanswered Identity Request) before reaching them. ~~The Editor reads patch-name lists through `cm` "…Information" addresses~~: **refuted for the WRITE dialog** by the live capture, where names are read by RQ1 on `30 nn 00 00` (item 15). Neither READ nor SYNC read any names in the MITM capture (item 18); the name list is probably read only by the WRITE dialog.
 - `gm2Chorus-*` (7) / `gm2Reverb-*` (5) are dead leftovers: in no path table, and outside the chorus/reverb type ranges.
 - Changing the chorus or reverb type behaves like the captured MFX type change: whole block, members at their Script.xml defaults. (Only MFX was captured.)
 - System-area DT1s (the Editor sends Master Tune etc. live to `02 00 …`) are volatile until a "System Write" (Editor manual p.9).
 - PatchCommon `reserve1F` (int2x4, 20–250, default 120) is a tempo.
-- Wave number *N* ↔ `internalWaveNameTableA[N−1]`. Well supported by the third-party patches: 61 → "Overdrive Gt" in a guitar patch, and 220 → "Sine" on filter-off pure-tone layers.
 - An `.a8l` record's final 4 bytes relate to Librarian memo fields.
 - Script.xml files from sibling Koa editors would parse with the same tools.
 
@@ -82,17 +97,20 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 
 | Area | Open question |
 |---|---|
-| SysEx | Whether the synth accepts RQ1 for a whole block and how it packetizes replies (doc: ≤256-byte packets ~20 ms apart); the *minimum* DT1 spacing it tolerates. Roland's software uses device ID `10`, 31,250-baud time + 20 ms between whole blocks in exports, and **no pacing at all** for live value edits (gaps down to 1 ms) |
-| Identity Reply | Which fields of the reply the Editor checks (the doc gives `F0 7E 10 06 02 41 3C 02 00 00 00 01 00 00 F7`). This gates READ/SYNC/WRITE. The user's unit runs **firmware 2.01**, so its software revision probably differs from the doc; whether Editor v1.00 accepts it is the first thing the MIDI-OX capture shows |
-| Firmware 2.01 | What changed since the v1.00-era documents: factory sounds (the OM p.3 warns of "newer sounds"), block sizes or new parameters. Settled by the backup names and RQ1 reply lengths vs `Schema.struct_size` |
-| SystemController | Doc size `50` (includes `00 4F` Portamento Mode, which the Owner's Manual confirms exists as the SuperNATURAL Hld/SUt setting) vs script/`.a8e` size `4F`. An RQ1 of size `50` settles it |
-| Undocumented storage | Where FAVORITE memories (2×8: Tone + volume + reverb send), USB driver mode (Gen/Uen) and sleep interval are stored. A synth-initiated Bulk Dump capture should reveal these areas |
-| Stored vs printed names | Exact 12-character stored names of the factory Tones ("Vintage Org 1" is 13 characters as printed) |
-| Checksums | Formula confirmed on 2,313 messages produced by Roland's software; not yet on a message from the synth itself |
+| SysEx | ~~Whether the synth accepts RQ1 for a whole block and how it packetizes replies~~ **settled** (item 18: one DT1 per block). Still open: the *minimum* DT1 spacing it tolerates. Roland's software uses device ID `10`, 31,250-baud time + 20 ms between whole blocks in exports, and **no pacing at all** for live value edits (gaps down to 1 ms) |
+| Identity Reply | **Settled** for the user's unit: identical to the doc (item 18). Which fields the Editor checks remains unknown and no longer matters |
+| Firmware 2.01 | Nothing visible so far: same Identity Reply, same block sizes, and the factory Tone list matches (item 18). Any change is outside the patch/Setup/System data read so far |
+| SystemController | **Settled** (item 19): 0x50 bytes on the hardware; `00 4F` = 1. Open: which value means Hld vs SUt |
+| Undocumented storage | FAVORITE memories **found** in the Bulk Dump (item 19). Open: where the USB driver mode and sleep interval sit (bulk-dump system area; RQ1 diff, NEXT-STEPS 3.5), and where the *unsaved* live FAVORITE volume/reverb send is held |
+| Stored vs printed names | **Settled** by the backup (`generated/user-patches.csv`), e.g. "Vintage Org1". Open: why 3-10/3-11 are stored as "Reso Bs 1"/"Reso Bs 2" (factory quirk or previous owner) |
+| Temporary = INIT | Resolved as far as it matters: the Temporary patch follows the panel (item 19), so INIT had been *sent* before capture 02 (probably a SYNC). Not reproducible from the logs |
+| System writes | Whether System DT1s (e.g. from SYNC) persist after power-off. The stored values equal the Editor defaults, which may also be the factory values, so this is undecidable from the data |
+| Hidden patch bits | 146 bits per patch record outside the data model (item 19); why 1-1 differs |
+| Checksums | **Settled**: also valid on every message from the synth (item 18) |
 | Patch storage | Whether the synth commits a DT1 to `30 nn …` to flash immediately (the Librarian export implies yes), and the Editor's live WRITE handshake (`0F 00 10 0x` payloads). **Do not experiment with writes yet** |
 | .a8l | Trailing 4 bytes per record (not transmitted in exports; memo hypothesis) |
 | Serialization | Whether the hardware's reply includes reserved bytes identical to `.a8e`; `reserve1F` = 0 lies outside the script's range |
-| MIDI comms | Which RQ1s the Editor sends on READ/SYNC after a successful Identity exchange. The loopback capture proved these are gated behind the Identity Reply; names are read by RQ1 on `30 nn 00 00` (item 15). **Needs the synth, observed via MIDI-OX in the middle** |
+| MIDI comms | READ, SYNC and Read Selected are **settled** (item 18). Open: the Librarian Read All sequence (not logged) and the WRITE handshake |
 
 ## Most valuable discoveries (ranked)
 
@@ -102,25 +120,24 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 4. **The display tables** (enum labels, offsets, 313 wave names). What a musician or an AI needs in order to reason about values.
 5. **`InitialData.a8e`/`.a8l`.** A verified reference INIT patch and the library container for importing and exporting whole banks.
 
-## Next experiment (single most useful): read-only Temporary-patch dump
+## Next experiment (single most useful): first write to the Temporary patch
 
-**Goal:** confirm on real hardware that addresses, sizes, encoding, checksums and enum mapping match the model, with **zero risk of changing synth memory** (RQ1 only asks the synth to reply).
+**Status 2026-09-26:** reading is solved: Editor/Librarian READ (item 18), our own RQ1 file, and the Bulk Dump (item 19). The chain `model → encoder → DT1 → synth` has been exercised only by Roland's SYNC (12 whole-block DT1s, accepted), never by our bytes.
 
-1. On the AX-Synth, select a known factory Tone by family button + variation number, e.g. LEAD GUITAR variation 1. The synth's 3-character display can't show names; the expected name comes from `generated/factory-tones.csv` ("SearingGtr 1").
-2. Send `research/generated/experiment-rq1-temporary-patch.syx` (10 RQ1s: 9 patch blocks + SystemController with size 50) using a SysEx utility such as MIDI-OX. Record all incoming SysEx to `reply.syx`.
-3. `py -3 research/tools/dump_experiment.py decode reply.syx`
-   Expect: 9–10 DT1 replies with `checksum_ok=True`, patchName = the Tone-list name, labels that make sense (e.g. `tvfFilterType = LPF`), and the SystemController reply length answering the 4F/50 question. For SearingGtr 1, the non-edited parts should also equal the forum patches' unchanged values.
-4. Change **one** value without storing anything. Use the synth's own Volume edit ([SHIFT] + the lit TONE button → "UOl", change the value; Owner's Manual p.26) but **don't press WRITE**. Then re-send, re-record and diff. That shows where the on-device volume edit lives (prediction: PatchCommon `patchLevel`, `1F 00 00 0E`). Alternatively, change one value in the Editor (e.g. Tone 1 cutoff), which should change `1F 00 20 49`.
+1. Select LEAD GUITAR 1 (SearingGtr 1) on the synth.
+2. MIDI-OX *Send/Receive SysEx*, with a 60 ms delay after each F7: send `research/generated/guitar01-temporary.syx` (9 DT1s to `1F 00 00 00`, built by `dump_experiment.py a8-to-syx patches/guitar01.a8e`).
+3. Without switching sounds, send `research/generated/experiment-rq1-temporary-patch.syx` and save `captures/first-write/reply.syx`.
+4. Expect: the reply's 9 Temporary blocks = the 9 blocks we sent, byte for byte. The sound audibly differs from SearingGtr 1 in the ways the forum author described (bend 12/24, a soft-note +12 sine, retuned Tone 2). Switching sounds restores SearingGtr 1.
 
-**Done without hardware (2026-09-23):** Export SMF from both apps. See [smf-export-analysis.md](smf-export-analysis.md). It confirmed the block format, User-patch addressing, checksums and pacing, but it can't show live traffic.
+**Then:** a listening test of single-parameter changes (NEXT-STEPS step 4, end), and on the user's go-ahead a Temporary-only "safe sender" (MIDI I/O).
 
-**Done without hardware (2026-09-23): live loopback capture** (loopMIDI + MIDI-OX; `captures/live/`, [live-capture-analysis.md](live-capture-analysis.md), item 15). It settled single-parameter addressing (incl. `00 81`), effect-type-change behaviour and name reads. It also showed that **everything else (READ/SYNC RQ1s, the write handshake) waits for the synth's Identity Reply**, so zero-hardware capture is exhausted.
+**Done (for the record):**
+- 2026-09-23, without hardware: Export SMF ([smf-export-analysis.md](smf-export-analysis.md)) and a live loopback capture ([live-capture-analysis.md](live-capture-analysis.md), item 15).
+- 2026-09-26, with the synth:
+  - MIDI-OX in the middle, plus a Librarian Read All backup ([mitm-capture-analysis.md](mitm-capture-analysis.md), item 18)
+  - the synth's Bulk Dump and our read-only RQ1 file ([bulkdump-analysis.md](bulkdump-analysis.md), item 19)
 
-**Next capture, with the synth: MIDI-OX as a man-in-the-middle.** Editor/Librarian → loopMIDI port A → MIDI-OX → AX-Synth, and AX-Synth → MIDI-OX → loopMIDI port B → Editor/Librarian. MIDI-OX logs both directions in one log, and `midiox_log.py` prints the IN PORT column to tell them apart. Doing the Librarian **Read All** (backup, NEXT-STEPS 3.1) and the Editor **READ** this way shows the Identity Reply, the RQ1 sequence and the synth's reply packetization, all from read-only operations. WRITE stays off-limits until a verified backup exists and the user decides to test it.
-
-**Useful follow-up once the synth is connected (non-destructive):** send `research/generated/guitar01-temporary.syx`, a real patch encoded by our tools for the Temporary Patch only. It should sound like a metal lead, with the velocity layers and CC70 behaviour the author described. The synth can't show the name, so confirm it with the Editor's READ ("SearingGtr 1") or an RQ1 dump. Alternatively play `dumps/AX-Synth Editor clean export.mid` to the synth, which targets only the volatile Temporary Patch (the name read back should be "INIT PATCH"). ⚠ **Never** play the Librarian export without a verified backup: it would overwrite all 256 User patches. If that happens by accident, factory reset (Owner's Manual p.34) restores the factory Tones, but not your own edits.
-
-**Synth-initiated capture (read-only for the synth):** record the **Bulk Dump** (power-on with VARIATION [−]+[+]+TONE [6], then FAVORITE [B]; ~16 min; Owner's Manual p.29) in MIDI-OX. It's a full backup *and* shows the synth's own DT1 format: addresses, packet sizes and pacing, plus the undocumented FAVORITE/system areas.
+⚠ **Never** play the Librarian export (`dumps/…Librarian Clean export.mid`) or the user's backups (`captures/backup/*.mid`, `captures/bulkdump/*.syx`) to the synth except as a deliberate restore: they rewrite all 256 User patches. Factory reset (Owner's Manual p.34) restores factory Tones, not user edits.
 
 ## Files produced
 
@@ -133,6 +150,11 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `research/roland-installation-inventory.md` | Task 5 |
 | `research/online-research.md` | Task 6 |
 | `research/smf-export-analysis.md` | Editor/Librarian "Export SMF" captures in `dumps/` |
+| `research/bulkdump-analysis.md` | The synth's Bulk Dump: wire format (model `7F`, 7-in-8), image map, bit-packed patch records, FAVORITE memories, System Common; step 3.3 RQ1 results |
+| `research/tools/bulkdump.py` → `research/generated/bulkdump-layout.json` | Bulk-dump decoder: `info`, `solve` (derive the record layout from a backup), `verify`, `export` (dump → Librarian-style DT1s) |
+| `research/generated/experiment-rq1-setup-system.syx` | 3 read-only RQ1s: Setup, System Common, System Controller (0x50); `dump_experiment.py make-system-requests` |
+| `research/mitm-capture-analysis.md` | First conversation with the synth (MIDI-OX in the middle) + backup: Identity Reply, RQ1 replies, READ/SYNC sequences, factory mapping and wave numbering confirmed, forum-patch diffs, `patchCategory` |
+| `research/tools/backup_summary.py` → `research/generated/user-patches.{csv,json}` | Every User patch in a backup: slot, factory vs stored name, category, 4 tones (switch, wave + name, coarse tune), MFX/chorus/reverb type |
 | `research/live-capture-analysis.md` | Editor/Librarian live MIDI output via loopback (`captures/live/`): value-edit DT1s, effect type change, Identity Request gating, name RQ1 |
 | `research/third-party-patches-analysis.md` | Forum-shared patches in `patches/`, checked against the author's description |
 | `research/owners-manual-analysis.md` | Owner's Manual: Tone list, UI limits, maintenance functions, controllers, design implications, terminology |
@@ -151,6 +173,6 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
 | `src/axsynth/sysex.py` | Checksum, DT1/RQ1/Identity Request builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
 | `captures/live/` | User's MIDI-OX logs of the Editor/Librarian live output (step 2) + `notes.md` |
-| `tests/test_schema.py` | 49 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `tests/test_schema.py` | 73 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

@@ -9,6 +9,14 @@ original-roland-files/**/*.bmp
 docs/
 reference/synth-secrets/
 
+# --- The user's synth backups (Roland factory sound data; local only) --------
+# Restore files: full copies of all 256 User patches. Keep them off the public
+# repo; tests skip when they are absent. The notes.md next to them are tracked.
+captures/backup/*
+!captures/backup/notes.md
+captures/bulkdump/*
+!captures/bulkdump/notes.md
+
 # --- Python ------------------------------------------------------------------
 .venv/
 venv/

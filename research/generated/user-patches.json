@@ -1,0 +1,10251 @@
+{
+ "meta": {
+  "source": "captures/backup/ax-synth-backup-2026-09-26.mid",
+  "patches": 256,
+  "complete": 256,
+  "names_matching_factory": 254,
+  "wave_name_rule": "wave N = internalWaveNameTableA[N-1] (Script.xml)"
+ },
+ "patches": [
+  {
+   "user_patch": 0,
+   "librarian_slot": "1-1",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "AX Saw Lead",
+   "stored_name": "AX Saw Lead",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 1,
+   "librarian_slot": "1-2",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "AX Sync Lead",
+   "stored_name": "AX Sync Lead",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": -2
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 2,
+   "librarian_slot": "1-3",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "GR300 Lead 1",
+   "stored_name": "GR300 Lead 1",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 3,
+   "librarian_slot": "1-4",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "JupiterLead1",
+   "stored_name": "JupiterLead1",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 179,
+     "wave_name": "P5 Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 179,
+     "wave_name": "P5 Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 4,
+   "librarian_slot": "1-5",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "JupiterLead2",
+   "stored_name": "JupiterLead2",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 0,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 5,
+   "librarian_slot": "1-6",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Saw Lead 1",
+   "stored_name": "Saw Lead 1",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 128,
+     "wave_name": "SBF Vox",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 313,
+     "wave_name": "Jazz Organ 5",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 73,
+     "wave_name": "Fng.EBs 1 ff",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 6,
+   "librarian_slot": "1-7",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Saw Lead 2",
+   "stored_name": "Saw Lead 2",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 7,
+   "librarian_slot": "1-8",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Saw Lead 3",
+   "stored_name": "Saw Lead 3",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 206,
+     "wave_name": "JP8 Pls 25HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 8,
+   "librarian_slot": "1-9",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Saw Lead 4",
+   "stored_name": "Saw Lead 4",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 206,
+     "wave_name": "JP8 Pls 25HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 9,
+   "librarian_slot": "1-10",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Saw Lead 5",
+   "stored_name": "Saw Lead 5",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 186,
+     "wave_name": "D-50 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 151,
+     "wave_name": "Agogo 2 Low",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 10,
+   "librarian_slot": "1-11",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Classic Ld",
+   "stored_name": "Classic Ld",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": -2
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 11,
+   "librarian_slot": "1-12",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Delayed Lead",
+   "stored_name": "Delayed Lead",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 12,
+   "librarian_slot": "1-13",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "GR300 Lead 2",
+   "stored_name": "GR300 Lead 2",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 114,
+     "wave_name": "Trumpet 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 13,
+   "librarian_slot": "1-14",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Alpha Spit",
+   "stored_name": "Alpha Spit",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 14,
+   "librarian_slot": "1-15",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Pro Fat Ld",
+   "stored_name": "Pro Fat Ld",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 186,
+     "wave_name": "D-50 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 186,
+     "wave_name": "D-50 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 15,
+   "librarian_slot": "1-16",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Fat GR Lead",
+   "stored_name": "Fat GR Lead",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": -22
+    },
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": -2
+    },
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 16,
+   "librarian_slot": "1-17",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Bright Pls",
+   "stored_name": "Bright Pls",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 205,
+     "wave_name": "JP8 Pls 15HD",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 205,
+     "wave_name": "JP8 Pls 15HD",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": -2
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 17,
+   "librarian_slot": "1-18",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Octa Juice",
+   "stored_name": "Octa Juice",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 24,
+   "mfx_name": "FLANGER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": -22
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": -2
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 18,
+   "librarian_slot": "1-19",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Octa Saw",
+   "stored_name": "Octa Saw",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": -22
+    },
+    {
+     "on": true,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": -2
+    },
+    {
+     "on": true,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 19,
+   "librarian_slot": "1-20",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Octa Sync",
+   "stored_name": "Octa Sync",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": -22
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": -2
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 20,
+   "librarian_slot": "1-21",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Phase Lead",
+   "stored_name": "Phase Lead",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 14,
+   "mfx_name": "INFINITE PHASER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 21,
+   "librarian_slot": "1-22",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Waspy Lead",
+   "stored_name": "Waspy Lead",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 210,
+     "wave_name": "Syn Pulse 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 210,
+     "wave_name": "Syn Pulse 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 22,
+   "librarian_slot": "1-23",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Follow Me",
+   "stored_name": "Follow Me",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 176,
+     "wave_name": "Custm Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 23,
+   "librarian_slot": "1-24",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Digi Lead 1",
+   "stored_name": "Digi Lead 1",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 166,
+     "wave_name": "JD WallyWave",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 166,
+     "wave_name": "JD WallyWave",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 24,
+   "librarian_slot": "1-25",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Digi Lead 2",
+   "stored_name": "Digi Lead 2",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 165,
+     "wave_name": "Digital Vox",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 25,
+   "librarian_slot": "1-26",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Hot Coffee",
+   "stored_name": "Hot Coffee",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 26,
+   "librarian_slot": "1-27",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Hot Sync",
+   "stored_name": "Hot Sync",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": -24
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 27,
+   "librarian_slot": "1-28",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Sync Tank",
+   "stored_name": "Sync Tank",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 46,
+   "mfx_name": "MODULATION DELAY",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 28,
+   "librarian_slot": "1-29",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "2krazy Brite",
+   "stored_name": "2krazy Brite",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 57,
+   "mfx_name": "LOFI COMPRESS",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -5
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 29,
+   "librarian_slot": "1-30",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Juicy Lead",
+   "stored_name": "Juicy Lead",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 49,
+   "mfx_name": "MULTI TAP DELAY",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 192,
+     "wave_name": "GR-300 Saw 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 30,
+   "librarian_slot": "1-31",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "Vintager",
+   "stored_name": "Vintager",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": -24
+    },
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": -24
+    },
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 31,
+   "librarian_slot": "1-32",
+   "complete": true,
+   "family": "Synth Lead 1",
+   "factory_name": "BagShakuLead",
+   "stored_name": "BagShakuLead",
+   "name_matches_factory": true,
+   "category": 32,
+   "mfx_type": 64,
+   "mfx_name": "REVERB",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 164,
+     "wave_name": "Bagpipe",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 101,
+     "wave_name": "Shakuhachi",
+     "coarse_tune": 12
+    }
+   ]
+  },
+  {
+   "user_patch": 32,
+   "librarian_slot": "2-1",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "ResoSawLead",
+   "stored_name": "ResoSawLead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 33,
+   "librarian_slot": "2-2",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Theramax 1",
+   "stored_name": "Theramax 1",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 48
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 34,
+   "librarian_slot": "2-3",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "AX Sqr Lead",
+   "stored_name": "AX Sqr Lead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 197,
+     "wave_name": "JP-8 Square",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 197,
+     "wave_name": "JP-8 Square",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 35,
+   "librarian_slot": "2-4",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Pulse Lead 1",
+   "stored_name": "Pulse Lead 1",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 204,
+     "wave_name": "JP8 Pls 10HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 204,
+     "wave_name": "JP8 Pls 10HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 36,
+   "librarian_slot": "2-5",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Pulse Lead 2",
+   "stored_name": "Pulse Lead 2",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 206,
+     "wave_name": "JP8 Pls 25HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 206,
+     "wave_name": "JP8 Pls 25HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 37,
+   "librarian_slot": "2-6",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Mid Saw Ld",
+   "stored_name": "Mid Saw Ld",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 38,
+   "librarian_slot": "2-7",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "On Air",
+   "stored_name": "On Air",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 39,
+   "librarian_slot": "2-8",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "2krazy Soft",
+   "stored_name": "2krazy Soft",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 57,
+   "mfx_name": "LOFI COMPRESS",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -5
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 218,
+     "wave_name": "VS-Ramp",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 40,
+   "librarian_slot": "2-9",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Soft Lead",
+   "stored_name": "Soft Lead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 46,
+   "mfx_name": "MODULATION DELAY",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 41,
+   "librarian_slot": "2-10",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Tri Lead 1",
+   "stored_name": "Tri Lead 1",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 213,
+     "wave_name": "700 Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 213,
+     "wave_name": "700 Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 42,
+   "librarian_slot": "2-11",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Tri Lead 2",
+   "stored_name": "Tri Lead 2",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 213,
+     "wave_name": "700 Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 213,
+     "wave_name": "700 Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 43,
+   "librarian_slot": "2-12",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Sine Lead 1",
+   "stored_name": "Sine Lead 1",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 44,
+   "librarian_slot": "2-13",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Sine Lead 2",
+   "stored_name": "Sine Lead 2",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 45,
+   "librarian_slot": "2-14",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Simple Sine",
+   "stored_name": "Simple Sine",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -10
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 10
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 46,
+   "librarian_slot": "2-15",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Simple Tri",
+   "stored_name": "Simple Tri",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": -10
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 10
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 47,
+   "librarian_slot": "2-16",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Simple Sqr",
+   "stored_name": "Simple Sqr",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": -10
+    },
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": 10
+    },
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 48,
+   "librarian_slot": "2-17",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Spooky Lead",
+   "stored_name": "Spooky Lead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 49,
+   "librarian_slot": "2-18",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Ramp Lead",
+   "stored_name": "Ramp Lead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 218,
+     "wave_name": "VS-Ramp",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 50,
+   "librarian_slot": "2-19",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Air Lead",
+   "stored_name": "Air Lead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    }
+   ]
+  },
+  {
+   "user_patch": 51,
+   "librarian_slot": "2-20",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Growl Lead",
+   "stored_name": "Growl Lead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 28,
+   "mfx_name": "SPACE-D",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 52,
+   "librarian_slot": "2-21",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Pulstar Ld",
+   "stored_name": "Pulstar Ld",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 53,
+   "librarian_slot": "2-22",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Mini Growl",
+   "stored_name": "Mini Growl",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 181,
+     "wave_name": "Calc.Saw inv",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 54,
+   "librarian_slot": "2-23",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Round SQR",
+   "stored_name": "Round SQR",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 55,
+   "librarian_slot": "2-24",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Brite Square",
+   "stored_name": "Brite Square",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 200,
+     "wave_name": "LA-Square",
+     "coarse_tune": -2
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 56,
+   "librarian_slot": "2-25",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Octa Square",
+   "stored_name": "Octa Square",
+   "name_matches_factory": true,
+   "category": 22,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 195,
+     "wave_name": "P5 Sqr HD",
+     "coarse_tune": -22
+    },
+    {
+     "on": true,
+     "wave": 195,
+     "wave_name": "P5 Sqr HD",
+     "coarse_tune": -2
+    },
+    {
+     "on": true,
+     "wave": 195,
+     "wave_name": "P5 Sqr HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 195,
+     "wave_name": "P5 Sqr HD",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 57,
+   "librarian_slot": "2-26",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Square SAW",
+   "stored_name": "Square SAW",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 58,
+   "librarian_slot": "2-27",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Soft Squ Ld",
+   "stored_name": "Soft Squ Ld",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 125,
+     "wave_name": "OB2 Pad 1",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 197,
+     "wave_name": "JP-8 Square",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 125,
+     "wave_name": "OB2 Pad 1",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 197,
+     "wave_name": "JP-8 Square",
+     "coarse_tune": 2
+    }
+   ]
+  },
+  {
+   "user_patch": 59,
+   "librarian_slot": "2-28",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Wormy Lead",
+   "stored_name": "Wormy Lead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 175,
+     "wave_name": "TB303 Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 60,
+   "librarian_slot": "2-29",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Theramax 2",
+   "stored_name": "Theramax 2",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 48
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 61,
+   "librarian_slot": "2-30",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "SoloNzPeaker",
+   "stored_name": "SoloNzPeaker",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 232,
+     "wave_name": "White Noise",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 62,
+   "librarian_slot": "2-31",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "Mlt Pipes",
+   "stored_name": "Mlt Pipes",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 62,
+   "mfx_name": "2VOICE PITCH SHIFTER",
+   "chorus_type": 1,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 100,
+     "wave_name": "Pan Flute",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 101,
+     "wave_name": "Shakuhachi",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 144,
+     "wave_name": "Marimba",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 143,
+     "wave_name": "JD Xylo",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 63,
+   "librarian_slot": "2-32",
+   "complete": true,
+   "family": "Synth Lead 2",
+   "factory_name": "5th SawLead",
+   "stored_name": "5th SawLead",
+   "name_matches_factory": true,
+   "category": 23,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 64,
+   "librarian_slot": "3-1",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Reso Bs 1",
+   "stored_name": "Reso Bs 1",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 194,
+     "wave_name": "Juno Sqr HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 65,
+   "librarian_slot": "3-2",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Round Bs",
+   "stored_name": "Round Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 190,
+     "wave_name": "Air Wave",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 66,
+   "librarian_slot": "3-3",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Moogue Bs1",
+   "stored_name": "Moogue Bs1",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 67,
+   "librarian_slot": "3-4",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Monster Bass",
+   "stored_name": "Monster Bass",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 193,
+     "wave_name": "TB Dist Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 193,
+     "wave_name": "TB Dist Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 68,
+   "librarian_slot": "3-5",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Moogue Bs2",
+   "stored_name": "Moogue Bs2",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 69,
+   "librarian_slot": "3-6",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Triangle Bs",
+   "stored_name": "Triangle Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": false,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 70,
+   "librarian_slot": "3-7",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Punch MG",
+   "stored_name": "Punch MG",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": -24
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": -24
+    },
+    {
+     "on": false,
+     "wave": 260,
+     "wave_name": "VK Full Org2",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 131,
+     "wave_name": "Female Ahs",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 71,
+   "librarian_slot": "3-8",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Acdg Bass",
+   "stored_name": "Acdg Bass",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 175,
+     "wave_name": "TB303 Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 175,
+     "wave_name": "TB303 Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 72,
+   "librarian_slot": "3-9",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Alpha Bs",
+   "stored_name": "Alpha Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 194,
+     "wave_name": "Juno Sqr HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 73,
+   "librarian_slot": "3-10",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Reso Bs 2",
+   "stored_name": "Reso Bs 1",
+   "name_matches_factory": false,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 194,
+     "wave_name": "Juno Sqr HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 74,
+   "librarian_slot": "3-11",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Reso Bs 3",
+   "stored_name": "Reso Bs 2",
+   "name_matches_factory": false,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 198,
+     "wave_name": "SH-2 Square",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 194,
+     "wave_name": "Juno Sqr HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 75,
+   "librarian_slot": "3-12",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "MKS-50 SBs",
+   "stored_name": "MKS-50 SBs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 194,
+     "wave_name": "Juno Sqr HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 76,
+   "librarian_slot": "3-13",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "TB Dist Bs",
+   "stored_name": "TB Dist Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 193,
+     "wave_name": "TB Dist Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 77,
+   "librarian_slot": "3-14",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "TB Bs",
+   "stored_name": "TB Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 179,
+     "wave_name": "P5 Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 179,
+     "wave_name": "P5 Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 78,
+   "librarian_slot": "3-15",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Fat Analog",
+   "stored_name": "Fat Analog",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 179,
+     "wave_name": "P5 Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 175,
+     "wave_name": "TB303 Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 79,
+   "librarian_slot": "3-16",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Compu SBs",
+   "stored_name": "Compu SBs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": -24
+    }
+   ]
+  },
+  {
+   "user_patch": 80,
+   "librarian_slot": "3-17",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Modular Bs1",
+   "stored_name": "Modular Bs1",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": -24
+    }
+   ]
+  },
+  {
+   "user_patch": 81,
+   "librarian_slot": "3-18",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Modular Bs2",
+   "stored_name": "Modular Bs2",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 176,
+     "wave_name": "Custm Saw HD",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 176,
+     "wave_name": "Custm Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 176,
+     "wave_name": "Custm Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 176,
+     "wave_name": "Custm Saw HD",
+     "coarse_tune": -24
+    }
+   ]
+  },
+  {
+   "user_patch": 82,
+   "librarian_slot": "3-19",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Garage Bass",
+   "stored_name": "Garage Bass",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": -24
+    }
+   ]
+  },
+  {
+   "user_patch": 83,
+   "librarian_slot": "3-20",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Spike Bs",
+   "stored_name": "Spike Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 84,
+   "librarian_slot": "3-21",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "FatMG Bs",
+   "stored_name": "FatMG Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 85,
+   "librarian_slot": "3-22",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "JunoSqu Bs",
+   "stored_name": "JunoSqu Bs",
+   "name_matches_factory": true,
+   "category": 13,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 194,
+     "wave_name": "Juno Sqr HD",
+     "coarse_tune": -24
+    },
+    {
+     "on": true,
+     "wave": 194,
+     "wave_name": "Juno Sqr HD",
+     "coarse_tune": -24
+    },
+    {
+     "on": false,
+     "wave": 260,
+     "wave_name": "VK Full Org2",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 131,
+     "wave_name": "Female Ahs",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 86,
+   "librarian_slot": "3-23",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Acoustic Bs1",
+   "stored_name": "Acoustic Bs1",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 69,
+     "wave_name": "Fat Ac.Bs p",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 69,
+     "wave_name": "Fat Ac.Bs p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 70,
+     "wave_name": "Fat Ac.Bs f",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 69,
+     "wave_name": "Fat Ac.Bs p",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 87,
+   "librarian_slot": "3-24",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Acoustic Bs2",
+   "stored_name": "Acoustic Bs2",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 69,
+     "wave_name": "Fat Ac.Bs p",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 69,
+     "wave_name": "Fat Ac.Bs p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 70,
+     "wave_name": "Fat Ac.Bs f",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 69,
+     "wave_name": "Fat Ac.Bs p",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 88,
+   "librarian_slot": "3-25",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Finger EBs 1",
+   "stored_name": "Finger EBs 1",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 72,
+     "wave_name": "Fng.EBs 1 mf",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 72,
+     "wave_name": "Fng.EBs 1 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 73,
+     "wave_name": "Fng.EBs 1 ff",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 72,
+     "wave_name": "Fng.EBs 1 mf",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 89,
+   "librarian_slot": "3-26",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Finger EBs 2",
+   "stored_name": "Finger EBs 2",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 74,
+     "wave_name": "Fng.EBs 2 mf",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 74,
+     "wave_name": "Fng.EBs 2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 75,
+     "wave_name": "Fng.EBs 2 f",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 74,
+     "wave_name": "Fng.EBs 2 mf",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 90,
+   "librarian_slot": "3-27",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Finger EBs 3",
+   "stored_name": "Finger EBs 3",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 76,
+     "wave_name": "Fng.Comp Bs",
+     "coarse_tune": 4
+    },
+    {
+     "on": true,
+     "wave": 76,
+     "wave_name": "Fng.Comp Bs",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 76,
+     "wave_name": "Fng.Comp Bs",
+     "coarse_tune": -4
+    },
+    {
+     "on": true,
+     "wave": 76,
+     "wave_name": "Fng.Comp Bs",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 91,
+   "librarian_slot": "3-28",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Finger EBs 4",
+   "stored_name": "Finger EBs 4",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 77,
+     "wave_name": "Finger Bs",
+     "coarse_tune": 4
+    },
+    {
+     "on": true,
+     "wave": 77,
+     "wave_name": "Finger Bs",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 77,
+     "wave_name": "Finger Bs",
+     "coarse_tune": -4
+    },
+    {
+     "on": true,
+     "wave": 77,
+     "wave_name": "Finger Bs",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 92,
+   "librarian_slot": "3-29",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Pick Bs 1",
+   "stored_name": "Pick Bs 1",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 78,
+     "wave_name": "P.Bass",
+     "coarse_tune": 4
+    },
+    {
+     "on": true,
+     "wave": 78,
+     "wave_name": "P.Bass",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 78,
+     "wave_name": "P.Bass",
+     "coarse_tune": -4
+    },
+    {
+     "on": true,
+     "wave": 78,
+     "wave_name": "P.Bass",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 93,
+   "librarian_slot": "3-30",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Pick Bs 2",
+   "stored_name": "Pick Bs 2",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 82,
+     "wave_name": "Pick E.Bs f",
+     "coarse_tune": 4
+    },
+    {
+     "on": true,
+     "wave": 82,
+     "wave_name": "Pick E.Bs f",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 82,
+     "wave_name": "Pick E.Bs f",
+     "coarse_tune": -4
+    },
+    {
+     "on": true,
+     "wave": 82,
+     "wave_name": "Pick E.Bs f",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 94,
+   "librarian_slot": "3-31",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Fretnot Bs",
+   "stored_name": "Fretnot Bs",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 1,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 81,
+     "wave_name": "Fretlss Sft",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 80,
+     "wave_name": "Fretlss Bs",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 95,
+   "librarian_slot": "3-32",
+   "complete": true,
+   "family": "Bass",
+   "factory_name": "Slap Bass",
+   "stored_name": "Slap Bass",
+   "name_matches_factory": true,
+   "category": 12,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 88,
+     "wave_name": "Slap Bass",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 89,
+     "wave_name": "Slap + Pull",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 96,
+   "librarian_slot": "4-1",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "SearingGtr 1",
+   "stored_name": "SearingGtr 1",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 61,
+     "wave_name": "Overdrive Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 97,
+   "librarian_slot": "4-2",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "SearingGtr 2",
+   "stored_name": "SearingGtr 2",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 61,
+     "wave_name": "Overdrive Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 98,
+   "librarian_slot": "4-3",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "SearingGtr 3",
+   "stored_name": "SearingGtr 3",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 38,
+   "mfx_name": "VS DISTORTION",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 61,
+     "wave_name": "Overdrive Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 99,
+   "librarian_slot": "4-4",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "SearingGtr 4",
+   "stored_name": "SearingGtr 4",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 38,
+   "mfx_name": "VS DISTORTION",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 61,
+     "wave_name": "Overdrive Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 100,
+   "librarian_slot": "4-5",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "OctSearingGt",
+   "stored_name": "OctSearingGt",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 61,
+     "wave_name": "Overdrive Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 101,
+   "librarian_slot": "4-6",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Dist.Fingerz",
+   "stored_name": "Dist.Fingerz",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 102,
+   "librarian_slot": "4-7",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "AX DistGt",
+   "stored_name": "AX DistGt",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 61,
+     "wave_name": "Overdrive Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 103,
+   "librarian_slot": "4-8",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Digi DistGt",
+   "stored_name": "Digi DistGt",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 61,
+     "wave_name": "Overdrive Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 104,
+   "librarian_slot": "4-9",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Fuzz",
+   "stored_name": "Fuzz",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 1,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 193,
+     "wave_name": "TB Dist Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 193,
+     "wave_name": "TB Dist Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 219,
+     "wave_name": "Sync Sweep",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 105,
+   "librarian_slot": "4-10",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Nice Dist Gt",
+   "stored_name": "Nice Dist Gt",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 38,
+   "mfx_name": "VS DISTORTION",
+   "chorus_type": 2,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 60,
+     "wave_name": "Funk Mute Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 57,
+     "wave_name": "Bright Strat",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 619,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 106,
+   "librarian_slot": "4-11",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Guitar Rip",
+   "stored_name": "Guitar Rip",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 1,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 59,
+     "wave_name": "Funk Gtr",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 249,
+     "wave_name": "Org Click 1",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 619,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 107,
+   "librarian_slot": "4-12",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Twin",
+   "stored_name": "Twin",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 108,
+   "librarian_slot": "4-13",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "MS1959 I",
+   "stored_name": "MS1959 I",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 109,
+   "librarian_slot": "4-14",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "MS1959 II",
+   "stored_name": "MS1959 II",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 110,
+   "librarian_slot": "4-15",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Metal Lead",
+   "stored_name": "Metal Lead",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 111,
+   "librarian_slot": "4-16",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "OD-2 Turbo",
+   "stored_name": "OD-2 Turbo",
+   "name_matches_factory": true,
+   "category": 11,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 60,
+     "wave_name": "Funk Mute Gt",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 60,
+     "wave_name": "Funk Mute Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 60,
+     "wave_name": "Funk Mute Gt",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 112,
+   "librarian_slot": "4-17",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Jazz EGtr",
+   "stored_name": "Jazz EGtr",
+   "name_matches_factory": true,
+   "category": 10,
+   "mfx_type": 10,
+   "mfx_name": "SPEAKER SIMULATOR",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 55,
+     "wave_name": "Jazz Gtr",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 55,
+     "wave_name": "Jazz Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 55,
+     "wave_name": "Jazz Gtr",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 113,
+   "librarian_slot": "4-18",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Clean EGtr",
+   "stored_name": "Clean EGtr",
+   "name_matches_factory": true,
+   "category": 10,
+   "mfx_type": 10,
+   "mfx_name": "SPEAKER SIMULATOR",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 56,
+     "wave_name": "Clean Gtr",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 114,
+   "librarian_slot": "4-19",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Pick EGtr",
+   "stored_name": "Pick EGtr",
+   "name_matches_factory": true,
+   "category": 10,
+   "mfx_type": 10,
+   "mfx_name": "SPEAKER SIMULATOR",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 115,
+   "librarian_slot": "4-20",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Funk EGtr",
+   "stored_name": "Funk EGtr",
+   "name_matches_factory": true,
+   "category": 10,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 1,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 60,
+     "wave_name": "Funk Mute Gt",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 59,
+     "wave_name": "Funk Gtr",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 59,
+     "wave_name": "Funk Gtr",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 116,
+   "librarian_slot": "4-21",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Strat EGtr",
+   "stored_name": "Strat EGtr",
+   "name_matches_factory": true,
+   "category": 10,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": 3
+    },
+    {
+     "on": true,
+     "wave": 58,
+     "wave_name": "FstPick 70s",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 117,
+   "librarian_slot": "4-22",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Nylon Gtr 1",
+   "stored_name": "Nylon Gtr 1",
+   "name_matches_factory": true,
+   "category": 9,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 49,
+     "wave_name": "Brt N.Gtr p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 50,
+     "wave_name": "Brt N.Gtr mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 51,
+     "wave_name": "Brt N.Gtr ff",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 49,
+     "wave_name": "Brt N.Gtr p",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 118,
+   "librarian_slot": "4-23",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Nylon Gtr 2",
+   "stored_name": "Nylon Gtr 2",
+   "name_matches_factory": true,
+   "category": 9,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 49,
+     "wave_name": "Brt N.Gtr p",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 50,
+     "wave_name": "Brt N.Gtr mf",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 51,
+     "wave_name": "Brt N.Gtr ff",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 49,
+     "wave_name": "Brt N.Gtr p",
+     "coarse_tune": 8
+    }
+   ]
+  },
+  {
+   "user_patch": 119,
+   "librarian_slot": "4-24",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Nylon Gtr 3",
+   "stored_name": "Nylon Gtr 3",
+   "name_matches_factory": true,
+   "category": 9,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 49,
+     "wave_name": "Brt N.Gtr p",
+     "coarse_tune": -8
+    },
+    {
+     "on": true,
+     "wave": 50,
+     "wave_name": "Brt N.Gtr mf",
+     "coarse_tune": -8
+    },
+    {
+     "on": true,
+     "wave": 51,
+     "wave_name": "Brt N.Gtr ff",
+     "coarse_tune": -8
+    },
+    {
+     "on": true,
+     "wave": 49,
+     "wave_name": "Brt N.Gtr p",
+     "coarse_tune": -8
+    }
+   ]
+  },
+  {
+   "user_patch": 120,
+   "librarian_slot": "4-25",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Folk Gtr 1",
+   "stored_name": "Folk Gtr 1",
+   "name_matches_factory": true,
+   "category": 9,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 52,
+     "wave_name": "Ac.Gtr mp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 53,
+     "wave_name": "Ac.Gtr mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 54,
+     "wave_name": "Ac.Gtr ff",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 54,
+     "wave_name": "Ac.Gtr ff",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 121,
+   "librarian_slot": "4-26",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Folk Gtr 2",
+   "stored_name": "Folk Gtr 2",
+   "name_matches_factory": true,
+   "category": 9,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 52,
+     "wave_name": "Ac.Gtr mp",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 53,
+     "wave_name": "Ac.Gtr mf",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 54,
+     "wave_name": "Ac.Gtr ff",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 54,
+     "wave_name": "Ac.Gtr ff",
+     "coarse_tune": 8
+    }
+   ]
+  },
+  {
+   "user_patch": 122,
+   "librarian_slot": "4-27",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Folk Gtr 3",
+   "stored_name": "Folk Gtr 3",
+   "name_matches_factory": true,
+   "category": 9,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 52,
+     "wave_name": "Ac.Gtr mp",
+     "coarse_tune": -7
+    },
+    {
+     "on": true,
+     "wave": 53,
+     "wave_name": "Ac.Gtr mf",
+     "coarse_tune": -7
+    },
+    {
+     "on": true,
+     "wave": 54,
+     "wave_name": "Ac.Gtr ff",
+     "coarse_tune": -7
+    },
+    {
+     "on": true,
+     "wave": 54,
+     "wave_name": "Ac.Gtr ff",
+     "coarse_tune": -7
+    }
+   ]
+  },
+  {
+   "user_patch": 123,
+   "librarian_slot": "4-28",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Harp",
+   "stored_name": "Harp",
+   "name_matches_factory": true,
+   "category": 31,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 63,
+     "wave_name": "Harp",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 63,
+     "wave_name": "Harp",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 124,
+   "librarian_slot": "4-29",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Aerial Harp",
+   "stored_name": "Aerial Harp",
+   "name_matches_factory": true,
+   "category": 31,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 63,
+     "wave_name": "Harp",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 63,
+     "wave_name": "Harp",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 125,
+   "librarian_slot": "4-30",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "LostParadise",
+   "stored_name": "LostParadise",
+   "name_matches_factory": true,
+   "category": 31,
+   "mfx_type": 50,
+   "mfx_name": "REVERSE DELAY",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 63,
+     "wave_name": "Harp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 304,
+     "wave_name": "US Strings R",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 243,
+     "wave_name": "Xylo Seq.",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 126,
+   "librarian_slot": "4-31",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Sitar",
+   "stored_name": "Sitar",
+   "name_matches_factory": true,
+   "category": 31,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 64,
+     "wave_name": "Sitar",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 65,
+     "wave_name": "Sitar Drone",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    }
+   ]
+  },
+  {
+   "user_patch": 127,
+   "librarian_slot": "4-32",
+   "complete": true,
+   "family": "Lead Guitar",
+   "factory_name": "Santur Stack",
+   "stored_name": "Santur Stack",
+   "name_matches_factory": true,
+   "category": 32,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 67,
+     "wave_name": "Santur",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 68,
+     "wave_name": "Dulcimer",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 54,
+     "wave_name": "Ac.Gtr ff",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 128,
+   "librarian_slot": "5-1",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "80s Brass 1",
+   "stored_name": "80s Brass 1",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 151,
+     "wave_name": "Agogo 2 Low",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 129,
+   "librarian_slot": "5-2",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "80s Brass 2",
+   "stored_name": "80s Brass 2",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 130,
+   "librarian_slot": "5-3",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Soft SynBrs",
+   "stored_name": "Soft SynBrs",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 131,
+   "librarian_slot": "5-4",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Brite SynBrs",
+   "stored_name": "Brite SynBrs",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 132,
+   "librarian_slot": "5-5",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Wide SynBrs",
+   "stored_name": "Wide SynBrs",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 133,
+   "librarian_slot": "5-6",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Analog Brass",
+   "stored_name": "Analog Brass",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 23,
+   "mfx_name": "CHORUS",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 151,
+     "wave_name": "Agogo 2 Low",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 134,
+   "librarian_slot": "5-7",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Juno Brass",
+   "stored_name": "Juno Brass",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 0,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 174,
+     "wave_name": "Juno Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 135,
+   "librarian_slot": "5-8",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Poly Brass",
+   "stored_name": "Poly Brass",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 186,
+     "wave_name": "D-50 Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 136,
+   "librarian_slot": "5-9",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "106 Brass",
+   "stored_name": "106 Brass",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 137,
+   "librarian_slot": "5-10",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Octa Brass",
+   "stored_name": "Octa Brass",
+   "name_matches_factory": true,
+   "category": 20,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 138,
+   "librarian_slot": "5-11",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "AX BrassSect",
+   "stored_name": "AX BrassSect",
+   "name_matches_factory": true,
+   "category": 19,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 115,
+     "wave_name": "Tp Section",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 115,
+     "wave_name": "Tp Section",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 297,
+     "wave_name": "Trumpet 2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 298,
+     "wave_name": "Trumpet 2 mf",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 139,
+   "librarian_slot": "5-12",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Trumpeter",
+   "stored_name": "Trumpeter",
+   "name_matches_factory": true,
+   "category": 19,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 297,
+     "wave_name": "Trumpet 2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 298,
+     "wave_name": "Trumpet 2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 299,
+     "wave_name": "Trumpet 2 ff",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 140,
+   "librarian_slot": "5-13",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Soft Brass",
+   "stored_name": "Soft Brass",
+   "name_matches_factory": true,
+   "category": 19,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 289,
+     "wave_name": "Alto Sax2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 290,
+     "wave_name": "Alto Sax2 f",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 297,
+     "wave_name": "Trumpet 2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 298,
+     "wave_name": "Trumpet 2 mf",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 141,
+   "librarian_slot": "5-14",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Sax Sect 1",
+   "stored_name": "Sax Sect 1",
+   "name_matches_factory": true,
+   "category": 19,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 285,
+     "wave_name": "Sop Sax 2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 286,
+     "wave_name": "Sop Sax 2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 291,
+     "wave_name": "TenorSax2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 292,
+     "wave_name": "TenorSax2 mf",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 142,
+   "librarian_slot": "5-15",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Sax Sect 2",
+   "stored_name": "Sax Sect 2",
+   "name_matches_factory": true,
+   "category": 19,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 288,
+     "wave_name": "Alto Sax2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 289,
+     "wave_name": "Alto Sax2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 294,
+     "wave_name": "Bari Sax p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 295,
+     "wave_name": "Bari Sax mf",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 143,
+   "librarian_slot": "5-16",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Breathy Sax",
+   "stored_name": "Breathy Sax",
+   "name_matches_factory": true,
+   "category": 21,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 108,
+     "wave_name": "TenorBreathy",
+     "coarse_tune": 4
+    },
+    {
+     "on": true,
+     "wave": 108,
+     "wave_name": "TenorBreathy",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 108,
+     "wave_name": "TenorBreathy",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 144,
+   "librarian_slot": "5-17",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Soprano Sax",
+   "stored_name": "Soprano Sax",
+   "name_matches_factory": true,
+   "category": 21,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 285,
+     "wave_name": "Sop Sax 2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 286,
+     "wave_name": "Sop Sax 2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 287,
+     "wave_name": "Sop Sax 2 f",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 145,
+   "librarian_slot": "5-18",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Alto Sax",
+   "stored_name": "Alto Sax",
+   "name_matches_factory": true,
+   "category": 21,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 288,
+     "wave_name": "Alto Sax2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 289,
+     "wave_name": "Alto Sax2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 290,
+     "wave_name": "Alto Sax2 f",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 146,
+   "librarian_slot": "5-19",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Tenor Sax",
+   "stored_name": "Tenor Sax",
+   "name_matches_factory": true,
+   "category": 21,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 291,
+     "wave_name": "TenorSax2 p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 292,
+     "wave_name": "TenorSax2 mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 293,
+     "wave_name": "TenorSax2 f",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 147,
+   "librarian_slot": "5-20",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Baritone Sax",
+   "stored_name": "Baritone Sax",
+   "name_matches_factory": true,
+   "category": 21,
+   "mfx_type": 41,
+   "mfx_name": "LIMITER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 294,
+     "wave_name": "Bari Sax p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 295,
+     "wave_name": "Bari Sax mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 296,
+     "wave_name": "Bari Sax f",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 148,
+   "librarian_slot": "5-21",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Pan Pipes",
+   "stored_name": "Pan Pipes",
+   "name_matches_factory": true,
+   "category": 32,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 100,
+     "wave_name": "Pan Flute",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 99,
+     "wave_name": "Flute",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 149,
+   "librarian_slot": "5-22",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Harmonica",
+   "stored_name": "Harmonica",
+   "name_matches_factory": true,
+   "category": 8,
+   "mfx_type": 7,
+   "mfx_name": "ENHANCER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 111,
+     "wave_name": "Harmonica",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 112,
+     "wave_name": "Blues G-harp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 253,
+     "wave_name": "Org Click 5",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 150,
+   "librarian_slot": "5-23",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Ox Synth",
+   "stored_name": "Ox Synth",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 93,
+     "wave_name": "SH-101 Bs",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 151,
+   "librarian_slot": "5-24",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Poly Synth 1",
+   "stored_name": "Poly Synth 1",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 179,
+     "wave_name": "P5 Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 151,
+     "wave_name": "Agogo 2 Low",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 152,
+   "librarian_slot": "5-25",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Poly Synth 2",
+   "stored_name": "Poly Synth 2",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 153,
+   "librarian_slot": "5-26",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Poly Synth 3",
+   "stored_name": "Poly Synth 3",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 154,
+   "librarian_slot": "5-27",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Poly Synth 4",
+   "stored_name": "Poly Synth 4",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 186,
+     "wave_name": "D-50 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 189,
+     "wave_name": "LA-Saw",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 155,
+   "librarian_slot": "5-28",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Juno SAW",
+   "stored_name": "Juno SAW",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 23,
+   "mfx_name": "CHORUS",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 156,
+   "librarian_slot": "5-29",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Super Saw",
+   "stored_name": "Super Saw",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 185,
+     "wave_name": "JP-8 Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 157,
+   "librarian_slot": "5-30",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Touchy",
+   "stored_name": "Touchy",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 208,
+     "wave_name": "JP8 Pls 40HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 158,
+   "librarian_slot": "5-31",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Euro Express",
+   "stored_name": "Euro Express",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 188,
+     "wave_name": "SH-2 Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 159,
+   "librarian_slot": "5-32",
+   "complete": true,
+   "family": "Brass/Poly Synth",
+   "factory_name": "Analog Dream",
+   "stored_name": "Analog Dream",
+   "name_matches_factory": true,
+   "category": 27,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 215,
+     "wave_name": "JD Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 213,
+     "wave_name": "700 Triangle",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 160,
+   "librarian_slot": "6-1",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "AX Strings 1",
+   "stored_name": "AX Strings 1",
+   "name_matches_factory": true,
+   "category": 14,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 303,
+     "wave_name": "US Strings L",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 304,
+     "wave_name": "US Strings R",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 161,
+   "librarian_slot": "6-2",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "AX Strings 2",
+   "stored_name": "AX Strings 2",
+   "name_matches_factory": true,
+   "category": 14,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 303,
+     "wave_name": "US Strings L",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 162,
+   "librarian_slot": "6-3",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Tape Strings",
+   "stored_name": "Tape Strings",
+   "name_matches_factory": true,
+   "category": 14,
+   "mfx_type": 3,
+   "mfx_name": "ISOLATOR",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 303,
+     "wave_name": "US Strings L",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 163,
+   "librarian_slot": "6-4",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "PhaserPad",
+   "stored_name": "PhaserPad",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 13,
+   "mfx_name": "MULTI STAGE PHASER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 164,
+   "librarian_slot": "6-5",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Cosmic Rays",
+   "stored_name": "Cosmic Rays",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 11,
+   "mfx_name": "PHASER",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 165,
+   "librarian_slot": "6-6",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Soft Pad 1",
+   "stored_name": "Soft Pad 1",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 166,
+   "librarian_slot": "6-7",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Soft Pad 2",
+   "stored_name": "Soft Pad 2",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 167,
+   "librarian_slot": "6-8",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Synth Str 1",
+   "stored_name": "Synth Str 1",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 168,
+   "librarian_slot": "6-9",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Synth Str 2",
+   "stored_name": "Synth Str 2",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 182,
+     "wave_name": "Synth Saw",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 169,
+   "librarian_slot": "6-10",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "JX Strings",
+   "stored_name": "JX Strings",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 170,
+   "librarian_slot": "6-11",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "JP Strings",
+   "stored_name": "JP Strings",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    }
+   ]
+  },
+  {
+   "user_patch": 171,
+   "librarian_slot": "6-12",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "106 Strings",
+   "stored_name": "106 Strings",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 172,
+   "librarian_slot": "6-13",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Sawtooth Str",
+   "stored_name": "Sawtooth Str",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 3
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 3
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": -3
+    }
+   ]
+  },
+  {
+   "user_patch": 173,
+   "librarian_slot": "6-14",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Chorus Pad",
+   "stored_name": "Chorus Pad",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 28,
+   "mfx_name": "SPACE-D",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 174,
+   "librarian_slot": "6-15",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "5th DLA Pad",
+   "stored_name": "5th DLA Pad",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 2,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 14
+    }
+   ]
+  },
+  {
+   "user_patch": 175,
+   "librarian_slot": "6-16",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Hollow Pad",
+   "stored_name": "Hollow Pad",
+   "name_matches_factory": true,
+   "category": 29,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 176,
+   "librarian_slot": "6-17",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Nu Epic Pad",
+   "stored_name": "Nu Epic Pad",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 46,
+   "mfx_name": "MODULATION DELAY",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 177,
+   "librarian_slot": "6-18",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Angelis Pad",
+   "stored_name": "Angelis Pad",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 47,
+   "mfx_name": "3TAP PAN DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 177,
+     "wave_name": "MG Saw HD",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 178,
+   "librarian_slot": "6-19",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "TrnsSweepPad",
+   "stored_name": "TrnsSweepPad",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 179,
+   "librarian_slot": "6-20",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Heaven Pad",
+   "stored_name": "Heaven Pad",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 47,
+   "mfx_name": "3TAP PAN DELAY",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 127,
+     "wave_name": "D-50 Heaven",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 127,
+     "wave_name": "D-50 Heaven",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 127,
+     "wave_name": "D-50 Heaven",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 617,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 180,
+   "librarian_slot": "6-21",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Voyager",
+   "stored_name": "Voyager",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 11,
+   "mfx_name": "PHASER",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 12
+    }
+   ]
+  },
+  {
+   "user_patch": 181,
+   "librarian_slot": "6-22",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "OB Strings",
+   "stored_name": "OB Strings",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 182,
+   "librarian_slot": "6-23",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Shimmer Pad",
+   "stored_name": "Shimmer Pad",
+   "name_matches_factory": true,
+   "category": 28,
+   "mfx_type": 46,
+   "mfx_name": "MODULATION DELAY",
+   "chorus_type": 0,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 24
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 24
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -13
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 183,
+   "librarian_slot": "6-24",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Xadecimal",
+   "stored_name": "Xadecimal",
+   "name_matches_factory": true,
+   "category": 25,
+   "mfx_type": 12,
+   "mfx_name": "STEP PHASER",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 12
+    }
+   ]
+  },
+  {
+   "user_patch": 184,
+   "librarian_slot": "6-25",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "World X",
+   "stored_name": "World X",
+   "name_matches_factory": true,
+   "category": 25,
+   "mfx_type": 12,
+   "mfx_name": "STEP PHASER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 152,
+     "wave_name": "Finger Bell",
+     "coarse_tune": -5
+    },
+    {
+     "on": true,
+     "wave": 125,
+     "wave_name": "OB2 Pad 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 185,
+   "librarian_slot": "6-26",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Sliced Pad",
+   "stored_name": "Sliced Pad",
+   "name_matches_factory": true,
+   "category": 25,
+   "mfx_type": 20,
+   "mfx_name": "SLICER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 186,
+   "librarian_slot": "6-27",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Trance Synth",
+   "stored_name": "Trance Synth",
+   "name_matches_factory": true,
+   "category": 24,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 187,
+   "librarian_slot": "6-28",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Major 7",
+   "stored_name": "Major 7",
+   "name_matches_factory": true,
+   "category": 24,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": 4
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": -5
+    },
+    {
+     "on": true,
+     "wave": 122,
+     "wave_name": "Super Saw",
+     "coarse_tune": -1
+    }
+   ]
+  },
+  {
+   "user_patch": 188,
+   "librarian_slot": "6-29",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Freeze Synth",
+   "stored_name": "Freeze Synth",
+   "name_matches_factory": true,
+   "category": 24,
+   "mfx_type": 4,
+   "mfx_name": "LOW BOOST",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 227,
+     "wave_name": "SynVox Noise",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 175,
+     "wave_name": "TB303 Saw HD",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 44,
+     "wave_name": "Retro Org 3",
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 189,
+   "librarian_slot": "6-30",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Bustranza",
+   "stored_name": "Bustranza",
+   "name_matches_factory": true,
+   "category": 24,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 190,
+   "librarian_slot": "6-31",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "SuperSaw Pad",
+   "stored_name": "SuperSaw Pad",
+   "name_matches_factory": true,
+   "category": 24,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 121,
+     "wave_name": "Unison Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 191,
+   "librarian_slot": "6-32",
+   "complete": true,
+   "family": "Strings/Pad",
+   "factory_name": "Digitaless",
+   "stored_name": "Digitaless",
+   "name_matches_factory": true,
+   "category": 24,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": -4
+    },
+    {
+     "on": true,
+     "wave": 123,
+     "wave_name": "Trance Saw",
+     "coarse_tune": 4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 192,
+   "librarian_slot": "7-1",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Lord Organ 1",
+   "stored_name": "Lord Organ 1",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 26,
+     "wave_name": "JLOrg Slow L",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 28,
+     "wave_name": "JLOrg Fast L",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 193,
+   "librarian_slot": "7-2",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Lord Organ 2",
+   "stored_name": "Lord Organ 2",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 26,
+     "wave_name": "JLOrg Slow L",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 28,
+     "wave_name": "JLOrg Fast L",
+     "coarse_tune": 6
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 194,
+   "librarian_slot": "7-3",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Rotary Org 1",
+   "stored_name": "Rotary Org 1",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 21,
+   "mfx_name": "ROTARY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 39,
+     "wave_name": "RtryOrg 2 L",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 35,
+     "wave_name": "Perc Organ",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 34,
+     "wave_name": "3rd Perc Org",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 195,
+   "librarian_slot": "7-4",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Rotary Org 2",
+   "stored_name": "Rotary Org 2",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 39,
+     "wave_name": "RtryOrg 2 L",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 37,
+     "wave_name": "RtryOrg 1 L",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 196,
+   "librarian_slot": "7-5",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Vintage Org 1",
+   "stored_name": "Vintage Org1",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 267,
+     "wave_name": "Full Organ 3",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 267,
+     "wave_name": "Full Organ 3",
+     "coarse_tune": 19
+    },
+    {
+     "on": false,
+     "wave": 267,
+     "wave_name": "Full Organ 3",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 267,
+     "wave_name": "Full Organ 3",
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 197,
+   "librarian_slot": "7-6",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Vintage Org 2",
+   "stored_name": "Vintage Org2",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": 19
+    },
+    {
+     "on": false,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 273,
+     "wave_name": "Vint. Org 1",
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 198,
+   "librarian_slot": "7-7",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "VK Organ 1",
+   "stored_name": "VK Organ 1",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 261,
+     "wave_name": "VK Jazz Org1",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 261,
+     "wave_name": "VK Jazz Org1",
+     "coarse_tune": 19
+    },
+    {
+     "on": false,
+     "wave": 261,
+     "wave_name": "VK Jazz Org1",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 261,
+     "wave_name": "VK Jazz Org1",
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 199,
+   "librarian_slot": "7-8",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "VK Organ 2",
+   "stored_name": "VK Organ 2",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 259,
+     "wave_name": "VK Full Org1",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 259,
+     "wave_name": "VK Full Org1",
+     "coarse_tune": 19
+    },
+    {
+     "on": false,
+     "wave": 259,
+     "wave_name": "VK Full Org1",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 259,
+     "wave_name": "VK Full Org1",
+     "coarse_tune": 7
+    }
+   ]
+  },
+  {
+   "user_patch": 200,
+   "librarian_slot": "7-9",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "D-Bars 1",
+   "stored_name": "D-Bars 1",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 19
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 31
+    }
+   ]
+  },
+  {
+   "user_patch": 201,
+   "librarian_slot": "7-10",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "D-Bars 2",
+   "stored_name": "D-Bars 2",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 19
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 31
+    }
+   ]
+  },
+  {
+   "user_patch": 202,
+   "librarian_slot": "7-11",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "D-Bars 3",
+   "stored_name": "D-Bars 3",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 19
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 31
+    }
+   ]
+  },
+  {
+   "user_patch": 203,
+   "librarian_slot": "7-12",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "D-Bars 4",
+   "stored_name": "D-Bars 4",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 19
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 31
+    }
+   ]
+  },
+  {
+   "user_patch": 204,
+   "librarian_slot": "7-13",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "D-Bars 5",
+   "stored_name": "D-Bars 5",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 7
+    },
+    {
+     "on": false,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 19
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": 31
+    }
+   ]
+  },
+  {
+   "user_patch": 205,
+   "librarian_slot": "7-14",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "AX Dist Org1",
+   "stored_name": "AX Dist Org1",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 0,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 35,
+     "wave_name": "Perc Organ",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 41,
+     "wave_name": "LoFi RtryOrg",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 37,
+     "wave_name": "RtryOrg 1 L",
+     "coarse_tune": 19
+    },
+    {
+     "on": false,
+     "wave": 621,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 206,
+   "librarian_slot": "7-15",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "AX Dist Org2",
+   "stored_name": "AX Dist Org2",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 1,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 41,
+     "wave_name": "LoFi RtryOrg",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 37,
+     "wave_name": "RtryOrg 1 L",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 37,
+     "wave_name": "RtryOrg 1 L",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 207,
+   "librarian_slot": "7-16",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Technorgan",
+   "stored_name": "Technorgan",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 261,
+     "wave_name": "VK Jazz Org1",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 261,
+     "wave_name": "VK Jazz Org1",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 261,
+     "wave_name": "VK Jazz Org1",
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 34,
+     "wave_name": "3rd Perc Org",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 208,
+   "librarian_slot": "7-17",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Old Fashion",
+   "stored_name": "Old Fashion",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 1,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": false,
+     "wave": 42,
+     "wave_name": "Retro Org 1",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 42,
+     "wave_name": "Retro Org 1",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 42,
+     "wave_name": "Retro Org 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 12
+    }
+   ]
+  },
+  {
+   "user_patch": 209,
+   "librarian_slot": "7-18",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Posit/Mod",
+   "stored_name": "Posit/Mod",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 46,
+     "wave_name": "Positive '8",
+     "coarse_tune": 24
+    },
+    {
+     "on": true,
+     "wave": 46,
+     "wave_name": "Positive '8",
+     "coarse_tune": 36
+    },
+    {
+     "on": true,
+     "wave": 46,
+     "wave_name": "Positive '8",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 46,
+     "wave_name": "Positive '8",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 210,
+   "librarian_slot": "7-19",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Grand Pipes",
+   "stored_name": "Grand Pipes",
+   "name_matches_factory": true,
+   "category": 6,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 48,
+     "wave_name": "Cathedrl Org",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 48,
+     "wave_name": "Cathedrl Org",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 220,
+     "wave_name": "Sine",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 48,
+     "wave_name": "Cathedrl Org",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 211,
+   "librarian_slot": "7-20",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Musette",
+   "stored_name": "Musette",
+   "name_matches_factory": true,
+   "category": 7,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 110,
+     "wave_name": "Musette",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 110,
+     "wave_name": "Musette",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 212,
+   "librarian_slot": "7-21",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Amped D6",
+   "stored_name": "Amped D6",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 38,
+   "mfx_name": "VS DISTORTION",
+   "chorus_type": 0,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 20,
+     "wave_name": "Reg.Clav",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 24,
+     "wave_name": "ClvMtRs DB f",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 213,
+   "librarian_slot": "7-22",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "AX Clav 1",
+   "stored_name": "AX Clav 1",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 0,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 19,
+     "wave_name": "ClavDB Brt",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 19,
+     "wave_name": "ClavDB Brt",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 19,
+     "wave_name": "ClavDB Brt",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 24,
+     "wave_name": "ClvMtRs DB f",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 214,
+   "librarian_slot": "7-23",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "AX Clav 2",
+   "stored_name": "AX Clav 2",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 0,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 23,
+     "wave_name": "Hard Clav",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 23,
+     "wave_name": "Hard Clav",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 23,
+     "wave_name": "Hard Clav",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 24,
+     "wave_name": "ClvMtRs DB f",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 215,
+   "librarian_slot": "7-24",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Pulse Clav 1",
+   "stored_name": "Pulse Clav 1",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 1,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 206,
+     "wave_name": "JP8 Pls 25HD",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 211,
+     "wave_name": "Syn Pulse 2",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 210,
+     "wave_name": "Syn Pulse 1",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 216,
+   "librarian_slot": "7-25",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Pulse Clav 2",
+   "stored_name": "Pulse Clav 2",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 210,
+     "wave_name": "Syn Pulse 1",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 217,
+   "librarian_slot": "7-26",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Phase Clavi",
+   "stored_name": "Phase Clavi",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 11,
+   "mfx_name": "PHASER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 21,
+     "wave_name": "Retro Clav",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 218,
+   "librarian_slot": "7-27",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Sweepin Clav",
+   "stored_name": "Sweepin Clav",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 40,
+   "mfx_name": "COMPRESSOR",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 180,
+     "wave_name": "Calc.Saw",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 219,
+   "librarian_slot": "7-28",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "AX Vibe",
+   "stored_name": "AX Vibe",
+   "name_matches_factory": true,
+   "category": 5,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 145,
+     "wave_name": "Vibraphone",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 145,
+     "wave_name": "Vibraphone",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 145,
+     "wave_name": "Vibraphone",
+     "coarse_tune": -2
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 220,
+   "librarian_slot": "7-29",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Marimba",
+   "stored_name": "Marimba",
+   "name_matches_factory": true,
+   "category": 5,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 144,
+     "wave_name": "Marimba",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 144,
+     "wave_name": "Marimba",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 21
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 221,
+   "librarian_slot": "7-30",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Xylophone",
+   "stored_name": "Xylophone",
+   "name_matches_factory": true,
+   "category": 5,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 143,
+     "wave_name": "JD Xylo",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 222,
+   "librarian_slot": "7-31",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Steel Drums",
+   "stored_name": "Steel Drums",
+   "name_matches_factory": true,
+   "category": 5,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 147,
+     "wave_name": "Steel Drums",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 223,
+   "librarian_slot": "7-32",
+   "complete": true,
+   "family": "Organ/Clavi",
+   "factory_name": "Ethno Keys",
+   "stored_name": "Ethno Keys",
+   "name_matches_factory": true,
+   "category": 32,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 143,
+     "wave_name": "JD Xylo",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 145,
+     "wave_name": "Vibraphone",
+     "coarse_tune": 7
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 224,
+   "librarian_slot": "8-1",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Angels Choir",
+   "stored_name": "Angels Choir",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 64,
+   "mfx_name": "REVERB",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 135,
+     "wave_name": "Jz Doos Lp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 132,
+     "wave_name": "Female Oos",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 225,
+   "librarian_slot": "8-2",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Aerial Choir",
+   "stored_name": "Aerial Choir",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 64,
+   "mfx_name": "REVERB",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 134,
+     "wave_name": "Jazz Doos",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 226,
+   "librarian_slot": "8-3",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Humming",
+   "stored_name": "Humming",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 135,
+     "wave_name": "Jz Doos Lp",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 227,
+   "librarian_slot": "8-4",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Gospel Hum",
+   "stored_name": "Gospel Hum",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 4
+    },
+    {
+     "on": false,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 11
+    },
+    {
+     "on": false,
+     "wave": 136,
+     "wave_name": "Gospel Hum",
+     "coarse_tune": 6
+    }
+   ]
+  },
+  {
+   "user_patch": 228,
+   "librarian_slot": "8-5",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Vox Pad 1",
+   "stored_name": "Vox Pad 1",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 132,
+     "wave_name": "Female Oos",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 132,
+     "wave_name": "Female Oos",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 132,
+     "wave_name": "Female Oos",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 132,
+     "wave_name": "Female Oos",
+     "coarse_tune": -6
+    }
+   ]
+  },
+  {
+   "user_patch": 229,
+   "librarian_slot": "8-6",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Vox Pad 2",
+   "stored_name": "Vox Pad 2",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 43,
+   "mfx_name": "DELAY",
+   "chorus_type": 0,
+   "reverb_type": 0,
+   "tones": [
+    {
+     "on": true,
+     "wave": 131,
+     "wave_name": "Female Ahs",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 131,
+     "wave_name": "Female Ahs",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 131,
+     "wave_name": "Female Ahs",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 131,
+     "wave_name": "Female Ahs",
+     "coarse_tune": -6
+    }
+   ]
+  },
+  {
+   "user_patch": 230,
+   "librarian_slot": "8-7",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "80s Vox",
+   "stored_name": "80s Vox",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 129,
+     "wave_name": "Syn Vox 1",
+     "coarse_tune": 8
+    },
+    {
+     "on": true,
+     "wave": 129,
+     "wave_name": "Syn Vox 1",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 129,
+     "wave_name": "Syn Vox 1",
+     "coarse_tune": -2
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 231,
+   "librarian_slot": "8-8",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "SynVox 1",
+   "stored_name": "SynVox 1",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 132,
+     "wave_name": "Female Oos",
+     "coarse_tune": -6
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 232,
+   "librarian_slot": "8-9",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "SynVox 2",
+   "stored_name": "SynVox 2",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 131,
+     "wave_name": "Female Ahs",
+     "coarse_tune": -6
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 233,
+   "librarian_slot": "8-10",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Sample Opera",
+   "stored_name": "Sample Opera",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 52,
+   "mfx_name": "3D DELAY",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 137,
+     "wave_name": "Soprano Vox",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 137,
+     "wave_name": "Soprano Vox",
+     "coarse_tune": 2
+    },
+    {
+     "on": true,
+     "wave": 137,
+     "wave_name": "Soprano Vox",
+     "coarse_tune": -4
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 234,
+   "librarian_slot": "8-11",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Jazz Dooos",
+   "stored_name": "Jazz Dooos",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 134,
+     "wave_name": "Jazz Doos",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 134,
+     "wave_name": "Jazz Doos",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 305,
+     "wave_name": "JzVoice Doos",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 305,
+     "wave_name": "JzVoice Doos",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 235,
+   "librarian_slot": "8-12",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "AX Grand",
+   "stored_name": "AX Grand",
+   "name_matches_factory": true,
+   "category": 1,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 254,
+     "wave_name": "AX Grand mpL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 254,
+     "wave_name": "AX Grand mpL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 256,
+     "wave_name": "AX Grand ffL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 256,
+     "wave_name": "AX Grand ffL",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 236,
+   "librarian_slot": "8-13",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "AX Mono Pno",
+   "stored_name": "AX Mono Pno",
+   "name_matches_factory": true,
+   "category": 1,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 254,
+     "wave_name": "AX Grand mpL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 254,
+     "wave_name": "AX Grand mpL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 256,
+     "wave_name": "AX Grand ffL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 256,
+     "wave_name": "AX Grand ffL",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 237,
+   "librarian_slot": "8-14",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "E-Grand",
+   "stored_name": "E-Grand",
+   "name_matches_factory": true,
+   "category": 1,
+   "mfx_type": 7,
+   "mfx_name": "ENHANCER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 254,
+     "wave_name": "AX Grand mpL",
+     "coarse_tune": -7
+    },
+    {
+     "on": true,
+     "wave": 254,
+     "wave_name": "AX Grand mpL",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 256,
+     "wave_name": "AX Grand ffL",
+     "coarse_tune": -7
+    },
+    {
+     "on": true,
+     "wave": 256,
+     "wave_name": "AX Grand ffL",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 238,
+   "librarian_slot": "8-15",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "JD-800 Piano",
+   "stored_name": "JD-800 Piano",
+   "name_matches_factory": true,
+   "category": 1,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 30
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -7
+    }
+   ]
+  },
+  {
+   "user_patch": 239,
+   "librarian_slot": "8-16",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Honky Tonk",
+   "stored_name": "Honky Tonk",
+   "name_matches_factory": true,
+   "category": 1,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 4,
+   "tones": [
+    {
+     "on": true,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 1,
+     "wave_name": "JD Piano",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -7
+    }
+   ]
+  },
+  {
+   "user_patch": 240,
+   "librarian_slot": "8-17",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Blend Piano",
+   "stored_name": "Blend Piano",
+   "name_matches_factory": true,
+   "category": 1,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 254,
+     "wave_name": "AX Grand mpL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 256,
+     "wave_name": "AX Grand ffL",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 12,
+     "wave_name": "80's EP 1 mp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 16,
+     "wave_name": "Hard E.Pno",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 241,
+   "librarian_slot": "8-18",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Harpsichord",
+   "stored_name": "Harpsichord",
+   "name_matches_factory": true,
+   "category": 3,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 25,
+     "wave_name": "Harpsichord",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 25,
+     "wave_name": "Harpsichord",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 242,
+   "librarian_slot": "8-19",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Phase Stage",
+   "stored_name": "Phase Stage",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 11,
+   "mfx_name": "PHASER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 3
+    },
+    {
+     "on": true,
+     "wave": 3,
+     "wave_name": "Stage EP f",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 3,
+     "wave_name": "Stage EP f",
+     "coarse_tune": 3
+    }
+   ]
+  },
+  {
+   "user_patch": 243,
+   "librarian_slot": "8-20",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "PhaseEP",
+   "stored_name": "PhaseEP",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 11,
+   "mfx_name": "PHASER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 12,
+     "wave_name": "80's EP 1 mp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 3,
+     "wave_name": "Stage EP f",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 15,
+     "wave_name": "80's EP 2 f",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 244,
+   "librarian_slot": "8-21",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Stage EP",
+   "stored_name": "Stage EP",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 5
+    },
+    {
+     "on": true,
+     "wave": 2,
+     "wave_name": "Stage EP p",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 3,
+     "wave_name": "Stage EP f",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 3,
+     "wave_name": "Stage EP f",
+     "coarse_tune": -5
+    }
+   ]
+  },
+  {
+   "user_patch": 245,
+   "librarian_slot": "8-22",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Dyno EP",
+   "stored_name": "Dyno EP",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 4,
+     "wave_name": "Dyno EP mp",
+     "coarse_tune": 5
+    },
+    {
+     "on": true,
+     "wave": 4,
+     "wave_name": "Dyno EP mp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 5,
+     "wave_name": "Dyno EP mf",
+     "coarse_tune": -1
+    },
+    {
+     "on": true,
+     "wave": 6,
+     "wave_name": "Dyno EP ff",
+     "coarse_tune": 4
+    }
+   ]
+  },
+  {
+   "user_patch": 246,
+   "librarian_slot": "8-23",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "SA EP",
+   "stored_name": "SA EP",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 10,
+     "wave_name": "Soft SA EP",
+     "coarse_tune": 5
+    },
+    {
+     "on": true,
+     "wave": 10,
+     "wave_name": "Soft SA EP",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 11,
+     "wave_name": "Hard SA EP",
+     "coarse_tune": 6
+    },
+    {
+     "on": true,
+     "wave": 11,
+     "wave_name": "Hard SA EP",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 247,
+   "librarian_slot": "8-24",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Wurly EP",
+   "stored_name": "Wurly EP",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 7,
+     "wave_name": "Wurly mp",
+     "coarse_tune": 5
+    },
+    {
+     "on": true,
+     "wave": 7,
+     "wave_name": "Wurly mp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 8,
+     "wave_name": "Wurly mf",
+     "coarse_tune": -1
+    },
+    {
+     "on": true,
+     "wave": 9,
+     "wave_name": "Wurly ff",
+     "coarse_tune": 4
+    }
+   ]
+  },
+  {
+   "user_patch": 248,
+   "librarian_slot": "8-25",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Dist Wurly",
+   "stored_name": "Dist Wurly",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 39,
+   "mfx_name": "GUITAR AMP SIMULATOR",
+   "chorus_type": 0,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 7,
+     "wave_name": "Wurly mp",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 8,
+     "wave_name": "Wurly mf",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 9,
+     "wave_name": "Wurly ff",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 250,
+     "wave_name": "Org Click 2",
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 249,
+   "librarian_slot": "8-26",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "FM EP 1",
+   "stored_name": "FM EP 1",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 12,
+     "wave_name": "80's EP 1 mp",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 12,
+     "wave_name": "80's EP 1 mp",
+     "coarse_tune": 3
+    },
+    {
+     "on": true,
+     "wave": 14,
+     "wave_name": "80's EP 1 f",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 14,
+     "wave_name": "80's EP 1 f",
+     "coarse_tune": 3
+    }
+   ]
+  },
+  {
+   "user_patch": 250,
+   "librarian_slot": "8-27",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "FM EP 2",
+   "stored_name": "FM EP 2",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 1,
+   "mfx_name": "EQUALIZER",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 13,
+     "wave_name": "80's EP 2 mp",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 13,
+     "wave_name": "80's EP 2 mp",
+     "coarse_tune": 3
+    },
+    {
+     "on": true,
+     "wave": 15,
+     "wave_name": "80's EP 2 f",
+     "coarse_tune": -3
+    },
+    {
+     "on": true,
+     "wave": 15,
+     "wave_name": "80's EP 2 f",
+     "coarse_tune": 3
+    }
+   ]
+  },
+  {
+   "user_patch": 251,
+   "librarian_slot": "8-28",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Psycho EP",
+   "stored_name": "Psycho EP",
+   "name_matches_factory": true,
+   "category": 2,
+   "mfx_type": 8,
+   "mfx_name": "AUTO WAH",
+   "chorus_type": 1,
+   "reverb_type": 1,
+   "tones": [
+    {
+     "on": true,
+     "wave": 10,
+     "wave_name": "Soft SA EP",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 3,
+     "wave_name": "Stage EP f",
+     "coarse_tune": -12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 252,
+   "librarian_slot": "8-29",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "D-50 Fantsia",
+   "stored_name": "D-50 Fantsia",
+   "name_matches_factory": true,
+   "category": 4,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 1,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 148,
+     "wave_name": "D-50 Bell",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 152,
+     "wave_name": "Finger Bell",
+     "coarse_tune": 24
+    },
+    {
+     "on": true,
+     "wave": 125,
+     "wave_name": "OB2 Pad 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": true,
+     "wave": 124,
+     "wave_name": "Warm Pad",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 253,
+   "librarian_slot": "8-30",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "FM Sparkles",
+   "stored_name": "FM Sparkles",
+   "name_matches_factory": true,
+   "category": 4,
+   "mfx_type": 26,
+   "mfx_name": "HEXA-CHORUS",
+   "chorus_type": 2,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 38
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": -12
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": 48
+    },
+    {
+     "on": true,
+     "wave": 216,
+     "wave_name": "VS-Triangle",
+     "coarse_tune": -12
+    }
+   ]
+  },
+  {
+   "user_patch": 254,
+   "librarian_slot": "8-31",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Dreaming Box",
+   "stored_name": "Dreaming Box",
+   "name_matches_factory": true,
+   "category": 4,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 2,
+   "reverb_type": 2,
+   "tones": [
+    {
+     "on": true,
+     "wave": 18,
+     "wave_name": "Music Box",
+     "coarse_tune": 12
+    },
+    {
+     "on": true,
+     "wave": 222,
+     "wave_name": "Digi Loop",
+     "coarse_tune": 7
+    },
+    {
+     "on": true,
+     "wave": 135,
+     "wave_name": "Jz Doos Lp",
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 0,
+     "wave_name": null,
+     "coarse_tune": 0
+    }
+   ]
+  },
+  {
+   "user_patch": 255,
+   "librarian_slot": "8-32",
+   "complete": true,
+   "family": "Choir/Piano",
+   "factory_name": "Sweet Keys",
+   "stored_name": "Sweet Keys",
+   "name_matches_factory": true,
+   "category": 30,
+   "mfx_type": 0,
+   "mfx_name": "THROUGH",
+   "chorus_type": 0,
+   "reverb_type": 3,
+   "tones": [
+    {
+     "on": true,
+     "wave": 129,
+     "wave_name": "Syn Vox 1",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 313,
+     "wave_name": "Jazz Organ 5",
+     "coarse_tune": 12
+    },
+    {
+     "on": false,
+     "wave": 151,
+     "wave_name": "Agogo 2 Low",
+     "coarse_tune": 0
+    },
+    {
+     "on": false,
+     "wave": 151,
+     "wave_name": "Agogo 2 Low",
+     "coarse_tune": 0
+    }
+   ]
+  }
+ ]
+}

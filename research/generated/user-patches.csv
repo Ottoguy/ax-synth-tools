@@ -1,0 +1,257 @@
+user_patch,librarian_slot,family,factory_name,stored_name,name_matches_factory,category,mfx,chorus_type,reverb_type,tone1,tone2,tone3,tone4
+0,1-1,Synth Lead 1,AX Saw Lead,AX Saw Lead,True,22,1:EQUALIZER,2,4,on 185:JP-8 Saw +0,off 0:None +0,on 185:JP-8 Saw +0,off 0:None +0
+1,1-2,Synth Lead 1,AX Sync Lead,AX Sync Lead,True,22,52:3D DELAY,1,4,on 219:Sync Sweep +8,on 219:Sync Sweep +2,on 219:Sync Sweep -2,off 0:None +0
+2,1-3,Synth Lead 1,GR300 Lead 1,GR300 Lead 1,True,22,1:EQUALIZER,2,4,on 192:GR-300 Saw 2 +0,on 192:GR-300 Saw 2 +0,off 0:None +0,off 0:None +0
+3,1-4,Synth Lead 1,JupiterLead1,JupiterLead1,True,22,0:THROUGH,2,4,on 179:P5 Saw HD +0,off 179:P5 Saw HD -12,off 0:None +0,off 0:None +0
+4,1-5,Synth Lead 1,JupiterLead2,JupiterLead2,True,23,0:THROUGH,0,1,on 185:JP-8 Saw +0,off 1:JD Piano +0,off 1:JD Piano +0,off 1:JD Piano +0
+5,1-6,Synth Lead 1,Saw Lead 1,Saw Lead 1,True,22,0:THROUGH,2,4,on 128:SBF Vox +0,on 180:Calc.Saw +0,off 313:Jazz Organ 5 +0,off 73:Fng.EBs 1 ff +0
+6,1-7,Synth Lead 1,Saw Lead 2,Saw Lead 2,True,22,1:EQUALIZER,2,4,on 180:Calc.Saw +0,on 180:Calc.Saw +0,off 0:None +0,off 0:None +0
+7,1-8,Synth Lead 1,Saw Lead 3,Saw Lead 3,True,22,1:EQUALIZER,2,4,on 206:JP8 Pls 25HD +0,on 180:Calc.Saw +0,off 0:None +0,off 0:None +0
+8,1-9,Synth Lead 1,Saw Lead 4,Saw Lead 4,True,22,1:EQUALIZER,2,4,on 206:JP8 Pls 25HD +0,on 180:Calc.Saw +0,off 0:None +0,off 0:None +0
+9,1-10,Synth Lead 1,Saw Lead 5,Saw Lead 5,True,22,26:HEXA-CHORUS,2,4,on 186:D-50 Saw +0,on 185:JP-8 Saw +0,off 185:JP-8 Saw +0,off 151:Agogo 2 Low +0
+10,1-11,Synth Lead 1,Classic Ld,Classic Ld,True,22,52:3D DELAY,1,3,on 177:MG Saw HD +8,on 177:MG Saw HD +2,on 177:MG Saw HD -2,off 0:None +0
+11,1-12,Synth Lead 1,Delayed Lead,Delayed Lead,True,22,52:3D DELAY,1,3,on 180:Calc.Saw +0,on 180:Calc.Saw +0,off 1:JD Piano +0,off 1:JD Piano +0
+12,1-13,Synth Lead 1,GR300 Lead 2,GR300 Lead 2,True,22,1:EQUALIZER,2,4,on 192:GR-300 Saw 2 +0,on 192:GR-300 Saw 2 +0,on 114:Trumpet 1 +0,off 0:None +0
+13,1-14,Synth Lead 1,Alpha Spit,Alpha Spit,True,22,4:LOW BOOST,2,0,on 174:Juno Saw HD +0,off 0:None +0,off 0:None +0,off 0:None +0
+14,1-15,Synth Lead 1,Pro Fat Ld,Pro Fat Ld,True,22,1:EQUALIZER,2,4,on 186:D-50 Saw +0,on 186:D-50 Saw +0,off 0:None +0,off 0:None +0
+15,1-16,Synth Lead 1,Fat GR Lead,Fat GR Lead,True,22,41:LIMITER,2,0,on 192:GR-300 Saw 2 -22,on 192:GR-300 Saw 2 -2,on 192:GR-300 Saw 2 +0,off 192:GR-300 Saw 2 -12
+16,1-17,Synth Lead 1,Bright Pls,Bright Pls,True,22,52:3D DELAY,1,3,on 205:JP8 Pls 15HD +8,on 205:JP8 Pls 15HD +2,on 192:GR-300 Saw 2 -2,off 0:None +0
+17,1-18,Synth Lead 1,Octa Juice,Octa Juice,True,22,24:FLANGER,2,0,on 177:MG Saw HD -22,on 177:MG Saw HD -2,on 177:MG Saw HD +0,off 177:MG Saw HD +0
+18,1-19,Synth Lead 1,Octa Saw,Octa Saw,True,22,41:LIMITER,2,0,on 189:LA-Saw -22,on 189:LA-Saw -2,on 189:LA-Saw +0,off 189:LA-Saw -12
+19,1-20,Synth Lead 1,Octa Sync,Octa Sync,True,22,41:LIMITER,2,0,on 219:Sync Sweep -22,on 219:Sync Sweep -2,on 219:Sync Sweep +0,off 219:Sync Sweep -12
+20,1-21,Synth Lead 1,Phase Lead,Phase Lead,True,22,14:INFINITE PHASER,2,0,on 180:Calc.Saw -12,on 180:Calc.Saw -12,off 0:None -12,off 0:None -12
+21,1-22,Synth Lead 1,Waspy Lead,Waspy Lead,True,22,41:LIMITER,2,4,on 210:Syn Pulse 1 +0,off 210:Syn Pulse 1 +0,off 0:None +0,off 0:None +0
+22,1-23,Synth Lead 1,Follow Me,Follow Me,True,22,40:COMPRESSOR,2,3,on 177:MG Saw HD +0,on 176:Custm Saw HD +0,off 0:None -12,off 0:None +0
+23,1-24,Synth Lead 1,Digi Lead 1,Digi Lead 1,True,22,1:EQUALIZER,2,4,on 166:JD WallyWave +0,on 166:JD WallyWave +0,off 0:None +0,off 0:None +0
+24,1-25,Synth Lead 1,Digi Lead 2,Digi Lead 2,True,22,1:EQUALIZER,2,4,on 165:Digital Vox +0,off 185:JP-8 Saw -12,off 0:None +0,off 0:None +0
+25,1-26,Synth Lead 1,Hot Coffee,Hot Coffee,True,22,43:DELAY,0,0,on 182:Synth Saw -12,on 189:LA-Saw -12,off 0:None -12,off 0:None -12
+26,1-27,Synth Lead 1,Hot Sync,Hot Sync,True,22,43:DELAY,0,0,on 220:Sine -12,on 219:Sync Sweep -24,off 0:None -12,off 0:None -12
+27,1-28,Synth Lead 1,Sync Tank,Sync Tank,True,22,46:MODULATION DELAY,2,3,on 123:Trance Saw +0,on 219:Sync Sweep +0,off 0:None +0,off 0:None +0
+28,1-29,Synth Lead 1,2krazy Brite,2krazy Brite,True,22,57:LOFI COMPRESS,2,4,off 0:None -5,off 0:None +0,on 219:Sync Sweep +0,off 0:None +0
+29,1-30,Synth Lead 1,Juicy Lead,Juicy Lead,True,22,49:MULTI TAP DELAY,0,3,on 192:GR-300 Saw 2 +0,on 192:GR-300 Saw 2 +0,on 220:Sine -12,off 0:None +7
+30,1-31,Synth Lead 1,Vintager,Vintager,True,22,4:LOW BOOST,1,3,on 188:SH-2 Saw -24,on 188:SH-2 Saw +0,on 188:SH-2 Saw -24,on 188:SH-2 Saw +0
+31,1-32,Synth Lead 1,BagShakuLead,BagShakuLead,True,32,64:REVERB,1,3,on 185:JP-8 Saw +0,on 122:Super Saw +0,on 164:Bagpipe +0,on 101:Shakuhachi +12
+32,2-1,Synth Lead 2,ResoSawLead,ResoSawLead,True,23,1:EQUALIZER,2,4,on 180:Calc.Saw +0,on 180:Calc.Saw +0,off 0:None +0,off 0:None +0
+33,2-2,Synth Lead 2,Theramax 1,Theramax 1,True,23,43:DELAY,0,4,on 190:Air Wave +0,on 190:Air Wave +48,off 0:None +0,off 0:None +0
+34,2-3,Synth Lead 2,AX Sqr Lead,AX Sqr Lead,True,23,1:EQUALIZER,2,3,on 197:JP-8 Square +0,on 197:JP-8 Square +0,off 1:JD Piano +0,off 1:JD Piano +0
+35,2-4,Synth Lead 2,Pulse Lead 1,Pulse Lead 1,True,23,1:EQUALIZER,2,4,on 204:JP8 Pls 10HD +0,on 204:JP8 Pls 10HD +0,off 0:None +0,off 0:None +0
+36,2-5,Synth Lead 2,Pulse Lead 2,Pulse Lead 2,True,23,1:EQUALIZER,2,4,on 206:JP8 Pls 25HD +0,on 206:JP8 Pls 25HD +0,off 0:None +0,off 0:None +0
+37,2-6,Synth Lead 2,Mid Saw Ld,Mid Saw Ld,True,23,1:EQUALIZER,2,3,on 177:MG Saw HD +0,on 177:MG Saw HD +0,on 189:LA-Saw +7,on 189:LA-Saw +7
+38,2-7,Synth Lead 2,On Air,On Air,True,23,1:EQUALIZER,1,1,on 190:Air Wave +0,off 0:None +0,off 0:None +0,off 0:None +0
+39,2-8,Synth Lead 2,2krazy Soft,2krazy Soft,True,23,57:LOFI COMPRESS,2,4,off 0:None -5,off 0:None +0,on 218:VS-Ramp +0,off 0:None +0
+40,2-9,Synth Lead 2,Soft Lead,Soft Lead,True,23,46:MODULATION DELAY,0,3,on 190:Air Wave +0,off 0:None +0,off 0:None +0,off 0:None +0
+41,2-10,Synth Lead 2,Tri Lead 1,Tri Lead 1,True,23,1:EQUALIZER,2,4,on 213:700 Triangle +0,on 213:700 Triangle +0,off 0:None +0,off 0:None +0
+42,2-11,Synth Lead 2,Tri Lead 2,Tri Lead 2,True,23,1:EQUALIZER,2,4,on 213:700 Triangle +0,on 213:700 Triangle +0,off 0:None +0,off 0:None +0
+43,2-12,Synth Lead 2,Sine Lead 1,Sine Lead 1,True,23,1:EQUALIZER,2,4,on 220:Sine +0,on 220:Sine +0,off 0:None +0,off 0:None +0
+44,2-13,Synth Lead 2,Sine Lead 2,Sine Lead 2,True,23,1:EQUALIZER,2,4,on 220:Sine +0,on 220:Sine +0,off 0:None +0,off 0:None +0
+45,2-14,Synth Lead 2,Simple Sine,Simple Sine,True,23,41:LIMITER,2,0,on 220:Sine -10,on 220:Sine +10,on 220:Sine +0,off 220:Sine -12
+46,2-15,Synth Lead 2,Simple Tri,Simple Tri,True,23,41:LIMITER,2,0,on 216:VS-Triangle -10,on 216:VS-Triangle +10,on 216:VS-Triangle +0,off 216:VS-Triangle -12
+47,2-16,Synth Lead 2,Simple Sqr,Simple Sqr,True,23,41:LIMITER,2,0,on 200:LA-Square -10,on 200:LA-Square +10,on 200:LA-Square +0,off 200:LA-Square -12
+48,2-17,Synth Lead 2,Spooky Lead,Spooky Lead,True,23,1:EQUALIZER,1,1,on 220:Sine +0,off 0:None +0,off 0:None +0,off 0:None +0
+49,2-18,Synth Lead 2,Ramp Lead,Ramp Lead,True,23,26:HEXA-CHORUS,2,3,off 0:None +12,off 0:None +0,on 216:VS-Triangle +0,on 218:VS-Ramp +0
+50,2-19,Synth Lead 2,Air Lead,Air Lead,True,23,1:EQUALIZER,2,2,on 190:Air Wave +0,on 190:Air Wave +0,off 0:None +12,off 0:None +12
+51,2-20,Synth Lead 2,Growl Lead,Growl Lead,True,23,28:SPACE-D,2,3,on 180:Calc.Saw +12,on 122:Super Saw +0,off 180:Calc.Saw +12,off 122:Super Saw +0
+52,2-21,Synth Lead 2,Pulstar Ld,Pulstar Ld,True,23,4:LOW BOOST,2,3,on 180:Calc.Saw +0,off 180:Calc.Saw +0,off 0:None +0,off 0:None +0
+53,2-22,Synth Lead 2,Mini Growl,Mini Growl,True,23,43:DELAY,2,4,on 180:Calc.Saw +0,on 181:Calc.Saw inv +0,off 0:None +0,off 0:None +0
+54,2-23,Synth Lead 2,Round SQR,Round SQR,True,23,1:EQUALIZER,2,3,on 200:LA-Square +0,on 200:LA-Square +0,off 0:None +0,off 0:None +0
+55,2-24,Synth Lead 2,Brite Square,Brite Square,True,23,52:3D DELAY,1,3,on 200:LA-Square +8,on 200:LA-Square +2,on 200:LA-Square -2,off 0:None +0
+56,2-25,Synth Lead 2,Octa Square,Octa Square,True,22,41:LIMITER,2,0,on 195:P5 Sqr HD -22,on 195:P5 Sqr HD -2,on 195:P5 Sqr HD +0,off 195:P5 Sqr HD -12
+57,2-26,Synth Lead 2,Square SAW,Square SAW,True,23,1:EQUALIZER,2,3,on 174:Juno Saw HD +0,on 174:Juno Saw HD +0,off 0:None +0,off 0:None +0
+58,2-27,Synth Lead 2,Soft Squ Ld,Soft Squ Ld,True,23,1:EQUALIZER,1,3,on 125:OB2 Pad 1 +8,on 197:JP-8 Square +2,on 125:OB2 Pad 1 +8,on 197:JP-8 Square +2
+59,2-28,Synth Lead 2,Wormy Lead,Wormy Lead,True,23,1:EQUALIZER,2,4,on 175:TB303 Saw HD +0,off 0:None +12,off 0:None -12,off 0:None -12
+60,2-29,Synth Lead 2,Theramax 2,Theramax 2,True,23,43:DELAY,0,4,on 190:Air Wave +0,on 190:Air Wave +48,off 0:None +0,off 0:None +0
+61,2-30,Synth Lead 2,SoloNzPeaker,SoloNzPeaker,True,23,0:THROUGH,2,4,on 232:White Noise -12,on 220:Sine +12,off 1:JD Piano +0,off 1:JD Piano +0
+62,2-31,Synth Lead 2,Mlt Pipes,Mlt Pipes,True,23,62:2VOICE PITCH SHIFTER,1,2,on 100:Pan Flute +0,on 101:Shakuhachi +0,on 144:Marimba +0,on 143:JD Xylo +0
+63,2-32,Synth Lead 2,5th SawLead,5th SawLead,True,23,1:EQUALIZER,2,4,on 180:Calc.Saw +0,on 180:Calc.Saw +0,on 180:Calc.Saw +7,on 180:Calc.Saw +7
+64,3-1,Bass,Reso Bs 1,Reso Bs 1,True,13,4:LOW BOOST,0,0,on 174:Juno Saw HD +0,off 194:Juno Sqr HD -12,off 0:None +0,off 0:None +0
+65,3-2,Bass,Round Bs,Round Bs,True,13,4:LOW BOOST,1,0,on 190:Air Wave +0,on 190:Air Wave +0,off 180:Calc.Saw +0,off 219:Sync Sweep +0
+66,3-3,Bass,Moogue Bs1,Moogue Bs1,True,13,40:COMPRESSOR,0,0,on 177:MG Saw HD +0,on 177:MG Saw HD -12,on 220:Sine +0,off 0:None +0
+67,3-4,Bass,Monster Bass,Monster Bass,True,13,4:LOW BOOST,1,0,on 174:Juno Saw HD +0,on 193:TB Dist Saw +0,on 193:TB Dist Saw +0,on 219:Sync Sweep +0
+68,3-5,Bass,Moogue Bs2,Moogue Bs2,True,13,4:LOW BOOST,0,0,on 177:MG Saw HD +0,on 177:MG Saw HD -12,off 0:None +0,off 0:None +0
+69,3-6,Bass,Triangle Bs,Triangle Bs,True,13,4:LOW BOOST,1,0,off 216:VS-Triangle +0,on 216:VS-Triangle +0,off 180:Calc.Saw +0,off 219:Sync Sweep +0
+70,3-7,Bass,Punch MG,Punch MG,True,13,40:COMPRESSOR,1,0,on 180:Calc.Saw -24,on 180:Calc.Saw -24,off 260:VK Full Org2 +0,off 131:Female Ahs +0
+71,3-8,Bass,Acdg Bass,Acdg Bass,True,13,1:EQUALIZER,1,3,on 175:TB303 Saw HD -12,on 175:TB303 Saw HD -12,off 0:None +0,off 0:None +0
+72,3-9,Bass,Alpha Bs,Alpha Bs,True,13,4:LOW BOOST,0,0,on 174:Juno Saw HD +0,on 194:Juno Sqr HD -12,off 0:None +0,off 0:None +0
+73,3-10,Bass,Reso Bs 2,Reso Bs 1,False,13,4:LOW BOOST,0,0,on 174:Juno Saw HD +0,off 194:Juno Sqr HD -12,off 0:None +0,off 0:None +0
+74,3-11,Bass,Reso Bs 3,Reso Bs 2,False,13,4:LOW BOOST,0,0,on 198:SH-2 Square +0,on 194:Juno Sqr HD -12,off 0:None +0,off 0:None +0
+75,3-12,Bass,MKS-50 SBs,MKS-50 SBs,True,13,4:LOW BOOST,0,0,on 174:Juno Saw HD +0,on 194:Juno Sqr HD -12,off 0:None +0,off 0:None +0
+76,3-13,Bass,TB Dist Bs,TB Dist Bs,True,13,4:LOW BOOST,0,0,on 193:TB Dist Saw -12,off 0:None -12,off 0:None +0,off 0:None +0
+77,3-14,Bass,TB Bs,TB Bs,True,13,4:LOW BOOST,0,0,on 179:P5 Saw HD -12,on 179:P5 Saw HD -12,off 0:None +0,off 0:None +0
+78,3-15,Bass,Fat Analog,Fat Analog,True,13,4:LOW BOOST,0,0,on 179:P5 Saw HD -12,on 175:TB303 Saw HD -12,off 0:None +0,off 0:None +0
+79,3-16,Bass,Compu SBs,Compu SBs,True,13,4:LOW BOOST,1,0,on 216:VS-Triangle +12,on 216:VS-Triangle +0,on 216:VS-Triangle -12,on 216:VS-Triangle -24
+80,3-17,Bass,Modular Bs1,Modular Bs1,True,13,4:LOW BOOST,1,0,on 219:Sync Sweep +12,on 219:Sync Sweep +0,on 219:Sync Sweep -12,on 219:Sync Sweep -24
+81,3-18,Bass,Modular Bs2,Modular Bs2,True,13,4:LOW BOOST,1,0,on 176:Custm Saw HD +12,on 176:Custm Saw HD +0,on 176:Custm Saw HD -12,on 176:Custm Saw HD -24
+82,3-19,Bass,Garage Bass,Garage Bass,True,13,4:LOW BOOST,1,0,on 273:Vint. Org 1 +12,on 273:Vint. Org 1 +0,on 273:Vint. Org 1 -12,on 273:Vint. Org 1 -24
+83,3-20,Bass,Spike Bs,Spike Bs,True,13,4:LOW BOOST,1,0,on 177:MG Saw HD +0,on 177:MG Saw HD +0,off 180:Calc.Saw +0,on 219:Sync Sweep +0
+84,3-21,Bass,FatMG Bs,FatMG Bs,True,13,4:LOW BOOST,1,0,on 177:MG Saw HD +0,on 177:MG Saw HD +0,off 180:Calc.Saw +0,on 219:Sync Sweep +0
+85,3-22,Bass,JunoSqu Bs,JunoSqu Bs,True,13,40:COMPRESSOR,1,0,on 194:Juno Sqr HD -24,on 194:Juno Sqr HD -24,off 260:VK Full Org2 +0,off 131:Female Ahs +0
+86,3-23,Bass,Acoustic Bs1,Acoustic Bs1,True,12,41:LIMITER,0,0,on 69:Fat Ac.Bs p +6,on 69:Fat Ac.Bs p +0,on 70:Fat Ac.Bs f +0,on 69:Fat Ac.Bs p +0
+87,3-24,Bass,Acoustic Bs2,Acoustic Bs2,True,12,1:EQUALIZER,0,0,on 69:Fat Ac.Bs p +6,on 69:Fat Ac.Bs p +0,on 70:Fat Ac.Bs f +0,on 69:Fat Ac.Bs p +0
+88,3-25,Bass,Finger EBs 1,Finger EBs 1,True,12,41:LIMITER,0,0,on 72:Fng.EBs 1 mf +6,on 72:Fng.EBs 1 mf +0,on 73:Fng.EBs 1 ff +0,on 72:Fng.EBs 1 mf +0
+89,3-26,Bass,Finger EBs 2,Finger EBs 2,True,12,41:LIMITER,0,0,on 74:Fng.EBs 2 mf +6,on 74:Fng.EBs 2 mf +0,on 75:Fng.EBs 2 f +0,on 74:Fng.EBs 2 mf +0
+90,3-27,Bass,Finger EBs 3,Finger EBs 3,True,12,41:LIMITER,0,0,on 76:Fng.Comp Bs +4,on 76:Fng.Comp Bs +0,on 76:Fng.Comp Bs -4,on 76:Fng.Comp Bs +0
+91,3-28,Bass,Finger EBs 4,Finger EBs 4,True,12,41:LIMITER,0,0,on 77:Finger Bs +4,on 77:Finger Bs +0,on 77:Finger Bs -4,on 77:Finger Bs +0
+92,3-29,Bass,Pick Bs 1,Pick Bs 1,True,12,41:LIMITER,0,0,on 78:P.Bass +4,on 78:P.Bass +0,on 78:P.Bass -4,on 78:P.Bass +0
+93,3-30,Bass,Pick Bs 2,Pick Bs 2,True,12,41:LIMITER,0,0,on 82:Pick E.Bs f +4,on 82:Pick E.Bs f +0,on 82:Pick E.Bs f -4,on 82:Pick E.Bs f +0
+94,3-31,Bass,Fretnot Bs,Fretnot Bs,True,12,41:LIMITER,1,2,on 81:Fretlss Sft +0,on 80:Fretlss Bs +0,off 0:None -4,off 0:None +0
+95,3-32,Bass,Slap Bass,Slap Bass,True,12,4:LOW BOOST,1,0,on 88:Slap Bass -12,on 89:Slap + Pull -12,off 0:None -12,off 0:None -12
+96,4-1,Lead Guitar,SearingGtr 1,SearingGtr 1,True,11,39:GUITAR AMP SIMULATOR,2,4,on 61:Overdrive Gt +0,on 220:Sine +7,on 2:Stage EP p +0,off 0:None +0
+97,4-2,Lead Guitar,SearingGtr 2,SearingGtr 2,True,11,39:GUITAR AMP SIMULATOR,2,4,on 61:Overdrive Gt +0,on 220:Sine +7,on 2:Stage EP p +0,off 0:None +0
+98,4-3,Lead Guitar,SearingGtr 3,SearingGtr 3,True,11,38:VS DISTORTION,2,4,on 61:Overdrive Gt +0,on 220:Sine +7,on 2:Stage EP p +0,off 0:None +0
+99,4-4,Lead Guitar,SearingGtr 4,SearingGtr 4,True,11,38:VS DISTORTION,2,4,on 61:Overdrive Gt +0,on 220:Sine +7,on 2:Stage EP p +0,off 0:None +0
+100,4-5,Lead Guitar,OctSearingGt,OctSearingGt,True,11,39:GUITAR AMP SIMULATOR,2,4,on 61:Overdrive Gt +0,on 220:Sine +7,on 2:Stage EP p +0,on 2:Stage EP p -12
+101,4-6,Lead Guitar,Dist.Fingerz,Dist.Fingerz,True,11,39:GUITAR AMP SIMULATOR,2,2,on 56:Clean Gtr +0,on 58:FstPick 70s +0,off 0:None +0,off 0:None +0
+102,4-7,Lead Guitar,AX DistGt,AX DistGt,True,11,39:GUITAR AMP SIMULATOR,2,4,on 61:Overdrive Gt +0,on 220:Sine +7,on 2:Stage EP p +0,on 2:Stage EP p -12
+103,4-8,Lead Guitar,Digi DistGt,Digi DistGt,True,11,39:GUITAR AMP SIMULATOR,2,4,on 61:Overdrive Gt +0,on 220:Sine +7,on 2:Stage EP p +0,on 2:Stage EP p -12
+104,4-9,Lead Guitar,Fuzz,Fuzz,True,11,39:GUITAR AMP SIMULATOR,1,0,on 174:Juno Saw HD +0,on 193:TB Dist Saw +0,on 193:TB Dist Saw +0,on 219:Sync Sweep +0
+105,4-10,Lead Guitar,Nice Dist Gt,Nice Dist Gt,True,11,38:VS DISTORTION,2,2,on 60:Funk Mute Gt +0,on 58:FstPick 70s +0,on 57:Bright Strat +0,off 619:None +0
+106,4-11,Lead Guitar,Guitar Rip,Guitar Rip,True,11,39:GUITAR AMP SIMULATOR,1,2,on 56:Clean Gtr -12,on 59:Funk Gtr -12,on 249:Org Click 1 -4,off 619:None +0
+107,4-12,Lead Guitar,Twin,Twin,True,11,39:GUITAR AMP SIMULATOR,2,4,on 56:Clean Gtr +6,on 56:Clean Gtr +0,on 56:Clean Gtr -4,off 0:None -12
+108,4-13,Lead Guitar,MS1959 I,MS1959 I,True,11,39:GUITAR AMP SIMULATOR,2,4,on 56:Clean Gtr +6,on 56:Clean Gtr +0,on 56:Clean Gtr -4,off 0:None -12
+109,4-14,Lead Guitar,MS1959 II,MS1959 II,True,11,39:GUITAR AMP SIMULATOR,2,4,on 56:Clean Gtr +6,on 56:Clean Gtr +0,on 56:Clean Gtr -4,off 0:None -12
+110,4-15,Lead Guitar,Metal Lead,Metal Lead,True,11,39:GUITAR AMP SIMULATOR,2,4,on 56:Clean Gtr +6,on 56:Clean Gtr +0,on 56:Clean Gtr -4,off 0:None -12
+111,4-16,Lead Guitar,OD-2 Turbo,OD-2 Turbo,True,11,39:GUITAR AMP SIMULATOR,2,4,on 60:Funk Mute Gt +6,on 60:Funk Mute Gt +0,on 60:Funk Mute Gt -4,off 0:None -12
+112,4-17,Lead Guitar,Jazz EGtr,Jazz EGtr,True,10,10:SPEAKER SIMULATOR,1,3,on 55:Jazz Gtr +6,on 55:Jazz Gtr +0,on 55:Jazz Gtr -4,off 0:None -12
+113,4-18,Lead Guitar,Clean EGtr,Clean EGtr,True,10,10:SPEAKER SIMULATOR,1,3,on 56:Clean Gtr +6,on 56:Clean Gtr +0,on 56:Clean Gtr -4,off 0:None -12
+114,4-19,Lead Guitar,Pick EGtr,Pick EGtr,True,10,10:SPEAKER SIMULATOR,1,3,on 58:FstPick 70s +6,on 58:FstPick 70s +0,on 58:FstPick 70s -4,off 0:None -12
+115,4-20,Lead Guitar,Funk EGtr,Funk EGtr,True,10,40:COMPRESSOR,1,2,on 60:Funk Mute Gt +0,on 59:Funk Gtr +0,on 59:Funk Gtr -4,off 0:None -12
+116,4-21,Lead Guitar,Strat EGtr,Strat EGtr,True,10,26:HEXA-CHORUS,1,1,on 58:FstPick 70s +6,on 58:FstPick 70s +3,on 58:FstPick 70s +0,off 0:None +0
+117,4-22,Lead Guitar,Nylon Gtr 1,Nylon Gtr 1,True,9,1:EQUALIZER,0,3,on 49:Brt N.Gtr p +0,on 50:Brt N.Gtr mf +0,on 51:Brt N.Gtr ff +0,on 49:Brt N.Gtr p +0
+118,4-23,Lead Guitar,Nylon Gtr 2,Nylon Gtr 2,True,9,1:EQUALIZER,0,3,on 49:Brt N.Gtr p +8,on 50:Brt N.Gtr mf +8,on 51:Brt N.Gtr ff +8,on 49:Brt N.Gtr p +8
+119,4-24,Lead Guitar,Nylon Gtr 3,Nylon Gtr 3,True,9,1:EQUALIZER,0,3,on 49:Brt N.Gtr p -8,on 50:Brt N.Gtr mf -8,on 51:Brt N.Gtr ff -8,on 49:Brt N.Gtr p -8
+120,4-25,Lead Guitar,Folk Gtr 1,Folk Gtr 1,True,9,1:EQUALIZER,0,3,on 52:Ac.Gtr mp +0,on 53:Ac.Gtr mf +0,on 54:Ac.Gtr ff +0,on 54:Ac.Gtr ff +0
+121,4-26,Lead Guitar,Folk Gtr 2,Folk Gtr 2,True,9,1:EQUALIZER,0,4,on 52:Ac.Gtr mp +8,on 53:Ac.Gtr mf +8,on 54:Ac.Gtr ff +8,on 54:Ac.Gtr ff +8
+122,4-27,Lead Guitar,Folk Gtr 3,Folk Gtr 3,True,9,1:EQUALIZER,1,4,on 52:Ac.Gtr mp -7,on 53:Ac.Gtr mf -7,on 54:Ac.Gtr ff -7,on 54:Ac.Gtr ff -7
+123,4-28,Lead Guitar,Harp,Harp,True,31,1:EQUALIZER,1,3,on 63:Harp +8,on 63:Harp +0,off 0:None +0,off 0:None +0
+124,4-29,Lead Guitar,Aerial Harp,Aerial Harp,True,31,26:HEXA-CHORUS,1,3,on 63:Harp +8,on 63:Harp +0,off 0:None +0,off 0:None +0
+125,4-30,Lead Guitar,LostParadise,LostParadise,True,31,50:REVERSE DELAY,2,3,on 63:Harp +0,on 136:Gospel Hum +0,on 304:US Strings R +0,on 243:Xylo Seq. +0
+126,4-31,Lead Guitar,Sitar,Sitar,True,31,1:EQUALIZER,2,3,on 64:Sitar +0,on 65:Sitar Drone +0,off 0:None +0,off 0:None +12
+127,4-32,Lead Guitar,Santur Stack,Santur Stack,True,32,1:EQUALIZER,1,3,on 1:JD Piano +0,on 67:Santur +0,on 68:Dulcimer +0,on 54:Ac.Gtr ff +0
+128,5-1,Brass/Poly Synth,80s Brass 1,80s Brass 1,True,20,0:THROUGH,2,3,on 121:Unison Saw +0,on 121:Unison Saw +0,on 185:JP-8 Saw +0,off 151:Agogo 2 Low +0
+129,5-2,Brass/Poly Synth,80s Brass 2,80s Brass 2,True,20,0:THROUGH,2,3,on 121:Unison Saw +0,on 177:MG Saw HD +0,on 122:Super Saw +0,on 185:JP-8 Saw +0
+130,5-3,Brass/Poly Synth,Soft SynBrs,Soft SynBrs,True,20,41:LIMITER,2,3,on 121:Unison Saw +0,off 0:None +0,off 0:None +0,off 0:None +0
+131,5-4,Brass/Poly Synth,Brite SynBrs,Brite SynBrs,True,20,1:EQUALIZER,1,3,on 121:Unison Saw +0,on 177:MG Saw HD +0,off 0:None +0,off 0:None +0
+132,5-5,Brass/Poly Synth,Wide SynBrs,Wide SynBrs,True,20,1:EQUALIZER,2,4,on 121:Unison Saw +0,on 122:Super Saw +0,off 0:None +0,off 0:None +0
+133,5-6,Brass/Poly Synth,Analog Brass,Analog Brass,True,20,23:CHORUS,2,3,on 177:MG Saw HD +0,on 177:MG Saw HD -12,on 177:MG Saw HD +12,off 151:Agogo 2 Low +0
+134,5-7,Brass/Poly Synth,Juno Brass,Juno Brass,True,20,4:LOW BOOST,0,1,on 174:Juno Saw HD -12,on 220:Sine -12,off 0:None +0,off 0:None +0
+135,5-8,Brass/Poly Synth,Poly Brass,Poly Brass,True,20,4:LOW BOOST,2,0,on 177:MG Saw HD -12,on 186:D-50 Saw -12,off 182:Synth Saw -12,off 182:Synth Saw -12
+136,5-9,Brass/Poly Synth,106 Brass,106 Brass,True,20,4:LOW BOOST,1,1,on 180:Calc.Saw -12,off 220:Sine -12,off 0:None +0,off 0:None +0
+137,5-10,Brass/Poly Synth,Octa Brass,Octa Brass,True,20,1:EQUALIZER,2,3,on 182:Synth Saw +0,on 182:Synth Saw -12,on 182:Synth Saw +0,on 182:Synth Saw -12
+138,5-11,Brass/Poly Synth,AX BrassSect,AX BrassSect,True,19,1:EQUALIZER,0,3,on 115:Tp Section +0,on 115:Tp Section +0,on 297:Trumpet 2 p +0,on 298:Trumpet 2 mf +0
+139,5-12,Brass/Poly Synth,Trumpeter,Trumpeter,True,19,1:EQUALIZER,0,3,on 297:Trumpet 2 p +0,on 298:Trumpet 2 mf +0,on 299:Trumpet 2 ff +0,off 0:None +0
+140,5-13,Brass/Poly Synth,Soft Brass,Soft Brass,True,19,41:LIMITER,0,3,on 289:Alto Sax2 mf +0,on 290:Alto Sax2 f +0,on 297:Trumpet 2 p +0,on 298:Trumpet 2 mf +0
+141,5-14,Brass/Poly Synth,Sax Sect 1,Sax Sect 1,True,19,41:LIMITER,0,3,on 285:Sop Sax 2 p +0,on 286:Sop Sax 2 mf +0,on 291:TenorSax2 p +0,on 292:TenorSax2 mf +0
+142,5-15,Brass/Poly Synth,Sax Sect 2,Sax Sect 2,True,19,41:LIMITER,0,3,on 288:Alto Sax2 p +0,on 289:Alto Sax2 mf +0,on 294:Bari Sax p +0,on 295:Bari Sax mf +0
+143,5-16,Brass/Poly Synth,Breathy Sax,Breathy Sax,True,21,1:EQUALIZER,0,3,on 108:TenorBreathy +4,on 108:TenorBreathy +0,on 108:TenorBreathy -4,off 0:None +0
+144,5-17,Brass/Poly Synth,Soprano Sax,Soprano Sax,True,21,1:EQUALIZER,0,3,on 285:Sop Sax 2 p +0,on 286:Sop Sax 2 mf +0,on 287:Sop Sax 2 f +0,off 0:None +0
+145,5-18,Brass/Poly Synth,Alto Sax,Alto Sax,True,21,1:EQUALIZER,0,3,on 288:Alto Sax2 p +0,on 289:Alto Sax2 mf +0,on 290:Alto Sax2 f +0,off 0:None +0
+146,5-19,Brass/Poly Synth,Tenor Sax,Tenor Sax,True,21,41:LIMITER,0,3,on 291:TenorSax2 p +0,on 292:TenorSax2 mf +0,on 293:TenorSax2 f +0,off 0:None +0
+147,5-20,Brass/Poly Synth,Baritone Sax,Baritone Sax,True,21,41:LIMITER,0,3,on 294:Bari Sax p +0,on 295:Bari Sax mf +0,on 296:Bari Sax f +0,off 0:None +0
+148,5-21,Brass/Poly Synth,Pan Pipes,Pan Pipes,True,32,1:EQUALIZER,2,3,on 100:Pan Flute +0,on 99:Flute +0,off 0:None +0,off 0:None +0
+149,5-22,Brass/Poly Synth,Harmonica,Harmonica,True,8,7:ENHANCER,1,4,on 111:Harmonica +0,on 112:Blues G-harp +0,on 253:Org Click 5 +0,off 0:None +0
+150,5-23,Brass/Poly Synth,Ox Synth,Ox Synth,True,27,1:EQUALIZER,1,4,on 121:Unison Saw +0,on 177:MG Saw HD +0,on 93:SH-101 Bs +0,on 121:Unison Saw -12
+151,5-24,Brass/Poly Synth,Poly Synth 1,Poly Synth 1,True,27,0:THROUGH,2,3,on 121:Unison Saw +0,on 179:P5 Saw HD +0,on 177:MG Saw HD +0,off 151:Agogo 2 Low +0
+152,5-25,Brass/Poly Synth,Poly Synth 2,Poly Synth 2,True,27,1:EQUALIZER,0,3,on 182:Synth Saw +0,on 182:Synth Saw +0,on 182:Synth Saw +0,on 182:Synth Saw +0
+153,5-26,Brass/Poly Synth,Poly Synth 3,Poly Synth 3,True,27,1:EQUALIZER,2,2,on 177:MG Saw HD +0,on 177:MG Saw HD +0,off 0:None +0,off 0:None +0
+154,5-27,Brass/Poly Synth,Poly Synth 4,Poly Synth 4,True,27,1:EQUALIZER,1,4,on 185:JP-8 Saw +0,on 186:D-50 Saw +0,on 177:MG Saw HD +0,on 189:LA-Saw +0
+155,5-28,Brass/Poly Synth,Juno SAW,Juno SAW,True,27,23:CHORUS,2,0,on 188:SH-2 Saw +0,on 188:SH-2 Saw +0,off 220:Sine +0,off 0:None +0
+156,5-29,Brass/Poly Synth,Super Saw,Super Saw,True,27,1:EQUALIZER,1,3,on 122:Super Saw +0,on 185:JP-8 Saw +0,on 121:Unison Saw +0,on 180:Calc.Saw -12
+157,5-30,Brass/Poly Synth,Touchy,Touchy,True,27,1:EQUALIZER,2,4,on 208:JP8 Pls 40HD +0,off 0:None +0,off 0:None +0,off 0:None +0
+158,5-31,Brass/Poly Synth,Euro Express,Euro Express,True,27,1:EQUALIZER,2,2,on 188:SH-2 Saw -12,on 188:SH-2 Saw -12,off 0:None +0,off 0:None +0
+159,5-32,Brass/Poly Synth,Analog Dream,Analog Dream,True,27,43:DELAY,1,3,on 121:Unison Saw +0,off 0:None +0,on 215:JD Triangle +0,on 213:700 Triangle +0
+160,6-1,Strings/Pad,AX Strings 1,AX Strings 1,True,14,1:EQUALIZER,1,3,on 303:US Strings L +0,on 304:US Strings R +0,off 0:None +0,off 0:None +0
+161,6-2,Strings/Pad,AX Strings 2,AX Strings 2,True,14,0:THROUGH,0,3,on 303:US Strings L +0,off 0:None +0,off 0:None +0,off 0:None +0
+162,6-3,Strings/Pad,Tape Strings,Tape Strings,True,14,3:ISOLATOR,0,0,on 303:US Strings L +0,off 0:None +0,off 0:None +0,off 0:None +0
+163,6-4,Strings/Pad,PhaserPad,PhaserPad,True,28,13:MULTI STAGE PHASER,2,4,on 121:Unison Saw +0,on 122:Super Saw +0,off 0:None +0,off 0:None +0
+164,6-5,Strings/Pad,Cosmic Rays,Cosmic Rays,True,28,11:PHASER,1,1,on 122:Super Saw +12,on 121:Unison Saw +0,off 0:None +12,off 0:None +0
+165,6-6,Strings/Pad,Soft Pad 1,Soft Pad 1,True,29,1:EQUALIZER,1,4,on 121:Unison Saw +0,on 124:Warm Pad +0,off 0:None +0,off 0:None +0
+166,6-7,Strings/Pad,Soft Pad 2,Soft Pad 2,True,29,43:DELAY,0,0,on 124:Warm Pad -12,on 124:Warm Pad -12,off 0:None -12,off 0:None -12
+167,6-8,Strings/Pad,Synth Str 1,Synth Str 1,True,29,1:EQUALIZER,1,3,on 182:Synth Saw +0,on 182:Synth Saw +0,on 182:Synth Saw +0,on 182:Synth Saw +0
+168,6-9,Strings/Pad,Synth Str 2,Synth Str 2,True,29,1:EQUALIZER,1,3,on 182:Synth Saw +0,on 182:Synth Saw +0,on 182:Synth Saw +0,on 182:Synth Saw +0
+169,6-10,Strings/Pad,JX Strings,JX Strings,True,29,1:EQUALIZER,1,3,on 177:MG Saw HD +0,off 0:None +0,off 0:None +0,off 0:None +0
+170,6-11,Strings/Pad,JP Strings,JP Strings,True,29,1:EQUALIZER,1,3,on 121:Unison Saw +0,on 122:Super Saw +0,on 124:Warm Pad +0,off 0:None +12
+171,6-12,Strings/Pad,106 Strings,106 Strings,True,29,1:EQUALIZER,0,0,on 121:Unison Saw -12,on 124:Warm Pad -12,off 0:None -12,off 0:None -12
+172,6-13,Strings/Pad,Sawtooth Str,Sawtooth Str,True,29,1:EQUALIZER,0,0,on 122:Super Saw +3,on 122:Super Saw +3,on 122:Super Saw -3,on 122:Super Saw -3
+173,6-14,Strings/Pad,Chorus Pad,Chorus Pad,True,29,28:SPACE-D,1,3,on 124:Warm Pad +0,on 124:Warm Pad +7,on 0:None +0,on 0:None +7
+174,6-15,Strings/Pad,5th DLA Pad,5th DLA Pad,True,29,26:HEXA-CHORUS,2,0,on 121:Unison Saw +0,on 122:Super Saw +7,on 121:Unison Saw +7,on 122:Super Saw +14
+175,6-16,Strings/Pad,Hollow Pad,Hollow Pad,True,29,1:EQUALIZER,1,3,on 220:Sine +0,on 216:VS-Triangle +0,on 216:VS-Triangle +0,on 216:VS-Triangle +0
+176,6-17,Strings/Pad,Nu Epic Pad,Nu Epic Pad,True,28,46:MODULATION DELAY,2,4,on 124:Warm Pad -12,on 122:Super Saw +0,off 0:None +12,off 0:None +0
+177,6-18,Strings/Pad,Angelis Pad,Angelis Pad,True,28,47:3TAP PAN DELAY,1,3,on 177:MG Saw HD +0,on 177:MG Saw HD +0,on 177:MG Saw HD +0,on 177:MG Saw HD +0
+178,6-19,Strings/Pad,TrnsSweepPad,TrnsSweepPad,True,28,1:EQUALIZER,2,3,on 122:Super Saw +0,on 123:Trance Saw +0,on 121:Unison Saw -12,off 0:None +0
+179,6-20,Strings/Pad,Heaven Pad,Heaven Pad,True,28,47:3TAP PAN DELAY,1,4,on 127:D-50 Heaven +0,on 127:D-50 Heaven +0,on 127:D-50 Heaven +0,off 617:None +0
+180,6-21,Strings/Pad,Voyager,Voyager,True,28,11:PHASER,1,1,on 121:Unison Saw -12,on 121:Unison Saw +0,on 121:Unison Saw +7,on 121:Unison Saw +12
+181,6-22,Strings/Pad,OB Strings,OB Strings,True,28,1:EQUALIZER,2,4,on 121:Unison Saw +0,on 122:Super Saw +0,off 0:None +0,off 0:None +0
+182,6-23,Strings/Pad,Shimmer Pad,Shimmer Pad,True,28,46:MODULATION DELAY,0,4,on 216:VS-Triangle +24,on 216:VS-Triangle +24,off 0:None -13,off 0:None +0
+183,6-24,Strings/Pad,Xadecimal,Xadecimal,True,25,12:STEP PHASER,1,1,on 123:Trance Saw -12,on 123:Trance Saw +0,on 123:Trance Saw +7,on 123:Trance Saw +12
+184,6-25,Strings/Pad,World X,World X,True,25,12:STEP PHASER,2,3,on 152:Finger Bell -5,on 125:OB2 Pad 1 +0,off 0:None +0,off 0:None +0
+185,6-26,Strings/Pad,Sliced Pad,Sliced Pad,True,25,20:SLICER,2,4,on 123:Trance Saw +0,on 122:Super Saw +0,off 121:Unison Saw +0,off 0:None +0
+186,6-27,Strings/Pad,Trance Synth,Trance Synth,True,24,1:EQUALIZER,2,4,on 123:Trance Saw +0,off 0:None +0,off 0:None +0,off 0:None +0
+187,6-28,Strings/Pad,Major 7,Major 7,True,24,4:LOW BOOST,2,4,on 122:Super Saw +0,on 122:Super Saw +4,on 122:Super Saw -5,on 122:Super Saw -1
+188,6-29,Strings/Pad,Freeze Synth,Freeze Synth,True,24,4:LOW BOOST,1,3,on 227:SynVox Noise +0,on 175:TB303 Saw HD +7,on 124:Warm Pad +0,on 44:Retro Org 3 +7
+189,6-30,Strings/Pad,Bustranza,Bustranza,True,24,1:EQUALIZER,2,3,on 123:Trance Saw +0,on 123:Trance Saw +0,off 0:None +0,off 0:None +0
+190,6-31,Strings/Pad,SuperSaw Pad,SuperSaw Pad,True,24,1:EQUALIZER,2,2,on 121:Unison Saw +0,on 123:Trance Saw +0,off 0:None +0,off 0:None +0
+191,6-32,Strings/Pad,Digitaless,Digitaless,True,24,0:THROUGH,2,4,on 123:Trance Saw -4,on 123:Trance Saw +4,off 0:None -12,off 0:None -12
+192,7-1,Organ/Clavi,Lord Organ 1,Lord Organ 1,True,6,1:EQUALIZER,1,3,on 26:JLOrg Slow L +0,on 28:JLOrg Fast L +0,off 220:Sine -12,off 220:Sine +0
+193,7-2,Organ/Clavi,Lord Organ 2,Lord Organ 2,True,6,1:EQUALIZER,1,3,on 26:JLOrg Slow L +6,on 28:JLOrg Fast L +6,off 220:Sine -12,off 220:Sine +0
+194,7-3,Organ/Clavi,Rotary Org 1,Rotary Org 1,True,6,21:ROTARY,1,3,on 39:RtryOrg 2 L +0,on 35:Perc Organ +0,on 34:3rd Perc Org +0,off 0:None +0
+195,7-4,Organ/Clavi,Rotary Org 2,Rotary Org 2,True,6,1:EQUALIZER,1,3,on 39:RtryOrg 2 L +0,on 37:RtryOrg 1 L +0,off 220:Sine -12,off 220:Sine +0
+196,7-5,Organ/Clavi,Vintage Org 1,Vintage Org1,True,6,26:HEXA-CHORUS,1,3,on 267:Full Organ 3 +0,on 267:Full Organ 3 +19,off 267:Full Organ 3 -12,off 267:Full Organ 3 +7
+197,7-6,Organ/Clavi,Vintage Org 2,Vintage Org2,True,6,26:HEXA-CHORUS,1,3,on 273:Vint. Org 1 +0,on 273:Vint. Org 1 +19,off 273:Vint. Org 1 -12,off 273:Vint. Org 1 +7
+198,7-7,Organ/Clavi,VK Organ 1,VK Organ 1,True,6,26:HEXA-CHORUS,1,3,on 261:VK Jazz Org1 +0,on 261:VK Jazz Org1 +19,off 261:VK Jazz Org1 -12,off 261:VK Jazz Org1 +7
+199,7-8,Organ/Clavi,VK Organ 2,VK Organ 2,True,6,26:HEXA-CHORUS,1,3,on 259:VK Full Org1 +0,on 259:VK Full Org1 +19,off 259:VK Full Org1 -12,off 259:VK Full Org1 +7
+200,7-9,Organ/Clavi,D-Bars 1,D-Bars 1,True,6,26:HEXA-CHORUS,1,3,on 220:Sine -12,on 220:Sine +7,off 220:Sine +19,off 220:Sine +31
+201,7-10,Organ/Clavi,D-Bars 2,D-Bars 2,True,6,26:HEXA-CHORUS,1,3,on 220:Sine -12,on 220:Sine +7,on 220:Sine +19,off 220:Sine +31
+202,7-11,Organ/Clavi,D-Bars 3,D-Bars 3,True,6,26:HEXA-CHORUS,1,3,on 220:Sine -12,off 220:Sine +7,on 220:Sine +19,on 220:Sine +31
+203,7-12,Organ/Clavi,D-Bars 4,D-Bars 4,True,6,26:HEXA-CHORUS,1,3,on 220:Sine -12,off 220:Sine +7,on 220:Sine +19,on 220:Sine +31
+204,7-13,Organ/Clavi,D-Bars 5,D-Bars 5,True,6,26:HEXA-CHORUS,1,3,on 220:Sine -12,on 220:Sine +7,off 220:Sine +19,on 220:Sine +31
+205,7-14,Organ/Clavi,AX Dist Org1,AX Dist Org1,True,6,39:GUITAR AMP SIMULATOR,0,2,on 35:Perc Organ +0,on 41:LoFi RtryOrg +0,on 37:RtryOrg 1 L +19,off 621:None +0
+206,7-15,Organ/Clavi,AX Dist Org2,AX Dist Org2,True,6,39:GUITAR AMP SIMULATOR,1,2,on 41:LoFi RtryOrg +0,on 37:RtryOrg 1 L +0,on 37:RtryOrg 1 L +0,off 1:JD Piano +0
+207,7-16,Organ/Clavi,Technorgan,Technorgan,True,6,0:THROUGH,1,4,on 261:VK Jazz Org1 +0,on 261:VK Jazz Org1 +7,on 261:VK Jazz Org1 +12,off 34:3rd Perc Org +0
+208,7-17,Organ/Clavi,Old Fashion,Old Fashion,True,6,40:COMPRESSOR,1,2,off 42:Retro Org 1 -12,on 42:Retro Org 1 +12,on 42:Retro Org 1 +0,off 0:None +12
+209,7-18,Organ/Clavi,Posit/Mod,Posit/Mod,True,6,1:EQUALIZER,2,3,on 46:Positive '8 +24,on 46:Positive '8 +36,on 46:Positive '8 -12,on 46:Positive '8 +0
+210,7-19,Organ/Clavi,Grand Pipes,Grand Pipes,True,6,0:THROUGH,1,3,on 48:Cathedrl Org +0,on 48:Cathedrl Org -12,on 220:Sine -12,on 48:Cathedrl Org +0
+211,7-20,Organ/Clavi,Musette,Musette,True,7,0:THROUGH,0,3,on 110:Musette +0,on 110:Musette +0,off 0:None +0,on 0:None +0
+212,7-21,Organ/Clavi,Amped D6,Amped D6,True,3,38:VS DISTORTION,0,4,on 20:Reg.Clav +0,off 0:None +0,on 24:ClvMtRs DB f +0,off 0:None +0
+213,7-22,Organ/Clavi,AX Clav 1,AX Clav 1,True,3,40:COMPRESSOR,0,2,on 19:ClavDB Brt +7,on 19:ClavDB Brt +2,on 19:ClavDB Brt -3,on 24:ClvMtRs DB f +0
+214,7-23,Organ/Clavi,AX Clav 2,AX Clav 2,True,3,40:COMPRESSOR,0,2,on 23:Hard Clav +7,on 23:Hard Clav +2,on 23:Hard Clav -3,on 24:ClvMtRs DB f +0
+215,7-24,Organ/Clavi,Pulse Clav 1,Pulse Clav 1,True,3,40:COMPRESSOR,1,2,off 0:None +0,on 206:JP8 Pls 25HD +0,on 211:Syn Pulse 2 +0,on 210:Syn Pulse 1 +0
+216,7-25,Organ/Clavi,Pulse Clav 2,Pulse Clav 2,True,3,40:COMPRESSOR,0,0,on 210:Syn Pulse 1 -12,off 0:None +0,off 0:None +0,off 0:None +0
+217,7-26,Organ/Clavi,Phase Clavi,Phase Clavi,True,3,11:PHASER,1,4,on 21:Retro Clav +0,off 0:None -12,off 0:None -12,off 0:None -12
+218,7-27,Organ/Clavi,Sweepin Clav,Sweepin Clav,True,3,40:COMPRESSOR,0,0,on 180:Calc.Saw -12,off 0:None +0,off 0:None +0,off 0:None +0
+219,7-28,Organ/Clavi,AX Vibe,AX Vibe,True,5,1:EQUALIZER,1,3,on 145:Vibraphone +6,on 145:Vibraphone +2,on 145:Vibraphone -2,off 0:None +0
+220,7-29,Organ/Clavi,Marimba,Marimba,True,5,0:THROUGH,1,1,on 144:Marimba +0,on 144:Marimba +0,off 0:None +21,off 0:None +0
+221,7-30,Organ/Clavi,Xylophone,Xylophone,True,5,1:EQUALIZER,0,2,on 143:JD Xylo +0,off 0:None +0,off 0:None +0,off 0:None +0
+222,7-31,Organ/Clavi,Steel Drums,Steel Drums,True,5,1:EQUALIZER,0,2,on 147:Steel Drums +0,off 0:None +0,off 0:None +0,off 0:None +0
+223,7-32,Organ/Clavi,Ethno Keys,Ethno Keys,True,32,1:EQUALIZER,1,4,on 143:JD Xylo +0,on 145:Vibraphone +7,off 0:None +0,off 0:None +0
+224,8-1,Choir/Piano,Angels Choir,Angels Choir,True,30,64:REVERB,1,3,on 135:Jz Doos Lp +0,on 132:Female Oos +0,off 0:None +0,off 0:None +0
+225,8-2,Choir/Piano,Aerial Choir,Aerial Choir,True,30,64:REVERB,1,3,on 136:Gospel Hum +0,on 134:Jazz Doos +0,off 0:None +0,off 0:None +0
+226,8-3,Choir/Piano,Humming,Humming,True,30,43:DELAY,0,0,on 136:Gospel Hum +12,on 136:Gospel Hum +6,on 136:Gospel Hum +0,on 135:Jz Doos Lp +0
+227,8-4,Choir/Piano,Gospel Hum,Gospel Hum,True,30,1:EQUALIZER,1,3,on 136:Gospel Hum +0,off 136:Gospel Hum +4,off 136:Gospel Hum +11,off 136:Gospel Hum +6
+228,8-5,Choir/Piano,Vox Pad 1,Vox Pad 1,True,30,43:DELAY,0,0,on 132:Female Oos +12,on 132:Female Oos +6,on 132:Female Oos +0,on 132:Female Oos -6
+229,8-6,Choir/Piano,Vox Pad 2,Vox Pad 2,True,30,43:DELAY,0,0,on 131:Female Ahs +12,on 131:Female Ahs +6,on 131:Female Ahs +0,on 131:Female Ahs -6
+230,8-7,Choir/Piano,80s Vox,80s Vox,True,30,52:3D DELAY,1,3,on 129:Syn Vox 1 +8,on 129:Syn Vox 1 +2,on 129:Syn Vox 1 -2,off 0:None +0
+231,8-8,Choir/Piano,SynVox 1,SynVox 1,True,30,52:3D DELAY,1,3,on 132:Female Oos -6,off 0:None +0,off 0:None +0,off 0:None +0
+232,8-9,Choir/Piano,SynVox 2,SynVox 2,True,30,52:3D DELAY,1,3,on 131:Female Ahs -6,off 0:None +0,off 0:None +0,off 0:None +0
+233,8-10,Choir/Piano,Sample Opera,Sample Opera,True,30,52:3D DELAY,1,3,on 137:Soprano Vox +6,on 137:Soprano Vox +2,on 137:Soprano Vox -4,off 0:None +0
+234,8-11,Choir/Piano,Jazz Dooos,Jazz Dooos,True,30,0:THROUGH,0,3,on 134:Jazz Doos +0,on 134:Jazz Doos +0,on 305:JzVoice Doos +0,on 305:JzVoice Doos +0
+235,8-12,Choir/Piano,AX Grand,AX Grand,True,1,1:EQUALIZER,0,3,on 254:AX Grand mpL +0,on 254:AX Grand mpL +0,on 256:AX Grand ffL +0,on 256:AX Grand ffL +0
+236,8-13,Choir/Piano,AX Mono Pno,AX Mono Pno,True,1,1:EQUALIZER,0,3,on 254:AX Grand mpL +0,on 254:AX Grand mpL +0,on 256:AX Grand ffL +0,on 256:AX Grand ffL +0
+237,8-14,Choir/Piano,E-Grand,E-Grand,True,1,7:ENHANCER,0,3,on 254:AX Grand mpL -7,on 254:AX Grand mpL -12,on 256:AX Grand ffL -7,on 256:AX Grand ffL -12
+238,8-15,Choir/Piano,JD-800 Piano,JD-800 Piano,True,1,1:EQUALIZER,1,3,on 1:JD Piano +0,off 1:JD Piano +0,off 0:None +30,off 0:None -7
+239,8-16,Choir/Piano,Honky Tonk,Honky Tonk,True,1,1:EQUALIZER,1,4,on 1:JD Piano +0,off 0:None +0,on 1:JD Piano +0,off 0:None -7
+240,8-17,Choir/Piano,Blend Piano,Blend Piano,True,1,1:EQUALIZER,1,3,on 254:AX Grand mpL +0,on 256:AX Grand ffL +0,on 12:80's EP 1 mp +0,on 16:Hard E.Pno +0
+241,8-18,Choir/Piano,Harpsichord,Harpsichord,True,3,1:EQUALIZER,0,3,on 25:Harpsichord +0,on 25:Harpsichord +0,off 0:None -12,off 0:None -12
+242,8-19,Choir/Piano,Phase Stage,Phase Stage,True,2,11:PHASER,0,3,on 2:Stage EP p -3,on 2:Stage EP p +3,on 3:Stage EP f -3,on 3:Stage EP f +3
+243,8-20,Choir/Piano,PhaseEP,PhaseEP,True,2,11:PHASER,0,3,on 12:80's EP 1 mp +0,on 2:Stage EP p +0,on 3:Stage EP f +0,off 15:80's EP 2 f +0
+244,8-21,Choir/Piano,Stage EP,Stage EP,True,2,1:EQUALIZER,0,3,on 2:Stage EP p +5,on 2:Stage EP p +0,on 3:Stage EP f +0,on 3:Stage EP f -5
+245,8-22,Choir/Piano,Dyno EP,Dyno EP,True,2,1:EQUALIZER,0,3,on 4:Dyno EP mp +5,on 4:Dyno EP mp +0,on 5:Dyno EP mf -1,on 6:Dyno EP ff +4
+246,8-23,Choir/Piano,SA EP,SA EP,True,2,1:EQUALIZER,1,3,on 10:Soft SA EP +5,on 10:Soft SA EP +0,on 11:Hard SA EP +6,on 11:Hard SA EP +0
+247,8-24,Choir/Piano,Wurly EP,Wurly EP,True,2,1:EQUALIZER,0,3,on 7:Wurly mp +5,on 7:Wurly mp +0,on 8:Wurly mf -1,on 9:Wurly ff +4
+248,8-25,Choir/Piano,Dist Wurly,Dist Wurly,True,2,39:GUITAR AMP SIMULATOR,0,2,on 7:Wurly mp +0,on 8:Wurly mf +0,on 9:Wurly ff +0,on 250:Org Click 2 +0
+249,8-26,Choir/Piano,FM EP 1,FM EP 1,True,2,1:EQUALIZER,0,3,on 12:80's EP 1 mp -3,on 12:80's EP 1 mp +3,on 14:80's EP 1 f -3,on 14:80's EP 1 f +3
+250,8-27,Choir/Piano,FM EP 2,FM EP 2,True,2,1:EQUALIZER,1,3,on 13:80's EP 2 mp -3,on 13:80's EP 2 mp +3,on 15:80's EP 2 f -3,on 15:80's EP 2 f +3
+251,8-28,Choir/Piano,Psycho EP,Psycho EP,True,2,8:AUTO WAH,1,1,on 10:Soft SA EP -12,on 3:Stage EP f -12,off 0:None +0,off 0:None -12
+252,8-29,Choir/Piano,D-50 Fantsia,D-50 Fantsia,True,4,26:HEXA-CHORUS,1,3,on 148:D-50 Bell +12,on 152:Finger Bell +24,on 125:OB2 Pad 1 +0,on 124:Warm Pad -12
+253,8-30,Choir/Piano,FM Sparkles,FM Sparkles,True,4,26:HEXA-CHORUS,2,3,on 216:VS-Triangle +38,on 216:VS-Triangle -12,on 216:VS-Triangle +48,on 216:VS-Triangle -12
+254,8-31,Choir/Piano,Dreaming Box,Dreaming Box,True,4,0:THROUGH,2,2,on 18:Music Box +12,on 222:Digi Loop +7,on 135:Jz Doos Lp +12,off 0:None +0
+255,8-32,Choir/Piano,Sweet Keys,Sweet Keys,True,30,0:THROUGH,0,3,on 129:Syn Vox 1 +0,off 313:Jazz Organ 5 +12,off 151:Agogo 2 Low +0,off 151:Agogo 2 Low +0

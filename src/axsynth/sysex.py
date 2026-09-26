@@ -113,6 +113,36 @@ def patch_messages(blocks: dict[str, bytes], base: int = TEMPORARY_PATCH,
     return [build_dt1(base + off, blocks[name], device) for name, off in PATCH_BLOCKS]
 
 
+def patch_blocks(messages: list[bytes]) -> dict[int | str, dict[str, bytes]]:
+    """Inverse of patch_messages: collect whole-block DT1s into patches.
+
+    Keys are the User patch number 0..255 or "temporary"; values map block
+    name -> image. Works on Librarian/Editor "Export SMF" files and on the
+    synth's RQ1 replies (one DT1 per block, captures/mitm/). DT1s that are not
+    a whole patch block (e.g. single-value edits) are skipped."""
+    offsets = {off: name for name, off in PATCH_BLOCKS}
+    from .schema import addr_to_int
+    out: dict[int | str, dict[str, bytes]] = {}
+    for m in messages:
+        try:
+            r = parse(m)
+        except ValueError:
+            continue
+        if r.command != DT1 or r.model_id != MODEL_ID or not r.checksum_ok:
+            continue
+        a = addr_to_int(r.address)
+        if TEMPORARY_PATCH <= a < TEMPORARY_PATCH + _a("01 00 00"):
+            key, off = "temporary", a - TEMPORARY_PATCH
+        elif user_patch_address(0) <= a <= user_patch_address(255) + _a("00 7F 7F"):
+            key = (a - user_patch_address(0)) // _a("01 00 00")
+            off = a - user_patch_address(key)
+        else:
+            continue
+        if off in offsets:
+            out.setdefault(key, {})[offsets[off]] = bytes(r.payload)
+    return out
+
+
 def roland_export_delay_ticks(message_len: int, ppq: int = 96, bpm: float = 120.0) -> int:
     """Gap the Editor/Librarian put after a message in their SMF export:
     ceil((wire time at 31250 baud + 20 ms) / tick). Fits all 2,312 gaps in

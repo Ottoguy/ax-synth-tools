@@ -9,6 +9,8 @@ Usage:
   python describe_a8.py A.a8e              non-default active values
   python describe_a8.py A.a8e B.a8e        values where A and B differ
   add --all to include values equal to the default
+  A file may be FILE#N to pick patch N of an .a8l (0-based record) or of a
+  .mid/.syx dump (User patch 0..255, or #temporary); default: the first.
 """
 import sys
 from pathlib import Path
@@ -36,8 +38,16 @@ def display(path, value):
     return str(value)
 
 
-def flat(res):
-    blocks = res["blocks"] if res["format"] == "a8e" else res["patches"][0]["blocks"]
+def load(spec):
+    path, _, sel = spec.partition("#")
+    res = a8_files.parse(path, S)
+    if res["format"] == "a8e":
+        blocks = res["blocks"]
+    elif res["format"] == "dump" and sel:
+        key = sel if sel == "temporary" else int(sel)
+        blocks = next(p for p in res["patches"] if p["slot"] == key)["blocks"]
+    else:
+        blocks = res["patches"][int(sel or 0)]["blocks"]
     return {v["path"].removeprefix("fm."): v for b in blocks for v in b["values"]}
 
 
@@ -51,8 +61,8 @@ def check_range(path, value):
 def main(argv):
     show_all = "--all" in argv
     files = [a for a in argv[1:] if not a.startswith("--")]
-    a = flat(a8_files.parse(files[0], S))
-    b = flat(a8_files.parse(files[1], S)) if len(files) > 1 else None
+    a = load(files[0])
+    b = load(files[1]) if len(files) > 1 else None
     for path, v in a.items():
         if not v["active"] and not (b and b[path]["active"]):
             continue

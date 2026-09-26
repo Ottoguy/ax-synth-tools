@@ -198,7 +198,9 @@ Settings that apply to the whole patch (all four tones).
 - **PATCH NAME** (12 characters (ASCII 32–127)) *[EM p.24, 5]*: Patch name. Allowed characters: space ! " # $ % & ' ( ) * + , - . / 0-9 : ; < = > ? @ A-Z [ \ ] ^ _ ` a-z { | } ~ (EM p.5).
   - model: `fm.pat.common.patchName` @ 1F 00 00 00
 - **Patch Category** (0–127) *[MI p.8]*: Category number of the patch (used by the Editor's patch list).
-  - Not described in the Editor manual; listed in the MIDI Implementation only. [3P/I] Numbering probably follows Roland's XV/Fantom category scheme (forum guitar patch = 11); unverified.
+  - Not described in the Editor manual; listed in the MIDI Implementation only.
+  - [F] The factory patches (user backup, research/generated/user-patches.csv) group by instrument: 1 ac. piano, 2 el. piano, 3 keyboards/clav, 4 bell, 5 mallet, 6 organ, 7 accordion, 8 harmonica, 9 ac. guitar, 10 el. guitar, 11 dist. guitar, 12 bass, 13 synth bass, 14 strings, 19 ac. brass, 20 synth brass, 21 sax, 22 hard lead, 23 soft lead, 24 techno synth, 25 pulsating, 27 other synth, 28 bright pad, 29 soft pad, 30 vox, 31 plucked, 32 ethnic.
+  - [3P/I] These names are Roland's XV/Fantom category list, which fits every observed group; the names themselves are unverified. Set the category to match the sound (the Editor's patch list uses it).
   - model: `fm.pat.common.patchCategory` @ 1F 00 00 0C, raw [0, 127]
 - **LEVEL** (0–127) *[EM p.20, 24]*: Volume of the patch.
   - model: `fm.pat.common.patchLevel` @ 1F 00 00 0E, raw [0, 127]

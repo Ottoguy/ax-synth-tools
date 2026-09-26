@@ -11,8 +11,9 @@ Derivation [inference, strong]: the Owner's Manual has 256 regular Tones in
 8 families x 32, and the Librarian manual says the 256 patches are 'Bank (1-8)'
 x 'Number (1-32)' of the Patch Area (30 00 00 00 + n*00 01 00 00). The PCs
 are sequential across families (LSB 0: PC 1-128, LSB 1: PC 1-128), so
-n = LSB*128 + PC-1 and family = n // 32. To be confirmed by a Librarian
-'Read All Data' (names in slot n should equal this list).
+n = LSB*128 + PC-1 and family = n // 32. Confirmed 2026-09-26 by the
+user's Librarian 'Read All Data' (254/256 stored names equal this list;
+research/mitm-capture-analysis.md).
 """
 import csv
 import json

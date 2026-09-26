@@ -102,14 +102,16 @@ def decode_value(v: ValueDef, raw: bytes):
     return out
 
 
-def encode_value(v: ValueDef, value) -> bytes:
+def encode_value(v: ValueDef, value, check_range: bool = True) -> bytes:
+    """Wire bytes for one value. check_range=False reproduces stored data
+    that lies outside the script's range (e.g. PatchCommon reserve1F = 0)."""
     if v.type == "string":
         s = str(value).ljust(v.size)[: v.size]
         if any(not 32 <= ord(c) <= 127 for c in s):
             raise ValueError(f"{v.name}: characters must be ASCII 32..127")
         return s.encode("ascii")
     n, bits = v.bits
-    if v.range and not v.range[0] <= value <= v.range[1]:
+    if check_range and v.range and not v.range[0] <= value <= v.range[1]:
         raise ValueError(f"{v.name}: {value} outside {v.range}")
     mask = (1 << bits) - 1
     if value >> (n * bits):

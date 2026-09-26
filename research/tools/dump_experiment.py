@@ -8,6 +8,12 @@ This tool never opens a MIDI port. It writes/reads files only.
       4F-vs-50 discrepancy. RQ1 only asks the synth to reply; it changes no
       synth memory.
 
+  python dump_experiment.py make-system-requests out.syx
+      Three RQ1s: Setup (01 00 00 00, 0x34), System Common (02 00 00 00,
+      0x1E), System Controller (02 00 40 00, 0x50, the size the synth
+      confirmed). For locating panel settings (FAVORITE volume/reverb
+      send, sleep interval) by before/after diffs. Read-only.
+
   python dump_experiment.py a8-to-syx patch.a8e out.syx
       Patch -> 9 DT1s for the volatile Temporary Patch (1F 00 00 00), the
       same format as the Editor's Export SMF. Never targets User slots.
@@ -44,6 +50,22 @@ def requests():
 def make_requests(dest):
     blob = b""
     for label, base, size in requests():
+        m = sysex.build_rq1(base, size)
+        blob += m
+        print(f"{label:40s} {m.hex(' ').upper()}")
+    Path(dest).write_bytes(blob)
+    print(f"wrote {len(blob)} bytes to {dest} (NOT sent anywhere)")
+
+
+def system_requests():
+    return [("fm.setup", addr_to_int("01 00 00 00"), S.struct_size("Setup")),
+            ("fm.system.common", addr_to_int("02 00 00 00"), S.struct_size("SystemCommon")),
+            ("fm.system.controller (size 0x50)", addr_to_int("02 00 40 00"), 0x50)]
+
+
+def make_system_requests(dest):
+    blob = b""
+    for label, base, size in system_requests():
         m = sysex.build_rq1(base, size)
         blob += m
         print(f"{label:40s} {m.hex(' ').upper()}")
@@ -118,5 +140,5 @@ def a8_to_syx(src, dest):
 
 
 if __name__ == "__main__":
-    cmds = {"make-requests": make_requests, "decode": decode, "a8-to-syx": a8_to_syx}
+    cmds = {"make-requests": make_requests, "make-system-requests": make_system_requests, "decode": decode, "a8-to-syx": a8_to_syx}
     cmds[sys.argv[1]](*sys.argv[2:])
