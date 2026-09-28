@@ -462,7 +462,7 @@ function effectsIntro() {
   box.className = "sec routingbox";
   box.innerHTML = `<h2>Signal path</h2>
     <p class="help">Click <b>MFX</b>, <b>Chorus/Delay</b> or <b>Reverb</b> to show its settings below; click a <b>Tone</b> to go to the Tones tab;
-      click an <u>underlined value</u> on an arrow to change it right here.</p>
+      click an <u>underlined value</u> on an arrow to change it right here. Arrows get thicker as the value rises; dotted = value 0; green = sound flows.</p>
     <div id="diagram"></div>
     <div class="assignrow" id="assignrow"><div class="assignhead"><b>Where the tones go</b>
       <span class="hint">OUTPUT ASSIGN: MFX = through the multi-effect; L+R / L / R = straight to the output. The per-tone settings only apply when the sound's OUTPUT ASSIGN is TONE.</span></div></div>
@@ -708,10 +708,15 @@ function diagram(sp) {
     `<title>${go === "tones" ? "Open the Tones tab" : go ? "Show these settings below" : ""}</title><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6"/>` +
     `<text x="${x + w / 2}" y="${y + (sub ? h / 2 - 3 : h / 2 + 4)}" class="t">${esc(title)}</text>` +
     (sub ? `<text x="${x + w / 2}" y="${y + h / 2 + 12}" class="s">${esc(sub)}</text>` : "") + `</g>`;
-  const edge = (x1, y1, x2, y2, on, label, lx, ly, key) => {
+  // Arrow style: dotted only when its value is 0; otherwise solid, thicker the closer
+  // the value is to its maximum (levels and sends are 0..127). Green = sound flows.
+  const MAXV = 127;
+  const width = (v) => (v > 0 ? 1.2 + 5.3 * Math.min(1, v / MAXV) : 1.2);
+  const edge = (x1, y1, x2, y2, on, label, lx, ly, key, value = on ? MAXV / 2 : 0) => {
     const mx = (x1 + x2) / 2;
-    return `<path d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}" fill="none" stroke="${on ? act : idle}" stroke-width="${on ? 2.2 : 1.2}"` +
-      `${on ? "" : ' stroke-dasharray="4 4"'} marker-end="url(#${on ? "a1" : "a0"})"/>` +
+    const zero = !(value > 0);
+    return `<path d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}" fill="none" stroke="${on ? act : idle}" stroke-width="${width(value).toFixed(2)}"` +
+      `${zero ? ' stroke-dasharray="4 4"' : ""} stroke-linecap="round" marker-end="url(#${on ? "a1" : "a0"})"/>` +
       (label ? `<text x="${lx ?? mx}" y="${ly ?? (y1 + y2) / 2 - 4}" class="e ${on ? "on" : ""}${key ? " link" : ""}"${key ? ` data-edit="${key}"` : ""}>` +
         `${key ? "<title>Click to change</title>" : ""}${esc(label)}</text>` : "");
   };
@@ -724,8 +729,8 @@ function diagram(sp) {
   const choOn = sp.chorus.type !== 0 && sp.chorus.level > 0;
   const revOn = sp.reverb.type !== 0 && sp.reverb.level > 0;
   let s = `<svg viewBox="0 0 ${W} ${H}" class="diagram" role="img" aria-label="Signal path"><defs>` +
-    `<marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${act}"/></marker>` +
-    `<marker id="a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="${idle}"/></marker></defs>`;
+    `<marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto"><path d="M0,0L10,5L0,10z" fill="${act}"/></marker>` +
+    `<marker id="a0" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" orient="auto"><path d="M0,0L10,5L0,10z" fill="${idle}"/></marker></defs>`;
   const via = sp.tones.filter((t) => t.on && t.via);
   const pa = patch.get("fm.pat.common.patchOutputAssign");
   const paName = (model.params["fm.pat.common.patchOutputAssign"].enum || [])[
@@ -733,24 +738,26 @@ function diagram(sp) {
   s += `<text x="190" y="${H - 6}" class="e link" data-edit="outAssign"><title>Click to change</title>output assign: ${esc(paName)}</text>`;
   for (const t of sp.tones) {
     const y = tonesY(t.tone) + 20;
-    if (t.on && t.via) s += edge(130, y, mfx.x, mfx.y + mfx.h / 2, t.out > 0);
-    if (t.on && !t.via) s += edge(130, y, out.x, out.y + 10 + t.tone * 10, t.out > 0, t.tone === 0 ? "direct (bypasses MFX)" : "", 400, 60);
+    if (t.on && t.via) s += edge(130, y, mfx.x, mfx.y + mfx.h / 2, t.out > 0, "", undefined, undefined, undefined, t.out);
+    if (t.on && !t.via) s += edge(130, y, out.x, out.y + 10 + t.tone * 10, t.out > 0, t.tone === 0 ? "direct (bypasses MFX)" : "", 400, 60, undefined, t.out);
   }
   const choSends = sp.tones.filter((t) => t.on).map((t) => `${t.tone + 1}:${t.cho}`).join(" ");
   const revSends = sp.tones.filter((t) => t.on).map((t) => `${t.tone + 1}:${t.rev}`).join(" ");
   const anyCho = sp.tones.some((t) => t.on && t.cho > 0);
   const anyRev = sp.tones.some((t) => t.on && t.rev > 0);
-  s += edge(130, 40, cho.x, cho.y + 14, anyCho && choOn, `tone sends ${choSends || "–"}`, 300, 22, "toneCho");
-  s += edge(130, 190, rev.x, rev.y + 34, anyRev && revOn, `tone sends ${revSends || "–"}`, 300, 232, "toneRev");
+  const maxCho = Math.max(0, ...sp.tones.filter((t) => t.on).map((t) => t.cho));
+  const maxRev = Math.max(0, ...sp.tones.filter((t) => t.on).map((t) => t.rev));
+  s += edge(130, 40, cho.x, cho.y + 14, anyCho && choOn, `tone sends ${choSends || "–"}`, 300, 22, "toneCho", maxCho);
+  s += edge(130, 190, rev.x, rev.y + 34, anyRev && revOn, `tone sends ${revSends || "–"}`, 300, 232, "toneRev", maxRev);
   const mfxLive = via.length > 0;
-  s += edge(mfx.x + mfx.w, mfx.y + 27, out.x, out.y + 27, mfxLive && sp.mfx.out > 0, `out ${sp.mfx.out}`, undefined, undefined, "mfxOut");
-  s += edge(mfx.x + mfx.w, mfx.y + 8, cho.x, cho.y + 34, mfxLive && sp.mfx.cho > 0 && choOn, `send ${sp.mfx.cho}`, 440, 80, "mfxCho");
-  s += edge(mfx.x + mfx.w, mfx.y + 46, rev.x, rev.y + 14, mfxLive && sp.mfx.rev > 0 && revOn, `send ${sp.mfx.rev}`, 440, 168, "mfxRev");
+  s += edge(mfx.x + mfx.w, mfx.y + 27, out.x, out.y + 27, mfxLive && sp.mfx.out > 0, `out ${sp.mfx.out}`, undefined, undefined, "mfxOut", sp.mfx.out);
+  s += edge(mfx.x + mfx.w, mfx.y + 8, cho.x, cho.y + 34, mfxLive && sp.mfx.cho > 0 && choOn, `send ${sp.mfx.cho}`, 440, 80, "mfxCho", sp.mfx.cho);
+  s += edge(mfx.x + mfx.w, mfx.y + 46, rev.x, rev.y + 14, mfxLive && sp.mfx.rev > 0 && revOn, `send ${sp.mfx.rev}`, 440, 168, "mfxRev", sp.mfx.rev);
   const choFed = choOn && (anyCho || (mfxLive && sp.mfx.cho > 0));
-  s += edge(cho.x + cho.w, cho.y + 24, out.x, out.y + 12, choFed && sp.chorus.toMain, `level ${sp.chorus.level}`, undefined, undefined, "choLevel");
+  s += edge(cho.x + cho.w, cho.y + 24, out.x, out.y + 12, choFed && sp.chorus.toMain, `level ${sp.chorus.level}`, undefined, undefined, "choLevel", sp.chorus.toMain ? sp.chorus.level : 0);
   const sel = ["MAIN", "MAIN+REV", "REV"][patch.get("fm.pat.cho.chorusOutputSelect")] || "";
-  s += edge(cho.x + 75, cho.y + cho.h, rev.x + 75, rev.y, choFed && sp.chorus.toReverb && revOn, `output: ${sel}`, cho.x + 28, 150, "choSel");
-  s += edge(rev.x + rev.w, rev.y + 24, out.x, out.y + 42, revOn, `level ${sp.reverb.level}`, undefined, undefined, "revLevel");
+  s += edge(cho.x + 75, cho.y + cho.h, rev.x + 75, rev.y, choFed && sp.chorus.toReverb && revOn, `output: ${sel}`, cho.x + 28, 150, "choSel", sp.chorus.toReverb ? sp.chorus.level : 0);
+  s += edge(rev.x + rev.w, rev.y + 24, out.x, out.y + 42, revOn, `level ${sp.reverb.level}`, undefined, undefined, "revLevel", sp.reverb.level);
   for (const t of sp.tones) {
     s += box(20, tonesY(t.tone), 110, 40, `Tone ${t.tone + 1}${t.on ? "" : " (off)"}`, t.on ? (t.wave ? model.waves[t.wave - 1] : "no wave") : "", t.on, "tones");
   }
@@ -1157,6 +1164,14 @@ async function runSelftest() {
   updateStatus();
   const revOk = !document.querySelector("#routing li.warn") || ![...document.querySelectorAll("#routing li.warn")].some((li) => li.textContent.includes("Reverb"));
   const svg = $("diagram").querySelector("svg");
+  const widthOf = (key) => { const lbl = svg.querySelector(`[data-edit="${key}"]`); return lbl ? parseFloat(lbl.previousElementSibling.getAttribute("stroke-width")) : NaN; };
+  patch.set("fm.pat.mfx.mfxDrySendLevel", 127); patch.set("fm.pat.mfx.mfxChorusSendLevel", 10); patch.set("fm.pat.mfx.mfxReverbSendLevel", 0);
+  updateStatus();
+  const svg2 = $("diagram").querySelector("svg");
+  const w = (key) => { const lbl = svg2.querySelector(`[data-edit="${key}"]`); const path = lbl.previousElementSibling; return [parseFloat(path.getAttribute("stroke-width")), path.hasAttribute("stroke-dasharray")]; };
+  const [wOut, dOut] = w("mfxOut"), [wCho, dCho] = w("mfxCho"), [wRev, dRev] = w("mfxRev");
+  res.push(`arrowWidths=${wOut.toFixed(1)}/${wCho.toFixed(1)}/${wRev.toFixed(1)} dotted=${dOut}/${dCho}/${dRev}`);
+  patch.set("fm.pat.mfx.mfxReverbSendLevel", 60); updateStatus();
   res.push(`routingWarn=${revWarn} routingOk=${revOk} diagram=${!!svg} activeEdges=${svg.querySelectorAll('path[stroke="var(--ok)"]').length} effectsTab="${tab("effects").textContent}"`);
   // tone columns + edit together
   setLinked(0, true); setLinked(2, true);

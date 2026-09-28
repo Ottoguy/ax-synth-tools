@@ -1,13 +1,13 @@
-// Node runner for tests/test_web.py: executes the browser modules in web/
+// Node runner for tests/test_web.py: executes the browser modules in app/
 // on test cases and prints the results as JSON. No MIDI involved.
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, isAbsolute, join } from "node:path";
-import * as sx from "../web/sysex.js";
-import { Patch, display, routing, signalPath } from "../web/patch.js";
+import * as sx from "../app/sysex.js";
+import { Patch, display, routing, signalPath } from "../app/patch.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const model = JSON.parse(readFileSync(join(ROOT, "web/model.json"), "utf8"));
+const model = JSON.parse(readFileSync(join(ROOT, "app/model.json"), "utf8"));
 const cases = JSON.parse(readFileSync(process.argv[2], "utf8"));
 const bytes = (rel) => new Uint8Array(readFileSync(isAbsolute(rel) ? rel : join(ROOT, rel)));
 const out = {};

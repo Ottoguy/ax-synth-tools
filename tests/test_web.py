@@ -1,6 +1,6 @@
-"""Web editor (web/): its JavaScript codec must produce exactly the bytes of
+"""Web editor (app/): its JavaScript codec must produce exactly the bytes of
 the Python library, which the other tests tie to Roland's own bytes
-(exports, live edits, synth replies). Runs web modules in Node; skipped if
+(exports, live edits, synth replies). Runs app modules in Node; skipped if
 Node isn't installed. No MIDI involved."""
 import json
 import shutil
@@ -18,7 +18,7 @@ from axsynth.schema import Schema, addr_to_int, encode_value  # noqa: E402
 
 S = Schema.load()
 P = {p.path: p for p in S.parameters("fm")}
-MODEL = json.loads((ROOT / "web/model.json").read_text(encoding="utf-8"))
+MODEL = json.loads((ROOT / "app/model.json").read_text(encoding="utf-8"))
 NODE = shutil.which("node")
 BACKUP = ROOT / "captures/backup/ax-synth-backup-2026-09-26.mid"
 hexs = lambda b: bytes(b).hex(" ").upper()  # noqa: E731

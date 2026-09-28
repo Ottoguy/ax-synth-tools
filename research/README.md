@@ -52,7 +52,7 @@ Start with `../CLAUDE.md` (project context) and `REPORT.md` (findings). This fil
 | `generated/parameters.{csv,json}` | `tools/build_parameter_db.py` |
 | `generated/factory-tones.{csv,json}` | `tools/extract_tone_list.py` |
 | `generated/user-patches.{csv,json}` | `tools/backup_summary.py` |
-| `../web/model.json` (web editor data) | `tools/build_web_model.py` |
+| `../app/model.json` (web editor data) | `tools/build_web_model.py` |
 | `generated/bulkdump-layout.json` | `tools/bulkdump.py solve <dump> <backup>` |
 | `generated/experiment-rq1-setup-system.syx` | `tools/dump_experiment.py make-system-requests` |
 | `generated/inventory.json` | `tools/inventory.py` |

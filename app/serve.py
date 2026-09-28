@@ -4,7 +4,7 @@ Web MIDI with SysEx needs a secure context; http://localhost is one. The
 MIME types are set explicitly because Windows' registry can map .js to
 text/plain, which browsers refuse for module scripts.
 
-Usage: py -3 web/serve.py [port]   (start-web-editor.bat does this)
+Usage: py -3 serve.py [port]   (or python3 serve.py on Mac/Linux; Windows users double-click Start-AX-Synth-Editor.bat)
 """
 import functools
 import http.server

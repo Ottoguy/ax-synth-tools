@@ -10,6 +10,19 @@
 
 ---
 
+## Sharing the editor (one-time setup, ~2 minutes)
+
+The editor is the self-contained **`app/`** folder. The repo's front page (README.md) points people to it. Two ways to share it:
+1. **Online link** (nothing to install for anyone):
+   - On GitHub, open the repository → **Settings** → **Pages** → *Build and deployment* → **Source: GitHub Actions**.
+   - After the next push, the **Actions** tab runs *Publish web editor*, and the editor is live at **https://ottoguy.github.io/ax-synth-tools/**. Every later push that changes `app/` updates it automatically.
+2. **Download zip**: tell me "make a release v1.0.0" (or run `git tag v1.0.0` and `git push origin v1.0.0`).
+   - The *Release downloadable editor* action builds **AX-Synth-Web-Editor.zip**, which contains only the app.
+   - It's always available at https://github.com/Ottoguy/ax-synth-tools/releases/latest/download/AX-Synth-Web-Editor.zip.
+   - The downloaded version starts with `Start-AX-Synth-Editor.bat` and needs no Python or other install.
+
+---
+
 ## The safety rules (read once, apply always)
 
 1. **Back up first.** Do the backup in step 3.1 before *anything* except read requests is sent to the synth.
@@ -131,7 +144,7 @@ Some reverb parameters (e.g. SRV time or density at minimum) also make it almost
 
 **Latest layout (reload the page):**
 - **Tones 1–4** are one tab with four columns side by side. Tick column headers (**Edit together**) to change several tones at once; the **ON/OFF** switch in each header turns that tone on or off.
-- The **Effects** tab starts with a **signal-path diagram**: green arrows carry sound, grey dashed ones are silent. Click **MFX**, **Chorus/Delay** or **Reverb** to show only that effect's settings below; click a **Tone** to jump to the Tones tab; click an underlined value (e.g. "send 0", "level 127") to change it right in the diagram.
+- The **Effects** tab starts with a **signal-path diagram**: green arrows carry sound; the thicker an arrow, the higher its level or send; dotted arrows are set to 0. Click **MFX**, **Chorus/Delay** or **Reverb** to show only that effect's settings below; click a **Tone** to jump to the Tones tab; click an underlined value (e.g. "send 0", "level 127") to change it right in the diagram.
 - **⬆ Send whole sound to synth + check** is the big green button at the top, and again in the summary at the bottom of **Changes**. It replaces the sound the synth is playing right now (never your stored sounds) and confirms with ✓.
 - Simple settings are beige; expert-only settings are leaf green. Tabs follow the same colours: beige tabs exist in Simple mode, green tabs are Expert-only.
 - **Where the tones go** (Effects tab, under the diagram): OUTPUT ASSIGN for the whole sound and for each tone (also via the underlined "output assign" in the diagram).
@@ -167,7 +180,7 @@ There's now a **web editor** with every sound parameter of Roland's AX-Synth Edi
 
 **Start it:**
 1. Close **MIDI-OX**, the **Roland Editor** and the **Librarian** (only one program can use the synth's USB port).
-2. Double-click **`start-web-editor.bat`** in the project folder. A small black window opens (the local server; leave it open), and Edge opens `http://localhost:8765`.
+2. Double-click **`app/Start-AX-Synth-Editor.bat`** (or use the online link in README.md). A small black window opens (the local server; leave it open), and Edge opens `http://localhost:8765`.
 3. Click **Connect**. The first time, Edge asks whether the site may use MIDI devices / control them: click **Allow**. The status turns green: "Connected: Roland AX-Synth".
 
 **First use (done):**
@@ -201,7 +214,7 @@ To *keep* a sound in one of the synth's memory slots, save the `.a8e`, open it i
 Answer these in `captures/decisions.md`. Rough answers are fine, and you can change your mind later.
 
 **The GUI**
-1. ~~Where should it run?~~ **Decided (2026-09-28):** a web page in Edge, started locally with `start-web-editor.bat` (step 4). Sound parameters only, sent live; system settings read-only.
+1. ~~Where should it run?~~ **Decided (2026-09-28):** a web page in Edge: online at https://ottoguy.github.io/ax-synth-tools/ or downloaded (`app/`, `Start-AX-Synth-Editor.bat`, no install needed). Sound parameters only, sent live; system settings read-only.
 2. **Which "big knobs" do you want?** Pick or add from: brightness, warmth, attack (soft ↔ percussive), release/length, sustain, body/thickness, detune/width, movement/vibrato, grit/distortion, space (reverb), echo (delay), octave/layering, mono/poly/glide, velocity sensitivity, "age"/lo-fi. Which 6–10 matter most for how you play?
 3. Should the GUI also let you **pick a factory sound as a starting point** and then adjust the big knobs? (I think this gives much better results than starting from INIT.)
 4. **Which performance controls do you actually use**, and what should they do in *new* sounds by default? The AX-Synth has: the **mod bar** (usually vibrato), the **AFTER TOUCH knob** (the keys send no aftertouch), the **ribbon** (pitch bend), the **D-Beam** (pitch, filter, or an assigned CC), **portamento** and **hold**.

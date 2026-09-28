@@ -1,4 +1,4 @@
-"""Generate web/model.json: everything the web editor needs, from the
+"""Generate app/model.json: everything the web editor needs, from the
 existing research outputs (no hand-typed parameter data, CLAUDE.md rule 5).
 
 Sources
@@ -12,7 +12,7 @@ Sources
   - original-roland-files/Script/A8EE/InitialData.a8e (INIT patch, .a8e
     template), axsynth.factory (Tone list for the slot picker)
 
-Usage: py -3 research/tools/build_web_model.py   (writes web/model.json)
+Usage: py -3 research/tools/build_web_model.py   (writes app/model.json)
 """
 from __future__ import annotations
 
@@ -28,7 +28,7 @@ sys.path.insert(0, str(ROOT / "research" / "tools"))
 from axsynth import factory, sysex  # noqa: E402
 from axsynth.schema import Schema, addr_to_int  # noqa: E402
 
-OUT = ROOT / "web" / "model.json"
+OUT = ROOT / "app" / "model.json"
 SCRIPT = ROOT / "original-roland-files/Script/A8EE/Script.xml"
 INITIAL = ROOT / "original-roland-files/Script/A8EE/InitialData.a8e"
 GENERIC = re.compile(r"^(mfxParameter|chorusParameter|reverbParameter)\d+$")

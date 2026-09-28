@@ -1,0 +1,35 @@
+# Builds the downloadable editor (AX-Synth-Web-Editor.zip, the app/ folder only)
+# and attaches it to a GitHub Release. Trigger: push a tag like v1.0.0
+#   git tag v1.0.0 && git push origin v1.0.0
+# Stable download link for the newest release:
+#   https://github.com/Ottoguy/ax-synth-tools/releases/latest/download/AX-Synth-Web-Editor.zip
+name: Release downloadable editor
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build zip (editor only)
+        run: |
+          mkdir -p "dist/AX-Synth-Web-Editor"
+          cp app/README.md app/index.html app/style.css app/*.js app/model.json \
+             app/Start-AX-Synth-Editor.bat app/serve.ps1 app/serve.py LICENSE "dist/AX-Synth-Web-Editor/"
+          cd dist && zip -r AX-Synth-Web-Editor.zip AX-Synth-Web-Editor
+      - name: Create or update the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          if [ "${GITHUB_REF_TYPE}" != "tag" ]; then TAG="manual-$(date +%Y%m%d-%H%M)"; fi
+          gh release view "$TAG" >/dev/null 2>&1 || gh release create "$TAG" --title "AX-Synth Web Editor $TAG" \
+            --notes "Download **AX-Synth-Web-Editor.zip**, unzip, and double-click Start-AX-Synth-Editor.bat (Windows). See README.md inside the zip. Or use it online: https://ottoguy.github.io/ax-synth-tools/"
+          gh release upload "$TAG" dist/AX-Synth-Web-Editor.zip --clobber
