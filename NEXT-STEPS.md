@@ -126,10 +126,22 @@ Only if you're curious. It isn't needed for the goal. With MIDI-OX set up as in 
 Some reverb parameters (e.g. SRV time or density at minimum) also make it almost inaudible. I also fixed a small bug where a value you were dragging could arrive just *after* a type change. **New in the editor (reload the page to get it):**
 - **Changes tab**: every value you changed since Read/Load/Open, with **Reset** per row and **Revert all**. Try Revert all on the sound where reverb disappeared.
 - **Effects routing box** (top of the Effects tab, ⚠ on the tab when something is off): says in plain words whether MFX, chorus and reverb are audible and why not, e.g. "Reverb SRV HALL is inaudible: nothing is sent to it (Tone 1 REV send 0 …)". I checked its rules on all 256 factory sounds: the only warnings are the 4 sounds where Roland left reverb unused and the 8 with REVERB LEVEL 0.
-- **Edit tones together** (the bar on the Tone tabs): tick Tones 1–4, and an edit on one tone is applied to all ticked tones, like Shift + TONE SELECT in Roland's Editor.
+- **Edit together** (now the column headers on the Tones tab): tick tones, and an edit on one is applied to all ticked tones, like Shift + TONE SELECT in Roland's Editor.
 - On/off and choice settings now show names (OFF/ON, MONO/POLY, MAIN/MAIN+REV/REV …) instead of 0/1/2.
 
-**Newer additions (2026-09-28, reload the page):**
+**Latest layout (reload the page):**
+- **Tones 1–4** are one tab with four columns side by side. Tick column headers (**Edit together**) to change several tones at once.
+- The **Effects** tab starts with a **signal-path diagram**: green arrows carry sound, grey dashed ones are silent.
+- **⬆ Send whole sound to synth + check** is the big green button at the top, and again in the summary at the bottom of **Changes**. It replaces the sound the synth is playing right now (never your stored sounds) and confirms with ✓.
+- Simple settings are beige; expert-only settings are foliage green. The **Simple / Expert** switch is at the top right; System and MIDI log appear in Expert mode only.
+- Anything that replaces the sound you're editing (Load, New, Open, Read, Revert all, changing an effect type) asks "are you sure?" first.
+- **Store in synth slot…** (next to Save .a8e): stores the sound permanently in one of the 256 memory slots, **replacing** the sound there.
+  - It asks you to confirm you have a backup.
+  - It downloads the slot's old sound as an .a8e file.
+  - It asks "are you sure?" once more, then writes and reads back to check.
+  - **First time: please test it on a slot you don't need**, then switch the synth off and on and use *Load stored sound* on that slot. That confirms the write survives power-off (it's never been tested on this synth). Tell me the result, and if something's off, save the MIDI log to `captures/web/store-log.txt`.
+
+**Earlier additions:**
 - A **Start here** tab with a short how-to (it opens by itself the first time).
 - **Simple / Expert mode** (the switch at the top right). Simple mode shows only the easy settings you picked; Expert shows everything, with the easy ones marked by a blue edge. Levels and sends always look like green faders.
 - A small **↺** next to every setting you changed: back to the value from the last Read / Load / Open.

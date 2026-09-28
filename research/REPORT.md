@@ -109,7 +109,7 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | System writes | Whether System DT1s (e.g. from SYNC) persist after power-off. The stored values equal the Editor defaults, which may also be the factory values, so this is undecidable from the data |
 | Hidden patch bits | 146 bits per patch record outside the data model (item 19); why 1-1 differs |
 | Checksums | **Settled**: also valid on every message from the synth (item 18) |
-| Patch storage | Whether the synth commits a DT1 to `30 nn …` to flash immediately (the Librarian export implies yes), and the Editor's live WRITE handshake (`0F 00 10 0x` payloads). **Do not experiment with writes yet** |
+| Patch storage | Whether the synth commits a DT1 to `30 nn …` to flash immediately (the Librarian export implies yes), and the Editor's live WRITE handshake (`0F 00 10 0x` payloads). Since 2026-09-28 the web editor can store to a slot (user request; Librarian-format whole blocks, backup + read-back). The first user test (power-cycle, then Load) settles persistence |
 | .a8l | Trailing 4 bytes per record (not transmitted in exports; memo hypothesis) |
 | Serialization | Whether the hardware's reply includes reserved bytes identical to `.a8e`; `reserve1F` = 0 lies outside the script's range |
 | MIDI comms | READ, SYNC and Read Selected are **settled** (item 18). Open: the Librarian Read All sequence (not logged) and the WRITE handshake |
@@ -176,6 +176,6 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
 | `src/axsynth/sysex.py` | Checksum, DT1/RQ1/Identity Request builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
 | `captures/live/` | User's MIDI-OX logs of the Editor/Librarian live output (step 2) + `notes.md` |
-| `tests/test_schema.py`, `tests/test_web.py` | 73 + 23 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `tests/test_schema.py`, `tests/test_web.py` | 73 + 24 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

@@ -12,21 +12,31 @@
       <h1>AX-Synth Web Editor</h1>
       <span id="status" class="status off">Not connected</span>
       <button id="connect" class="primary">Connect</button>
-      <button id="read" disabled title="Read the sound currently selected on the synth (its Temporary Patch)">Read from synth</button>
-      <button id="send" disabled title="Send the whole patch to the synth's Temporary Patch, then read it back and compare">Send whole patch + verify</button>
-      <span id="verify" class="verify"></span>
+      <button id="read" disabled title="Read the sound currently playing on the synth (its working copy)">Read from synth</button>
+      <label class="modeswitch" title="Simple mode shows the easy settings only. Expert mode shows every parameter of Roland's AX-Synth Editor.">
+        <span class="lbl simple-lbl">Simple</span>
+        <input id="expert" type="checkbox">
+        <span class="track"><span class="knob"></span></span>
+        <span class="lbl expert-lbl">Expert</span>
+      </label>
+    </div>
+    <div class="row sendrow">
+      <button id="send" class="sendbig" disabled>⬆ Send whole sound to synth + check</button>
+      <span class="sendnote">Replaces the sound the synth is <b>playing right now</b> with this one and checks it arrived.
+        Sending never changes your stored sounds.</span>
+      <span class="verify"></span>
     </div>
     <div class="row">
       <label>Name <input id="name" maxlength="12" size="14" spellcheck="false"></label>
       <label>Load stored sound
         <select id="slot"></select>
       </label>
-      <button id="loadslot" disabled title="Read this memory slot (read-only) and play it via the Temporary Patch">Load</button>
+      <button id="loadslot" disabled title="Read this memory slot (read-only) and play it via the synth's working copy">Load</button>
       <button id="init" title="Roland's INIT PATCH">New (INIT)</button>
       <label class="file">Open .a8e<input id="open" type="file" accept=".a8e"></label>
       <button id="save">Save .a8e</button>
-      <label class="check"><input id="live" type="checkbox" checked> Send changes live</label>
-      <label class="check mode" title="Simple mode shows the easy settings only. Expert mode shows every parameter of Roland's AX-Synth Editor; the simple ones are marked."><input id="expert" type="checkbox"> Expert mode</label>
+      <button id="store" class="storebtn" disabled title="Store this sound permanently in one of the synth's 256 memory slots (asks first, backs up the slot)">Store in synth slot…</button>
+      <label class="check" title="Send every change immediately while you edit"><input id="live" type="checkbox" checked> Send changes live</label>
     </div>
     <nav id="tabs"></nav>
   </header>
@@ -36,9 +46,36 @@
     <pre id="log"></pre>
   </section>
   <footer>
-    Sends only to the synth's <b>Temporary Patch</b> (the working copy; switching sounds on the synth discards it).
-    It never writes stored sounds or system settings. Close MIDI-OX, the Roland Editor and the Librarian before connecting.
+    Edits go to the synth's <b>working copy</b> (the sound playing now; switching sounds on the synth discards it).
+    Only <b>Store in synth slot…</b> changes a stored sound, after asking and backing it up. System settings are never changed.
   </footer>
+  <dialog id="confirm">
+    <h3 id="confirm-title"></h3>
+    <p id="confirm-text"></p>
+    <div class="buttons">
+      <button id="confirm-cancel" value="cancel">Cancel</button>
+      <button id="confirm-ok" class="primary" value="ok">OK</button>
+    </div>
+  </dialog>
+  <dialog id="storedlg">
+    <h3>Store this sound in a memory slot</h3>
+    <p class="warn">⚠ This <b>permanently replaces</b> the sound in the slot you choose. It's the only thing in this editor that changes your stored sounds.</p>
+    <label class="field">Memory slot
+      <select id="store-slot"></select>
+    </label>
+    <p id="store-current" class="current">Currently in this slot: …</p>
+    <p>Before writing, the editor reads the slot and <b>downloads its current sound as an .a8e file</b>, so this one slot can be restored
+      (open that file here and store it again). If that read fails, nothing is written.</p>
+    <label class="check big"><input id="store-backup" type="checkbox">
+      I have a backup of all my sounds, or I don't mind losing the sound in this slot.</label>
+    <p class="help">Afterwards the editor reads the slot back to check it. Whether it survives switching the synth off hasn't been tested
+      on this synth yet: switch it off and on, then use <b>Load stored sound</b> on that slot to confirm.</p>
+    <p id="store-result" class="verify"></p>
+    <div class="buttons">
+      <button id="store-cancel">Close</button>
+      <button id="store-go" class="danger" disabled>Store in slot</button>
+    </div>
+  </dialog>
   <template id="helptext">
     <section class="sec help-page">
       <h2>Getting started</h2>
@@ -47,43 +84,50 @@
       <h3>1. Connect</h3>
       <ol>
         <li>Connect the AX-Synth by USB and switch it on.</li>
-        <li>Close <b>MIDI-OX</b>, the <b>Roland Editor</b> and the <b>Librarian</b>: only one program at a time can use the synth.</li>
+        <li>Close any other program that uses the synth, if one is open: only one program at a time can talk to it.</li>
         <li>Start the editor with <b>start-web-editor.bat</b> (you're here, so that worked). Keep the small black window open while you use it.</li>
         <li>Click <b>Connect</b>. The first time, Edge asks about MIDI devices: click <b>Allow</b>. The status turns green.</li>
       </ol>
 
       <h3>2. Pick a sound to start from</h3>
       <ul>
-        <li><b>Read from synth</b>: loads the sound currently selected on the keytar.</li>
+        <li><b>Read from synth</b>: loads the sound currently playing on the keytar.</li>
         <li><b>Load stored sound</b>: choose any of the 256 sounds in the list and click <b>Load</b>. This only reads, so your stored sounds stay as they are.</li>
-        <li><b>Open .a8e</b>: a file saved from this page or from Roland's Editor. <b>New (INIT)</b>: Roland's plain starting sound.</li>
+        <li><b>Open .a8e</b>: a sound file saved from this page. <b>New (INIT)</b>: a plain starting sound.</li>
       </ul>
 
       <h3>3. Change the sound</h3>
       <ul>
-        <li>Move a slider or pick a value: you hear it immediately (untick <b>Send changes live</b> to edit silently, then use <b>Send whole patch + verify</b>).</li>
-        <li><b>Common</b>: the whole sound (volume, mono/poly, portamento, bend range, and quick "offset" knobs for brightness, attack and release).
-            <b>Tone 1–4</b>: a sound has up to four layers ("tones"), each with its own waveform, filter and volume.
-            <b>Effects</b>: one multi-effect (MFX), a chorus/delay and a reverb.</li>
-        <li>Hover over a setting's name to see what it does. Settings with a small green bar are levels and sends (how loud something is, or how much goes to the chorus/reverb).</li>
-        <li><b>Edit tones together</b> (on the Tone tabs): tick several tones, and a change is applied to all of them.</li>
-        <li><b>Simple / Expert mode</b>: simple mode shows the easy settings. Tick <b>Expert mode</b> for every setting; the easy ones stay marked with a blue edge.</li>
+        <li>Move a slider or pick a value: you hear it immediately (untick <b>Send changes live</b> to edit silently).</li>
+        <li><b>Common</b>: the whole sound (volume, mono/poly, portamento, bend range, and quick "offset" knobs for brightness, attack and release).</li>
+        <li><b>Tones 1–4</b>: a sound has up to four layers ("tones"), shown side by side in four columns. Each has its own waveform, filter and volume.
+            To change several tones at once, tick their column headers (<b>Edit together</b>): a change in a ticked column goes to all ticked columns.</li>
+        <li><b>Effects</b>: one multi-effect (MFX), a chorus/delay and a reverb. The diagram at the top shows how the sound flows through them;
+            green arrows carry sound, grey dashed arrows are silent.</li>
+        <li>Hover over a setting's name to see what it does. Green-edged settings are levels and sends (how loud something is, or how much goes to the chorus/reverb).</li>
+        <li><b>Simple / Expert</b> (the switch at the top): Simple shows the easy settings on a beige background. Expert adds every other setting in the dark style.</li>
       </ul>
 
-      <h3>4. Undo</h3>
+      <h3>4. Undo, and make sure the synth has it</h3>
       <ul>
         <li>A changed setting shows a small <b>↺</b> button: click it to go back to the value you started from.</li>
-        <li>The <b>Changes</b> tab lists everything you changed; <b>Revert all</b> restores the whole starting sound.</li>
-        <li>Can't hear an effect? The box at the top of the <b>Effects</b> tab says why (for example "nothing is sent to the reverb").</li>
+        <li>The <b>Changes</b> tab lists everything you changed, with <b>Revert all</b> and a summary at the bottom.</li>
+        <li><b>⬆ Send whole sound to synth + check</b> replaces the sound the synth is playing right now with exactly what you see, then reads it back and shows ✓. Use it whenever you're unsure what the synth has.</li>
       </ul>
 
       <h3>5. Keep a sound</h3>
-      <p>Changes go to the synth's <b>working copy</b> only. Selecting another sound on the keytar, or switching it off, discards them, and your stored sounds are never overwritten. To keep a sound, click <b>Save .a8e</b>. To store it in one of the synth's memory slots, open that file in Roland's AX-Synth Editor and use its WRITE.</p>
+      <p>Changes go to the synth's <b>working copy</b> only. Selecting another sound on the keytar, or switching it off, discards them. Two ways to keep a sound:</p>
+      <ul>
+        <li><b>Save .a8e</b>: a file on this computer, which you can open here again later.</li>
+        <li><b>Store in synth slot…</b>: stores it <b>inside the synth</b> in one of its 256 memory slots, replacing the sound there.
+          It asks first, downloads the slot's old sound as a file, then writes and checks. After storing, switch the synth off and on and load that slot to make sure it stuck.</li>
+      </ul>
 
       <h3>If something doesn't work</h3>
       <ul>
-        <li>"AX-Synth not found": another program still uses the synth, or it's off or unplugged. Close the others and click Connect again.</li>
+        <li>"AX-Synth not found": another program still uses the synth, or it's off or unplugged. Close the other program and click Connect again.</li>
         <li>Edge never asked about MIDI: click the lock icon in the address bar → Site permissions → MIDI devices → Allow, then reload.</li>
+        <li>Can't hear an effect? The diagram and the ⚠ lines on the <b>Effects</b> tab show why.</li>
         <li>Anything else: open the <b>MIDI log</b> tab, click <b>Copy log</b>, and send it along with a description.</li>
       </ul>
     </section>

@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, isAbsolute, join } from "node:path";
 import * as sx from "../web/sysex.js";
-import { Patch, display, routing } from "../web/patch.js";
+import { Patch, display, routing, signalPath } from "../web/patch.js";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const model = JSON.parse(readFileSync(join(ROOT, "web/model.json"), "utf8"));
@@ -127,6 +127,27 @@ if (cases.backup) {
     }
   }
   out.backupRouting = summary;
+}
+
+// signal path data behind the routing diagram
+{
+  const p = Patch.fromA8e(model, bytes("patches/guitar01.a8e"));
+  out.signalPath = signalPath(p);
+}
+
+// storing into a memory slot: whole blocks only, Roland's Librarian format
+{
+  const init = Patch.initial(model);
+  out.userWrite = cases.users.map((n) => model.blocks.map((b) => sx.hex(sx.buildUserPatchDT1(n, b.offset, Array.from(init.blocks[b.name])))));
+  out.userLayout = sx.PATCH_BLOCK_LAYOUT;
+  const tryIt = (f) => { try { f(); return "allowed"; } catch { return "refused"; } };
+  out.userGuard = [
+    tryIt(() => sx.buildUserPatchDT1(256, 0, new Array(79).fill(0))),       // no slot 256
+    tryIt(() => sx.buildUserPatchDT1(0, 0, new Array(12).fill(0))),         // partial block
+    tryIt(() => sx.buildUserPatchDT1(0, 1, new Array(79).fill(0))),         // not a block start
+    tryIt(() => sx.buildUserPatchDT1(3, 4096, new Array(154).fill(0))),     // whole Tone 1 block: ok
+    tryIt(() => sx.buildDT1(sx.userPatchAddress(0), new Array(79).fill(0))), // the normal builder still refuses
+  ];
 }
 
 process.stdout.write(JSON.stringify(out));

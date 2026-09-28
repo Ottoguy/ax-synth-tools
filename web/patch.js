@@ -159,6 +159,30 @@ export class Patch {
 const TONE_OUTPUT_MFX = 0;
 const PATCH_OUTPUT = { MFX: 0, TONE: 13 };
 
+// The signal path as data (for the routing diagram): which tones play, which
+// go through the MFX, and every send/level on the way to the output.
+export function signalPath(patch) {
+  const g = (p) => patch.get(p);
+  const name = (kind) => patch.model.effects[kind].types.find((t) => t.number === patch.effectType(kind))?.name;
+  const pa = g("fm.pat.common.patchOutputAssign");
+  const tones = [0, 1, 2, 3].map((t) => {
+    const via = pa === PATCH_OUTPUT.MFX || (pa === PATCH_OUTPUT.TONE && g(`fm.pat.tone[${t}].toneOutputAssign`) === TONE_OUTPUT_MFX);
+    const v = via ? "MFX" : "NonMFX";
+    return { tone: t, on: !!g(`fm.pat.tmt.tmtToneSwitch[${t}]`), via,
+             out: g(`fm.pat.tone[${t}].toneDrySendLevel`),
+             cho: g(`fm.pat.tone[${t}].toneChorusSendLevel${v}`), rev: g(`fm.pat.tone[${t}].toneReverbSendLevel${v}`),
+             wave: g(`fm.pat.tone[${t}].waveNumberL`) };
+  });
+  return {
+    tones,
+    mfx: { type: patch.effectType("mfx"), name: name("mfx"), out: g("fm.pat.mfx.mfxDrySendLevel"),
+           cho: g("fm.pat.mfx.mfxChorusSendLevel"), rev: g("fm.pat.mfx.mfxReverbSendLevel") },
+    chorus: { type: patch.effectType("chorus"), name: name("chorus"), level: g("fm.pat.cho.chorusLevel"),
+              toMain: g("fm.pat.cho.chorusOutputSelect") <= 1, toReverb: g("fm.pat.cho.chorusOutputSelect") >= 1 },
+    reverb: { type: patch.effectType("reverb"), name: name("reverb"), level: g("fm.pat.rev.reverbLevel") },
+  };
+}
+
 // Why each effect unit is or isn't audible. Rules from the Editor manual
 // (PATCH/TONE OUTPUT ASSIGN, sends, CHORUS OUTPUT SELECT), checked against the
 // 256 factory patches: 252 are consistent, 4 have an unused reverb.

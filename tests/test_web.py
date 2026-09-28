@@ -229,6 +229,26 @@ class WebCodec(unittest.TestCase):
         self.assertEqual(b["reverbWarn"], [71, 101, 137, 182])   # Acdg Bass, Dist.Fingerz, Octa Brass, …
         self.assertEqual(b["reverbLevel0"], [154, 165, 170, 176, 184, 187, 189, 191])
 
+    def test_signal_path_matches_the_python_decode(self):
+        import a8_files
+        res = a8_files.parse(ROOT / "patches/guitar01.a8e", S)
+        v = {x["path"]: x["value"] for b in res["blocks"] for x in b["values"]}
+        sp = self.out["signalPath"]
+        self.assertEqual([t["on"] for t in sp["tones"]], [bool(v[f"fm.pat.tmt.tmtToneSwitch[{i}]"]) for i in range(4)])
+        self.assertEqual(sp["mfx"]["type"], v["fm.pat.mfx.mfxType"])
+        self.assertEqual(sp["mfx"]["name"], "GUITAR AMP SIMULATOR")
+        self.assertEqual(sp["reverb"]["level"], v["fm.pat.rev.reverbLevel"])
+        self.assertEqual(sp["mfx"]["rev"], v["fm.pat.mfx.mfxReverbSendLevel"])
+
+    def test_store_in_slot_writes_exactly_like_rolands_librarian(self):
+        """The Librarian's 'Export SMF' (dumps/) holds INIT PATCH for all 256
+        slots as 9 whole-block DT1s each: our slot write must be identical."""
+        lib = [hexs(m) for m in sysex.smf_sysex((ROOT / "dumps/AX-Synth Librarian Clean export.mid").read_bytes())]
+        for n, msgs in zip((0, 96, 255), self.out["userWrite"]):
+            self.assertEqual(msgs, lib[9 * n:9 * n + 9], n)
+        self.assertEqual([list(x) for x in self.out["userLayout"]], [[b["offset"], b["size"]] for b in MODEL["blocks"]])
+        self.assertEqual(self.out["userGuard"], ["refused", "refused", "refused", "allowed", "refused"])
+
     def test_wave_selection_sets_the_internal_wave_group(self):
         self.assertEqual(self.out["wave"], [2, 1, 23])
 

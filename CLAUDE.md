@@ -21,8 +21,8 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 ## 2. Hard rules
 
 1. **`original-roland-files/` is immutable source material.** Never write inside it. SHA-256 hashes of all 176 files are in `research/generated/inventory.json`; re-verify after work.
-2. **MIDI I/O only in the web editor** (user go-ahead 2026-09-28). `web/sysex.js` `buildDT1` refuses every address outside the Temporary Patch (`1F 00 00 00`..end of Tone 4), and RQ1 is limited to Setup/System/Temporary/User (reads). Keep that guard and its tests (`tests/test_web.py`). Python tools still only read and write files. Never add User-area/System/`0F` writes, SYNC, WRITE or Bulk Dump send without the user explicitly asking.
-3. When preparing anything the user will send: **target only the Temporary Patch `1F 00 00 00`** (volatile). Never the User area `30 00 00 00`–`31 7F 26 00` (overwrites stored sounds), never `0F …` (the undocumented command area), never the synth's Bulk Dump *receive* mode. Don't tell the user to press Editor **SYNC** unless needed: it also overwrites Setup + System (`01 …`, `02 …`) with the Editor's values.
+2. **MIDI I/O only in the web editor** (user go-ahead 2026-09-28). `web/sysex.js` `buildDT1` refuses every address outside the Temporary Patch (`1F 00 00 00`..end of Tone 4), and RQ1 is limited to Setup/System/Temporary/User (reads). **The single exception** (user request 2026-09-28): `buildUserPatchDT1(n, blockOffset, data)` writes one *whole* patch block of User patch n, exactly as Roland's Librarian export (tested byte-identical to `dumps/…Librarian…mid`). It's used only by the 'Store in synth slot…' dialog: a backup tick box, then a read + .a8e download of the slot's old sound (abort if the read fails), then a final confirmation, then 9 DT1s 60 ms apart and a read-back compare. Keep both guards and their tests (`tests/test_web.py`). Python tools still only read and write files. Never add User-area/System/`0F` writes, SYNC, WRITE or Bulk Dump send without the user explicitly asking.
+3. When preparing anything the user will send: **target only the Temporary Patch `1F 00 00 00`** (volatile). Never the User area `30 00 00 00`–`31 7F 26 00` (overwrites stored sounds) except through the web editor's guarded Store dialog (rule 2), never `0F …` (the undocumented command area), never the synth's Bulk Dump *receive* mode. Don't tell the user to press Editor **SYNC** unless needed: it also overwrites Setup + System (`01 …`, `02 …`) with the Editor's values.
 4. **`dumps/AX-Synth Librarian Clean export.mid` must never be played to the synth** (and `captures/backup/*.mid` only as a deliberate full restore; it rewrites all 256 slots): 2,304 DT1s that would overwrite all 256 User patches with INIT PATCH. (Recovery: factory reset, Owner's Manual p.34, which restores factory sounds but loses user edits.)
 5. **Don't hand-type parameter data.** Everything is generated from Roland sources by `research/tools/`. Keep provenance (file + line or page) on every fact.
 6. **Label evidence** in research docs: **[F]** our Roland files, **[D]** official Roland documentation, **[3P]** third party, **[I]** inference. Don't present [I] as fact.
@@ -34,7 +34,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**96 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
+- Tests: `py -3 -m unittest discover -s tests` (**97 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
 - Git repo, branch `main`, remote `origin` = github.com/Ottoguy/ax-synth-tools. Commit/push only when the user asks. `.gitignore`: see §9.
 
 ## 4. Repository map
@@ -46,9 +46,9 @@ ax-synth-ai/
 ├── NEXT-STEPS.md             user-facing checklist: steps 0-6, safety rules, decisions to make
 ├── start-web-editor.bat      double-click: py -3 web/serve.py 8765 --edge (localhost server + Edge)
 ├── web/                      THE WEB EDITOR (static, vanilla JS ES modules, no build step)
-│   ├── index.html, style.css  page + Start here help (<template id=helptext>); tabs Start here · Common · Tone 1-4 · TMT · Matrix · Effects · Changes · System (read-only) · MIDI log; Simple/Expert switch
-│   ├── app.js                UI built from model.json; live edits (throttled ~25 ms; pending edits dropped on an effect type change), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, Changes tab (Reset/Revert all), per-control ↺ reset, Simple/Expert mode (localStorage), routing box, link bar, #panel and ?expert URL shortcuts, ?selftest (fake MIDI output)
-│   ├── patch.js              Patch = 9 byte blocks; get/set via codec, effect type change (Editor behaviour), setWave (group 1/23), setLinked, clone/diff, routing(), .a8e io, display()
+│   ├── index.html, style.css  page + Start here help (<template id=helptext>, no mention of other programs by name); tabs Start here · Common · Tones 1–4 (4 aligned columns) · TMT · Matrix · Effects (SVG signal-path diagram) · Changes (+ send summary) · System (read-only) · MIDI log; big 'Send whole sound + check'; Simple/Expert toggle (System + MIDI log tabs expert-only); beige theme = simple settings (both modes), foliage green = expert/page; <dialog id=confirm> 'are you sure' for Load/New/Open/Read/Revert all/effect type change
+│   ├── app.js                UI built from model.json; live edits (throttled ~25 ms; pending edits dropped on an effect type change), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, Changes tab (Reset/Revert all, summary), per-control ↺ reset, Simple/Expert mode (localStorage), signal-path SVG + ⚠ lines, tone-column tables with 'Edit together' column selection (body.selN), #panel and ?expert URL shortcuts, ?selftest (fake MIDI output)
+│   ├── patch.js              Patch = 9 byte blocks; get/set via codec, effect type change (Editor behaviour), setWave (group 1/23), setLinked, clone/diff, routing(), signalPath(), .a8e io, display()
 │   ├── sysex.js              port of sysex.py + codec; buildDT1 TEMPORARY-ONLY GUARD, buildRQ1 read areas only
 │   ├── midi.js               Web MIDI: port /ax-?synth/i, Identity check, paced send queue, RQ1 request/reply
 │   ├── model.json            GENERATED by research/tools/build_web_model.py (1,840 params, panels, effect types, waves, .a8e template)
@@ -98,7 +98,7 @@ ax-synth-ai/
 │   ├── factory.py            factory Tone list access
 │   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
 ├── tests/test_schema.py      73 evidence tests (§10)
-├── tests/test_web.py         23 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
+├── tests/test_web.py         24 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
 ├── tests/web_vectors.mjs     Node runner for test_web.py
 └── research/
     ├── README.md             index: question -> file
@@ -330,7 +330,7 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - Whether resetting MFX Control Assign to OFF on an effect type change matches the Editor (only the all-defaults case was captured) [I].
 - Whether System DT1s (SYNC) persist (undecidable so far: stored = Editor defaults).
 - Where the sleep interval, USB driver mode and live FAVORITE volume sit (optional NEXT-STEPS 3.5); the 146 hidden bits per bulk-dump patch record.
-- Whether a DT1 to `30 …` commits to flash.
+- Whether a DT1 to `30 …` commits to flash (the web editor's Store verifies by read-back; the user is asked to power-cycle and Load the slot to confirm persistence).
 - The `0F` write handshake payloads.
 - What firmware 2.01 changed vs the v1.00 docs (nothing visible so far: same Identity Reply, block sizes and factory list).
 - The Librarian Read All sequence (not logged) and the WRITE handshake.

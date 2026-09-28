@@ -57,6 +57,24 @@ export function buildDT1(address, data) {
   return Uint8Array.from([0xf0, ROLAND, DEVICE, ...MODEL_ID, DT1, ...body, checksum(body), 0xf7]);
 }
 
+// Storing into a memory slot (user request 2026-09-28): the ONLY write outside
+// the Temporary Patch. Allowed: one whole patch block of User patch n (0..255),
+// exactly as Roland's Librarian export writes them (dumps/). Everything else
+// (partial blocks, other areas) is refused.
+export const PATCH_BLOCK_LAYOUT = [ // [offset within a patch (base-128 int), size]
+  [addrToInt([0x00, 0x00, 0x00]), 79], [addrToInt([0x00, 0x02, 0x00]), 145], [addrToInt([0x00, 0x04, 0x00]), 84],
+  [addrToInt([0x00, 0x06, 0x00]), 83], [addrToInt([0x00, 0x10, 0x00]), 41], [addrToInt([0x00, 0x20, 0x00]), 154],
+  [addrToInt([0x00, 0x22, 0x00]), 154], [addrToInt([0x00, 0x24, 0x00]), 154], [addrToInt([0x00, 0x26, 0x00]), 154],
+];
+export function buildUserPatchDT1(n, blockOffset, data) {
+  if (!Number.isInteger(n) || n < 0 || n > 255) throw new Error("refused: memory slot must be 0..255");
+  const blk = PATCH_BLOCK_LAYOUT.find(([o]) => o === blockOffset);
+  if (!blk || data.length !== blk[1]) throw new Error("refused: only whole patch blocks can be stored");
+  if (data.some((b) => b > 0x7f)) throw new Error("DT1 data bytes must be 7-bit");
+  const body = [...intToAddr(userPatchAddress(n) + blockOffset), ...data];
+  return Uint8Array.from([0xf0, ROLAND, DEVICE, ...MODEL_ID, DT1, ...body, checksum(body), 0xf7]);
+}
+
 export function buildRQ1(address, size) {
   if (!READ_AREAS.some(([a, b]) => address >= a && address + size <= b)) {
     throw new Error(`refused: RQ1 ${hex(intToAddr(address))} size ${size} is outside the known read areas`);
