@@ -130,10 +130,12 @@ Some reverb parameters (e.g. SRV time or density at minimum) also make it almost
 - On/off and choice settings now show names (OFF/ON, MONO/POLY, MAIN/MAIN+REV/REV …) instead of 0/1/2.
 
 **Latest layout (reload the page):**
-- **Tones 1–4** are one tab with four columns side by side. Tick column headers (**Edit together**) to change several tones at once.
-- The **Effects** tab starts with a **signal-path diagram**: green arrows carry sound, grey dashed ones are silent.
+- **Tones 1–4** are one tab with four columns side by side. Tick column headers (**Edit together**) to change several tones at once; the **ON/OFF** switch in each header turns that tone on or off.
+- The **Effects** tab starts with a **signal-path diagram**: green arrows carry sound, grey dashed ones are silent. Click **MFX**, **Chorus/Delay** or **Reverb** to show only that effect's settings below; click a **Tone** to jump to the Tones tab; click an underlined value (e.g. "send 0", "level 127") to change it right in the diagram.
 - **⬆ Send whole sound to synth + check** is the big green button at the top, and again in the summary at the bottom of **Changes**. It replaces the sound the synth is playing right now (never your stored sounds) and confirms with ✓.
-- Simple settings are beige; expert-only settings are foliage green. The **Simple / Expert** switch is at the top right; System and MIDI log appear in Expert mode only.
+- Simple settings are beige; expert-only settings are leaf green. Tabs follow the same colours: beige tabs exist in Simple mode, green tabs are Expert-only.
+- **Where the tones go** (Effects tab, under the diagram): OUTPUT ASSIGN for the whole sound and for each tone (also via the underlined "output assign" in the diagram).
+- **Copy a tone** (Tones tab, under Edit together): copies every setting of one tone to another (including its key/velocity range; the target's ON/OFF stays). The **Simple / Expert** switch is at the top right; System and MIDI log appear in Expert mode only.
 - Anything that replaces the sound you're editing (Load, New, Open, Read, Revert all, changing an effect type) asks "are you sure?" first.
 - **Store in synth slot…** (next to Save .a8e): stores the sound permanently in one of the 256 memory slots, **replacing** the sound there.
   - It asks you to confirm you have a backup.

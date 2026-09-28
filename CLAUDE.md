@@ -34,7 +34,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**97 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
+- Tests: `py -3 -m unittest discover -s tests` (**99 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
 - Git repo, branch `main`, remote `origin` = github.com/Ottoguy/ax-synth-tools. Commit/push only when the user asks. `.gitignore`: see §9.
 
 ## 4. Repository map
@@ -46,7 +46,7 @@ ax-synth-ai/
 ├── NEXT-STEPS.md             user-facing checklist: steps 0-6, safety rules, decisions to make
 ├── start-web-editor.bat      double-click: py -3 web/serve.py 8765 --edge (localhost server + Edge)
 ├── web/                      THE WEB EDITOR (static, vanilla JS ES modules, no build step)
-│   ├── index.html, style.css  page + Start here help (<template id=helptext>, no mention of other programs by name); tabs Start here · Common · Tones 1–4 (4 aligned columns) · TMT · Matrix · Effects (SVG signal-path diagram) · Changes (+ send summary) · System (read-only) · MIDI log; big 'Send whole sound + check'; Simple/Expert toggle (System + MIDI log tabs expert-only); beige theme = simple settings (both modes), foliage green = expert/page; <dialog id=confirm> 'are you sure' for Load/New/Open/Read/Revert all/effect type change
+│   ├── index.html, style.css  page + Start here help (<template id=helptext>, no mention of other programs by name); tabs Start here · Common · Tones 1–4 (4 aligned columns) · TMT · Matrix · Effects (SVG signal-path diagram) · Changes (+ send summary) · System (read-only) · MIDI log; big 'Send whole sound + check'; Simple/Expert toggle (System + MIDI log tabs expert-only); beige theme = simple settings (both modes), leaf green = expert/page (similar lightness); tabs beige if available in simple mode, green if expert-only; 'Where the tones go' row (patch + 4 tone OUTPUT ASSIGN) under the diagram + outAssign diagram label; 'Copy a tone' bar (Patch.copyTone: whole tone block + TMT range fields, not the switch); Effects tab shows one effect view at a time, chosen by clicking MFX / Chorus/Delay / Reverb in the diagram (default MFX), tone boxes open the Tones tab, underlined edge values open a popover with the same controls (controls map holds several controls per path, kept in sync); tone ON/OFF switch in each Tones column header; MFX Output Assign expert-only (EXPERT_IDS); <dialog id=confirm> 'are you sure' for Load/New/Open/Read/Revert all/effect type change
 │   ├── app.js                UI built from model.json; live edits (throttled ~25 ms; pending edits dropped on an effect type change), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, Changes tab (Reset/Revert all, summary), per-control ↺ reset, Simple/Expert mode (localStorage), signal-path SVG + ⚠ lines, tone-column tables with 'Edit together' column selection (body.selN), #panel and ?expert URL shortcuts, ?selftest (fake MIDI output)
 │   ├── patch.js              Patch = 9 byte blocks; get/set via codec, effect type change (Editor behaviour), setWave (group 1/23), setLinked, clone/diff, routing(), signalPath(), .a8e io, display()
 │   ├── sysex.js              port of sysex.py + codec; buildDT1 TEMPORARY-ONLY GUARD, buildRQ1 read areas only
@@ -98,7 +98,7 @@ ax-synth-ai/
 │   ├── factory.py            factory Tone list access
 │   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
 ├── tests/test_schema.py      73 evidence tests (§10)
-├── tests/test_web.py         24 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
+├── tests/test_web.py         26 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
 ├── tests/web_vectors.mjs     Node runner for test_web.py
 └── research/
     ├── README.md             index: question -> file

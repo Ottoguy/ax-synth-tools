@@ -22,7 +22,19 @@ let lastVerify = null; // {ok, when, name}
 let lastSlot = null; // memory slot last loaded (default for "Store in synth slot")
 const synth = new Synth(log);
 let connected = false;
-const controls = new Map(); // path -> {update()}
+const controls = new Map(); // path -> [{update()}] (a setting can have several controls, e.g. a diagram shortcut)
+function addControl(path, c) {
+  if (!controls.has(path)) controls.set(path, []);
+  controls.get(path).push(c);
+  return c;
+}
+function removeControl(path, c) {
+  const list = controls.get(path);
+  if (list) controls.set(path, list.filter((x) => x !== c));
+}
+function syncControls(path) {
+  for (const c of controls.get(path) || []) c.update();
+}
 const linked = new Set(); // tone columns (0-based) edited together
 
 const TONE_PANELS = model.panels.filter((p) => p.tone !== undefined);
@@ -177,7 +189,7 @@ function makeControl(path, bare = false) {
       }
       onChange(path, Number(input.value)); describe(); mark();
     });
-    controls.set(path, { update: () => { if (isAssign(path)) fill(); input.value = String(patch.get(path)); describe(); mark(); }, mark });
+    row.ctl = addControl(path, { update: () => { if (isAssign(path)) fill(); input.value = String(patch.get(path)); describe(); mark(); }, mark });
     row.append(input);
   } else {
     input = document.createElement("input");
@@ -190,7 +202,7 @@ function makeControl(path, bare = false) {
       out.value = display(p, Number(input.value), model.waves);
       mark();
     });
-    controls.set(path, { update: () => { const v = patch.get(path); input.value = v; out.value = display(p, v, model.waves); mark(); }, mark });
+    row.ctl = addControl(path, { update: () => { const v = patch.get(path); input.value = v; out.value = display(p, v, model.waves); mark(); }, mark });
     row.append(input, out);
   }
   row.append(reset);
@@ -236,7 +248,7 @@ function onChange(path, value) {
     const changes = patch.setLinked(path, value, [...linked]);
     changes.forEach(transmit);
     if (changes.length > 1) scheduleRefresh();
-    else scheduleStatus();
+    else { syncControls(path); scheduleStatus(); }
   } catch (e) {
     fail(e);
   }
@@ -244,6 +256,13 @@ function onChange(path, value) {
 
 // ---------------------------------------------------------------- layout
 const effectSections = {};
+const effectViews = {};
+let effectView = "mfx"; // which effect's settings the Effects tab shows (chosen in the diagram)
+function setEffectView(kind) {
+  effectView = kind;
+  for (const [k, v] of Object.entries(effectViews)) v.hidden = k !== kind;
+  if ($("diagram")) $("diagram").innerHTML = diagram(signalPath(patch));
+}
 function renderPanels() {
   const nav = $("tabs");
   const main = $("panels");
@@ -286,26 +305,37 @@ function renderPanels() {
       renderTones(div);
       continue;
     }
-    if (pan.id === "effects") div.append(effectsIntro());
+    if (pan.id === "effects") {
+      div.append(effectsIntro());
+      for (const kind of ["mfx", "chorus", "reverb"]) {
+        effectViews[kind] = document.createElement("div");
+        effectViews[kind].className = "effectview";
+        div.append(effectViews[kind]);
+      }
+    }
     for (const s of pan.sections) {
       if (!s.params.length) continue;
       if (pan.id === "matrix" && s.params[0].startsWith("fm.pat.tone[")) continue; // shown as tone columns below
-      const sec = section(s.title, s.help);
+      const sec = section(s.id === "fx.chorus" ? s.title.replace(/^Chorus\b/, "Chorus/Delay") : s.title, s.help);
       const grid = sec.querySelector(".grid");
       for (const path of s.params) {
         const c = makeControl(path);
         if (c) grid.append(c);
       }
-      div.append(sec);
       if (pan.id === "effects") {
-        const kind = { "fx.mfx": "mfx", "fx.chorus": "chorus", "fx.reverb": "reverb" }[s.id];
-        if (kind) {
+        const kind = { "fx.mfx": "mfx", "fx.mfx_control": "mfx", "fx.chorus": "chorus", "fx.reverb": "reverb" }[s.id];
+        if (!kind) continue;
+        effectViews[kind].append(sec);
+        if (s.id !== "fx.mfx_control") {
           const holder = document.createElement("div");
           effectSections[kind] = holder;
-          div.append(holder);
+          effectViews[kind].append(holder);
         }
+        continue;
       }
+      div.append(sec);
     }
+    if (pan.id === "effects") setEffectView(effectView);
     if (pan.id === "matrix") {
       const first = pan.sections.find((s) => s.params.length && s.params[0].startsWith("fm.pat.tone[0]."));
       if (first) {
@@ -324,6 +354,7 @@ function renderPanels() {
 // The four tones side by side: one row per setting, one column per tone.
 function renderTones(div) {
   div.append(columnHeader());
+  div.append(copyToneBar());
   for (const s of TONE_PANELS[0].sections) {
     if (!s.params.length) continue;
     div.append(toneTable(s.title, s.help, s.params));
@@ -362,19 +393,55 @@ function columnHeader() {
   lead.innerHTML = `<b>Edit together:</b><br><span class="hint">tick columns; a change in a ticked column goes to all ticked columns</span>`;
   bar.append(lead);
   for (let t = 0; t < 4; t++) {
+    const head = document.createElement("div");
+    head.className = `colhead col${t}`;
     const l = document.createElement("label");
-    l.className = `colhead col${t}`;
     const cb = document.createElement("input");
     cb.type = "checkbox";
     cb.dataset.tone = t;
     cb.onchange = () => setLinked(t, cb.checked);
-    const state = document.createElement("span");
+    l.append(cb, ` Tone ${t + 1}`);
+    l.title = "Tick to edit this tone together with the other ticked tones";
+    const state = document.createElement("button");
     state.className = "tonestate";
     state.dataset.tone = t;
-    l.append(cb, ` Tone ${t + 1} `, state);
-    bar.append(l);
+    state.title = "Switch this tone on or off (TONE SWITCH)";
+    state.onclick = () => {
+      const path = `fm.pat.tmt.tmtToneSwitch[${t}]`;
+      onChange(path, patch.get(path) ? 0 : 1);
+      scheduleStatus();
+    };
+    head.append(l, state);
+    bar.append(head);
   }
   return bar;
+}
+
+function copyToneBar() {
+  const bar = document.createElement("div");
+  bar.className = "copybar";
+  const sel = (id, def) => `<select id="${id}">${[0, 1, 2, 3].map((t) => `<option value="${t}"${t === def ? " selected" : ""}>Tone ${t + 1}</option>`).join("")}</select>`;
+  bar.innerHTML = `<b>Copy a tone:</b> all settings of ${sel("copyfrom", 0)} → to ${sel("copyto", 1)} <button id="copytone">Copy</button>
+    <span class="hint">(its wave, filter, amp, LFOs, … and key/velocity range; the target's ON/OFF stays)</span>`;
+  bar.querySelector("#copytone").onclick = copyTone;
+  return bar;
+}
+
+async function copyTone() {
+  const from = Number($("copyfrom").value), to = Number($("copyto").value);
+  if (from === to) { await confirmBox("Choose two different tones", "Pick a source and a different target tone.", "OK"); return; }
+  if (!(await confirmBox(`Copy Tone ${from + 1} to Tone ${to + 1}?`,
+    `Every setting of Tone ${to + 1} is replaced by Tone ${from + 1}'s. (Undo with ↺ or the Changes tab.)`, "Copy"))) return;
+  try {
+    dropPending(`tone[${to}]`);
+    const { block, changes } = patch.copyTone(from, to);
+    sendNow(block.address, block.data);
+    changes.forEach(transmit);
+    refresh();
+    log(`copied Tone ${from + 1} to Tone ${to + 1}`);
+  } catch (e) {
+    fail(e);
+  }
 }
 
 function setLinked(t, on) {
@@ -387,12 +454,88 @@ function setLinked(t, on) {
 function effectsIntro() {
   const box = document.createElement("section");
   box.className = "sec routingbox";
-  box.innerHTML = `<h2>Signal path</h2><div id="diagram"></div><ul class="routing" id="routing"></ul>
+  box.innerHTML = `<h2>Signal path</h2>
+    <p class="help">Click <b>MFX</b>, <b>Chorus/Delay</b> or <b>Reverb</b> to show its settings below; click a <b>Tone</b> to go to the Tones tab;
+      click an <u>underlined value</u> on an arrow to change it right here.</p>
+    <div id="diagram"></div>
+    <div class="assignrow" id="assignrow"><div class="assignhead"><b>Where the tones go</b>
+      <span class="hint">OUTPUT ASSIGN: MFX = through the multi-effect; L+R / L / R = straight to the output. The per-tone settings only apply when the sound's OUTPUT ASSIGN is TONE.</span></div></div>
+    <ul class="routing" id="routing"></ul>
     <p class="help">One MFX, one chorus and one reverb per sound. A second modulation effect: use the tones' LFOs
     (Tones tab → LFO: DEPTH TVA = tremolo, DEPTH PAN = auto-pan, DEPTH PITCH = vibrato) or an MFX combination
     (27 TREMOLO CHORUS, 66–77).</p>`;
+  box.querySelector("#diagram").addEventListener("click", onDiagramClick);
+  const row = box.querySelector("#assignrow");
+  const grid = document.createElement("div");
+  grid.className = "assigngrid";
+  const whole = makeControl("fm.pat.common.patchOutputAssign");
+  whole.querySelector("label").textContent = "Whole sound";
+  grid.append(whole);
+  for (let t = 0; t < 4; t++) {
+    const c = makeControl(`fm.pat.tone[${t}].toneOutputAssign`);
+    c.querySelector("label").textContent = `Tone ${t + 1}`;
+    c.classList.add("toneassign");
+    grid.append(c);
+  }
+  row.append(grid);
   return box;
 }
+
+// Diagram clicks: boxes select an effect (or open the Tones tab); values open a small editor.
+function onDiagramClick(ev) {
+  const go = ev.target.closest("[data-go]");
+  const edit = ev.target.closest("[data-edit]");
+  if (edit) { openEdgeEditor(edit.dataset.edit, ev); return; }
+  if (!go) return;
+  if (go.dataset.go === "tones") showPanel("tones");
+  else setEffectView(go.dataset.go);
+}
+
+function edgePaths(key) {
+  const sp = signalPath(patch);
+  const tones = sp.tones.filter((x) => x.on);
+  const send = (t, unit) => `fm.pat.tone[${t.tone}].tone${unit}SendLevel${t.via ? "MFX" : "NonMFX"}`;
+  return {
+    toneCho: tones.map((t) => send(t, "Chorus")), toneRev: tones.map((t) => send(t, "Reverb")),
+    mfxOut: ["fm.pat.mfx.mfxDrySendLevel"], mfxCho: ["fm.pat.mfx.mfxChorusSendLevel"], mfxRev: ["fm.pat.mfx.mfxReverbSendLevel"],
+    outAssign: ["fm.pat.common.patchOutputAssign", ...[0, 1, 2, 3].map((t) => `fm.pat.tone[${t}].toneOutputAssign`)],
+    choLevel: ["fm.pat.cho.chorusLevel"], choSel: ["fm.pat.cho.chorusOutputSelect"], revLevel: ["fm.pat.rev.reverbLevel"],
+  }[key] || [];
+}
+
+let edgePop = null;
+function closeEdgeEditor() {
+  if (!edgePop) return;
+  for (const r of edgePop.rows) removeControl(r.dataset.path, r.ctl);
+  edgePop.el.remove();
+  edgePop = null;
+}
+function openEdgeEditor(key, ev) {
+  closeEdgeEditor();
+  const paths = edgePaths(key);
+  const el = document.createElement("div");
+  el.className = "edgepop";
+  el.innerHTML = `<div class="pophead"><b>Change here</b><span class="hint">same settings as on the Tones / Effects tabs</span><button class="close" title="Close">×</button></div>`;
+  const rows = [];
+  for (const path of paths) {
+    const row = makeControl(path);
+    const tone = path.match(/^fm\.pat\.tone\[(\d)\]/);
+    if (tone) row.querySelector("label").textContent = `Tone ${+tone[1] + 1}: ${row.querySelector("label").textContent}`;
+    row.ctl.update();
+    rows.push(row);
+    el.append(row);
+  }
+  if (!paths.length) el.append(Object.assign(document.createElement("p"), { textContent: "No tone is switched on." }));
+  document.body.append(el);
+  const x = Math.min(ev.clientX + 12, innerWidth - el.offsetWidth - 16);
+  const y = Math.min(ev.clientY + 12, innerHeight - el.offsetHeight - 16);
+  el.style.left = `${Math.max(8, x)}px`;
+  el.style.top = `${Math.max(8, y)}px`;
+  el.querySelector(".close").onclick = closeEdgeEditor;
+  edgePop = { el, rows };
+}
+addEventListener("keydown", (e) => { if (e.key === "Escape") closeEdgeEditor(); });
+addEventListener("mousedown", (e) => { if (edgePop && !edgePop.el.contains(e.target) && !e.target.closest("[data-edit]")) closeEdgeEditor(); });
 
 function section(title, help, gridClass = "grid") {
   const sec = document.createElement("section");
@@ -413,7 +556,8 @@ function renderEffects() {
     const n = patch.effectType(kind);
     const t = model.effects[kind].types.find((x) => x.number === n);
     if (!t || !t.params.length) continue;
-    const sec = section(`${kind.toUpperCase()} ${n}: ${t.name}${t.category ? ` (${t.category})` : ""}`, t.description);
+    const unit = { mfx: "MFX", chorus: "CHORUS/DELAY", reverb: "REVERB" }[kind];
+    const sec = section(`${unit} ${n}: ${t.name}${t.category ? ` (${t.category})` : ""}`, t.description);
     const grid = sec.querySelector(".grid");
     for (const path of t.params) {
       const c = makeControl(path);
@@ -445,6 +589,11 @@ function applyMode() {
     const pan = model.panels.find((p) => p.id === b.dataset.panel);
     if (pan) b.hidden = simple && !pan.sections.some((s) => s.params.some((x) => model.params[x].simple));
     if (b.dataset.panel === "system" || b.dataset.panel === "log") b.hidden = simple;   // expert-only tabs
+    const pan2 = model.panels.find((p) => p.id === b.dataset.panel);
+    const expertOnly = ["system", "log"].includes(b.dataset.panel) ||
+      (pan2 && !pan2.sections.some((s) => s.params.some((x) => model.params[x].simple)));
+    b.classList.toggle("tab-expert", expertOnly);
+    b.classList.toggle("tab-simple", !expertOnly);
   }
   const current = [...$("tabs").children].find((b) => b.classList.contains("active"));
   if (current && current.hidden) showPanel("common");
@@ -473,13 +622,15 @@ function updateStatus() {
     ul.append(li);
   }
   $("diagram").innerHTML = diagram(signalPath(patch));
+  const byTone = patch.get("fm.pat.common.patchOutputAssign") === 13;
+  for (const el of document.querySelectorAll("#assignrow .toneassign")) el.classList.toggle("inactive", !byTone);
   const warn = r.some((x) => x.level === "warn");
   tab("effects").textContent = `${model.panels.find((p) => p.id === "effects").title}${warn ? " ⚠" : ""}`;
 
   const sp = signalPath(patch);
   for (const el of document.querySelectorAll(".tonestate")) {
     const on = sp.tones[Number(el.dataset.tone)].on;
-    el.textContent = on ? "on" : "off";
+    el.textContent = on ? "ON" : "OFF";
     el.className = `tonestate ${on ? "on" : "off"}`;
   }
 
@@ -532,10 +683,11 @@ function renderSummary(n) {
         choose one of the 256 memory slots, and confirm. The slot's old sound is <b>replaced</b>; the editor downloads it as a file first,
         then writes and checks. Afterwards, switch the synth off and on and load that slot to make sure it stuck.</li>
     </ol>
-    <div class="row"><button id="revertall2">Revert all changes</button></div>`;
+    <div class="row"><button id="store2" class="storebtn"${connected ? "" : " disabled"}>Store in synth slot…</button><button id="revertall2">Revert all changes</button></div>`;
   box.querySelector(".pname").textContent = patch.name();
   box.querySelector(".sendbig").onclick = () => sendWholePatch().catch(fail);
   box.querySelector("#revertall2").onclick = revertAll;
+  box.querySelector("#store2").onclick = openStore;
   if (lastVerify) setVerify(lastVerify.ok ? `✓ Last check: the synth had exactly "${lastVerify.name}" (${lastVerify.when.toLocaleTimeString()}).`
                                            : "✗ The last check found a difference.", lastVerify.ok ? "ok" : "bad");
 }
@@ -545,15 +697,17 @@ function diagram(sp) {
   const W = 760, H = 250;
   const act = "var(--ok)", idle = "var(--line2)";
   const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-  const box = (x, y, w, h, title, sub, on) =>
-    `<g class="node ${on ? "on" : "off"}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6"/>` +
+  const box = (x, y, w, h, title, sub, on, go) =>
+    `<g class="node ${on ? "on" : "off"}${go ? " link" : ""}${go && go === effectView ? " sel" : ""}"${go ? ` data-go="${go}"` : ""}>` +
+    `<title>${go === "tones" ? "Open the Tones tab" : go ? "Show these settings below" : ""}</title><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6"/>` +
     `<text x="${x + w / 2}" y="${y + (sub ? h / 2 - 3 : h / 2 + 4)}" class="t">${esc(title)}</text>` +
     (sub ? `<text x="${x + w / 2}" y="${y + h / 2 + 12}" class="s">${esc(sub)}</text>` : "") + `</g>`;
-  const edge = (x1, y1, x2, y2, on, label, lx, ly) => {
+  const edge = (x1, y1, x2, y2, on, label, lx, ly, key) => {
     const mx = (x1 + x2) / 2;
     return `<path d="M${x1},${y1} C${mx},${y1} ${mx},${y2} ${x2},${y2}" fill="none" stroke="${on ? act : idle}" stroke-width="${on ? 2.2 : 1.2}"` +
       `${on ? "" : ' stroke-dasharray="4 4"'} marker-end="url(#${on ? "a1" : "a0"})"/>` +
-      (label ? `<text x="${lx ?? mx}" y="${ly ?? (y1 + y2) / 2 - 4}" class="e ${on ? "on" : ""}">${esc(label)}</text>` : "");
+      (label ? `<text x="${lx ?? mx}" y="${ly ?? (y1 + y2) / 2 - 4}" class="e ${on ? "on" : ""}${key ? " link" : ""}"${key ? ` data-edit="${key}"` : ""}>` +
+        `${key ? "<title>Click to change</title>" : ""}${esc(label)}</text>` : "");
   };
   const tonesY = (t) => 18 + t * 56;
   const mfx = { x: 250, y: 92, w: 150, h: 54 };
@@ -567,6 +721,10 @@ function diagram(sp) {
     `<marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z" fill="${act}"/></marker>` +
     `<marker id="a0" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,0L10,5L0,10z" fill="${idle}"/></marker></defs>`;
   const via = sp.tones.filter((t) => t.on && t.via);
+  const pa = patch.get("fm.pat.common.patchOutputAssign");
+  const paName = (model.params["fm.pat.common.patchOutputAssign"].enum || [])[
+    (model.params["fm.pat.common.patchOutputAssign"].enumValues || []).indexOf(pa)] ?? pa;
+  s += `<text x="190" y="${H - 6}" class="e link" data-edit="outAssign"><title>Click to change</title>output assign: ${esc(paName)}</text>`;
   for (const t of sp.tones) {
     const y = tonesY(t.tone) + 20;
     if (t.on && t.via) s += edge(130, y, mfx.x, mfx.y + mfx.h / 2, t.out > 0);
@@ -576,22 +734,23 @@ function diagram(sp) {
   const revSends = sp.tones.filter((t) => t.on).map((t) => `${t.tone + 1}:${t.rev}`).join(" ");
   const anyCho = sp.tones.some((t) => t.on && t.cho > 0);
   const anyRev = sp.tones.some((t) => t.on && t.rev > 0);
-  s += edge(130, 40, cho.x, cho.y + 14, anyCho && choOn, `tone sends ${choSends || "–"}`, 300, 22);
-  s += edge(130, 190, rev.x, rev.y + 34, anyRev && revOn, `tone sends ${revSends || "–"}`, 300, 232);
+  s += edge(130, 40, cho.x, cho.y + 14, anyCho && choOn, `tone sends ${choSends || "–"}`, 300, 22, "toneCho");
+  s += edge(130, 190, rev.x, rev.y + 34, anyRev && revOn, `tone sends ${revSends || "–"}`, 300, 232, "toneRev");
   const mfxLive = via.length > 0;
-  s += edge(mfx.x + mfx.w, mfx.y + 27, out.x, out.y + 27, mfxLive && sp.mfx.out > 0, `out ${sp.mfx.out}`);
-  s += edge(mfx.x + mfx.w, mfx.y + 8, cho.x, cho.y + 34, mfxLive && sp.mfx.cho > 0 && choOn, `send ${sp.mfx.cho}`, 440, 80);
-  s += edge(mfx.x + mfx.w, mfx.y + 46, rev.x, rev.y + 14, mfxLive && sp.mfx.rev > 0 && revOn, `send ${sp.mfx.rev}`, 440, 168);
+  s += edge(mfx.x + mfx.w, mfx.y + 27, out.x, out.y + 27, mfxLive && sp.mfx.out > 0, `out ${sp.mfx.out}`, undefined, undefined, "mfxOut");
+  s += edge(mfx.x + mfx.w, mfx.y + 8, cho.x, cho.y + 34, mfxLive && sp.mfx.cho > 0 && choOn, `send ${sp.mfx.cho}`, 440, 80, "mfxCho");
+  s += edge(mfx.x + mfx.w, mfx.y + 46, rev.x, rev.y + 14, mfxLive && sp.mfx.rev > 0 && revOn, `send ${sp.mfx.rev}`, 440, 168, "mfxRev");
   const choFed = choOn && (anyCho || (mfxLive && sp.mfx.cho > 0));
-  s += edge(cho.x + cho.w, cho.y + 24, out.x, out.y + 12, choFed && sp.chorus.toMain, `level ${sp.chorus.level}`);
-  s += edge(cho.x + 75, cho.y + cho.h, rev.x + 75, rev.y, choFed && sp.chorus.toReverb && revOn, sp.chorus.toReverb ? "to reverb" : "", cho.x + 80, 125);
-  s += edge(rev.x + rev.w, rev.y + 24, out.x, out.y + 42, revOn, `level ${sp.reverb.level}`);
+  s += edge(cho.x + cho.w, cho.y + 24, out.x, out.y + 12, choFed && sp.chorus.toMain, `level ${sp.chorus.level}`, undefined, undefined, "choLevel");
+  const sel = ["MAIN", "MAIN+REV", "REV"][patch.get("fm.pat.cho.chorusOutputSelect")] || "";
+  s += edge(cho.x + 75, cho.y + cho.h, rev.x + 75, rev.y, choFed && sp.chorus.toReverb && revOn, `output: ${sel}`, cho.x + 28, 150, "choSel");
+  s += edge(rev.x + rev.w, rev.y + 24, out.x, out.y + 42, revOn, `level ${sp.reverb.level}`, undefined, undefined, "revLevel");
   for (const t of sp.tones) {
-    s += box(20, tonesY(t.tone), 110, 40, `Tone ${t.tone + 1}${t.on ? "" : " (off)"}`, t.on ? (t.wave ? model.waves[t.wave - 1] : "no wave") : "", t.on);
+    s += box(20, tonesY(t.tone), 110, 40, `Tone ${t.tone + 1}${t.on ? "" : " (off)"}`, t.on ? (t.wave ? model.waves[t.wave - 1] : "no wave") : "", t.on, "tones");
   }
-  s += box(mfx.x, mfx.y, mfx.w, mfx.h, "MFX", sp.mfx.type ? sp.mfx.name : "THROUGH (no effect)", mfxOn);
-  s += box(cho.x, cho.y, cho.w, cho.h, "Chorus", sp.chorus.type ? sp.chorus.name : "OFF", choOn);
-  s += box(rev.x, rev.y, rev.w, rev.h, "Reverb", sp.reverb.type ? sp.reverb.name : "OFF", revOn);
+  s += box(mfx.x, mfx.y, mfx.w, mfx.h, "MFX", sp.mfx.type ? sp.mfx.name : "THROUGH (no effect)", mfxOn, "mfx");
+  s += box(cho.x, cho.y, cho.w, cho.h, "Chorus/Delay", sp.chorus.type ? sp.chorus.name : "OFF", choOn, "chorus");
+  s += box(rev.x, rev.y, rev.w, rev.h, "Reverb", sp.reverb.type ? sp.reverb.name : "OFF", revOn, "reverb");
   s += box(out.x, out.y, out.w, out.h, "OUTPUT", "", true);
   return s + "</svg>";
 }
@@ -723,7 +882,7 @@ async function revertAll(ask = true) {
 
 function refresh() {
   $("name").value = patch.name();
-  for (const c of controls.values()) c.update();
+  for (const list of controls.values()) for (const c of list) c.update();
   updateStatus();
 }
 
@@ -845,7 +1004,7 @@ if (location.hash === "#store") openStore(); // shortcut (also used for screensh
 
 // ?selftest: offline UI check with a fake MIDI output that records what
 // would be sent. Logs one SELFTEST line (used by the headless-Edge check).
-if (new URLSearchParams(location.search).has("selftest")) {
+async function runSelftest() {
   const sent = [];
   synth.output = { send: (m) => sent.push(hex(m)) };
   connected = true;
@@ -889,7 +1048,7 @@ if (new URLSearchParams(location.search).has("selftest")) {
   const cutoff = "fm.pat.tone[1].tvfCutoffFrequency";
   const cell = document.querySelector(`.ctl[data-path="${cutoff}"]`);
   onChange(cutoff, 20);
-  controls.get(cutoff).update();
+  syncControls(cutoff);
   const shown = !cell.querySelector("button.reset").hidden;
   cell.querySelector("button.reset").click();
   res.push(`resetShown=${shown} resetBack=${patch.get(cutoff) === original.get(cutoff)} resetHidden=${cell.querySelector("button.reset").hidden}`);
@@ -922,7 +1081,38 @@ if (new URLSearchParams(location.search).has("selftest")) {
   const lockedWithoutName = $("store-go").disabled; // the (fake) synth never answers the slot read
   $("storedlg").close();
   res.push(`storeDialog=${storeOpen} storeLocked=${lockedAtStart && lockedWithoutName}`);
+  // effect views follow the diagram; diagram values open an editor bound to the same setting
+  showPanel("effects");
+  const vis = () => Object.entries(effectViews).filter(([, v]) => !v.hidden).map(([k]) => k).join(",");
+  const v0 = vis();
+  $("diagram").querySelector('[data-go="reverb"]').dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  const v1 = vis();
+  const selBox = $("diagram").querySelector(".node.sel")?.dataset.go;
+  $("diagram").querySelector('[data-edit="revLevel"]').dispatchEvent(new MouseEvent("click", { bubbles: true, clientX: 300, clientY: 300 }));
+  const popRange = document.querySelector(".edgepop input[type=range]");
+  popRange.value = 77; popRange.dispatchEvent(new Event("input"));
+  const mainRange = document.querySelector('#panel-effects .ctl[data-path="fm.pat.rev.reverbLevel"] input');
+  res.push(`views=${v0}->${v1} selected=${selBox} shortcut=${patch.get("fm.pat.rev.reverbLevel")}/${mainRange.value}`);
+  closeEdgeEditor();
+  $("diagram").querySelector('[data-go="tones"]').dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  res.push(`toneBoxOpens=${tab("tones").classList.contains("active")}`);
+  const sw = document.querySelector('.tonestate[data-tone="1"]');
+  sw.click(); updateStatus();
+  res.push(`toneSwitch=${patch.get("fm.pat.tmt.tmtToneSwitch[1]")}/${document.querySelector('.tonestate[data-tone="1"]').textContent}`);
+  // copy a tone
+  autoConfirm = true;
+  patch.set("fm.pat.tone[0].tvfCutoffFrequency", 55);
+  $("copyfrom").value = "0"; $("copyto").value = "3";
+  await copyTone();
+  res.push(`copyTone=${patch.get("fm.pat.tone[3].tvfCutoffFrequency")} blockEqual=${hex(patch.blocks["tone[3]"]) === hex(patch.blocks["tone[0]"])}`);
+  // output assign shortcuts
+  const whole = document.querySelector('#assignrow .ctl[data-path="fm.pat.common.patchOutputAssign"] select');
+  whole.value = "13"; whole.dispatchEvent(new Event("change"));
+  await wait(50); updateStatus();
+  res.push(`assign=${patch.get("fm.pat.common.patchOutputAssign")} toneAssignActive=${!document.querySelector("#assignrow .toneassign.inactive")}` +
+           ` tabColours=${[...$("tabs").children].map((b) => `${b.dataset.panel}:${b.classList.contains("tab-expert") ? "G" : "B"}`).join(",")}`);
   $("expert").checked = false; applyMode();
   res.push(`simpleHidesSystemLog=${tab("system").hidden && tab("log").hidden}`);
   log(`SELFTEST ${res.join(" ")}`);
 }
+if (new URLSearchParams(location.search).has("selftest")) runSelftest().catch((e) => log(`SELFTEST ERROR ${e.stack}`));

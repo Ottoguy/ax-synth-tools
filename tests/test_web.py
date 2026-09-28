@@ -59,6 +59,7 @@ class WebModel(unittest.TestCase):
         matrix_tab = [p for pan in MODEL["panels"] if pan["id"] == "matrix" for s in pan["sections"] for p in s["params"]]
         self.assertFalse(any(P2[p]["simple"] for p in matrix_tab))
         self.assertFalse(any(P2[p]["simple"] for p in P2 if "mfxControl" in p))      # MFX control: expert only
+        self.assertFalse(P2["fm.pat.mfx.mfxOutputAssign"]["simple"])                  # user: expert only
         self.assertTrue(P2["fm.pat.mfx.equalizer-loGain"]["simple"] and P2["fm.pat.rev.srvHall-tm"]["simple"])
         self.assertTrue(all(P2[f"fm.pat.tone[0].{n}"]["level"] for n in ("toneDrySendLevel", "toneReverbSendLevelMFX", "toneLevel")))
 
@@ -248,6 +249,14 @@ class WebCodec(unittest.TestCase):
             self.assertEqual(msgs, lib[9 * n:9 * n + 9], n)
         self.assertEqual([list(x) for x in self.out["userLayout"]], [[b["offset"], b["size"]] for b in MODEL["blocks"]])
         self.assertEqual(self.out["userGuard"], ["refused", "refused", "refused", "allowed", "refused"])
+
+    def test_copy_tone(self):
+        c = self.out["copyTone"]
+        self.assertTrue(c["blockEqual"])
+        self.assertEqual(c["blockAddr"], "1F 00 26 00")                  # Tone 4 block
+        self.assertTrue(all(a == b for a, b in c["tmt"]))                   # key/velocity range copied
+        self.assertTrue(c["switchKept"])
+        self.assertEqual(c["nChanges"], 8)                                  # 9 TMT fields per tone minus the switch
 
     def test_wave_selection_sets_the_internal_wave_group(self):
         self.assertEqual(self.out["wave"], [2, 1, 23])

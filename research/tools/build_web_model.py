@@ -50,6 +50,7 @@ SIMPLE_GROUPS = {"common", "common.bend", "common.offset", "common.portamento",
 SIMPLE_IDS = {"tone.coarse_tune", "tone.fine_tune", "tone.random_pitch", "tone.wave_number",
               "tone.delay_mode", "tone.delay_time", "tone.filter_type", "tone.cutoff",
               "tone.level", "tone.pan"}
+EXPERT_IDS = {"mfx.output_assign"}   # user: expert-only even though its group is simple (2026-09-28)
 # Shown as level faders (graphically distinct): tone outputs/sends + the other volume-like levels.
 LEVEL_IDS = {"common.level", "tone.level", "mfx.output_level", "mfx.chorus_send", "mfx.reverb_send",
              "chorus.level", "reverb.level"}
@@ -239,8 +240,9 @@ def build() -> dict:
         if e["label"] and short_label(e["label"]):
             e["short"] = short_label(e["label"])
         kb_id, group = e.get("kb"), next((g for g, ps in sections.items() if path in ps), None)
-        e["simple"] = (group in SIMPLE_GROUPS or kb_id in SIMPLE_IDS
-                       or bool(e["union"] and e["union"][1] > 0))       # MFX/chorus/reverb type parameters
+        e["simple"] = ((group in SIMPLE_GROUPS or kb_id in SIMPLE_IDS
+                        or bool(e["union"] and e["union"][1] > 0))      # MFX/chorus/reverb type parameters
+                       and kb_id not in EXPERT_IDS)
         e["level"] = group == "tone.output" or kb_id in LEVEL_IDS
 
     def order(paths):

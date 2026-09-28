@@ -124,6 +124,23 @@ export class Patch {
     return new Patch(this.model, this.blocks);
   }
 
+  // Copy every setting of tone `from` to tone `to` (0-based): the whole tone
+  // block, plus that tone's key/velocity range in the TMT block. The tone
+  // ON/OFF switch is left as it is. Returns {block: {address, data}, changes}
+  // (the tone block is sent whole, like the Editor's effect-type changes).
+  copyTone(from, to) {
+    if (from === to) throw new Error("choose two different tones");
+    const src = `tone[${from}]`, dst = `tone[${to}]`;
+    this.blocks[dst] = Uint8Array.from(this.blocks[src]);
+    const changes = [];
+    for (const [path, p] of Object.entries(this.model.params)) {
+      const m = path.match(/^fm\.pat\.tmt\.(tmt\w+)\[(\d)\]$/);
+      if (!m || Number(m[2]) !== from || m[1] === "tmtToneSwitch") continue;
+      changes.push(this.set(`fm.pat.tmt.${m[1]}[${to}]`, this.get(path), false));
+    }
+    return { block: { address: this.blockAddress(dst), data: Array.from(this.blocks[dst]) }, changes };
+  }
+
   // Visible parameters that differ from `original`. Effect members count only
   // for the effect type active in either patch.
   diff(original) {

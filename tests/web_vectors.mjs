@@ -150,4 +150,18 @@ if (cases.backup) {
   ];
 }
 
+// copy a tone: whole tone block + its TMT key/velocity range, not its ON/OFF switch
+{
+  const p = Patch.fromA8e(model, bytes("patches/guitar01.a8e"));
+  const before3 = p.get("fm.pat.tmt.tmtToneSwitch[3]");
+  const { block, changes } = p.copyTone(1, 3);
+  out.copyTone = {
+    blockEqual: sx.hex(p.blocks["tone[3]"]) === sx.hex(p.blocks["tone[1]"]),
+    blockAddr: sx.hex(sx.intToAddr(block.address)),
+    tmt: ["VelocityRangeLower", "VelocityRangeUpper", "KeyboardRangeLower", "KeyboardRangeUpper"].map((n) =>
+      [p.get(`fm.pat.tmt.tmt${n}[1]`), p.get(`fm.pat.tmt.tmt${n}[3]`)]),
+    switchKept: p.get("fm.pat.tmt.tmtToneSwitch[3]") === before3, nChanges: changes.length,
+  };
+}
+
 process.stdout.write(JSON.stringify(out));
