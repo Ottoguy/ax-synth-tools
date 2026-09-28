@@ -18,6 +18,7 @@ let patch = Patch.initial(model);
 let original = patch.clone(); // snapshot of the last Read / Load / Open / INIT
 let a8eTemplate = null; // bytes of the last opened .a8e (keeps its Setup/System on save)
 let setup = null; // Setup switches read from the synth (for the routing check)
+let systemValues = null; // read-only System values by path (e.g. the D-Beam's CC), after Read
 let lastVerify = null; // {ok, when, name}
 let lastSlot = null; // memory slot last loaded (default for "Store in synth slot")
 const synth = new Synth(log);
@@ -270,6 +271,7 @@ function renderPanels() {
     { id: "help", title: "Start here" },
     model.panels.find((p) => p.id === "common"),
     { id: "tones", title: "Tones 1–4" },
+    { id: "controllers", title: "Controllers" },
     ...model.panels.filter((p) => p.tone === undefined && p.id !== "common"),
     { id: "changes", title: "Changes" }, { id: "system", title: "System (read-only)" }, { id: "log", title: "MIDI log" },
   ];
@@ -303,6 +305,10 @@ function renderPanels() {
     }
     if (pan.id === "tones") {
       renderTones(div);
+      continue;
+    }
+    if (pan.id === "controllers") {
+      div.innerHTML = `<div id="ctrlpanel"></div>`;
       continue;
     }
     if (pan.id === "effects") {
@@ -680,8 +686,8 @@ function renderSummary(n) {
     <ol class="keep">
       <li><b>Save .a8e</b> (top of the page): stores the sound as a file on this computer. You can open it here any time.</li>
       <li>To store it <b>inside the synth</b> (so it's there without the computer): click <b>Store in synth slot…</b> (top of the page),
-        choose one of the 256 memory slots, and confirm. The slot's old sound is <b>replaced</b>; the editor downloads it as a file first,
-        then writes and checks. Afterwards, switch the synth off and on and load that slot to make sure it stuck.</li>
+        choose one of the 256 memory slots, and confirm. The slot's old sound is <b>replaced</b>; the editor can download it as a file first
+        (recommended), then writes and checks. Afterwards, switch the synth off and on and load that slot to make sure it stuck.</li>
     </ol>
     <div class="row"><button id="store2" class="storebtn"${connected ? "" : " disabled"}>Store in synth slot…</button><button id="revertall2">Revert all changes</button></div>`;
   box.querySelector(".pname").textContent = patch.name();
@@ -773,6 +779,7 @@ function openStore() {
   }
   if (lastSlot !== null) sel.value = String(lastSlot);
   $("store-backup").checked = false;
+  $("store-download").checked = true;
   setStoreResult("", "");
   $("storedlg").showModal();
   readSlotName();
@@ -811,15 +818,20 @@ async function storeInSlot() {
   const n = Number($("store-slot").value);
   const label = slotLabel(n);
   if (!(await confirmBox(`Replace "${slotName}" in slot ${label}?`,
-    `The synth's stored sound in slot ${label} is replaced by "${patch.name()}". The old one is downloaded as a file first.`, "Replace it"))) return;
+    `The synth's stored sound in slot ${label} is replaced by "${patch.name()}". ` +
+    ($("store-download").checked ? "The old one is downloaded as a file first." : "The old one is NOT saved first (download box unticked)."), "Replace it"))) return;
   $("store-go").disabled = true;
   pending.clear();
-  // 1. backup of this slot (read all 9 blocks, download as .a8e) - abort if it fails
-  setStoreResult(`Backing up slot ${label}…`, "busy");
-  const old = await readBlocks(userPatchAddress(n));
-  const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-");
-  download(old.toA8e(null), `slot-${label}-${old.name().replace(/[^\w.-]+/g, "_") || "patch"}-backup-${stamp}.a8e`);
-  log(`backup of slot ${label} "${old.name()}" downloaded`);
+  // 1. optional backup of this slot (read all 9 blocks, download as .a8e) - abort if it fails
+  if ($("store-download").checked) {
+    setStoreResult(`Backing up slot ${label}…`, "busy");
+    const old = await readBlocks(userPatchAddress(n));
+    const stamp = new Date().toISOString().slice(0, 16).replace(/[:T]/g, "-");
+    download(old.toA8e(null), `slot-${label}-${old.name().replace(/[^\w.-]+/g, "_") || "patch"}-backup-${stamp}.a8e`);
+    log(`backup of slot ${label} "${old.name()}" downloaded`);
+  } else {
+    log(`slot ${label}: no backup download (unticked)`);
+  }
   // 2. write the 9 whole blocks, like Roland's Librarian export
   setStoreResult(`Writing "${patch.name()}" to slot ${label}…`, "busy");
   for (const b of model.blocks) await synth.send(buildUserPatchDT1(n, b.offset, Array.from(patch.blocks[b.name])), 60);
@@ -831,7 +843,7 @@ async function storeInSlot() {
     if (hex(got) !== hex(patch.blocks[b.name])) bad.push(b.name);
   }
   if (bad.length) {
-    setStoreResult(`✗ Slot ${label} doesn't match after writing (${bad.join(", ")}). The backup file of the old sound was downloaded.`, "bad");
+    setStoreResult(`✗ Slot ${label} doesn't match after writing (${bad.join(", ")}).${$("store-download").checked ? " The backup file of the old sound was downloaded." : ""}`, "bad");
     log(`store FAILED for slot ${label}: ${bad.join(", ")}`);
   } else {
     setStoreResult(`✓ Stored "${patch.name()}" in slot ${label} and read it back. To be sure it survives power-off: switch the synth off and on, then Load slot ${label}.`, "ok");
@@ -848,6 +860,108 @@ function download(bytes, filename) {
   a.download = filename;
   a.click();
   setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+}
+
+// ---------------------------------------------------------------- controllers tab
+// Shortcuts to the settings that decide what the performance controllers do in
+// this sound. The mod bar sends CC01, the AFTER TOUCH knob channel aftertouch,
+// and the D-Beam (ASSIGNABLE mode) the CC stored in the synth's system settings;
+// the sound reacts through its Matrix Control routings with that source
+// (every factory sound has a CC01 and an AFTERTOUCH routing).
+const SRC_AFTERTOUCH = 97; // matrix source raw value (raw = CC number; 96 PITCH BEND, 97 AFTERTOUCH)
+let ctrlSignature = null;
+let ctrlControls = [];
+const matrixWithSource = (src) => [1, 2, 3, 4].filter((k) => patch.get(`fm.pat.common.matrixControl${k}Source`) === src);
+const mfxWithSource = (src) => [1, 2, 3, 4].filter((k) => patch.get(`fm.pat.mfx.mfxControl${k}Source`) === src);
+function beamCC() {
+  const raw = systemValues?.["fm.system.controller.beamAssign"];
+  if (raw === undefined) return null;
+  return raw < 31 ? raw + 1 : raw + 2; // the beam table has no CC32 slot (raw 68 = CC70)
+}
+
+function renderControllers() {
+  const host = $("ctrlpanel");
+  if (!host) return;
+  const cc = beamCC();
+  const sig = JSON.stringify([matrixWithSource(1), matrixWithSource(SRC_AFTERTOUCH), mfxWithSource(1), cc, cc ? matrixWithSource(cc) : [],
+    systemValues?.["fm.system.controller.beamRangeLower"], systemValues?.["fm.system.controller.beamRangeUpper"]]);
+  if (sig === ctrlSignature) return;
+  ctrlSignature = sig;
+  for (const [path, c] of ctrlControls) removeControl(path, c);
+  ctrlControls = [];
+  host.innerHTML = "";
+
+  const add = (grid, path, label) => {
+    const row = makeControl(path);
+    if (!row) return;
+    row.classList.add("simple"); // this tab is part of simple mode
+    if (label) row.querySelector("label").textContent = label;
+    ctrlControls.push([path, row.ctl]);
+    grid.append(row);
+  };
+  const note = (sec, text) => {
+    const p = document.createElement("p");
+    p.className = "note";
+    p.textContent = text;
+    sec.querySelector(".grid").before(p);
+  };
+  const routing = (grid, k) => {
+    for (let d = 1; d <= 4; d++) {
+      add(grid, `fm.pat.common.matrixControl${k}Destination${d}`, `Target ${d}`);
+      add(grid, `fm.pat.common.matrixControl${k}Sens${d}`, `Amount ${d}`);
+    }
+  };
+
+  // Modulation bar
+  const mod = section("Modulation bar", "The bar on the neck sends CC01. What it changes in this sound, and how much (−63…+63; negative = the other way).");
+  const modK = matrixWithSource(1);
+  if (modK.length) modK.forEach((k) => routing(mod.querySelector(".grid"), k));
+  else note(mod, "This sound has no mod-bar routing (no Matrix Control with source CC01).");
+  const modMfx = mfxWithSource(1);
+  if (modMfx.length) {
+    const h = document.createElement("h3");
+    h.textContent = "The mod bar also controls the multi-effect (MFX)";
+    const g = document.createElement("div");
+    g.className = "grid";
+    mod.append(h, g);
+    for (const k of modMfx) {
+      add(g, `fm.pat.mfx.mfxControlAssign${k}`, `MFX target ${k}`);
+      add(g, `fm.pat.mfx.mfxControl${k}Sens`, `MFX amount ${k}`);
+    }
+  }
+  host.append(mod);
+
+  // D-Beam
+  const beam = section("D-Beam", "Wave your hand over the beam. In PITCH or FILTER mode it works by itself; in ASSIGNABLE mode it sends a controller (CC) number, and this is what that does in this sound.");
+  const bg = beam.querySelector(".grid");
+  if (cc === null) {
+    note(beam, "Connect (or click Read from synth) to see which CC the D-Beam sends. It's a synth setting, not part of the sound.");
+  } else {
+    const lo = systemValues["fm.system.controller.beamRangeLower"], hi = systemValues["fm.system.controller.beamRangeUpper"];
+    note(beam, `ASSIGNABLE mode sends CC${String(cc).padStart(2, "0")}, range ${lo}–${hi}${lo > hi ? " (inverted)" : ""}. ` +
+      "These are synth settings (change them on the synth: hold SHIFT and press the D-Beam's ASSIGNABLE button).");
+    if (cc === 1) note(beam, "It sends CC01, the same as the mod bar, so it changes exactly the mod bar's targets above.");
+    else {
+      const bk = matrixWithSource(cc);
+      if (bk.length) bk.forEach((k) => routing(bg, k));
+      else note(beam, `This sound has no routing for CC${String(cc).padStart(2, "0")}, so in ASSIGNABLE mode the D-Beam changes nothing here.`);
+    }
+  }
+  host.append(beam);
+
+  // Ribbon
+  const rib = section("Ribbon (touch controller)", "Slide along the ribbon to bend the pitch. How far, in semitones:");
+  add(rib.querySelector(".grid"), "fm.pat.common.pitchBendRangeUp", "Bend up (right)");
+  add(rib.querySelector(".grid"), "fm.pat.common.pitchBendRangeDown", "Bend down (left)");
+  host.append(rib);
+
+  // Aftertouch knob
+  const at = section("Aftertouch knob", "The AFTER TOUCH knob (the keys themselves send no aftertouch). What it changes in this sound, and how much:");
+  const atK = matrixWithSource(SRC_AFTERTOUCH);
+  if (atK.length) atK.forEach((k) => routing(at.querySelector(".grid"), k));
+  else note(at, "This sound has no aftertouch routing (no Matrix Control with source AFTERTOUCH).");
+  host.append(at);
+  for (const [, c] of ctrlControls) c.update();
 }
 
 // ---------------------------------------------------------------- reset / revert / refresh
@@ -881,6 +995,7 @@ async function revertAll(ask = true) {
 }
 
 function refresh() {
+  renderControllers();
   $("name").value = patch.name();
   for (const list of controls.values()) for (const c of list) c.update();
   updateStatus();
@@ -894,6 +1009,12 @@ function renderSystem(areas) {
     return `<tr><td>${p.label}</td><td>${display(p, v, model.waves)}</td></tr>`;
   });
   $("systable").innerHTML = rows.join("");
+  systemValues = {};
+  for (const p of model.readonly.params) {
+    const bytes = areas[p.area];
+    if (bytes) systemValues[p.path] = bytes.slice(p.offset, p.offset + p.size).reduce((a, b) => a * (p.type === "int4x4" ? 16 : 128) + b, 0);
+  }
+  ctrlSignature = null;
   setup = {};
   for (const p of model.readonly.params) {
     if (p.area === "setup" && areas.setup) setup[p.path.split(".").pop()] = areas.setup[p.offset];
@@ -1099,6 +1220,22 @@ async function runSelftest() {
   const sw = document.querySelector('.tonestate[data-tone="1"]');
   sw.click(); updateStatus();
   res.push(`toneSwitch=${patch.get("fm.pat.tmt.tmtToneSwitch[1]")}/${document.querySelector('.tonestate[data-tone="1"]').textContent}`);
+  // controllers tab: mod bar routing found (INIT has CC01 on a matrix control?) and synced with the Matrix tab
+  patch.set("fm.pat.common.matrixControl2Source", 1);
+  refresh();
+  const modTarget = document.querySelector('#ctrlpanel .ctl[data-path="fm.pat.common.matrixControl2Destination1"] select');
+  modTarget.value = "9"; modTarget.dispatchEvent(new Event("change"));
+  await wait(20);
+  const inMatrix = document.querySelector('#panel-matrix .ctl[data-path="fm.pat.common.matrixControl2Destination1"] select').value;
+  res.push(`controllers=${document.querySelectorAll("#ctrlpanel section.sec").length} modBar=${patch.get("fm.pat.common.matrixControl2Destination1")}/${inMatrix}` +
+           ` beamNote=${/Connect/.test($("ctrlpanel").textContent)} ctrlTab=${tab("controllers").classList.contains("tab-simple")}`);
+  // D-Beam on CC70 (beam table raw 68, no CC32 slot) with a CC70 routing in the sound
+  systemValues = { "fm.system.controller.beamAssign": 68, "fm.system.controller.beamRangeLower": 0, "fm.system.controller.beamRangeUpper": 127 };
+  ctrlSignature = null;
+  patch.set("fm.pat.common.matrixControl3Source", 70);
+  refresh();
+  res.push(`beamCC=${beamCC()} beamRouting=${!!document.querySelector('#ctrlpanel .ctl[data-path="fm.pat.common.matrixControl3Destination1"]')}`);
+  systemValues = null; ctrlSignature = null;
   // copy a tone
   autoConfirm = true;
   patch.set("fm.pat.tone[0].tvfCutoffFrequency", 55);

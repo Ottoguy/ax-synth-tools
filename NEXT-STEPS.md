@@ -135,11 +135,12 @@ Some reverb parameters (e.g. SRV time or density at minimum) also make it almost
 - **⬆ Send whole sound to synth + check** is the big green button at the top, and again in the summary at the bottom of **Changes**. It replaces the sound the synth is playing right now (never your stored sounds) and confirms with ✓.
 - Simple settings are beige; expert-only settings are leaf green. Tabs follow the same colours: beige tabs exist in Simple mode, green tabs are Expert-only.
 - **Where the tones go** (Effects tab, under the diagram): OUTPUT ASSIGN for the whole sound and for each tone (also via the underlined "output assign" in the diagram).
+- **Controllers** tab (also in Simple mode): what the **modulation bar** (targets, amounts, and MFX control if used), the **D-Beam** (its CC and range from the synth, read-only, plus what that CC does in the sound), the **ribbon** (bend range) and the **aftertouch knob** do in this sound. These are shortcuts to the same settings as on the Matrix and Common tabs.
 - **Copy a tone** (Tones tab, under Edit together): copies every setting of one tone to another (including its key/velocity range; the target's ON/OFF stays). The **Simple / Expert** switch is at the top right; System and MIDI log appear in Expert mode only.
 - Anything that replaces the sound you're editing (Load, New, Open, Read, Revert all, changing an effect type) asks "are you sure?" first.
 - **Store in synth slot…** (next to Save .a8e): stores the sound permanently in one of the 256 memory slots, **replacing** the sound there.
   - It asks you to confirm you have a backup.
-  - It downloads the slot's old sound as an .a8e file.
+  - It can download the slot's old sound as an .a8e file first (a tick box, on by default; recommended).
   - It asks "are you sure?" once more, then writes and reads back to check.
   - **First time: please test it on a slot you don't need**, then switch the synth off and on and use *Load stored sound* on that slot. That confirms the write survives power-off (it's never been tested on this synth). Tell me the result, and if something's off, save the MIDI log to `captures/web/store-log.txt`.
 
