@@ -34,12 +34,11 @@ Your answers are in `captures/setup.md`. What they mean:
 
 ---
 
-## Step 1: Documents ✅ mostly done
+## Step 1: Documents ✅ done
 
 - [x] Owner's Manual: done (`docs/AX-Synth_OM.pdf`). It gave us the **factory sound list**. Correction to what I said earlier: the *parameter explanations* weren't in it; they were already in the **Editor manual** we had (parameter guide p.9–43, effects list p.44–78).
 - [x] Those explanations are now extracted into the **knowledge base** (`knowledge/knowledge.md` to read; `knowledge.json` for the AI).
-- [ ] **Erratum 1**, if it exists (we have "Erratum2").
-- [ ] *(Optional)* The **Juno-Di or Juno-D Editor** installer from Roland's site. It's the closest sibling instrument. Its `Script.xml` may explain the patch-write handshake we still don't understand. Put the installed files in `reference/juno-editor/`.
+- ~~Erratum 1~~: doesn't exist (you checked). ~~Juno-D/Di Editor~~: skipped (your decision, 2026-09-28).
 
 ---
 
@@ -115,30 +114,40 @@ Only if you're curious. It isn't needed for the goal. With MIDI-OX set up as in 
 
 ---
 
-## Step 4: First write, Temporary only (15 minutes), ready now
+## Step 4: The web editor = first write (15 minutes), ready now
 
-Everything it depends on is now confirmed:
-- the working copy follows the panel and is thrown away when you switch sounds
-- the synth accepts whole-block writes to it (Roland's SYNC did exactly that)
-- our request file reads it back
+There's now a **web editor** with every sound parameter of Roland's AX-Synth Editor: Common, Tone 1–4, TMT/Structure, Matrix Control, all 78 MFX types, chorus and reverb, with the Editor manual's labels and explanations (hover over a name). It talks to the synth directly from Microsoft Edge.
 
-This is the last untested piece of the chain: **our code → synth**.
+**It can only change the synth's working copy (Temporary patch).** Stored sounds, system settings and FAVORITES can't be written from it; that's enforced in its code and tested. Anything you do is undone by selecting another sound on the synth.
 
-Setup as in 3.3: MIDI-OX, *SysEx → Send/Receive SysEx*, input and output = `Roland AX-Synth`, and no Editor or Librarian running.
-- [ ] Select **LEAD GUITAR 1** (SearingGtr 1) on the synth, so you can compare the two sounds.
-- [ ] Set a **delay between messages of 60 ms** (in the SysEx window's options, "Delay after F7" or similar). That's slightly slower than Roland's own software (21–60 ms).
-- [ ] Send `research/generated/guitar01-temporary.syx`: the forum patch, encoded by *our* code, 9 messages, to the Temporary patch only.
-- [ ] **Without switching sounds**, send `research/generated/experiment-rq1-temporary-patch.syx` and save the reply as `captures/first-write/reply.syx`. I'll check it byte for byte against what we sent.
-- [ ] Listen and note in `captures/first-write/notes.md`:
+**Start it:**
+1. Close **MIDI-OX**, the **Roland Editor** and the **Librarian** (only one program can use the synth's USB port).
+2. Double-click **`start-web-editor.bat`** in the project folder. A small black window opens (the local server; leave it open), and Edge opens `http://localhost:8765`.
+3. Click **Connect**. The first time, Edge asks whether the site may use MIDI devices / control them: click **Allow**. The status turns green: "Connected: Roland AX-Synth".
+
+**Then, as step 4:**
+- [ ] On the synth, select **LEAD GUITAR 1** (SearingGtr 1). Click **Read from synth**: the name field should say "SearingGtr 1" and the controls show its values. The **System (read-only)** tab shows your system settings.
+- [ ] **Open .a8e** → `patches/guitar01.a8e`. It's sent to the synth automatically and read back. Next to the buttons you should see **"✓ sent and verified"**. That's the first write of our own bytes, checked byte for byte.
+- [ ] Listen, and note in `captures/first-write/notes.md`:
   - Does it sound different from the factory SearingGtr 1? More like a metal lead guitar?
   - Soft notes (velocity below ~70): does an extra high pure tone appear?
   - Pitch bend on the ribbon: **2 octaves down, 1 up** (the factory sound bends 2 semitones up, 1 octave down)?
-  - *(Optional)* D-Beam: the patch expects CC70 on [ASSIGNABLE]. Yours is CC01 (the default). To try it, hold [SHIFT] + [ASSIGNABLE], choose "C70", [WRITE]; later set it back to "C01" the same way.
-- [ ] Switch to another sound and back. You should hear the factory SearingGtr 1 again (Temporary is volatile).
+- [ ] Move a control while playing, e.g. **Tone 1 → TVF → CUTOFF**: the sound should change as you drag.
+- [ ] Switch to another sound on the synth and back: you hear the factory SearingGtr 1 again.
 
-If the synth shows an error or nothing changes, save the MIDI-OX log and stop. That's a finding too.
+**If something doesn't work:**
+- Open the **MIDI log** tab, click **Copy log**, and paste it into `captures/web/log.txt`. It shows every message in both directions.
+- "AX-Synth not found" means another program still holds the port, or the synth is off.
+- If Edge never asked about MIDI, check the lock/site icon in the address bar → *Site permissions* → MIDI devices → Allow.
 
-**Then comes the listening test.** Once step 4 works, I'll prepare 6–10 small `.syx` files, all Temporary-only, each starting from a factory sound and changing *one* thing: brightness (cutoff), resonance, attack, release, vibrato, reverb, chorus, an effect type, a layer on or off. You send each one and say whether you hear what the model predicts. That confirms our parameter meanings by ear, which is the basis for the "big knobs".
+**Other things it can do:**
+- **Load stored sound** reads one of your 256 memory slots (read-only) and plays it via the working copy, so you can edit it.
+- **New (INIT)** loads Roland's blank patch.
+- **Save .a8e** saves the current patch as a Roland Editor file.
+
+To *keep* a sound in one of the synth's memory slots, save the `.a8e`, open it in Roland's Editor and use its WRITE, as before. The web editor deliberately can't store sounds (see step 5, question 7).
+
+**Then comes the listening test.** Once step 4 works, I'll prepare 6–10 small patches (`.a8e` files you open in the web editor). Each starts from a factory sound and changes *one* thing: brightness (cutoff), resonance, attack, release, vibrato, reverb, chorus, an effect type, a layer on or off. You say whether you hear what the model predicts. That confirms our parameter meanings by ear, which is the basis for the "big knobs".
 
 ---
 
@@ -147,7 +156,7 @@ If the synth shows an error or nothing changes, save the MIDI-OX log and stop. T
 Answer these in `captures/decisions.md`. Rough answers are fine, and you can change your mind later.
 
 **The GUI**
-1. **Where should it run?** (a) a **web page** in Chrome/Edge that talks to the synth directly via Web MIDI (no install, and it can be published as a link), (b) a **desktop app** (Python), (c) no preference. My default recommendation is (a).
+1. ~~Where should it run?~~ **Decided (2026-09-28):** a web page in Edge, started locally with `start-web-editor.bat` (step 4). Sound parameters only, sent live; system settings read-only.
 2. **Which "big knobs" do you want?** Pick or add from: brightness, warmth, attack (soft ↔ percussive), release/length, sustain, body/thickness, detune/width, movement/vibrato, grit/distortion, space (reverb), echo (delay), octave/layering, mono/poly/glide, velocity sensitivity, "age"/lo-fi. Which 6–10 matter most for how you play?
 3. Should the GUI also let you **pick a factory sound as a starting point** and then adjust the big knobs? (I think this gives much better results than starting from INIT.)
 4. **Which performance controls do you actually use**, and what should they do in *new* sounds by default? The AX-Synth has: the **mod bar** (usually vibrato), the **AFTER TOUCH knob** (the keys send no aftertouch), the **ribbon** (pitch bend), the **D-Beam** (pitch, filter, or an assigned CC), **portamento** and **hold**.
@@ -173,20 +182,20 @@ Answer these in `captures/decisions.md`. Rough answers are fine, and you can cha
 
 - [ ] **More patches with descriptions**: any `.a8e`, `.a8l` or `.syx` AX-Synth patches you find online, especially with text describing the sound. Put them in `patches/` with a `.txt` of the description next to each.
 - [ ] **Audio recordings**: later, short recordings (a few notes and a chord, WAV) of sounds. This makes it possible to check automatically whether a generated sound matches its description. Not needed yet.
-- [ ] **Juno-D/Juno-Di or Fantom-X material**: the AX-Synth's sounds are "derived from Roland's latest synthesizers" of that era and use the same engine family, so tutorials on programming those synths apply almost 1:1.
+- *(Background only, no action)* Tutorials for the Juno-D/Juno-Di or Fantom-X apply almost 1:1: same engine family.
 
 ---
 
 ## How to hand things back to me
 
 - Put everything under `captures/` with the file names above, plus a `notes.md` per folder.
-- Folder names so far: `captures/live/` (step 2), `captures/mitm/` and `captures/backup/` (3.1), `captures/bulkdump/` (3.2), `captures/rq1/` (3.3), all done; next `captures/first-write/` (4) and `captures/factory/` (3.4).
+- Folder names so far: `captures/live/` (step 2), `captures/mitm/` and `captures/backup/` (3.1), `captures/bulkdump/` (3.2), `captures/rq1/` (3.3), all done; next `captures/first-write/` (4), `captures/web/` (web editor logs, if needed) and `captures/factory/` (3.4).
 - Then just tell me "step N done". I'll read the files, decode them, update the research and tests, and prepare the next step.
 
 ## What I'll build with it (for orientation)
 
 1. **Hardware-verified model**: ~~reading~~ done (steps 2–3.3). Still to go: writing to the Temporary patch (step 4) and checking the parameter meanings by ear (listening test).
-2. **Safe sender** *(needs your go-ahead, because it's the first code that talks to the synth)*: a small tool that loads a patch into the Temporary patch with safe pacing and reads it back to verify. It can **never** address the memory slots or system settings. Until then you send my prepared files with MIDI-OX. Where it runs depends on your answer to step 5 question 1 (web page or Python).
+2. **Safe sender + full editor**: ✅ built (2026-09-28), the web editor (step 4). It sends only to the Temporary patch, with safe pacing and read-back verification, and **never** addresses the memory slots or system settings.
 3. **Sound corpus + meaning layer**:
    - the 256 factory sounds, fully decoded from your backup (`research/generated/user-patches.csv` has the overview)
    - your descriptions (3.4)
@@ -194,7 +203,7 @@ Answer these in `captures/decisions.md`. Rough answers are fine, and you can cha
    - the *Synth Secrets* sound-design knowledge
 
    On top of these comes the big-knob **macro** layer. The patch format has built-in candidates: patch-wide cutoff, resonance, attack, release and velocity offsets.
-4. **Simple GUI** with those macros, a factory-sound picker, and "send to synth".
+4. **Simple GUI** with those macros, a factory-sound picker, and "send to synth". The full-parameter web editor (step 4) is its foundation: the big knobs will be a panel on top of it.
 5. **LLM integration**: you describe the sound, and the LLM picks the nearest factory sound and sets the macros (and specific parameters when needed). The model validates every value, and the result goes to the Temporary patch. You listen, say "brighter" or "less reverb", and it adjusts.
 
 **Where your time helps most now:** step 4 (15 min), then 3.4 (descriptions) and step 5 (decisions). Those two are what the GUI and the AI are designed around.

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AX-Synth Web Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="row">
+      <h1>AX-Synth Web Editor</h1>
+      <span id="status" class="status off">Not connected</span>
+      <button id="connect" class="primary">Connect</button>
+      <button id="read" disabled title="Read the sound currently selected on the synth (its Temporary Patch)">Read from synth</button>
+      <button id="send" disabled title="Send the whole patch to the synth's Temporary Patch, then read it back and compare">Send whole patch + verify</button>
+      <span id="verify" class="verify"></span>
+    </div>
+    <div class="row">
+      <label>Name <input id="name" maxlength="12" size="14" spellcheck="false"></label>
+      <label>Load stored sound
+        <select id="slot"></select>
+      </label>
+      <button id="loadslot" disabled title="Read this memory slot (read-only) and play it via the Temporary Patch">Load</button>
+      <button id="init" title="Roland's INIT PATCH">New (INIT)</button>
+      <label class="file">Open .a8e<input id="open" type="file" accept=".a8e"></label>
+      <button id="save">Save .a8e</button>
+      <label class="check"><input id="live" type="checkbox" checked> Send changes live</label>
+    </div>
+    <nav id="tabs"></nav>
+  </header>
+  <main id="panels"></main>
+  <section id="logpanel" hidden>
+    <div class="row"><button id="copylog">Copy log</button><button id="clearlog">Clear</button></div>
+    <pre id="log"></pre>
+  </section>
+  <footer>
+    Sends only to the synth's <b>Temporary Patch</b> (the working copy; switching sounds on the synth discards it).
+    It never writes stored sounds or system settings. Close MIDI-OX, the Roland Editor and the Librarian before connecting.
+  </footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

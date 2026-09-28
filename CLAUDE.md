@@ -1,6 +1,6 @@
 # CLAUDE.md: ax-synth-ai project context
 
-Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. Last updated 2026-09-26 (steps 3.2/3.3).
+Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. Last updated 2026-09-28 (web editor).
 
 ## 1. Goal and current phase
 
@@ -13,14 +13,15 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
   - the synth's Bulk Dump is decoded and equals the backup (`captures/bulkdump/`, `research/bulkdump-analysis.md`)
   - our own read-only RQ1 file works (`captures/rq1/`)
 
-  **Reading is solved; nothing that writes has been sent by our tools.** Next: NEXT-STEPS step 4, the first write of *our* bytes to the Temporary patch (`guitar01-temporary.syx`, verified by an RQ1 read-back). Then a listening test (single-parameter Temporary patches), then 3.4/step 5 (user descriptions, decisions). A MIDI-I/O "safe sender" needs the user's explicit go-ahead.
-- **Not built yet, on purpose:** AI preset generator, GUI, MIDI I/O code. Don't build these unless the user asks. Keep code evidence-driven and small; no speculative application code.
+  **Reading is solved.**
+- **Phase 2 started (2026-09-28, user go-ahead):** the **web editor** (`web/`, `start-web-editor.bat`). It has every Editor patch parameter, live DT1s to the **Temporary Patch only**, read-back verification, load from a stored slot (read-only), `.a8e` open/save, and System/Setup read-only. It runs in Edge via Web MIDI on localhost. It hasn't been run against the synth yet: NEXT-STEPS step 4 is its first use (= the first write of our bytes). Then a listening test (single-change `.a8e` patches), then 3.4/step 5 (descriptions, big-knob decisions).
+- **Not built yet, on purpose:** AI preset generator, big-knob GUI. Don't build these unless the user asks. MIDI I/O exists **only** in `web/midi.js` (Web MIDI), behind the Temporary-only guard in `web/sysex.js`. Keep code evidence-driven and small; no speculative application code.
 - **The user's checklist of manual tasks** (hardware steps, captures, decisions) is `NEXT-STEPS.md`. Results go under `captures/` (`live/` exists; next: `mitm/`, `backup/`, `bulkdump/`, `rq1/`, …). The user saves MIDI-OX *Monitor* text logs (Windows may add a double `.txt.txt`), and may skip writing notes.md; write it for them from their message. When the user says "step N done", read those captures, decode them with the tools, and update research, tests and NEXT-STEPS.
 
 ## 2. Hard rules
 
 1. **`original-roland-files/` is immutable source material.** Never write inside it. SHA-256 hashes of all 176 files are in `research/generated/inventory.json`; re-verify after work.
-2. **Never transmit to hardware**, and never add code that opens MIDI ports, unless the user explicitly moves to that phase. Tools only read and write files.
+2. **MIDI I/O only in the web editor** (user go-ahead 2026-09-28). `web/sysex.js` `buildDT1` refuses every address outside the Temporary Patch (`1F 00 00 00`..end of Tone 4), and RQ1 is limited to Setup/System/Temporary/User (reads). Keep that guard and its tests (`tests/test_web.py`). Python tools still only read and write files. Never add User-area/System/`0F` writes, SYNC, WRITE or Bulk Dump send without the user explicitly asking.
 3. When preparing anything the user will send: **target only the Temporary Patch `1F 00 00 00`** (volatile). Never the User area `30 00 00 00`–`31 7F 26 00` (overwrites stored sounds), never `0F …` (the undocumented command area), never the synth's Bulk Dump *receive* mode. Don't tell the user to press Editor **SYNC** unless needed: it also overwrites Setup + System (`01 …`, `02 …`) with the Editor's values.
 4. **`dumps/AX-Synth Librarian Clean export.mid` must never be played to the synth** (and `captures/backup/*.mid` only as a deliberate full restore; it rewrites all 256 slots): 2,304 DT1s that would overwrite all 256 User patches with INIT PATCH. (Recovery: factory reset, Owner's Manual p.34, which restores factory sounds but loses user edits.)
 5. **Don't hand-type parameter data.** Everything is generated from Roland sources by `research/tools/`. Keep provenance (file + line or page) on every fact.
@@ -33,7 +34,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**73 tests, all passing**; the backup/bulk-dump classes skip if those files are absent). No pytest.
+- Tests: `py -3 -m unittest discover -s tests` (**89 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
 - Git repo, branch `main`, remote `origin` = github.com/Ottoguy/ax-synth-tools. Commit/push only when the user asks. `.gitignore`: see §9.
 
 ## 4. Repository map
@@ -43,6 +44,16 @@ ax-synth-ai/
 ├── CLAUDE.md                 this file
 ├── AGENTS.md                 pointer to this file (for non-Claude agents)
 ├── NEXT-STEPS.md             user-facing checklist: steps 0-6, safety rules, decisions to make
+├── start-web-editor.bat      double-click: py -3 web/serve.py 8765 --edge (localhost server + Edge)
+├── web/                      THE WEB EDITOR (static, vanilla JS ES modules, no build step)
+│   ├── index.html, style.css  page; tabs Common · Tone 1-4 · TMT · Matrix · Effects · System (read-only) · MIDI log
+│   ├── app.js                UI built from model.json; live edits (throttled ~25 ms), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, ?selftest
+│   ├── patch.js              Patch = 9 byte blocks; get/set via codec, effect type change (Editor behaviour), setWave (group 1/23), .a8e io, display()
+│   ├── sysex.js              port of sysex.py + codec; buildDT1 TEMPORARY-ONLY GUARD, buildRQ1 read areas only
+│   ├── midi.js               Web MIDI: port /ax-?synth/i, Identity check, paced send queue, RQ1 request/reply
+│   ├── model.json            GENERATED by research/tools/build_web_model.py (1,840 params, panels, effect types, waves, .a8e template)
+│   ├── serve.py              localhost-only server with explicit JS MIME types
+│   └── package.json          {"type":"module"} so Node can import the modules in tests
 ├── .gitignore
 ├── .claude/settings.local.json   personal permission allowlist (git-ignored)
 ├── original-roland-files/    IMMUTABLE. AX-Synth Editor/Librarian v1.00 install (2009)
@@ -87,6 +98,8 @@ ax-synth-ai/
 │   ├── factory.py            factory Tone list access
 │   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
 ├── tests/test_schema.py      73 evidence tests (§10)
+├── tests/test_web.py         16 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
+├── tests/web_vectors.mjs     Node runner for test_web.py
 └── research/
     ├── README.md             index: question -> file
     ├── REPORT.md             MAIN findings report: known / suspected / unknown / next experiments / files
@@ -126,13 +139,14 @@ ax-synth-ai/
 | 3 | `py -3 research/tools/build_parameter_db.py` | via `axsynth.schema` (schema + crosscheck.json) | `generated/parameters.{json,csv}` |
 | 4 | `py -3 research/tools/extract_tone_list.py` | `generated/owners-manual.pdf.txt` | `generated/factory-tones.{json,csv}` |
 | 5 | `py -3 research/tools/build_knowledge.py` | `knowledge/*.toml`, `knowledge/sound-design/digests/`, data model (via `axsynth.schema`), factory Tones | `knowledge/knowledge.{json,md}`, `knowledge/sound-design/sound-design.md`; exit 1 on broken links |
+| 6 | `py -3 research/tools/build_web_model.py` | schema, script-schema.json (ui_bindings, stringTables, effect_unions), knowledge.json, Script.xml (MFX assign tables), InitialData.a8e, factory Tones | `web/model.json` (test fails if stale) |
 | – | `py -3 research/tools/backup_summary.py [backup.mid]` | newest `captures/backup/ax-synth-backup-*.mid`, factory Tones, knowledge.json (MFX names) | `generated/user-patches.{csv,json}` |
 | – | `py -3 research/tools/fetch_synth_secrets.py [outdir]` | soundonsound.com (network, ~1.5 s/request) | `reference/synth-secrets/NN-*.md`, `index.{md,json}` (git-ignored) |
 | – | `.\.venv\Scripts\python.exe research/tools/pdf2txt.py x <outdir> <pdf>...` | PDFs | `<outdir>/<pdf stem, spaces→_>.txt` (argv[1] is an unused placeholder); rename to the `*.pdf.txt` convention by hand |
 | – | `py -3 research/tools/exe_strings.py <file> [minlen] > out.txt` | binary | strings list |
 | – | `py -3 research/tools/inventory.py` | original-roland-files/ | `generated/inventory.json` |
 
-Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing `knowledge/*.toml`; then run the tests (a test fails if `knowledge.json` is stale).
+Rerun 1→3 (+5, 6) after changing the extractor or schema.py, and 5 + 6 after editing `knowledge/*.toml`; then run the tests (tests fail if `knowledge.json` or `web/model.json` is stale).
 
 ## 6. Source documents and what each is authoritative for
 
@@ -161,6 +175,7 @@ Rerun 1→3 (+5) after changing the extractor or schema.py, and 5 after editing 
 | `a8_files.py` | `<file.a8e/.a8l/.mid/.syx> [--all] [--json]` | parse Koa data / Librarian files / whole-block DT1 dumps (per User patch or temporary), decode all values, flag inactive union members |
 | `describe_a8.py` | `<A> [B] [--all]` | non-default active values with labels; or A-vs-B diff; flags out-of-range. `FILE#N` picks patch N of an .a8l or a dump (e.g. `captures/backup/…mid#96` = SearingGtr 1) |
 | `bulkdump.py` | `info <dump.syx>` · `solve <dump.syx> <backup.mid>` · `verify <dump.syx> <backup.mid>` · `export <dump.syx> <out.syx>` | the synth's Bulk Dump: unpack the image, favorites, System Common, 256 patch names; derive/verify the patch-record layout; export as Librarian-style DT1s (a restore file) |
+| `build_web_model.py` | no args | → `web/model.json`: every `fm.pat` value (address offset, type, range, default, enum/labels, display offset, control type, KB label/help, union [kind, type]); panels from KB groups; per-type effect lists (KB labels; tempo-sync members flagged `schemaOnly`); MFX Control Assign tables (parsed from Script.xml MFXDestination panels); read-only System/Setup; .a8e layout + InitialData |
 | `backup_summary.py` | `[backup.mid] [--quiet]` | backup → `generated/user-patches.{csv,json}`; prints slots whose names differ from the factory list |
 | `midiox_log.py` | `<log.txt>... [--syx out.syx]` | MIDI-OX Monitor text log → per-message timestamp/gap/IN PORT, length+checksum check, Identity Reply fields diffed against the doc, every covered parameter decoded (User area mapped to patch paths, effect members for the type seen in the log) |
 | `smf_inspect.py` | `<file.mid> [--summary]` | every SMF event with ticks; Roland SysEx header, address, length, checksum |
@@ -194,7 +209,7 @@ Ignored: `original-roland-files/**/*.exe`, `original-roland-files/**/*.bmp`, `do
 
 ## 10. Test coverage (`tests/test_schema.py`)
 
-`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1, Identity Reply parse/diff) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `LiveEditorCaptures` (captured value edits = our DT1 bytes, `00 81` → `01 01`, MFX type change = schema-default block, Identity Request ×2 @3 s, WRITE name RQ1) · `SynthConversation` (Identity Reply = doc, RQ1 → one exact-size DT1, Read Selected/READ/SYNC sequences, SYNC = READ payloads, READ returned InitialData) · `SynthBackup` (skipped if the backup is absent: 256 complete patches, 254/256 factory names, wave numbering, Read Selected = backup, forum patch vs factory SearingGtr 1, categories, user-patches.json current) · `SynthRequests` (our RQ1 file → exact DT1s, SystemController 0x50, Temporary = panel selection = backup slot 96, panel volume edit invisible, system request file = Editor's bytes) · `SynthBulkDump` (skipped if absent: wire format, all 2,304 blocks rebuilt = backup, layout rules, favorites, System Common) · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API, sound-design section: 63 digests/parts, counts, lookups).
+`ExtractionCounts` (27 structTypes, 1,539 values, type vocabulary, size = type width) · `AddressesMatchOfficialMap` (addresses, block sizes, SystemController 4F discrepancy, step-pitch anomaly) · `Codec` (doc nibble examples, MFX zero point, roundtrip) · `RolandDataFiles` (.a8e/.a8l fully consumed, defaults, identical INIT patch) · `SysEx` (checksum, DT1/RQ1, Identity Reply parse/diff) · `RolandSmfExports` (encoder = Roland bytes, 256 User slots, pacing) · `ThirdPartyPatches` (author's claims) · `OwnersManual` (Tone list, SearingGtr 1, ranges) · `LiveEditorCaptures` (captured value edits = our DT1 bytes, `00 81` → `01 01`, MFX type change = schema-default block, Identity Request ×2 @3 s, WRITE name RQ1) · `SynthConversation` (Identity Reply = doc, RQ1 → one exact-size DT1, Read Selected/READ/SYNC sequences, SYNC = READ payloads, READ returned InitialData) · `SynthBackup` (skipped if the backup is absent: 256 complete patches, 254/256 factory names, wave numbering, Read Selected = backup, forum patch vs factory SearingGtr 1, categories, user-patches.json current) · `SynthRequests` (our RQ1 file → exact DT1s, SystemController 0x50, Temporary = panel selection = backup slot 96, panel volume edit invisible, system request file = Editor's bytes) · `SynthBulkDump` (skipped if absent: wire format, all 2,304 blocks rebuilt = backup, layout rules, favorites, System Common) · `tests/test_web.py`: `WebModel` (model current, every fm.pat value present, every visible value labelled and placed, effect members, offsets = schema addresses) · `WebCodec` (Node: all value DT1s = Python, the 17 captured Roland Editor edits reproduced byte for byte, round trips, .a8e → DT1s = guitar*-temporary.syx and Roland's Editor export, .a8e save round trip, synth reply decoding, RQ1s = our file and the Librarian's, MFX type change = the Editor's captured block, guard, display, wave group). · `KnowledgeBase` (KB builds without errors, all effect types, only reserves undocumented, schema-only members are tempo-sync, committed JSON current, lookup API, sound-design section: 63 digests/parts, counts, lookups).
 
 ## 11. Core technical facts (quick reference; details in `research/`)
 
@@ -300,7 +315,8 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 
 ## 12. Open questions (need hardware or live captures; see REPORT.md "What remains unknown")
 
-- Whether the synth accepts **our** DT1s to Temporary (NEXT-STEPS 4) and what spacing it tolerates (Roland: 21–60 ms; plan 60 ms).
+- Whether the synth accepts **our** DT1s to Temporary (NEXT-STEPS 4, via the web editor; whole blocks 60 ms apart, live edits ≥10 ms) and whether Web MIDI SysEx works on the user's generic driver.
+- Whether resetting MFX Control Assign to OFF on an effect type change matches the Editor (only the all-defaults case was captured) [I].
 - Whether System DT1s (SYNC) persist (undecidable so far: stored = Editor defaults).
 - Where the sleep interval, USB driver mode and live FAVORITE volume sit (optional NEXT-STEPS 3.5); the 146 hidden bits per bulk-dump patch record.
 - Whether a DT1 to `30 …` commits to flash.
