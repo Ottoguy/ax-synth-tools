@@ -26,6 +26,7 @@
       <label class="file">Open .a8e<input id="open" type="file" accept=".a8e"></label>
       <button id="save">Save .a8e</button>
       <label class="check"><input id="live" type="checkbox" checked> Send changes live</label>
+      <label class="check mode" title="Simple mode shows the easy settings only. Expert mode shows every parameter of Roland's AX-Synth Editor; the simple ones are marked."><input id="expert" type="checkbox"> Expert mode</label>
     </div>
     <nav id="tabs"></nav>
   </header>
@@ -38,6 +39,55 @@
     Sends only to the synth's <b>Temporary Patch</b> (the working copy; switching sounds on the synth discards it).
     It never writes stored sounds or system settings. Close MIDI-OX, the Roland Editor and the Librarian before connecting.
   </footer>
+  <template id="helptext">
+    <section class="sec help-page">
+      <h2>Getting started</h2>
+      <p>This page edits the sound of your <b>Roland AX-Synth</b> keytar from the computer, live while you play. It has every sound setting of Roland's own AX-Synth Editor.</p>
+
+      <h3>1. Connect</h3>
+      <ol>
+        <li>Connect the AX-Synth by USB and switch it on.</li>
+        <li>Close <b>MIDI-OX</b>, the <b>Roland Editor</b> and the <b>Librarian</b>: only one program at a time can use the synth.</li>
+        <li>Start the editor with <b>start-web-editor.bat</b> (you're here, so that worked). Keep the small black window open while you use it.</li>
+        <li>Click <b>Connect</b>. The first time, Edge asks about MIDI devices: click <b>Allow</b>. The status turns green.</li>
+      </ol>
+
+      <h3>2. Pick a sound to start from</h3>
+      <ul>
+        <li><b>Read from synth</b>: loads the sound currently selected on the keytar.</li>
+        <li><b>Load stored sound</b>: choose any of the 256 sounds in the list and click <b>Load</b>. This only reads, so your stored sounds stay as they are.</li>
+        <li><b>Open .a8e</b>: a file saved from this page or from Roland's Editor. <b>New (INIT)</b>: Roland's plain starting sound.</li>
+      </ul>
+
+      <h3>3. Change the sound</h3>
+      <ul>
+        <li>Move a slider or pick a value: you hear it immediately (untick <b>Send changes live</b> to edit silently, then use <b>Send whole patch + verify</b>).</li>
+        <li><b>Common</b>: the whole sound (volume, mono/poly, portamento, bend range, and quick "offset" knobs for brightness, attack and release).
+            <b>Tone 1–4</b>: a sound has up to four layers ("tones"), each with its own waveform, filter and volume.
+            <b>Effects</b>: one multi-effect (MFX), a chorus/delay and a reverb.</li>
+        <li>Hover over a setting's name to see what it does. Settings with a small green bar are levels and sends (how loud something is, or how much goes to the chorus/reverb).</li>
+        <li><b>Edit tones together</b> (on the Tone tabs): tick several tones, and a change is applied to all of them.</li>
+        <li><b>Simple / Expert mode</b>: simple mode shows the easy settings. Tick <b>Expert mode</b> for every setting; the easy ones stay marked with a blue edge.</li>
+      </ul>
+
+      <h3>4. Undo</h3>
+      <ul>
+        <li>A changed setting shows a small <b>↺</b> button: click it to go back to the value you started from.</li>
+        <li>The <b>Changes</b> tab lists everything you changed; <b>Revert all</b> restores the whole starting sound.</li>
+        <li>Can't hear an effect? The box at the top of the <b>Effects</b> tab says why (for example "nothing is sent to the reverb").</li>
+      </ul>
+
+      <h3>5. Keep a sound</h3>
+      <p>Changes go to the synth's <b>working copy</b> only. Selecting another sound on the keytar, or switching it off, discards them, and your stored sounds are never overwritten. To keep a sound, click <b>Save .a8e</b>. To store it in one of the synth's memory slots, open that file in Roland's AX-Synth Editor and use its WRITE.</p>
+
+      <h3>If something doesn't work</h3>
+      <ul>
+        <li>"AX-Synth not found": another program still uses the synth, or it's off or unplugged. Close the others and click Connect again.</li>
+        <li>Edge never asked about MIDI: click the lock icon in the address bar → Site permissions → MIDI devices → Allow, then reload.</li>
+        <li>Anything else: open the <b>MIDI log</b> tab, click <b>Copy log</b>, and send it along with a description.</li>
+      </ul>
+    </section>
+  </template>
   <script type="module" src="app.js"></script>
 </body>
 </html>

@@ -84,15 +84,30 @@ async function readBlocks(base) {
 // ---------------------------------------------------------------- controls
 function makeControl(path) {
   const p = model.params[path];
+  if (p.control === "text") return null;
   const row = document.createElement("div");
-  row.className = "ctl" + (p.schemaOnly ? " schemaonly" : "");
+  row.className = "ctl" + (p.schemaOnly ? " schemaonly" : "") + (p.simple ? " simple" : "") + (p.level ? " level" : "");
   const label = document.createElement("label");
-  label.textContent = p.label;
-  label.title = `${p.help}\n\n${path}`;
+  label.textContent = p.short || p.label;
+  label.title = `${p.label}\n\n${p.help}\n\n${path}`;
   row.append(label);
+
+  // ↺: back to the value from the last Read / Load / Open / New
+  const reset = document.createElement("button");
+  reset.className = "reset";
+  reset.textContent = "↺";
+  reset.title = "Reset to the value before your change";
+  reset.onclick = () => resetOne(path);
+
+  const mark = () => {
+    const changed = patch.get(path) !== original.get(path);
+    row.classList.toggle("changed", changed);
+    reset.hidden = !changed;
+  };
 
   let input;
   const out = document.createElement("output");
+  let explain = null;
   if (p.control === "select" || p.control === "wave" || p.control === "effectType" || isAssign(path)) {
     row.classList.add("wide");
     input = document.createElement("select");
@@ -101,11 +116,18 @@ function makeControl(path) {
       for (const [v, text] of choiceList(path)) input.add(new Option(text, v));
     };
     fill();
-    input.addEventListener("change", () => onChange(path, Number(input.value)));
-    controls.set(path, { update: () => { if (isAssign(path)) fill(); input.value = String(patch.get(path)); } });
+    if (p.enumLong) {
+      explain = document.createElement("div");
+      explain.className = "explain";
+    }
+    const describe = () => {
+      if (!explain) return;
+      const i = options(p).findIndex(([v]) => v === patch.get(path));
+      explain.textContent = i >= 0 ? `${p.enum[i]}: ${p.enumLong[i].text}` : "";
+    };
+    input.addEventListener("change", () => { onChange(path, Number(input.value)); describe(); mark(); });
+    controls.set(path, { update: () => { if (isAssign(path)) fill(); input.value = String(patch.get(path)); describe(); mark(); }, mark });
     row.append(input);
-  } else if (p.control === "text") {
-    return null;
   } else {
     input = document.createElement("input");
     input.type = "range";
@@ -115,10 +137,13 @@ function makeControl(path) {
     input.addEventListener("input", () => {
       onChange(path, Number(input.value));
       out.value = display(p, Number(input.value), model.waves);
+      mark();
     });
-    controls.set(path, { update: () => { const v = patch.get(path); input.value = v; out.value = display(p, v, model.waves); } });
+    controls.set(path, { update: () => { const v = patch.get(path); input.value = v; out.value = display(p, v, model.waves); mark(); }, mark });
     row.append(input, out);
   }
+  row.append(reset);
+  if (explain) row.append(explain);
   input.title = label.title;
   return row;
 }
@@ -136,6 +161,7 @@ function choiceList(path) {
     return labels.map((l, i) => [i, l]);
   }
   if (p.control === "effectType") return p.enum.map((n, i) => [i, `${i}: ${n}`]);
+  if (p.enumLong) return options(p).map(([v, l], i) => [v, p.enumLong[i].short ? `${l} (${p.enumLong[i].short})` : l]);
   return options(p);
 }
 
@@ -171,7 +197,7 @@ function renderPanels() {
   const nav = $("tabs");
   const main = $("panels");
   const extra = [{ id: "changes", title: "Changes" }, { id: "system", title: "System (read-only)" }, { id: "log", title: "MIDI log" }];
-  for (const pan of [...model.panels, ...extra]) {
+  for (const pan of [{ id: "help", title: "Start here" }, ...model.panels, ...extra]) {
     const btn = document.createElement("button");
     btn.textContent = pan.title;
     btn.dataset.panel = pan.id;
@@ -182,6 +208,10 @@ function renderPanels() {
     div.id = `panel-${pan.id}`;
     div.hidden = true;
     main.append(div);
+    if (pan.id === "help") {
+      div.append($("helptext").content.cloneNode(true));
+      continue;
+    }
     if (pan.id === "system") {
       div.innerHTML = `<section class="sec"><h2>System and Setup (read from the synth, not editable here)</h2>
         <p class="help">Press "Read from synth" to fill this in. Change these on the synth's panel if needed.</p>
@@ -217,7 +247,31 @@ function renderPanels() {
     }
   }
   $("revertall").onclick = revertAll;
-  showPanel("common");
+  let seen = false;
+  try { seen = localStorage.getItem("axsynth.seenHelp") === "1"; localStorage.setItem("axsynth.seenHelp", "1"); } catch { /* storage unavailable */ }
+  const wanted = location.hash.slice(1); // e.g. #tone1 opens that tab
+  showPanel([...$("tabs").children].some((x) => x.dataset.panel === wanted) ? wanted : seen ? "common" : "help");
+}
+
+// ---------------------------------------------------------------- simple / expert mode
+function expert() {
+  return $("expert").checked;
+}
+function applyMode() {
+  const simple = !expert();
+  document.body.classList.toggle("simple", simple);
+  document.body.classList.toggle("expert", !simple);
+  for (const sec of document.querySelectorAll("#panels section.sec")) {
+    const ctls = sec.querySelectorAll(".ctl");
+    sec.hidden = simple && ctls.length > 0 && !sec.querySelector(".ctl.simple");
+  }
+  for (const pan of model.panels) {
+    const hasSimple = pan.sections.some((s) => s.params.some((p) => model.params[p].simple));
+    tab(pan.id).hidden = simple && !hasSimple;
+  }
+  const current = [...$("tabs").children].find((b) => b.classList.contains("active"));
+  if (current && current.hidden) showPanel("common");
+  try { localStorage.setItem("axsynth.expert", expert() ? "1" : "0"); } catch { /* storage unavailable */ }
 }
 
 function linkBar() {
@@ -266,6 +320,7 @@ function section(title, help) {
 }
 
 function renderEffects() {
+  queueMicrotask(() => applyMode());
   for (const [kind, holder] of Object.entries(effectSections)) {
     for (const path of controls.keys()) {
       if (model.params[path].union && model.params[path].union[0] === kind && model.params[path].union[1] > 0) controls.delete(path);
@@ -466,9 +521,13 @@ $("copylog").onclick = () => navigator.clipboard.writeText(logEl.textContent);
 $("clearlog").onclick = () => { logEl.textContent = ""; };
 
 for (const t of model.factory) $("slot").add(new Option(`${t.slot}  ${t.name}  (${t.family})`, t.n));
+try { $("expert").checked = localStorage.getItem("axsynth.expert") === "1"; } catch { /* storage unavailable */ }
+if (new URLSearchParams(location.search).has("expert")) $("expert").checked = true;
+$("expert").onchange = applyMode;
 renderPanels();
 renderEffects();
 refresh();
+applyMode();
 log(`model: ${Object.keys(model.params).length} parameters from ${model.meta.generator}`);
 if (!navigator.requestMIDIAccess) setStatus("No Web MIDI in this browser: use Edge or Chrome", "err");
 
@@ -509,6 +568,23 @@ if (new URLSearchParams(location.search).has("selftest")) {
   onChange("fm.pat.tone[0].tvfCutoffFrequency", 33);
   res.push(`linked=${[0, 1, 2, 3].map((t) => patch.get(`fm.pat.tone[${t}].tvfCutoffFrequency`)).join("/")}`);
   linked.clear();
+  // per-setting reset button
+  const cutoff = "fm.pat.tone[1].tvfCutoffFrequency";
+  const row = [...document.querySelectorAll(".ctl")].find((r) => r.querySelector("label").title.endsWith(cutoff));
+  onChange(cutoff, 20);
+  controls.get(cutoff).update();
+  const shown = !row.querySelector("button.reset").hidden;
+  row.querySelector("button.reset").click();
+  res.push(`resetShown=${shown} resetBack=${patch.get(cutoff) === original.get(cutoff)} resetHidden=${row.querySelector("button.reset").hidden}`);
+  // simple / expert mode
+  $("expert").checked = false; applyMode();
+  const simpleTabs = [...$("tabs").children].filter((b) => !b.hidden).map((b) => b.dataset.panel).join(",");
+  const hiddenSecs = document.querySelectorAll("#panels section.sec[hidden]").length;
+  $("expert").checked = true; applyMode();
+  res.push(`simpleCtls=${document.querySelectorAll(".ctl.simple").length} levelCtls=${document.querySelectorAll(".ctl.level").length}` +
+           ` simpleTabs=${simpleTabs} hiddenSectionsSimple=${hiddenSecs} hiddenSectionsExpert=${document.querySelectorAll("#panels section.sec[hidden]").length}` +
+           ` explain="${[...document.querySelectorAll(".explain")].map((e) => e.textContent).find((t) => t.startsWith("LPF")) || ""}"` +
+           ` help=${$("panel-help").querySelectorAll("h3").length}`);
   // changes + revert
   updateStatus();
   const nChanges = patch.diff(original).length;

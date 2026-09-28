@@ -41,6 +41,85 @@ READONLY_AREAS = [  # System/Setup: shown read-only (user decision 2026-09-28)
     {"name": "system.controller", "struct": "SystemController", "address": "02 00 40 00", "size": 0x50},
 ]
 
+# Simple mode = the settings the user picked as easy to grasp (2026-09-28):
+# all of Common, MFX (not MFX control), chorus and reverb units with their
+# type parameters, and per tone: coarse/fine tune, random pitch, wave L/R,
+# tone delay mode/time, filter type + cutoff, TVA level + pan, all outputs/sends.
+SIMPLE_GROUPS = {"common", "common.bend", "common.offset", "common.portamento",
+                 "fx.mfx", "fx.chorus", "fx.reverb", "tone.output"}
+SIMPLE_IDS = {"tone.coarse_tune", "tone.fine_tune", "tone.random_pitch", "tone.wave_number",
+              "tone.delay_mode", "tone.delay_time", "tone.filter_type", "tone.cutoff",
+              "tone.level", "tone.pan"}
+# Shown as level faders (graphically distinct): tone outputs/sends + the other volume-like levels.
+LEVEL_IDS = {"common.level", "tone.level", "mfx.output_level", "mfx.chorus_send", "mfx.reverb_send",
+             "chorus.level", "reverb.level"}
+
+
+def enum_explanations(labels, meaning: str):
+    """Per-value explanations from an Editor-manual meaning text written as
+    'LPF (low pass): reduces … . BPF (band pass): …' (knowledge.json). Returns
+    [{short, text}] in enum order, or None unless every label is explained."""
+    if not labels or len(labels) < 2:
+        return None
+    out = []
+    for lab in labels:
+        m = re.search(r"(?:^|[.;]\s+)" + re.escape(lab) + r"(?:\s*\(([^)]*)\))?:\s*([^.;]*)", meaning)
+        if not m:
+            return None
+        out.append({"short": m.group(1) or "", "text": m.group(2).strip()})
+    return out
+
+
+def readable_help(text: str, concepts: dict) -> str:
+    """Group texts in knowledge.json are written for LLMs and point to other
+    entries ('See concept X', 'knowledge/*.toml', 'Schema arrays'). For the
+    UI, inline the referenced concept's first sentences and drop file refs."""
+    def concept(m):
+        c = concepts.get(m.group(1).rstrip("."))
+        if not c:
+            return ""
+        first = re.split(r"(?<=\.)\s+", c["text"])
+        return " ".join(first[:2])
+    text = re.sub(r"Type-specific parameters: knowledge/[\w.-]+\.toml\.?", "Choose a type; its own settings appear below.", text)
+    text = re.sub(r"\s*See knowledge/[\w.-]+ for [^.]*\.", "", text)
+    text = re.sub(r"\s*\([^)]*knowledge/[^)]*\),?", "", text)
+    text = re.sub(r"[;,]?\s*[Ss]ee concept ([a-z_]+\.[a-z_]+)(?: for [^.]*)?\.", lambda m: ". " + concept(m), text)
+    text = " ".join(s for s in re.split(r"(?<=\.)\s+", text) if "Schema" not in s)
+    return user_text(re.sub(r"\s*\.\s*\.", ".", text).strip(" .") + ".")
+
+
+def user_text(text: str) -> str:
+    """Drop research-only markup from KB text: sentences that are inference
+    notes ([I]) and evidence tags such as [D MI], [F], [3P]."""
+    text = " ".join(s for s in re.split(r"(?<=\.)\s+", text) if "[I]" not in s)
+    return re.sub(r"\s*\[(?:D|F|3P)[^\]]*\]", "", text).strip()
+
+
+def short_label(label: str):
+    """A shorter on-screen name where the Editor-manual label is an
+    abbreviation plus explanation: 'CHO (Chorus Send), OUTPUT ASSIGN = MFX'
+    -> 'Chorus Send · via MFX'; 'RES (Resonance)' -> 'Resonance'. None if
+    the label is fine as it is (the full label stays in the tooltip)."""
+    m = re.match(r"^(\S{1,4})\s*\(([^)]+)\)(.*)$", label)
+    if not m:
+        return None
+    head, paren, tail = m.groups()
+    route = " · via MFX" if re.search(r"= MFX\b", tail) else " · direct" if "non MFX" in tail else ""
+    extra = re.sub(r",?\s*OUTPUT ASSIGN = (non )?MFX", "", tail).strip()
+    return f"{paren}{(' ' + extra) if extra else ''}{route}"
+
+
+def split_label(label: str, n_schema: int, index: int) -> str:
+    """'Wave Group Type / Wave Group ID' with two schema paths -> the part for
+    this path; a short part ('R') borrows the first part's stem ('WAVE NUMBER R')."""
+    parts = [x.strip() for x in label.split(" / ")]
+    if n_schema < 2 or len(parts) != n_schema or "(" in label.split(" / ")[-1] and ")" not in parts[-1]:
+        return label
+    part = parts[index]
+    if len(part) <= 3:
+        part = re.sub(r"\s+\S{1,3}(\s*\(.*\))?$", "", parts[0]) + " " + part
+    return part
+
 
 def kb_path(path: str) -> str:
     """fm.pat.tone[2].lfoRate[1] -> fm.pat.tone[].lfoRate[] (knowledge.json form)."""
@@ -73,6 +152,7 @@ def build() -> dict:
     sj = json.loads((ROOT / "research/script-schema.json").read_text(encoding="utf-8"))
     kb = json.loads((ROOT / "knowledge/knowledge.json").read_text(encoding="utf-8"))
     ui = sj["ui_bindings"]
+    concepts = {c["id"]: c for c in kb["concepts"]}
     waves = [w.strip() for w in sj["stringTables"]["internalWaveNameTableA"]["items"]]
     child = S.child_types("Patch")
 
@@ -126,10 +206,21 @@ def build() -> dict:
         for path in concrete:
             e = params[path]
             tone = path.startswith("fm.pat.tone[")
+            idx = kp["schema"].index(kb_path(path))
+            own = split_label(kp["label"], len(kp["schema"]), idx)
+            if own != kp["label"]:
+                e["label"] = own
+                e["help"] = readable_help((kp.get("meaning") or "") + (f" Values: {kp['values']}." if kp.get("values") else ""), concepts)
+                e["kb"] = kp["id"]
+                sections.setdefault(kp["group"], []).append(path)
+                long = enum_explanations(e["enum"], kp.get("meaning") or "")
+                if long:
+                    e["enumLong"] = long
+                continue
             sfx = suffix(path, drop_tone=True) if len(concrete) > (4 if tone else 1) else ""
             base_label = re.sub(r"\s*\d–\d\s*$", "", kp["label"]) if sfx else kp["label"]
             e["label"] = base_label + (f" {sfx}" if sfx else "")
-            e["help"] = (kp.get("meaning") or "") + (f" Values: {kp['values']}." if kp.get("values") else "")
+            e["help"] = readable_help((kp.get("meaning") or "") + (f" Values: {kp['values']}." if kp.get("values") else ""), concepts)
             e["kb"] = kp["id"]
             sections.setdefault(kp["group"], []).append(path)
             # Editor-manual value list as labels where the script has none
@@ -139,13 +230,25 @@ def build() -> dict:
             if (not e["enum"] and e["range"] and e["control"] == "slider"
                     and len(items) == e["range"][1] - e["range"][0] + 1 > 1 and all(items)):
                 e["enum"], e["control"], e["enumSource"] = items, "select", "knowledge"
+            long = enum_explanations(e["enum"], kp.get("meaning") or "")
+            if long:
+                e["enumLong"] = long
+
+    # --- simple mode (user's selection, 2026-09-28) and level styling ----------------
+    for path, e in params.items():
+        if e["label"] and short_label(e["label"]):
+            e["short"] = short_label(e["label"])
+        kb_id, group = e.get("kb"), next((g for g, ps in sections.items() if path in ps), None)
+        e["simple"] = (group in SIMPLE_GROUPS or kb_id in SIMPLE_IDS
+                       or bool(e["union"] and e["union"][1] > 0))       # MFX/chorus/reverb type parameters
+        e["level"] = group == "tone.output" or kb_id in LEVEL_IDS
 
     def order(paths):
         return sorted(dict.fromkeys(paths), key=lambda p: (params[p]["block"], params[p]["offset"]))
 
     def sec(gid, paths):
         g = groups[gid]
-        return {"id": gid, "title": g["title"], "help": g["text"], "params": order(paths)}
+        return {"id": gid, "title": g["title"], "help": readable_help(g["text"], concepts), "params": order(paths)}
 
     tone_groups = [g for g in groups if g.startswith("tone.")]
     panels = [
@@ -182,8 +285,8 @@ def build() -> dict:
             if entry:
                 for ep in entry["params"]:
                     for m in ep["model"]:
-                        label[m["path"]] = (ep["label"], (ep.get("meaning") or "") +
-                                            (f" Values: {ep['values']}." if ep.get("values") else ""))
+                        label[m["path"]] = (ep["label"], readable_help((ep.get("meaning") or "") +
+                                            (f" Values: {ep['values']}." if ep.get("values") else ""), concepts))
             plist = []
             if n > 0:
                 for m in g["members"]:

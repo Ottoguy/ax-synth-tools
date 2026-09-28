@@ -47,6 +47,30 @@ class WebModel(unittest.TestCase):
         self.assertEqual(MODEL["params"]["fm.pat.cho.chorusOutputSelect"]["enum"], ["MAIN", "MAIN+REV", "REV"])
         self.assertEqual(MODEL["params"]["fm.pat.common.monoPoly"]["enum"], ["MONO", "POLY"])   # forum 'mono' patch stores 0
 
+    def test_simple_mode_is_the_users_selection(self):
+        P2 = MODEL["params"]
+        tone0 = sorted(p.split(".", 3)[-1] for p, e in P2.items() if e["simple"] and p.startswith("fm.pat.tone[0]."))
+        self.assertEqual(tone0, sorted([
+            "toneLevel", "tonePan", "toneCoarseTune", "toneFineTune", "toneRandomPitchDepth", "waveNumberL", "waveNumberR",
+            "toneDelayMode", "toneDelayTime", "tvfFilterType", "tvfCutoffFrequency", "toneOutputAssign", "toneDrySendLevel",
+            "toneChorusSendLevelMFX", "toneReverbSendLevelMFX", "toneChorusSendLevelNonMFX", "toneReverbSendLevelNonMFX"]))
+        common_tab = [p for pan in MODEL["panels"] if pan["id"] == "common" for s in pan["sections"] for p in s["params"]]
+        self.assertTrue(common_tab and all(P2[p]["simple"] for p in common_tab))   # everything on the Common tab
+        matrix_tab = [p for pan in MODEL["panels"] if pan["id"] == "matrix" for s in pan["sections"] for p in s["params"]]
+        self.assertFalse(any(P2[p]["simple"] for p in matrix_tab))
+        self.assertFalse(any(P2[p]["simple"] for p in P2 if "mfxControl" in p))      # MFX control: expert only
+        self.assertTrue(P2["fm.pat.mfx.equalizer-loGain"]["simple"] and P2["fm.pat.rev.srvHall-tm"]["simple"])
+        self.assertTrue(all(P2[f"fm.pat.tone[0].{n}"]["level"] for n in ("toneDrySendLevel", "toneReverbSendLevelMFX", "toneLevel")))
+
+    def test_ui_texts_explain_values_and_hide_research_markup(self):
+        import re as _re
+        ft = MODEL["params"]["fm.pat.tone[0].tvfFilterType"]["enumLong"]
+        self.assertEqual([x["short"] for x in ft[1:5]], ["low pass", "band pass", "high pass", "peaking"])
+        self.assertEqual(MODEL["params"]["fm.pat.tone[0].toneReverbSendLevelNonMFX"]["short"], "Reverb Send · direct")
+        self.assertEqual(MODEL["params"]["fm.pat.tone[0].waveNumberR"]["label"], "WAVE NUMBER R")
+        texts = [e["help"] for e in MODEL["params"].values()] + [s["help"] for p in MODEL["panels"] for s in p["sections"]]
+        self.assertFalse([t for t in texts if _re.search(r"\[(I|D |F\]|3P)|See concept|knowledge/", t)])
+
     def test_effect_types_and_members(self):
         fx = MODEL["effects"]
         self.assertEqual([len(fx[k]["types"]) for k in ("mfx", "chorus", "reverb")], [79, 3, 5])

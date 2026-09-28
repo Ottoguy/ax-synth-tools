@@ -34,7 +34,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**94 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
+- Tests: `py -3 -m unittest discover -s tests` (**96 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
 - Git repo, branch `main`, remote `origin` = github.com/Ottoguy/ax-synth-tools. Commit/push only when the user asks. `.gitignore`: see §9.
 
 ## 4. Repository map
@@ -46,8 +46,8 @@ ax-synth-ai/
 ├── NEXT-STEPS.md             user-facing checklist: steps 0-6, safety rules, decisions to make
 ├── start-web-editor.bat      double-click: py -3 web/serve.py 8765 --edge (localhost server + Edge)
 ├── web/                      THE WEB EDITOR (static, vanilla JS ES modules, no build step)
-│   ├── index.html, style.css  page; tabs Common · Tone 1-4 · TMT · Matrix · Effects · System (read-only) · MIDI log
-│   ├── app.js                UI built from model.json; live edits (throttled ~25 ms; pending edits dropped on an effect type change), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, Changes tab (Reset/Revert all), routing box, link bar, ?selftest (fake MIDI output)
+│   ├── index.html, style.css  page + Start here help (<template id=helptext>); tabs Start here · Common · Tone 1-4 · TMT · Matrix · Effects · Changes · System (read-only) · MIDI log; Simple/Expert switch
+│   ├── app.js                UI built from model.json; live edits (throttled ~25 ms; pending edits dropped on an effect type change), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, Changes tab (Reset/Revert all), per-control ↺ reset, Simple/Expert mode (localStorage), routing box, link bar, #panel and ?expert URL shortcuts, ?selftest (fake MIDI output)
 │   ├── patch.js              Patch = 9 byte blocks; get/set via codec, effect type change (Editor behaviour), setWave (group 1/23), setLinked, clone/diff, routing(), .a8e io, display()
 │   ├── sysex.js              port of sysex.py + codec; buildDT1 TEMPORARY-ONLY GUARD, buildRQ1 read areas only
 │   ├── midi.js               Web MIDI: port /ax-?synth/i, Identity check, paced send queue, RQ1 request/reply
@@ -98,7 +98,7 @@ ax-synth-ai/
 │   ├── factory.py            factory Tone list access
 │   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
 ├── tests/test_schema.py      73 evidence tests (§10)
-├── tests/test_web.py         21 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
+├── tests/test_web.py         23 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
 ├── tests/web_vectors.mjs     Node runner for test_web.py
 └── research/
     ├── README.md             index: question -> file
@@ -139,7 +139,7 @@ ax-synth-ai/
 | 3 | `py -3 research/tools/build_parameter_db.py` | via `axsynth.schema` (schema + crosscheck.json) | `generated/parameters.{json,csv}` |
 | 4 | `py -3 research/tools/extract_tone_list.py` | `generated/owners-manual.pdf.txt` | `generated/factory-tones.{json,csv}` |
 | 5 | `py -3 research/tools/build_knowledge.py` | `knowledge/*.toml`, `knowledge/sound-design/digests/`, data model (via `axsynth.schema`), factory Tones | `knowledge/knowledge.{json,md}`, `knowledge/sound-design/sound-design.md`; exit 1 on broken links |
-| 6 | `py -3 research/tools/build_web_model.py` | schema, script-schema.json (ui_bindings, stringTables, effect_unions), knowledge.json, Script.xml (MFX assign tables), InitialData.a8e, factory Tones | `web/model.json` (test fails if stale); KB `values` lists become enum labels when their length = the range size (132 params, e.g. OFF/ON, MAIN/MAIN+REV/REV) |
+| 6 | `py -3 research/tools/build_web_model.py` | schema, script-schema.json (ui_bindings, stringTables, effect_unions), knowledge.json, Script.xml (MFX assign tables), InitialData.a8e, factory Tones | `web/model.json` (test fails if stale); KB `values` lists become enum labels when their length = the range size (132 params, e.g. OFF/ON, MAIN/MAIN+REV/REV); `enumLong` per-value explanations parsed from KB meanings (89 params, e.g. filter types); `simple` = the user's simple-mode selection (SIMPLE_GROUPS/SIMPLE_IDS + all effect-type members), `level` = fader styling (tone outputs/sends + levels); `short` on-screen labels; UI texts cleaned of research markup ([I]/[D…] tags, 'See concept', knowledge/ paths) |
 | – | `py -3 research/tools/backup_summary.py [backup.mid]` | newest `captures/backup/ax-synth-backup-*.mid`, factory Tones, knowledge.json (MFX names) | `generated/user-patches.{csv,json}` |
 | – | `py -3 research/tools/fetch_synth_secrets.py [outdir]` | soundonsound.com (network, ~1.5 s/request) | `reference/synth-secrets/NN-*.md`, `index.{md,json}` (git-ignored) |
 | – | `.\.venv\Scripts\python.exe research/tools/pdf2txt.py x <outdir> <pdf>...` | PDFs | `<outdir>/<pdf stem, spaces→_>.txt` (argv[1] is an unused placeholder); rename to the `*.pdf.txt` convention by hand |

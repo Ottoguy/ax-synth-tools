@@ -129,6 +129,12 @@ Some reverb parameters (e.g. SRV time or density at minimum) also make it almost
 - **Edit tones together** (the bar on the Tone tabs): tick Tones 1–4, and an edit on one tone is applied to all ticked tones, like Shift + TONE SELECT in Roland's Editor.
 - On/off and choice settings now show names (OFF/ON, MONO/POLY, MAIN/MAIN+REV/REV …) instead of 0/1/2.
 
+**Newer additions (2026-09-28, reload the page):**
+- A **Start here** tab with a short how-to (it opens by itself the first time).
+- **Simple / Expert mode** (the switch at the top right). Simple mode shows only the easy settings you picked; Expert shows everything, with the easy ones marked by a blue edge. Levels and sends always look like green faders.
+- A small **↺** next to every setting you changed: back to the value from the last Read / Load / Open.
+- Filter types and other choices are explained in words (e.g. "LPF (low pass): reduces all frequencies above the cutoff…").
+
 If reverb still stays silent after **Revert all**, copy the **MIDI log** into `captures/web/log.txt` and tell me.
 
 **One MFX at a time?** Yes: the AX-Synth has one MFX, one Chorus and one Reverb per sound. For tremolo *and* phaser:
