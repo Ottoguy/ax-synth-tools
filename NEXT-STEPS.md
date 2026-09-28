@@ -114,7 +114,31 @@ Only if you're curious. It isn't needed for the goal. With MIDI-OX set up as in 
 
 ---
 
-## Step 4: The web editor = first write (15 minutes), ready now
+## Step 4: The web editor = first write ✅ done (2026-09-28)
+
+**It works on your synth.** You confirmed tone delay, volume, octave shift and Wave settings on all tones (`captures/first-write/notes.md`).
+
+**About the reverb that stopped working.** Changing the reverb type works like Roland's Editor. But reverb is only heard if something is *sent* to it:
+- the tones' REV send levels
+- the MFX REVERB SEND LEVEL
+- or the chorus routed into the reverb
+
+Some reverb parameters (e.g. SRV time or density at minimum) also make it almost inaudible. I also fixed a small bug where a value you were dragging could arrive just *after* a type change. **New in the editor (reload the page to get it):**
+- **Changes tab**: every value you changed since Read/Load/Open, with **Reset** per row and **Revert all**. Try Revert all on the sound where reverb disappeared.
+- **Effects routing box** (top of the Effects tab, ⚠ on the tab when something is off): says in plain words whether MFX, chorus and reverb are audible and why not, e.g. "Reverb SRV HALL is inaudible: nothing is sent to it (Tone 1 REV send 0 …)". I checked its rules on all 256 factory sounds: the only warnings are the 4 sounds where Roland left reverb unused and the 8 with REVERB LEVEL 0.
+- **Edit tones together** (the bar on the Tone tabs): tick Tones 1–4, and an edit on one tone is applied to all ticked tones, like Shift + TONE SELECT in Roland's Editor.
+- On/off and choice settings now show names (OFF/ON, MONO/POLY, MAIN/MAIN+REV/REV …) instead of 0/1/2.
+
+If reverb still stays silent after **Revert all**, copy the **MIDI log** into `captures/web/log.txt` and tell me.
+
+**One MFX at a time?** Yes: the AX-Synth has one MFX, one Chorus and one Reverb per sound. For tremolo *and* phaser:
+1. set the MFX to **PHASER**
+2. on a Tone tab, tick **Edit tones together** for the tones you use
+3. in the LFO section, set LFO1 **WAVEFORM** (e.g. TRI), **RATE**, and **DEPTH TVA** (= tremolo)
+
+Or use a combination MFX: 27 TREMOLO CHORUS, or 66–77 (e.g. OVERDRIVE->CHORUS, CHORUS->DELAY).
+
+### How the web editor works (reference)
 
 There's now a **web editor** with every sound parameter of Roland's AX-Synth Editor: Common, Tone 1–4, TMT/Structure, Matrix Control, all 78 MFX types, chorus and reverb, with the Editor manual's labels and explanations (hover over a name). It talks to the synth directly from Microsoft Edge.
 
@@ -125,7 +149,7 @@ There's now a **web editor** with every sound parameter of Roland's AX-Synth Edi
 2. Double-click **`start-web-editor.bat`** in the project folder. A small black window opens (the local server; leave it open), and Edge opens `http://localhost:8765`.
 3. Click **Connect**. The first time, Edge asks whether the site may use MIDI devices / control them: click **Allow**. The status turns green: "Connected: Roland AX-Synth".
 
-**Then, as step 4:**
+**First use (done):**
 - [ ] On the synth, select **LEAD GUITAR 1** (SearingGtr 1). Click **Read from synth**: the name field should say "SearingGtr 1" and the controls show its values. The **System (read-only)** tab shows your system settings.
 - [ ] **Open .a8e** → `patches/guitar01.a8e`. It's sent to the synth automatically and read back. Next to the buttons you should see **"✓ sent and verified"**. That's the first write of our own bytes, checked byte for byte.
 - [ ] Listen, and note in `captures/first-write/notes.md`:
@@ -147,7 +171,7 @@ There's now a **web editor** with every sound parameter of Roland's AX-Synth Edi
 
 To *keep* a sound in one of the synth's memory slots, save the `.a8e`, open it in Roland's Editor and use its WRITE, as before. The web editor deliberately can't store sounds (see step 5, question 7).
 
-**Then comes the listening test.** Once step 4 works, I'll prepare 6–10 small patches (`.a8e` files you open in the web editor). Each starts from a factory sound and changes *one* thing: brightness (cutoff), resonance, attack, release, vibrato, reverb, chorus, an effect type, a layer on or off. You say whether you hear what the model predicts. That confirms our parameter meanings by ear, which is the basis for the "big knobs".
+**Next: the listening test.** I'll prepare 6–10 small patches (`.a8e` files you open in the web editor). Each starts from a factory sound and changes *one* thing: brightness (cutoff), resonance, attack, release, vibrato, reverb, chorus, an effect type, a layer on or off. You say whether you hear what the model predicts. That confirms our parameter meanings by ear, which is the basis for the "big knobs".
 
 ---
 

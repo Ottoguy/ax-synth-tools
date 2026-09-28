@@ -81,6 +81,8 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
     - **The panel volume edit ("UOl") is a FAVORITE-memory value**, not a patch or System Controller value (Owner's Manual p.26; replies before and after were byte-identical). The prediction `patchLevel` is refuted.
     - The stored System settings equal the Editor's defaults (System Common decoded in the dump; System Controller after power-cycling = `InitialData.a8e`).
 
+20. **Our own writes work [user report, `captures/first-write/`, 2026-09-28].** The web editor (`web/`) sends live DT1s to the Temporary Patch via Web MIDI in Edge. The user confirmed audible changes for tone delay, volume, octave shift and WG settings on all tones. This closes the chain `model → encoder → DT1 → synth` for our bytes. The reverb became inaudible after reverb type/param edits; the cause is unconfirmed. Hence web editor v2: a Changes/Revert tab, an effect-routing check (rules checked on all 256 factory patches) and linked-tone editing.
+
 ## What we strongly suspect (evidence-backed, unverified)
 
 
@@ -174,6 +176,6 @@ is **direct, with no hidden translation layer**: struct offsets equal SysEx addr
 | `src/axsynth/schema.py` | Typed model: `Schema`, `Parameter`, `decode_value`/`encode_value`, address helpers |
 | `src/axsynth/sysex.py` | Checksum, DT1/RQ1/Identity Request builders, whole-patch encoder matching Roland's export, parser, `.syx`/SMF readers (no MIDI I/O) |
 | `captures/live/` | User's MIDI-OX logs of the Editor/Librarian live output (step 2) + `notes.md` |
-| `tests/test_schema.py`, `tests/test_web.py` | 73 + 16 evidence tests (`py -3 -m unittest discover -s tests`) |
+| `tests/test_schema.py`, `tests/test_web.py` | 73 + 21 evidence tests (`py -3 -m unittest discover -s tests`) |
 
 Regenerate: `extract_script_schema.py` → `crosscheck_midi_impl.py` → `build_parameter_db.py` (the `.venv` with `pypdf` is only needed for `pdf2txt.py`).

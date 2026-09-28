@@ -119,6 +119,96 @@ export class Patch {
   name() {
     return this.get("fm.pat.common.patchName").trimEnd();
   }
+
+  clone() {
+    return new Patch(this.model, this.blocks);
+  }
+
+  // Visible parameters that differ from `original`. Effect members count only
+  // for the effect type active in either patch.
+  diff(original) {
+    const out = [];
+    for (const [path, p] of Object.entries(this.model.params)) {
+      if (p.hidden) continue;
+      if (p.union && p.union[1] > 0) {
+        const kind = p.union[0];
+        if (this.effectType(kind) !== p.union[1] && original.effectType(kind) !== p.union[1]) continue;
+      }
+      const from = original.get(path);
+      const to = this.get(path);
+      if (from !== to) out.push({ path, label: p.label, from, to });
+    }
+    return out;
+  }
+
+  // An edit to fm.pat.tone[t].X applied to every tone in `tones` (0-based),
+  // like Roland's Editor with several TONE SELECT buttons pressed.
+  setLinked(path, value, tones) {
+    const m = path.match(/^fm\.pat\.tone\[(\d)\]\.(.+)$/);
+    const targets = m && tones.includes(Number(m[1])) ? tones : [m ? Number(m[1]) : null];
+    const changes = [];
+    for (const t of targets) {
+      const p = m ? `fm.pat.tone[${t}].${m[2]}` : path;
+      if (this.model.params[p].control === "wave") changes.push(...this.setWave(p, value));
+      else changes.push(this.set(p, value));
+    }
+    return changes;
+  }
+}
+
+const TONE_OUTPUT_MFX = 0;
+const PATCH_OUTPUT = { MFX: 0, TONE: 13 };
+
+// Why each effect unit is or isn't audible. Rules from the Editor manual
+// (PATCH/TONE OUTPUT ASSIGN, sends, CHORUS OUTPUT SELECT), checked against the
+// 256 factory patches: 252 are consistent, 4 have an unused reverb.
+export function routing(patch, setup = null) {
+  const g = (p) => patch.get(p);
+  const typeName = (kind) => patch.model.effects[kind].types.find((t) => t.number === patch.effectType(kind))?.name;
+  const active = [0, 1, 2, 3].filter((t) => g(`fm.pat.tmt.tmtToneSwitch[${t}]`));
+  const pa = g("fm.pat.common.patchOutputAssign");
+  const viaMfx = (t) => pa === PATCH_OUTPUT.MFX || (pa === PATCH_OUTPUT.TONE && g(`fm.pat.tone[${t}].toneOutputAssign`) === TONE_OUTPUT_MFX);
+  const send = (t, unit) => g(`fm.pat.tone[${t}].tone${unit}SendLevel${viaMfx(t) ? "MFX" : "NonMFX"}`);
+  const anyVia = active.some(viaMfx);
+  const out = [];
+  const add = (level, unit, text) => out.push({ level, unit, text });
+  const switchOff = (name) => setup && setup[name] === 0;
+  if (!active.length) add("warn", "patch", "No tone is switched on (TMT tab, TONE SWITCH): the patch is silent.");
+
+  // MFX
+  const mfx = patch.effectType("mfx");
+  const mfxAudible = mfx !== 0 && anyVia && g("fm.pat.mfx.mfxDrySendLevel") > 0;
+  if (mfx === 0) add("info", "mfx", "MFX is THROUGH (no multi-effect).");
+  else if (!anyVia) add("warn", "mfx", `MFX ${typeName("mfx")} is unheard: no active tone is routed to the MFX (OUTPUT ASSIGN).`);
+  else if (!mfxAudible) add("warn", "mfx", `MFX ${typeName("mfx")}: its OUTPUT LEVEL is 0, so only its chorus/reverb sends are heard.`);
+  else add("ok", "mfx", `MFX ${typeName("mfx")} is in the signal path (${active.filter(viaMfx).map((t) => `Tone ${t + 1}`).join(", ")}).`);
+  if (switchOff("mfx1Switch")) add("warn", "mfx", "MFX is switched off in the synth's Setup (not stored in the patch).");
+
+  // Chorus
+  const cho = patch.effectType("chorus");
+  const choFeeds = active.filter((t) => send(t, "Chorus") > 0).map((t) => `Tone ${t + 1}`);
+  if (anyVia && g("fm.pat.mfx.mfxChorusSendLevel") > 0) choFeeds.push("MFX CHORUS SEND");
+  const choAudible = cho !== 0 && g("fm.pat.cho.chorusLevel") > 0 && choFeeds.length > 0;
+  if (cho === 0) add("info", "chorus", "Chorus is OFF.");
+  else if (g("fm.pat.cho.chorusLevel") === 0) add("warn", "chorus", `Chorus ${typeName("chorus")} is inaudible: CHORUS LEVEL is 0.`);
+  else if (!choFeeds.length) add("warn", "chorus", `Chorus ${typeName("chorus")} is inaudible: no tone sends to it (tone CHO sends are 0) and the MFX CHORUS SEND LEVEL is 0 or no tone goes through the MFX.`);
+  else add("ok", "chorus", `Chorus ${typeName("chorus")} is fed by ${choFeeds.join(", ")}.`);
+  if (switchOff("chorusSwitch")) add("warn", "chorus", "Chorus is switched off in the synth's Setup (not stored in the patch).");
+
+  // Reverb
+  const rev = patch.effectType("reverb");
+  const revFeeds = active.filter((t) => send(t, "Reverb") > 0).map((t) => `Tone ${t + 1}`);
+  if (anyVia && g("fm.pat.mfx.mfxReverbSendLevel") > 0) revFeeds.push("MFX REVERB SEND");
+  const choSel = g("fm.pat.cho.chorusOutputSelect"); // MAIN, MAIN+REV, REV
+  if (choAudible && choSel >= 1) revFeeds.push("the chorus (CHORUS OUTPUT SELECT)");
+  if (rev === 0) add("info", "reverb", "Reverb is OFF.");
+  else if (g("fm.pat.rev.reverbLevel") === 0) add("warn", "reverb", `Reverb ${typeName("reverb")} is inaudible: REVERB LEVEL is 0.`);
+  else if (!revFeeds.length) {
+    const sends = active.map((t) => `Tone ${t + 1} REV send ${send(t, "Reverb")}`).join(", ");
+    add("warn", "reverb", `Reverb ${typeName("reverb")} is inaudible: nothing is sent to it (${sends}; MFX REVERB SEND LEVEL ${g("fm.pat.mfx.mfxReverbSendLevel")}; chorus not routed to reverb).`);
+  } else add("ok", "reverb", `Reverb ${typeName("reverb")} (level ${g("fm.pat.rev.reverbLevel")}) is fed by ${revFeeds.join(", ")}.`);
+  if (switchOff("reverbSwitch")) add("warn", "reverb", "Reverb is switched off in the synth's Setup (not stored in the patch).");
+  return out;
 }
 
 // Display text for a raw value (enum label, or number with the Editor's offset).

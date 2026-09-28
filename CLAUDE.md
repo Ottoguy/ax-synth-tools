@@ -14,7 +14,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
   - our own read-only RQ1 file works (`captures/rq1/`)
 
   **Reading is solved.**
-- **Phase 2 started (2026-09-28, user go-ahead):** the **web editor** (`web/`, `start-web-editor.bat`). It has every Editor patch parameter, live DT1s to the **Temporary Patch only**, read-back verification, load from a stored slot (read-only), `.a8e` open/save, and System/Setup read-only. It runs in Edge via Web MIDI on localhost. It hasn't been run against the synth yet: NEXT-STEPS step 4 is its first use (= the first write of our bytes). Then a listening test (single-change `.a8e` patches), then 3.4/step 5 (descriptions, big-knob decisions).
+- **Phase 2 started (2026-09-28, user go-ahead):** the **web editor** (`web/`, `start-web-editor.bat`). It has every Editor patch parameter, live DT1s to the **Temporary Patch only**, read-back verification, load from a stored slot (read-only), `.a8e` open/save, and System/Setup read-only. It runs in Edge via Web MIDI on localhost. **Step 4 done (2026-09-28): it works on the synth** (the user confirmed tone delay, volume, octave shift and WG edits; `captures/first-write/notes.md`), so the synth accepts our DT1s. v2 adds a Changes tab (diff vs the snapshot, Reset/Revert all), an Effects routing check and Edit tones together. Open: the user lost audible reverb after changing the reverb type/params (log not saved; the routing box and Revert all should explain/fix it). Next: the listening test (single-change `.a8e` patches), then 3.4/step 5 (descriptions, big-knob decisions).
 - **Not built yet, on purpose:** AI preset generator, big-knob GUI. Don't build these unless the user asks. MIDI I/O exists **only** in `web/midi.js` (Web MIDI), behind the Temporary-only guard in `web/sysex.js`. Keep code evidence-driven and small; no speculative application code.
 - **The user's checklist of manual tasks** (hardware steps, captures, decisions) is `NEXT-STEPS.md`. Results go under `captures/` (`live/` exists; next: `mitm/`, `backup/`, `bulkdump/`, `rq1/`, …). The user saves MIDI-OX *Monitor* text logs (Windows may add a double `.txt.txt`), and may skip writing notes.md; write it for them from their message. When the user says "step N done", read those captures, decode them with the tools, and update research, tests and NEXT-STEPS.
 
@@ -34,7 +34,7 @@ Loaded automatically by Claude Code. Written for LLM agents; dense on purpose. L
 - Python: **`py -3`** (3.14). `python` isn't on PATH. Every run prints a harmless `Could not find platform independent libraries <prefix>` on stderr; redirect with `2>$null`. Exit code 255 when piping into `Select-Object -First` is also harmless.
 - `.venv/` (project-local) exists **only** for `pypdf` (used by `research/tools/pdf2txt.py`); run it as `.\.venv\Scripts\python.exe`. Everything else is stdlib-only and runs with `py -3`.
 - PowerShell mangles quotes passed to native exes. Put non-trivial Python in a script file, not in `py -3 -c "..."`.
-- Tests: `py -3 -m unittest discover -s tests` (**89 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
+- Tests: `py -3 -m unittest discover -s tests` (**94 tests, all passing**; the backup/bulk-dump classes skip if those files are absent, and `tests/test_web.py`'s JS tests skip without Node). No pytest. Node 24 and Edge are installed (Chrome isn't).
 - Git repo, branch `main`, remote `origin` = github.com/Ottoguy/ax-synth-tools. Commit/push only when the user asks. `.gitignore`: see §9.
 
 ## 4. Repository map
@@ -47,8 +47,8 @@ ax-synth-ai/
 ├── start-web-editor.bat      double-click: py -3 web/serve.py 8765 --edge (localhost server + Edge)
 ├── web/                      THE WEB EDITOR (static, vanilla JS ES modules, no build step)
 │   ├── index.html, style.css  page; tabs Common · Tone 1-4 · TMT · Matrix · Effects · System (read-only) · MIDI log
-│   ├── app.js                UI built from model.json; live edits (throttled ~25 ms), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, ?selftest
-│   ├── patch.js              Patch = 9 byte blocks; get/set via codec, effect type change (Editor behaviour), setWave (group 1/23), .a8e io, display()
+│   ├── app.js                UI built from model.json; live edits (throttled ~25 ms; pending edits dropped on an effect type change), Send+verify (60 ms/block), Read, Load slot, INIT, .a8e open/save, Changes tab (Reset/Revert all), routing box, link bar, ?selftest (fake MIDI output)
+│   ├── patch.js              Patch = 9 byte blocks; get/set via codec, effect type change (Editor behaviour), setWave (group 1/23), setLinked, clone/diff, routing(), .a8e io, display()
 │   ├── sysex.js              port of sysex.py + codec; buildDT1 TEMPORARY-ONLY GUARD, buildRQ1 read areas only
 │   ├── midi.js               Web MIDI: port /ax-?synth/i, Identity check, paced send queue, RQ1 request/reply
 │   ├── model.json            GENERATED by research/tools/build_web_model.py (1,840 params, panels, effect types, waves, .a8e template)
@@ -98,7 +98,7 @@ ax-synth-ai/
 │   ├── factory.py            factory Tone list access
 │   └── knowledge.py          knowledge-base lookup (describe(path), effect(kind, n), concept(id), param(id))
 ├── tests/test_schema.py      73 evidence tests (§10)
-├── tests/test_web.py         16 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
+├── tests/test_web.py         21 web-editor tests (model current/complete; JS codec via Node = Python = Roland bytes; guard)
 ├── tests/web_vectors.mjs     Node runner for test_web.py
 └── research/
     ├── README.md             index: question -> file
@@ -139,7 +139,7 @@ ax-synth-ai/
 | 3 | `py -3 research/tools/build_parameter_db.py` | via `axsynth.schema` (schema + crosscheck.json) | `generated/parameters.{json,csv}` |
 | 4 | `py -3 research/tools/extract_tone_list.py` | `generated/owners-manual.pdf.txt` | `generated/factory-tones.{json,csv}` |
 | 5 | `py -3 research/tools/build_knowledge.py` | `knowledge/*.toml`, `knowledge/sound-design/digests/`, data model (via `axsynth.schema`), factory Tones | `knowledge/knowledge.{json,md}`, `knowledge/sound-design/sound-design.md`; exit 1 on broken links |
-| 6 | `py -3 research/tools/build_web_model.py` | schema, script-schema.json (ui_bindings, stringTables, effect_unions), knowledge.json, Script.xml (MFX assign tables), InitialData.a8e, factory Tones | `web/model.json` (test fails if stale) |
+| 6 | `py -3 research/tools/build_web_model.py` | schema, script-schema.json (ui_bindings, stringTables, effect_unions), knowledge.json, Script.xml (MFX assign tables), InitialData.a8e, factory Tones | `web/model.json` (test fails if stale); KB `values` lists become enum labels when their length = the range size (132 params, e.g. OFF/ON, MAIN/MAIN+REV/REV) |
 | – | `py -3 research/tools/backup_summary.py [backup.mid]` | newest `captures/backup/ax-synth-backup-*.mid`, factory Tones, knowledge.json (MFX names) | `generated/user-patches.{csv,json}` |
 | – | `py -3 research/tools/fetch_synth_secrets.py [outdir]` | soundonsound.com (network, ~1.5 s/request) | `reference/synth-secrets/NN-*.md`, `index.{md,json}` (git-ignored) |
 | – | `.\.venv\Scripts\python.exe research/tools/pdf2txt.py x <outdir> <pdf>...` | PDFs | `<outdir>/<pdf stem, spaces→_>.txt` (argv[1] is an unused placeholder); rename to the `*.pdf.txt` convention by hand |
@@ -299,6 +299,17 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 - Received real-time CCs 71–75 (+76–78 per MIDI Impl.), 91 and 93 are relative offsets that aren't stored.
 - Patch-level macro-like params: PatchCommon `cutoffOffset`, `resonanceOffset`, `attackTimeOffset`, `releaseTimeOffset`, `velocitySensOffset` (1–127, 64 = 0).
 
+**Effect routing (web/patch.js `routing`, Editor manual; checked on all 256 factory patches).**
+- One MFX, one Chorus and one Reverb per patch. A second modulation comes from the tone LFOs (DEPTH TVA = tremolo, PAN, PITCH, TVF) or combo MFX types 27, 66–77.
+- A tone goes via the MFX if PATCH OUTPUT ASSIGN = MFX, or = TONE and TONE OUTPUT ASSIGN = MFX.
+- Reverb is audible iff type ≠ OFF, level > 0 and it has a feed:
+  - an active tone's `toneReverbSendLevelMFX` (via MFX) or `…NonMFX` > 0
+  - or a via-MFX tone and `mfxReverbSendLevel` > 0
+  - or an audible chorus with CHORUS OUTPUT SELECT = MAIN+REV/REV
+- Chorus is analogous.
+- On the factory patches, the only reverb warnings are 4 with an unused reverb (71, 101, 137, 182) and 8 with REVERB LEVEL 0.
+- The Setup mfx1/chorus/reverb switches (not in the patch) can also mute an effect.
+
 **Knowledge base facts.**
 - All 78 MFX, 2 chorus and 4 reverb types are documented, with 697 effect-parameter links.
 - Every non-reserved `fm` value has an entry.
@@ -315,7 +326,7 @@ Patch blocks (offset → bytes): Common `00 00 00`→79 · MFX `00 02 00`→145 
 
 ## 12. Open questions (need hardware or live captures; see REPORT.md "What remains unknown")
 
-- Whether the synth accepts **our** DT1s to Temporary (NEXT-STEPS 4, via the web editor; whole blocks 60 ms apart, live edits ≥10 ms) and whether Web MIDI SysEx works on the user's generic driver.
+- ~~Whether the synth accepts our DT1s / Web MIDI SysEx works~~: **yes** (step 4, 2026-09-28). Open: the user's lost reverb after reverb type/param changes (cause unconfirmed; ask for `captures/web/log.txt` if it recurs).
 - Whether resetting MFX Control Assign to OFF on an effect type change matches the Editor (only the all-defaults case was captured) [I].
 - Whether System DT1s (SYNC) persist (undecidable so far: stored = Editor defaults).
 - Where the sleep interval, USB driver mode and live FAVORITE volume sit (optional NEXT-STEPS 3.5); the 146 hidden bits per bulk-dump patch record.

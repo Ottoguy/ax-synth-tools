@@ -20,6 +20,7 @@ S = Schema.load()
 P = {p.path: p for p in S.parameters("fm")}
 MODEL = json.loads((ROOT / "web/model.json").read_text(encoding="utf-8"))
 NODE = shutil.which("node")
+BACKUP = ROOT / "captures/backup/ax-synth-backup-2026-09-26.mid"
 hexs = lambda b: bytes(b).hex(" ").upper()  # noqa: E731
 
 
@@ -41,6 +42,10 @@ class WebModel(unittest.TestCase):
                 continue
             self.assertTrue(e["label"], path)
             self.assertTrue(path in placed or path in members, path)
+
+    def test_editor_manual_value_lists_become_labels(self):
+        self.assertEqual(MODEL["params"]["fm.pat.cho.chorusOutputSelect"]["enum"], ["MAIN", "MAIN+REV", "REV"])
+        self.assertEqual(MODEL["params"]["fm.pat.common.monoPoly"]["enum"], ["MONO", "POLY"])   # forum 'mono' patch stores 0
 
     def test_effect_types_and_members(self):
         fx = MODEL["effects"]
@@ -80,10 +85,18 @@ class WebCodec(unittest.TestCase):
                         ["fm.pat.common.pitchBendRangeDown", 24], ["fm.pat.tone[0].tvfFilterType", 1]],
         }
         cls.cases["guard"] = [[list(bytes.fromhex(a)), n] for a, n in cls.cases["guard"]]
+        tmp = []
+        if BACKUP.exists():   # the user's backup (git-ignored): routing over all 256 factory patches
+            with tempfile.NamedTemporaryFile("wb", suffix=".syx", delete=False) as fb:
+                fb.write(b"".join(sysex.smf_sysex(BACKUP.read_bytes())))
+            cls.cases["backup"] = fb.name
+            tmp.append(fb.name)
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False, encoding="utf-8") as f:
             json.dump(cls.cases, f)
+        tmp.append(f.name)
         run = subprocess.run([NODE, str(ROOT / "tests/web_vectors.mjs"), f.name], capture_output=True, text=True)
-        Path(f.name).unlink()
+        for name in tmp:
+            Path(name).unlink()
         if run.returncode:
             raise RuntimeError(run.stderr)
         cls.out = json.loads(run.stdout)
@@ -158,6 +171,39 @@ class WebCodec(unittest.TestCase):
 
     def test_display(self):
         self.assertEqual(self.out["display"][:4], ["127", "61: Overdrive Gt", "0 dB", "STEP PITCH SHIFTER"])
+
+
+    def test_diff_lists_exactly_the_changes(self):
+        d = self.out["diff"]
+        self.assertEqual(sorted(map(tuple, d["d1"])), [("fm.pat.common.patchLevel", 127, 100),
+                                                       ("fm.pat.tone[0].tvfCutoffFrequency", 127, 40)])
+        self.assertIn("fm.pat.rev.reverbType", d["d2"])
+        self.assertTrue(all(p.startswith(("fm.pat.rev.", "fm.pat.common.patchLevel", "fm.pat.tone[0].tvf")) for p in d["d2"]))
+        self.assertEqual(d["origUntouched"], 127)   # clone is independent
+
+    def test_linked_tones(self):
+        lk = self.out["linked"]
+        self.assertEqual(lk["values"], [33, 44, 33, 127])   # tone 2 isn't linked: only itself changes
+        self.assertEqual(lk["dt1"], [self.py_dt1(f"fm.pat.tone[{t}].tvfCutoffFrequency", v) for t, v in ((0, 33), (2, 33), (1, 44))])
+
+    def test_routing_rules(self):
+        rc = self.out["routingCases"]
+        self.assertEqual(rc["silent"], ["warn"])     # reverb on, nothing sent to it
+        self.assertEqual(rc["toneFed"], ["ok"])      # tone REV send
+        self.assertEqual(rc["choFed"], ["ok"])       # chorus -> reverb (OUTPUT SELECT = REV)
+        self.assertEqual(rc["setupOff"], ["ok", "warn"])
+        init = self.out["routing"]["original-roland-files/Script/A8EE/InitialData.a8e"]
+        self.assertEqual({r["level"] for r in init if r["unit"] in ("mfx", "chorus", "reverb")}, {"info"})
+
+    @unittest.skipUnless(BACKUP.exists(), "user's backup not present")
+    def test_routing_on_all_factory_patches(self):
+        """Factory patches with reverb on and level > 0: only the 4 with an
+        unused reverb (no sends, no chorus->reverb) are flagged; the other
+        reverb warnings are patches whose REVERB LEVEL is 0."""
+        b = self.out["backupRouting"]
+        self.assertEqual(b["reverbOn"], 193)
+        self.assertEqual(b["reverbWarn"], [71, 101, 137, 182])   # Acdg Bass, Dist.Fingerz, Octa Brass, …
+        self.assertEqual(b["reverbLevel0"], [154, 165, 170, 176, 184, 187, 189, 191])
 
     def test_wave_selection_sets_the_internal_wave_group(self):
         self.assertEqual(self.out["wave"], [2, 1, 23])

@@ -132,6 +132,13 @@ def build() -> dict:
             e["help"] = (kp.get("meaning") or "") + (f" Values: {kp['values']}." if kp.get("values") else "")
             e["kb"] = kp["id"]
             sections.setdefault(kp["group"], []).append(path)
+            # Editor-manual value list as labels where the script has none
+            # (e.g. CHORUS OUTPUT SELECT "MAIN, MAIN+REV, REV"): only when the
+            # list length equals the raw range size [D].
+            items = [x.strip() for x in (kp.get("values") or "").split(",")]
+            if (not e["enum"] and e["range"] and e["control"] == "slider"
+                    and len(items) == e["range"][1] - e["range"][0] + 1 > 1 and all(items)):
+                e["enum"], e["control"], e["enumSource"] = items, "select", "knowledge"
 
     def order(paths):
         return sorted(dict.fromkeys(paths), key=lambda p: (params[p]["block"], params[p]["offset"]))
