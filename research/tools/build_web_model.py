@@ -54,6 +54,46 @@ EXPERT_IDS = {"mfx.output_assign"}   # user: expert-only even though its group i
 # Shown as level faders (graphically distinct): tone outputs/sends + the other volume-like levels.
 LEVEL_IDS = {"common.level", "tone.level", "mfx.output_level", "mfx.chorus_send", "mfx.reverb_send",
              "chorus.level", "reverb.level"}
+# Expert-only effect members (user, 2026-09-29): those the manual doesn't list
+# (schemaOnly tempo-sync variants) and those whose on-screen value would be a
+# raw number above this (effect values without a display offset show 32768…).
+SIMPLE_MAX_SHOWN = 32000
+
+# Wave categories for the two-step wave picker (UI only; the wave number is
+# unchanged). Roland publishes no categories for these 313 waves: the groups
+# are our reading of the names, which the list keeps together by instrument
+# [I]. (name, [(first, last), ...]); every wave 1-313 is in exactly one group
+# (tests/test_web.py). 0 = OFF.
+WAVE_CATEGORIES = [
+    ("OFF (no wave)", [(0, 0)]),
+    ("Piano & electric piano", [(1, 16), (254, 257)]),
+    ("Clav, harpsichord & celesta", [(17, 25)]),
+    ("Organ", [(26, 48), (258, 281), (309, 313)]),
+    ("Guitar", [(49, 62)]),
+    ("Harp, sitar & dulcimer", [(63, 68)]),
+    ("Bass", [(69, 98)]),
+    ("Woodwind, sax & reed", [(99, 112), (164, 164), (282, 296)]),
+    ("Brass", [(113, 118), (297, 300)]),
+    ("Strings & orchestra", [(119, 120), (301, 304)]),
+    ("Synth pads & big saws", [(121, 127)]),
+    ("Voices & choir", [(128, 137), (305, 308)]),
+    ("Mallets & bells", [(138, 155)]),
+    ("Digital & synth textures", [(156, 163), (165, 173)]),
+    ("Synth saw", [(174, 193)]),
+    ("Synth square & pulse", [(194, 212)]),
+    ("Synth triangle, sine & other", [(213, 221)]),
+    ("Noise & atmosphere", [(222, 233)]),
+    ("Formant & vox", [(234, 241)]),
+    ("Attacks & clicks", [(242, 253)]),
+]
+# MFX groups for the two-step type picker: Roland's own categories from the
+# Editor manual's Effects List (knowledge/mfx-*.toml `category`) with
+# plain-English names. A Roland category with a single type goes to
+# "Miscellaneous" (user request 2026-09-29); 0 THROUGH is its own group.
+MFX_CATEGORY_NAMES = {"FILTER": "Filter & EQ", "MODULATION": "Modulation (phaser, tremolo, pan…)",
+                      "CHORUS": "Chorus & flanger", "DYNAMICS": "Drive & dynamics", "DELAY": "Delay",
+                      "LO-FI": "Lo-fi", "PITCH": "Pitch shift", "REVERB": "Reverb",
+                      "COMBINATION": "Combinations (two effects in series)"}
 
 
 def enum_explanations(labels, meaning: str):
@@ -135,6 +175,32 @@ def suffix(path: str, drop_tone: bool) -> str:
     parts = re.findall(r"\d+", re.sub(r"\[\d+\]", "", name))
     parts += [str(int(i) + 1) for i in re.findall(r"\[(\d+)\]", name)]
     return "-".join(parts)
+
+
+def shown_max(e: dict) -> int:
+    """Largest number a slider shows for this value (0 for labelled values)."""
+    if e["enum"] or e["control"] != "slider" or not e["range"]:
+        return 0
+    off = e["displayOffset"] or 0
+    return max(abs(e["range"][0] + off), abs(e["range"][1] + off))
+
+
+def mfx_categories(types: list) -> list:
+    """[{name, roland, types}] in type-number order (see MFX_CATEGORY_NAMES)."""
+    count: dict = {}
+    for t in types:
+        count[t["category"]] = count.get(t["category"], 0) + 1
+    out: dict = {}
+    for t in types:
+        c = t["category"]
+        name = ("No effect (THROUGH)" if t["number"] == 0 else
+                MFX_CATEGORY_NAMES[c] if count[c] > 1 else "Miscellaneous")
+        out.setdefault(name, {"name": name, "roland": [], "types": []})
+        if c and c not in out[name]["roland"]:
+            out[name]["roland"].append(c)
+        out[name]["types"].append(t["number"])
+    misc = out.pop("Miscellaneous", None)
+    return list(out.values()) + ([misc] if misc else [])
 
 
 def mfx_assign_tables(schema_json) -> dict[int, dict]:
@@ -310,6 +376,12 @@ def build() -> dict:
         effects[kind] = {"discriminator": disc, "types": types}
         params[disc]["enum"] = [t["name"] for t in types]
         params[disc]["control"] = "effectType"
+    effects["mfx"]["categories"] = mfx_categories(effects["mfx"]["types"])
+
+    # --- expert-only effect members (see SIMPLE_MAX_SHOWN) -----------------------------
+    for path, e in params.items():
+        if e["union"] and e["union"][1] > 0 and (e.get("schemaOnly") or shown_max(e) > SIMPLE_MAX_SHOWN):
+            e["simple"] = False
 
     # --- read-only System/Setup ------------------------------------------------------
     ro_params = []
@@ -338,6 +410,7 @@ def build() -> dict:
                              "original-roland-files/Script/A8EE/InitialData.a8e"],
                  "temporaryPatch": sysex.TEMPORARY_PATCH, "unlabelled": missing_labels},
         "blocks": blocks, "params": params, "panels": panels, "effects": effects, "waves": waves,
+        "waveCategories": [{"name": n, "waves": [w for a, b in r for w in range(a, b + 1)]} for n, r in WAVE_CATEGORIES],
         "readonly": {"areas": READONLY_AREAS, "params": ro_params},
         "a8e": {"layout": a8e_layout, "size": pos, "initial": base64.b64encode(INITIAL.read_bytes()).decode()},
         "factory": [{"n": t.user_patch_index, "slot": t.librarian_slot, "family": t.group, "name": t.name}

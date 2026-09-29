@@ -16,7 +16,8 @@ The editor is the self-contained **`app/`** folder. The repo's front page (READM
 1. **Online link** (nothing to install for anyone):
    - On GitHub, open the repository → **Settings** → **Pages** → *Build and deployment* → **Source: GitHub Actions**.
    - After the next push, the **Actions** tab runs *Publish web editor*, and the editor is live at **https://ottoguy.github.io/ax-synth-tools/**. Every later push that changes `app/` updates it automatically.
-2. **Download zip**: tell me "make a release v1.0.0" (or run `git tag v1.0.0` and `git push origin v1.0.0`).
+2. **Download zip**: tell me "make a release vX.Y.Z" (or run `git tag vX.Y.Z` and `git push origin vX.Y.Z`).
+   - Releases so far: **v1.0.0** (2026-09-28, first public version) and **v1.0.1** (2026-09-29: waves and MFX types picked by category, "show expert targets" for the mod bar/aftertouch, clearer Changes table, more effect settings expert-only, Chorus/Delay "mono in, stereo out" note, no question on an MFX type change).
    - The *Release downloadable editor* action builds **AX-Synth-Web-Editor.zip**, which contains only the app.
    - It's always available at https://github.com/Ottoguy/ax-synth-tools/releases/latest/download/AX-Synth-Web-Editor.zip.
    - The downloaded version starts with `Start-AX-Synth-Editor.bat` and needs no Python or other install.

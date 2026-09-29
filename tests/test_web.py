@@ -62,6 +62,34 @@ class WebModel(unittest.TestCase):
         self.assertFalse(P2["fm.pat.mfx.mfxOutputAssign"]["simple"])                  # user: expert only
         self.assertTrue(P2["fm.pat.mfx.equalizer-loGain"]["simple"] and P2["fm.pat.rev.srvHall-tm"]["simple"])
         self.assertTrue(all(P2[f"fm.pat.tone[0].{n}"]["level"] for n in ("toneDrySendLevel", "toneReverbSendLevelMFX", "toneLevel")))
+        # user 2026-09-29: effect settings not in the manual, or shown as raw numbers > 32000, are expert-only
+        import build_web_model
+        members = [e for e in P2.values() if e["union"] and e["union"][1] > 0]
+        self.assertFalse([e for e in members if e["simple"] and (e.get("schemaOnly") or build_web_model.shown_max(e) > 32000)])
+        self.assertEqual(sum(1 for e in members if not e["simple"]), 261)
+        self.assertFalse(P2["fm.pat.mfx.equalizer-loFreq"]["simple"])        # raw 32768/32769 on screen
+        self.assertFalse(P2["fm.pat.mfx.superFilter-rateNote"]["simple"])    # tempo-sync, not in the manual
+        for k, fx in MODEL["effects"].items():                                # every type keeps simple settings
+            for t in fx["types"]:
+                self.assertTrue(not t["params"] or any(P2[p]["simple"] for p in t["params"]), (k, t["number"]))
+
+    def test_picker_categories(self):
+        """Wave and MFX pickers: every value in exactly one category (UI only)."""
+        waves = [w for c in MODEL["waveCategories"] for w in c["waves"]]
+        named = [i + 1 for i, w in enumerate(MODEL["waves"]) if w]              # the table ends with one blank item
+        self.assertEqual(sorted(waves), [0] + named)                            # 0 OFF + 1-313, no duplicates
+        self.assertEqual(named, list(range(1, 314)))
+        cats = MODEL["effects"]["mfx"]["categories"]
+        self.assertEqual(sorted(n for c in cats for n in c["types"]), list(range(79)))
+        by = {c["name"]: c for c in cats}
+        self.assertEqual(by["Delay"]["types"], list(range(43, 56)))             # Roland's DELAY category
+        self.assertEqual(by["No effect (THROUGH)"]["types"], [0])
+        self.assertEqual(cats[-1]["name"], "Miscellaneous")
+        self.assertEqual(by["Miscellaneous"]["types"], [78])                    # PIANO: a category of one
+        types = {t["number"]: t for t in MODEL["effects"]["mfx"]["types"]}
+        for c in cats:                                                          # one Roland category per group, except Misc
+            if c["name"] != "Miscellaneous":
+                self.assertEqual({types[n]["category"] for n in c["types"]}, {c["roland"][0]} if c["roland"] else {None})
 
     def test_ui_texts_explain_values_and_hide_research_markup(self):
         import re as _re

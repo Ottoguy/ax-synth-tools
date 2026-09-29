@@ -31,10 +31,10 @@ The **Start here** tab in the editor explains everything in a few minutes. In sh
 1. **Start from a sound:** *Read from synth* (the sound playing now), *Load* one of the 256 stored sounds, *Open .a8e* (a sound file) or *New (INIT)*.
 2. **Change it:** every change is heard immediately.
    - *Common*: the whole sound.
-   - *Tones 1–4*: the up to four layers, side by side.
+   - *Tones 1–4*: the up to four layers, side by side. Waves are picked by category, then wave.
    - *Controllers*: what the mod bar, D-Beam, ribbon and aftertouch knob do.
-   - *Effects*: MFX, chorus/delay and reverb, with a diagram.
-3. **Undo:** the ↺ next to any changed setting, or the *Changes* tab (*Revert all*).
+   - *Effects*: MFX (picked by category, then type), chorus/delay and reverb, with a diagram.
+3. **Undo:** the ↺ next to any changed setting, or the *Changes* tab (every change with its tab and section, before and now; *Revert all*).
 4. **Keep it:**
    - *Save .a8e* saves a file on your computer.
    - *Store in synth slot…* stores it inside the synth. This replaces the sound in that slot; it asks first and can download the old one as a backup.

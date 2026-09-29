@@ -134,7 +134,8 @@ async function readBlocks(base) {
 
 // ---------------------------------------------------------------- controls
 // One control. `bare` = no label (tone-column cells, whose label is the row header).
-function makeControl(path, bare = false) {
+// opts.choices: a function giving the [value, text] list instead of choiceList(path).
+function makeControl(path, bare = false, opts = {}) {
   const p = model.params[path];
   if (p.control === "text") return null;
   const row = document.createElement("div");
@@ -167,11 +168,43 @@ function makeControl(path, bare = false) {
   if (p.control === "select" || p.control === "wave" || p.control === "effectType" || isAssign(path)) {
     row.classList.add("wide");
     input = document.createElement("select");
+    const list = () => (opts.choices ? opts.choices() : choiceList(path));
     const fill = () => {
       input.innerHTML = "";
-      for (const [v, text] of choiceList(path)) input.add(new Option(text, v));
+      for (const [v, text] of list()) input.add(new Option(text, v));
     };
-    fill();
+    // Waves and MFX types: a category list plus the items of one category.
+    // Choosing a category only narrows the second list; nothing is sent until
+    // an item is picked there (the value itself works exactly as before).
+    const groups = pickerGroups(path);
+    let cat = null;
+    const showGroup = (gi, prompt) => {
+      input.innerHTML = "";
+      const text = new Map(list());
+      if (prompt) {
+        const o = new Option(prompt, "");
+        o.disabled = true;
+        input.add(o);
+      }
+      for (const v of gi >= 0 ? groups.items[gi].values : [...text.keys()]) input.add(new Option(text.get(v), v));
+      if (prompt) input.selectedIndex = 0;
+    };
+    const syncGroup = () => {
+      const v = patch.get(path);
+      const gi = groups.items.findIndex((g) => g.values.includes(v));
+      cat.value = String(gi);
+      showGroup(gi);
+    };
+    if (groups) {
+      row.classList.add("pair");
+      cat = document.createElement("select");
+      cat.className = "cat";
+      cat.title = `${groups.cat}: narrows the list below. Nothing changes until you pick ${groups.item} there.`;
+      groups.items.forEach((g, i) => cat.add(new Option(`${g.name} (${g.values.length})`, i)));
+      cat.add(Object.assign(new Option("—", "-1"), { hidden: true })); // a value outside every category
+      cat.addEventListener("change", () => showGroup(Number(cat.value), `Pick ${groups.item}…`));
+      syncGroup();
+    } else fill();
     if (p.enumLong) {
       explain = document.createElement("div");
       explain.className = "explain";
@@ -182,16 +215,25 @@ function makeControl(path, bare = false) {
       explain.textContent = i >= 0 ? `${p.enum[i]}: ${p.enumLong[i].text}` : "";
     };
     input.addEventListener("change", async () => {
-      if (p.control === "effectType") {
+      if (p.control === "effectType" && effectKindOf(path) !== "mfx") { // MFX: no question (user 2026-09-29; ↺ / Changes undo it)
         const kind = effectKindOf(path);
-        const ok = await confirmBox(`Change the ${kind === "mfx" ? "MFX" : kind} type?`,
-          `The new type starts from its default settings; the current ${kind === "mfx" ? "MFX" : kind} settings are replaced. (You can undo with ↺.)`, "Change type");
-        if (!ok) { input.value = String(patch.get(path)); return; }
+        const ok = await confirmBox(`Change the ${kind} type?`,
+          `The new type starts from its default settings; the current ${kind} settings are replaced. (You can undo with ↺.)`, "Change type");
+        if (!ok) { row.ctl.update(); return; }
       }
       onChange(path, Number(input.value)); describe(); mark();
     });
-    row.ctl = addControl(path, { update: () => { if (isAssign(path)) fill(); input.value = String(patch.get(path)); describe(); mark(); }, mark });
-    row.append(input);
+    row.ctl = addControl(path, { update: () => {
+      if (groups) syncGroup();
+      else if (isAssign(path) || opts.choices) fill();
+      input.value = String(patch.get(path)); describe(); mark();
+    }, mark });
+    if (groups) {
+      const box = document.createElement("div");
+      box.className = "pairbox";
+      box.append(cat, input);
+      row.append(box);
+    } else row.append(input);
   } else {
     input = document.createElement("input");
     input.type = "range";
@@ -210,6 +252,16 @@ function makeControl(path, bare = false) {
   if (explain) row.append(explain);
   input.title = tip;
   return row;
+}
+
+// Category lists for the two-step pickers (from model.json): waves, MFX types.
+function pickerGroups(path) {
+  const p = model.params[path];
+  if (p.control === "wave") return { cat: "Wave category", item: "a wave", items: model.waveCategories.map((c) => ({ name: c.name, values: c.waves })) };
+  if (p.control === "effectType" && effectKindOf(path) === "mfx") {
+    return { cat: "MFX category", item: "an MFX type", items: model.effects.mfx.categories.map((c) => ({ name: c.name, values: c.types })) };
+  }
+  return null;
 }
 
 function isAssign(path) {
@@ -324,6 +376,16 @@ function renderPanels() {
       if (pan.id === "matrix" && s.params[0].startsWith("fm.pat.tone[")) continue; // shown as tone columns below
       const sec = section(s.id === "fx.chorus" ? s.title.replace(/^Chorus\b/, "Chorus/Delay") : s.title, s.help);
       const grid = sec.querySelector(".grid");
+      if (s.id === "fx.chorus") {
+        // Editor manual p.37: sounds reach chorus and reverb in mono at all times; p.15: CHORUS OUTPUT SELECT
+        const n = document.createElement("div");
+        n.className = "mononote";
+        n.innerHTML = `<b>Mono in, stereo out.</b> The tones always reach this Chorus/Delay unit as one <b>mono</b> mix
+          (their panning is lost on the way in). It sends its result out in <b>stereo</b> (OUTPUT SELECT MAIN) and/or in mono to the reverb.
+          <br>Want chorus or delay on the <b>stereo</b> sound instead? The <b>MFX</b> has them too: its categories
+          <i>Chorus &amp; flanger</i> and <i>Delay</i>.`;
+        grid.before(n);
+      }
       for (const path of s.params) {
         const c = makeControl(path);
         if (c) grid.append(c);
@@ -583,8 +645,14 @@ function showPanel(id) {
 function expert() {
   return $("expert").checked;
 }
+let modeShown = null;
 function applyMode() {
   const simple = !expert();
+  if (modeShown !== null && modeShown !== simple) {
+    // "show expert targets" follows the mode: ticked in expert, unticked in simple
+    for (const cb of document.querySelectorAll("#ctrlpanel input.xt")) { cb.checked = !simple; cb.onchange(); }
+  }
+  modeShown = simple;
   document.body.classList.toggle("simple", simple);
   document.body.classList.toggle("expert", !simple);
   for (const sec of document.querySelectorAll("#panels section.sec")) {
@@ -644,23 +712,46 @@ function updateStatus() {
   tab("changes").textContent = `Changes (${changes.length})`;
   const table = $("changetable");
   table.innerHTML = "";
+  table.innerHTML = `<thead><tr><th>Tab</th><th>Section</th><th>Setting</th><th>Before</th><th>Now</th><th>Undo</th></tr></thead><tbody></tbody>`;
+  const body = table.tBodies[0];
   for (const c of changes) {
     const p = model.params[c.path];
     const tr = document.createElement("tr");
-    const where = c.path.replace(/^fm\.pat\./, "").replace(/^tone\[(\d)\]\..*/, (_, t) => `Tone ${+t + 1}`).split(".")[0];
-    tr.innerHTML = `<td></td><td></td><td></td><td></td><td></td>`;
-    tr.children[0].textContent = where;
-    tr.children[1].textContent = p.short || p.label;
-    tr.children[2].textContent = display(p, c.from, model.waves);
-    tr.children[3].textContent = `→ ${display(p, c.to, model.waves)}`;
+    const [tabName, secName] = whereIs(c.path);
+    tr.innerHTML = `<td class="tabcol"></td><td class="seccol"></td><td class="setcol"></td><td class="from"></td><td class="to"></td><td></td>`;
+    tr.children[0].textContent = tabName;
+    tr.children[1].textContent = secName;
+    tr.children[2].textContent = p.short || p.label;
+    tr.children[3].textContent = display(p, c.from, model.waves);
+    tr.children[4].textContent = `→ ${display(p, c.to, model.waves)}`;
     const b = document.createElement("button");
     b.textContent = "Reset";
     b.onclick = () => resetOne(c.path);
-    tr.children[4].append(b);
-    table.append(tr);
+    tr.children[5].append(b);
+    body.append(tr);
   }
-  if (!changes.length) table.innerHTML = `<tr><td>No changes.</td></tr>`;
+  if (!changes.length) body.innerHTML = `<tr><td colspan="6">No changes.</td></tr>`;
   renderSummary(changes.length);
+}
+// Where a setting is edited: [tab, section heading] as shown on screen.
+const WHERE = new Map();
+function whereIs(path) {
+  if (!WHERE.size) {
+    for (const pan of model.panels) {
+      for (const s of pan.sections) {
+        for (const p of s.params) {
+          if (pan.tone !== undefined) WHERE.set(p, ["Tones 1–4", `Tone ${pan.tone + 1} · ${s.title}`]);
+          else WHERE.set(p, [pan.title, s.id === "fx.chorus" ? s.title.replace(/^Chorus/, "Chorus/Delay") : s.title]);
+        }
+      }
+    }
+    const unit = { mfx: "MFX", chorus: "Chorus/Delay", reverb: "Reverb" };
+    for (const [kind, e] of Object.entries(model.effects)) {
+      for (const t of e.types) for (const p of t.params) WHERE.set(p, ["Effects", `${unit[kind]} ${t.number}: ${t.name}`]);
+    }
+    WHERE.set("fm.pat.common.patchName", ["Top of the page", "Sound name"]);
+  }
+  return WHERE.get(path) || ["", ""];
 }
 function tab(id) {
   return [...$("tabs").children].find((b) => b.dataset.panel === id);
@@ -886,6 +977,17 @@ function beamCC() {
   return raw < 31 ? raw + 1 : raw + 2; // the beam table has no CC32 slot (raw 68 = CC70)
 }
 
+// Target list for the mod bar / aftertouch knob. Without "show expert targets"
+// only OFF … REVERB SEND (the Matrix Control destinations up to REVERB SEND);
+// a current value further down the list stays selectable so it's shown correctly.
+function targetChoices(path, all) {
+  const list = choiceList(path);
+  if (all) return list;
+  const end = list.findIndex(([, l]) => l === "REVERB SEND");
+  const v = patch.get(path);
+  return list.filter(([x], i) => i <= end || x === v).map(([x, l], i) => [x, i > end ? `${l} (expert)` : l]);
+}
+
 function renderControllers() {
   const host = $("ctrlpanel");
   if (!host) return;
@@ -898,11 +1000,25 @@ function renderControllers() {
   ctrlControls = [];
   host.innerHTML = "";
 
-  const add = (grid, path, label) => {
-    const row = makeControl(path);
+  // xt: a Target list with a "show expert targets" box (unticked = OFF … REVERB SEND only)
+  const add = (grid, path, label, xt = false) => {
+    const cb = xt ? Object.assign(document.createElement("input"), { type: "checkbox", className: "xt", checked: expert() }) : null;
+    const row = makeControl(path, false, xt ? { choices: () => targetChoices(path, cb.checked) } : {});
     if (!row) return;
     row.classList.add("simple"); // this tab is part of simple mode
-    if (label) row.querySelector("label").textContent = label;
+    const lab = row.querySelector("label");
+    if (label) lab.textContent = label;
+    if (xt) {
+      const box = document.createElement("label");
+      box.className = "xtbox";
+      box.title = "Ticked: every Matrix Control target. Unticked: only the everyday ones (OFF … REVERB SEND).";
+      box.append(cb, "show expert targets");
+      const wrap = document.createElement("div");
+      wrap.className = "lblwrap";
+      lab.replaceWith(wrap);
+      wrap.append(lab, box);
+      cb.onchange = () => row.ctl.update();
+    }
     ctrlControls.push([path, row.ctl]);
     grid.append(row);
   };
@@ -912,9 +1028,9 @@ function renderControllers() {
     p.textContent = text;
     sec.querySelector(".grid").before(p);
   };
-  const routing = (grid, k) => {
+  const routing = (grid, k, xt = false) => {
     for (let d = 1; d <= 4; d++) {
-      add(grid, `fm.pat.common.matrixControl${k}Destination${d}`, `Target ${d}`);
+      add(grid, `fm.pat.common.matrixControl${k}Destination${d}`, `Target ${d}`, xt);
       add(grid, `fm.pat.common.matrixControl${k}Sens${d}`, `Amount ${d}`);
     }
   };
@@ -922,7 +1038,7 @@ function renderControllers() {
   // Modulation bar
   const mod = section("Modulation bar", "The bar on the neck sends CC01. What it changes in this sound, and how much (−63…+63; negative = the other way).");
   const modK = matrixWithSource(1);
-  if (modK.length) modK.forEach((k) => routing(mod.querySelector(".grid"), k));
+  if (modK.length) modK.forEach((k) => routing(mod.querySelector(".grid"), k, true));
   else note(mod, "This sound has no mod-bar routing (no Matrix Control with source CC01).");
   const modMfx = mfxWithSource(1);
   if (modMfx.length) {
@@ -945,14 +1061,14 @@ function renderControllers() {
     note(beam, "Connect (or click Read from synth) to see which CC the D-Beam sends. It's a synth setting, not part of the sound.");
   } else {
     const lo = systemValues["fm.system.controller.beamRangeLower"], hi = systemValues["fm.system.controller.beamRangeUpper"];
-    note(beam, `ASSIGNABLE mode sends CC${String(cc).padStart(2, "0")}, range ${lo}–${hi}${lo > hi ? " (inverted)" : ""}. ` +
-      "These are synth settings (change them on the synth: hold SHIFT and press the D-Beam's ASSIGNABLE button).");
-    if (cc === 1) note(beam, "It sends CC01, the same as the mod bar, so it changes exactly the mod bar's targets above.");
-    else {
-      const bk = matrixWithSource(cc);
-      if (bk.length) bk.forEach((k) => routing(bg, k));
-      else note(beam, `This sound has no routing for CC${String(cc).padStart(2, "0")}, so in ASSIGNABLE mode the D-Beam changes nothing here.`);
-    }
+    // one box: what the beam sends, and what that does in this sound
+    const ccName = `CC${String(cc).padStart(2, "0")}`;
+    const bk = cc === 1 ? [] : matrixWithSource(cc);
+    note(beam, `ASSIGNABLE mode sends ${ccName}, range ${lo}–${hi}${lo > hi ? " (inverted)" : ""}. ` +
+      "These are synth settings (change them on the synth: hold SHIFT and press the D-Beam's ASSIGNABLE button)." +
+      (cc === 1 ? " That's the same CC as the mod bar, so the beam changes exactly the mod bar's targets above."
+        : bk.length ? "" : ` This sound has no routing for ${ccName}, so in ASSIGNABLE mode the D-Beam changes nothing here.`));
+    bk.forEach((k) => routing(bg, k));
   }
   host.append(beam);
 
@@ -965,7 +1081,7 @@ function renderControllers() {
   // Aftertouch knob
   const at = section("Aftertouch knob", "The AFTER TOUCH knob (the keys themselves send no aftertouch). What it changes in this sound, and how much:");
   const atK = matrixWithSource(SRC_AFTERTOUCH);
-  if (atK.length) atK.forEach((k) => routing(at.querySelector(".grid"), k));
+  if (atK.length) atK.forEach((k) => routing(at.querySelector(".grid"), k, true));
   else note(at, "This sound has no aftertouch routing (no Matrix Control with source AFTERTOUCH).");
   host.append(at);
   for (const [, c] of ctrlControls) c.update();
@@ -1265,6 +1381,77 @@ async function runSelftest() {
            ` tabColours=${[...$("tabs").children].map((b) => `${b.dataset.panel}:${b.classList.contains("tab-expert") ? "G" : "B"}`).join(",")}`);
   $("expert").checked = false; applyMode();
   res.push(`simpleHidesSystemLog=${tab("system").hidden && tab("log").hidden}`);
+
+  // --- v1.1 UI checks (still in simple mode here) ---
+  connected = true;
+  sent.length = 0;
+  // controllers: "show expert targets" (unticked in simple mode; the current value 9 stays listed)
+  const tpath = "fm.pat.common.matrixControl2Destination1";
+  const tsel = () => document.querySelector(`#ctrlpanel .ctl[data-path="${tpath}"] select`);
+  const tcb = () => document.querySelector(`#ctrlpanel .ctl[data-path="${tpath}"] input.xt`);
+  const simpleList = `${tsel().options.length}/${tcb().checked}/${/\(expert\)$/.test(tsel().options[tsel().options.length - 1].text)}`;
+  onChange(tpath, 2); refresh();
+  const simpleList2 = tsel().options.length;
+  tcb().checked = true; tcb().onchange();
+  const ticked = tsel().options.length;
+  $("expert").checked = true; applyMode();
+  const expertList = `${tsel().options.length}/${tcb().checked}`;
+  $("expert").checked = false; applyMode();
+  res.push(`xtTargets=${simpleList}|${simpleList2}|${ticked}|${expertList}|back=${tsel().options.length}/${tcb().checked}` +
+           ` xtOnlyModAt=${document.querySelectorAll("#ctrlpanel input.xt").length}`);
+  // D-Beam: one box for CC01, and one box for a CC without routing
+  const beamNotes = (raw) => {
+    systemValues = { "fm.system.controller.beamAssign": raw, "fm.system.controller.beamRangeLower": 0, "fm.system.controller.beamRangeUpper": 127 };
+    ctrlSignature = null; refresh();
+    return [...$("ctrlpanel").querySelectorAll("section.sec")].find((s) => s.querySelector("h2").textContent === "D-Beam").querySelectorAll("p.note").length;
+  };
+  res.push(`beamBoxes=${beamNotes(0)}/${beamNotes(10)}`);
+  systemValues = null; ctrlSignature = null; refresh();
+  // wave picker: a category alone sends nothing; picking a wave works as before (wave + wave group)
+  const wp = "fm.pat.tone[0].waveNumberL";
+  const [wcat, wsel] = document.querySelectorAll(`#panel-tones .ctl[data-path="${wp}"] select`);
+  const catOk = model.waveCategories[Number(wcat.value)].waves.includes(patch.get(wp)) && wsel.value === String(patch.get(wp));
+  await wait(60); // let earlier throttled edits go out first
+  const earlier = sent.slice();
+  sent.length = 0;
+  const wBefore = patch.get(wp);
+  wcat.value = String(model.waveCategories.findIndex((c) => c.name === "Organ"));
+  wcat.dispatchEvent(new Event("change"));
+  await wait(60);
+  const wQuiet = sent.length === 0 && patch.get(wp) === wBefore && wsel.selectedIndex === 0 && wsel.options[0].disabled && wsel.options.length === 53;
+  const targetDt1 = hex(buildDT1(patch.address(model.params[tpath]), Array.from(encodeValue(model.params[tpath], 2))));
+  wsel.value = "26"; wsel.dispatchEvent(new Event("change"));
+  await wait(60);
+  res.push(`targetSent=${earlier.length === 1 && earlier[0] === targetDt1}` +
+           ` wavePicker=${catOk}/${wQuiet}/${patch.get(wp)}/${patch.get("fm.pat.tone[0].waveGroupID")}/sent${sent.length}` +
+           ` waveCats=${model.waveCategories.length}`);
+  // MFX picker: same, and the type change still resets the effect (block + type byte)
+  const mp = "fm.pat.mfx.mfxType";
+  const [mcat, msel] = document.querySelectorAll(`#panel-effects .ctl[data-path="${mp}"] select`);
+  sent.length = 0;
+  const mBefore = patch.get(mp);
+  mcat.value = String(model.effects.mfx.categories.findIndex((c) => c.name === "Delay"));
+  mcat.dispatchEvent(new Event("change"));
+  await wait(60);
+  const mQuiet = sent.length === 0 && patch.get(mp) === mBefore && msel.options.length === 14;
+  msel.value = "43"; msel.dispatchEvent(new Event("change"));
+  await wait(200);
+  res.push(`mfxPicker=${mQuiet}/${patch.get(mp)}/sent${sent.length}/block${sent.some((m) => m.startsWith("F0 41 10 00 00 3C 12 1F 00 02 00"))}` +
+           ` mfxCats=${model.effects.mfx.categories.map((c) => c.types.length).join(",")}`);
+  // simple mode hides schema-only and raw-32768 effect settings
+  onChange(mp, 5); // SUPER FILTER: has tempo-sync (schema-only) and raw-valued members
+  await wait(50);
+  const fxCtls = [...effectSections.mfx.querySelectorAll(".ctl")];
+  const shownSimple = fxCtls.filter((el) => getComputedStyle(el).display !== "none");
+  const bad = shownSimple.filter((el) => model.params[el.dataset.path].schemaOnly || /^3\d{4}$/.test(el.querySelector("output")?.value || ""));
+  res.push(`simpleFx=${shownSimple.length}/${fxCtls.length} simpleFxBad=${bad.length}`);
+  // changes tab: column headings, tab + section for every visible setting
+  const heads = [...$("changetable").querySelectorAll("thead th")].map((th) => th.textContent).join(",");
+  const noWhere = Object.keys(model.params).filter((p) => !model.params[p].hidden && !whereIs(p)[0]);
+  const firstRow = $("changetable").tBodies[0].rows[0];
+  res.push(`changeHeads=${heads} noWhere=${noWhere.length} firstRow=${firstRow ? [...firstRow.cells].slice(0, 3).map((c) => c.textContent).join("|") : "-"}`);
+  res.push(`monoNote=${!!document.querySelector("#panel-effects .mononote")}`);
+  connected = false;
   log(`SELFTEST ${res.join(" ")}`);
 }
 if (new URLSearchParams(location.search).has("selftest")) runSelftest().catch((e) => log(`SELFTEST ERROR ${e.stack}`));
